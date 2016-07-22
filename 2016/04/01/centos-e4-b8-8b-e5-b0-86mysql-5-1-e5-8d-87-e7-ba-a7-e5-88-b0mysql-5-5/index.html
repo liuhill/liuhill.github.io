@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>CentOS下将MySQL 5.1升级到MySQL 5.5 | 无来</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="mysql 5.5已经出来有一段时间，性能有明显提升，特别是对多核CPU的支持与TPS性能的提升。上周博主介绍了linux下编译安装mysql 5.5的步骤，安装不出意外基本没有问题。不过可能很多朋友和我一样一直用的是mysql 5.1，现在想把数据库升级成5.5了。博主根据实际操作，记录这次升级操作。
+mysql基础信息
+1、安装目录[root@vm-199~]# /usr/local/mysq">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS下将MySQL 5.1升级到MySQL 5.5">
+<meta property="og:url" content="http://www.wulai.me/2016/04/01/centos-e4-b8-8b-e5-b0-86mysql-5-1-e5-8d-87-e7-ba-a7-e5-88-b0mysql-5-5/index.html">
+<meta property="og:site_name" content="无来">
+<meta property="og:description" content="mysql 5.5已经出来有一段时间，性能有明显提升，特别是对多核CPU的支持与TPS性能的提升。上周博主介绍了linux下编译安装mysql 5.5的步骤，安装不出意外基本没有问题。不过可能很多朋友和我一样一直用的是mysql 5.1，现在想把数据库升级成5.5了。博主根据实际操作，记录这次升级操作。
+mysql基础信息
+1、安装目录[root@vm-199~]# /usr/local/mysq">
+<meta property="og:updated_time" content="2016-07-22T06:18:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CentOS下将MySQL 5.1升级到MySQL 5.5">
+<meta name="twitter:description" content="mysql 5.5已经出来有一段时间，性能有明显提升，特别是对多核CPU的支持与TPS性能的提升。上周博主介绍了linux下编译安装mysql 5.5的步骤，安装不出意外基本没有问题。不过可能很多朋友和我一样一直用的是mysql 5.1，现在想把数据库升级成5.5了。博主根据实际操作，记录这次升级操作。
+mysql基础信息
+1、安装目录[root@vm-199~]# /usr/local/mysq">
+  
+    <link rel="alternate" href="/atom.xml" title="无来" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">无来</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">无所从来、亦无所从去</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.wulai.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-centos-e4-b8-8b-e5-b0-86mysql-5-1-e5-8d-87-e7-ba-a7-e5-88-b0mysql-5-5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/01/centos-e4-b8-8b-e5-b0-86mysql-5-1-e5-8d-87-e7-ba-a7-e5-88-b0mysql-5-5/" class="article-date">
+  <time datetime="2016-04-01T03:41:38.000Z" itemprop="datePublished">2016-04-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/未分类/">未分类</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CentOS下将MySQL 5.1升级到MySQL 5.5
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mysql 5.5已经出来有一段时间，性能有明显提升，特别是对多核CPU的支持与TPS性能的提升。上周博主介绍了linux下编译安装mysql 5.5的步骤，安装不出意外基本没有问题。不过可能很多朋友和我一样一直用的是mysql 5.1，现在想把数据库升级成5.5了。博主根据实际操作，记录这次升级操作。</p>
+<p>mysql基础信息</p>
+<p>1、安装目录<br><code>[root@vm-199~]# /usr/local/mysql</code><br>2、配置文件<br><code>[root@vm-199~]# /etc/my.cnf</code><br>3、数据目录<br><code>[root@vm-199~]# /data/mysql</code><br>4、启动脚本<br><code>[root@vm-199~]# /etc/init.d/mysql</code></p>
+<p>备份数据和安装、配置文件</p>
+<p><code>[root@vm-199~]# mysqldump -uroot -p –all-databases &amp;lt;/root/zhangnq/mysql5.1/mysql_dbk_20140217.sql
+[root@vm-199~]# tar czvf mysql_5.1.60_full.tar.gz /usr/local/mysql
+[root@vm-199~]# tar czvf mysql_5.1.60_data_full.tar.gz /data/mysql
+[root@vm-199~]# cp /etc/my.cnf  ./</code></p>
+<p>数据备份好后关闭mysql数据库，<code>/etc/init.d/mysql stop</code>，删除/usr/local/mysql文件。</p>
+<p>安装mysql 5.5</p>
+<p>具体可以参考这篇文章《Linux下编译安装Mysql-5.5的简单步骤》（<a href="http://www.sijitao.net/1563.html），安装目录、数据目录和5.1的一样，都是/usr/local/mysql" target="_blank" rel="external">http://www.sijitao.net/1563.html），安装目录、数据目录和5.1的一样，都是/usr/local/mysql</a> 。</p>
+<p>更新配置文件</p>
+<p><code>[root@vm-199 mysql-5.5.35]# cp support-files/my-huge.cnf /etc/my.cnf</code></p>
+<p>在配置文件中添加数据目录，datadir = /data/mysql 。</p>
+<p>启动mysql 5.5，执行更新程序并重启mysql</p>
+<p><code>[root@vm-199 mysql-5.5.35]# /etc/init.d/mysql start
+[root@vm-199 mysql-5.5.35]# /usr/local/mysql/bin/mysql_upgrade
+Looking for &#39;mysql&#39; as: /usr/local/mysql/bin/mysql
+Looking for &#39;mysqlcheck&#39; as: /usr/local/mysql/bin/mysqlcheck
+Running &#39;mysqlcheck&#39; with connection arguments: &#39;--port=3306&#39; &#39;--socket=/tmp/mysqld.sock&#39;
+Running &#39;mysqlcheck&#39; with connection arguments: &#39;--port=3306&#39; &#39;--socket=/tmp/mysqld.sock&#39;
+mydb.t1 OK
+mydb.t2 OK
+mysql.columns_priv OK
+mysql.db OK
+mysql.event OK
+mysql.func OK
+mysql.general_log OK
+mysql.help_category OK
+mysql.help_keyword OK
+mysql.help_relation OK
+mysql.help_topic OK
+mysql.host OK
+mysql.ndb_binlog_index OK
+mysql.plugin OK
+mysql.proc OK
+mysql.procs_priv OK
+mysql.proxies_priv OK
+mysql.servers OK
+mysql.slow_log OK
+mysql.tables_priv OK
+mysql.time_zone OK
+mysql.time_zone_leap_second OK
+mysql.time_zone_name OK
+mysql.time_zone_transition OK
+mysql.time_zone_transition_type OK
+mysql.user OK
+Running &#39;mysql_fix_privilege_tables&#39;...
+OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和原来一样。</p>
+<p>这个mysql升级其实不复杂，其实就是重新安装一遍，然后把数据目录文件覆盖一下。不过数据库升级，主要还是得注意数据备份，防止数据和意外丢失。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.wulai.me/2016/04/01/centos-e4-b8-8b-e5-b0-86mysql-5-1-e5-8d-87-e7-ba-a7-e5-88-b0mysql-5-5/" data-id="ciqxd83z0000ezcs6ehl4c7dg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/12/ef-bc-bb-e8-bd-ac-ef-bc-bd-e5-ba-94-e7-94-a8-e6-95-b0-e6-8d-ae-e9-9d-99-e6-80-81-e5-8c-96-e6-9e-b6-e6-9e-84-e9-ab-98-e6-80-a7-e8-83-bd-e5-8d-95-e9-a1-b5web-e5-ba-94-e7-94-a8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ［转］应用数据静态化架构高性能单页Web应用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/16/svn-file-is-scheduled-for-addition-but-is-missing/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">svn: file is scheduled for addition, but is missing</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">server</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术文章/">技术文章</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术文章/未分类/">未分类</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redmine/">redmine</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/redmine/" style="font-size: 10px;">redmine</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/22/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/06/linux-e5-a6-82-e4-bd-95-e6-98-be-e7-a4-ba-e4-b8-80-e4-b8-aa-e6-96-87-e4-bb-b6-e7-9a-84-e6-9f-90-e5-87-a0-e8-a1-8c-e4-b8-ad-e9-97-b4-e5-87-a0-e8-a1-8c/">linux 如何显示一个文件的某几行(中间几行)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/28/docker-dial-tcp-lookup-index-docker-io-no-such-host-solution/">Docker - dial tcp: lookup index.docker.io: no such host - Solution</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/24/svn-local-obstruction-incoming-add-upon-merge/">svn local obstruction, incoming add upon merge</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/20/e6-9f-a5-e6-89-be-e5-a4-a7-e6-96-87-e4-bb-b6-e5-a4-b9/">查找大文件夹</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Hillock<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

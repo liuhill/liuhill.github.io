@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>如何调试PHP的Core之获取基本信息 | 无来</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="作者: Laruence(   )
+本文地址: http://www.laruence.com/2011/06/23/2057.html
+转载请注明出处
+`&amp;lt;/pre&amp;gt;
+
+其实一直想写这个系列, 但是一想到这个话题的宽泛性, 我就有点感觉无法组织.
+
+今天我也不打算全部讲如何调试一个PHP的Core文件, 也不会介绍什么是Coredump, 选择一个相对比较简单的方向来介绍, 那就是如">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何调试PHP的Core之获取基本信息">
+<meta property="og:url" content="http://www.wulai.me/2016/05/14/e5-a6-82-e4-bd-95-e8-b0-83-e8-af-95php-e7-9a-84core-e4-b9-8b-e8-8e-b7-e5-8f-96-e5-9f-ba-e6-9c-ac-e4-bf-a1-e6-81-af/index.html">
+<meta property="og:site_name" content="无来">
+<meta property="og:description" content="作者: Laruence(   )
+本文地址: http://www.laruence.com/2011/06/23/2057.html
+转载请注明出处
+`&amp;lt;/pre&amp;gt;
+
+其实一直想写这个系列, 但是一想到这个话题的宽泛性, 我就有点感觉无法组织.
+
+今天我也不打算全部讲如何调试一个PHP的Core文件, 也不会介绍什么是Coredump, 选择一个相对比较简单的方向来介绍, 那就是如">
+<meta property="og:updated_time" content="2016-07-22T06:18:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何调试PHP的Core之获取基本信息">
+<meta name="twitter:description" content="作者: Laruence(   )
+本文地址: http://www.laruence.com/2011/06/23/2057.html
+转载请注明出处
+`&amp;lt;/pre&amp;gt;
+
+其实一直想写这个系列, 但是一想到这个话题的宽泛性, 我就有点感觉无法组织.
+
+今天我也不打算全部讲如何调试一个PHP的Core文件, 也不会介绍什么是Coredump, 选择一个相对比较简单的方向来介绍, 那就是如">
+  
+    <link rel="alternate" href="/atom.xml" title="无来" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">无来</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">无所从来、亦无所从去</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.wulai.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-e5-a6-82-e4-bd-95-e8-b0-83-e8-af-95php-e7-9a-84core-e4-b9-8b-e8-8e-b7-e5-8f-96-e5-9f-ba-e6-9c-ac-e4-bf-a1-e6-81-af" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/14/e5-a6-82-e4-bd-95-e8-b0-83-e8-af-95php-e7-9a-84core-e4-b9-8b-e8-8e-b7-e5-8f-96-e5-9f-ba-e6-9c-ac-e4-bf-a1-e6-81-af/" class="article-date">
+  <time datetime="2016-05-14T13:32:50.000Z" itemprop="datePublished">2016-05-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/未分类/">未分类</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      如何调试PHP的Core之获取基本信息
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>作者: Laruence(   )
+本文地址: http://www.laruence.com/2011/06/23/2057.html
+转载请注明出处
+`&lt;/pre&gt;
+
+其实一直想写这个系列, 但是一想到这个话题的宽泛性, 我就有点感觉无法组织.
+
+今天我也不打算全部讲如何调试一个PHP的Core文件, 也不会介绍什么是Coredump, 选择一个相对比较简单的方向来介绍, 那就是如何从PHP的Core文件中获取一些对我们重演这个Core有帮助的信息.
+
+在这个过程中, 会涉及到对PHP的函数调用, PHP的传参, PHP的一些全局变量的知识, 这些知识在我之前的文章中都有过涉及, 大家可以翻阅: 深入理解PHP原理之函数 深入理解PHP原理之变量作用域等等.
+
+首先, 让我们生成一个供我们举例子的Core文件:
+
+&lt;pre&gt;`&amp;lt;?php
+function recurse($num) {
+      recurse(++$num);
+}
+
+recurse(0);
+`&lt;/pre&gt;
+
+运行这个PHP文件:
+
+&lt;pre&gt;`$ php test.php
+Segmentation fault (core dumped)
+`&lt;/pre&gt;
+
+这个PHP因为无线递归, 会导致爆栈, 从而造成 segment fault而在PHP的当前工作目录产生Coredump文件(如果你的系统没有产生Coredump文件, 那请查询ulimit的相关设置).
+
+&lt;pre&gt;`$ ulimit -c unlimited
+$ php test.php
+`&lt;/pre&gt;
+
+好, 现在, 让我们删除掉这个test.php, 忘掉上面的代码, 我们现在仅有的是这个Core文件, 任务是, 找出这个Core产生的原因, 以及发生时候的状态.
+
+首先, 让我们用gdb打开这个core文件:
+
+&lt;pre&gt;`$ gdb php -c core.31656
+`&lt;/pre&gt;
+
+会看到很多的信息, 首先让我们注意这段:
+
+&lt;pre&gt;`Core was generated by `php test.php&apos;.
+Program terminated with signal 11, Segmentation fault.
+`&lt;/pre&gt;
+
+他告诉我们Core发生的原因:”Segmentation fault”.
+
+一般来说, 这种Core是最常见的, 解引用空指针, double free, 以及爆栈等等, 都会触发SIGSEGV, 继而默认的产生Coredump.
+
+现在让我们看看Core发生时刻的堆栈:
+
+&lt;pre&gt;`#0  execute (op_array=0xdc9a70) at /home/laruence/package/php-5.2.14/Zend/zend_vm_execute.h:53
+53          memset(EX(CVs), 0, sizeof(zval**) * op_array-&amp;gt;last_var);
+(gdb) bt
+#0  execute (op_array=0xdc9a70) at /home/laruence/package/php-5.2.14/Zend/zend_vm_execute.h:53
+#1  0x00000000006ea263 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbf400210) at /home/laruence/package/php-5.2.14/Zend/zend_vm_execute.h:234
+#2  0x00000000006e9f61 in execute (op_array=0xdc9a70) at /home/laruence/package/php-5.2.14/Zend/zend_vm_execute.h:92
+#3  0x00000000006ea263 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbf400440) at /home/laruence/package/php-5.2.14/Zend/zend_vm_execute.h:234
+#4  0x00000000006e9f61 in execute (op_array=0xdc9a70) at /home/laruence/package/php-5.2.14/Zend/zend_vm_execute.h:92
+#5  0x00000000006ea263 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbf400670) at /home/laruence/package/php-5.2.14/Zend/zend_vm_execute.h:234
+.....
+`&lt;/pre&gt;
+
+不停的按回车, 可以看到堆栈很深, 不停的是zend_do_fcall_common_helper_SPEC和execute的重复, 那么这基本就能断定是因为产生了无穷大的递归(不能一定说是无穷递归, 比如我之前文章中介绍深悉正则(pcre)最大回溯/递归限制). 从而造成爆栈产生的Core.
+
+Ok, 那么现在让我们看看, Core发生在PHP的什么函数中, 在PHP中, 对于FCALL_* Opcode的handler来说, execute_data代表了当前函数调用的一个State, 这个State中包含了信息:
+
+&lt;pre&gt;`(gdb)f 1
+#1  0x00000000006ea263 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbf400210) at /home/laruence/package/php-5.2.14/Zend/zend_vm_execute.h:234
+234               zend_execute(EG(active_op_array) TSRMLS_CC);
+(gdb) p execute_data-&amp;gt;function_state.function-&amp;gt;common-&amp;gt;function_name
+$3 = 0x2a95b65a78 &quot;recurse&quot;
+(gdb) p execute_data-&amp;gt;function_state.function-&amp;gt;op_array-&amp;gt;filename
+$4 = 0x2a95b632a0 &quot;/home/laruence/test.php&quot;
+(gdb) p execute_data-&amp;gt;function_state.function-&amp;gt;op_array-&amp;gt;line_start
+$5 = 2
+`&lt;/pre&gt;
+
+现在我们得到, 在调用的PHP函数是recurse, 这个函数定义在/home/laruence/test.php的第二行
+
+经过重复验证几个frame, 我们可以看出, 一直是在重复调用这个PHP函数.
+
+要注意的是, 为了介绍查看执行信息的原理, 我才采用原生的gdb的print来查看, 其实我们还可以使用PHP源代码中提供的.gdbinit(gdb命令编写脚本), 来简单的获取到上面的信息:
+
+&lt;pre&gt;`(gdb) source /home/laruence/package/php-5.2.14/.gdbinit
+(gdb) zbacktrace
+[0xbf400210] recurse() /home/laruence/test.php:3
+[0xbf400440] recurse() /home/laruence/test.php:3
+[0xbf400670] recurse() /home/laruence/test.php:3
+[0xbf4008a0] recurse() /home/laruence/test.php:3
+[0xbf400ad0] recurse() /home/laruence/test.php:3
+[0xbf400d00] recurse() /home/laruence/test.php:3
+[0xbf400f30] recurse() /home/laruence/test.php:3
+[0xbf401160] recurse() /home/laruence/test.php:3
+.....
+`&lt;/pre&gt;
+
+关于.gdbinit, 是一段小小的脚本文件, 定义了一些方便我们去调试PHP的Core, 大家也可以用文本编辑器打开, 看看里面定义的一些快捷的命令, 一般来说, 我常用的有:
+
+&lt;pre&gt;`zbacktrace
+print_ht**系列
+zmemcheck
+`&lt;/pre&gt;
+
+OK, 回归正题, 我们现在知道, 问题发生在/home/laruence/test.php的recurse函数的递归调用上了.
+
+现在, 让我们来看看, 在调用这个函数的时候的参数是什么?
+
+PHP的参数传递是依靠一个全局Stack来完成的, 也就是EG(argument_stack), EG在非多线程情况下就是executor_globals, 它保持了很多执行状态. 而argument_statck就是参数的传递栈, 保存着对应PHP函数调用层数相当的调用参数.
+
+要注意的是, 这个PHP函数调用堆栈(层数)不和gdb所看到的backtrace简单的一一对应, 所以参数也不能直接和gdb的backtrace对应起来, 需要单独分析:
+
+&lt;pre&gt;`//先看看, 最后一次函数调用的参数数目是多少
+(gdb) p (int )*(executor_globals-&amp;gt;argument_stack-&amp;gt;top_element - 2)
+$13 = 1
+
+//再看看, 最后一次函数调用的参数是什么
+(gdb)  p **(zval **)(executor_globals-&amp;gt;argument_stack-&amp;gt;top_element - 3)
+$2 = {value = {lval = 22445, dval = 1.1089303420906779e-319, str = {val = 0x57ad &amp;lt;Address 0x57ad out of bounds&amp;gt;, len = 7}, ht = 0x57ad, obj = {handle = 22445, handlers = 0x7}},
+  refcount = 2, type = 1 &apos;\001&apos;, is_ref = 0 &apos;\0&apos;}
+</code></pre><p>好, 我们现在得到, 最后一次调用的参数是一个整数, 数值是22445</p>
+<p>到了这一步, 我们就得到了这个Core发生的时刻的PHP层面的相关信息, 接下来, 就可以交给对应的PHP开发工程师来排查, 这个参数下, 可能造成的无穷大递归的原因, 从而修复这个问题..</p>
+<p>后记: 调试PHP的Core是一个需要丰富经验的过程, 也许我今天介绍的这个例子太简单, 但是只要经常去挑战, 在遇到不懂的相关的知识的时候, 勇于去追根究底, 我相信大家终都可以成PHP Core杀手..</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.wulai.me/2016/05/14/e5-a6-82-e4-bd-95-e8-b0-83-e8-af-95php-e7-9a-84core-e4-b9-8b-e8-8e-b7-e5-8f-96-e5-9f-ba-e6-9c-ac-e4-bf-a1-e6-81-af/" data-id="ciqxd83zu001nzcs6zkvwqmba" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/19/traceroute-e8-be-93-e5-87-ba-e8-af-b4-e6-98-8e/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          traceroute 输出说明
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/27/e7-9f-a5-e9-81-93-e8-bf-9920-e4-b8-aa-e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f-ef-bc-8c-e8-83-bd-e8-ae-a9-e4-bd-a0-e5-b0-91-e5-86-991000-e8-a1-8c-e4-bb-a3-e7-a0-81/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">知道这20个正则表达式，能让你少写1,000行代码</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">server</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术文章/">技术文章</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术文章/未分类/">未分类</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redmine/">redmine</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/redmine/" style="font-size: 10px;">redmine</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/22/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/06/linux-e5-a6-82-e4-bd-95-e6-98-be-e7-a4-ba-e4-b8-80-e4-b8-aa-e6-96-87-e4-bb-b6-e7-9a-84-e6-9f-90-e5-87-a0-e8-a1-8c-e4-b8-ad-e9-97-b4-e5-87-a0-e8-a1-8c/">linux 如何显示一个文件的某几行(中间几行)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/28/docker-dial-tcp-lookup-index-docker-io-no-such-host-solution/">Docker - dial tcp: lookup index.docker.io: no such host - Solution</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/24/svn-local-obstruction-incoming-add-upon-merge/">svn local obstruction, incoming add upon merge</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/20/e6-9f-a5-e6-89-be-e5-a4-a7-e6-96-87-e4-bb-b6-e5-a4-b9/">查找大文件夹</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Hillock<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

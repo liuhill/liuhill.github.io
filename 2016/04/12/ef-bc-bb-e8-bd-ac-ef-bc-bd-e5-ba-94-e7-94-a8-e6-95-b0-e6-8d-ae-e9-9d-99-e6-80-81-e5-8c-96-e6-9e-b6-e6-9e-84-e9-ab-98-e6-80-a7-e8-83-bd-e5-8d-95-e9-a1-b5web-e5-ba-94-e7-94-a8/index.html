@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>［转］应用数据静态化架构高性能单页Web应用 | 无来</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在电商网站中，单页Web是非常常见的一种形式，比如首页、频道页、广告页等都属于单页应用。而这种页面是由模板+数据组成。传统的构建方式一般通过静态化实现。而这种方式的灵活性并不是很好，比如页面模板部分变更了需要重新全部生成。因此最好能有一种实现方式是可以实时动态渲染，以支持模板的多变性。另外也要考虑好如下几个问题：
+1、动态化模板渲染支持；2、数据和模板的多版本化：生产版本、灰度版本和预发布版本；3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="［转］应用数据静态化架构高性能单页Web应用">
+<meta property="og:url" content="http://www.wulai.me/2016/04/12/ef-bc-bb-e8-bd-ac-ef-bc-bd-e5-ba-94-e7-94-a8-e6-95-b0-e6-8d-ae-e9-9d-99-e6-80-81-e5-8c-96-e6-9e-b6-e6-9e-84-e9-ab-98-e6-80-a7-e8-83-bd-e5-8d-95-e9-a1-b5web-e5-ba-94-e7-94-a8/index.html">
+<meta property="og:site_name" content="无来">
+<meta property="og:description" content="在电商网站中，单页Web是非常常见的一种形式，比如首页、频道页、广告页等都属于单页应用。而这种页面是由模板+数据组成。传统的构建方式一般通过静态化实现。而这种方式的灵活性并不是很好，比如页面模板部分变更了需要重新全部生成。因此最好能有一种实现方式是可以实时动态渲染，以支持模板的多变性。另外也要考虑好如下几个问题：
+1、动态化模板渲染支持；2、数据和模板的多版本化：生产版本、灰度版本和预发布版本；3">
+<meta property="og:image" content="http://res.hillock.com.cn/web/640">
+<meta property="og:image" content="http://res.hillock.com.cn/web/6402">
+<meta property="og:updated_time" content="2016-07-22T06:18:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="［转］应用数据静态化架构高性能单页Web应用">
+<meta name="twitter:description" content="在电商网站中，单页Web是非常常见的一种形式，比如首页、频道页、广告页等都属于单页应用。而这种页面是由模板+数据组成。传统的构建方式一般通过静态化实现。而这种方式的灵活性并不是很好，比如页面模板部分变更了需要重新全部生成。因此最好能有一种实现方式是可以实时动态渲染，以支持模板的多变性。另外也要考虑好如下几个问题：
+1、动态化模板渲染支持；2、数据和模板的多版本化：生产版本、灰度版本和预发布版本；3">
+<meta name="twitter:image" content="http://res.hillock.com.cn/web/640">
+  
+    <link rel="alternate" href="/atom.xml" title="无来" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">无来</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">无所从来、亦无所从去</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.wulai.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ef-bc-bb-e8-bd-ac-ef-bc-bd-e5-ba-94-e7-94-a8-e6-95-b0-e6-8d-ae-e9-9d-99-e6-80-81-e5-8c-96-e6-9e-b6-e6-9e-84-e9-ab-98-e6-80-a7-e8-83-bd-e5-8d-95-e9-a1-b5web-e5-ba-94-e7-94-a8" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/12/ef-bc-bb-e8-bd-ac-ef-bc-bd-e5-ba-94-e7-94-a8-e6-95-b0-e6-8d-ae-e9-9d-99-e6-80-81-e5-8c-96-e6-9e-b6-e6-9e-84-e9-ab-98-e6-80-a7-e8-83-bd-e5-8d-95-e9-a1-b5web-e5-ba-94-e7-94-a8/" class="article-date">
+  <time datetime="2016-04-12T05:04:59.000Z" itemprop="datePublished">2016-04-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术文章/">技术文章</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ［转］应用数据静态化架构高性能单页Web应用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在电商网站中，单页Web是非常常见的一种形式，比如首页、频道页、广告页等都属于单页应用。而这种页面是由模板+数据组成。传统的构建方式一般通过静态化实现。而这种方式的灵活性并不是很好，比如页面模板部分变更了需要重新全部生成。因此最好能有一种实现方式是可以实时动态渲染，以支持模板的多变性。另外也要考虑好如下几个问题：</p>
+<li><br>1、动态化模板渲染支持；<br>2、数据和模板的多版本化：生产版本、灰度版本和预发布版本；<br>3、版本回滚问题，假设当前发布的生产版本出问题了如何快速的回滚到上一个版本；<br>4、异常问题，假设渲染模板时遇到了异常情况（比如获取Redis出问题了），如何处理；<br>5、灰度发布问题，比如切20%量给灰度版本；<br>6、预发布问题，目的是在正式环境测试数据和模板的正确性。<br> </li>
+
+<p><strong>整体架构</strong></p>
+<p>静态化页面的方案如下图所示：<br><img src="http://res.hillock.com.cn/web/640" alt="［转］应用数据静态化架构高性能单页Web应用" title="［转］应用数据静态化架构高性能单页Web应用"></p>
+<p>直接将生成的静态页推送到相关服务器即可。使用这种方式要考虑文件操作的原子化问题（即从老版本切换到新版本如何做到文件操作原子化）。</p>
+<p>而动态化方案的整体架构如下图所示，分为三大系统：CMS系统、控制系统和前端展示系统。<br><img src="http://res.hillock.com.cn/web/6402" alt="［转］应用数据静态化架构高性能单页Web应用" title="［转］应用数据静态化架构高性能单页Web应用"></p>
+<p>###CMS系统<br>1、在CMS系统可以配置页面的模板和数据；<br>1.1、模板动态在CMS系统中维护，即模板不是一个静态文件，而是存储在CMS中的一条数据，最终发布到“发布数据存储Redis”中，前端展示系统从Redis中获取该模板进行渲染，从而前端展示系统更换了模板也不需要重启，纯动态维护模板数据；<br>2、原始数据存储到“元数据存储Mysql”中即可，比如频道页一般需要：前端访问的URL、分类、轮播图、商品楼层数据等；这些数据按照相应的维度存储在CMS系统中；<br>3、提供发布到“发布数据存储Redis”的控制，将CMS系统中的原始数据和模板数据组装成聚合数据（JSON存储）同步到“发布数据存储Redis”，以便前端展示系统获取进行展示；此处提供三个发布按钮：正式版本、灰度版本和预发布版本。</p>
+<p>目前存在如下几个问题：<br>1、用户如访问<a href="http://channel.jd.com/fashion.html怎么定位到对应的聚合数据呢？" target="_blank" rel="external">http://channel.jd.com/fashion.html怎么定位到对应的聚合数据呢？</a> 我们可以在CMS元数据中定义URL作为KEY，如果没有URL，则使用ID作为KEY，或者自动生成一个URL。<br>2、多版本如何存储呢？ 使用Redis的Hash结构存储即可，KEY为URL（比如<a href="http://channel.jd.com/fashion.html），字段按照维度存储：正式版本使用当前时间戳存储（这样前端系统可以根据时间戳排序然后获取最新的版本）、预发布版本使用“predeploy”作为字段，灰度版本使用“abVersion”作为字段即可，这样就区分开了多版本。" target="_blank" rel="external">http://channel.jd.com/fashion.html），字段按照维度存储：正式版本使用当前时间戳存储（这样前端系统可以根据时间戳排序然后获取最新的版本）、预发布版本使用“predeploy”作为字段，灰度版本使用“abVersion”作为字段即可，这样就区分开了多版本。</a><br>3、灰度版本如何控制呢？这个通过控制系统的开关来控制如何灰度；<br>4、如何访问预发布版本呢？比如在URL参数总带上predeploy=true，另外可以限定只有内网可以访问或者访问时带上访问密码，比如pwd=absdfedwqdqw。<br>5、模板变更的历史数据校验问题？比如模板变更了，但是使用历史数据渲染该模板会出现问题，即模板要兼容历史数据的；此处的方案不存在这个问题，因为每次存储时是当时的模板快照，即数据快照和模板快照推送到“发布数据存储Redis”中。</p>
+<p><strong>前端展示系统</strong><br>1、获取当前URL，使用URL作为KEY首先从本机“发布数据存储Redis”获取数据；<br>2、如果没有数据或者异常则从主“发布数据存储Redis”获取；<br>3、如果主“发布数据存储Redis”也发生了异常，那么会直接调用CMS系统暴露的API直接从元数据存储Mysql中获取数据进行处理。</p>
+<p>展示系统的伪代码</p>
+<pre><code>Java代码  
+--1、加载Lua模块库  
+local template = require(&quot;resty.template&quot;)  
+template.load = function(s) return s end  
+
+--2、动态获取模板  
+local myTemplate = &quot;&amp;lt;html&amp;gt;{* title *}&amp;lt;/html&amp;gt;&quot;  
+--3、动态获取数据  
+local data = {title = &quot;iphone6s&quot;}  
+
+--4、渲染模板  
+local func = template.compile(myTemplate)  
+local content = func(data)  
+
+--5、通过ngx API输出内容  
+ngx.say(content)  
+即模板和数据都是动态获取的，然后使用动态获取的模板和数据进行渲染。
+</code></pre><p>此处假设最新版本的模板或数据有问题怎么办？这个可以从流程上避免：1、首先进行预发布版本发布，测试人员验证没问题后；2、接着发布灰度版本，在灰度时自动去掉CDN功能（即不设置页面的缓存时间），发布验证OK；3、发布正式版本即可；正式版本发布的5分钟内是不设置页面缓存的，这样就可以防止发版时遇到问题，但是问题版本已经在CDN上给全部用户造成问题。当然这个流程很麻烦，可以按照自己的场景进行简化。</p>
+<p>控制系统<br>控制系统用于版本降级和灰度发布的，当然可以把这个功能放在CMS系统中实现。<br>版本降级：假设当前线上的版本遇到问题了，想要快速切换回上一个版本，可以使用控制系统实现，选中其中一个历史版本然后通知给前端展示系统即可，使用URL和当前版本的字段即可，这样前端展示系统就可以自动切换到选中的那个版本；当问题修复后，再删除该降级配置即切换回最新版本。<br>灰度发布：在控制系统控制哪些URL需要灰度发布和灰度发布的比例，同版本降级类似将相关的数据推送到前端展示系统即可，当不想灰度发布时删除相关数据即可。</p>
+<p>数据和模板动态化</p>
+<p>我们将数据和模板都进行动态化存储，这样可以在CMS进行数据和模板的变更；实现了前端和后端开发人员的分离；前端开发人员进行CMS数据配置和模板开发，而后端开发人员只进行系统的维护。另外因为模板的动态化存储，每次发布新的模板不需要老重启前端展示系统，后端开发人员更好地得到了解放。</p>
+<p>模板和数据可以是一对多的关系，即一个模板可以被多个数据使用。假设模板发生变更后，我们可以批量推送模板关联的数据，首先进行预发布版本的发布，测试人员进行验证，验证没问题即可发布正式版本。</p>
+<p>多版本机制</p>
+<p>我们将数据和模板分为多版本后，可以实现：<br>预发布版本：更容易让测试人员在实际环境进行验证；<br>灰度版本：只需要简单的开关控制，就可以进行A/B测试；<br>正式版本：存储多个历史正式版本，假设最新的正式版本出现问题，可以非常快速的切换回之前的版本。</p>
+<p>异常问题</p>
+<p>其中一个担心就是本机从“发布数据存储Redis”和主“发布数据存储Redis”都挂了，那么我们直接调用CMS系统暴露的HTTP服务直接从元数据存储Mysql获取数据。</p>
+<p>另外一个担心是数据和模板获取到了，但是渲染模板出错了，比如遇到500、503；解决方案是：使用上一个版本的数据进行渲染。</p>
+<p>另外还一种问题是数据和模板都没问题，但是因为一些疏忽，渲染出来的页面错乱了或者有些区域出现了空白；对于这种问题没有很好的解决方案；可以根据自己的场景定义异常扫描库，扫描当前版本有异常就发警告给相关人员，并自动降级到上一个版本。</p>
+<p>来源：开涛的博客</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.wulai.me/2016/04/12/ef-bc-bb-e8-bd-ac-ef-bc-bd-e5-ba-94-e7-94-a8-e6-95-b0-e6-8d-ae-e9-9d-99-e6-80-81-e5-8c-96-e6-9e-b6-e6-9e-84-e9-ab-98-e6-80-a7-e8-83-bd-e5-8d-95-e9-a1-b5web-e5-ba-94-e7-94-a8/" data-id="ciqxd840l002ozcs6nn8vnb6t" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/25/linux-ll-e5-91-bd-e4-bb-a4-e5-88-97-e5-87-ba-e6-96-87-e4-bb-b6-e5-88-b6-e5-ae-9a-e7-9a-84-e5-b1-9e-e6-80-a7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          linux ll命令列出文件制定的属性
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/01/centos-e4-b8-8b-e5-b0-86mysql-5-1-e5-8d-87-e7-ba-a7-e5-88-b0mysql-5-5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CentOS下将MySQL 5.1升级到MySQL 5.5</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">server</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术文章/">技术文章</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术文章/未分类/">未分类</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redmine/">redmine</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/redmine/" style="font-size: 10px;">redmine</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/22/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/06/linux-e5-a6-82-e4-bd-95-e6-98-be-e7-a4-ba-e4-b8-80-e4-b8-aa-e6-96-87-e4-bb-b6-e7-9a-84-e6-9f-90-e5-87-a0-e8-a1-8c-e4-b8-ad-e9-97-b4-e5-87-a0-e8-a1-8c/">linux 如何显示一个文件的某几行(中间几行)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/28/docker-dial-tcp-lookup-index-docker-io-no-such-host-solution/">Docker - dial tcp: lookup index.docker.io: no such host - Solution</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/24/svn-local-obstruction-incoming-add-upon-merge/">svn local obstruction, incoming add upon merge</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/20/e6-9f-a5-e6-89-be-e5-a4-a7-e6-96-87-e4-bb-b6-e5-a4-b9/">查找大文件夹</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Hillock<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

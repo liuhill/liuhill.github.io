@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>nginx 全局变量对照 | 无来</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="remote_addr     客户端ip,如：192.168.4.2binary_remote_addr  客户端ip（二进制)remote_port     客户端port，如：50472remote_user     已经经过Auth Basic Module验证的用户名host            请求主机头字段，否则为服务器名称，如:dwz.stamhe.comrequest">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx 全局变量对照">
+<meta property="og:url" content="http://www.wulai.me/2014/12/05/nginx-e5-85-a8-e5-b1-80-e5-8f-98-e9-87-8f-e5-af-b9-e7-85-a7/index.html">
+<meta property="og:site_name" content="无来">
+<meta property="og:description" content="remote_addr     客户端ip,如：192.168.4.2binary_remote_addr  客户端ip（二进制)remote_port     客户端port，如：50472remote_user     已经经过Auth Basic Module验证的用户名host            请求主机头字段，否则为服务器名称，如:dwz.stamhe.comrequest">
+<meta property="og:updated_time" content="2016-07-22T06:18:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nginx 全局变量对照">
+<meta name="twitter:description" content="remote_addr     客户端ip,如：192.168.4.2binary_remote_addr  客户端ip（二进制)remote_port     客户端port，如：50472remote_user     已经经过Auth Basic Module验证的用户名host            请求主机头字段，否则为服务器名称，如:dwz.stamhe.comrequest">
+  
+    <link rel="alternate" href="/atom.xml" title="无来" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">无来</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">无所从来、亦无所从去</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.wulai.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-nginx-e5-85-a8-e5-b1-80-e5-8f-98-e9-87-8f-e5-af-b9-e7-85-a7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/05/nginx-e5-85-a8-e5-b1-80-e5-8f-98-e9-87-8f-e5-af-b9-e7-85-a7/" class="article-date">
+  <time datetime="2014-12-05T03:29:27.000Z" itemprop="datePublished">2014-12-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/server/">server</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nginx 全局变量对照
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>remote_addr     客户端ip,如：192.168.4.2<br>binary_remote_addr  客户端ip（二进制)<br>remote_port     客户端port，如：50472<br>remote_user     已经经过Auth Basic Module验证的用户名<br>host            请求主机头字段，否则为服务器名称，如:dwz.stamhe.com<br>request         用户请求信息，如：GET /?_a=index&amp;_m=show&amp;count=10 HTTP/1.1<br>request_filename    当前请求的文件的路径名，由root或alias和URI request组合而成，如：/webserver/htdocs/dwz/index.php<br>status          请求的响应状态码,如:200<br>body_bytes_sent 响应时送出的body字节数数量。即使连接中断，这个数据也是精确的,如：40<br>content_length  请求头中的Content-length字段<br>content_type    请求头中的Content-Type字段<br>http_referer    引用地址<br>http_user_agent 客户端agent信息,如：Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11<br>args            如：_a=index&amp;_m=show&amp;count=10<br>document_uri    与$uri相同,如：/index.php<br>document_root   针对当前请求的根路径设置值,如：/webserver/htdocs/dwz<br>hostname        如：centos53.localdomain<br>http_cookie     客户端cookie信息<br>cookie_COOKIE   cookie COOKIE变量的值<br>is_args         如果有$args参数，这个变量等于”?”，否则等于””，空值，如?<br>limit_rate      这个变量可以限制连接速率，0表示不限速<br>query_string    与$args相同,如：_a=index&amp;_m=show&amp;count=10<br>realpath_root   如：/webserver/htdocs/dwz<br>request_body     记录POST过来的数据信息<br>request_body_file   客户端请求主体信息的临时文件名<br>request_method  客户端请求的动作，通常为GET或POST,如：GET<br>request_uri     包含请求参数的原始URI，不包含主机名，如：”/foo/bar.php?arg=baz”。不能修改。如：/index.php?_a=index&amp;_m=show&amp;count=10<br>scheme          HTTP方法（如http，https）,如：http<br>uri             如：/index.php<br>request_completion  如果请求结束，设置为OK. 当请求未结束或如果该请求不是请求链串的最后一个时，为空(Empty)，如：OK<br>server_protocol 请求使用的协议，通常是HTTP/1.0或HTTP/1.1，如：HTTP/1.1<br>server_addr     服务器地址，在完成一次系统调用后可以确定这个值，如：192.168.4.129<br>server_name     服务器名称，如：dwz.stamhe.com<br>server_port     请求到达服务器的端口号,如：80</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.wulai.me/2014/12/05/nginx-e5-85-a8-e5-b1-80-e5-8f-98-e9-87-8f-e5-af-b9-e7-85-a7/" data-id="ciqxd8417003mzcs6h9mwads8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/13/e9-a2-84-e6-8e-92-e5-ba-8f-e9-81-8d-e5-8e-86-e6-a0-91-e7-ae-97-e6-b3-95-e9-9d-9e-e9-80-92-e5-bd-92-e6-97-a0-e9-99-90-e6-9e-81-e5-88-86-e7-b1-bb-e7-ae-97-e6-b3-95-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          预排序遍历树算法(modified preorder tree traversal algorithm)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/05/e6-9f-a5-e7-9c-8bjquery-e7-89-88-e6-9c-ac/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">查看jquery版本</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">server</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术文章/">技术文章</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术文章/未分类/">未分类</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redmine/">redmine</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/redmine/" style="font-size: 10px;">redmine</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/22/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/06/linux-e5-a6-82-e4-bd-95-e6-98-be-e7-a4-ba-e4-b8-80-e4-b8-aa-e6-96-87-e4-bb-b6-e7-9a-84-e6-9f-90-e5-87-a0-e8-a1-8c-e4-b8-ad-e9-97-b4-e5-87-a0-e8-a1-8c/">linux 如何显示一个文件的某几行(中间几行)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/28/docker-dial-tcp-lookup-index-docker-io-no-such-host-solution/">Docker - dial tcp: lookup index.docker.io: no such host - Solution</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/24/svn-local-obstruction-incoming-add-upon-merge/">svn local obstruction, incoming add upon merge</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/20/e6-9f-a5-e6-89-be-e5-a4-a7-e6-96-87-e4-bb-b6-e5-a4-b9/">查找大文件夹</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Hillock<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>APC缓存简介 | 无来</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1、APC缓存简介 APC，全称是Alternative PHP Cache，官方翻译叫”可选PHP缓存”。它为我们提供了缓存和优化PHP的中间代码的框架。 APC的缓存分两部分:系统缓存和用户数据缓存。 系统缓存 它是指APC把PHP文件源码的编译结果缓存起来，然后在每次调用时先对比时间标记。如果未过期，则使用缓存的中间代码运行。默认缓存 3600s(一小时)。但是这样仍会浪费大量CPU时间。因">
+<meta property="og:type" content="article">
+<meta property="og:title" content="APC缓存简介">
+<meta property="og:url" content="http://www.wulai.me/2014/11/28/73/index.html">
+<meta property="og:site_name" content="无来">
+<meta property="og:description" content="1、APC缓存简介 APC，全称是Alternative PHP Cache，官方翻译叫”可选PHP缓存”。它为我们提供了缓存和优化PHP的中间代码的框架。 APC的缓存分两部分:系统缓存和用户数据缓存。 系统缓存 它是指APC把PHP文件源码的编译结果缓存起来，然后在每次调用时先对比时间标记。如果未过期，则使用缓存的中间代码运行。默认缓存 3600s(一小时)。但是这样仍会浪费大量CPU时间。因">
+<meta property="og:updated_time" content="2016-07-22T06:18:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="APC缓存简介">
+<meta name="twitter:description" content="1、APC缓存简介 APC，全称是Alternative PHP Cache，官方翻译叫”可选PHP缓存”。它为我们提供了缓存和优化PHP的中间代码的框架。 APC的缓存分两部分:系统缓存和用户数据缓存。 系统缓存 它是指APC把PHP文件源码的编译结果缓存起来，然后在每次调用时先对比时间标记。如果未过期，则使用缓存的中间代码运行。默认缓存 3600s(一小时)。但是这样仍会浪费大量CPU时间。因">
+  
+    <link rel="alternate" href="/atom.xml" title="无来" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">无来</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">无所从来、亦无所从去</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.wulai.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-73" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/28/73/" class="article-date">
+  <time datetime="2014-11-28T13:16:53.000Z" itemprop="datePublished">2014-11-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/server/">server</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      APC缓存简介
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、APC缓存简介 APC，全称是Alternative PHP Cache，官方翻译叫”可选PHP缓存”。它为我们提供了缓存和优化PHP的中间代码的框架。 APC的缓存分两部分:系统缓存和用户数据缓存。 系统缓存 它是指APC把PHP文件源码的编译结果缓存起来，然后在每次调用时先对比时间标记。如果未过期，则使用缓存的中间代码运行。默认缓存 3600s(一小时)。但是这样仍会浪费大量CPU时间。因此可以在php.ini中设置system缓存为永不过期(apc.ttl=0)。不过如果这样设置，改运php代码后需要重启WEB服务器。目前使用较多的是指此类缓存。 用户数据缓存 缓存由用户在编写PHP代码时用apc_store和apc_fetch函数操作读取、写入的。如果数据量不大的话，可以一试。如果数据量大，使用类似memcache此类的更加专著的内存缓存方案会更好 缓存key生成规则 APC的缓存中的每个slot都会有一个key，key是 apc_cache_key_t结构体类型，除了key相关的属性，关键是h字段的生成。 h字段决定了此元素落于slots数组的哪一个位置。对于用户缓存和系统缓存，其生成规则不同。 用户缓存通过apc_cache_make_user_key函数生成key。通过用户传递进来的key字符串，依赖PHP内核中的hash函数（PHP的hashtable所使用的hash函数：zend_inline_hash_func），生成h值。 系统缓存通过apc_cache_make_file_key函数生成key。通过APC的配置项apc.stat的开关来区别对待不同的方案。在打开的情况下，即 apc.stat= On 时，如果被更新则自动重新编译和缓存编译后的内容。此时的h值是文件的device和inode相加所得的值。在关闭的情况下，即apc.stat=off时，当文件被修改后，如果要使更新的内容生效，则必须重启Web服务器。此时h值是根据文件的路径地址生成，并且这里的路径是绝对路径。即使你是使用的相对路径，也会查找PG(include_path)定位文件，以取得绝对路径，所以使用绝对路径会跳过检查，可以提高代码的效率。 添加缓存过程 以用户缓存为例，apc_add函数用于给APC缓存中添加内容。如果key参数为字符串中，APC会根据此字符串生成key，如果key参数为数组，APC会遍历整个数组，生成key。根据这些key，APC会调用&#95;apc&#95;store将值存储到缓存中。由于这是用户缓存，当前使用的缓存为apc_user_cache。执行写入操作的是apc_cache_make_user_entry函数，其最终调用apc_cache_user_insert执行遍历查询和写入操作。与此对应，系统缓存使用apc_cache_insert执行写入操作，其最终都会调用&#95;apc&#95;cache_insert。 不管是用户缓存还是系统缓存，大体的执行过程类似，步骤如下：</p>
+<p>通过求余操作，定位当前key的在slots数组中的位置： cache-&gt;slots[key.h % cache-&gt;num_slots]; 在定位到slots数组中的位置后，遍历当前key对应的slot链表，如果存在slot的key和要写入的key匹配或slot过期，清除当前slot。 在最后一个slot的后面插入新的slot。 2、APC模块安装 WINDOWS 第一步：下载php_apc.dll 在<a href="http://pecl.php.net/package/apc" target="_blank" rel="external">http://pecl.php.net/package/apc</a> 要与php版本对应 将php_apc.dll放入你的ext目录</p>
+<p>第二步：让php.ini支持apc扩展模块。 然后打开php.ini 加入：</p>
+<p>extension=php_apc.dll</p>
+<p>apc.rfc1867 = on</p>
+<p>apc.max_file_size = 100M</p>
+<p>upload_max_filesize = 100M</p>
+<p>post_max_size = 100M</p>
+<p>//以上参数可自己定义</p>
+<p>第三步：检查是否支持PHP APC apc_store apc_fetch PHP APC 配置参数 把相关的配置放在一起解释。</p>
+<p>apc.enabled=1 apc.enabled默认值是1，你可设成0禁用APC。如果你设置为0的时候，同样把extension=apc.so也注释掉（这样可以节约内存资源）。一旦启用了APC功能，则会缓存Opcodes到共享内存。</p>
+<p>apc.shm_segments = 1</p>
+<p>总结 1,使用Spinlocks锁机制，能够达到最佳性能。</p>
+<p>2,APC提供了apc.php，用于监控与管理APC缓存。不要忘记修改管理员名和密码</p>
+<p>3,APC默认通过mmap匿名映射创建共享内存，缓存对象都存放在这块”大型”的内存空间。由APC自行管理该共享内存</p>
+<p>4,我们需要通过统计调整apc.shm_size、apc.num_files_hints、apc.user_entries_hint的值。直到最佳</p>
+<p>5,好吧，我承认apc.stat = 0 可以获得更佳的性能。要我做什么都可以接受.</p>
+<p>6,PHP预定义常量，可以使用apc_define_constants()函数。不过据APC开发者介绍说pecl hidef性能更佳，抛异define吧，它是低效的。</p>
+<p>7,函数apc_store()，对于系统设置等PHP变量，生命周期是整个应用(从httpd守护进程直到httpd守护进程关闭)，使用APC比Memcached会更好。必竟不要经过网络传输协议tcp。</p>
+<p>8,APC不适于通过函数apc_store()缓存频繁变更的用户数据，会出现一些奇异现象。</p>
+<p>LIUNX wget <a href="http://pecl.php.net/get/APC-3.1.8.tgz" target="_blank" rel="external">http://pecl.php.net/get/APC-3.1.8.tgz</a></p>
+<p>tar -zxvf APC-3.1.8.tgz cd APC-3.1.8</p>
+<p>/usr/local/php/bin/phpize</p>
+<p>./configure –enable-apc –enable-mmap –enable-apc-spinlocks –disable-apc-pthreadmutex –with-php-config=/usr/local/php/bin/php-config</p>
+<p>make</p>
+<p>sudo make install</p>
+<p>在/usr/local/php/etc/php.ini 加入</p>
+<p>extension = “apc.so” ;</p>
+<p>;APC setting</p>
+<p>apc.enabled = 1</p>
+<p>apc.shm_segments = 1</p>
+<p>apc.shm_size = 64M</p>
+<p>apc.optimization = 1</p>
+<p>apc.num_files_hint = 0</p>
+<p>apc.ttl = 0</p>
+<p>apc.gc_ttl = 3600</p>
+<p>apc.cache_by_default = on</p>
+<p>重启apache 或者 /usr/local/php/sbin/php-fpm restart</p>
+<p>查看phpinfo apc</p>
+<p>下面引用www.initphp.com 框架的APC缓存类 initphp框架之APC缓存类 [php] &lt;?php if (!defined(‘IS_INITPHP’)) exit(‘Access Denied!’); /<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> <em> InitPHP 2.0 国产PHP开发框架 Dao-APC缓存 不适合频繁写入的缓存数据 </em>——————————————————————————- <em> 版权所有: CopyRight By initphp.com </em> 您可以自由使用该源码，但是在使用过程中，请保留作者信息。尊重他人劳动成果就是尊重自己 <em>——————————————————————————- </em> $Author:zhuli <em> $Dtime:2011-10-09 <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></em>/ class apcInit {</p>
+<pre><code>/**
+ * Apc缓存-设置缓存
+ * 设置缓存key，value和缓存时间
+ * @param  string $key   KEY值
+ * @param  string $value 值
+ * @param  string $time  缓存时间
+ */ 
+public function set_cache($key, $value, $time = 0) {  
+    if ($time == 0) $time = null; //null情况下永久缓存 
+    return apc_store($key, $value, $time);; 
+} 
+
+/**
+ * Apc缓存-获取缓存
+ * 通过KEY获取缓存数据
+ * @param  string $key   KEY值
+ */ 
+public function get_cache($key) { 
+    return apc_fetch($key); 
+} 
+
+/**
+ * Apc缓存-清除一个缓存
+ * 从memcache中删除一条缓存
+ * @param  string $key   KEY值
+ */ 
+public function clear($key) { 
+    return apc_delete($key); 
+} 
+
+/**
+ * Apc缓存-清空所有缓存
+ * 不建议使用该功能
+ * @return
+ */ 
+public function clear_all() { 
+    apc_clear_cache(&apos;user&apos;); //清除用户缓存 
+    return apc_clear_cache(); //清楚缓存 
+} 
+
+/**
+ * 检查APC缓存是否存在
+ * @param  string $key   KEY值
+ */ 
+public function exists($key) { 
+    return apc_exists($key); 
+} 
+
+/**
+ * 字段自增-用于记数
+ * @param string $key  KEY值
+ * @param int    $step 新增的step值
+ */ 
+public function inc($key, $step) { 
+    return apc_inc($key, (int) $step); 
+} 
+
+/**
+ * 字段自减-用于记数
+ * @param string $key  KEY值
+ * @param int    $step 新增的step值
+ */ 
+public function dec($key, $step) { 
+    return apc_dec($key, (int) $step); 
+} 
+
+/**
+ * 返回APC缓存信息
+ */ 
+public function info() { 
+    return apc_cache_info(); 
+} 
+</code></pre><p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.wulai.me/2014/11/28/73/" data-id="ciqxd83yw000azcs6j5dq7xnb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/29/markdown-e8-af-ad-e6-b3-95-e8-af-b4-e6-98-8e-e7-ae-80-e4-bd-93-e4-b8-ad-e6-96-87-e7-89-88/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Markdown 语法说明 (简体中文版)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/18/e5-be-ae-e4-bf-a1-e5-85-ac-e5-85-b1-e8-b4-a6-e5-8f-b7-e6-b5-8b-e8-af-95-e5-8f-b7-e7-94-b3-e8-af-b7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">微信公共账号测试号申请</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">server</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术文章/">技术文章</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术文章/未分类/">未分类</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redmine/">redmine</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/redmine/" style="font-size: 10px;">redmine</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/22/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/06/linux-e5-a6-82-e4-bd-95-e6-98-be-e7-a4-ba-e4-b8-80-e4-b8-aa-e6-96-87-e4-bb-b6-e7-9a-84-e6-9f-90-e5-87-a0-e8-a1-8c-e4-b8-ad-e9-97-b4-e5-87-a0-e8-a1-8c/">linux 如何显示一个文件的某几行(中间几行)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/28/docker-dial-tcp-lookup-index-docker-io-no-such-host-solution/">Docker - dial tcp: lookup index.docker.io: no such host - Solution</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/24/svn-local-obstruction-incoming-add-upon-merge/">svn local obstruction, incoming add upon merge</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/20/e6-9f-a5-e6-89-be-e5-a4-a7-e6-96-87-e4-bb-b6-e5-a4-b9/">查找大文件夹</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Hillock<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
