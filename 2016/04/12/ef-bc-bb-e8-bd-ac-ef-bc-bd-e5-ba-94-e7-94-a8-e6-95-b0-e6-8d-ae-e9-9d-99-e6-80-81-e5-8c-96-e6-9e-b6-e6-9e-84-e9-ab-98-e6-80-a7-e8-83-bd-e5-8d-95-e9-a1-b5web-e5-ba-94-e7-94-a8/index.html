@@ -94,7 +94,7 @@
 1、动态化模板渲染支持；2、数据和模板的多版本化：生产版本、灰度版本和预发布版本；3">
 <meta property="og:image" content="http://res.hillock.com.cn/web/640">
 <meta property="og:image" content="http://res.hillock.com.cn/web/6402">
-<meta property="og:updated_time" content="2016-08-03T01:53:27.000Z">
+<meta property="og:updated_time" content="2016-08-29T05:34:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="［转］应用数据静态化架构高性能单页Web应用">
 <meta name="twitter:description" content="在电商网站中，单页Web是非常常见的一种形式，比如首页、频道页、广告页等都属于单页应用。而这种页面是由模板+数据组成。传统的构建方式一般通过静态化实现。而这种方式的灵活性并不是很好，比如页面模板部分变更了需要重新全部生成。因此最好能有一种实现方式是可以实时动态渲染，以支持模板的多变性。另外也要考虑好如下几个问题：
@@ -349,7 +349,7 @@ local template = require(&quot;resty.template&quot;)
 template.load = function(s) return s end  
 
 --2、动态获取模板  
-local myTemplate = &quot;&amp;lt;html&amp;gt;{* title *}&amp;lt;/html&amp;gt;&quot;  
+local myTemplate = &quot;&lt;html&gt;{* title *}&lt;/html&gt;&quot;  
 --3、动态获取数据  
 local data = {title = &quot;iphone6s&quot;}  
 

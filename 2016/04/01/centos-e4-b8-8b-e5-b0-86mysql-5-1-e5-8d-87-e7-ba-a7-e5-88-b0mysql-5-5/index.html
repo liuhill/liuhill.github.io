@@ -94,7 +94,7 @@ mysql基础信息
 <meta property="og:description" content="mysql 5.5已经出来有一段时间，性能有明显提升，特别是对多核CPU的支持与TPS性能的提升。上周博主介绍了linux下编译安装mysql 5.5的步骤，安装不出意外基本没有问题。不过可能很多朋友和我一样一直用的是mysql 5.1，现在想把数据库升级成5.5了。博主根据实际操作，记录这次升级操作。
 mysql基础信息
 1、安装目录[root@vm-199~]# /usr/local/mysq">
-<meta property="og:updated_time" content="2016-08-03T01:53:27.000Z">
+<meta property="og:updated_time" content="2016-08-29T05:34:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS下将MySQL 5.1升级到MySQL 5.5">
 <meta name="twitter:description" content="mysql 5.5已经出来有一段时间，性能有明显提升，特别是对多核CPU的支持与TPS性能的提升。上周博主介绍了linux下编译安装mysql 5.5的步骤，安装不出意外基本没有问题。不过可能很多朋友和我一样一直用的是mysql 5.1，现在想把数据库升级成5.5了。博主根据实际操作，记录这次升级操作。
@@ -336,7 +336,7 @@ mysql基础信息
 <p>mysql基础信息</p>
 <p>1、安装目录<br><code>[root@vm-199~]# /usr/local/mysql</code><br>2、配置文件<br><code>[root@vm-199~]# /etc/my.cnf</code><br>3、数据目录<br><code>[root@vm-199~]# /data/mysql</code><br>4、启动脚本<br><code>[root@vm-199~]# /etc/init.d/mysql</code></p>
 <p>备份数据和安装、配置文件</p>
-<p><code>[root@vm-199~]# mysqldump -uroot -p –all-databases &amp;lt;/root/zhangnq/mysql5.1/mysql_dbk_20140217.sql
+<p><code>[root@vm-199~]# mysqldump -uroot -p –all-databases &lt;/root/zhangnq/mysql5.1/mysql_dbk_20140217.sql
 [root@vm-199~]# tar czvf mysql_5.1.60_full.tar.gz /usr/local/mysql
 [root@vm-199~]# tar czvf mysql_5.1.60_data_full.tar.gz /data/mysql
 [root@vm-199~]# cp /etc/my.cnf  ./</code></p>

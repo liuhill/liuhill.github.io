@@ -84,25 +84,25 @@
 
 
 
-<meta name="description" content="MongoDB安装wget -c http://fastdl.mongodb.org/linux/mongodb-linux-i686-2.4.1.tgz ; 
-tar zxvf mongodb-src-r2.4.1.tar.gz 
-mv mongodb-linux-i686-2.4.1 /usr/local/mongodb/ 
-/usr/local/mongodb/bin/mongod --db">
+<meta name="description" content="MongoDB安装wget -c http://fastdl.mongodb.org/linux/mongodb-linux-i686-2.4.1.tgz ;
+tar zxvf mongodb-src-r2.4.1.tar.gz
+mv mongodb-linux-i686-2.4.1 /usr/local/mongodb/
+/usr/local/mongodb/bin/mongod --dbpat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MongoDB安装">
 <meta property="og:url" content="http://www.wulai.me/2014/09/01/mongodb-e5-ae-89-e8-a3-85/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="MongoDB安装wget -c http://fastdl.mongodb.org/linux/mongodb-linux-i686-2.4.1.tgz ; 
-tar zxvf mongodb-src-r2.4.1.tar.gz 
-mv mongodb-linux-i686-2.4.1 /usr/local/mongodb/ 
-/usr/local/mongodb/bin/mongod --db">
-<meta property="og:updated_time" content="2016-08-03T01:53:27.000Z">
+<meta property="og:description" content="MongoDB安装wget -c http://fastdl.mongodb.org/linux/mongodb-linux-i686-2.4.1.tgz ;
+tar zxvf mongodb-src-r2.4.1.tar.gz
+mv mongodb-linux-i686-2.4.1 /usr/local/mongodb/
+/usr/local/mongodb/bin/mongod --dbpat">
+<meta property="og:updated_time" content="2016-08-29T05:51:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB安装">
-<meta name="twitter:description" content="MongoDB安装wget -c http://fastdl.mongodb.org/linux/mongodb-linux-i686-2.4.1.tgz ; 
-tar zxvf mongodb-src-r2.4.1.tar.gz 
-mv mongodb-linux-i686-2.4.1 /usr/local/mongodb/ 
-/usr/local/mongodb/bin/mongod --db">
+<meta name="twitter:description" content="MongoDB安装wget -c http://fastdl.mongodb.org/linux/mongodb-linux-i686-2.4.1.tgz ;
+tar zxvf mongodb-src-r2.4.1.tar.gz
+mv mongodb-linux-i686-2.4.1 /usr/local/mongodb/
+/usr/local/mongodb/bin/mongod --dbpat">
 
 
 
@@ -335,54 +335,29 @@ mv mongodb-linux-i686-2.4.1 /usr/local/mongodb/
       
 
       
-        <h3 id="MongoDB安装"><a href="#MongoDB安装" class="headerlink" title="MongoDB安装"></a>MongoDB安装</h3><pre><code>wget -c http://fastdl.mongodb.org/linux/mongodb-linux-i686-2.4.1.tgz ; 
-tar zxvf mongodb-src-r2.4.1.tar.gz 
-mv mongodb-linux-i686-2.4.1 /usr/local/mongodb/ 
-/usr/local/mongodb/bin/mongod --dbpath=/usr/local/mongodb/data/ --logpath=/usr/local/mongodb/dblogs --fork 
-`&lt;/pre&gt;
-
-### 启动以后可以查看mongodb进程树
-
-&lt;pre&gt;`pstree -p |grep mongod 
-`&lt;/pre&gt;
-
-### 可能出现的问题：
-
-问题一：
-
-&lt;pre&gt;`-bash: /usr/local/bin/mongo: /lib/ld-linux.so.2: bad ELF interpreter: 没有那个文件或目录
-`&lt;/pre&gt;
-
-解决办法：
-
-&lt;pre&gt;`yum install ld-linux.so.2
-`&lt;/pre&gt;
-
-问题二：
-
-&lt;pre&gt;`mongo: error while loading shared libraries: libstdc++.so.6: cannot open shared object file: No such file or directory
-`&lt;/pre&gt;
-
-解决办法：
-
-&lt;pre&gt;`yum whatprovides libstdc++.so.6 
+        <h3 id="MongoDB安装"><a href="#MongoDB安装" class="headerlink" title="MongoDB安装"></a>MongoDB安装</h3><pre><code>wget -c http://fastdl.mongodb.org/linux/mongodb-linux-i686-2.4.1.tgz ;
+tar zxvf mongodb-src-r2.4.1.tar.gz
+mv mongodb-linux-i686-2.4.1 /usr/local/mongodb/
+/usr/local/mongodb/bin/mongod --dbpath=/usr/local/mongodb/data/ --logpath=/usr/local/mongodb/dblogs --fork
+</code></pre><h3 id="启动以后可以查看mongodb进程树"><a href="#启动以后可以查看mongodb进程树" class="headerlink" title="启动以后可以查看mongodb进程树"></a>启动以后可以查看mongodb进程树</h3><pre><code>pstree -p |grep mongod
+</code></pre><h3 id="可能出现的问题："><a href="#可能出现的问题：" class="headerlink" title="可能出现的问题："></a>可能出现的问题：</h3><p>问题一：</p>
+<pre><code>-bash: /usr/local/bin/mongo: /lib/ld-linux.so.2: bad ELF interpreter: 没有那个文件或目录
+</code></pre><p>解决办法：</p>
+<pre><code>yum install ld-linux.so.2
+</code></pre><p>问题二：</p>
+<pre><code>mongo: error while loading shared libraries: libstdc++.so.6: cannot open shared object file: No such file or directory
+</code></pre><p>解决办法：</p>
+<pre><code>yum whatprovides libstdc++.so.6
 yum install llibstdc++.so.6
-`&lt;/pre&gt;
-
-#### PHP MongoDB 扩展
-
-&lt;pre&gt;`cd /usr/local/src
+</code></pre><h4 id="PHP-MongoDB-扩展"><a href="#PHP-MongoDB-扩展" class="headerlink" title="PHP MongoDB 扩展"></a>PHP MongoDB 扩展</h4><pre><code>cd /usr/local/src
 wget -c http://pecl.php.net/get/mongo-1.4.4.tgz
 tar -xzvf ./mongo-1.4.4.tgz
 cd ./mongo-1.4.4
 /usr/local/php/bin/phpize # 利用PHP的 phpize 命令来安装扩展
 ./configure --with-php-config=/usr/local/php/bin/php-config
 make &amp;amp;&amp;amp; make install
-`&lt;/pre&gt;
-
-完成后，编辑你 php.ini 文件增加一行。
-
-&lt;pre&gt;`extension=mongo.so
+</code></pre><p>完成后，编辑你 php.ini 文件增加一行。</p>
+<pre><code>extension=mongo.so
 </code></pre><h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>关闭注意 这里禁止使用 kill -9 PID 关闭mongodb进程，会导致mongod.lock导致再一次无法开启mongodb，必须删除mongod.lock再能开启 可以使用pkill mongod 或者 killall mongod 来结束mongodb进程 出处：<a href="http://www.crackedzone.com" target="_blank" rel="external">http://www.crackedzone.com</a> 完成后，请编辑你php.ini文件增加一行 extension=mongo.so 一般默认的编译php的ini文件在 /usr/local/php/etc/php.ini 重启你的web服务器或者php-fpm，打印phpinfo，如果看到mongo项表，那么mongodb的扩展安装成功了</p>
 
       
@@ -562,7 +537,7 @@ make &amp;amp;&amp;amp; make install
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MongoDB安装"><span class="nav-number">1.</span> <span class="nav-text">MongoDB安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注意"><span class="nav-number">1.1.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MongoDB安装"><span class="nav-number">1.</span> <span class="nav-text">MongoDB安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动以后可以查看mongodb进程树"><span class="nav-number">2.</span> <span class="nav-text">启动以后可以查看mongodb进程树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可能出现的问题："><span class="nav-number">3.</span> <span class="nav-text">可能出现的问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PHP-MongoDB-扩展"><span class="nav-number">3.1.</span> <span class="nav-text">PHP MongoDB 扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意"><span class="nav-number">3.2.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

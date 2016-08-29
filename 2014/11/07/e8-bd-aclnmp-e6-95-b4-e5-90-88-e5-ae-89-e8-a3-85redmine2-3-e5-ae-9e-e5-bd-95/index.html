@@ -94,7 +94,7 @@
 <meta property="og:description" content="自上一次在LNMP环境下安装过Redmine之后发表了《LNMP下安装Redmine2.3手记》，Inhu决定再一次尝试。因为上一次Inhu是通过折中的办法，也就是利用bitnami+lnmp这种做法实现的。现在我再一次决定在LNMP环境下不利用任何的一键安装包安装Redmine。
 首先，我在这里不得不声明几点。
 服务器系统时Centos6，试过在Centos5下安装，但由于软件库等各种问题最后在">
-<meta property="og:updated_time" content="2016-08-03T01:53:27.000Z">
+<meta property="og:updated_time" content="2016-08-29T05:31:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(转)LNMP整合安装Redmine2.3实录">
 <meta name="twitter:description" content="自上一次在LNMP环境下安装过Redmine之后发表了《LNMP下安装Redmine2.3手记》，Inhu决定再一次尝试。因为上一次Inhu是通过折中的办法，也就是利用bitnami+lnmp这种做法实现的。现在我再一次决定在LNMP环境下不利用任何的一键安装包安装Redmine。
@@ -338,12 +338,12 @@
 <p>首先，我们都安装好了Lnmp（一键安装，没修改任何配置目录的情况下）后。开始实施我们的Redmine安装了。</p>
 <h3 id="1-安装ruby环境"><a href="#1-安装ruby环境" class="headerlink" title="1 安装ruby环境"></a>1 安装ruby环境</h3><p>执行以下命令：</p>
 <pre><code>yum -y install zlib-devel curl-devel openssl-devel apr-devel apr-util-devel mysql-devel ImageMagick ImageMagick-devel rdoc gcc-c++ ruby ruby-devel 
-`&lt;/pre&gt;
+
 
 上面的命令是安装各种要用到的软件包，这时候Ruby应该是装好的了，你可以通过命令:
 
-&lt;pre&gt;`ruby –v 
-`&lt;/pre&gt;
+ruby –v 
+
 
 进行查看Ruby的版本。当安装完以后我们实行第二步。
 
@@ -353,45 +353,45 @@
 
 然后下载zip包或者tar包，然后解压出来后，进入目录执行以下命令：
 
-&lt;pre&gt;`ruby setup.rb gem -v gem install passenger
-`&lt;/pre&gt;
+ruby setup.rb gem -v gem install passenger
+
 
 如果是国内主机的话，建议使用
 
-&lt;pre&gt;`http://ruby.taobao.org/
-`&lt;/pre&gt;
+http://ruby.taobao.org/
+
 
 淘宝提供的一个RubyGems源。如何使用网站上面有详细说明，如果是国外主机就无需设置了。 然后执行以下命令：
 
-&lt;pre&gt;`passenger-install-nginx-module
-`&lt;/pre&gt;
+passenger-install-nginx-module
+
 
 这时候我们的操作步骤应该是： 填入lnmp目录下的Nginx源目录.例如:
 
-&lt;pre&gt;`&amp;gt; /root/download/lnmp1.0-full/nginx-1.2.7
-&amp;gt; /usr/local/nginx 
-`&lt;/pre&gt;
+&gt; /root/download/lnmp1.0-full/nginx-1.2.7
+&gt; /usr/local/nginx 
+
 
 如果需要IPV6的话，在设置配置参数的时候加上 –with-ipv6 然后猛的回车，看到一大堆的编译安装、编译安装了，如无意外就安装成功了。然后它会高亮提示你如何设置Nginx。
 
-&lt;pre&gt;`http {
+http {
        ...
         passenger_root /usr/lib/ruby/gems/1.8/gems/passenger-4.0.5; 
         passenger_ruby /usr/bin/ruby; ... 
      }
-`&lt;/pre&gt;
+
 
 到这里，Web的容器环境已经配好了。 然后我们把下载好的Redmine解压出来，放到 /home/www/ 下。
 
 然后进入config目录，复制修改 database.yml.example 文件。
 
-&lt;pre&gt;`cd /home/www/redmine/config cp database.yml.example database.yml
+cd /home/www/redmine/config cp database.yml.example database.yml
 vi database.yml
-`&lt;/pre&gt;
+
 
 修改这个database.yml的时候我们在修改DBname、账户、密码外还要注意的是我们要加一句，如下面的例子：
 
-&lt;pre&gt;`production:
+production:
 adapter: mysql2
 database: redmine
 host: localhost
@@ -399,54 +399,54 @@ username: -u
 password: “-p”
 encoding: utf8
 socket: /tmp/mysql.sock
-`&lt;/pre&gt;
+
 
 除了production外，我都用 “#”注释掉了。因为用不着。然后去创建数据库了，这里不多说。
 然后我们返回上一级目录，修改GemFile。
 
-&lt;pre&gt;`cd ..
+cd ..
 vi Gemfile
-`&lt;/pre&gt;
+
 
 在Gemfile第二行开始添加以下内容(可以不添加)：
 
-&lt;pre&gt;`gem &quot;rake&quot;, &quot;10.0.4&quot;
+gem &quot;rake&quot;, &quot;10.0.4&quot;
 gem &quot;rack&quot;, &quot;1.4.5&quot;
-gem &quot;rubytree&quot;, &quot;0.8.3&quot;, :require =&amp;gt; &quot;tree&quot;
-gem &quot;RedCloth&quot;, &quot;~&amp;gt;4.2.9&quot;, :require =&amp;gt; &quot;redcloth&quot; # for CodeRay    
+gem &quot;rubytree&quot;, &quot;0.8.3&quot;, :require =&gt; &quot;tree&quot;
+gem &quot;RedCloth&quot;, &quot;~&gt;4.2.9&quot;, :require =&gt; &quot;redcloth&quot; # for CodeRay    
 gem &quot;mysql&quot;
-`&lt;/pre&gt;
+
 
 添加完之后，执行：
 
-&lt;pre&gt;`gem install bundle
+gem install bundle
 bundle install --without development test
-`&lt;/pre&gt;
+
 
 经过一轮等待后，可以看到成功的界面了吗？没看到，遇到问题了？慢慢搜索解决吧。哈哈
 等等……Redmine还没有安装成功呢！
 好了，然后执行以下指令吧：
 
-&lt;pre&gt;`rake generate_secret_token
+rake generate_secret_token
 RAILS_ENV=production rake db:migrate
 RAILS_ENV=production rake redmine:load_default_data
-`&lt;/pre&gt;
+
 
 非root用户需要添加用户
 
-&lt;pre&gt;`mkdir -p tmp tmp/pdf public/plugin_assets
+mkdir -p tmp tmp/pdf public/plugin_assets
 sudo chown -R redmine:redmine files log tmp public/plugin_assets
 sudo chmod -R 755 files log tmp public/plugin_assets
-`&lt;/pre&gt;
+
 
 启动服务
 
-&lt;pre&gt;`ruby script/rails server webrick -e production
-`&lt;/pre&gt;
+ruby script/rails server webrick -e production
+
 
 很好，这时应该能测试通过了。那么现在就要去配置Nginx了，在lnmp那里创建一个vHost，然后修改vHost配置文件如下：
 
-&lt;pre&gt;`server {
+server {
          listen 81;
          server_name pm.techoinfo.com;
          index index.html index.htm index.php;

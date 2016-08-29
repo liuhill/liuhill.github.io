@@ -85,36 +85,24 @@
 
 
 <meta name="description" content="1、安装pptp客户端软件~ sudo apt-get install pptp-linux
-`&amp;lt;/pre&amp;gt;
-
-# 2、查看网络配置
-
-&amp;lt;pre&amp;gt;`~ ifconfig
+2、查看网络配置~ ifconfig
 eth0      Link encap:Ethernet  HWaddr 08:00:27:90:e8:19
-          inet addr:192.168.1.200  Bcast:192.16">
+          inet addr:192.168.1.200  Bcast:192.168.1.255  Mask:255.255.255.0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu通过PPTP协议使用VPN">
 <meta property="og:url" content="http://www.wulai.me/2015/07/27/ubuntu-e9-80-9a-e8-bf-87pptp-e5-8d-8f-e8-ae-ae-e4-bd-bf-e7-94-a8vpn/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="1、安装pptp客户端软件~ sudo apt-get install pptp-linux
-`&amp;lt;/pre&amp;gt;
-
-# 2、查看网络配置
-
-&amp;lt;pre&amp;gt;`~ ifconfig
+2、查看网络配置~ ifconfig
 eth0      Link encap:Ethernet  HWaddr 08:00:27:90:e8:19
-          inet addr:192.168.1.200  Bcast:192.16">
-<meta property="og:updated_time" content="2016-08-03T01:53:27.000Z">
+          inet addr:192.168.1.200  Bcast:192.168.1.255  Mask:255.255.255.0">
+<meta property="og:updated_time" content="2016-08-29T05:23:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu通过PPTP协议使用VPN">
 <meta name="twitter:description" content="1、安装pptp客户端软件~ sudo apt-get install pptp-linux
-`&amp;lt;/pre&amp;gt;
-
-# 2、查看网络配置
-
-&amp;lt;pre&amp;gt;`~ ifconfig
+2、查看网络配置~ ifconfig
 eth0      Link encap:Ethernet  HWaddr 08:00:27:90:e8:19
-          inet addr:192.168.1.200  Bcast:192.16">
+          inet addr:192.168.1.200  Bcast:192.168.1.255  Mask:255.255.255.0">
 
 
 
@@ -348,11 +336,7 @@ eth0      Link encap:Ethernet  HWaddr 08:00:27:90:e8:19
 
       
         <h1 id="1、安装pptp客户端软件"><a href="#1、安装pptp客户端软件" class="headerlink" title="1、安装pptp客户端软件"></a>1、安装pptp客户端软件</h1><pre><code>~ sudo apt-get install pptp-linux
-`&lt;/pre&gt;
-
-# 2、查看网络配置
-
-&lt;pre&gt;`~ ifconfig
+</code></pre><h1 id="2、查看网络配置"><a href="#2、查看网络配置" class="headerlink" title="2、查看网络配置"></a>2、查看网络配置</h1><pre><code>~ ifconfig
 eth0      Link encap:Ethernet  HWaddr 08:00:27:90:e8:19
           inet addr:192.168.1.200  Bcast:192.168.1.255  Mask:255.255.255.0
           inet6 addr: fe80::a00:27ff:fe90:e819/64 Scope:Link
@@ -377,14 +361,10 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 0.0.0.0         192.168.1.1     0.0.0.0         UG    100    0        0 eth0
 192.168.1.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
 
-~ ip route 
+~ ip route
 default via 192.168.1.1 dev eth0  metric 100
 192.168.1.0/24 dev eth0  proto kernel  scope link  src 192.168.1.200
-`&lt;/pre&gt;
-
-# 3、初始化一个VPN的连接通道：myvpn
-
-&lt;pre&gt;`~ sudo pptpsetup --create myvpn --server xxx.xxx.xxx.xxx --username xx1--password xx2--encrypt --start
+</code></pre><h1 id="3、初始化一个VPN的连接通道：myvpn"><a href="#3、初始化一个VPN的连接通道：myvpn" class="headerlink" title="3、初始化一个VPN的连接通道：myvpn"></a>3、初始化一个VPN的连接通道：myvpn</h1><pre><code>~ sudo pptpsetup --create myvpn --server xxx.xxx.xxx.xxx --username xx1--password xx2--encrypt --start
 
 Using interface ppp0
 Connect: ppp0  /dev/pts/1
@@ -392,17 +372,16 @@ CHAP authentication succeeded
 MPPE 128-bit stateless compression enabled
 local  IP address 10.10.10.3
 remote IP address 10.10.10.1
-`&lt;/pre&gt;
-
-成功连接到远程VPN服务器。
-</code></pre><ul>
+</code></pre><p>成功连接到远程VPN服务器。</p>
+<ul>
 <li>通过刚才的创建脚步：</li>
 <li>在/etc/ppp/peers目录下面，会生成一个叫myvpn的文件。</li>
-<li><p>在/etc/ppp目录下面，用户名和密码会写在chap-secrets文件中。</p>
-<h1 id="4、"><a href="#4、" class="headerlink" title="4、"></a>4、</h1><pre>`~ sudo vi /etc/ppp/peers/myvpn
+<li>在/etc/ppp目录下面，用户名和密码会写在chap-secrets文件中。</li>
+</ul>
+<h1 id="4、"><a href="#4、" class="headerlink" title="4、"></a>4、</h1><pre><code>~ sudo vi /etc/ppp/peers/myvpn
 
 # written by pptpsetup
-pty "pptp xxx.xxx.xxx.xxx --nolaunchpppd"
+pty &quot;pptp xxx.xxx.xxx.xxx --nolaunchpppd&quot;
 lock
 noauth
 nobsdcomp
@@ -414,10 +393,10 @@ require-mppe-128
 
 #生成用户名和密码
 ~ sudo vi /etc/ppp/chap-secrets
-xx1 myvpn "xx2" *
-`</pre>
+xx1 myvpn &quot;xx2&quot; *
+</code></pre><h1 id="5、通过网站路由功能，测试VPN"><a href="#5、通过网站路由功能，测试VPN" class="headerlink" title="5、通过网站路由功能，测试VPN"></a>5、通过网站路由功能，测试VPN</h1><pre><code># 安装traceroute
 
-<h1 id="5、通过网站路由功能，测试VPN"><a href="#5、通过网站路由功能，测试VPN" class="headerlink" title="5、通过网站路由功能，测试VPN"></a>5、通过网站路由功能，测试VPN</h1><h1 id="安装traceroute"><a href="#安装traceroute" class="headerlink" title="安装traceroute"></a>安装traceroute</h1><pre>`~ sudo apt-get install traceroute 
+~ sudo apt-get install traceroute
 
 ~ traceroute www.163.com
 traceroute to www.163.com (101.23.128.17), 30 hops max, 60 byte packets
@@ -432,11 +411,9 @@ traceroute to www.163.com (101.23.128.17), 30 hops max, 60 byte packets
  9  60.5.197.214 (60.5.197.214)  26.617 ms  26.724 ms  26.668 ms
 10  101.23.255.45 (101.23.255.45)  27.672 ms  28.147 ms  26.811 ms
 11  101.23.128.17 (101.23.128.17)  25.890 ms  28.065 ms  28.420 ms
-`</pre>
-
-<p>我们发现虽然VPN已经连接成功，但是路由没有通过VPN上网，第1跳还是localhost (192.168.1.1)</p>
+</code></pre><p>我们发现虽然VPN已经连接成功，但是路由没有通过VPN上网，第1跳还是localhost (192.168.1.1)</p>
 <p>再次查看网络连接配置</p>
-<pre>`~ ifconfig
+<pre><code>~ ifconfig
 eth0      Link encap:Ethernet  HWaddr 08:00:27:90:e8:19
           inet addr:192.168.1.200  Bcast:192.168.1.255  Mask:255.255.255.0
           inet6 addr: fe80::a00:27ff:fe90:e819/64 Scope:Link
@@ -476,76 +453,70 @@ default via 192.168.1.1 dev eth0  metric 100
 10.10.10.1 dev ppp0  proto kernel  scope link  src 10.10.10.3
 50.116.27.194 via 192.168.1.1 dev eth0  src 192.168.1.200
 192.168.1.0/24 dev eth0  proto kernel  scope link  src 192.168.1.200
-`</pre>
-
-<p>我们发现默认路由是指向eth0。</p>
+</code></pre><p>我们发现默认路由是指向eth0。</p>
 <p>下面修改路由配置：</p>
-<pre>`    #修改路由命令
-    ~ sudo ip route del default 
-    ~ sudo ip route add default dev ppp0
+<pre><code>#修改路由命令
+~ sudo ip route del default
+~ sudo ip route add default dev ppp0
 
-    ~ route -n
-    Kernel IP routing table
-    Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
-    0.0.0.0         0.0.0.0         0.0.0.0         U     0      0        0 ppp0
-    10.10.10.1      0.0.0.0         255.255.255.255 UH    0      0        0 ppp0
-    50.116.27.194   192.168.1.1     255.255.255.255 UGH   0      0        0 eth0
-    192.168.1.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
+~ route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         0.0.0.0         0.0.0.0         U     0      0        0 ppp0
+10.10.10.1      0.0.0.0         255.255.255.255 UH    0      0        0 ppp0
+50.116.27.194   192.168.1.1     255.255.255.255 UGH   0      0        0 eth0
+192.168.1.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
 
-    ~ ip route
-    default dev ppp0  scope link
-    10.10.10.1 dev ppp0  proto kernel  scope link  src 10.10.10.3
-    50.116.27.194 via 192.168.1.1 dev eth0  src 192.168.1.200
-    192.168.1.0/24 dev eth0  proto kernel  scope link  src 192.168.1.200
+~ ip route
+default dev ppp0  scope link
+10.10.10.1 dev ppp0  proto kernel  scope link  src 10.10.10.3
+50.116.27.194 via 192.168.1.1 dev eth0  src 192.168.1.200
+192.168.1.0/24 dev eth0  proto kernel  scope link  src 192.168.1.200
 
-    ~ traceroute www.163.com
-    traceroute to www.163.com (101.23.128.17), 30 hops max, 60 byte packets
-     1  localhost (10.10.10.1)  281.093 ms  281.414 ms  280.941 ms
-     2  router2-dal.linode.com (67.18.7.162)  281.225 ms  281.109 ms  281.841 ms
-     3  xe-2-0-0.car04.dllstx2.networklayer.com (67.18.7.93)  280.882 ms  284.002 ms  283.913 ms
-     4  po102.dsr01.dllstx2.networklayer.com (70.87.254.81)  284.123 ms  284.087 ms  283.979 ms
-     5  po21.dsr01.dllstx3.networklayer.com (70.87.255.65)  284.000 ms  283.921 ms  283.839 ms
-     6  ae16.bbr01.eq01.dal03.networklayer.com (173.192.18.224)  283.542 ms  279.296 ms  290.455 ms
-     7  dls-bb1-link.telia.net (213.248.102.173)  301.426 ms  302.092 ms  302.085 ms
-     8  las-bb1-link.telia.net (213.155.131.77)  327.192 ms  327.350 ms  327.344 ms
-     9  chinaunicom-ic-151188-las-bb1.telia.net (213.248.94.126)  478.941 ms  479.089 ms  479.083 ms
-    10  219.158.30.173 (219.158.30.173)  496.679 ms  496.673 ms  496.667 ms
-    11  219.158.97.57 (219.158.97.57)  516.819 ms  517.035 ms  517.011 ms
-    12  219.158.5.129 (219.158.5.129)  491.084 ms  490.018 ms  497.472 ms
-    13  219.158.100.130 (219.158.100.130)  518.239 ms  518.216 ms  518.192 ms
-    14  61.182.176.186 (61.182.176.186)  533.695 ms  533.673 ms  533.666 ms
-    15  101.23.255.230 (101.23.255.230)  512.212 ms  512.500 ms  512.479 ms
-    16  60.5.194.74 (60.5.194.74)  519.246 ms  519.815 ms  519.791 ms
-    17  101.23.255.45 (101.23.255.45)  526.522 ms  526.907 ms  526.844 ms
-    18  101.23.128.17 (101.23.128.17)  522.068 ms  517.535 ms  517.240 ms
-`</pre>
-
-<p>查看第一跳，localhost (10.10.10.1)，已经通过VPN实现路由。</p>
+~ traceroute www.163.com
+traceroute to www.163.com (101.23.128.17), 30 hops max, 60 byte packets
+ 1  localhost (10.10.10.1)  281.093 ms  281.414 ms  280.941 ms
+ 2  router2-dal.linode.com (67.18.7.162)  281.225 ms  281.109 ms  281.841 ms
+ 3  xe-2-0-0.car04.dllstx2.networklayer.com (67.18.7.93)  280.882 ms  284.002 ms  283.913 ms
+ 4  po102.dsr01.dllstx2.networklayer.com (70.87.254.81)  284.123 ms  284.087 ms  283.979 ms
+ 5  po21.dsr01.dllstx3.networklayer.com (70.87.255.65)  284.000 ms  283.921 ms  283.839 ms
+ 6  ae16.bbr01.eq01.dal03.networklayer.com (173.192.18.224)  283.542 ms  279.296 ms  290.455 ms
+ 7  dls-bb1-link.telia.net (213.248.102.173)  301.426 ms  302.092 ms  302.085 ms
+ 8  las-bb1-link.telia.net (213.155.131.77)  327.192 ms  327.350 ms  327.344 ms
+ 9  chinaunicom-ic-151188-las-bb1.telia.net (213.248.94.126)  478.941 ms  479.089 ms  479.083 ms
+10  219.158.30.173 (219.158.30.173)  496.679 ms  496.673 ms  496.667 ms
+11  219.158.97.57 (219.158.97.57)  516.819 ms  517.035 ms  517.011 ms
+12  219.158.5.129 (219.158.5.129)  491.084 ms  490.018 ms  497.472 ms
+13  219.158.100.130 (219.158.100.130)  518.239 ms  518.216 ms  518.192 ms
+14  61.182.176.186 (61.182.176.186)  533.695 ms  533.673 ms  533.666 ms
+15  101.23.255.230 (101.23.255.230)  512.212 ms  512.500 ms  512.479 ms
+16  60.5.194.74 (60.5.194.74)  519.246 ms  519.815 ms  519.791 ms
+17  101.23.255.45 (101.23.255.45)  526.522 ms  526.907 ms  526.844 ms
+18  101.23.128.17 (101.23.128.17)  522.068 ms  517.535 ms  517.240 ms
+</code></pre><p>查看第一跳，localhost (10.10.10.1)，已经通过VPN实现路由。</p>
 <p>停止VPN</p>
-<pre>`    ~ sudo poff myvpn
+<pre><code>~ sudo poff myvpn
 
-    ~ ifconfig
-    eth0      Link encap:Ethernet  HWaddr 08:00:27:90:e8:19
-              inet addr:192.168.1.200  Bcast:192.168.1.255  Mask:255.255.255.0
-              inet6 addr: fe80::a00:27ff:fe90:e819/64 Scope:Link
-              UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-              RX packets:2270 errors:0 dropped:0 overruns:0 frame:0
-              TX packets:1991 errors:0 dropped:0 overruns:0 carrier:0
-              collisions:0 txqueuelen:1000
-              RX bytes:207578 (207.5 KB)  TX bytes:184147 (184.1 KB)
+~ ifconfig
+eth0      Link encap:Ethernet  HWaddr 08:00:27:90:e8:19
+          inet addr:192.168.1.200  Bcast:192.168.1.255  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe90:e819/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:2270 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1991 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:207578 (207.5 KB)  TX bytes:184147 (184.1 KB)
 
-    lo        Link encap:Local Loopback
-              inet addr:127.0.0.1  Mask:255.0.0.0
-              inet6 addr: ::1/128 Scope:Host
-              UP LOOPBACK RUNNING  MTU:16436  Metric:1
-              RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-              TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-              collisions:0 txqueuelen:0
-              RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
-`</pre>
-
-<p>再ping网站，发现网络出现问题。Network is unreachable</p>
-<pre>`~ ping www.163.com
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+</code></pre><p>再ping网站，发现网络出现问题。Network is unreachable</p>
+<pre><code>~ ping www.163.com
 connect: Network is unreachable
 
 ~ route -n
@@ -578,23 +549,19 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
     64 bytes from 101.23.128.17: icmp_req=1 ttl=54 time=25.6 ms
     64 bytes from 101.23.128.17: icmp_req=2 ttl=54 time=25.5 ms
     64 bytes from 101.23.128.17: icmp_req=3 ttl=54 time=27.8 ms
-`</pre>
+</code></pre><p>通过ip-up, ip-down配置路由 ~ sudo vi /etc/ppp/ip-up.d/route-traffic</p>
+<pre><code>#!/bin/bash
+/sbin/ip route add 50.116.27.194 via 192.168.1.1
+/sbin/ip route del default
+/sbin/ip route add default dev ppp0
 
-<p>通过ip-up, ip-down配置路由 ~ sudo vi /etc/ppp/ip-up.d/route-traffic</p>
-<pre>`    #!/bin/bash
-    /sbin/ip route add 50.116.27.194 via 192.168.1.1
-    /sbin/ip route del default
-    /sbin/ip route add default dev ppp0
+~ sudo vi /etc/ppp/ip-down.d/disableroute
 
-    ~ sudo vi /etc/ppp/ip-down.d/disableroute
-
-    #!/bin/bash
-    /sbin/ip route add default via 192.168.1.1
-`</pre>
-
-<p>重启VPN连接</p>
-<p><pre>`    ~ sudo pon myvpn</pre></p>
-<pre><code>#路由跟踪正确
+#!/bin/bash
+/sbin/ip route add default via 192.168.1.1
+</code></pre><p>重启VPN连接</p>
+<pre><code>~ sudo pon myvpn
+#路由跟踪正确
 ~ traceroute www.163.com
 traceroute to www.163.com (123.125.34.30), 30 hops max, 60 byte packets
  1  localhost (10.10.10.1)  293.397 ms  293.782 ms  293.668 ms
@@ -612,9 +579,7 @@ traceroute to www.163.com (123.125.34.30), 30 hops max, 60 byte packets
 PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
 64 bytes from 101.23.128.17: icmp_req=1 ttl=54 time=28.2 ms
 64 bytes from 101.23.128.17: icmp_req=2 ttl=54 time=28.1 ms
-</code></pre></li>
-</ul>
-
+</code></pre>
       
     </div>
 
@@ -792,7 +757,7 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、安装pptp客户端软件"><span class="nav-number">1.</span> <span class="nav-text">1、安装pptp客户端软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4、"><span class="nav-number">2.</span> <span class="nav-text">4、</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5、通过网站路由功能，测试VPN"><span class="nav-number">3.</span> <span class="nav-text">5、通过网站路由功能，测试VPN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装traceroute"><span class="nav-number">4.</span> <span class="nav-text">安装traceroute</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、安装pptp客户端软件"><span class="nav-number">1.</span> <span class="nav-text">1、安装pptp客户端软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、查看网络配置"><span class="nav-number">2.</span> <span class="nav-text">2、查看网络配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、初始化一个VPN的连接通道：myvpn"><span class="nav-number">3.</span> <span class="nav-text">3、初始化一个VPN的连接通道：myvpn</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4、"><span class="nav-number">4.</span> <span class="nav-text">4、</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5、通过网站路由功能，测试VPN"><span class="nav-number">5.</span> <span class="nav-text">5、通过网站路由功能，测试VPN</span></a></li></ol></div>
             
           </div>
         </section>

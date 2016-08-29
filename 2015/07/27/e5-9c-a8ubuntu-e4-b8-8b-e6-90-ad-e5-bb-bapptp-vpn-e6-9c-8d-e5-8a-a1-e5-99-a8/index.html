@@ -87,14 +87,17 @@
 <meta name="description" content="pptp配置1、安装pptp安装pptp
 sudo apt-get -y update
 sudo apt-get -y install pptpd
-`&amp;lt;/pre&amp;gt;
+
 
 ## 2、修改配置脚本
 
-&amp;lt;pre&amp;gt;`cat &amp;amp;gt;/etc/ppp/options.pptpd &amp;amp;lt;&amp;amp;lt;END
+cat &amp;gt;/etc/ppp/options.pptpd &amp;lt;&amp;lt;END
 name pptpd
 refuse-pap
-refuse-ch">
+refuse-chap
+refuse-mschap
+require-mschap-v2
+re">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在ubuntu下搭建pptp vpn服务器">
 <meta property="og:url" content="http://www.wulai.me/2015/07/27/e5-9c-a8ubuntu-e4-b8-8b-e6-90-ad-e5-bb-bapptp-vpn-e6-9c-8d-e5-8a-a1-e5-99-a8/index.html">
@@ -102,28 +105,34 @@ refuse-ch">
 <meta property="og:description" content="pptp配置1、安装pptp安装pptp
 sudo apt-get -y update
 sudo apt-get -y install pptpd
-`&amp;lt;/pre&amp;gt;
+
 
 ## 2、修改配置脚本
 
-&amp;lt;pre&amp;gt;`cat &amp;amp;gt;/etc/ppp/options.pptpd &amp;amp;lt;&amp;amp;lt;END
+cat &amp;gt;/etc/ppp/options.pptpd &amp;lt;&amp;lt;END
 name pptpd
 refuse-pap
-refuse-ch">
-<meta property="og:updated_time" content="2016-08-03T01:53:27.000Z">
+refuse-chap
+refuse-mschap
+require-mschap-v2
+re">
+<meta property="og:updated_time" content="2016-08-29T05:34:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在ubuntu下搭建pptp vpn服务器">
 <meta name="twitter:description" content="pptp配置1、安装pptp安装pptp
 sudo apt-get -y update
 sudo apt-get -y install pptpd
-`&amp;lt;/pre&amp;gt;
+
 
 ## 2、修改配置脚本
 
-&amp;lt;pre&amp;gt;`cat &amp;amp;gt;/etc/ppp/options.pptpd &amp;amp;lt;&amp;amp;lt;END
+cat &amp;gt;/etc/ppp/options.pptpd &amp;lt;&amp;lt;END
 name pptpd
 refuse-pap
-refuse-ch">
+refuse-chap
+refuse-mschap
+require-mschap-v2
+re">
 
 
 
@@ -359,11 +368,11 @@ refuse-ch">
         <h1 id="pptp配置"><a href="#pptp配置" class="headerlink" title="pptp配置"></a>pptp配置</h1><h2 id="1、安装pptp"><a href="#1、安装pptp" class="headerlink" title="1、安装pptp"></a>1、安装pptp</h2><p>安装pptp</p>
 <pre><code>sudo apt-get -y update
 sudo apt-get -y install pptpd
-`&lt;/pre&gt;
+
 
 ## 2、修改配置脚本
 
-&lt;pre&gt;`cat &amp;gt;/etc/ppp/options.pptpd &amp;lt;&amp;lt;END
+cat &gt;/etc/ppp/options.pptpd &lt;&lt;END
 name pptpd
 refuse-pap
 refuse-chap
@@ -379,7 +388,7 @@ novj
 novjccomp
 nologfd
 END
-`&lt;/pre&gt;
+
 
 说明
 </code></pre><ul>
@@ -395,23 +404,22 @@ END
 <li>debug（开启调试模式，相关信息记录在 /var/logs/message 中。）</li>
 <li>lock（锁定客户端 PTY 设备文件。）</li>
 <li><p>nobsdcomp (禁用 BSD 压缩模式。)</p>
-<h2 id="3、还有ip"><a href="#3、还有ip" class="headerlink" title="3、还有ip"></a>3、还有ip</h2><pre>`cat &gt; /etc/pptpd.conf &lt;&lt;END
-option /etc/ppp/options.pptpd
-logwtmp
-localip 192.168.2.1
-remoteip 192.168.2.10-100
-END
-`</pre>
+<h2 id="3、还有ip"><a href="#3、还有ip" class="headerlink" title="3、还有ip"></a>3、还有ip</h2><p>cat &gt; /etc/pptpd.conf &lt;&lt;END<br>option /etc/ppp/options.pptpd<br>logwtmp<br>localip 192.168.2.1<br>remoteip 192.168.2.10-100<br>END</p>
+</li>
+</ul>
+<pre><code>## 4、增加路由转发
 
-<h2 id="4、增加路由转发"><a href="#4、增加路由转发" class="headerlink" title="4、增加路由转发"></a>4、增加路由转发</h2><h3 id="4-1-ipv4转发"><a href="#4-1-ipv4转发" class="headerlink" title="4.1 ipv4转发"></a>4.1 ipv4转发</h3><pre>`cat &gt;&gt; /etc/sysctl.conf &lt;&lt;END
+### 4.1 ipv4转发
+
+cat &gt;&gt; /etc/sysctl.conf &lt;&lt;END
 net.ipv4.ip_forward=1
 END
 sysctl -p   
-`</pre>
 
-<h3 id="4-2-修改iptables"><a href="#4-2-修改iptables" class="headerlink" title="4.2 修改iptables"></a>4.2 修改iptables</h3></li>
-<li><p>备份当前iptables<br>iptables-save &gt; /etc/iptables.down.rules</p>
-</li>
+
+### 4.2 修改iptables
+</code></pre><ul>
+<li>备份当前iptables<br>iptables-save &gt; /etc/iptables.down.rules</li>
 <li>修改iptable NAT转发<br>iptables -t nat -A POSTROUTING -s 192.168.2.0/24 -o eth0 -j MASQUERADE</li>
 <li><p>设置MTU</p>
 <p>iptables -I FORWARD -s 192.168.2.0/24 -p tcp –syn -i ppp+ -j TCPMSS –set-mss 1300</p>
@@ -427,7 +435,7 @@ sysctl -p
 <li><p>自动脚本<br>wget -c <a href="https://github.com/suyan/scripts/raw/master/Setup/pptp.sh" target="_blank" rel="external">https://github.com/suyan/scripts/raw/master/Setup/pptp.sh</a></p>
 <h2 id="4、问题"><a href="#4、问题" class="headerlink" title="4、问题"></a>4、问题</h2><p>logwtmp.so 版本问题</p>
 <p>如果链接中断，并且出现下面问题：</p>
-<p><pre>`Plugin /usr/lib/pptpd/pptpd-logwtmp.so is for pppd version 2.4.5, this is 2.4.6</pre></p>
+<p>Plugin /usr/lib/pptpd/pptpd-logwtmp.so is for pppd version 2.4.5, this is 2.4.6</p>
 </li>
 </ul>
 <p>在 /etc/pptpd.conf 文件中把 logwtmp 删掉就好了。</p>
@@ -609,7 +617,7 @@ sysctl -p
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pptp配置"><span class="nav-number">1.</span> <span class="nav-text">pptp配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、安装pptp"><span class="nav-number">1.1.</span> <span class="nav-text">1、安装pptp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、还有ip"><span class="nav-number">1.2.</span> <span class="nav-text">3、还有ip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、增加路由转发"><span class="nav-number">1.3.</span> <span class="nav-text">4、增加路由转发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-ipv4转发"><span class="nav-number">1.3.1.</span> <span class="nav-text">4.1 ipv4转发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-修改iptables"><span class="nav-number">1.3.2.</span> <span class="nav-text">4.2 修改iptables</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、问题"><span class="nav-number">1.4.</span> <span class="nav-text">4、问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pptp配置"><span class="nav-number">1.</span> <span class="nav-text">pptp配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、安装pptp"><span class="nav-number">1.1.</span> <span class="nav-text">1、安装pptp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、还有ip"><span class="nav-number">1.2.</span> <span class="nav-text">3、还有ip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、问题"><span class="nav-number">1.3.</span> <span class="nav-text">4、问题</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

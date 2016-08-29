@@ -89,7 +89,9 @@ cd /root/lnmp1.0-full/php-5.3.17/ext/fileinfo
 /usr/local/php/bin/phpize
 ./configure --with-php-config=/usr/local/php/bin/php-config
 make &amp;amp;amp;&amp;amp;amp; make install
-`&amp;lt;/pre&amp;gt;">
+
+
+在PHP配置中添加file">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决LNMP下提示fileinfo插件没安装（PHP安装fileinfo扩展教程）">
 <meta property="og:url" content="http://www.wulai.me/2014/11/15/e8-a7-a3-e5-86-b3lnmp-e4-b8-8b-e6-8f-90-e7-a4-bafileinfo-e6-8f-92-e4-bb-b6-e6-b2-a1-e5-ae-89-e8-a3-85-ef-bc-88php-e5-ae-89-e8-a3-85fileinfo-e6-89-a9-e5-b1-95-e6-95-99-e7-a8-8b-ef-bc-89/index.html">
@@ -99,8 +101,10 @@ cd /root/lnmp1.0-full/php-5.3.17/ext/fileinfo
 /usr/local/php/bin/phpize
 ./configure --with-php-config=/usr/local/php/bin/php-config
 make &amp;amp;amp;&amp;amp;amp; make install
-`&amp;lt;/pre&amp;gt;">
-<meta property="og:updated_time" content="2016-08-03T01:53:27.000Z">
+
+
+在PHP配置中添加file">
+<meta property="og:updated_time" content="2016-08-29T05:51:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决LNMP下提示fileinfo插件没安装（PHP安装fileinfo扩展教程）">
 <meta name="twitter:description" content="编译并安装fileinfo插件
@@ -108,7 +112,9 @@ cd /root/lnmp1.0-full/php-5.3.17/ext/fileinfo
 /usr/local/php/bin/phpize
 ./configure --with-php-config=/usr/local/php/bin/php-config
 make &amp;amp;amp;&amp;amp;amp; make install
-`&amp;lt;/pre&amp;gt;">
+
+
+在PHP配置中添加file">
 
 
 
@@ -346,23 +352,23 @@ make &amp;amp;amp;&amp;amp;amp; make install
 /usr/local/php/bin/phpize
 ./configure --with-php-config=/usr/local/php/bin/php-config
 make &amp;amp;&amp;amp; make install
-`&lt;/pre&gt;
+
 
 在PHP配置中添加fileinfo插件
 用vim编辑php.ini
 
-&lt;pre&gt;`vim /usr/local/php/etc/php.ini
-`&lt;/pre&gt;
+vim /usr/local/php/etc/php.ini
+
 
 找到 &quot;;extension=php_bz2.dll&quot; 这一行
 在其上面添加一行：
 
-&lt;pre&gt;`extension = fileinfo.so
-`&lt;/pre&gt;
+extension = fileinfo.so
+
 
 然后重启lnmp
 
-&lt;pre&gt;`/root/lnmp restart
+/root/lnmp restart
 </code></pre><p>结束！</p>
 
       

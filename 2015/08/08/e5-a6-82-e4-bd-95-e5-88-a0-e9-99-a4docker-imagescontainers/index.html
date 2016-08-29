@@ -84,46 +84,70 @@
 
 
 
-<meta name="description" content="1&amp;#46;进入root权限sudo su
-`&amp;lt;/pre&amp;gt;
+<meta name="description" content="1.进入root权限sudo su
 
-## 2&amp;amp;#46;停止所有的container，这样才能够删除其中的images：
 
-&amp;lt;pre&amp;gt;`docker stop $(docker ps -a -q)
-`&amp;lt;/pre&amp;gt;
+## 2.停止所有的container，这样才能够删除其中的images：
+
+docker stop $(docker ps -a -q)
+
 
 如果想要删除所有container的话再加一个指令：
 
-&amp;lt;pre&amp;gt;`docker rm $(docker">
+docker rm $(docker ps -a -q)
+
+
+## 3.查看当前有些什么images
+
+docker images
+
+
+## 4.删除image">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何删除docker images/containers">
 <meta property="og:url" content="http://www.wulai.me/2015/08/08/e5-a6-82-e4-bd-95-e5-88-a0-e9-99-a4docker-imagescontainers/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="1&amp;#46;进入root权限sudo su
-`&amp;lt;/pre&amp;gt;
+<meta property="og:description" content="1.进入root权限sudo su
 
-## 2&amp;amp;#46;停止所有的container，这样才能够删除其中的images：
 
-&amp;lt;pre&amp;gt;`docker stop $(docker ps -a -q)
-`&amp;lt;/pre&amp;gt;
+## 2.停止所有的container，这样才能够删除其中的images：
+
+docker stop $(docker ps -a -q)
+
 
 如果想要删除所有container的话再加一个指令：
 
-&amp;lt;pre&amp;gt;`docker rm $(docker">
-<meta property="og:updated_time" content="2016-08-03T01:53:27.000Z">
+docker rm $(docker ps -a -q)
+
+
+## 3.查看当前有些什么images
+
+docker images
+
+
+## 4.删除image">
+<meta property="og:updated_time" content="2016-08-29T05:36:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何删除docker images/containers">
-<meta name="twitter:description" content="1&amp;#46;进入root权限sudo su
-`&amp;lt;/pre&amp;gt;
+<meta name="twitter:description" content="1.进入root权限sudo su
 
-## 2&amp;amp;#46;停止所有的container，这样才能够删除其中的images：
 
-&amp;lt;pre&amp;gt;`docker stop $(docker ps -a -q)
-`&amp;lt;/pre&amp;gt;
+## 2.停止所有的container，这样才能够删除其中的images：
+
+docker stop $(docker ps -a -q)
+
 
 如果想要删除所有container的话再加一个指令：
 
-&amp;lt;pre&amp;gt;`docker rm $(docker">
+docker rm $(docker ps -a -q)
+
+
+## 3.查看当前有些什么images
+
+docker images
+
+
+## 4.删除image">
 
 
 
@@ -356,37 +380,37 @@
       
 
       
-        <h2 id="1-46-进入root权限"><a href="#1-46-进入root权限" class="headerlink" title="1&#46;进入root权限"></a>1&#46;进入root权限</h2><pre><code>sudo su
-`&lt;/pre&gt;
+        <h2 id="1-进入root权限"><a href="#1-进入root权限" class="headerlink" title="1.进入root权限"></a>1.进入root权限</h2><pre><code>sudo su
 
-## 2&amp;#46;停止所有的container，这样才能够删除其中的images：
 
-&lt;pre&gt;`docker stop $(docker ps -a -q)
-`&lt;/pre&gt;
+## 2.停止所有的container，这样才能够删除其中的images：
+
+docker stop $(docker ps -a -q)
+
 
 如果想要删除所有container的话再加一个指令：
 
-&lt;pre&gt;`docker rm $(docker ps -a -q)
-`&lt;/pre&gt;
+docker rm $(docker ps -a -q)
 
-## 3&amp;#46;查看当前有些什么images
 
-&lt;pre&gt;`docker images
-`&lt;/pre&gt;
+## 3.查看当前有些什么images
 
-## 4&amp;#46;删除images，通过image的id来指定删除谁
+docker images
 
-&lt;pre&gt;`docker rmi &amp;lt;image id&amp;gt;
-`&lt;/pre&gt;
+
+## 4.删除images，通过image的id来指定删除谁
+
+docker rmi &lt;image id&gt;
+
 
 想要删除untagged images，也就是那些id为&lt;None&gt;的image的话可以用
 
-&lt;pre&gt;`docker rmi $(docker images | grep &quot;^&amp;lt;none&amp;gt;&quot; | awk &quot;{print $3}&quot;)
-`&lt;/pre&gt;
+docker rmi $(docker images | grep &quot;^&lt;none&gt;&quot; | awk &quot;{print $3}&quot;)
+
 
 要删除全部image的话
 
-&lt;pre&gt;`docker rmi $(docker images -q)
+docker rmi $(docker images -q)
 </code></pre>
       
     </div>
@@ -565,7 +589,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-46-进入root权限"><span class="nav-number">1.</span> <span class="nav-text">1.进入root权限</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-进入root权限"><span class="nav-number">1.</span> <span class="nav-text">1.进入root权限</span></a></li></ol></div>
             
           </div>
         </section>
