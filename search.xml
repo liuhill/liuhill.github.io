@@ -6,16 +6,14 @@
     <entry>
       <title><![CDATA[linux 如何显示一个文件的某几行(中间几行)]]></title>
       <url>http://www.wulai.me/2016/07/06/linux-e5-a6-82-e4-bd-95-e6-98-be-e7-a4-ba-e4-b8-80-e4-b8-aa-e6-96-87-e4-bb-b6-e7-9a-84-e6-9f-90-e5-87-a0-e8-a1-8c-e4-b8-ad-e9-97-b4-e5-87-a0-e8-a1-8c/</url>
-      <content type="html"><![CDATA[<p>##1、从第3000行开始，显示1000行。即显示3000~3999行</p>
-<pre><code>cat filename | tail -n +3000 | head -n 1000
-</code></pre><p>###2、显示1000行到3000行</p>
-<pre><code>cat filename| head -n 3000 | tail -n +1000
+      <content type="html"><![CDATA[<h3 id="1、从第3000行开始，显示1000行。即显示3000-3999行"><a href="#1、从第3000行开始，显示1000行。即显示3000-3999行" class="headerlink" title="1、从第3000行开始，显示1000行。即显示3000~3999行"></a>1、从第3000行开始，显示1000行。即显示3000~3999行</h3><pre><code>cat filename | tail -n +3000 | head -n 1000
+</code></pre><h3 id="2、显示1000行到3000行"><a href="#2、显示1000行到3000行" class="headerlink" title="2、显示1000行到3000行"></a>2、显示1000行到3000行</h3><pre><code>cat filename| head -n 3000 | tail -n +1000
 </code></pre><p><code>*注意两种方法的顺序</code></p>
 <blockquote>
 <p>分解：<br>       tail -n 1000：显示最后1000行<br>       tail -n +1000：从1000行开始显示，显示1000行以后的<br>       head -n 1000：显示前面1000行</p>
 </blockquote>
-<p>###3、用sed命令<br>    sed -n ‘5,10p’ filename</p>
-<p>这样你就可以只查看文件的第5行到第10行。</p>
+<h2 id="3、用sed命令"><a href="#3、用sed命令" class="headerlink" title="3、用sed命令"></a>3、用sed命令</h2><pre><code>sed -n &apos;5,10p&apos; filename
+</code></pre><p>这样你就可以只查看文件的第5行到第10行。</p>
 ]]></content>
     </entry>
     
@@ -69,8 +67,8 @@ The last case is that the same file has been created but you need a super set of
       <content type="html"><![CDATA[<pre><code>cd \
 du -h --max-depth=1|grep G|sort -n
 </code></pre><p>找到最大的那个目录后进入该目录</p>
-<p>再运行du -h –max-depth=1|grep G|-n</p>
-<p>如果没有结果可以运行 du -h –max-depth=1|grep M|sort -n</p>
+<p>再运行<br>    du -h –max-depth=1|grep G|-n</p>
+<p>如果没有结果可以运行<br>    du -h –max-depth=1|grep M|sort -n</p>
 <p>找出来以后看是否有用的文件</p>
 ]]></content>
     </entry>
@@ -197,69 +195,40 @@ git branch --set-upstream develop origin/develop
       <title><![CDATA[traceroute 输出说明]]></title>
       <url>http://www.wulai.me/2016/05/19/traceroute-e8-be-93-e5-87-ba-e8-af-b4-e6-98-8e/</url>
       <content type="html"><![CDATA[<p>In Cisco routers, the codes for a traceroute command reply are:</p>
-<p>! – success</p>
-<ul>
-<li>– time out<br>N – network unreachable<br>H – host unreachable<br>P – protocol unreachable<br>A – admin denied<br>Q – source quench received (congestion)<br>? – unknown (any other ICMP message)</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">! -- success</div><div class="line">* -- time out</div><div class="line">N -- network unreachable</div><div class="line">H -- host unreachable</div><div class="line">P -- protocol unreachable</div><div class="line">A -- admin denied</div><div class="line">Q -- source quench received (congestion)</div><div class="line">? -- unknown (any other ICMP message)</div></pre></td></tr></table></figure>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[如何调试PHP的Core之获取基本信息]]></title>
       <url>http://www.wulai.me/2016/05/14/e5-a6-82-e4-bd-95-e8-b0-83-e8-af-95php-e7-9a-84core-e4-b9-8b-e8-8e-b7-e5-8f-96-e5-9f-ba-e6-9c-ac-e4-bf-a1-e6-81-af/</url>
-      <content type="html"><![CDATA[<pre><code>作者: Laruence(   )
-本文地址: http://www.laruence.com/2011/06/23/2057.html
-转载请注明出处
-
-
-其实一直想写这个系列, 但是一想到这个话题的宽泛性, 我就有点感觉无法组织.
-
-今天我也不打算全部讲如何调试一个PHP的Core文件, 也不会介绍什么是Coredump, 选择一个相对比较简单的方向来介绍, 那就是如何从PHP的Core文件中获取一些对我们重演这个Core有帮助的信息.
-
-在这个过程中, 会涉及到对PHP的函数调用, PHP的传参, PHP的一些全局变量的知识, 这些知识在我之前的文章中都有过涉及, 大家可以翻阅: 深入理解PHP原理之函数 深入理解PHP原理之变量作用域等等.
-
-首先, 让我们生成一个供我们举例子的Core文件:
-
-&lt;?php
+      <content type="html"><![CDATA[<p>作者: Laruence(   )<br>本文地址: <a href="http://www.laruence.com/2011/06/23/2057.html" target="_blank" rel="external">http://www.laruence.com/2011/06/23/2057.html</a><br>转载请注明出处</p>
+<p>其实一直想写这个系列, 但是一想到这个话题的宽泛性, 我就有点感觉无法组织.</p>
+<p>今天我也不打算全部讲如何调试一个PHP的Core文件, 也不会介绍什么是Coredump, 选择一个相对比较简单的方向来介绍, 那就是如何从PHP的Core文件中获取一些对我们重演这个Core有帮助的信息.</p>
+<p>在这个过程中, 会涉及到对PHP的函数调用, PHP的传参, PHP的一些全局变量的知识, 这些知识在我之前的文章中都有过涉及, 大家可以翻阅: 深入理解PHP原理之函数 深入理解PHP原理之变量作用域等等.</p>
+<p>首先, 让我们生成一个供我们举例子的Core文件:</p>
+<pre><code>&lt;?php
 function recurse($num) {
       recurse(++$num);
 }
 
 recurse(0);
-
-
-运行这个PHP文件:
-
-$ php test.php
+</code></pre><p>运行这个PHP文件:</p>
+<pre><code>$ php test.php
 Segmentation fault (core dumped)
-
-
-这个PHP因为无线递归, 会导致爆栈, 从而造成 segment fault而在PHP的当前工作目录产生Coredump文件(如果你的系统没有产生Coredump文件, 那请查询ulimit的相关设置).
-
-$ ulimit -c unlimited
+</code></pre><p>这个PHP因为无线递归, 会导致爆栈, 从而造成 segment fault而在PHP的当前工作目录产生Coredump文件(如果你的系统没有产生Coredump文件, 那请查询ulimit的相关设置).</p>
+<pre><code>$ ulimit -c unlimited
 $ php test.php
-
-
-好, 现在, 让我们删除掉这个test.php, 忘掉上面的代码, 我们现在仅有的是这个Core文件, 任务是, 找出这个Core产生的原因, 以及发生时候的状态.
-
-首先, 让我们用gdb打开这个core文件:
-
-$ gdb php -c core.31656
-
-
-会看到很多的信息, 首先让我们注意这段:
-
-Core was generated by `php test.php&apos;.
+</code></pre><p>好, 现在, 让我们删除掉这个test.php, 忘掉上面的代码, 我们现在仅有的是这个Core文件, 任务是, 找出这个Core产生的原因, 以及发生时候的状态.</p>
+<p>首先, 让我们用gdb打开这个core文件:</p>
+<pre><code>$ gdb php -c core.31656
+</code></pre><p>会看到很多的信息, 首先让我们注意这段:</p>
+<pre><code>Core was generated by `php test.php&apos;.
 Program terminated with signal 11, Segmentation fault.
-
-
-他告诉我们Core发生的原因:”Segmentation fault”.
-
-一般来说, 这种Core是最常见的, 解引用空指针, double free, 以及爆栈等等, 都会触发SIGSEGV, 继而默认的产生Coredump.
-
-现在让我们看看Core发生时刻的堆栈:
-
-#0  execute (op_array=0xdc9a70) at /home/laruence/package/php-5.2.14/Zend/zend_vm_execute.h:53
+</code></pre><p>他告诉我们Core发生的原因:”Segmentation fault”.</p>
+<p>一般来说, 这种Core是最常见的, 解引用空指针, double free, 以及爆栈等等, 都会触发SIGSEGV, 继而默认的产生Coredump.</p>
+<p>现在让我们看看Core发生时刻的堆栈:</p>
+<pre><code>#0  execute (op_array=0xdc9a70) at /home/laruence/package/php-5.2.14/Zend/zend_vm_execute.h:53
 53          memset(EX(CVs), 0, sizeof(zval**) * op_array-&gt;last_var);
 (gdb) bt
 #0  execute (op_array=0xdc9a70) at /home/laruence/package/php-5.2.14/Zend/zend_vm_execute.h:53
@@ -269,13 +238,9 @@ Program terminated with signal 11, Segmentation fault.
 #4  0x00000000006e9f61 in execute (op_array=0xdc9a70) at /home/laruence/package/php-5.2.14/Zend/zend_vm_execute.h:92
 #5  0x00000000006ea263 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbf400670) at /home/laruence/package/php-5.2.14/Zend/zend_vm_execute.h:234
 .....
-
-
-不停的按回车, 可以看到堆栈很深, 不停的是zend_do_fcall_common_helper_SPEC和execute的重复, 那么这基本就能断定是因为产生了无穷大的递归(不能一定说是无穷递归, 比如我之前文章中介绍深悉正则(pcre)最大回溯/递归限制). 从而造成爆栈产生的Core.
-
-Ok, 那么现在让我们看看, Core发生在PHP的什么函数中, 在PHP中, 对于FCALL_* Opcode的handler来说, execute_data代表了当前函数调用的一个State, 这个State中包含了信息:
-
-(gdb)f 1
+</code></pre><p>不停的按回车, 可以看到堆栈很深, 不停的是zend_do_fcall_common_helper_SPEC和execute的重复, 那么这基本就能断定是因为产生了无穷大的递归(不能一定说是无穷递归, 比如我之前文章中介绍深悉正则(pcre)最大回溯/递归限制). 从而造成爆栈产生的Core.</p>
+<p>Ok, 那么现在让我们看看, Core发生在PHP的什么函数中, 在PHP中, 对于FCALL_* Opcode的handler来说, execute_data代表了当前函数调用的一个State, 这个State中包含了信息:</p>
+<pre><code>(gdb)f 1
 #1  0x00000000006ea263 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbf400210) at /home/laruence/package/php-5.2.14/Zend/zend_vm_execute.h:234
 234               zend_execute(EG(active_op_array) TSRMLS_CC);
 (gdb) p execute_data-&gt;function_state.function-&gt;common-&gt;function_name
@@ -284,15 +249,10 @@ $3 = 0x2a95b65a78 &quot;recurse&quot;
 $4 = 0x2a95b632a0 &quot;/home/laruence/test.php&quot;
 (gdb) p execute_data-&gt;function_state.function-&gt;op_array-&gt;line_start
 $5 = 2
-
-
-现在我们得到, 在调用的PHP函数是recurse, 这个函数定义在/home/laruence/test.php的第二行
-
-经过重复验证几个frame, 我们可以看出, 一直是在重复调用这个PHP函数.
-
-要注意的是, 为了介绍查看执行信息的原理, 我才采用原生的gdb的print来查看, 其实我们还可以使用PHP源代码中提供的.gdbinit(gdb命令编写脚本), 来简单的获取到上面的信息:
-
-(gdb) source /home/laruence/package/php-5.2.14/.gdbinit
+</code></pre><p>现在我们得到, 在调用的PHP函数是recurse, 这个函数定义在/home/laruence/test.php的第二行</p>
+<p>经过重复验证几个frame, 我们可以看出, 一直是在重复调用这个PHP函数.</p>
+<p>要注意的是, 为了介绍查看执行信息的原理, 我才采用原生的gdb的print来查看, 其实我们还可以使用PHP源代码中提供的.gdbinit(gdb命令编写脚本), 来简单的获取到上面的信息:</p>
+<pre><code>(gdb) source /home/laruence/package/php-5.2.14/.gdbinit
 (gdb) zbacktrace
 [0xbf400210] recurse() /home/laruence/test.php:3
 [0xbf400440] recurse() /home/laruence/test.php:3
@@ -303,24 +263,15 @@ $5 = 2
 [0xbf400f30] recurse() /home/laruence/test.php:3
 [0xbf401160] recurse() /home/laruence/test.php:3
 .....
-
-
-关于.gdbinit, 是一段小小的脚本文件, 定义了一些方便我们去调试PHP的Core, 大家也可以用文本编辑器打开, 看看里面定义的一些快捷的命令, 一般来说, 我常用的有:
-
-zbacktrace
+</code></pre><p>关于.gdbinit, 是一段小小的脚本文件, 定义了一些方便我们去调试PHP的Core, 大家也可以用文本编辑器打开, 看看里面定义的一些快捷的命令, 一般来说, 我常用的有:</p>
+<pre><code>zbacktrace
 print_ht**系列
 zmemcheck
-
-
-OK, 回归正题, 我们现在知道, 问题发生在/home/laruence/test.php的recurse函数的递归调用上了.
-
-现在, 让我们来看看, 在调用这个函数的时候的参数是什么?
-
-PHP的参数传递是依靠一个全局Stack来完成的, 也就是EG(argument_stack), EG在非多线程情况下就是executor_globals, 它保持了很多执行状态. 而argument_statck就是参数的传递栈, 保存着对应PHP函数调用层数相当的调用参数.
-
-要注意的是, 这个PHP函数调用堆栈(层数)不和gdb所看到的backtrace简单的一一对应, 所以参数也不能直接和gdb的backtrace对应起来, 需要单独分析:
-
-//先看看, 最后一次函数调用的参数数目是多少
+</code></pre><p>OK, 回归正题, 我们现在知道, 问题发生在/home/laruence/test.php的recurse函数的递归调用上了.</p>
+<p>现在, 让我们来看看, 在调用这个函数的时候的参数是什么?</p>
+<p>PHP的参数传递是依靠一个全局Stack来完成的, 也就是EG(argument_stack), EG在非多线程情况下就是executor_globals, 它保持了很多执行状态. 而argument_statck就是参数的传递栈, 保存着对应PHP函数调用层数相当的调用参数.</p>
+<p>要注意的是, 这个PHP函数调用堆栈(层数)不和gdb所看到的backtrace简单的一一对应, 所以参数也不能直接和gdb的backtrace对应起来, 需要单独分析:</p>
+<pre><code>//先看看, 最后一次函数调用的参数数目是多少
 (gdb) p (int )*(executor_globals-&gt;argument_stack-&gt;top_element - 2)
 $13 = 1
 
@@ -576,7 +527,8 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
       <title><![CDATA[查找目录下的所有文件中是否含有某个字符串]]></title>
       <url>http://www.wulai.me/2016/03/01/e6-9f-a5-e6-89-be-e7-9b-ae-e5-bd-95-e4-b8-8b-e7-9a-84-e6-89-80-e6-9c-89-e6-96-87-e4-bb-b6-e4-b8-ad-e6-98-af-e5-90-a6-e5-90-ab-e6-9c-89-e6-9f-90-e4-b8-aa-e5-ad-97-e7-ac-a6-e4-b8-b2/</url>
       <content type="html"><![CDATA[<ul>
-<li>查找目录下的所有文件中是否含有某个字符串<em>   find .|xargs grep -ri “IBM”</em>   查找目录下的所有文件中是否含有某个字符串,并且只打印出文件名*   find .|xargs grep -ri “IBM” -l</li>
+<li>查找目录下的所有文件中是否含有某个字符串<br>find .|xargs grep -ri “IBM”</li>
+<li>查找目录下的所有文件中是否含有某个字符串,并且只打印出文件名<br>find .|xargs grep -ri “IBM” -l</li>
 </ul>
 ]]></content>
     </entry>
@@ -610,12 +562,15 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
       <title><![CDATA[SSH免密码登录]]></title>
       <url>http://www.wulai.me/2016/01/17/ssh-e5-85-8d-e5-af-86-e7-a0-81-e7-99-bb-e5-bd-95/</url>
       <content type="html"><![CDATA[<p>在配置Hadoop集群分布时，要使用SSH免密码登录，假设现在有两台机器hadoop@wang-PC(192.168.10.100)，作为A机，hadoop@chen-PC(192.168.10.107)，作为B机。现想hadoop@wang-PC通过ssh免密码登录到hadoop@chen-PC。</p>
-<p>###1.在A机下生成公钥/私钥对。<br>[hadoop@wang-PC ~]$ ssh-keygen -t rsa -P ‘’<br>敲击回车键即可，<br>它在/home/hadoop下生成.ssh目录，.ssh下有id_rsa和id_rsa.pub。</p>
-<p>###2.把A机器下的id_rsa.pub复制到B机器下的.ssh/authorized_keys文件里。</p>
-<p>[hadoop@wang-PC ~]$ scp .ssh/id_rsa.pub hadoop@192.168.10.107:/home/hadoop/id_rsa.pub.hadoop_wang<br>hadoop@192.168.10.107’s password:<br>由于还没有免密码登录的，所以要输入密码。</p>
-<p>3.B机把从A机复制的id_rsa.pub.hadoop_wang添加到.ssh/authorzied_keys文件里。</p>
-<p>[hadoop@chen-PC ~]$ cat id_rsa.pub.hadoop_wang &gt;&gt; .ssh/authorized_keys<br>[hadoop@chen-PC ~]$ chmod 600 .ssh/authorized_keys<br>authorized_keys的权限要是600。</p>
-<p>4.A机登录B机。<br>[hadoop@wang-PC ~]$ ssh 192.168.10.107<br>第一次登录是时要你输入yes。<br>现在A机可以无密码登录B机了。</p>
+<h3 id="1-在A机下生成公钥-私钥对。"><a href="#1-在A机下生成公钥-私钥对。" class="headerlink" title="1.在A机下生成公钥/私钥对。"></a>1.在A机下生成公钥/私钥对。</h3><pre><code>[hadoop@wang-PC ~]$ ssh-keygen -t rsa -P &apos;&apos;
+</code></pre><p>敲击回车键即可，<br>它在/home/hadoop下生成.ssh目录，.ssh下有id_rsa和id_rsa.pub。</p>
+<h3 id="2-把A机器下的id-rsa-pub复制到B机器下的-ssh-authorized-keys文件里。"><a href="#2-把A机器下的id-rsa-pub复制到B机器下的-ssh-authorized-keys文件里。" class="headerlink" title="2.把A机器下的id_rsa.pub复制到B机器下的.ssh/authorized_keys文件里。"></a>2.把A机器下的id_rsa.pub复制到B机器下的.ssh/authorized_keys文件里。</h3><pre><code>[hadoop@wang-PC ~]$ scp .ssh/id_rsa.pub hadoop@192.168.10.107:/home/hadoop/id_rsa.pub.hadoop_wang
+hadoop@192.168.10.107&apos;s password:
+</code></pre><p>由于还没有免密码登录的，所以要输入密码。</p>
+<h3 id="3-B机把从A机复制的id-rsa-pub-hadoop-wang添加到-ssh-authorzied-keys文件里。"><a href="#3-B机把从A机复制的id-rsa-pub-hadoop-wang添加到-ssh-authorzied-keys文件里。" class="headerlink" title="3.B机把从A机复制的id_rsa.pub.hadoop_wang添加到.ssh/authorzied_keys文件里。"></a>3.B机把从A机复制的id_rsa.pub.hadoop_wang添加到.ssh/authorzied_keys文件里。</h3><pre><code>[hadoop@chen-PC ~]$ cat id_rsa.pub.hadoop_wang &gt;&gt; .ssh/authorized_keys
+  [hadoop@chen-PC ~]$ chmod 600 .ssh/authorized_keys
+</code></pre><p>authorized_keys的权限要是600。</p>
+<p>4.A机登录B机。<br>    [hadoop@wang-PC ~]$ ssh 192.168.10.107<br>第一次登录是时要你输入yes。<br>现在A机可以无密码登录B机了。</p>
 <p>小结：登录的机子可有私钥，被登录的机子要有登录机子的公钥。这个公钥/私钥对一般在私钥宿主机产生。上面是用rsa算法的公钥/私钥对，当然也可以用dsa(对应的文件是id_dsa，id_dsa.pub)<br>想让A，B机无密码互登录，那B机以上面同样的方式配置即可,把B的公钥复制过去添加到authorized_keys的末尾就行了。<br>至此完毕。</p>
 <blockquote>
 <blockquote>
@@ -628,34 +583,30 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
     <entry>
       <title><![CDATA[json解析错误]]></title>
       <url>http://www.wulai.me/2016/01/05/json-e8-a7-a3-e6-9e-90-e9-94-99-e8-af-af/</url>
-      <content type="html"><![CDATA[<pre><code>     switch (json_last_error()) {
-         case JSON_ERROR_NONE:
-             echo &apos; - No errors&apos;;
-             break;
-         case JSON_ERROR_DEPTH:
-             echo &apos; - Maximum stack depth exceeded&apos;;
-             break;
-         case JSON_ERROR_STATE_MISMATCH:
-             echo &apos; - Underflow or the modes mismatch&apos;;
-             break;
-         case JSON_ERROR_CTRL_CHAR:
-             echo &apos; - Unexpected control character found&apos;;
-             break;
-         case JSON_ERROR_SYNTAX:
-             echo &apos; - Syntax error, malformed JSON&apos;;
-             break;
-         case JSON_ERROR_UTF8:
-             echo &apos; - Malformed UTF-8 characters, possibly incorrectly encoded&apos;;
-             break;
-         default:
-             echo &apos; - Unknown error&apos;;
-             break;
-     }
-
-
-## 我碰到的错误
-
-echo mb_detect_encoding($passengers);
+      <content type="html"><![CDATA[<pre><code>switch (json_last_error()) {
+    case JSON_ERROR_NONE:
+        echo &apos; - No errors&apos;;
+        break;
+    case JSON_ERROR_DEPTH:
+        echo &apos; - Maximum stack depth exceeded&apos;;
+        break;
+    case JSON_ERROR_STATE_MISMATCH:
+        echo &apos; - Underflow or the modes mismatch&apos;;
+        break;
+    case JSON_ERROR_CTRL_CHAR:
+        echo &apos; - Unexpected control character found&apos;;
+        break;
+    case JSON_ERROR_SYNTAX:
+        echo &apos; - Syntax error, malformed JSON&apos;;
+        break;
+    case JSON_ERROR_UTF8:
+        echo &apos; - Malformed UTF-8 characters, possibly incorrectly encoded&apos;;
+        break;
+    default:
+        echo &apos; - Unknown error&apos;;
+        break;
+}
+</code></pre><h2 id="我碰到的错误"><a href="#我碰到的错误" class="headerlink" title="我碰到的错误"></a>我碰到的错误</h2><pre><code>echo mb_detect_encoding($passengers);
 $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers);
 </code></pre>]]></content>
     </entry>
@@ -688,7 +639,17 @@ select concat(&apos;drop table &apos;,table_name,&apos;;&apos;) from TABLES wher
     <entry>
       <title><![CDATA[删除指定时间之后的文章]]></title>
       <url>http://www.wulai.me/2015/11/23/e5-88-a0-e9-99-a4-e6-8c-87-e5-ae-9a-e6-97-b6-e9-97-b4-e4-b9-8b-e5-90-8e-e7-9a-84-e6-96-87-e7-ab-a0/</url>
-      <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">find . -cmin -50 -type f |xargs rm -rf</div><div class="line"></div><div class="line"># find /tmp -mtime +30 -type f -name *.sh[ab] -exec rm -f &#123;&#125; ;</div><div class="line"></div><div class="line">/tmp –设置查找的目录；</div><div class="line"></div><div class="line">-mtime +30 –设置时间为30天前；</div><div class="line"></div><div class="line">-type f –设置查找的类型为文件；</div><div class="line"></div><div class="line">-name *.sh[ab] –设置文件名称中包含sha或者shb；</div><div class="line"></div><div class="line">-exec rm -f –查找完毕后执行删除操作；</div><div class="line"></div><div class="line">`提示`：将此命令写入crontab后即可自动完成查找并删除的工作 另外的方法大同小异：</div><div class="line"></div><div class="line"># find /tmp -mtime +30 -type f | xargs rm -rf</div><div class="line"></div><div class="line"># 另外一个操作方法：</div><div class="line"></div><div class="line">find . -name &quot;*-e&quot; -exec rm &apos;&#123;&#125;&apos; +</div></pre></td></tr></table></figure>]]></content>
+      <content type="html"><![CDATA[<p>find . -cmin -50 -type f |xargs rm -rf</p>
+<pre><code># find /tmp -mtime +30 -type f -name *.sh[ab] -exec rm -f {} ;
+</code></pre><p>/tmp –设置查找的目录；</p>
+<p>-mtime +30 –设置时间为30天前；</p>
+<p>-type f –设置查找的类型为文件；</p>
+<p>-name *.sh[ab] –设置文件名称中包含sha或者shb；</p>
+<p>-exec rm -f –查找完毕后执行删除操作；</p>
+<p><code>提示</code>：将此命令写入crontab后即可自动完成查找并删除的工作 另外的方法大同小异：</p>
+<pre><code># find /tmp -mtime +30 -type f | xargs rm -rf
+</code></pre><h1 id="另外一个操作方法："><a href="#另外一个操作方法：" class="headerlink" title="另外一个操作方法："></a>另外一个操作方法：</h1><pre><code>find . -name &quot;*-e&quot; -exec rm &apos;{}&apos; +
+</code></pre>]]></content>
     </entry>
     
     <entry>
@@ -1065,13 +1026,7 @@ ERROR [launcher]: PhantomJS failed 2 times (cannot start). Giving up.
 Warning: Task &quot;karma:unit&quot; failed. Used --force, continuing.
 
 Done, but with warnings.
-
-
-## 2、系统ubuntu 14.04
-
-## 3、解决方案
-
-sudo apt-get install libfontconfig
+</code></pre><h2 id="2、系统ubuntu-14-04"><a href="#2、系统ubuntu-14-04" class="headerlink" title="2、系统ubuntu 14.04"></a>2、系统ubuntu 14.04</h2><h2 id="3、解决方案"><a href="#3、解决方案" class="headerlink" title="3、解决方案"></a>3、解决方案</h2><pre><code>sudo apt-get install libfontconfig
 </code></pre>]]></content>
     </entry>
     
@@ -2466,19 +2421,11 @@ you&apos;ve got to put paragraph tags in your blockquotes:&lt;/p&gt;
 &lt;/table&gt;
 
 这是另一个普通段落。
-
-
-请注意，在 HTML 区块标签间的 Markdown 格式语法将不会被处理。比如，你在 HTML 区块内使用 Markdown 样式的`*强调*`会没有效果。
-
-HTML 的区段（行内）标签如 `&lt;span&gt;`、`&lt;cite&gt;`、`&lt;del&gt;` 可以在 Markdown 的段落、列表或是标题里随意使用。依照个人习惯，甚至可以不用 Markdown 格式，而直接采用 HTML 标签来格式化。举例说明：如果比较喜欢 HTML 的 `&lt;a&gt;` 或 `&lt;img&gt;` 标签，可以直接使用这些标签，而不用 Markdown 提供的链接或是图像标签语法。
-
-和处在 HTML 区块标签间不同，Markdown 语法在 HTML 区段标签间是有效的。
-
-### 特殊字符自动转换
-
-在 HTML 文件中，有两个字符需要特殊处理： `&lt;` 和 `&amp;amp;` 。 `&lt;` 符号用于起始标签，`&amp;amp;` 符号则用于标记 HTML 实体，如果你只是想要显示这些字符的原型，你必须要使用实体的形式，像是 `&amp;amp;lt;` 和 `&amp;amp;amp;`。
-
-`&amp;amp;` 字符尤其让网络文档编写者受折磨，如果你要打「`AT&amp;amp;T`」 ，你必须要写成「`AT&amp;amp;amp;T`」。而网址中的 `&amp;amp;` 字符也要转换。比如你要链接到：
+</code></pre><p>请注意，在 HTML 区块标签间的 Markdown 格式语法将不会被处理。比如，你在 HTML 区块内使用 Markdown 样式的<code>*强调*</code>会没有效果。</p>
+<p>HTML 的区段（行内）标签如 <code>&lt;span&gt;</code>、<code>&lt;cite&gt;</code>、<code>&lt;del&gt;</code> 可以在 Markdown 的段落、列表或是标题里随意使用。依照个人习惯，甚至可以不用 Markdown 格式，而直接采用 HTML 标签来格式化。举例说明：如果比较喜欢 HTML 的 <code>&lt;a&gt;</code> 或 <code>&lt;img&gt;</code> 标签，可以直接使用这些标签，而不用 Markdown 提供的链接或是图像标签语法。</p>
+<p>和处在 HTML 区块标签间不同，Markdown 语法在 HTML 区段标签间是有效的。</p>
+<h3 id="特殊字符自动转换"><a href="#特殊字符自动转换" class="headerlink" title="特殊字符自动转换"></a>特殊字符自动转换</h3><p>在 HTML 文件中，有两个字符需要特殊处理： <code>&lt;</code> 和 <code>&amp;amp;</code> 。 <code>&lt;</code> 符号用于起始标签，<code>&amp;amp;</code> 符号则用于标记 HTML 实体，如果你只是想要显示这些字符的原型，你必须要使用实体的形式，像是 <code>&amp;amp;lt;</code> 和 <code>&amp;amp;amp;</code>。</p>
+<pre><code>`&amp;amp;` 字符尤其让网络文档编写者受折磨，如果你要打「`AT&amp;amp;T`」 ，你必须要写成「`AT&amp;amp;amp;T`」。而网址中的 `&amp;amp;` 字符也要转换。比如你要链接到：
 
 http://images.google.com/images?num=30&amp;amp;q=larry+bird
 
@@ -2573,7 +2520,7 @@ Markdown 标记区块引用是使用类似 email 中用 `&gt;` 的引用方式�
 &gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 &gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
 &gt; Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-&gt; 
+&gt;
 &gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
 &gt; id sem consectetuer libero luctus adipiscing.
 
@@ -2600,12 +2547,12 @@ id sem consectetuer libero luctus adipiscing.
 引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等：
 
 &gt; ## 这是一个标题。
-&gt; 
+&gt;
 &gt; 1\.   这是第一行列表项。
 &gt; 2\.   这是第二行列表项。
-&gt; 
+&gt;
 &gt; 给出一些例子代码：
-&gt; 
+&gt;
 &gt;     return shell_exec(&quot;echo $input | $markdown_script&quot;);
 
 
@@ -2690,7 +2637,7 @@ viverra nec, fringilla in, laoreet vitae, risus.
 Suspendisse id sem consectetuer libero luctus adipiscing.
 
 
-如果列表项目间用空行分开，在输出 HTML 时 Markdown 就会将项目内容用 `&lt;p&gt;` 
+如果列表项目间用空行分开，在输出 HTML 时 Markdown 就会将项目内容用 `&lt;p&gt;`
 标签包起来，举例来说：
 
 *   Bird

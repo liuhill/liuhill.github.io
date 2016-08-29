@@ -84,34 +84,28 @@
 
 
 
-<meta name="description" content="##1、从第3000行开始，显示1000行。即显示3000~3999行
-cat filename | tail -n +3000 | head -n 1000
-###2、显示1000行到3000行
-cat filename| head -n 3000 | tail -n +1000
+<meta name="description" content="1、从第3000行开始，显示1000行。即显示3000~3999行cat filename | tail -n +3000 | head -n 1000
+2、显示1000行到3000行cat filename| head -n 3000 | tail -n +1000
 *注意两种方法的顺序
 
-分解：       tail -n 1000：显示最后1000行       tail -n">
+分解：       tail -n 1000：显示最后1000行       tail -n +1000：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux 如何显示一个文件的某几行(中间几行)">
 <meta property="og:url" content="http://www.wulai.me/2016/07/06/linux-e5-a6-82-e4-bd-95-e6-98-be-e7-a4-ba-e4-b8-80-e4-b8-aa-e6-96-87-e4-bb-b6-e7-9a-84-e6-9f-90-e5-87-a0-e8-a1-8c-e4-b8-ad-e9-97-b4-e5-87-a0-e8-a1-8c/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="##1、从第3000行开始，显示1000行。即显示3000~3999行
-cat filename | tail -n +3000 | head -n 1000
-###2、显示1000行到3000行
-cat filename| head -n 3000 | tail -n +1000
+<meta property="og:description" content="1、从第3000行开始，显示1000行。即显示3000~3999行cat filename | tail -n +3000 | head -n 1000
+2、显示1000行到3000行cat filename| head -n 3000 | tail -n +1000
 *注意两种方法的顺序
 
-分解：       tail -n 1000：显示最后1000行       tail -n">
-<meta property="og:updated_time" content="2016-08-16T09:56:10.000Z">
+分解：       tail -n 1000：显示最后1000行       tail -n +1000：">
+<meta property="og:updated_time" content="2016-08-29T05:58:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux 如何显示一个文件的某几行(中间几行)">
-<meta name="twitter:description" content="##1、从第3000行开始，显示1000行。即显示3000~3999行
-cat filename | tail -n +3000 | head -n 1000
-###2、显示1000行到3000行
-cat filename| head -n 3000 | tail -n +1000
+<meta name="twitter:description" content="1、从第3000行开始，显示1000行。即显示3000~3999行cat filename | tail -n +3000 | head -n 1000
+2、显示1000行到3000行cat filename| head -n 3000 | tail -n +1000
 *注意两种方法的顺序
 
-分解：       tail -n 1000：显示最后1000行       tail -n">
+分解：       tail -n 1000：显示最后1000行       tail -n +1000：">
 
 
 
@@ -344,16 +338,14 @@ cat filename| head -n 3000 | tail -n +1000
       
 
       
-        <p>##1、从第3000行开始，显示1000行。即显示3000~3999行</p>
-<pre><code>cat filename | tail -n +3000 | head -n 1000
-</code></pre><p>###2、显示1000行到3000行</p>
-<pre><code>cat filename| head -n 3000 | tail -n +1000
+        <h3 id="1、从第3000行开始，显示1000行。即显示3000-3999行"><a href="#1、从第3000行开始，显示1000行。即显示3000-3999行" class="headerlink" title="1、从第3000行开始，显示1000行。即显示3000~3999行"></a>1、从第3000行开始，显示1000行。即显示3000~3999行</h3><pre><code>cat filename | tail -n +3000 | head -n 1000
+</code></pre><h3 id="2、显示1000行到3000行"><a href="#2、显示1000行到3000行" class="headerlink" title="2、显示1000行到3000行"></a>2、显示1000行到3000行</h3><pre><code>cat filename| head -n 3000 | tail -n +1000
 </code></pre><p><code>*注意两种方法的顺序</code></p>
 <blockquote>
 <p>分解：<br>       tail -n 1000：显示最后1000行<br>       tail -n +1000：从1000行开始显示，显示1000行以后的<br>       head -n 1000：显示前面1000行</p>
 </blockquote>
-<p>###3、用sed命令<br>    sed -n ‘5,10p’ filename</p>
-<p>这样你就可以只查看文件的第5行到第10行。</p>
+<h2 id="3、用sed命令"><a href="#3、用sed命令" class="headerlink" title="3、用sed命令"></a>3、用sed命令</h2><pre><code>sed -n &apos;5,10p&apos; filename
+</code></pre><p>这样你就可以只查看文件的第5行到第10行。</p>
 
       
     </div>
@@ -528,7 +520,7 @@ cat filename| head -n 3000 | tail -n +1000
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、从第3000行开始，显示1000行。即显示3000-3999行"><span class="nav-number">1.</span> <span class="nav-text">1、从第3000行开始，显示1000行。即显示3000~3999行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、显示1000行到3000行"><span class="nav-number">2.</span> <span class="nav-text">2、显示1000行到3000行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、用sed命令"><span class="nav-number"></span> <span class="nav-text">3、用sed命令</span></a></div>
             
           </div>
         </section>

@@ -85,30 +85,30 @@
 
 
 <meta name="description" content="switch (json_last_error()) {
-         case JSON_ERROR_NONE:
-             echo &amp;apos; - No errors&amp;apos;;
-             break;
-         case JSON_ERROR_DEPTH:
-             echo &amp;apos; - Maximum stac">
+    case JSON_ERROR_NONE:
+        echo &amp;apos; - No errors&amp;apos;;
+        break;
+    case JSON_ERROR_DEPTH:
+        echo &amp;apos; - Maximum stack depth exceeded&amp;apos;;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="json解析错误">
 <meta property="og:url" content="http://www.wulai.me/2016/01/05/json-e8-a7-a3-e6-9e-90-e9-94-99-e8-af-af/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="switch (json_last_error()) {
-         case JSON_ERROR_NONE:
-             echo &amp;apos; - No errors&amp;apos;;
-             break;
-         case JSON_ERROR_DEPTH:
-             echo &amp;apos; - Maximum stac">
-<meta property="og:updated_time" content="2016-08-29T05:51:07.000Z">
+    case JSON_ERROR_NONE:
+        echo &amp;apos; - No errors&amp;apos;;
+        break;
+    case JSON_ERROR_DEPTH:
+        echo &amp;apos; - Maximum stack depth exceeded&amp;apos;;">
+<meta property="og:updated_time" content="2016-08-29T06:07:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="json解析错误">
 <meta name="twitter:description" content="switch (json_last_error()) {
-         case JSON_ERROR_NONE:
-             echo &amp;apos; - No errors&amp;apos;;
-             break;
-         case JSON_ERROR_DEPTH:
-             echo &amp;apos; - Maximum stac">
+    case JSON_ERROR_NONE:
+        echo &amp;apos; - No errors&amp;apos;;
+        break;
+    case JSON_ERROR_DEPTH:
+        echo &amp;apos; - Maximum stack depth exceeded&amp;apos;;">
 
 
 
@@ -341,34 +341,30 @@
       
 
       
-        <pre><code>     switch (json_last_error()) {
-         case JSON_ERROR_NONE:
-             echo &apos; - No errors&apos;;
-             break;
-         case JSON_ERROR_DEPTH:
-             echo &apos; - Maximum stack depth exceeded&apos;;
-             break;
-         case JSON_ERROR_STATE_MISMATCH:
-             echo &apos; - Underflow or the modes mismatch&apos;;
-             break;
-         case JSON_ERROR_CTRL_CHAR:
-             echo &apos; - Unexpected control character found&apos;;
-             break;
-         case JSON_ERROR_SYNTAX:
-             echo &apos; - Syntax error, malformed JSON&apos;;
-             break;
-         case JSON_ERROR_UTF8:
-             echo &apos; - Malformed UTF-8 characters, possibly incorrectly encoded&apos;;
-             break;
-         default:
-             echo &apos; - Unknown error&apos;;
-             break;
-     }
-
-
-## 我碰到的错误
-
-echo mb_detect_encoding($passengers);
+        <pre><code>switch (json_last_error()) {
+    case JSON_ERROR_NONE:
+        echo &apos; - No errors&apos;;
+        break;
+    case JSON_ERROR_DEPTH:
+        echo &apos; - Maximum stack depth exceeded&apos;;
+        break;
+    case JSON_ERROR_STATE_MISMATCH:
+        echo &apos; - Underflow or the modes mismatch&apos;;
+        break;
+    case JSON_ERROR_CTRL_CHAR:
+        echo &apos; - Unexpected control character found&apos;;
+        break;
+    case JSON_ERROR_SYNTAX:
+        echo &apos; - Syntax error, malformed JSON&apos;;
+        break;
+    case JSON_ERROR_UTF8:
+        echo &apos; - Malformed UTF-8 characters, possibly incorrectly encoded&apos;;
+        break;
+    default:
+        echo &apos; - Unknown error&apos;;
+        break;
+}
+</code></pre><h2 id="我碰到的错误"><a href="#我碰到的错误" class="headerlink" title="我碰到的错误"></a>我碰到的错误</h2><pre><code>echo mb_detect_encoding($passengers);
 $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers);
 </code></pre>
       
@@ -548,7 +544,7 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#我碰到的错误"><span class="nav-number">1.</span> <span class="nav-text">我碰到的错误</span></a></li></ol></div>
             
           </div>
         </section>

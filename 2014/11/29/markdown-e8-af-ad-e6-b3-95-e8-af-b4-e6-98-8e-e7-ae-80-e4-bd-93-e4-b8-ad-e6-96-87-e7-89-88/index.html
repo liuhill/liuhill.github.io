@@ -94,7 +94,7 @@ NOTE: This is Simplelified  Chinese Edition Document of Markdown Syntax. If you 
 <meta property="og:description" content="&amp;lt;&amp;lt; 访问 Wow!Ubuntu
 NOTE: This is Simplelified  Chinese Edition Document of Markdown Syntax. If you are seeking for English Edition Document. Please refer to Markdown: Syntax.
 声明： 这份文档派生(fork)于繁体中文">
-<meta property="og:updated_time" content="2016-08-29T05:51:07.000Z">
+<meta property="og:updated_time" content="2016-08-29T06:01:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Markdown 语法说明 (简体中文版)">
 <meta name="twitter:description" content="&amp;lt;&amp;lt; 访问 Wow!Ubuntu
@@ -389,19 +389,11 @@ NOTE: This is Simplelified  Chinese Edition Document of Markdown Syntax. If you 
 &lt;/table&gt;
 
 这是另一个普通段落。
-
-
-请注意，在 HTML 区块标签间的 Markdown 格式语法将不会被处理。比如，你在 HTML 区块内使用 Markdown 样式的`*强调*`会没有效果。
-
-HTML 的区段（行内）标签如 `&lt;span&gt;`、`&lt;cite&gt;`、`&lt;del&gt;` 可以在 Markdown 的段落、列表或是标题里随意使用。依照个人习惯，甚至可以不用 Markdown 格式，而直接采用 HTML 标签来格式化。举例说明：如果比较喜欢 HTML 的 `&lt;a&gt;` 或 `&lt;img&gt;` 标签，可以直接使用这些标签，而不用 Markdown 提供的链接或是图像标签语法。
-
-和处在 HTML 区块标签间不同，Markdown 语法在 HTML 区段标签间是有效的。
-
-### 特殊字符自动转换
-
-在 HTML 文件中，有两个字符需要特殊处理： `&lt;` 和 `&amp;amp;` 。 `&lt;` 符号用于起始标签，`&amp;amp;` 符号则用于标记 HTML 实体，如果你只是想要显示这些字符的原型，你必须要使用实体的形式，像是 `&amp;amp;lt;` 和 `&amp;amp;amp;`。
-
-`&amp;amp;` 字符尤其让网络文档编写者受折磨，如果你要打「`AT&amp;amp;T`」 ，你必须要写成「`AT&amp;amp;amp;T`」。而网址中的 `&amp;amp;` 字符也要转换。比如你要链接到：
+</code></pre><p>请注意，在 HTML 区块标签间的 Markdown 格式语法将不会被处理。比如，你在 HTML 区块内使用 Markdown 样式的<code>*强调*</code>会没有效果。</p>
+<p>HTML 的区段（行内）标签如 <code>&lt;span&gt;</code>、<code>&lt;cite&gt;</code>、<code>&lt;del&gt;</code> 可以在 Markdown 的段落、列表或是标题里随意使用。依照个人习惯，甚至可以不用 Markdown 格式，而直接采用 HTML 标签来格式化。举例说明：如果比较喜欢 HTML 的 <code>&lt;a&gt;</code> 或 <code>&lt;img&gt;</code> 标签，可以直接使用这些标签，而不用 Markdown 提供的链接或是图像标签语法。</p>
+<p>和处在 HTML 区块标签间不同，Markdown 语法在 HTML 区段标签间是有效的。</p>
+<h3 id="特殊字符自动转换"><a href="#特殊字符自动转换" class="headerlink" title="特殊字符自动转换"></a>特殊字符自动转换</h3><p>在 HTML 文件中，有两个字符需要特殊处理： <code>&lt;</code> 和 <code>&amp;amp;</code> 。 <code>&lt;</code> 符号用于起始标签，<code>&amp;amp;</code> 符号则用于标记 HTML 实体，如果你只是想要显示这些字符的原型，你必须要使用实体的形式，像是 <code>&amp;amp;lt;</code> 和 <code>&amp;amp;amp;</code>。</p>
+<pre><code>`&amp;amp;` 字符尤其让网络文档编写者受折磨，如果你要打「`AT&amp;amp;T`」 ，你必须要写成「`AT&amp;amp;amp;T`」。而网址中的 `&amp;amp;` 字符也要转换。比如你要链接到：
 
 http://images.google.com/images?num=30&amp;amp;q=larry+bird
 
@@ -496,7 +488,7 @@ Markdown 标记区块引用是使用类似 email 中用 `&gt;` 的引用方式�
 &gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 &gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
 &gt; Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-&gt; 
+&gt;
 &gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
 &gt; id sem consectetuer libero luctus adipiscing.
 
@@ -523,12 +515,12 @@ id sem consectetuer libero luctus adipiscing.
 引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等：
 
 &gt; ## 这是一个标题。
-&gt; 
+&gt;
 &gt; 1\.   这是第一行列表项。
 &gt; 2\.   这是第二行列表项。
-&gt; 
+&gt;
 &gt; 给出一些例子代码：
-&gt; 
+&gt;
 &gt;     return shell_exec(&quot;echo $input | $markdown_script&quot;);
 
 
@@ -613,7 +605,7 @@ viverra nec, fringilla in, laoreet vitae, risus.
 Suspendisse id sem consectetuer libero luctus adipiscing.
 
 
-如果列表项目间用空行分开，在输出 HTML 时 Markdown 就会将项目内容用 `&lt;p&gt;` 
+如果列表项目间用空行分开，在输出 HTML 时 Markdown 就会将项目内容用 `&lt;p&gt;`
 标签包起来，举例来说：
 
 *   Bird
@@ -1293,7 +1285,7 @@ _   底线
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Markdown-语法说明-简体中文版-点击查看快速入门"><span class="nav-number">1.</span> <span class="nav-text">Markdown 语法说明 (简体中文版) / (点击查看快速入门)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#宗旨"><span class="nav-number">1.1.1.</span> <span class="nav-text">宗旨</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容-HTML"><span class="nav-number">1.1.2.</span> <span class="nav-text">兼容 HTML</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感谢"><span class="nav-number">1.2.</span> <span class="nav-text">感谢</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Markdown-免费编辑器"><span class="nav-number">1.3.</span> <span class="nav-text">Markdown 免费编辑器</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Markdown-语法说明-简体中文版-点击查看快速入门"><span class="nav-number">1.</span> <span class="nav-text">Markdown 语法说明 (简体中文版) / (点击查看快速入门)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#宗旨"><span class="nav-number">1.1.1.</span> <span class="nav-text">宗旨</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容-HTML"><span class="nav-number">1.1.2.</span> <span class="nav-text">兼容 HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊字符自动转换"><span class="nav-number">1.1.3.</span> <span class="nav-text">特殊字符自动转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感谢"><span class="nav-number">1.2.</span> <span class="nav-text">感谢</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Markdown-免费编辑器"><span class="nav-number">1.3.</span> <span class="nav-text">Markdown 免费编辑器</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

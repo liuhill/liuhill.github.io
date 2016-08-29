@@ -609,7 +609,8 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
         
           
             <ul>
-<li>查找目录下的所有文件中是否含有某个字符串<em>   find .|xargs grep -ri “IBM”</em>   查找目录下的所有文件中是否含有某个字符串,并且只打印出文件名*   find .|xargs grep -ri “IBM” -l</li>
+<li>查找目录下的所有文件中是否含有某个字符串<br>find .|xargs grep -ri “IBM”</li>
+<li>查找目录下的所有文件中是否含有某个字符串,并且只打印出文件名<br>find .|xargs grep -ri “IBM” -l</li>
 </ul>
 
           
@@ -961,12 +962,15 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
         
           
             <p>在配置Hadoop集群分布时，要使用SSH免密码登录，假设现在有两台机器hadoop@wang-PC(192.168.10.100)，作为A机，hadoop@chen-PC(192.168.10.107)，作为B机。现想hadoop@wang-PC通过ssh免密码登录到hadoop@chen-PC。</p>
-<p>###1.在A机下生成公钥/私钥对。<br>[hadoop@wang-PC ~]$ ssh-keygen -t rsa -P ‘’<br>敲击回车键即可，<br>它在/home/hadoop下生成.ssh目录，.ssh下有id_rsa和id_rsa.pub。</p>
-<p>###2.把A机器下的id_rsa.pub复制到B机器下的.ssh/authorized_keys文件里。</p>
-<p>[hadoop@wang-PC ~]$ scp .ssh/id_rsa.pub hadoop@192.168.10.107:/home/hadoop/id_rsa.pub.hadoop_wang<br>hadoop@192.168.10.107’s password:<br>由于还没有免密码登录的，所以要输入密码。</p>
-<p>3.B机把从A机复制的id_rsa.pub.hadoop_wang添加到.ssh/authorzied_keys文件里。</p>
-<p>[hadoop@chen-PC ~]$ cat id_rsa.pub.hadoop_wang &gt;&gt; .ssh/authorized_keys<br>[hadoop@chen-PC ~]$ chmod 600 .ssh/authorized_keys<br>authorized_keys的权限要是600。</p>
-<p>4.A机登录B机。<br>[hadoop@wang-PC ~]$ ssh 192.168.10.107<br>第一次登录是时要你输入yes。<br>现在A机可以无密码登录B机了。</p>
+<h3 id="1-在A机下生成公钥-私钥对。"><a href="#1-在A机下生成公钥-私钥对。" class="headerlink" title="1.在A机下生成公钥/私钥对。"></a>1.在A机下生成公钥/私钥对。</h3><pre><code>[hadoop@wang-PC ~]$ ssh-keygen -t rsa -P &apos;&apos;
+</code></pre><p>敲击回车键即可，<br>它在/home/hadoop下生成.ssh目录，.ssh下有id_rsa和id_rsa.pub。</p>
+<h3 id="2-把A机器下的id-rsa-pub复制到B机器下的-ssh-authorized-keys文件里。"><a href="#2-把A机器下的id-rsa-pub复制到B机器下的-ssh-authorized-keys文件里。" class="headerlink" title="2.把A机器下的id_rsa.pub复制到B机器下的.ssh/authorized_keys文件里。"></a>2.把A机器下的id_rsa.pub复制到B机器下的.ssh/authorized_keys文件里。</h3><pre><code>[hadoop@wang-PC ~]$ scp .ssh/id_rsa.pub hadoop@192.168.10.107:/home/hadoop/id_rsa.pub.hadoop_wang
+hadoop@192.168.10.107&apos;s password:
+</code></pre><p>由于还没有免密码登录的，所以要输入密码。</p>
+<h3 id="3-B机把从A机复制的id-rsa-pub-hadoop-wang添加到-ssh-authorzied-keys文件里。"><a href="#3-B机把从A机复制的id-rsa-pub-hadoop-wang添加到-ssh-authorzied-keys文件里。" class="headerlink" title="3.B机把从A机复制的id_rsa.pub.hadoop_wang添加到.ssh/authorzied_keys文件里。"></a>3.B机把从A机复制的id_rsa.pub.hadoop_wang添加到.ssh/authorzied_keys文件里。</h3><pre><code>[hadoop@chen-PC ~]$ cat id_rsa.pub.hadoop_wang &gt;&gt; .ssh/authorized_keys
+  [hadoop@chen-PC ~]$ chmod 600 .ssh/authorized_keys
+</code></pre><p>authorized_keys的权限要是600。</p>
+<p>4.A机登录B机。<br>    [hadoop@wang-PC ~]$ ssh 192.168.10.107<br>第一次登录是时要你输入yes。<br>现在A机可以无密码登录B机了。</p>
 <p>小结：登录的机子可有私钥，被登录的机子要有登录机子的公钥。这个公钥/私钥对一般在私钥宿主机产生。上面是用rsa算法的公钥/私钥对，当然也可以用dsa(对应的文件是id_dsa，id_dsa.pub)<br>想让A，B机无密码互登录，那B机以上面同样的方式配置即可,把B的公钥复制过去添加到authorized_keys的末尾就行了。<br>至此完毕。</p>
 <blockquote>
 <blockquote>
@@ -1085,34 +1089,30 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
       
         
           
-            <pre><code>     switch (json_last_error()) {
-         case JSON_ERROR_NONE:
-             echo &apos; - No errors&apos;;
-             break;
-         case JSON_ERROR_DEPTH:
-             echo &apos; - Maximum stack depth exceeded&apos;;
-             break;
-         case JSON_ERROR_STATE_MISMATCH:
-             echo &apos; - Underflow or the modes mismatch&apos;;
-             break;
-         case JSON_ERROR_CTRL_CHAR:
-             echo &apos; - Unexpected control character found&apos;;
-             break;
-         case JSON_ERROR_SYNTAX:
-             echo &apos; - Syntax error, malformed JSON&apos;;
-             break;
-         case JSON_ERROR_UTF8:
-             echo &apos; - Malformed UTF-8 characters, possibly incorrectly encoded&apos;;
-             break;
-         default:
-             echo &apos; - Unknown error&apos;;
-             break;
-     }
-
-
-## 我碰到的错误
-
-echo mb_detect_encoding($passengers);
+            <pre><code>switch (json_last_error()) {
+    case JSON_ERROR_NONE:
+        echo &apos; - No errors&apos;;
+        break;
+    case JSON_ERROR_DEPTH:
+        echo &apos; - Maximum stack depth exceeded&apos;;
+        break;
+    case JSON_ERROR_STATE_MISMATCH:
+        echo &apos; - Underflow or the modes mismatch&apos;;
+        break;
+    case JSON_ERROR_CTRL_CHAR:
+        echo &apos; - Unexpected control character found&apos;;
+        break;
+    case JSON_ERROR_SYNTAX:
+        echo &apos; - Syntax error, malformed JSON&apos;;
+        break;
+    case JSON_ERROR_UTF8:
+        echo &apos; - Malformed UTF-8 characters, possibly incorrectly encoded&apos;;
+        break;
+    default:
+        echo &apos; - Unknown error&apos;;
+        break;
+}
+</code></pre><h2 id="我碰到的错误"><a href="#我碰到的错误" class="headerlink" title="我碰到的错误"></a>我碰到的错误</h2><pre><code>echo mb_detect_encoding($passengers);
 $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers);
 </code></pre>
           

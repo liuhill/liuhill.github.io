@@ -84,16 +84,34 @@
 
 
 
-<meta name="description" content="12345678910111213141516171819202122find . -cmin -50 -type f |xargs rm -rf# find /tmp -mtime +30 -type f -name *.sh[ab] -exec rm -f &amp;#123;&amp;#125; ;/tmp –设置查找的目录；-mtime +30 –设置时间为30天前；-type f –设置查找的类型为文件">
+<meta name="description" content="find . -cmin -50 -type f |xargs rm -rf
+# find /tmp -mtime +30 -type f -name *.sh[ab] -exec rm -f {} ;
+/tmp –设置查找的目录；
+-mtime +30 –设置时间为30天前；
+-type f –设置查找的类型为文件；
+-name *.sh[ab] –设置文件名称中包含sha或者shb；
+-exe">
 <meta property="og:type" content="article">
 <meta property="og:title" content="删除指定时间之后的文章">
 <meta property="og:url" content="http://www.wulai.me/2015/11/23/e5-88-a0-e9-99-a4-e6-8c-87-e5-ae-9a-e6-97-b6-e9-97-b4-e4-b9-8b-e5-90-8e-e7-9a-84-e6-96-87-e7-ab-a0/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="12345678910111213141516171819202122find . -cmin -50 -type f |xargs rm -rf# find /tmp -mtime +30 -type f -name *.sh[ab] -exec rm -f &amp;#123;&amp;#125; ;/tmp –设置查找的目录；-mtime +30 –设置时间为30天前；-type f –设置查找的类型为文件">
-<meta property="og:updated_time" content="2016-08-03T01:53:27.000Z">
+<meta property="og:description" content="find . -cmin -50 -type f |xargs rm -rf
+# find /tmp -mtime +30 -type f -name *.sh[ab] -exec rm -f {} ;
+/tmp –设置查找的目录；
+-mtime +30 –设置时间为30天前；
+-type f –设置查找的类型为文件；
+-name *.sh[ab] –设置文件名称中包含sha或者shb；
+-exe">
+<meta property="og:updated_time" content="2016-08-29T06:10:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="删除指定时间之后的文章">
-<meta name="twitter:description" content="12345678910111213141516171819202122find . -cmin -50 -type f |xargs rm -rf# find /tmp -mtime +30 -type f -name *.sh[ab] -exec rm -f &amp;#123;&amp;#125; ;/tmp –设置查找的目录；-mtime +30 –设置时间为30天前；-type f –设置查找的类型为文件">
+<meta name="twitter:description" content="find . -cmin -50 -type f |xargs rm -rf
+# find /tmp -mtime +30 -type f -name *.sh[ab] -exec rm -f {} ;
+/tmp –设置查找的目录；
+-mtime +30 –设置时间为30天前；
+-type f –设置查找的类型为文件；
+-name *.sh[ab] –设置文件名称中包含sha或者shb；
+-exe">
 
 
 
@@ -326,7 +344,17 @@
       
 
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">find . -cmin -50 -type f |xargs rm -rf</div><div class="line"></div><div class="line"># find /tmp -mtime +30 -type f -name *.sh[ab] -exec rm -f &#123;&#125; ;</div><div class="line"></div><div class="line">/tmp –设置查找的目录；</div><div class="line"></div><div class="line">-mtime +30 –设置时间为30天前；</div><div class="line"></div><div class="line">-type f –设置查找的类型为文件；</div><div class="line"></div><div class="line">-name *.sh[ab] –设置文件名称中包含sha或者shb；</div><div class="line"></div><div class="line">-exec rm -f –查找完毕后执行删除操作；</div><div class="line"></div><div class="line">`提示`：将此命令写入crontab后即可自动完成查找并删除的工作 另外的方法大同小异：</div><div class="line"></div><div class="line"># find /tmp -mtime +30 -type f | xargs rm -rf</div><div class="line"></div><div class="line"># 另外一个操作方法：</div><div class="line"></div><div class="line">find . -name &quot;*-e&quot; -exec rm &apos;&#123;&#125;&apos; +</div></pre></td></tr></table></figure>
+        <p>find . -cmin -50 -type f |xargs rm -rf</p>
+<pre><code># find /tmp -mtime +30 -type f -name *.sh[ab] -exec rm -f {} ;
+</code></pre><p>/tmp –设置查找的目录；</p>
+<p>-mtime +30 –设置时间为30天前；</p>
+<p>-type f –设置查找的类型为文件；</p>
+<p>-name *.sh[ab] –设置文件名称中包含sha或者shb；</p>
+<p>-exec rm -f –查找完毕后执行删除操作；</p>
+<p><code>提示</code>：将此命令写入crontab后即可自动完成查找并删除的工作 另外的方法大同小异：</p>
+<pre><code># find /tmp -mtime +30 -type f | xargs rm -rf
+</code></pre><h1 id="另外一个操作方法："><a href="#另外一个操作方法：" class="headerlink" title="另外一个操作方法："></a>另外一个操作方法：</h1><pre><code>find . -name &quot;*-e&quot; -exec rm &apos;{}&apos; +
+</code></pre>
       
     </div>
 
@@ -504,7 +532,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#另外一个操作方法："><span class="nav-number">1.</span> <span class="nav-text">另外一个操作方法：</span></a></li></ol></div>
             
           </div>
         </section>
