@@ -4,6 +4,13 @@
   
     
     <entry>
+      <title><![CDATA[nginx/php-fpm 访问php文件直接下载而不运行]]></title>
+      <url>http://www.wulai.me/2016/09/10/nginx-php-fpm-%E8%AE%BF%E9%97%AEphp%E6%96%87%E4%BB%B6%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E8%80%8C%E4%B8%8D%E8%BF%90%E8%A1%8C/</url>
+      <content type="html"><![CDATA[<p>一般都是由于nginx的配置文件引起的。注意一下部分<code>fastcgi_param</code>,默认为<code>/script$fastcgi_script_name</code>,修改为<code>$document_root$fastcgi_script_name</code>可以解决<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">location ~ \.php$ &#123;</div><div class="line">           root          /data/nginx/www.123.com;</div><div class="line">           fastcgi_pass   127.0.0.1:9000;</div><div class="line">           fastcgi_index  index.php;</div><div class="line">           fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;</div><div class="line">           include        fastcgi_params;</div><div class="line">       &#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[svn externals]]></title>
       <url>http://www.wulai.me/2016/09/09/svn-externals/</url>
       <content type="html"><![CDATA[<h1 id="Externals-Definitions"><a href="#Externals-Definitions" class="headerlink" title="Externals Definitions"></a>Externals Definitions</h1><p>Sometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different locations in a repository, or perhaps from different repositories altogether. You could certainly setup such a scenario by hand—using <code>svn checkout</code> to create the sort of nested working copy structure you are trying to achieve. But if this layout is important for everyone who uses your repository, every other user will need to perform the same checkout operations that you did.</p>
