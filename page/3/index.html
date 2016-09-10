@@ -269,6 +269,120 @@
             
               
                 
+                <a class="post-title-link" href="/2015/11/26/e5-88-a0-e9-99-a4-e6-95-b0-e6-8d-ae-e5-ba-93-e4-b8-8b-e6-89-80-e6-9c-89-e8-a1-a8/" itemprop="url">
+                  删除数据库下所有表
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-26T09:17:00+08:00" content="2015-11-26">
+              2015-11-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/未分类/" itemprop="url" rel="index">
+                    <span itemprop="name">未分类</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>use information_schema;
+select concat(&apos;drop table &apos;,table_name,&apos;;&apos;) from TABLES where table_schema=&apos;tt365&apos;;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/11/23/e5-88-a0-e9-99-a4-e6-8c-87-e5-ae-9a-e6-97-b6-e9-97-b4-e4-b9-8b-e5-90-8e-e7-9a-84-e6-96-87-e7-ab-a0/" itemprop="url">
                   删除指定时间之后的文章
                 </a>
@@ -1574,134 +1688,6 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/14/220/" itemprop="url">
-                  Cannot start PhantomJS  karma
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-14T17:55:45+08:00" content="2015-08-14">
-              2015-08-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/nodejs/" itemprop="url" rel="index">
-                    <span itemprop="name">nodejs</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1、错误信息"><a href="#1、错误信息" class="headerlink" title="1、错误信息"></a>1、错误信息</h2><pre><code>Running &quot;karma:unit&quot; (karma) task
-INFO [karma]: Karma v0.12.37 server started at http://localhost:9876/
-INFO [launcher]: Starting browser PhantomJS
-ERROR [launcher]: Cannot start PhantomJS
-
-INFO [launcher]: Trying to start PhantomJS again (1/2).
-ERROR [launcher]: Cannot start PhantomJS
-
-INFO [launcher]: Trying to start PhantomJS again (2/2).
-ERROR [launcher]: Cannot start PhantomJS
-
-ERROR [launcher]: PhantomJS failed 2 times (cannot start). Giving up.
-Warning: Task &quot;karma:unit&quot; failed. Used --force, continuing.
-
-Done, but with warnings.
-</code></pre><h2 id="2、系统ubuntu-14-04"><a href="#2、系统ubuntu-14-04" class="headerlink" title="2、系统ubuntu 14.04"></a>2、系统ubuntu 14.04</h2><h2 id="3、解决方案"><a href="#3、解决方案" class="headerlink" title="3、解决方案"></a>3、解决方案</h2><pre><code>sudo apt-get install libfontconfig
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1747,7 +1733,7 @@ Done, but with warnings.
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">69</span>
+              <span class="site-state-item-count">70</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
