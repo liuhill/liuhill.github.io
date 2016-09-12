@@ -269,6 +269,127 @@
             
               
                 
+                <a class="post-title-link" href="/2014/11/16/centos-e7-b3-bb-e7-bb-9fiptables-e5-a6-82-e4-bd-95-e6-89-93-e5-bc-80-e7-ab-af-e5-8f-a3-e5-92-8c-e6-9f-a5-e7-9c-8b-e8-a7-84-e5-88-99/" itemprop="url">
+                  CentOS系统iptables如何打开端口和查看规则
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-11-16T15:40:23+08:00" content="2014-11-16">
+              2014-11-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>CentOS安装好如果希望开放其他端口的话，需要打开所需端口,比如打开http的默认端口80</p>
+<p>编辑iptables</p>
+<pre><code>root:vi /etc/sysconfig/iptables
+</code></pre><p>添加</p>
+<pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+</code></pre><p>重新启动服务</p>
+<pre><code>/sbin/service iptables restart
+</code></pre><p>查看端口是否开放</p>
+<pre><code>/sbin/iptables -L -n
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2014/11/15/e8-a7-a3-e5-86-b3lnmp-e4-b8-8b-e6-8f-90-e7-a4-bafileinfo-e6-8f-92-e4-bb-b6-e6-b2-a1-e5-ae-89-e8-a3-85-ef-bc-88php-e5-ae-89-e8-a3-85fileinfo-e6-89-a9-e5-b1-95-e6-95-99-e7-a8-8b-ef-bc-89/" itemprop="url">
                   解决LNMP下提示fileinfo插件没安装（PHP安装fileinfo扩展教程）
                 </a>
@@ -1454,148 +1575,6 @@ make &amp;amp;&amp;amp; make install
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/08/21/e8-ae-a9wordpress-e4-b8-bb-e9-a2-98-e7-bb-95-e5-bc-80-e5-af-b9google-e7-9a-84-e4-be-9d-e8-b5-96/" itemprop="url">
-                  让wordpress主题绕开对google的依赖
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-08-21T14:37:28+08:00" content="2014-08-21">
-              2014-08-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>终于有个借着写技术博客顺便吐槽GFW的机会了。每当网速很快，却偏偏不能谷歌搜索，好不容易搜到个跟问题十分匹配的网站，结果点进去菊花转了几百圈页面还是加载不出来，这显然是件让人很蛋疼的事情。虽然我学会了安装和配置翻墙神器goagent，但我仍然为很多很多很多不会翻墙和不愿意或者没钱买vpn的人叫一下委屈，其实会弄goagent这种的除了少数的一些个搞技术的一般人也弄不来。还有，即使是弄goagent，一，它也是很费时的，配置麻烦，偶尔还要更新程序，二，最近装新系统，准备下载goagent和浏览器代理插件的时候发现，goagent的程序托管在google仓库，proxyswitch要去google应用商店下，但问题是尼玛要访问google的东西你得先翻墙啊~为了能翻墙得先翻墙才行，悖论啊~ 呃。。好了，吐槽结束。该说正事儿了。对了，不知道GFW的去谷歌吧，哦不对，还是去百度吧，谷歌怕你上不去呢。 事情是这样的，基于wordpress的网站里面的主题会用到google的资源，比如我的<a href="http://sudodev.cn/" target="_blank" rel="external">blog站</a>用的twentytwelve主题就引用了谷歌的字体，里面就有个这样的链接:<a href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&amp;subset=latin,latin-ext" target="_blank" rel="external">http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&amp;subset=latin,latin-ext</a> 由于身在天朝的原因，你在访问我的blog的时候就会由于浏览器请求不到这个资源而一直在转菊花（loading加载），运气好只能显示部分图片信息，字看不见，而且是永远看不见那种，除非你像我一样翻墙了。好，既然是这样，那我们把它要请求的东西都下载到服务器上，把链接换成内部链接就好了。here we go:</p>
-<div class="md-section-divider"><br></div>
-
-<h2 id="1-离线资源"><a href="#1-离线资源" class="headerlink" title="1.离线资源"></a>1.离线资源</h2><ul>
-<li>把这个网站对应的css下载下来，给它取个名字，比如我叫他googlefonts.css。</li>
-<li>打开那个css文件，你会发现里面还有一些url是指向google的，分别都下载下来放在一起。比如我把css文件和里面的四个woff的url对应的字体文件都下下来放到了一个叫fonts的文件夹。</li>
-<li>修改那个googlefonts.css文件中指向google的url。由于你把离线下来的那些woff文件放在该css同一个目录，所以你把/前面的所有内容都去掉，留个文件名即可</li>
-<li>把fonts文件夹放在对应主题的目录里。比如我放在wp-content/twentytwelve/css/下面</li>
-</ul>
-<div class="md-section-divider"><br></div>
-
-<h2 id="2-修改引用url-原来主题上的url是指向google的，现在要将它改成指向内部的css文件，即前面的googlefonts-css文件。那么去哪里改呢？我是在主题目录里执行"><a href="#2-修改引用url-原来主题上的url是指向google的，现在要将它改成指向内部的css文件，即前面的googlefonts-css文件。那么去哪里改呢？我是在主题目录里执行" class="headerlink" title="2.修改引用url ,原来主题上的url是指向google的，现在要将它改成指向内部的css文件，即前面的googlefonts.css文件。那么去哪里改呢？我是在主题目录里执行"></a>2.修改引用url ,原来主题上的url是指向google的，现在要将它改成指向内部的css文件，即前面的googlefonts.css文件。那么去哪里改呢？我是在主题目录里执行</h2><p><code>grep googleapis . -r</code>找到的，是在wp-content/twentytwelve/functions.php文件里。在</p>
-<div class="md-section-divider"><br></div>
-
-<ol>
-<li><code>&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt;$font_url &lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt; add_query_arg&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt; $query_args&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;str&quot; style=&quot;color: #008800;&quot;&gt;&quot;$protocol://fonts.googleapis.com/css&quot;&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;);&lt;/span&gt;</code></li>
-</ol>
-<p>后面加两句</p>
-<div class="md-section-divider"><br></div>
-
-<ol>
-<li><code>&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt;$filePath &lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt; dirname&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt;__FILE__&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;str&quot; style=&quot;color: #008800;&quot;&gt;&quot;/css/fonts/googlefonts.css&quot;&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;;&lt;/span&gt;</code></li>
-<li><code>&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt;$font_url &lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;str&quot; style=&quot;color: #008800;&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt;$filePath&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt; strpos&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt;$filePath&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;str&quot; style=&quot;color: #008800;&quot;&gt;&quot;wp-content&quot;&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;));&lt;/span&gt;</code></li>
-</ol>
-<p>好了，网站已经彻底摆脱了对google的依赖，马麻再也不用担心访问我的网站只能看到转菊花了~ ：）</p>
-<blockquote>
-<p>你可能会眨巴着你一双无辜的水汪汪的大眼睛，问：你连谷歌都不上去又怎么离线它的css资源呢，这不也是悖论吗？我微风中头一甩，待额头上整齐的头发潇洒平安的降落在头的一侧的时候，答：当然是先把墙给翻了再做这件事喽，傻瓜~</p>
-</blockquote>
-<div class="md-section-divider"><br></div>
-
-<h2 id="另：网站中添加的谷歌analytics的js代码不会对网页加载产生影响。因为它是动态写上去，等网站发起对ga-js的请求的时候，网页中该请求的东西都请求完了。所以不会影响，只是有墙的情况下，由于ga-js请求不到，会影响google-analytics对你网站流量监控的准确性。-转载于：http-sudodev-cn-articles-354-html"><a href="#另：网站中添加的谷歌analytics的js代码不会对网页加载产生影响。因为它是动态写上去，等网站发起对ga-js的请求的时候，网页中该请求的东西都请求完了。所以不会影响，只是有墙的情况下，由于ga-js请求不到，会影响google-analytics对你网站流量监控的准确性。-转载于：http-sudodev-cn-articles-354-html" class="headerlink" title="另：网站中添加的谷歌analytics的js代码不会对网页加载产生影响。因为它是动态写上去，等网站发起对ga.js的请求的时候，网页中该请求的东西都请求完了。所以不会影响，只是有墙的情况下，由于ga.js请求不到，会影响google analytics对你网站流量监控的准确性。     转载于：http://sudodev.cn/articles/354.html"></a>另：网站中添加的谷歌analytics的js代码不会对网页加载产生影响。因为它是动态写上去，等网站发起对ga.js的请求的时候，网页中该请求的东西都请求完了。所以不会影响，只是有墙的情况下，由于ga.js请求不到，会影响google analytics对你网站流量监控的准确性。     <a href="转载于：http://sudodev.cn/articles/354.html">转载于：http://sudodev.cn/articles/354.html</a></h2>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1641,7 +1620,7 @@ make &amp;amp;&amp;amp; make install
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-count">72</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
