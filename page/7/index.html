@@ -269,6 +269,131 @@
             
               
                 
+                <a class="post-title-link" href="/2014/11/17/centos-e4-b8-adssh-e8-bf-9e-e6-8e-a5-e4-b8-ad-e6-96-87-e4-b9-b1-e7-a0-81/" itemprop="url">
+                  CentOS中SSH连接中文乱码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-11-17T23:01:48+08:00" content="2014-11-17">
+              2014-11-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>CentOS 6 ，在SSH时回显中文乱码，则：</p>
+<p>修改 /etc/sysconfig/i18n 文件</p>
+<p>命令：</p>
+<pre><code>vi /etc/sysconfig/i18n
+
+
+将里面的文字 最终修改为：
+
+LANG=&quot;zh_CN.GB18030&quot;
+LANGUAGE=&quot;zh_CN.GB18030:zh_CN.GB2312:zh_CN&quot;
+SUPPORTED=&quot;zh_CN.UTF-8:zh_CN:zh:en_US.UTF-8:en_US:en&quot;
+SYSFONT=&quot;lat0-sun16&quot;
+</code></pre><p>最后，断开重连SSH就可以了，进入用date命令既可查看效果</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2014/11/16/centos-e7-b3-bb-e7-bb-9fiptables-e5-a6-82-e4-bd-95-e6-89-93-e5-bc-80-e7-ab-af-e5-8f-a3-e5-92-8c-e6-9f-a5-e7-9c-8b-e8-a7-84-e5-88-99/" itemprop="url">
                   CentOS系统iptables如何打开端口和查看规则
                 </a>
@@ -1462,119 +1587,6 @@ make &amp;amp;&amp;amp; make install
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/08/28/nginxphp-e6-98-be-e7-a4-baphp/" itemprop="url">
-                  nginx+php 显示php
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-08-28T14:40:51+08:00" content="2014-08-28">
-              2014-08-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="修改php-ini"><a href="#修改php-ini" class="headerlink" title="修改php.ini"></a>修改php.ini</h2><pre><code>short_open_tag = On
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1620,7 +1632,7 @@ make &amp;amp;&amp;amp; make install
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">72</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

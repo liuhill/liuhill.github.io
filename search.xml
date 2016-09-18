@@ -4,6 +4,17 @@
   
     
     <entry>
+      <title><![CDATA[运算符，；的优先级]]></title>
+      <url>http://www.wulai.me/2016/09/18/%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8C%EF%BC%9B%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7/</url>
+      <content type="html"><![CDATA[<p>今天看一段anguarjs的代码发现，有一段for语句后面没有｛｝，后面跟着3个表达式，中间用<code>,</code>分割.但是觉得很奇怪，写段代码测试一下，发觉用<code>,</code>分割语句会连续执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">b=1;</div><div class="line">for(i=0;i&lt;5;i++)a=1,b++;</div><div class="line">console.log(b);</div></pre></td></tr></table></figure></p>
+<p>返回值<code>6</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">b=1;</div><div class="line">for(i=0;i&lt;5;i++)a=1;b++;</div><div class="line">console.log(b);</div></pre></td></tr></table></figure>
+<p>返回值<code>2</code></p>
+<p>后来查找了一下<code>,</code>从左到右依次运算。属于表达式</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Docker client is newer than server]]></title>
       <url>http://www.wulai.me/2016/09/12/Docker-client-is-newer-than-server/</url>
       <content type="html"><![CDATA[<p>###Docker client is newer than server<br>执行<code>docker pull voduytuan/jenkins-php-docker</code>时出错</p>
