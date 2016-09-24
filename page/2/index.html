@@ -269,6 +269,124 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/20/e6-9f-a5-e6-89-be-e5-a4-a7-e6-96-87-e4-bb-b6-e5-a4-b9/" itemprop="url">
+                  查找大文件夹
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-20T12:21:56+08:00" content="2016-05-20">
+              2016-05-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>cd \
+du -h --max-depth=1|grep G|sort -n
+</code></pre><p>找到最大的那个目录后进入该目录</p>
+<p>再运行<br>    du -h –max-depth=1|grep G|-n</p>
+<p>如果没有结果可以运行<br>    du -h –max-depth=1|grep M|sort -n</p>
+<p>找出来以后看是否有用的文件</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/19/git-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4-e5-a4-87-e5-bf-98/" itemprop="url">
                   Git常用命令备忘
                 </a>
@@ -1662,125 +1780,6 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/21/e5-a6-82-e4-bd-95-e6-89-b9-e9-87-8f-e6-88-96-e8-80-85-e5-85-a8-e9-83-a8-e5-88-a0-e9-99-a4linux-e7-9a-84-e7-b3-bb-e7-bb-9f-e9-82-ae-e4-bb-b6-ef-bc-9f/" itemprop="url">
-                  如何批量或者全部删除Linux的系统邮件？
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-21T10:17:59+08:00" content="2016-01-21">
-              2016-01-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/未分类/" itemprop="url" rel="index">
-                    <span itemprop="name">未分类</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>CentOS Linux Server 会将许多系统运行的状态发邮件给管理员root用户，系统邮件存放在 /var/spool/mail/root 目录中，可以通过使用 mail 命令来查看邮件，但是时间长了，也会造成邮件过多，如何使用 Shell 命令来批量删除或者全部删除呢？</p>
-<p>　　方法一：使用mail命令，然后在 &amp; 提示符下使用 d 命令（Delete），批量删除邮件，例如删除1~53邮件：</p>
-<p>　　# mail<br>　　&amp; d 1-53</p>
-<p>　　方法二：删除全部系统邮件</p>
-<p>　　# &gt; /var/spool/mail/root    or  cat /dev/null &gt; /var/spool/mail/root</p>
-<p>　　或者</p>
-<p>　　# echo “d *” |mail -N</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1826,7 +1825,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">75</span>
+              <span class="site-state-item-count">76</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

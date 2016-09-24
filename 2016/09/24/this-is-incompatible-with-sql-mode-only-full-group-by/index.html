@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="Externals DefinitionsSometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different l">
+<meta name="description" content="I was working on a legacy project recently and needed to import some data from MySQL 5.5. All the queries in the code worked perfectly in MySQL 5.5, so I assumed an upgrade to 5.7 would be seamless. N">
 <meta property="og:type" content="article">
-<meta property="og:title" content="svn externals">
-<meta property="og:url" content="http://www.wulai.me/2016/09/09/svn-externals/index.html">
+<meta property="og:title" content="this is incompatible with sql_mode=only_full_group_by">
+<meta property="og:url" content="http://www.wulai.me/2016/09/24/this-is-incompatible-with-sql-mode-only-full-group-by/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="Externals DefinitionsSometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different l">
-<meta property="og:updated_time" content="2016-09-09T06:56:50.000Z">
+<meta property="og:description" content="I was working on a legacy project recently and needed to import some data from MySQL 5.5. All the queries in the code worked perfectly in MySQL 5.5, so I assumed an upgrade to 5.7 would be seamless. N">
+<meta property="og:updated_time" content="2016-09-24T15:02:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="svn externals">
-<meta name="twitter:description" content="Externals DefinitionsSometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different l">
+<meta name="twitter:title" content="this is incompatible with sql_mode=only_full_group_by">
+<meta name="twitter:description" content="I was working on a legacy project recently and needed to import some data from MySQL 5.5. All the queries in the code worked perfectly in MySQL 5.5, so I assumed an upgrade to 5.7 would be seamless. N">
 
 
 
@@ -113,10 +113,10 @@
 
 
 
-  <link rel="canonical" href="http://www.wulai.me/2016/09/09/svn-externals/"/>
+  <link rel="canonical" href="http://www.wulai.me/2016/09/24/this-is-incompatible-with-sql-mode-only-full-group-by/"/>
 
 
-  <title> svn externals | 无来 </title>
+  <title> this is incompatible with sql_mode=only_full_group_by | 无来 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -267,7 +267,7 @@
             
             
               
-                svn externals
+                this is incompatible with sql_mode=only_full_group_by
               
             
           </h1>
@@ -279,8 +279,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-09T14:32:47+08:00" content="2016-09-09">
-              2016-09-09
+            <time itemprop="dateCreated" datetime="2016-09-24T22:57:18+08:00" content="2016-09-24">
+              2016-09-24
             </time>
           </span>
 
@@ -307,16 +307,27 @@
       
 
       
-        <h1 id="Externals-Definitions"><a href="#Externals-Definitions" class="headerlink" title="Externals Definitions"></a>Externals Definitions</h1><p>Sometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different locations in a repository, or perhaps from different repositories altogether. You could certainly setup such a scenario by hand—using <code>svn checkout</code> to create the sort of nested working copy structure you are trying to achieve. But if this layout is important for everyone who uses your repository, every other user will need to perform the same checkout operations that you did.</p>
-<p>Fortunately, Subversion provides support for externals definitions. An externals definition is a mapping of a local directory to the URL—and possibly a particular revision—of a versioned resource. In Subversion, you declare externals definitions in groups using the <code>svn:externals</code> property. You can create or modify this property using <code>svn propset</code> or <code>svn propedit</code> (see <a href="http://svnbook.red-bean.com/en/1.0/ch07s02.html#svn-ch-7-sect-2.1" target="_blank" rel="external">the section called “Why Properties?”</a>). It can be set on any versioned directory, and its value is a multi-line table of subdirectories (relative to the versioned directory on which the property is set) and fully qualified, absolute Subversion repository URLs.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ svn propget svn:externals calc</div><div class="line">third-party/sounds             http://sounds.red-bean.com/repos</div><div class="line">third-party/skins              http://skins.red-bean.com/repositories/skinproj</div><div class="line">third-party/skins/toolkit -r21 http://svn.red-bean.com/repos/skin-maker</div></pre></td></tr></table></figure>
-<p>he convenience of the svn:externals property is that once it is set on a versioned directory, everyone who checks out a working copy with that directory also gets the benefit of the externals definition. In other words, once one person has made the effort to define those nested working copy checkouts, no one else has to bother—Subversion will, upon checkout of the original working copy, also checkout the external working copies.</p>
-<p>Note the previous externals definition example. When someone checks out a working copy of the calc directory, Subversion also continues to checkout the items found in its externals definition.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">$ svn checkout http://svn.example.com/repos/calc</div><div class="line">A  calc</div><div class="line">A  calc/Makefile</div><div class="line">A  calc/integer.c</div><div class="line">A  calc/button.c</div><div class="line">Checked out revision 148.</div><div class="line"></div><div class="line">Fetching external item into calc/third-party/sounds</div><div class="line">A  calc/third-party/sounds/ding.ogg</div><div class="line">A  calc/third-party/sounds/dong.ogg</div><div class="line">A  calc/third-party/sounds/clang.ogg</div><div class="line">…</div><div class="line">A  calc/third-party/sounds/bang.ogg</div><div class="line">A  calc/third-party/sounds/twang.ogg</div><div class="line">Checked out revision 14.</div><div class="line"></div><div class="line">Fetching external item into calc/third-party/skins</div><div class="line">…</div></pre></td></tr></table></figure>
-<p>If you need to change the externals definition, you can do so using the regular property modification subcommands. When you commit a change to the <code>svn:externals</code> property, Subversion will synchronize the checked-out items against the changed externals definition when you next run <code>svn update</code>. The same thing will happen when others update their working copies and receive your changes to the externals definition.</p>
-<p>The <code>svn status</code> command also recognizes externals definitions, displaying a status code of X for the disjoint subdirectories into which externals are checked out, and then recursing into those subdirectories to display the status of the external items themselves.</p>
-<p>The support that exists for externals definitions in Subversion today can be a little misleading, though. First, an externals definition can only point to directories, not files. Second, the externals definition cannot point to relative paths (paths like ../../skins/myskin). Third, the working copies created via the externals definition support are still disconnected from the primary working copy (on whose versioned directories the <code>svn:externals</code> property was actually set). And Subversion still only truly operates on non-disjoint working copies. So, for example, if you want to commit changes that you’ve made in one or more of those external working copies, you must run <code>svn commit</code> explicitly on those working copies—committing on the primary working copy will not recurse into any external ones.</p>
-<p>Also, since the definitions themselves use absolute URLs, moving or copying a directory to which they are attached will not affect what gets checked out as an external (though the relative local target subdirectory will, of course, move with renamed directory). This can be confusing—even frustrating—in certain situations. For example, if you use externals definitions on a directory in your /trunk development line which point to other areas of that same line, and then you use <code>svn copy</code> to branch that line to some new location /branches/my-branch, the externals definitions on items in your new branch will still refer to versioned resources in /trunk. Also, be aware that if you need to re-parent your working copy (using svn switch –relocate), externals definitions will not also be re-parented.</p>
+        <p>I was working on a legacy project recently and needed to import some data from MySQL 5.5. All the queries in the code worked perfectly in MySQL 5.5, so I assumed an upgrade to 5.7 would be seamless. Not so.</p>
+<p>First I got errors due to DateTime columns being populated with zeros during import, then when running this query:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">select *</div><div class="line">  from ebay_order_items</div><div class="line">  where</div><div class="line">    z_shipmentno is null</div><div class="line">    and ExternalTransactionID is not null</div><div class="line">    and orderstatus = &apos;Completed&apos;</div><div class="line">    and timestamp &gt; &apos;2015-02-25&apos;</div><div class="line">  group by ExternalTransactionID</div><div class="line">  order by timestamp desc</div></pre></td></tr></table></figure>
+<p>I got this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Expression #1 of SELECT list is not in GROUP BY</div><div class="line">clause and contains nonaggregated column</div><div class="line">&apos;1066export.ebay_order_items.TransactionID&apos; which</div><div class="line">is not functionally dependent on columns in GROUP BY</div><div class="line">clause; this is incompatible with sql_mode=only_full_group_by</div></pre></td></tr></table></figure></p>
+<p>It turned out that the only_full_group_by mode was made default in version 5.7.5., which breaks many of such naïve queries. In fact, see here for more info.</p>
+<p>I could rewrite all queries to be 5.7 compatible (hat tip to George Fekete for the solution) and do something as atrocious as this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">select extf.* from (</div><div class="line">	select ExternalTransactionID</div><div class="line">	from ebay_order_items</div><div class="line">	where ExternalTransactionID is not null</div><div class="line">	group by ExternalTransactionID</div><div class="line">) extf JOIN ebay_order_items eoi</div><div class="line">ON (eoi.ExternalTransactionID = extf.ExternalTransactionID)</div><div class="line">where eoi.z_shipmentno is null</div><div class="line">and eoi.orderstatus = &apos;Completed&apos;</div><div class="line">and eoi.timestamp &gt; &apos;2015-02-25&apos;</div><div class="line">order by eoi.timestamp desc</div></pre></td></tr></table></figure>
+<p>… but this would make the already complex refactoring much more difficult. It would be much better to temporarily disable these checks and force MySQL to act like it did in 5.6.</p>
+<h2 id="Permanently-changing-SQL-mode"><a href="#Permanently-changing-SQL-mode" class="headerlink" title="Permanently changing SQL mode"></a>Permanently changing SQL mode</h2><p>First, we find out which configuration file our MySQL installation prefers. For that, we need the binary’s location:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ which mysqld</div><div class="line">/usr/sbin/mysqld</div></pre></td></tr></table></figure></p>
+<p>Then, we use this path to execute the lookup:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ /usr/sbin/mysqld --verbose --help | grep -A 1 &quot;Default options&quot;</div><div class="line"></div><div class="line">Default options are read from the following files in the given order:</div><div class="line">/etc/my.cnf /etc/mysql/my.cnf ~/.my.cnf</div></pre></td></tr></table></figure>
+<p>We can see that the first favored configuration file is one in the root of the etc folder. That file, however, did not exist on my system so I opted for the second one.</p>
+<p>First, we find out the current sql mode:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql -u homestead -psecret -e &quot;select @@sql_mode&quot;</div><div class="line"></div><div class="line">+-------------------------------------------------------------------------------------------------------------------------------------------+</div><div class="line">| @@sql_mode                                                                                                                                |</div><div class="line">+-------------------------------------------------------------------------------------------------------------------------------------------+</div><div class="line">| ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION |</div><div class="line">+-------------------------------------------------------------------------------------------------------------------------------------------+</div></pre></td></tr></table></figure>
+<p>Then, we copy the current string this query produced and remove everything we don’t like. In my case, I needed to get rid of NO_ZERO_IN_DATE, NO_ZERO_DATE and of course ONLY_FULL_GROUP_BY. The newly formed string then looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</div></pre></td></tr></table></figure>
+<p>We open the configuration file we decided on before (/etc/mysql/my.cnf) and add the following line into the [mysqld] section:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[mysqld]</div><div class="line"># ... other stuff will probably be here</div><div class="line">sql_mode = &quot;STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION&quot;</div></pre></td></tr></table></figure>
+<p>Save, exit, and restart MySQL:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service mysql restart</div></pre></td></tr></table></figure>
+<p>Voilà, the SQL mode is permanently changed and I can continue developing the legacy project until I need some additional strictness.</p>
 
       
     </div>
@@ -342,17 +353,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/06/linux-e5-a6-82-e4-bd-95-e6-98-be-e7-a4-ba-e4-b8-80-e4-b8-aa-e6-96-87-e4-bb-b6-e7-9a-84-e6-9f-90-e5-87-a0-e8-a1-8c-e4-b8-ad-e9-97-b4-e5-87-a0-e8-a1-8c/" rel="next" title="linux 如何显示一个文件的某几行(中间几行)">
-                <i class="fa fa-chevron-left"></i> linux 如何显示一个文件的某几行(中间几行)
+              <a href="/2016/09/24/多个网站使用不同的SSH密钥登陆/" rel="next" title="多个网站使用不同的SSH密钥登陆">
+                <i class="fa fa-chevron-left"></i> 多个网站使用不同的SSH密钥登陆
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/10/nginx-php-fpm-访问php文件直接下载而不运行/" rel="prev" title="nginx/php-fpm 访问php文件直接下载而不运行">
-                nginx/php-fpm 访问php文件直接下载而不运行 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -495,7 +502,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Externals-Definitions"><span class="nav-number">1.</span> <span class="nav-text">Externals Definitions</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Permanently-changing-SQL-mode"><span class="nav-number">1.</span> <span class="nav-text">Permanently changing SQL mode</span></a></li></ol></div>
             
           </div>
         </section>
