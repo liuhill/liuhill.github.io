@@ -269,6 +269,231 @@
             
               
                 
+                <a class="post-title-link" href="/2014/11/28/73/" itemprop="url">
+                  APC缓存简介
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-11-28T21:16:53+08:00" content="2014-11-28">
+              2014-11-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、APC缓存简介 APC，全称是Alternative PHP Cache，官方翻译叫”可选PHP缓存”。它为我们提供了缓存和优化PHP的中间代码的框架。 APC的缓存分两部分:系统缓存和用户数据缓存。 系统缓存 它是指APC把PHP文件源码的编译结果缓存起来，然后在每次调用时先对比时间标记。如果未过期，则使用缓存的中间代码运行。默认缓存 3600s(一小时)。但是这样仍会浪费大量CPU时间。因此可以在php.ini中设置system缓存为永不过期(apc.ttl=0)。不过如果这样设置，改运php代码后需要重启WEB服务器。目前使用较多的是指此类缓存。 用户数据缓存 缓存由用户在编写PHP代码时用apc_store和apc_fetch函数操作读取、写入的。如果数据量不大的话，可以一试。如果数据量大，使用类似memcache此类的更加专著的内存缓存方案会更好 缓存key生成规则 APC的缓存中的每个slot都会有一个key，key是 apc_cache_key_t结构体类型，除了key相关的属性，关键是h字段的生成。 h字段决定了此元素落于slots数组的哪一个位置。对于用户缓存和系统缓存，其生成规则不同。 用户缓存通过apc_cache_make_user_key函数生成key。通过用户传递进来的key字符串，依赖PHP内核中的hash函数（PHP的hashtable所使用的hash函数：zend_inline_hash_func），生成h值。 系统缓存通过apc_cache_make_file_key函数生成key。通过APC的配置项apc.stat的开关来区别对待不同的方案。在打开的情况下，即 apc.stat= On 时，如果被更新则自动重新编译和缓存编译后的内容。此时的h值是文件的device和inode相加所得的值。在关闭的情况下，即apc.stat=off时，当文件被修改后，如果要使更新的内容生效，则必须重启Web服务器。此时h值是根据文件的路径地址生成，并且这里的路径是绝对路径。即使你是使用的相对路径，也会查找PG(include_path)定位文件，以取得绝对路径，所以使用绝对路径会跳过检查，可以提高代码的效率。 添加缓存过程 以用户缓存为例，apc_add函数用于给APC缓存中添加内容。如果key参数为字符串中，APC会根据此字符串生成key，如果key参数为数组，APC会遍历整个数组，生成key。根据这些key，APC会调用&#95;apc&#95;store将值存储到缓存中。由于这是用户缓存，当前使用的缓存为apc_user_cache。执行写入操作的是apc_cache_make_user_entry函数，其最终调用apc_cache_user_insert执行遍历查询和写入操作。与此对应，系统缓存使用apc_cache_insert执行写入操作，其最终都会调用&#95;apc&#95;cache_insert。 不管是用户缓存还是系统缓存，大体的执行过程类似，步骤如下：</p>
+<p>通过求余操作，定位当前key的在slots数组中的位置： cache-&gt;slots[key.h % cache-&gt;num_slots]; 在定位到slots数组中的位置后，遍历当前key对应的slot链表，如果存在slot的key和要写入的key匹配或slot过期，清除当前slot。 在最后一个slot的后面插入新的slot。 2、APC模块安装 WINDOWS 第一步：下载php_apc.dll 在<a href="http://pecl.php.net/package/apc" target="_blank" rel="external">http://pecl.php.net/package/apc</a> 要与php版本对应 将php_apc.dll放入你的ext目录</p>
+<p>第二步：让php.ini支持apc扩展模块。 然后打开php.ini 加入：</p>
+<p>extension=php_apc.dll</p>
+<p>apc.rfc1867 = on</p>
+<p>apc.max_file_size = 100M</p>
+<p>upload_max_filesize = 100M</p>
+<p>post_max_size = 100M</p>
+<p>//以上参数可自己定义</p>
+<p>第三步：检查是否支持PHP APC apc_store apc_fetch PHP APC 配置参数 把相关的配置放在一起解释。</p>
+<p>apc.enabled=1 apc.enabled默认值是1，你可设成0禁用APC。如果你设置为0的时候，同样把extension=apc.so也注释掉（这样可以节约内存资源）。一旦启用了APC功能，则会缓存Opcodes到共享内存。</p>
+<p>apc.shm_segments = 1</p>
+<p>总结 1,使用Spinlocks锁机制，能够达到最佳性能。</p>
+<p>2,APC提供了apc.php，用于监控与管理APC缓存。不要忘记修改管理员名和密码</p>
+<p>3,APC默认通过mmap匿名映射创建共享内存，缓存对象都存放在这块”大型”的内存空间。由APC自行管理该共享内存</p>
+<p>4,我们需要通过统计调整apc.shm_size、apc.num_files_hints、apc.user_entries_hint的值。直到最佳</p>
+<p>5,好吧，我承认apc.stat = 0 可以获得更佳的性能。要我做什么都可以接受.</p>
+<p>6,PHP预定义常量，可以使用apc_define_constants()函数。不过据APC开发者介绍说pecl hidef性能更佳，抛异define吧，它是低效的。</p>
+<p>7,函数apc_store()，对于系统设置等PHP变量，生命周期是整个应用(从httpd守护进程直到httpd守护进程关闭)，使用APC比Memcached会更好。必竟不要经过网络传输协议tcp。</p>
+<p>8,APC不适于通过函数apc_store()缓存频繁变更的用户数据，会出现一些奇异现象。</p>
+<p>LIUNX wget <a href="http://pecl.php.net/get/APC-3.1.8.tgz" target="_blank" rel="external">http://pecl.php.net/get/APC-3.1.8.tgz</a></p>
+<p>tar -zxvf APC-3.1.8.tgz cd APC-3.1.8</p>
+<p>/usr/local/php/bin/phpize</p>
+<p>./configure –enable-apc –enable-mmap –enable-apc-spinlocks –disable-apc-pthreadmutex –with-php-config=/usr/local/php/bin/php-config</p>
+<p>make</p>
+<p>sudo make install</p>
+<p>在/usr/local/php/etc/php.ini 加入</p>
+<p>extension = “apc.so” ;</p>
+<p>;APC setting</p>
+<p>apc.enabled = 1</p>
+<p>apc.shm_segments = 1</p>
+<p>apc.shm_size = 64M</p>
+<p>apc.optimization = 1</p>
+<p>apc.num_files_hint = 0</p>
+<p>apc.ttl = 0</p>
+<p>apc.gc_ttl = 3600</p>
+<p>apc.cache_by_default = on</p>
+<p>重启apache 或者 /usr/local/php/sbin/php-fpm restart</p>
+<p>查看phpinfo apc</p>
+<p>下面引用www.initphp.com 框架的APC缓存类 initphp框架之APC缓存类 [php] &lt;?php if (!defined(‘IS_INITPHP’)) exit(‘Access Denied!’); /<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> <em> InitPHP 2.0 国产PHP开发框架 Dao-APC缓存 不适合频繁写入的缓存数据 </em>——————————————————————————- <em> 版权所有: CopyRight By initphp.com </em> 您可以自由使用该源码，但是在使用过程中，请保留作者信息。尊重他人劳动成果就是尊重自己 <em>——————————————————————————- </em> $Author:zhuli <em> $Dtime:2011-10-09 <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></em>/ class apcInit {</p>
+<pre><code>/**
+ * Apc缓存-设置缓存
+ * 设置缓存key，value和缓存时间
+ * @param  string $key   KEY值
+ * @param  string $value 值
+ * @param  string $time  缓存时间
+ */ 
+public function set_cache($key, $value, $time = 0) {  
+    if ($time == 0) $time = null; //null情况下永久缓存 
+    return apc_store($key, $value, $time);; 
+} 
+
+/**
+ * Apc缓存-获取缓存
+ * 通过KEY获取缓存数据
+ * @param  string $key   KEY值
+ */ 
+public function get_cache($key) { 
+    return apc_fetch($key); 
+} 
+
+/**
+ * Apc缓存-清除一个缓存
+ * 从memcache中删除一条缓存
+ * @param  string $key   KEY值
+ */ 
+public function clear($key) { 
+    return apc_delete($key); 
+} 
+
+/**
+ * Apc缓存-清空所有缓存
+ * 不建议使用该功能
+ * @return
+ */ 
+public function clear_all() { 
+    apc_clear_cache(&apos;user&apos;); //清除用户缓存 
+    return apc_clear_cache(); //清楚缓存 
+} 
+
+/**
+ * 检查APC缓存是否存在
+ * @param  string $key   KEY值
+ */ 
+public function exists($key) { 
+    return apc_exists($key); 
+} 
+
+/**
+ * 字段自增-用于记数
+ * @param string $key  KEY值
+ * @param int    $step 新增的step值
+ */ 
+public function inc($key, $step) { 
+    return apc_inc($key, (int) $step); 
+} 
+
+/**
+ * 字段自减-用于记数
+ * @param string $key  KEY值
+ * @param int    $step 新增的step值
+ */ 
+public function dec($key, $step) { 
+    return apc_dec($key, (int) $step); 
+} 
+
+/**
+ * 返回APC缓存信息
+ */ 
+public function info() { 
+    return apc_cache_info(); 
+} 
+</code></pre><p>}</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2014/11/18/e5-be-ae-e4-bf-a1-e5-85-ac-e5-85-b1-e8-b4-a6-e5-8f-b7-e6-b5-8b-e8-af-95-e5-8f-b7-e7-94-b3-e8-af-b7/" itemprop="url">
                   微信公共账号测试号申请
                 </a>
@@ -1463,119 +1688,6 @@ server {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/09/11/mysql-e4-bf-ae-e6-94-b9-e5-ad-97-e7-ac-a6-e9-9b-86/" itemprop="url">
-                  mysql修改字符集
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-09-11T14:07:09+08:00" content="2014-09-11">
-              2014-09-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>ALTER TABLE `games` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1621,7 +1733,7 @@ server {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-count">75</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
