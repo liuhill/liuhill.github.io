@@ -269,6 +269,126 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/06/linux-e5-a6-82-e4-bd-95-e6-98-be-e7-a4-ba-e4-b8-80-e4-b8-aa-e6-96-87-e4-bb-b6-e7-9a-84-e6-9f-90-e5-87-a0-e8-a1-8c-e4-b8-ad-e9-97-b4-e5-87-a0-e8-a1-8c/" itemprop="url">
+                  linux 如何显示一个文件的某几行(中间几行)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-06T13:09:21+08:00" content="2016-07-06">
+              2016-07-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/未分类/" itemprop="url" rel="index">
+                    <span itemprop="name">未分类</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1、从第3000行开始，显示1000行。即显示3000-3999行"><a href="#1、从第3000行开始，显示1000行。即显示3000-3999行" class="headerlink" title="1、从第3000行开始，显示1000行。即显示3000~3999行"></a>1、从第3000行开始，显示1000行。即显示3000~3999行</h3><pre><code>cat filename | tail -n +3000 | head -n 1000
+</code></pre><h3 id="2、显示1000行到3000行"><a href="#2、显示1000行到3000行" class="headerlink" title="2、显示1000行到3000行"></a>2、显示1000行到3000行</h3><pre><code>cat filename| head -n 3000 | tail -n +1000
+</code></pre><p><code>*注意两种方法的顺序</code></p>
+<blockquote>
+<p>分解：<br>       tail -n 1000：显示最后1000行<br>       tail -n +1000：从1000行开始显示，显示1000行以后的<br>       head -n 1000：显示前面1000行</p>
+</blockquote>
+<h2 id="3、用sed命令"><a href="#3、用sed命令" class="headerlink" title="3、用sed命令"></a>3、用sed命令</h2><pre><code>sed -n &apos;5,10p&apos; filename
+</code></pre><p>这样你就可以只查看文件的第5行到第10行。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/28/docker-dial-tcp-lookup-index-docker-io-no-such-host-solution/" itemprop="url">
                   Docker - dial tcp: lookup index.docker.io: no such host - Solution
                 </a>
@@ -1644,168 +1764,6 @@ ngx.say(content)
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/01/centos-e4-b8-8b-e5-b0-86mysql-5-1-e5-8d-87-e7-ba-a7-e5-88-b0mysql-5-5/" itemprop="url">
-                  CentOS下将MySQL 5.1升级到MySQL 5.5
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-01T11:41:38+08:00" content="2016-04-01">
-              2016-04-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/未分类/" itemprop="url" rel="index">
-                    <span itemprop="name">未分类</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>mysql 5.5已经出来有一段时间，性能有明显提升，特别是对多核CPU的支持与TPS性能的提升。上周博主介绍了linux下编译安装mysql 5.5的步骤，安装不出意外基本没有问题。不过可能很多朋友和我一样一直用的是mysql 5.1，现在想把数据库升级成5.5了。博主根据实际操作，记录这次升级操作。</p>
-<p>mysql基础信息</p>
-<p>1、安装目录<br><code>[root@vm-199~]# /usr/local/mysql</code><br>2、配置文件<br><code>[root@vm-199~]# /etc/my.cnf</code><br>3、数据目录<br><code>[root@vm-199~]# /data/mysql</code><br>4、启动脚本<br><code>[root@vm-199~]# /etc/init.d/mysql</code></p>
-<p>备份数据和安装、配置文件</p>
-<p><code>[root@vm-199~]# mysqldump -uroot -p –all-databases &lt;/root/zhangnq/mysql5.1/mysql_dbk_20140217.sql
-[root@vm-199~]# tar czvf mysql_5.1.60_full.tar.gz /usr/local/mysql
-[root@vm-199~]# tar czvf mysql_5.1.60_data_full.tar.gz /data/mysql
-[root@vm-199~]# cp /etc/my.cnf  ./</code></p>
-<p>数据备份好后关闭mysql数据库，<code>/etc/init.d/mysql stop</code>，删除/usr/local/mysql文件。</p>
-<p>安装mysql 5.5</p>
-<p>具体可以参考这篇文章《Linux下编译安装Mysql-5.5的简单步骤》（<a href="http://www.sijitao.net/1563.html），安装目录、数据目录和5.1的一样，都是/usr/local/mysql" target="_blank" rel="external">http://www.sijitao.net/1563.html），安装目录、数据目录和5.1的一样，都是/usr/local/mysql</a> 。</p>
-<p>更新配置文件</p>
-<p><code>[root@vm-199 mysql-5.5.35]# cp support-files/my-huge.cnf /etc/my.cnf</code></p>
-<p>在配置文件中添加数据目录，datadir = /data/mysql 。</p>
-<p>启动mysql 5.5，执行更新程序并重启mysql</p>
-<p><code>[root@vm-199 mysql-5.5.35]# /etc/init.d/mysql start
-[root@vm-199 mysql-5.5.35]# /usr/local/mysql/bin/mysql_upgrade
-Looking for &#39;mysql&#39; as: /usr/local/mysql/bin/mysql
-Looking for &#39;mysqlcheck&#39; as: /usr/local/mysql/bin/mysqlcheck
-Running &#39;mysqlcheck&#39; with connection arguments: &#39;--port=3306&#39; &#39;--socket=/tmp/mysqld.sock&#39;
-Running &#39;mysqlcheck&#39; with connection arguments: &#39;--port=3306&#39; &#39;--socket=/tmp/mysqld.sock&#39;
-mydb.t1 OK
-mydb.t2 OK
-mysql.columns_priv OK
-mysql.db OK
-mysql.event OK
-mysql.func OK
-mysql.general_log OK
-mysql.help_category OK
-mysql.help_keyword OK
-mysql.help_relation OK
-mysql.help_topic OK
-mysql.host OK
-mysql.ndb_binlog_index OK
-mysql.plugin OK
-mysql.proc OK
-mysql.procs_priv OK
-mysql.proxies_priv OK
-mysql.servers OK
-mysql.slow_log OK
-mysql.tables_priv OK
-mysql.time_zone OK
-mysql.time_zone_leap_second OK
-mysql.time_zone_name OK
-mysql.time_zone_transition OK
-mysql.time_zone_transition_type OK
-mysql.user OK
-Running &#39;mysql_fix_privilege_tables&#39;...
-OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和原来一样。</p>
-<p>这个mysql升级其实不复杂，其实就是重新安装一遍，然后把数据目录文件覆盖一下。不过数据库升级，主要还是得注意数据备份，防止数据和意外丢失。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1851,7 +1809,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-count">79</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
