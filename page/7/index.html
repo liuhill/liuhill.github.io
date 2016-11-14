@@ -269,6 +269,392 @@
             
               
                 
+                <a class="post-title-link" href="/2014/12/13/e9-a2-84-e6-8e-92-e5-ba-8f-e9-81-8d-e5-8e-86-e6-a0-91-e7-ae-97-e6-b3-95-e9-9d-9e-e9-80-92-e5-bd-92-e6-97-a0-e9-99-90-e6-9e-81-e5-88-86-e7-b1-bb-e7-ae-97-e6-b3-95-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/" itemprop="url">
+                  预排序遍历树算法(modified preorder tree traversal algorithm)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-12-13T19:47:24+08:00" content="2014-12-13">
+              2014-12-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文是我学习MySQL官方教程Managing Hierarchical Data in MySQL的笔记 多层数据结构估计所有的web开发者估计都不会陌生，各种软件的分类都是基于多层结构来设计的。 下面是一个典型的多层数据结构示意图：</p>
+<p><a href="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-be1b6320354e5c0879737b855764e9d920100326152818.png" target="_blank" rel="external"><img src="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-be1b6320354e5c0879737b855764e9d920100326152818.png" alt="thum-be1b6320354e5c0879737b855764e9d920100326152818"></a></p>
+<p>相关创建数据语句：</p>
+<pre><code>CREATE TABLE category(
+category_id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(20) NOT NULL,
+parent INT DEFAULT NULL);
+
+INSERT INTO category
+VALUES(1,&apos;ELECTRONICS&apos;,NULL),(2,&apos;TELEVISIONS&apos;,1),(3,&apos;TUBE&apos;,2),
+(4,&apos;LCD&apos;,2),(5,&apos;PLASMA&apos;,2),(6,&apos;PORTABLE ELECTRONICS&apos;,1),
+(7,&apos;MP3 PLAYERS&apos;,6),(8,&apos;FLASH&apos;,7),
+(9,&apos;CD PLAYERS&apos;,6),(10,&apos;2 WAY RADIOS&apos;,6);
+
+SELECT * FROM category ORDER BY category_id;
+
+
+在这种数据结构中，各层之间通过字段 parent 来形成邻接表，我们查询某些层级的关系的时候一般都是通过递归的方式，遍历某个层级关系的SQL的查询次数会顺着层级的增加，想想在层级有20的时候，根据某个底层节点取它到顶层节点的查询次数吧。
+
+为了解决这个问题，人们想出了嵌套集模型（The Nested Set Model），请看下图：
+
+[![thum-90ef2a4a3357d5de8e8e0d1bc026294820100326152302](http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-90ef2a4a3357d5de8e8e0d1bc026294820100326152302.png)](http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-90ef2a4a3357d5de8e8e0d1bc026294820100326152302.png) 上图依然是表现的与图一相同的层级关系，但是却更换了一种表现形式 下面是新的关系表和数据（关系和数据与之前相同，但是表结构不一样）：
+
+CREATE TABLE nested_category (
+category_id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(20) NOT NULL,
+lft INT NOT NULL,
+rgt INT NOT NULL,
+deleted TINYINT(8)  NOT NULL DEFAULT &apos;0&apos;,
+);
+
+INSERT INTO nested_category
+VALUES(1,&apos;ELECTRONICS&apos;,1,20),(2,&apos;TELEVISIONS&apos;,2,9),(3,&apos;TUBE&apos;,3,4),
+(4,&apos;LCD&apos;,5,6),(5,&apos;PLASMA&apos;,7,8),(6,&apos;PORTABLE ELECTRONICS&apos;,10,19),
+(7,&apos;MP3 PLAYERS&apos;,11,14),(8,&apos;FLASH&apos;,12,13),
+(9,&apos;CD PLAYERS&apos;,15,16),(10,&apos;2 WAY RADIOS&apos;,17,18);
+
+SELECT * FROM nested_category ORDER BY category_id;
+
+
+这里将 left,right 修改为 lft,rgt因为这两个词在MYSQL中属于关键字 下面我们将插入的数据标识在图上： [![thum-a618905c95b8d6aa42cf4c29f7d0546a20100326152746](http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-a618905c95b8d6aa42cf4c29f7d0546a20100326152746.png)](http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-a618905c95b8d6aa42cf4c29f7d0546a20100326152746.png) 同样，我们将数据标识在原来的结构上： [![thum-be1b6320354e5c0879737b855764e9d920100326152818](http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-be1b6320354e5c0879737b855764e9d9201003261528181.png)](http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-be1b6320354e5c0879737b855764e9d9201003261528181.png)
+
+怎么样，是不是很明确了
+
+下面使我自己标定一种形式，方便理解
+
+[1
+      [2
+           [3 4] 
+           [5 6] 
+           [7 8]
+      9] 
+      [10
+           [11
+                 [12 13]
+           14]
+           [15 16]
+           [17 18]
+      19]
+20]
+
+
+遍历整个树，查询子集 条件：左边 &gt; 父级L， 右边 &lt; 父级R
+
+SELECT node.name
+FROM nested_category AS node,
+nested_category AS parent
+WHERE node.lft BETWEEN parent.lft AND parent.rgt
+AND parent.name = &apos;ELECTRONICS&apos;
+ORDER BY node.lft;
+</code></pre><ul>
+<li>查询所有无分支的节点 条件：右边 = 左边L + 1<br>SELECT name FROM nested_category WHERE rgt = lft + 1;<p></p></li>
+<li><p>查询某个字节点到根节点的路径</p>
+<p>SELECT parent.name    FROM nested_category AS node, nested_category AS parent    WHERE node.lft BETWEEN parent.lft AND parent.rgt AND node.name = ‘FLASH’ ORDER BY parent.lft;</p>
+</li>
+<li><p>查询节点的深度</p>
+<p>SELECT node.name, (COUNT(parent.name) - 1) AS depth    FROM nested_category AS node, nested_category AS parent    WHERE node.lft BETWEEN parent.lft AND parent.rgt    GROUP BY node.name    ORDER BY node.lft;</p>
+</li>
+<li><p>查询子节点的深度</p>
+<p>SELECT node.name, (COUNT(parent.name) - (sub_tree.depth + 1)) AS depth    FROM nested_category AS node, nested_category AS parent, nested_category AS sub_parent,      ( SELECT node.name, (COUNT(parent.name) - 1) AS depth      FROM nested_category AS node, nested_category AS parent      WHERE node.lft BETWEEN parent.lft AND parent.rgt AND node.name = ‘PORTABLE ELECTRONICS’      GROUP BY node.name ORDER BY node.lft ) AS sub_tree<br>WHERE node.lft BETWEEN parent.lft AND parent.rgt AND node.lft BETWEEN sub_parent.lft AND sub_parent.rgt AND sub_parent.name = sub_tree.name GROUP BY node.name    ORDER BY node.lft;</p>
+</li>
+<li><p>插入新节点 算法详解：<br> 1.所有分类 左边和右边的值 &gt; 插入节点的左边节点记录的右值 的全部 + 2     2.插入节点 左值 = 插入位置左边节点记录的右值 + 1， 右值 = 插入位置左边节点记录的右值 + 2    例子: 在 R = 9（L8, R9）与 L = 10（L10，R11） 节点之间插入一个新节点 那么所有 左值 和 右值 &gt; 9 的节点的左值和右值需要 + 2         例如新节点右边的节点（L10，R11）左值右值都需要 + 2 那么插入后的新值为 L12 R13 新节点的左值为 9 + 1 = 10 右值为 9 + 2 = 11 SQL语句实现</p>
+<p>LOCK TABLE nested_category WRITE;<br>SELECT @myRight := rgt FROM nested_category WHERE name = ‘TELEVISIONS’;<br>UPDATE nested_category SET rgt = rgt + 2 WHERE rgt &gt; @myRight;<br>UPDATE nested_category SET lft = lft + 2 WHERE lft &gt; @myRight;    INSERT INTO nested_category(name, lft, rgt) VALUES(‘GAME CONSOLES’, @myRight + 1, @myRight + 2);<br>UNLOCK TABLES;</p>
+</li>
+<li><p>删除新节点 删除节点的算法与添加一个节点的算法相反</p>
+<p></p><p>删除一个没有子节点的节点</p>
+</li>
+</ul>
+<pre><code>LOCK TABLE nested_category WRITE; 
+SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft + 1 FROM nested_category WHERE name = &apos;GAME CONSOLES&apos;; 
+DELETE FROM nested_category WHERE lft BETWEEN @myLeft AND @myRight;
+UPDATE nested_category SET rgt = rgt - @myWidth WHERE rgt &gt; @myRight;
+UPDATE nested_category SET lft = lft - @myWidth WHERE lft &gt; @myRight;
+UNLOCK TABLES;
+
+
+删除一个分支节点和它所有的子节点
+
+
+LOCK TABLE nested_category WRITE; 
+SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft + 1 FROM nested_category WHERE name = &apos;MP3 PLAYERS&apos;; 
+DELETE FROM nested_category WHERE lft BETWEEN @myLeft AND @myRight; 
+UPDATE nested_category SET rgt = rgt - @myWidth WHERE rgt &gt; @myRight; 
+UPDATE nested_category SET lft = lft - @myWidth WHERE lft &gt; @myRight; 
+UNLOCK TABLES;
+
+
+删除一个节点后移动其字节点到
+
+
+LOCK TABLE nested_category WRITE; 
+SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft + 1 FROM nested_category WHERE name = &apos;PORTABLE ELECTRONICS&apos;;
+DELETE FROM nested_category WHERE lft = @myLeft; 
+UPDATE nested_category SET rgt = rgt - 1, lft = lft - 1 WHERE lft BETWEEN @myLeft AND @myRight;
+UPDATE nested_category SET rgt = rgt - 2 WHERE rgt &gt; @myRight; 
+UPDATE nested_category SET lft = lft - 2 WHERE lft &gt; @myRight; 
+UNLOCK TABLES;
+
+
+### 补充：移动一个分类
+
+将分类5移动到分类9下面
+
+LOCK TABLE nested_category WRITE;
+SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft + 1
+FROM nested_category
+WHERE  category_id = 5;
+UPDATE nested_category SET deleted=2 WHERE lft BETWEEN @myLeft AND @myRight;
+UPDATE nested_category SET rgt = rgt - @myWidth WHERE rgt &gt; @myRight AND deleted=0;
+UPDATE nested_category SET lft = lft - @myWidth WHERE lft &gt; @myRight AND deleted=0;
+
+SELECT @destLeft := lft,@destRight := rgt FROM nested_category WHERE  category_id = 9;
+
+UPDATE nested_category SET rgt = rgt + @myWidth WHERE rgt &gt; @destRight AND deleted=0;
+UPDATE nested_category SET lft = lft + @myWidth WHERE lft &gt; @destRight AND deleted=0;
+
+UPDATE nested_category SET rgt = rgt -(@myLeft-@destRight) WHERE deleted=2;
+UPDATE nested_category SET lft = lft -(@myLeft-@destRight) WHERE deleted=2;
+UPDATE nested_category SET rgt = rgt + @myWidth WHERE category_id = 9;
+UPDATE nested_category SET deleted=0 WHERE  deleted=2;
+UNLOCK TABLES;
+
+
+将分类5移动到分类9前面
+
+
+SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft + 1 FROM nested_category WHERE  category_id = 5;
+UPDATE nested_category SET deleted=2 WHERE lft BETWEEN @myLeft AND @myRight;
+UPDATE nested_category SET rgt = rgt - @myWidth WHERE rgt &gt; @myRight AND deleted=0;
+UPDATE nested_category SET lft = lft - @myWidth WHERE lft &gt; @myRight AND deleted=0;
+
+SELECT @destLeft := lft,@destRight := rgt FROM nested_category WHERE  category_id = 9;
+
+UPDATE nested_category SET rgt = rgt + @myWidth WHERE rgt &gt;= @destLeft  AND deleted=0;
+UPDATE nested_category SET lft = lft + @myWidth WHERE lft &gt;= @destLeft AND deleted=0;
+
+UPDATE nested_category SET rgt = rgt -(@myLeft-@destRight) WHERE deleted=2;
+UPDATE nested_category SET lft = lft -(@myLeft-@destRight) WHERE deleted=2;
+UPDATE nested_category SET deleted=0 WHERE  deleted=2;
+UNLOCK TABLES;
+</code></pre><p>总结： 预排序遍历树算法的核心就是牺牲了写的性能来换取读取的性能 在你的开发的应用遇到此类问题的时（读压力 &gt; 写压力），尝试下使用预排序遍历树算法来提高你的程序的性能吧。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/12/05/nginx-e5-85-a8-e5-b1-80-e5-8f-98-e9-87-8f-e5-af-b9-e7-85-a7/" itemprop="url">
+                  nginx 全局变量对照
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-12-05T11:29:27+08:00" content="2014-12-05">
+              2014-12-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>remote_addr     客户端ip,如：192.168.4.2<br>binary_remote_addr  客户端ip（二进制)<br>remote_port     客户端port，如：50472<br>remote_user     已经经过Auth Basic Module验证的用户名<br>host            请求主机头字段，否则为服务器名称，如:dwz.stamhe.com<br>request         用户请求信息，如：GET /?_a=index&amp;_m=show&amp;count=10 HTTP/1.1<br>request_filename    当前请求的文件的路径名，由root或alias和URI request组合而成，如：/webserver/htdocs/dwz/index.php<br>status          请求的响应状态码,如:200<br>body_bytes_sent 响应时送出的body字节数数量。即使连接中断，这个数据也是精确的,如：40<br>content_length  请求头中的Content-length字段<br>content_type    请求头中的Content-Type字段<br>http_referer    引用地址<br>http_user_agent 客户端agent信息,如：Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11<br>args            如：_a=index&amp;_m=show&amp;count=10<br>document_uri    与$uri相同,如：/index.php<br>document_root   针对当前请求的根路径设置值,如：/webserver/htdocs/dwz<br>hostname        如：centos53.localdomain<br>http_cookie     客户端cookie信息<br>cookie_COOKIE   cookie COOKIE变量的值<br>is_args         如果有$args参数，这个变量等于”?”，否则等于””，空值，如?<br>limit_rate      这个变量可以限制连接速率，0表示不限速<br>query_string    与$args相同,如：_a=index&amp;_m=show&amp;count=10<br>realpath_root   如：/webserver/htdocs/dwz<br>request_body     记录POST过来的数据信息<br>request_body_file   客户端请求主体信息的临时文件名<br>request_method  客户端请求的动作，通常为GET或POST,如：GET<br>request_uri     包含请求参数的原始URI，不包含主机名，如：”/foo/bar.php?arg=baz”。不能修改。如：/index.php?_a=index&amp;_m=show&amp;count=10<br>scheme          HTTP方法（如http，https）,如：http<br>uri             如：/index.php<br>request_completion  如果请求结束，设置为OK. 当请求未结束或如果该请求不是请求链串的最后一个时，为空(Empty)，如：OK<br>server_protocol 请求使用的协议，通常是HTTP/1.0或HTTP/1.1，如：HTTP/1.1<br>server_addr     服务器地址，在完成一次系统调用后可以确定这个值，如：192.168.4.129<br>server_name     服务器名称，如：dwz.stamhe.com<br>server_port     请求到达服务器的端口号,如：80</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2014/12/05/e6-9f-a5-e7-9c-8bjquery-e7-89-88-e6-9c-ac/" itemprop="url">
                   查看jquery版本
                 </a>
@@ -2283,267 +2669,11 @@ SYSFONT=&quot;lat0-sun16&quot;
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/11/16/centos-e7-b3-bb-e7-bb-9fiptables-e5-a6-82-e4-bd-95-e6-89-93-e5-bc-80-e7-ab-af-e5-8f-a3-e5-92-8c-e6-9f-a5-e7-9c-8b-e8-a7-84-e5-88-99/" itemprop="url">
-                  CentOS系统iptables如何打开端口和查看规则
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-11-16T15:40:23+08:00" content="2014-11-16">
-              2014-11-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>CentOS安装好如果希望开放其他端口的话，需要打开所需端口,比如打开http的默认端口80</p>
-<p>编辑iptables</p>
-<pre><code>root:vi /etc/sysconfig/iptables
-</code></pre><p>添加</p>
-<pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-</code></pre><p>重新启动服务</p>
-<pre><code>/sbin/service iptables restart
-</code></pre><p>查看端口是否开放</p>
-<pre><code>/sbin/iptables -L -n
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/11/15/e8-a7-a3-e5-86-b3lnmp-e4-b8-8b-e6-8f-90-e7-a4-bafileinfo-e6-8f-92-e4-bb-b6-e6-b2-a1-e5-ae-89-e8-a3-85-ef-bc-88php-e5-ae-89-e8-a3-85fileinfo-e6-89-a9-e5-b1-95-e6-95-99-e7-a8-8b-ef-bc-89/" itemprop="url">
-                  解决LNMP下提示fileinfo插件没安装（PHP安装fileinfo扩展教程）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-11-15T18:08:13+08:00" content="2014-11-15">
-              2014-11-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index">
-                    <span itemprop="name">server</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>编译并安装fileinfo插件</p>
-<pre><code>cd /root/lnmp1.0-full/php-5.3.17/ext/fileinfo
-/usr/local/php/bin/phpize
-./configure --with-php-config=/usr/local/php/bin/php-config
-make &amp;amp;&amp;amp; make install
-
-
-在PHP配置中添加fileinfo插件
-用vim编辑php.ini
-
-vim /usr/local/php/etc/php.ini
-
-
-找到 &quot;;extension=php_bz2.dll&quot; 这一行
-在其上面添加一行：
-
-extension = fileinfo.so
-
-
-然后重启lnmp
-
-/root/lnmp restart
-</code></pre><p>结束！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2584,7 +2714,7 @@ extension = fileinfo.so
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">80</span>
+              <span class="site-state-item-count">82</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
