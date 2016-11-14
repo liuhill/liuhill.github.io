@@ -5,10 +5,10 @@
   
 
 
-<html class="theme-next pisces use-motion">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
@@ -63,21 +63,21 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="刘立岗, 博客" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -96,16 +96,24 @@
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Pisces',
+    root: '/',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: '0',
       author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
@@ -115,6 +123,9 @@
   <link rel="canonical" href="http://www.wulai.me/page/3/"/>
 
 
+
+
+
   <title> 无来 </title>
 </head>
 
@@ -122,15 +133,6 @@
 
   
 
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-81208215-1', 'auto');
-  ga('send', 'pageview');
-</script>
 
 
 
@@ -238,6 +240,9 @@
     </div>
   
 </nav>
+
+
+
  </div>
     </header>
 
@@ -251,13 +256,26 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/04/27/e7-9f-a5-e9-81-93-e8-bf-9920-e4-b8-aa-e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f-ef-bc-8c-e8-83-bd-e8-ae-a9-e4-bd-a0-e5-b0-91-e5-86-991000-e8-a1-8c-e4-bb-a3-e7-a0-81/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -283,9 +301,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-27T13:23:09+08:00" content="2016-04-27">
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-27T13:23:09+08:00">
               2016-04-27
             </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2016-08-29T13:51:07+08:00">
+              2016-08-29
+            </time>
+            
           </span>
 
           
@@ -296,7 +324,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/未分类/" itemprop="url" rel="index">
                     <span itemprop="name">未分类</span>
                   </a>
@@ -319,6 +347,9 @@
           
 
           
+          
+          
+
         </div>
       </header>
     
@@ -461,6 +492,7 @@ if(r==null)alert(&apos;Date format error!&apos;);
       
     </div>
 
+
     <footer class="post-footer">
       
 
@@ -478,13 +510,26 @@ if(r==null)alert(&apos;Date format error!&apos;);
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/04/25/linux-ll-e5-91-bd-e4-bb-a4-e5-88-97-e5-87-ba-e6-96-87-e4-bb-b6-e5-88-b6-e5-ae-9a-e7-9a-84-e5-b1-9e-e6-80-a7/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -510,9 +555,19 @@ if(r==null)alert(&apos;Date format error!&apos;);
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-25T22:36:07+08:00" content="2016-04-25">
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-25T22:36:07+08:00">
               2016-04-25
             </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2016-08-03T09:53:27+08:00">
+              2016-08-03
+            </time>
+            
           </span>
 
           
@@ -523,7 +578,7 @@ if(r==null)alert(&apos;Date format error!&apos;);
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/未分类/" itemprop="url" rel="index">
                     <span itemprop="name">未分类</span>
                   </a>
@@ -546,6 +601,9 @@ if(r==null)alert(&apos;Date format error!&apos;);
           
 
           
+          
+          
+
         </div>
       </header>
     
@@ -574,6 +632,7 @@ if(r==null)alert(&apos;Date format error!&apos;);
       
     </div>
 
+
     <footer class="post-footer">
       
 
@@ -591,13 +650,26 @@ if(r==null)alert(&apos;Date format error!&apos;);
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/04/12/ef-bc-bb-e8-bd-ac-ef-bc-bd-e5-ba-94-e7-94-a8-e6-95-b0-e6-8d-ae-e9-9d-99-e6-80-81-e5-8c-96-e6-9e-b6-e6-9e-84-e9-ab-98-e6-80-a7-e8-83-bd-e5-8d-95-e9-a1-b5web-e5-ba-94-e7-94-a8/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -623,9 +695,19 @@ if(r==null)alert(&apos;Date format error!&apos;);
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-12T13:04:59+08:00" content="2016-04-12">
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-12T13:04:59+08:00">
               2016-04-12
             </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2016-08-29T13:34:08+08:00">
+              2016-08-29
+            </time>
+            
           </span>
 
           
@@ -636,7 +718,7 @@ if(r==null)alert(&apos;Date format error!&apos;);
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/技术文章/" itemprop="url" rel="index">
                     <span itemprop="name">技术文章</span>
                   </a>
@@ -659,6 +741,9 @@ if(r==null)alert(&apos;Date format error!&apos;);
           
 
           
+          
+          
+
         </div>
       </header>
     
@@ -726,6 +811,7 @@ ngx.say(content)
       
     </div>
 
+
     <footer class="post-footer">
       
 
@@ -743,13 +829,26 @@ ngx.say(content)
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/04/01/centos-e4-b8-8b-e5-b0-86mysql-5-1-e5-8d-87-e7-ba-a7-e5-88-b0mysql-5-5/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -775,9 +874,19 @@ ngx.say(content)
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-01T11:41:38+08:00" content="2016-04-01">
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-01T11:41:38+08:00">
               2016-04-01
             </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2016-08-29T13:34:08+08:00">
+              2016-08-29
+            </time>
+            
           </span>
 
           
@@ -788,7 +897,7 @@ ngx.say(content)
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/未分类/" itemprop="url" rel="index">
                     <span itemprop="name">未分类</span>
                   </a>
@@ -811,6 +920,9 @@ ngx.say(content)
           
 
           
+          
+          
+
         </div>
       </header>
     
@@ -888,6 +1000,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
       
     </div>
 
+
     <footer class="post-footer">
       
 
@@ -905,13 +1018,26 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/03/16/svn-file-is-scheduled-for-addition-but-is-missing/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -937,9 +1063,19 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-16T13:41:34+08:00" content="2016-03-16">
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-16T13:41:34+08:00">
               2016-03-16
             </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2016-08-03T09:53:27+08:00">
+              2016-08-03
+            </time>
+            
           </span>
 
           
@@ -950,7 +1086,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/未分类/" itemprop="url" rel="index">
                     <span itemprop="name">未分类</span>
                   </a>
@@ -973,6 +1109,9 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
           
 
           
+          
+          
+
         </div>
       </header>
     
@@ -1002,6 +1141,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
       
     </div>
 
+
     <footer class="post-footer">
       
 
@@ -1019,13 +1159,26 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/03/01/e6-9f-a5-e6-89-be-e7-9b-ae-e5-bd-95-e4-b8-8b-e7-9a-84-e6-89-80-e6-9c-89-e6-96-87-e4-bb-b6-e4-b8-ad-e6-98-af-e5-90-a6-e5-90-ab-e6-9c-89-e6-9f-90-e4-b8-aa-e5-ad-97-e7-ac-a6-e4-b8-b2/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -1051,9 +1204,19 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-01T17:32:44+08:00" content="2016-03-01">
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-01T17:32:44+08:00">
               2016-03-01
             </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2016-08-29T14:00:34+08:00">
+              2016-08-29
+            </time>
+            
           </span>
 
           
@@ -1064,7 +1227,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/未分类/" itemprop="url" rel="index">
                     <span itemprop="name">未分类</span>
                   </a>
@@ -1087,6 +1250,9 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
           
 
           
+          
+          
+
         </div>
       </header>
     
@@ -1118,6 +1284,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
       
     </div>
 
+
     <footer class="post-footer">
       
 
@@ -1135,13 +1302,26 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/01/21/e5-a6-82-e4-bd-95-e6-89-b9-e9-87-8f-e6-88-96-e8-80-85-e5-85-a8-e9-83-a8-e5-88-a0-e9-99-a4linux-e7-9a-84-e7-b3-bb-e7-bb-9f-e9-82-ae-e4-bb-b6-ef-bc-9f/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -1167,9 +1347,19 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-21T10:17:59+08:00" content="2016-01-21">
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-21T10:17:59+08:00">
               2016-01-21
             </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2016-08-29T13:51:07+08:00">
+              2016-08-29
+            </time>
+            
           </span>
 
           
@@ -1180,7 +1370,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/未分类/" itemprop="url" rel="index">
                     <span itemprop="name">未分类</span>
                   </a>
@@ -1203,6 +1393,9 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
           
 
           
+          
+          
+
         </div>
       </header>
     
@@ -1237,6 +1430,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
       
     </div>
 
+
     <footer class="post-footer">
       
 
@@ -1254,13 +1448,26 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/01/21/linux-e5-88-aa-e9-99-a4-delete-all-root-mail/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -1286,9 +1493,19 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-21T10:16:47+08:00" content="2016-01-21">
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-21T10:16:47+08:00">
               2016-01-21
             </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2016-08-03T09:53:27+08:00">
+              2016-08-03
+            </time>
+            
           </span>
 
           
@@ -1299,7 +1516,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/未分类/" itemprop="url" rel="index">
                     <span itemprop="name">未分类</span>
                   </a>
@@ -1322,6 +1539,9 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
           
 
           
+          
+          
+
         </div>
       </header>
     
@@ -1355,6 +1575,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
       
     </div>
 
+
     <footer class="post-footer">
       
 
@@ -1372,13 +1593,26 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/01/17/ssh-e5-85-8d-e5-af-86-e7-a0-81-e7-99-bb-e5-bd-95/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -1404,9 +1638,19 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-17T13:54:34+08:00" content="2016-01-17">
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-17T13:54:34+08:00">
               2016-01-17
             </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2016-08-29T14:06:37+08:00">
+              2016-08-29
+            </time>
+            
           </span>
 
           
@@ -1417,7 +1661,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/未分类/" itemprop="url" rel="index">
                     <span itemprop="name">未分类</span>
                   </a>
@@ -1440,6 +1684,9 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
           
 
           
+          
+          
+
         </div>
       </header>
     
@@ -1483,6 +1730,7 @@ hadoop@192.168.10.107&apos;s password:
       
     </div>
 
+
     <footer class="post-footer">
       
 
@@ -1500,13 +1748,26 @@ hadoop@192.168.10.107&apos;s password:
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/01/05/json-e8-a7-a3-e6-9e-90-e9-94-99-e8-af-af/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -1532,9 +1793,19 @@ hadoop@192.168.10.107&apos;s password:
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-05T21:18:06+08:00" content="2016-01-05">
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-05T21:18:06+08:00">
               2016-01-05
             </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2016-08-29T14:07:23+08:00">
+              2016-08-29
+            </time>
+            
           </span>
 
           
@@ -1545,7 +1816,7 @@ hadoop@192.168.10.107&apos;s password:
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/未分类/" itemprop="url" rel="index">
                     <span itemprop="name">未分类</span>
                   </a>
@@ -1568,6 +1839,9 @@ hadoop@192.168.10.107&apos;s password:
           
 
           
+          
+          
+
         </div>
       </header>
     
@@ -1620,6 +1894,7 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
       
     </div>
 
+
     <footer class="post-footer">
       
 
@@ -1668,10 +1943,10 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
 
       
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460"
+               src="/images/avatar.gif"
                alt="Hillock" />
           <p class="site-author-name" itemprop="name">Hillock</p>
           <p class="site-description motion-element" itemprop="description">开发笔记而已～～～</p>
@@ -1708,35 +1983,6 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
 
         <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/liuhill" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/LiuLig" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/liuhill" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-          
         </div>
 
         
@@ -1744,6 +1990,9 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
 
         
         
+
+        
+
 
       </section>
 
@@ -1769,16 +2018,18 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
   <span class="author" itemprop="copyrightHolder">Hillock</span>
 </div>
 
+
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Muse
   </a>
 </div>
+
 
         
 
@@ -1833,28 +2084,21 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
-
-
 
   
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -1863,6 +2107,11 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
 
 
   
+
+
+
+
+	
 
 
 
@@ -1875,7 +2124,7 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
     // Search DB path;
     var search_path = "search.xml";
     if (search_path.length == 0) {
-       search_path = "search.xml";
+      search_path = "search.xml";
     }
     var path = "/" + search_path;
     // monitor main search box;
@@ -1883,99 +2132,95 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
     function proceedsearch() {
       $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
       $('.popup').toggle();
-
     }
     // search function;
     var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
+      'use strict';
+      $.ajax({
         url: path,
         dataType: "xml",
         async: true,
         success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = true;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = data.url;
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '' && data_content != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title < 0 && index_content < 0 ){
-                                isMatch = false;
-                            } else {
-                                if (index_content < 0) {
-                                    index_content = 0;
-                                }
-                                if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            }
-                        });
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
                     }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
 
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
                     }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
         }
-    });}
+      });}
 
     // handle and trigger popup window;
     $('.popup-trigger').click(function(e) {
@@ -1985,7 +2230,6 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
       } else {
         proceedsearch();
       };
-
     });
 
     $('.popup-btn-close').click(function(e){
@@ -2004,6 +2248,9 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
   
 
   
+
+  
+
 
 </body>
 </html>
