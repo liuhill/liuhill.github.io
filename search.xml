@@ -4,6 +4,15 @@
   
     
     <entry>
+      <title><![CDATA[macOS 10.12 Finder小技巧 快捷键显示隐藏文件]]></title>
+      <url>http://www.wulai.me/2016/11/18/macOS-10-12-Finder%E5%B0%8F%E6%8A%80%E5%B7%A7-%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6/</url>
+      <content type="html"><![CDATA[<p>快捷键:</p>
+<pre><code>Command-Shift-.(句号)
+</code></pre><p>快速显示目录内的隐藏文件.</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[svn中操作带有”@”符号的文件]]></title>
       <url>http://www.wulai.me/2016/11/14/svn%E4%B8%AD%E6%93%8D%E4%BD%9C%E5%B8%A6%E6%9C%89%E2%80%9D-%E2%80%9D%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%96%87%E4%BB%B6/</url>
       <content type="html"><![CDATA[<p>如果在命终端中用svn命令操作文件名中有“@”符号的文件（ios开发的朋友应该很清楚），会遇到：</p>
