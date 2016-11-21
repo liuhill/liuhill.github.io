@@ -84,28 +84,16 @@
 
 
 
-<meta name="description" content="如果在命终端中用svn命令操作文件名中有“@”符号的文件（ios开发的朋友应该很清楚），会遇到：
-svn: E205000: Syntax error parsing peg revision ‘3x.png’
-或者：
-svn: E200009: ‘welcome1@3x.png&amp;apos;: a peg revision is not allowed here
-类似的错误提示，原因是因为svn命">
+<meta name="description" content="1234git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。git reset --hard HASH #返回到某个节点，不保留修改。git reset --soft HASH #返回到某个节点。保留修改">
 <meta property="og:type" content="article">
-<meta property="og:title" content="svn中操作带有”@”符号的文件">
-<meta property="og:url" content="http://www.wulai.me/2016/11/14/svn中操作带有”-”符号的文件/index.html">
+<meta property="og:title" content="git如何放弃所有本地修改">
+<meta property="og:url" content="http://www.wulai.me/2016/11/21/git如何放弃所有本地修改/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="如果在命终端中用svn命令操作文件名中有“@”符号的文件（ios开发的朋友应该很清楚），会遇到：
-svn: E205000: Syntax error parsing peg revision ‘3x.png’
-或者：
-svn: E200009: ‘welcome1@3x.png&amp;apos;: a peg revision is not allowed here
-类似的错误提示，原因是因为svn命">
-<meta property="og:updated_time" content="2016-11-14T06:59:57.000Z">
+<meta property="og:description" content="1234git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。git reset --hard HASH #返回到某个节点，不保留修改。git reset --soft HASH #返回到某个节点。保留修改">
+<meta property="og:updated_time" content="2016-11-21T03:51:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="svn中操作带有”@”符号的文件">
-<meta name="twitter:description" content="如果在命终端中用svn命令操作文件名中有“@”符号的文件（ios开发的朋友应该很清楚），会遇到：
-svn: E205000: Syntax error parsing peg revision ‘3x.png’
-或者：
-svn: E200009: ‘welcome1@3x.png&amp;apos;: a peg revision is not allowed here
-类似的错误提示，原因是因为svn命">
+<meta name="twitter:title" content="git如何放弃所有本地修改">
+<meta name="twitter:description" content="1234git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。git reset --hard HASH #返回到某个节点，不保留修改。git reset --soft HASH #返回到某个节点。保留修改">
 
 
 
@@ -133,13 +121,13 @@ svn: E200009: ‘welcome1@3x.png&amp;apos;: a peg revision is not allowed here
 
 
 
-  <link rel="canonical" href="http://www.wulai.me/2016/11/14/svn中操作带有”-”符号的文件/"/>
+  <link rel="canonical" href="http://www.wulai.me/2016/11/21/git如何放弃所有本地修改/"/>
 
 
 
 
 
-  <title> svn中操作带有”@”符号的文件 | 无来 </title>
+  <title> git如何放弃所有本地修改 | 无来 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +270,7 @@ svn: E200009: ‘welcome1@3x.png&amp;apos;: a peg revision is not allowed here
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/11/14/svn中操作带有”-”符号的文件/">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/11/21/git如何放弃所有本地修改/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
@@ -306,7 +294,7 @@ svn: E200009: ‘welcome1@3x.png&amp;apos;: a peg revision is not allowed here
             
             
               
-                svn中操作带有”@”符号的文件
+                git如何放弃所有本地修改
               
             
           </h1>
@@ -318,8 +306,8 @@ svn: E200009: ‘welcome1@3x.png&amp;apos;: a peg revision is not allowed here
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-14T14:56:44+08:00">
-              2016-11-14
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-21T11:50:29+08:00">
+              2016-11-21
             </time>
 
             &nbsp;|&nbsp;
@@ -327,8 +315,8 @@ svn: E200009: ‘welcome1@3x.png&amp;apos;: a peg revision is not allowed here
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2016-11-14T14:59:57+08:00">
-              2016-11-14
+            <time title="Post modified" itemprop="dateModified" datetime="2016-11-21T11:51:55+08:00">
+              2016-11-21
             </time>
             
           </span>
@@ -359,14 +347,8 @@ svn: E200009: ‘welcome1@3x.png&amp;apos;: a peg revision is not allowed here
       
 
       
-        <p>如果在命终端中用svn命令操作文件名中有“@”符号的文件（ios开发的朋友应该很清楚），会遇到：</p>
-<pre><code>svn: E205000: Syntax error parsing peg revision ‘3x.png’
-</code></pre><p>或者：</p>
-<pre><code>svn: E200009: ‘welcome1@3x.png&apos;: a peg revision is not allowed here
-</code></pre><p>类似的错误提示，原因是因为svn命令把文件名中的@识别成有其它含义的特殊字符，导致操作失败。</p>
-<h3 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h3><p>在使用svn命令时在文件名尾部再添加一个<code>@</code>即可解决。<br>比如 要查看welcome1@3x.png文件信息：</p>
-<pre><code>svn info welcome1@3x.png@
-</code></pre>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态</div><div class="line">git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。</div><div class="line">git reset --hard HASH #返回到某个节点，不保留修改。</div><div class="line">git reset --soft HASH #返回到某个节点。保留修改</div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -392,8 +374,8 @@ svn: E200009: ‘welcome1@3x.png&amp;apos;: a peg revision is not allowed here
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/27/rsync同步配置/" rel="next" title="rsync进行网站异地镜像">
-                <i class="fa fa-chevron-left"></i> rsync进行网站异地镜像
+              <a href="/2016/11/18/macOS-10-12-Finder小技巧-快捷键显示隐藏文件/" rel="next" title="macOS 10.12 Finder小技巧 快捷键显示隐藏文件">
+                <i class="fa fa-chevron-left"></i> macOS 10.12 Finder小技巧 快捷键显示隐藏文件
               </a>
             
           </div>
@@ -401,10 +383,6 @@ svn: E200009: ‘welcome1@3x.png&amp;apos;: a peg revision is not allowed here
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/18/macOS-10-12-Finder小技巧-快捷键显示隐藏文件/" rel="prev" title="macOS 10.12 Finder小技巧 快捷键显示隐藏文件">
-                macOS 10.12 Finder小技巧 快捷键显示隐藏文件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -451,17 +429,8 @@ svn: E200009: ‘welcome1@3x.png&amp;apos;: a peg revision is not allowed here
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460"
@@ -543,22 +512,6 @@ svn: E200009: ‘welcome1@3x.png&amp;apos;: a peg revision is not allowed here
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决办法："><span class="nav-number">1.</span> <span class="nav-text">解决办法：</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
