@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="CentOS Linux Server 会将许多系统运行的状态发邮件给管理员root用户，系统邮件存放在 /var/spool/mail/root 目录中，可以通过使用 mail 命令来查看邮件，但是时间长了，也会造成邮件过多，如何使用 Shell 命令来批量删除或者全部删除呢？
-　　方法一：使用mail命令，然后在 &amp;amp; 提示符下使用 d 命令（Delete），批量删除邮件，例如删除1~5">
+<meta name="description" content="将扩展名为.json的文件名添加前缀ad_
+for i in `ls *.json`;do mv -f $i `echo &amp;quot;ad_&amp;quot;$i`;done">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何批量或者全部删除Linux的系统邮件？">
-<meta property="og:url" content="http://www.wulai.me/2016/01/21/e5-a6-82-e4-bd-95-e6-89-b9-e9-87-8f-e6-88-96-e8-80-85-e5-85-a8-e9-83-a8-e5-88-a0-e9-99-a4linux-e7-9a-84-e7-b3-bb-e7-bb-9f-e9-82-ae-e4-bb-b6-ef-bc-9f/index.html">
+<meta property="og:title" content="批量改名">
+<meta property="og:url" content="http://www.wulai.me/2016/12/12/批量改名/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="CentOS Linux Server 会将许多系统运行的状态发邮件给管理员root用户，系统邮件存放在 /var/spool/mail/root 目录中，可以通过使用 mail 命令来查看邮件，但是时间长了，也会造成邮件过多，如何使用 Shell 命令来批量删除或者全部删除呢？
-　　方法一：使用mail命令，然后在 &amp;amp; 提示符下使用 d 命令（Delete），批量删除邮件，例如删除1~5">
-<meta property="og:updated_time" content="2016-08-29T05:51:07.000Z">
+<meta property="og:description" content="将扩展名为.json的文件名添加前缀ad_
+for i in `ls *.json`;do mv -f $i `echo &amp;quot;ad_&amp;quot;$i`;done">
+<meta property="og:updated_time" content="2016-12-12T04:21:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何批量或者全部删除Linux的系统邮件？">
-<meta name="twitter:description" content="CentOS Linux Server 会将许多系统运行的状态发邮件给管理员root用户，系统邮件存放在 /var/spool/mail/root 目录中，可以通过使用 mail 命令来查看邮件，但是时间长了，也会造成邮件过多，如何使用 Shell 命令来批量删除或者全部删除呢？
-　　方法一：使用mail命令，然后在 &amp;amp; 提示符下使用 d 命令（Delete），批量删除邮件，例如删除1~5">
+<meta name="twitter:title" content="批量改名">
+<meta name="twitter:description" content="将扩展名为.json的文件名添加前缀ad_
+for i in `ls *.json`;do mv -f $i `echo &amp;quot;ad_&amp;quot;$i`;done">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://www.wulai.me/2016/01/21/e5-a6-82-e4-bd-95-e6-89-b9-e9-87-8f-e6-88-96-e8-80-85-e5-85-a8-e9-83-a8-e5-88-a0-e9-99-a4linux-e7-9a-84-e7-b3-bb-e7-bb-9f-e9-82-ae-e4-bb-b6-ef-bc-9f/"/>
+  <link rel="canonical" href="http://www.wulai.me/2016/12/12/批量改名/"/>
 
 
 
 
 
-  <title> 如何批量或者全部删除Linux的系统邮件？ | 无来 </title>
+  <title> 批量改名 | 无来 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/01/21/e5-a6-82-e4-bd-95-e6-89-b9-e9-87-8f-e6-88-96-e8-80-85-e5-85-a8-e9-83-a8-e5-88-a0-e9-99-a4linux-e7-9a-84-e7-b3-bb-e7-bb-9f-e9-82-ae-e4-bb-b6-ef-bc-9f/">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/12/12/批量改名/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
@@ -297,7 +297,7 @@
             
             
               
-                如何批量或者全部删除Linux的系统邮件？
+                批量改名
               
             
           </h1>
@@ -309,8 +309,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-21T10:17:59+08:00">
-              2016-01-21
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T12:20:27+08:00">
+              2016-12-12
             </time>
 
             &nbsp;|&nbsp;
@@ -318,31 +318,12 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2016-08-29T13:51:07+08:00">
-              2016-08-29
+            <time title="Post modified" itemprop="dateModified" datetime="2016-12-12T12:21:53+08:00">
+              2016-12-12
             </time>
             
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/未分类/" itemprop="url" rel="index">
-                    <span itemprop="name">未分类</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -369,14 +350,9 @@
       
 
       
-        <p>CentOS Linux Server 会将许多系统运行的状态发邮件给管理员root用户，系统邮件存放在 /var/spool/mail/root 目录中，可以通过使用 mail 命令来查看邮件，但是时间长了，也会造成邮件过多，如何使用 Shell 命令来批量删除或者全部删除呢？</p>
-<p>　　方法一：使用mail命令，然后在 &amp; 提示符下使用 d 命令（Delete），批量删除邮件，例如删除1~53邮件：</p>
-<p>　　# mail<br>　　&amp; d 1-53</p>
-<p>　　方法二：删除全部系统邮件</p>
-<p>　　# &gt; /var/spool/mail/root    or  cat /dev/null &gt; /var/spool/mail/root</p>
-<p>　　或者</p>
-<p>　　# echo “d *” |mail -N</p>
-
+        <p>将扩展名为<code>.json</code>的文件名添加前缀<code>ad_</code></p>
+<pre><code>for i in `ls *.json`;do mv -f $i `echo &quot;ad_&quot;$i`;done
+</code></pre>
       
     </div>
 
@@ -402,8 +378,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/21/linux-e5-88-aa-e9-99-a4-delete-all-root-mail/" rel="next" title="Linux 刪除 Delete all root mail">
-                <i class="fa fa-chevron-left"></i> Linux 刪除 Delete all root mail
+              <a href="/2016/12/12/awk列出文件夹所有文件导入到md文件/" rel="next" title="awk列出文件夹所有文件导入到md文件">
+                <i class="fa fa-chevron-left"></i> awk列出文件夹所有文件导入到md文件
               </a>
             
           </div>
@@ -411,10 +387,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/01/e6-9f-a5-e6-89-be-e7-9b-ae-e5-bd-95-e4-b8-8b-e7-9a-84-e6-89-80-e6-9c-89-e6-96-87-e4-bb-b6-e4-b8-ad-e6-98-af-e5-90-a6-e5-90-ab-e6-9c-89-e6-9f-90-e4-b8-aa-e5-ad-97-e7-ac-a6-e4-b8-b2/" rel="prev" title="查找目录下的所有文件中是否含有某个字符串">
-                查找目录下的所有文件中是否含有某个字符串 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
