@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title><![CDATA[php try/catch a warning ]]></title>
+      <url>http://www.wulai.me/2017/01/06/php-try-catch-a-warning/</url>
+      <content type="html"><![CDATA[<p>One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set_error_handler(function() &#123; /* ignore errors */ &#125;);</div><div class="line">dns_get_record();</div><div class="line">restore_error_handler();</div></pre></td></tr></table></figure></p>
+<p>You could build on this idea and write a re-usable error handler that logs the errors for you.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">set_error_handler([$logger, &apos;onSilencedError&apos;]);</div><div class="line">dns_get_record();</div><div class="line">restore_error_handler();</div><div class="line">Turning errors into exceptions</div></pre></td></tr></table></figure>
+<p>You can use <code>set_error_handler()</code> and the <code>ErrorException</code> class to turn all php errors into exceptions.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) &#123;</div><div class="line">    // error was suppressed with the @-operator</div><div class="line">    if (0 === error_reporting()) &#123;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    throw new ErrorException($errstr, 0, $errno, $errfile, $errline);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">try &#123;</div><div class="line">    dns_get_record();</div><div class="line">&#125; catch (ErrorException $e) &#123;</div><div class="line">    // ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>The important thing to note when using your own error handler is that it will bypass the <code>error_reporting</code> setting and pass all errors (notices, warnings, etc.) to your error handler. You can set a second argument on <code>set_error_handler()</code> to define which error types you want to receive, or access the current setting using … = <code>error_reporting()</code> inside the error handler.</p>
+<p>Suppressing the warning</p>
+<p>Another possibility is to suppress the call with the @ operator and check the return value of dns_get_record() afterwards. But I’d advise against this as errors/warnings are triggered to be handled, not to be suppressed.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[UTF-8编码去除BOM头的python脚本]]></title>
+      <url>http://www.wulai.me/2016/12/14/UTF-8%E7%BC%96%E7%A0%81%E5%8E%BB%E9%99%A4BOM%E5%A4%B4%E7%9A%84python%E8%84%9A%E6%9C%AC/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>欢迎转载，但请务必在明确位置注明文章出处！ &gt;<a href="http://johnnyshieh.github.io/python/2015/08/02/python-remove-utf8-bom/" target="_blank" rel="external">http://johnnyshieh.github.io/python/2015/08/02/python-remove-utf8-bom/</a></p>
+</blockquote>
+<p>前几天我在Windows写完一篇markdown格式的文章，上传到github page后，这个文章的页面把jekyll的YAML头信息也显示出来了，没有像我之前在ubuntu中写的文章一样正常解析YAML头信息，最后谷歌了半天发现原因是在Windows用记事本保存utf-8编码的文件时会默认加上BOM头字符。而jekyll的文档中也明确写明了如果使用UTF-8编码，那么在文件中一定不要出现BOM头字符。</p>
+<p>所以我把如何在Windows和linux系统中去除UTF-8的BOM头的方法做个记录。</p>
+<ol>
+<li>UTF-8 与 UTF-8 + BOM 的区别</li>
+</ol>
+<p>下面是我从网上复制过来BOM的简介：</p>
+<p>BOM – Byte Order Mark，中文名译作“字节顺序标记”。在UCS 编码中有一个叫做 “Zero Width No-Break Space” ，中文译名作“零宽无间断间隔”的字符，它的编码是 FEFF。而 FFFE 在 UCS 中是不存在的字符，所以不应该出现在实际传输中。UCS 规范建议我们在传输字节流前，先传输字符 “Zero Width No-Break Space”。这样如果接收者收到 FEFF，就表明这个字节流是 Big-Endian 的；如果收到FFFE，就表明这个字节流是 Little- Endian 的。因此字符 “Zero Width No-Break Space” （“零宽无间断间隔”）又被称作 BOM。</p>
+<p>UTF-8 不需要 BOM 来表明字节顺序，但可以用 BOM 来表明编码方式。字符 “Zero Width No-Break Space” 的 UTF-8 编码是 EF BB BF。所以如果接收者收到以 EF BB BF （十六进制）开头的字节流，就知道这是 UTF-8编码了。Windows 就是使用 BOM 来标记文本文件的编码方式的。</p>
+<p>所以UTF-8 + BOM其实就是在文件的开头加上了 0xEF 0xBB 0xBF 这三个字节,而这个三个字节是一串隐藏字符。</p>
+<ol>
+<li>在Linux中如何检测去除BOM头</li>
+</ol>
+<p>在Linux中可以用vim很方便地检测、去除BOM头</p>
+<p>检测是否有BOM头：</p>
+<pre><code>:set bomb?
+</code></pre><p>去除BOM头：</p>
+<pre><code>:set encoding=utf-8
+:set nobomb
+</code></pre><p>添加BOM头也很简单：</p>
+<pre><code>:set encoding=utf-8
+:set bomb
+</code></pre><ol>
+<li>利用python脚本在window、linux、mac os中去除BOM头</li>
+</ol>
+<p>我在Terence的BomSweeper的基础上，用python3完成了一个去除单个文件BOM或者批量去除一个文件夹内多个文件BOM的脚本。原理就是删除文件开头的BOM 3个字节。</p>
+<p>大家可以到Github中查看下载源码，项目地址– Utf8BomRemover</p>
+<p>在readme中我有写明脚本的使用方法，如果大家对这个脚本有什么建议欢迎留言。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[批量改名]]></title>
       <url>http://www.wulai.me/2016/12/12/%E6%89%B9%E9%87%8F%E6%94%B9%E5%90%8D/</url>
       <content type="html"><![CDATA[<p>将扩展名为<code>.json</code>的文件名添加前缀<code>ad_</code></p>
