@@ -319,7 +319,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-01-06T13:14:25+08:00">
+            <time title="Post modified" itemprop="dateModified" datetime="2017-01-06T13:48:36+08:00">
               2017-01-06
             </time>
             
@@ -353,7 +353,7 @@
       
         
           
-            <p>One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set_error_handler(function() &#123; /* ignore errors */ &#125;);</div><div class="line">dns_get_record();</div><div class="line">restore_error_handler();</div></pre></td></tr></table></figure></p>
+            <h2 id="方案一，输出到系统错误"><a href="#方案一，输出到系统错误" class="headerlink" title="方案一，输出到系统错误"></a>方案一，输出到系统错误</h2><p>One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set_error_handler(function() &#123; /* ignore errors */ &#125;);</div><div class="line">dns_get_record();</div><div class="line">restore_error_handler();</div></pre></td></tr></table></figure></p>
 <p>You could build on this idea and write a re-usable error handler that logs the errors for you.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">set_error_handler([$logger, &apos;onSilencedError&apos;]);</div><div class="line">dns_get_record();</div><div class="line">restore_error_handler();</div><div class="line">Turning errors into exceptions</div></pre></td></tr></table></figure>
 <p>You can use <code>set_error_handler()</code> and the <code>ErrorException</code> class to turn all php errors into exceptions.</p>
@@ -361,6 +361,7 @@
 <p>The important thing to note when using your own error handler is that it will bypass the <code>error_reporting</code> setting and pass all errors (notices, warnings, etc.) to your error handler. You can set a second argument on <code>set_error_handler()</code> to define which error types you want to receive, or access the current setting using … = <code>error_reporting()</code> inside the error handler.</p>
 <p>Suppressing the warning</p>
 <p>Another possibility is to suppress the call with the @ operator and check the return value of dns_get_record() afterwards. But I’d advise against this as errors/warnings are triggered to be handled, not to be suppressed.</p>
+<h2 id="方案二：-输出到自定义函数"><a href="#方案二：-输出到自定义函数" class="headerlink" title="方案二： 输出到自定义函数"></a>方案二： 输出到自定义函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">set_error_handler(function ($errno, $errstr) &#123;</div><div class="line">    // do something</div><div class="line">    echo &quot;\r\n～～～～～找到错误 :-D～～～～～\r\n&quot;;</div><div class="line">    echo &quot;错误信息:($errno)$errstr \r\n&quot;;</div><div class="line">    debug_print_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);</div><div class="line">    echo &quot;\r\n&quot;;</div><div class="line">&#125;, E_WARNING);</div><div class="line">$dir_handle = opendir(&quot;$dir/111&quot;);  //要catch的函数</div><div class="line">restore_error_handler();</div></pre></td></tr></table></figure>
 
           
         
