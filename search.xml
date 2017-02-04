@@ -4,6 +4,15 @@
   
     
     <entry>
+      <title><![CDATA[svn merge 合并单个文件]]></title>
+      <url>http://www.wulai.me/2017/02/04/svn-merge-%E5%90%88%E5%B9%B6%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/</url>
+      <content type="html"><![CDATA[<p>31<br>down vote<br>I’m not sure exactly what you’re asking as the title talks about merging single files but the text of the question talks about single revisions. In the case of merging single revisions you need: (to merge the changes committed in revisions 100, 105, 115)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd trunk</div><div class="line">svn merge -c 100 -c 105 -c 115 http://..../branches/mybranch .</div></pre></td></tr></table></figure>
+<p>If you want to merge only the part of revision 100 that affects file.cpp:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd trunk/path/to/file.cpp</div><div class="line">svn merge -c 100 http://../branches/mybranch/path/to/file.cpp file.cpp</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[php CMYK to RGB]]></title>
       <url>http://www.wulai.me/2017/02/04/php-CMYK-to-RGB/</url>
       <content type="html"><![CDATA[<h3 id="php-CMYK-to-RGB"><a href="#php-CMYK-to-RGB" class="headerlink" title="php CMYK to RGB"></a>php CMYK to RGB</h3><p><code>来源</code>:<a href="http://php.net/manual/en/imagick.setimagecolorspace.php" target="_blank" rel="external">http://php.net/manual/en/imagick.setimagecolorspace.php</a></p>
