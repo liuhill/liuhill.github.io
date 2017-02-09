@@ -4,6 +4,23 @@
   
     
     <entry>
+      <title><![CDATA[MySQL 导入慢的解决方法]]></title>
+      <url>http://www.wulai.me/2017/02/09/MySQL-%E5%AF%BC%E5%85%A5%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<p>MySQL导出的SQL语句在导入时有可能会非常非常慢，经历过导入仅45万条记录，竟用了近3个小时。在导出时合理使用几个参数，可以大大加快导 入的速度。</p>
+<ul>
+<li><code>-e</code> 使用包括几个VALUES列表的多行INSERT语法;</li>
+<li><code>-max_allowed_packet=XXX</code> 客户端/服务器之间通信的缓存区的最大大小;</li>
+<li><code>--net_buffer_length=XXX</code>  TCP/IP和套接字通信缓冲区大小,创建长度达net_buffer_length的行。</li>
+</ul>
+<p><code>注意</code>：max_allowed_packet和net_buffer_length不能比目标数据库的设定数值 大，否则可能出错。</p>
+<p>首先确定目标库的参数值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt;show variables like &apos;max_allowed_packet&apos;;</div><div class="line">mysql&gt;show variables like &apos;net_buffer_length&apos;;</div></pre></td></tr></table></figure></p>
+<p>根据参数值书写mysqldump命令，如：</p>
+<pre><code>E:\eis&gt;mysqldump -uroot -p eis_db goodclassification -e --max_allowed_packet=1048576 --net_buffer_length=16384 &gt;good3.sql
+</code></pre><p>之前2小时才能导入的sql现在几十秒就可以完成了。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[svn merge 合并单个文件]]></title>
       <url>http://www.wulai.me/2017/02/04/svn-merge-%E5%90%88%E5%B9%B6%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/</url>
       <content type="html"><![CDATA[<p>I’m not sure exactly what you’re asking as the title talks about merging single files but the text of the question talks about single revisions. In the case of merging single revisions you need: (to merge the changes committed in revisions 100, 105, 115)</p>
