@@ -4,6 +4,30 @@
   
     
     <entry>
+      <title><![CDATA[flock防止重复rsync]]></title>
+      <url>http://www.wulai.me/2017/02/24/flock%E9%98%B2%E6%AD%A2%E9%87%8D%E5%A4%8Drsync/</url>
+      <content type="html"><![CDATA[<p>我使用crontab同步一个文件夹时，发现一个问题，我在crontab中设置的1分钟运行一次.但当那个文件夹的内容改变时。1分钟不一定能同步完，但这时第二个rsync进行又起来了。</p>
+<p>这个就产生一个问题，二个rsync一起处理相同的文件，这样会出问题。如下</p>
+<pre><code>* * * * /usr/bin/rsync -avlR /data/files    172.16.xxx.xxx:/data
+</code></pre><p>本来想写个脚本来解决，但太麻烦。所以用了个linux下的锁。。呵呵，象下面这个.</p>
+<pre><code>1 * * * * flock -xn /var/run/rsync.lock -c &quot;rsync -avlR /data/files    172.16.xxx.xxx:/data&quot;
+</code></pre><p>这样,使用flock的<code>-x</code>参数先建一个锁文件，然后<code>-n</code>指定，如果锁存在，就等待。直到建成功锁在会运行-c后面的命令。这样第一个进程没有运行完前，锁文件都会存在。这样就不会二个rsync同时并发处理一个东西了</p>
+<p><code>来源</code>: <a href="http://www.cnblogs.com/cmsd/p/3697049.html" target="_blank" rel="external">http://www.cnblogs.com/cmsd/p/3697049.html</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[rsync 只同步指定类型的文件]]></title>
+      <url>http://www.wulai.me/2017/02/15/rsync-%E5%8F%AA%E5%90%8C%E6%AD%A5%E6%8C%87%E5%AE%9A%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%87%E4%BB%B6/</url>
+      <content type="html"><![CDATA[<p>需求： 同步某个目录下所有的图片（<em>.jpg），该目录下有很多其他的文件，但只想同步</em>.jpg的文件。</p>
+<p>rsync 有一个–exclude 可以排除指定文件，还有个–include选项的作用正好和–exclude相反。<br>那直接使用–include=”*.jpg”是否可以呢？</p>
+<p>rsync -av  –include=”*.jpg”  /src/   /des/</p>
+<p>实验证明，这样是不对的。</p>
+<p>而正确的答案是<br>rsync -av  –include=”<em>.jpg” –exclude=</em>  /src/ /des/</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[MySQL 导入慢的解决方法]]></title>
       <url>http://www.wulai.me/2017/02/09/MySQL-%E5%AF%BC%E5%85%A5%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
       <content type="html"><![CDATA[<p>MySQL导出的SQL语句在导入时有可能会非常非常慢，经历过导入仅45万条记录，竟用了近3个小时。在导出时合理使用几个参数，可以大大加快导 入的速度。</p>
