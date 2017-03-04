@@ -569,8 +569,8 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2016-10-27T09:37:19+08:00">
-              2016-10-27
+            <time title="Post modified" itemprop="dateModified" datetime="2017-03-04T14:43:08+08:00">
+              2017-03-04
             </time>
             
           </span>
@@ -610,7 +610,9 @@
 <h3 id="dbdump-sh"><a href="#dbdump-sh" class="headerlink" title="dbdump.sh"></a>dbdump.sh</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">dbname=root</div><div class="line">dbpwd=111111</div><div class="line">CurrentDate=$(date +%Y%m%d)</div><div class="line">dirPath=/home/wwwroot/html/db</div><div class="line">mysqldump -u$dbname -pdbpwd test &gt; $dirPath/test.$&#123;CurrentDate&#125;.sql</div></pre></td></tr></table></figure>
 <h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><p>同步test文件夹</p>
 <p>./rsync.sh test</p>
-
+<h3 id="显示进度条"><a href="#显示进度条" class="headerlink" title="显示进度条"></a>显示进度条</h3><p>添加参数<code>--progress</code></p>
+<pre><code>rsync -av --progress  root@123.123.123.123:/root/mysql56.tar .
+</code></pre>
           
         
       
