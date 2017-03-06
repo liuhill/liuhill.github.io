@@ -4,6 +4,15 @@
   
     
     <entry>
+      <title><![CDATA[docker mysql Access denied for user]]></title>
+      <url>http://www.wulai.me/2017/03/06/docker-mysql-Access-denied-for-user/</url>
+      <content type="html"><![CDATA[<p>root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD<br>“MYSQL_ROOT_PASSWORD=test”,<br>root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -p<br>Enter password: test<br>ERROR 1045 (28000): Access denied for user ‘root’@’localhost’ (using password: YES)</p>
+<p>I’ve gratuitously rebuilt, recreated, –no-cache’d, –force-recreate’d.. nothing is working. I’ve also tried putting the environment variable directly in a mysql Dockerfile and as an “environment” argument in my docker-compose.yml.</p>
+<p>The only thing that IS working is passing -e ‘MYSQL_ROOT_PASSWORD=test’ in a docker run statement.<br>ß</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[flock防止重复rsync]]></title>
       <url>http://www.wulai.me/2017/02/24/flock%E9%98%B2%E6%AD%A2%E9%87%8D%E5%A4%8Drsync/</url>
       <content type="html"><![CDATA[<p>我使用crontab同步一个文件夹时，发现一个问题，我在crontab中设置的1分钟运行一次.但当那个文件夹的内容改变时。1分钟不一定能同步完，但这时第二个rsync进行又起来了。</p>
