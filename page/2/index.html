@@ -271,6 +271,128 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/12/12/批量改名/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/12/批量改名/" itemprop="url">
+                  批量改名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T12:20:27+08:00">
+              2016-12-12
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2016-12-12T12:21:53+08:00">
+              2016-12-12
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>将扩展名为<code>.json</code>的文件名添加前缀<code>ad_</code></p>
+<pre><code>for i in `ls *.json`;do mv -f $i `echo &quot;ad_&quot;$i`;done
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/12/12/awk列出文件夹所有文件导入到md文件/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1811,147 +1933,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/09/24/this-is-incompatible-with-sql-mode-only-full-group-by/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/24/this-is-incompatible-with-sql-mode-only-full-group-by/" itemprop="url">
-                  this is incompatible with sql_mode=only_full_group_by
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-24T22:57:18+08:00">
-              2016-09-24
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2016-09-24T23:02:31+08:00">
-              2016-09-24
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>I was working on a legacy project recently and needed to import some data from MySQL 5.5. All the queries in the code worked perfectly in MySQL 5.5, so I assumed an upgrade to 5.7 would be seamless. Not so.</p>
-<p>First I got errors due to DateTime columns being populated with zeros during import, then when running this query:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">select *</div><div class="line">  from ebay_order_items</div><div class="line">  where</div><div class="line">    z_shipmentno is null</div><div class="line">    and ExternalTransactionID is not null</div><div class="line">    and orderstatus = &apos;Completed&apos;</div><div class="line">    and timestamp &gt; &apos;2015-02-25&apos;</div><div class="line">  group by ExternalTransactionID</div><div class="line">  order by timestamp desc</div></pre></td></tr></table></figure>
-<p>I got this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Expression #1 of SELECT list is not in GROUP BY</div><div class="line">clause and contains nonaggregated column</div><div class="line">&apos;1066export.ebay_order_items.TransactionID&apos; which</div><div class="line">is not functionally dependent on columns in GROUP BY</div><div class="line">clause; this is incompatible with sql_mode=only_full_group_by</div></pre></td></tr></table></figure></p>
-<p>It turned out that the only_full_group_by mode was made default in version 5.7.5., which breaks many of such naïve queries. In fact, see here for more info.</p>
-<p>I could rewrite all queries to be 5.7 compatible (hat tip to George Fekete for the solution) and do something as atrocious as this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">select extf.* from (</div><div class="line">	select ExternalTransactionID</div><div class="line">	from ebay_order_items</div><div class="line">	where ExternalTransactionID is not null</div><div class="line">	group by ExternalTransactionID</div><div class="line">) extf JOIN ebay_order_items eoi</div><div class="line">ON (eoi.ExternalTransactionID = extf.ExternalTransactionID)</div><div class="line">where eoi.z_shipmentno is null</div><div class="line">and eoi.orderstatus = &apos;Completed&apos;</div><div class="line">and eoi.timestamp &gt; &apos;2015-02-25&apos;</div><div class="line">order by eoi.timestamp desc</div></pre></td></tr></table></figure>
-<p>… but this would make the already complex refactoring much more difficult. It would be much better to temporarily disable these checks and force MySQL to act like it did in 5.6.</p>
-<h2 id="Permanently-changing-SQL-mode"><a href="#Permanently-changing-SQL-mode" class="headerlink" title="Permanently changing SQL mode"></a>Permanently changing SQL mode</h2><p>First, we find out which configuration file our MySQL installation prefers. For that, we need the binary’s location:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ which mysqld</div><div class="line">/usr/sbin/mysqld</div></pre></td></tr></table></figure></p>
-<p>Then, we use this path to execute the lookup:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ /usr/sbin/mysqld --verbose --help | grep -A 1 &quot;Default options&quot;</div><div class="line"></div><div class="line">Default options are read from the following files in the given order:</div><div class="line">/etc/my.cnf /etc/mysql/my.cnf ~/.my.cnf</div></pre></td></tr></table></figure>
-<p>We can see that the first favored configuration file is one in the root of the etc folder. That file, however, did not exist on my system so I opted for the second one.</p>
-<p>First, we find out the current sql mode:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql -u homestead -psecret -e &quot;select @@sql_mode&quot;</div><div class="line"></div><div class="line">+-------------------------------------------------------------------------------------------------------------------------------------------+</div><div class="line">| @@sql_mode                                                                                                                                |</div><div class="line">+-------------------------------------------------------------------------------------------------------------------------------------------+</div><div class="line">| ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION |</div><div class="line">+-------------------------------------------------------------------------------------------------------------------------------------------+</div></pre></td></tr></table></figure>
-<p>Then, we copy the current string this query produced and remove everything we don’t like. In my case, I needed to get rid of NO_ZERO_IN_DATE, NO_ZERO_DATE and of course ONLY_FULL_GROUP_BY. The newly formed string then looks like this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</div></pre></td></tr></table></figure>
-<p>We open the configuration file we decided on before (/etc/mysql/my.cnf) and add the following line into the [mysqld] section:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[mysqld]</div><div class="line"># ... other stuff will probably be here</div><div class="line">sql_mode = &quot;STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION&quot;</div></pre></td></tr></table></figure>
-<p>Save, exit, and restart MySQL:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service mysql restart</div></pre></td></tr></table></figure>
-<p>Voilà, the SQL mode is permanently changed and I can continue developing the legacy project until I need some additional strictness.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1997,7 +1978,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">95</span>
+              <span class="site-state-item-count">96</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
