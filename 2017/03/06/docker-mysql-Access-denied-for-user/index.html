@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD“MYSQL_ROOT_PASSWORD=test”,root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -pEnter password: testERROR 1045">
+<meta name="description" content="12345root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD&amp;quot;MYSQL_ROOT_PASSWORD=test&amp;quot;,root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -pEnter password:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker mysql Access denied for user">
 <meta property="og:url" content="http://www.wulai.me/2017/03/06/docker-mysql-Access-denied-for-user/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD“MYSQL_ROOT_PASSWORD=test”,root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -pEnter password: testERROR 1045">
-<meta property="og:updated_time" content="2017-03-06T04:39:20.000Z">
+<meta property="og:description" content="12345root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD&amp;quot;MYSQL_ROOT_PASSWORD=test&amp;quot;,root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -pEnter password:">
+<meta property="og:updated_time" content="2017-03-06T05:19:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker mysql Access denied for user">
-<meta name="twitter:description" content="root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD“MYSQL_ROOT_PASSWORD=test”,root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -pEnter password: testERROR 1045">
+<meta name="twitter:description" content="12345root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD&amp;quot;MYSQL_ROOT_PASSWORD=test&amp;quot;,root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -pEnter password:">
 
 
 
@@ -315,7 +315,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-03-06T12:39:20+08:00">
+            <time title="Post modified" itemprop="dateModified" datetime="2017-03-06T13:19:53+08:00">
               2017-03-06
             </time>
             
@@ -347,9 +347,9 @@
       
 
       
-        <p>root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD<br>“MYSQL_ROOT_PASSWORD=test”,<br>root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -p<br>Enter password: test<br>ERROR 1045 (28000): Access denied for user ‘root’@’localhost’ (using password: YES)</p>
-<p>I’ve gratuitously rebuilt, recreated, –no-cache’d, –force-recreate’d.. nothing is working. I’ve also tried putting the environment variable directly in a mysql Dockerfile and as an “environment” argument in my docker-compose.yml.</p>
-<p>The only thing that IS working is passing -e ‘MYSQL_ROOT_PASSWORD=test’ in a docker run statement.<br>ß</p>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD</div><div class="line">&quot;MYSQL_ROOT_PASSWORD=test&quot;,</div><div class="line">root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -p</div><div class="line">Enter password: test</div><div class="line">ERROR 1045 (28000): Access denied for user &apos;root&apos;@&apos;localhost&apos; (using password: YES)</div></pre></td></tr></table></figure>
+<p>I’ve gratuitously rebuilt, recreated, <code>--no-cache&#39;d</code>, <code>--force-recreate&#39;d</code>.. nothing is working. I’ve also tried putting the environment variable directly in a mysql Dockerfile and as an “environment” argument in my docker-compose.yml.</p>
+<p>The only thing that IS working is passing -e ‘MYSQL_ROOT_PASSWORD=test’ in a docker run statement.</p>
 
       
     </div>
@@ -385,6 +385,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/07/latest-ffmpeg-centos6-sh/" rel="prev" title="latest-ffmpeg-centos6.sh">
+                latest-ffmpeg-centos6.sh <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -443,7 +447,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">94</span>
+              <span class="site-state-item-count">95</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

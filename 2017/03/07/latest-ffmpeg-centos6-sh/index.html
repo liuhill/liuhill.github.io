@@ -84,22 +84,16 @@
 
 
 
-<meta name="description" content="欢迎转载，但请务必在明确位置注明文章出处！ &amp;gt;http://johnnyshieh.github.io/python/2015/08/02/python-remove-utf8-bom/
-
-前几天我在Windows写完一篇markdown格式的文章，上传到github page后，这个文章的页面把jekyll的YAML头信息也显示出来了，没有像我之前在ubuntu中写的文章一样正常解析YA">
+<meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UTF-8编码去除BOM头的python脚本">
-<meta property="og:url" content="http://www.wulai.me/2016/12/14/UTF-8编码去除BOM头的python脚本/index.html">
+<meta property="og:title" content="latest-ffmpeg-centos6.sh">
+<meta property="og:url" content="http://www.wulai.me/2017/03/07/latest-ffmpeg-centos6-sh/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="欢迎转载，但请务必在明确位置注明文章出处！ &amp;gt;http://johnnyshieh.github.io/python/2015/08/02/python-remove-utf8-bom/
-
-前几天我在Windows写完一篇markdown格式的文章，上传到github page后，这个文章的页面把jekyll的YAML头信息也显示出来了，没有像我之前在ubuntu中写的文章一样正常解析YA">
-<meta property="og:updated_time" content="2016-12-14T02:01:42.000Z">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:updated_time" content="2017-03-07T03:31:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UTF-8编码去除BOM头的python脚本">
-<meta name="twitter:description" content="欢迎转载，但请务必在明确位置注明文章出处！ &amp;gt;http://johnnyshieh.github.io/python/2015/08/02/python-remove-utf8-bom/
-
-前几天我在Windows写完一篇markdown格式的文章，上传到github page后，这个文章的页面把jekyll的YAML头信息也显示出来了，没有像我之前在ubuntu中写的文章一样正常解析YA">
+<meta name="twitter:title" content="latest-ffmpeg-centos6.sh">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
 
 
 
@@ -127,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://www.wulai.me/2016/12/14/UTF-8编码去除BOM头的python脚本/"/>
+  <link rel="canonical" href="http://www.wulai.me/2017/03/07/latest-ffmpeg-centos6-sh/"/>
 
 
 
 
 
-  <title> UTF-8编码去除BOM头的python脚本 | 无来 </title>
+  <title> latest-ffmpeg-centos6.sh | 无来 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -276,7 +270,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/12/14/UTF-8编码去除BOM头的python脚本/">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/03/07/latest-ffmpeg-centos6-sh/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
@@ -300,7 +294,7 @@
             
             
               
-                UTF-8编码去除BOM头的python脚本
+                latest-ffmpeg-centos6.sh
               
             
           </h1>
@@ -312,8 +306,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-14T09:58:23+08:00">
-              2016-12-14
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-07T11:31:15+08:00">
+              2017-03-07
             </time>
 
             &nbsp;|&nbsp;
@@ -321,8 +315,8 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2016-12-14T10:01:42+08:00">
-              2016-12-14
+            <time title="Post modified" itemprop="dateModified" datetime="2017-03-07T11:31:52+08:00">
+              2017-03-07
             </time>
             
           </span>
@@ -353,36 +347,7 @@
       
 
       
-        <blockquote>
-<p>欢迎转载，但请务必在明确位置注明文章出处！ &gt;<a href="http://johnnyshieh.github.io/python/2015/08/02/python-remove-utf8-bom/" target="_blank" rel="external">http://johnnyshieh.github.io/python/2015/08/02/python-remove-utf8-bom/</a></p>
-</blockquote>
-<p>前几天我在Windows写完一篇markdown格式的文章，上传到github page后，这个文章的页面把jekyll的YAML头信息也显示出来了，没有像我之前在ubuntu中写的文章一样正常解析YAML头信息，最后谷歌了半天发现原因是在Windows用记事本保存utf-8编码的文件时会默认加上BOM头字符。而jekyll的文档中也明确写明了如果使用UTF-8编码，那么在文件中一定不要出现BOM头字符。</p>
-<p>所以我把如何在Windows和linux系统中去除UTF-8的BOM头的方法做个记录。</p>
-<ol>
-<li>UTF-8 与 UTF-8 + BOM 的区别</li>
-</ol>
-<p>下面是我从网上复制过来BOM的简介：</p>
-<p>BOM – Byte Order Mark，中文名译作“字节顺序标记”。在UCS 编码中有一个叫做 “Zero Width No-Break Space” ，中文译名作“零宽无间断间隔”的字符，它的编码是 FEFF。而 FFFE 在 UCS 中是不存在的字符，所以不应该出现在实际传输中。UCS 规范建议我们在传输字节流前，先传输字符 “Zero Width No-Break Space”。这样如果接收者收到 FEFF，就表明这个字节流是 Big-Endian 的；如果收到FFFE，就表明这个字节流是 Little- Endian 的。因此字符 “Zero Width No-Break Space” （“零宽无间断间隔”）又被称作 BOM。</p>
-<p>UTF-8 不需要 BOM 来表明字节顺序，但可以用 BOM 来表明编码方式。字符 “Zero Width No-Break Space” 的 UTF-8 编码是 EF BB BF。所以如果接收者收到以 EF BB BF （十六进制）开头的字节流，就知道这是 UTF-8编码了。Windows 就是使用 BOM 来标记文本文件的编码方式的。</p>
-<p>所以UTF-8 + BOM其实就是在文件的开头加上了 0xEF 0xBB 0xBF 这三个字节,而这个三个字节是一串隐藏字符。</p>
-<ol>
-<li>在Linux中如何检测去除BOM头</li>
-</ol>
-<p>在Linux中可以用vim很方便地检测、去除BOM头</p>
-<p>检测是否有BOM头：</p>
-<pre><code>:set bomb?
-</code></pre><p>去除BOM头：</p>
-<pre><code>:set encoding=utf-8
-:set nobomb
-</code></pre><p>添加BOM头也很简单：</p>
-<pre><code>:set encoding=utf-8
-:set bomb
-</code></pre><ol>
-<li>利用python脚本在window、linux、mac os中去除BOM头</li>
-</ol>
-<p>我在Terence的BomSweeper的基础上，用python3完成了一个去除单个文件BOM或者批量去除一个文件夹内多个文件BOM的脚本。原理就是删除文件开头的BOM 3个字节。</p>
-<p>大家可以到Github中查看下载源码，项目地址– Utf8BomRemover</p>
-<p>在readme中我有写明脚本的使用方法，如果大家对这个脚本有什么建议欢迎留言。</p>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div></pre></td><td class="code"><pre><div class="line"># source: https://trac.ffmpeg.org/wiki/CentosCompilationGuide</div><div class="line"></div><div class="line">yum install autoconf automake gcc gcc-c++ git libtool make nasm pkgconfig zlib-devel</div><div class="line"></div><div class="line">mkdir ~/ffmpeg_sources</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -O http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz</div><div class="line">tar xzvf yasm-1.2.0.tar.gz</div><div class="line">cd yasm-1.2.0</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot;</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line">. ~/.bash_profile</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">git clone --depth 1 git://git.videolan.org/x264</div><div class="line">cd x264</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot; --enable-static</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">git clone --depth 1 git://github.com/mstorsjo/fdk-aac.git</div><div class="line">cd fdk-aac</div><div class="line">autoreconf -fiv</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -L -O http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz</div><div class="line">tar xzvf lame-3.99.5.tar.gz</div><div class="line">cd lame-3.99.5</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot; --disable-shared --enable-nasm</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -O http://downloads.xiph.org/releases/opus/opus-1.0.3.tar.gz</div><div class="line">tar xzvf opus-1.0.3.tar.gz</div><div class="line">cd opus-1.0.3</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -O http://downloads.xiph.org/releases/ogg/libogg-1.3.1.tar.gz</div><div class="line">tar xzvf libogg-1.3.1.tar.gz</div><div class="line">cd libogg-1.3.1</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -O http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.3.tar.gz</div><div class="line">tar xzvf libvorbis-1.3.3.tar.gz</div><div class="line">cd libvorbis-1.3.3</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --with-ogg=&quot;$HOME/ffmpeg_build&quot; --disable-shared</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">git clone --depth 1 https://chromium.googlesource.com/webm/libvpx</div><div class="line">cd libvpx</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-examples</div><div class="line">make</div><div class="line">make install</div><div class="line">make clean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -O http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.gz</div><div class="line">tar xzvf libtheora-1.1.1.tar.gz</div><div class="line">cd libtheora-1.1.1</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --with-ogg=&quot;$HOME/ffmpeg_build&quot; --disable-examples --disable-shared --disable-sdltest --disable-vorbistest</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">yum -y install freetype-devel speex-devel</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">git clone --depth 1 git://source.ffmpeg.org/ffmpeg</div><div class="line">cd ffmpeg</div><div class="line">PKG_CONFIG_PATH=&quot;$HOME/ffmpeg_build/lib/pkgconfig&quot;</div><div class="line">export PKG_CONFIG_PATH</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --extra-cflags=&quot;-I$HOME/ffmpeg_build/include&quot; --extra-ldflags=&quot;-L$HOME/ffmpeg_build/lib&quot; --bindir=&quot;$HOME/bin&quot; --extra-libs=&quot;-ldl&quot; --enable-gpl --enable-nonfree --enable-libfdk_aac --enable-libmp3lame --enable-libopus --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libfreetype --enable-libspeex --enable-libtheora</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line">hash -r</div><div class="line">. ~/.bash_profile</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources/ffmpeg/tools</div><div class="line">make qt-faststart</div><div class="line">cp qt-faststart /usr/bin</div><div class="line">ldconfig</div><div class="line">cd</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -409,8 +374,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/12/批量改名/" rel="next" title="批量改名">
-                <i class="fa fa-chevron-left"></i> 批量改名
+              <a href="/2017/03/06/docker-mysql-Access-denied-for-user/" rel="next" title="docker mysql Access denied for user">
+                <i class="fa fa-chevron-left"></i> docker mysql Access denied for user
               </a>
             
           </div>
@@ -418,10 +383,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/06/php-try-catch-a-warning/" rel="prev" title="php try/catch a warning ">
-                php try/catch a warning  <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
