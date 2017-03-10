@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title><![CDATA[MAGENTO 2: CHANGE THE BASE-URL USING THE COMMAND LINE]]></title>
+      <url>http://www.wulai.me/2017/03/10/MAGENTO-2-CHANGE-THE-BASE-URL-USING-THE-COMMAND-LINE/</url>
+      <content type="html"><![CDATA[<p>The following Magento 2’s CLI command will update the Magento base-url and the base-url-secure values.</p>
+<p>Go to the Magento’s root directory, then type within the console:</p>
+<pre><code>php bin/magento setup:store-config:set --base-url=&quot;http://localhost:8080/&quot;
+</code></pre><p>Replacing <a href="http://localhost:8080/" target="_blank" rel="external">http://localhost:8080/</a> with your new base-url.</p>
+<p>You may want to change the base-url-secure also:</p>
+<pre><code>php bin/magento setup:store-config:set --base-url-secure=&quot;https://localhost:8080/&quot;
+</code></pre><p>Note: both base-url and base-url-secure values must contain the URL’s scheme, http:// or https://, and a trailing slash /.</p>
+<p>Then clear the cache:</p>
+<pre><code>php bin/magento cache:flush
+</code></pre><p>Troubleshooting<br>Clear current values from the database<br>Can happen that the above command doesn’t works as expected and you still have some url pointing to the old base-url. In these cases you have to clear some values in your db.</p>
+<p>Open the Magento 2 database with your favorite MySQL tool then go to the core_config_data table.</p>
+<p>Search for rows having these values in the column path (note that there could be more than one row for each value):</p>
+<ul>
+<li>“web/unsecure/base_url”</li>
+<li>“web/secure/base_url”<br>Delete these rows (Magento will recreate them).</li>
+</ul>
+<p>Now you can set the base-url value using the above CLI command.</p>
+<p>Single-Store Mode option enabled<br>If you have the Single-Store Mode option enabled this could bring to some problem with setting the base-url with the command line.</p>
+<p>In this case you should modify the base-url using only the command line and not the Magento’s Admin Panel. If you already saved the Base url field value using the Admin Panel you should clear values within the Magento’s core_config_data table as described above.</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[How to remove old Docker containers]]></title>
       <url>http://www.wulai.me/2017/03/10/How-to-remove-old-Docker-containers/</url>
       <content type="html"><![CDATA[<h3 id="1、remove-exit-containers"><a href="#1、remove-exit-containers" class="headerlink" title="1、remove exit containers"></a>1、remove <code>exit</code> containers</h3><p>Until that command is available, you can string docker commands together with other unix commands to get what you need. Here is an example on how to clean up old containers that are weeks old.</p>
