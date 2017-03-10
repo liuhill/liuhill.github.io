@@ -4,6 +4,17 @@
   
     
     <entry>
+      <title><![CDATA[How to remove old Docker containers]]></title>
+      <url>http://www.wulai.me/2017/03/10/How-to-remove-old-Docker-containers/</url>
+      <content type="html"><![CDATA[<h3 id="1、remove-exit-containers"><a href="#1、remove-exit-containers" class="headerlink" title="1、remove exit containers"></a>1、remove <code>exit</code> containers</h3><p>Until that command is available, you can string docker commands together with other unix commands to get what you need. Here is an example on how to clean up old containers that are weeks old.</p>
+<pre><code>$ docker ps --filter &quot;status=exited&quot; | grep &apos;weeks ago&apos; | awk &apos;{print $1}&apos; | xargs --no-run-if-empty docker rm
+</code></pre><h3 id="2、remove-images"><a href="#2、remove-images" class="headerlink" title="2、remove images"></a>2、remove images</h3><pre><code>$ docker images | grep &quot;&lt;none&gt;&quot; | awk &apos;{print $3}&apos; | xargs docker rmi
+</code></pre><h3 id="3-rm-all-stopped-containers"><a href="#3-rm-all-stopped-containers" class="headerlink" title="3 rm all stopped containers"></a>3 rm all <code>stopped</code> containers</h3><p>If you want to use awk for this consider this command if you want do rm all stopped containers (without a error because of the first line):</p>
+<pre><code>$ docker ps -a | awk &apos;NR &gt; 1 {print $1}&apos; | xargs docker rm
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[linux文件名编码转换工具convmv]]></title>
       <url>http://www.wulai.me/2017/03/07/linux%E6%96%87%E4%BB%B6%E5%90%8D%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2%E5%B7%A5%E5%85%B7convmv/</url>
       <content type="html"><![CDATA[<p>今天介绍个文件名转码的工具–convmv，convmv能帮助我们很容易地对一个文件，一个目录下所有文件进行编码转换，比如gbk转为utf8等。</p>
