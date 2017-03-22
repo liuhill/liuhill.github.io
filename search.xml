@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title><![CDATA[Can't resume screen, says I am already attached?]]></title>
+      <url>http://www.wulai.me/2017/03/22/Can-t-resume-screen-says-I-am-already-attached/</url>
+      <content type="html"><![CDATA[<p>he session is still attached on another terminal. The server hasn’t detected the network outage on that connection: it only detects the outage when it tries to send a packet and gets an error back or no response after a timeout, but this hasn’t happened yet. You’re in a common situation where the client detected the outage because it tried to send some input and failed, but the server is just sitting there waiting for input. Eventually the server will send a keepalive packet and detect that the connection is dead.</p>
+<p>In the meantime, use the <code>-d</code> option to detach the screen session from the terminal where it’s in.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">screen -r -d 30608</div><div class="line">screen -rd is pretty much the standard way to attach to an</div></pre></td></tr></table></figure>
+<p>existing screen session.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Save MySQL query results into a text or CSV file]]></title>
+      <url>http://www.wulai.me/2017/03/10/Save-MySQL-query-results-into-a-text-or-CSV-file/</url>
+      <content type="html"><![CDATA[<p>MySQL provides an easy mechanism for writing the results of a select statement into a text file on the server. Using extended options of the INTO OUTFILE nomenclature, it is possible to create a comma separated value (CSV) which can be imported into a spreadsheet application such as OpenOffice or Excel or any other applciation which accepts data in CSV format.</p>
+<p>Given a query such as</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT order_id,product_name,qty FROM orders</div></pre></td></tr></table></figure>
+<p>which returns three columns of data, the results can be placed into the file /tmo/orders.txt using the query:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT order_id,product_name,qty FROM orders</div><div class="line">INTO OUTFILE &apos;/tmp/orders.txt&apos;</div></pre></td></tr></table></figure>
+<p>This will create a tab-separated file, each row on its own line. To alter this behavior, it is possible to add modifiers to the query:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SELECT order_id,product_name,qty FROM orders</div><div class="line">INTO OUTFILE &apos;/tmp/orders.csv&apos;</div><div class="line">FIELDS TERMINATED BY &apos;,&apos;</div><div class="line">ENCLOSED BY &apos;&quot;&apos;</div><div class="line">LINES TERMINATED BY &apos;\n&apos;</div></pre></td></tr></table></figure>
+<p>In this example, each field will be enclosed in “double quotes,” the fields will be separated by commas, and each row will be output on a new line separated by a newline (\n). Sample output of this command would look like:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;1&quot;,&quot;Tech-Recipes sock puppet&quot;,&quot;14.95&quot; &quot;2&quot;,&quot;Tech-Recipes chef&apos;s hat&quot;,&quot;18.95&quot;</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>Keep in mind that the output file must not already exist and that the user MySQL is running as has write permissions to the directory MySQL is attempting to write the file to.</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[MAGENTO 2: CHANGE THE BASE-URL USING THE COMMAND LINE]]></title>
       <url>http://www.wulai.me/2017/03/10/MAGENTO-2-CHANGE-THE-BASE-URL-USING-THE-COMMAND-LINE/</url>
       <content type="html"><![CDATA[<p>The following Magento 2’s CLI command will update the Magento base-url and the base-url-secure values.</p>
