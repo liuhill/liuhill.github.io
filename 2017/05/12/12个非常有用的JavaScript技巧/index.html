@@ -86,26 +86,29 @@
 
 <meta name="description" content="原文：12 Extremely Useful Hacks for JavaScript
 作者：Caio Ribeiro Pereira
-翻译：雁惊寒在这篇文章中，我将分享12个非常有用的JavaScript技巧。这些技巧可以帮助你减少并优化代码。
+翻译：雁惊寒
 
-1) 使用!!将变量转换成布尔类型有时，我们需要检查一些变量是否存在，或者它是否具有有效值，从而将它们的值视为true。对于做这样的检查，你可以使用">
+在这篇文章中，我将分享12个非常有用的JavaScript技巧。这些技巧可以帮助你减少并优化代码。
+1) 使用!!将变量转换成布尔类型有时，我们需要检查一些变量是否存在，或者它是否具有有效值，从而将它们的值视为true。对于做这样的检查，你可以使">
 <meta property="og:type" content="article">
 <meta property="og:title" content="12个非常有用的JavaScript技巧">
 <meta property="og:url" content="http://www.wulai.me/2017/05/12/12个非常有用的JavaScript技巧/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="原文：12 Extremely Useful Hacks for JavaScript
 作者：Caio Ribeiro Pereira
-翻译：雁惊寒在这篇文章中，我将分享12个非常有用的JavaScript技巧。这些技巧可以帮助你减少并优化代码。
+翻译：雁惊寒
 
-1) 使用!!将变量转换成布尔类型有时，我们需要检查一些变量是否存在，或者它是否具有有效值，从而将它们的值视为true。对于做这样的检查，你可以使用">
-<meta property="og:updated_time" content="2017-05-12T00:58:26.000Z">
+在这篇文章中，我将分享12个非常有用的JavaScript技巧。这些技巧可以帮助你减少并优化代码。
+1) 使用!!将变量转换成布尔类型有时，我们需要检查一些变量是否存在，或者它是否具有有效值，从而将它们的值视为true。对于做这样的检查，你可以使">
+<meta property="og:updated_time" content="2017-05-12T00:59:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="12个非常有用的JavaScript技巧">
 <meta name="twitter:description" content="原文：12 Extremely Useful Hacks for JavaScript
 作者：Caio Ribeiro Pereira
-翻译：雁惊寒在这篇文章中，我将分享12个非常有用的JavaScript技巧。这些技巧可以帮助你减少并优化代码。
+翻译：雁惊寒
 
-1) 使用!!将变量转换成布尔类型有时，我们需要检查一些变量是否存在，或者它是否具有有效值，从而将它们的值视为true。对于做这样的检查，你可以使用">
+在这篇文章中，我将分享12个非常有用的JavaScript技巧。这些技巧可以帮助你减少并优化代码。
+1) 使用!!将变量转换成布尔类型有时，我们需要检查一些变量是否存在，或者它是否具有有效值，从而将它们的值视为true。对于做这样的检查，你可以使">
 
 
 
@@ -327,7 +330,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-05-12T08:58:26+08:00">
+            <time title="Post modified" itemprop="dateModified" datetime="2017-05-12T08:59:28+08:00">
               2017-05-12
             </time>
             
@@ -362,8 +365,9 @@
         <blockquote>
 <p>原文：<a href="https://blog.jscrambler.com/12-extremely-useful-hacks-for-javascript/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">12 Extremely Useful Hacks for JavaScript</a></p>
 <p>作者：Caio Ribeiro Pereira</p>
-<p>翻译：雁惊寒<br>在这篇文章中，我将分享12个非常有用的JavaScript技巧。这些技巧可以帮助你减少并优化代码。</p>
+<p>翻译：雁惊寒</p>
 </blockquote>
+<p>在这篇文章中，我将分享12个非常有用的JavaScript技巧。这些技巧可以帮助你减少并优化代码。</p>
 <h3 id="1-使用-将变量转换成布尔类型"><a href="#1-使用-将变量转换成布尔类型" class="headerlink" title="1) 使用!!将变量转换成布尔类型"></a>1) 使用!!将变量转换成布尔类型</h3><p>有时，我们需要检查一些变量是否存在，或者它是否具有有效值，从而将它们的值视为true。对于做这样的检查，你可以使用||（双重否定运算符），它能自动将任何类型的数据转换为布尔值，只有这些变量才会返回false：0，null，””，undefined或NaN，其他的都返回true。我们来看看这个简单的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function Account(cash) &#123;  </div><div class="line">    this.cash = cash;</div><div class="line">    this.hasMoney = !!cash;</div><div class="line">&#125;</div><div class="line">var account = new Account(100.50);  </div><div class="line">console.log(account.cash); // 100.50  </div><div class="line">console.log(account.hasMoney); // true</div><div class="line"></div><div class="line">var emptyAccount = new Account(0);  </div><div class="line">console.log(emptyAccount.cash); // 0  </div><div class="line">console.log(emptyAccount.hasMoney); // false</div></pre></td></tr></table></figure></p>
 <p>在这个例子中，如果account.cash的值大于零，则account.hasMoney的值就是true。</p>
 <h3 id="2-使用-将变量转换成数字"><a href="#2-使用-将变量转换成数字" class="headerlink" title="2) 使用+将变量转换成数字"></a>2) 使用+将变量转换成数字</h3><p>这个转换超级简单，但它只适用于数字字符串，不然就会返回NaN（不是数字）。看看这个例子：</p>
