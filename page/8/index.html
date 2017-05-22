@@ -271,6 +271,219 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2015/07/27/e5-9c-a8ubuntu-e4-b8-8b-e6-90-ad-e5-bb-bapptp-vpn-e6-9c-8d-e5-8a-a1-e5-99-a8/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/27/e5-9c-a8ubuntu-e4-b8-8b-e6-90-ad-e5-bb-bapptp-vpn-e6-9c-8d-e5-8a-a1-e5-99-a8/" itemprop="url">
+                  在ubuntu下搭建pptp vpn服务器
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-07-27T13:31:10+08:00">
+              2015-07-27
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2016-08-29T13:34:08+08:00">
+              2016-08-29
+            </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">server</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="pptp配置"><a href="#pptp配置" class="headerlink" title="pptp配置"></a>pptp配置</h1><h2 id="1、安装pptp"><a href="#1、安装pptp" class="headerlink" title="1、安装pptp"></a>1、安装pptp</h2><p>安装pptp</p>
+<pre><code>sudo apt-get -y update
+sudo apt-get -y install pptpd
+
+
+## 2、修改配置脚本
+
+cat &gt;/etc/ppp/options.pptpd &lt;&lt;END
+name pptpd
+refuse-pap
+refuse-chap
+refuse-mschap
+require-mschap-v2
+require-mppe-128
+ms-dns 8.8.8.8
+ms-dns 8.8.4.4
+proxyarp
+lock
+nobsdcomp 
+novj
+novjccomp
+nologfd
+END
+
+
+说明
+</code></pre><ul>
+<li>name pptpd（pptpd服务名，可以随便填写。）</li>
+<li>refuse-pap（拒绝pap身份认证模式。）</li>
+<li>refuse-chap（拒绝chap身份认证模式。）</li>
+<li>refuse-mschap（拒绝mschap身份认证模式。）</li>
+<li>require-mschap-v2（在端点进行连接握手时需要使用微软的 mschap-v2 进行自身验证。）</li>
+<li>require-mppe-128（MPPE 模块使用 128 位加密。）</li>
+<li>ms-dns 8.8.8.8 (ppp 为 Windows 客户端提供 DNS 服务器 IP 地址。)</li>
+<li>proxyarp (建立 ARP 代理键值。)</li>
+<li>nodefaultroute（不替换默认路由）</li>
+<li>debug（开启调试模式，相关信息记录在 /var/logs/message 中。）</li>
+<li>lock（锁定客户端 PTY 设备文件。）</li>
+<li><p>nobsdcomp (禁用 BSD 压缩模式。)</p>
+<h2 id="3、还有ip"><a href="#3、还有ip" class="headerlink" title="3、还有ip"></a>3、还有ip</h2><p>cat &gt; /etc/pptpd.conf &lt;&lt;END<br>option /etc/ppp/options.pptpd<br>logwtmp<br>localip 192.168.2.1<br>remoteip 192.168.2.10-100<br>END</p>
+</li>
+</ul>
+<pre><code>## 4、增加路由转发
+
+### 4.1 ipv4转发
+
+cat &gt;&gt; /etc/sysctl.conf &lt;&lt;END
+net.ipv4.ip_forward=1
+END
+sysctl -p   
+
+
+### 4.2 修改iptables
+</code></pre><ul>
+<li>备份当前iptables<br>iptables-save &gt; /etc/iptables.down.rules</li>
+<li>修改iptable NAT转发<br>iptables -t nat -A POSTROUTING -s 192.168.2.0/24 -o eth0 -j MASQUERADE</li>
+<li><p>设置MTU</p>
+<p>iptables -I FORWARD -s 192.168.2.0/24 -p tcp –syn -i ppp+ -j TCPMSS –set-mss 1300</p>
+</li>
+<li><p>保存新iptables</p>
+<p>iptables-save &gt; /etc/iptables.up.rules</p>
+</li>
+<li><p>重启后继续有效<br>cat &gt;&gt;/etc/ppp/pptpd-options&lt;&lt;EOF<br>pre-up iptables-restore &lt; /etc/iptables.up.rules<br>post-down iptables-restore &lt; /etc/iptables.down.rules<br>EOF</p>
+</li>
+<li>增加用户</li>
+<li>增加帐号密码都是test的用户<br>cat &gt;/etc/ppp/chap-secrets &lt;&lt;END<br>test pptpd test *<br>END</li>
+<li>重启服务<br>/etc/init.d/pptpd restart<br>netstat -lntp</li>
+<li><p>自动脚本<br>wget -c <a href="https://github.com/suyan/scripts/raw/master/Setup/pptp.sh" target="_blank" rel="external">https://github.com/suyan/scripts/raw/master/Setup/pptp.sh</a></p>
+<h2 id="4、问题"><a href="#4、问题" class="headerlink" title="4、问题"></a>4、问题</h2><p>logwtmp.so 版本问题</p>
+<p>如果链接中断，并且出现下面问题：</p>
+<p>Plugin /usr/lib/pptpd/pptpd-logwtmp.so is for pppd version 2.4.5, this is 2.4.6</p>
+</li>
+</ul>
+<p>在 /etc/pptpd.conf 文件中把 logwtmp 删掉就好了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2015/07/25/e5-8a-a8-e6-80-81-e7-94-9f-e6-88-90-e5-85-83-e7-b4-a0-e4-b8-8d-e5-93-8d-e5-ba-94jquery-e4-ba-8b-e4-bb-b6/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1852,151 +2065,6 @@ iptables -t nat -A POSTROUTING -d 10.160.30.11 -p tcp --dport 22 -j SNAT --to 10
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2014/12/30/ie-e6-8f-90-e4-ba-a4ajax-e6-8f-90-e4-ba-a4304/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/12/30/ie-e6-8f-90-e4-ba-a4ajax-e6-8f-90-e4-ba-a4304/" itemprop="url">
-                  IE提交ajax提交304
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-12-30T11:32:19+08:00">
-              2014-12-30
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2016-08-03T09:53:27+08:00">
-              2016-08-03
-            </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>增加cache</p>
-<pre><code>$.ajax({  
-    cache : false,  
-    url : &quot;sendCode.html&quot;,  
-    data : {phone : value}  
-});  
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2042,7 +2110,7 @@ iptables -t nat -A POSTROUTING -d 10.160.30.11 -p tcp --dport 22 -j SNAT --to 10
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">103</span>
+              <span class="site-state-item-count">104</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -4,6 +4,20 @@
   
     
     <entry>
+      <title><![CDATA[MySQL 去掉字段中的换行和回车符]]></title>
+      <url>http://www.wulai.me/2017/05/22/MySQL-%E5%8E%BB%E6%8E%89%E5%AD%97%E6%AE%B5%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E5%92%8C%E5%9B%9E%E8%BD%A6%E7%AC%A6/</url>
+      <content type="html"><![CDATA[<p>解决方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UPDATE tablename SET field = REPLACE(REPLACE(field, CHAR(10), &apos;&apos;), CHAR(13), &apos;&apos;);</div><div class="line">char(10):  换行符</div><div class="line">char(13):  回车符</div></pre></td></tr></table></figure></p>
+<p>MySQL的trim函数没办法去掉回车和换行，只能去掉多余的空格，可以用MySQL的replace函数，解决掉这个问题，具体解决办法如下：</p>
+<p>假设想要审核数据库中内容为“我爱你<br>”的短信息（注意内容后有换行）通过（status改变成1）</p>
+<p>之前的SQL语句是不起作用的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UPDATE `tran`</div><div class="line">SET `status` = &apos;1&apos;</div><div class="line">WHERE `msg` = &apos;我爱你&apos;;</div></pre></td></tr></table></figure>
+<p>修改之后的语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UPDATE `tran`</div><div class="line">SET `status` = &apos;1&apos;</div><div class="line">WHERE trim( replace( `msg`, &apos;\r\n&apos;, &apos; &apos; ) ) = &apos;我爱你&apos;;</div></pre></td></tr></table></figure></p>
+<p>把数据中的回车换行等替换成空格之后再trim掉，就达到目的了，虽然不是特别完美，但是由于没办法在用户录入的时候控制，所以只能出此下策，好在MySQL内置函数的效率还是很有保证的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">UPDATE `tran`</div><div class="line">SET `status` = &apos;1&apos;</div><div class="line">WHERE trim( trim(</div><div class="line">BOTH &apos;\r\n&apos;</div><div class="line">FROM content ) ) = &apos;我爱你&apos;</div></pre></td></tr></table></figure></p>
+<p>用了两个trim，这样的好处是不会替换内容中间的换行和回车，只会处理头尾的空格换行回车，相当于php中trim函数的作用了。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[12个非常有用的JavaScript技巧]]></title>
       <url>http://www.wulai.me/2017/05/12/12%E4%B8%AA%E9%9D%9E%E5%B8%B8%E6%9C%89%E7%94%A8%E7%9A%84JavaScript%E6%8A%80%E5%B7%A7/</url>
       <content type="html"><![CDATA[<blockquote>
