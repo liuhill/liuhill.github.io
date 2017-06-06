@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title><![CDATA[svn 取消版本控制]]></title>
+      <url>http://www.wulai.me/2017/06/06/svn-%E5%8F%96%E6%B6%88%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/</url>
+      <content type="html"><![CDATA[<p>删除这些目录是很简单的，命令如下</p>
+<pre><code>find . -type d -name &quot;.svn&quot;|xargs rm -rf
+</code></pre><p>或者</p>
+<pre><code>find . -type d -iname &quot;.svn&quot; -exec rm -rf {} \;  
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[购买墨迹天气空气果，看互联网公司用户体验的盲区]]></title>
+      <url>http://www.wulai.me/2017/05/26/%E4%BA%92%E8%81%94%E7%BD%91%E5%85%AC%E5%8F%B8%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C%E7%9A%84%E7%9B%B2%E5%8C%BA/</url>
+      <content type="html"><![CDATA[<h5 id="个人观点-现阶段互联网公司普遍盲区在售后服务的体验。"><a href="#个人观点-现阶段互联网公司普遍盲区在售后服务的体验。" class="headerlink" title="个人观点: 现阶段互联网公司普遍盲区在售后服务的体验。"></a>个人观点: 现阶段互联网公司普遍盲区在售后服务的体验。</h5><p>最近想买一个测试雾霾的表，看了一些文章，也看了知乎上姜洋的答复。作为一个互联网的参与者，就选择购买了在天猫旗舰店买了空气果2.物流很快。包装很精美。到这个阶段用户体验还是不错的。</p>
+<p>不过打开发现是空气果sport.这个时候不好的体验开始。</p>
+<ol>
+<li>通过阿里旺旺留言。</li>
+</ol>
+<ul>
+<li>电话确认无法连接</li>
+<li>需要自己把货发过去，然后再给我寄过来</li>
+<li>联系人</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[MySQL 去掉字段中的换行和回车符]]></title>
       <url>http://www.wulai.me/2017/05/22/MySQL-%E5%8E%BB%E6%8E%89%E5%AD%97%E6%AE%B5%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E5%92%8C%E5%9B%9E%E8%BD%A6%E7%AC%A6/</url>
       <content type="html"><![CDATA[<p>解决方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UPDATE tablename SET field = REPLACE(REPLACE(field, CHAR(10), &apos;&apos;), CHAR(13), &apos;&apos;);</div><div class="line">char(10):  换行符</div><div class="line">char(13):  回车符</div></pre></td></tr></table></figure></p>
