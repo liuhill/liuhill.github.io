@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title><![CDATA[SSH session slow to start? It's the DNS stupid~~]]></title>
+      <url>http://www.wulai.me/2017/07/11/SSH-session-slow-to-start-It-s-the-DNS-stupid/</url>
+      <content type="html"><![CDATA[<p>Ever tried logging into a machine with ssh and found you have to wait much longer than reasonable for the session to start? This happened to me a few times and was especially annoying with machines on my local network (or a VM attached to a virtual network) that should be letting me in immediately.</p>
+<p>I eventually got mad enough to strace the SSH daemon and debug what was going on and it turns out it’s a DNS thing. Basically the session is slow to start because the SSH server is trying to lookup the hostname of the SSH client and for whatever reason it’s timing out (e.g., it can’t reach a nameserver, because you happen to be offline)</p>
+<p>There are a couple of very simple ways to fix that:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">add &quot;UseDNS no&quot; to /etc/ssh/sshd_config</div><div class="line">add the client&apos;s net address to the server&apos;s /etc/hosts</div></pre></td></tr></table></figure></p>
+<p><em>*</em> 改项可能会导致远程连接失败</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ssh 调试方法]]></title>
+      <url>http://www.wulai.me/2017/07/11/ssh-%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<ol>
+<li><p>服务端</p>
+<p>   /usr/sbin/sshd -d</p>
+</li>
+</ol>
+<ul>
+<li>客户端<br>   ssh -v -p22 root@192.168.56.10</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[硬盘只读模式]]></title>
+      <url>http://www.wulai.me/2017/07/06/%E7%A1%AC%E7%9B%98%E5%8F%AA%E8%AF%BB%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<h3 id="1-先改为可编辑模式"><a href="#1-先改为可编辑模式" class="headerlink" title="1 先改为可编辑模式"></a>1 先改为可编辑模式</h3><p> mount -o  remount,rw /</p>
+<h3 id="2-编辑文件-etc-fstab"><a href="#2-编辑文件-etc-fstab" class="headerlink" title="2 编辑文件  /etc/fstab"></a>2 编辑文件  <code>/etc/fstab</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/fstab</div></pre></td></tr></table></figure>
+<p>将<code>ro</code>修改为<code>rw</code></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[How to setup tagged VLANs on Mac OS X]]></title>
       <url>http://www.wulai.me/2017/07/04/How-to-setup-tagged-VLANs-on-Mac-OS-X/</url>
       <content type="html"><![CDATA[<ol>
