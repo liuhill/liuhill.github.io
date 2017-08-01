@@ -271,6 +271,395 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/07/11/ssh-调试方法/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/07/11/ssh-调试方法/" itemprop="url">
+                  ssh 调试方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-11T10:39:45+08:00">
+              2017-07-11
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-07-11T11:24:28+08:00">
+              2017-07-11
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>服务端</p>
+<p>   /usr/sbin/sshd -d</p>
+</li>
+</ol>
+<ul>
+<li>客户端<br>   ssh -v -p22 root@192.168.56.10</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/07/06/硬盘只读模式/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/07/06/硬盘只读模式/" itemprop="url">
+                  硬盘只读模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-06T14:52:31+08:00">
+              2017-07-06
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-07-06T14:56:18+08:00">
+              2017-07-06
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-先改为可编辑模式"><a href="#1-先改为可编辑模式" class="headerlink" title="1 先改为可编辑模式"></a>1 先改为可编辑模式</h3><p> mount -o  remount,rw /</p>
+<h3 id="2-编辑文件-etc-fstab"><a href="#2-编辑文件-etc-fstab" class="headerlink" title="2 编辑文件  /etc/fstab"></a>2 编辑文件  <code>/etc/fstab</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/fstab</div></pre></td></tr></table></figure>
+<p>将<code>ro</code>修改为<code>rw</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/07/04/How-to-setup-tagged-VLANs-on-Mac-OS-X/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/07/04/How-to-setup-tagged-VLANs-on-Mac-OS-X/" itemprop="url">
+                  How to setup tagged VLANs on Mac OS X
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-04T14:27:14+08:00">
+              2017-07-04
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-07-04T14:29:01+08:00">
+              2017-07-04
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>From the Apple menu (upper left corner of your desktop) choose System Preferences…</li>
+</ol>
+<ul>
+<li>Open Network</li>
+<li>In the toolbar below all of your network interfaces, click the gear wheel to access a dropdown menu</li>
+<li>From that dropdown menu, select Manage Virtual Interfaces…</li>
+<li>Click on + to access another dropdown menu</li>
+<li>From that dropdown menu, select New VLAN…</li>
+<li>Enter an appropriate name for your new VLAN, e.g. DMZ</li>
+<li>Enter the desired tag, e.g. 23</li>
+<li>Choose the correct physical interface, normally Ethernet</li>
+<li>Click Create</li>
+<li>Click Done</li>
+<li>Configure your new VLAN interface as you would configure a physical interface, e.g. assign it an IP address, network mask, etc.</li>
+<li>Click Apply</li>
+<li>Close the network preferences window.</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/06/06/svn-取消版本控制/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1211,399 +1600,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/03/10/Save-MySQL-query-results-into-a-text-or-CSV-file/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/10/Save-MySQL-query-results-into-a-text-or-CSV-file/" itemprop="url">
-                  Save MySQL query results into a text or CSV file
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-10T17:37:27+08:00">
-              2017-03-10
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-03-10T17:38:52+08:00">
-              2017-03-10
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>MySQL provides an easy mechanism for writing the results of a select statement into a text file on the server. Using extended options of the INTO OUTFILE nomenclature, it is possible to create a comma separated value (CSV) which can be imported into a spreadsheet application such as OpenOffice or Excel or any other applciation which accepts data in CSV format.</p>
-<p>Given a query such as</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT order_id,product_name,qty FROM orders</div></pre></td></tr></table></figure>
-<p>which returns three columns of data, the results can be placed into the file /tmo/orders.txt using the query:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT order_id,product_name,qty FROM orders</div><div class="line">INTO OUTFILE &apos;/tmp/orders.txt&apos;</div></pre></td></tr></table></figure>
-<p>This will create a tab-separated file, each row on its own line. To alter this behavior, it is possible to add modifiers to the query:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SELECT order_id,product_name,qty FROM orders</div><div class="line">INTO OUTFILE &apos;/tmp/orders.csv&apos;</div><div class="line">FIELDS TERMINATED BY &apos;,&apos;</div><div class="line">ENCLOSED BY &apos;&quot;&apos;</div><div class="line">LINES TERMINATED BY &apos;\n&apos;</div></pre></td></tr></table></figure>
-<p>In this example, each field will be enclosed in “double quotes,” the fields will be separated by commas, and each row will be output on a new line separated by a newline (\n). Sample output of this command would look like:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;1&quot;,&quot;Tech-Recipes sock puppet&quot;,&quot;14.95&quot; &quot;2&quot;,&quot;Tech-Recipes chef&apos;s hat&quot;,&quot;18.95&quot;</div><div class="line">...</div></pre></td></tr></table></figure></p>
-<p>Keep in mind that the output file must not already exist and that the user MySQL is running as has write permissions to the directory MySQL is attempting to write the file to.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/03/10/MAGENTO-2-CHANGE-THE-BASE-URL-USING-THE-COMMAND-LINE/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/10/MAGENTO-2-CHANGE-THE-BASE-URL-USING-THE-COMMAND-LINE/" itemprop="url">
-                  MAGENTO 2: CHANGE THE BASE-URL USING THE COMMAND LINE
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-10T14:21:45+08:00">
-              2017-03-10
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-03-10T14:24:37+08:00">
-              2017-03-10
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>The following Magento 2’s CLI command will update the Magento base-url and the base-url-secure values.</p>
-<p>Go to the Magento’s root directory, then type within the console:</p>
-<pre><code>php bin/magento setup:store-config:set --base-url=&quot;http://localhost:8080/&quot;
-</code></pre><p>Replacing <a href="http://localhost:8080/" target="_blank" rel="external">http://localhost:8080/</a> with your new base-url.</p>
-<p>You may want to change the base-url-secure also:</p>
-<pre><code>php bin/magento setup:store-config:set --base-url-secure=&quot;https://localhost:8080/&quot;
-</code></pre><p>Note: both base-url and base-url-secure values must contain the URL’s scheme, http:// or https://, and a trailing slash /.</p>
-<p>Then clear the cache:</p>
-<pre><code>php bin/magento cache:flush
-</code></pre><p>Troubleshooting<br>Clear current values from the database<br>Can happen that the above command doesn’t works as expected and you still have some url pointing to the old base-url. In these cases you have to clear some values in your db.</p>
-<p>Open the Magento 2 database with your favorite MySQL tool then go to the core_config_data table.</p>
-<p>Search for rows having these values in the column path (note that there could be more than one row for each value):</p>
-<ul>
-<li>“web/unsecure/base_url”</li>
-<li>“web/secure/base_url”<br>Delete these rows (Magento will recreate them).</li>
-</ul>
-<p>Now you can set the base-url value using the above CLI command.</p>
-<p>Single-Store Mode option enabled<br>If you have the Single-Store Mode option enabled this could bring to some problem with setting the base-url with the command line.</p>
-<p>In this case you should modify the base-url using only the command line and not the Magento’s Admin Panel. If you already saved the Base url field value using the Admin Panel you should clear values within the Magento’s core_config_data table as described above.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/03/10/How-to-remove-old-Docker-containers/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/10/How-to-remove-old-Docker-containers/" itemprop="url">
-                  How to remove old Docker containers
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-10T10:08:34+08:00">
-              2017-03-10
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-03-10T10:42:40+08:00">
-              2017-03-10
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1、remove-exit-containers"><a href="#1、remove-exit-containers" class="headerlink" title="1、remove exit containers"></a>1、remove <code>exit</code> containers</h3><p>Until that command is available, you can string docker commands together with other unix commands to get what you need. Here is an example on how to clean up old containers that are weeks old.</p>
-<pre><code>$ docker ps --filter &quot;status=exited&quot; | grep &apos;weeks ago&apos; | awk &apos;{print $1}&apos; | xargs --no-run-if-empty docker rm
-</code></pre><h3 id="2、remove-images"><a href="#2、remove-images" class="headerlink" title="2、remove images"></a>2、remove images</h3><pre><code>$ docker images | grep &quot;&lt;none&gt;&quot; | awk &apos;{print $3}&apos; | xargs docker rmi
-</code></pre><h3 id="3-rm-all-stopped-containers"><a href="#3-rm-all-stopped-containers" class="headerlink" title="3 rm all stopped containers"></a>3 rm all <code>stopped</code> containers</h3><p>If you want to use awk for this consider this command if you want do rm all stopped containers (without a error because of the first line):</p>
-<pre><code>$ docker ps -a | awk &apos;NR &gt; 1 {print $1}&apos; | xargs docker rm
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1649,7 +1645,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">116</span>
+              <span class="site-state-item-count">119</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
