@@ -271,6 +271,1093 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/07/04/How-to-setup-tagged-VLANs-on-Mac-OS-X/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/07/04/How-to-setup-tagged-VLANs-on-Mac-OS-X/" itemprop="url">
+                  How to setup tagged VLANs on Mac OS X
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-04T14:27:14+08:00">
+              2017-07-04
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-07-04T14:29:01+08:00">
+              2017-07-04
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>From the Apple menu (upper left corner of your desktop) choose System Preferences…</li>
+</ol>
+<ul>
+<li>Open Network</li>
+<li>In the toolbar below all of your network interfaces, click the gear wheel to access a dropdown menu</li>
+<li>From that dropdown menu, select Manage Virtual Interfaces…</li>
+<li>Click on + to access another dropdown menu</li>
+<li>From that dropdown menu, select New VLAN…</li>
+<li>Enter an appropriate name for your new VLAN, e.g. DMZ</li>
+<li>Enter the desired tag, e.g. 23</li>
+<li>Choose the correct physical interface, normally Ethernet</li>
+<li>Click Create</li>
+<li>Click Done</li>
+<li>Configure your new VLAN interface as you would configure a physical interface, e.g. assign it an IP address, network mask, etc.</li>
+<li>Click Apply</li>
+<li>Close the network preferences window.</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/06/06/svn-取消版本控制/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/06/svn-取消版本控制/" itemprop="url">
+                  svn 取消版本控制
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-06T17:05:17+08:00">
+              2017-06-06
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-06-06T17:06:11+08:00">
+              2017-06-06
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>删除这些目录是很简单的，命令如下</p>
+<pre><code>find . -type d -name &quot;.svn&quot;|xargs rm -rf
+</code></pre><p>或者</p>
+<pre><code>find . -type d -iname &quot;.svn&quot; -exec rm -rf {} \;  
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/05/26/互联网公司用户体验的盲区/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/26/互联网公司用户体验的盲区/" itemprop="url">
+                  购买墨迹天气空气果，看互联网公司用户体验的盲区
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-26T08:47:05+08:00">
+              2017-05-26
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-05-26T09:56:39+08:00">
+              2017-05-26
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="个人观点-现阶段互联网公司普遍盲区在售后服务的体验。"><a href="#个人观点-现阶段互联网公司普遍盲区在售后服务的体验。" class="headerlink" title="个人观点: 现阶段互联网公司普遍盲区在售后服务的体验。"></a>个人观点: 现阶段互联网公司普遍盲区在售后服务的体验。</h5><p>最近想买一个测试雾霾的表，看了一些文章，也看了知乎上姜洋的答复。作为一个互联网的参与者，就选择购买了在天猫旗舰店买了空气果2.物流很快。包装很精美。到这个阶段用户体验还是不错的。</p>
+<p>不过打开发现是空气果sport.这个时候不好的体验开始。</p>
+<ol>
+<li>通过阿里旺旺留言。</li>
+</ol>
+<ul>
+<li>电话确认无法连接</li>
+<li>需要自己把货发过去，然后再给我寄过来</li>
+<li>联系人</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/05/22/MySQL-去掉字段中的换行和回车符/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/22/MySQL-去掉字段中的换行和回车符/" itemprop="url">
+                  MySQL 去掉字段中的换行和回车符
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-22T10:39:21+08:00">
+              2017-05-22
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-05-22T10:44:06+08:00">
+              2017-05-22
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>解决方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UPDATE tablename SET field = REPLACE(REPLACE(field, CHAR(10), &apos;&apos;), CHAR(13), &apos;&apos;);</div><div class="line">char(10):  换行符</div><div class="line">char(13):  回车符</div></pre></td></tr></table></figure></p>
+<p>MySQL的trim函数没办法去掉回车和换行，只能去掉多余的空格，可以用MySQL的replace函数，解决掉这个问题，具体解决办法如下：</p>
+<p>假设想要审核数据库中内容为“我爱你<br>”的短信息（注意内容后有换行）通过（status改变成1）</p>
+<p>之前的SQL语句是不起作用的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UPDATE `tran`</div><div class="line">SET `status` = &apos;1&apos;</div><div class="line">WHERE `msg` = &apos;我爱你&apos;;</div></pre></td></tr></table></figure>
+<p>修改之后的语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UPDATE `tran`</div><div class="line">SET `status` = &apos;1&apos;</div><div class="line">WHERE trim( replace( `msg`, &apos;\r\n&apos;, &apos; &apos; ) ) = &apos;我爱你&apos;;</div></pre></td></tr></table></figure></p>
+<p>把数据中的回车换行等替换成空格之后再trim掉，就达到目的了，虽然不是特别完美，但是由于没办法在用户录入的时候控制，所以只能出此下策，好在MySQL内置函数的效率还是很有保证的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">UPDATE `tran`</div><div class="line">SET `status` = &apos;1&apos;</div><div class="line">WHERE trim( trim(</div><div class="line">BOTH &apos;\r\n&apos;</div><div class="line">FROM content ) ) = &apos;我爱你&apos;</div></pre></td></tr></table></figure></p>
+<p>用了两个trim，这样的好处是不会替换内容中间的换行和回车，只会处理头尾的空格换行回车，相当于php中trim函数的作用了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/05/12/12个非常有用的JavaScript技巧/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/12/12个非常有用的JavaScript技巧/" itemprop="url">
+                  12个非常有用的JavaScript技巧
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-12T08:49:44+08:00">
+              2017-05-12
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-05-12T08:59:28+08:00">
+              2017-05-12
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>原文：<a href="https://blog.jscrambler.com/12-extremely-useful-hacks-for-javascript/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">12 Extremely Useful Hacks for JavaScript</a></p>
+<p>作者：Caio Ribeiro Pereira</p>
+<p>翻译：雁惊寒</p>
+</blockquote>
+<p>在这篇文章中，我将分享12个非常有用的JavaScript技巧。这些技巧可以帮助你减少并优化代码。</p>
+<h3 id="1-使用-将变量转换成布尔类型"><a href="#1-使用-将变量转换成布尔类型" class="headerlink" title="1) 使用!!将变量转换成布尔类型"></a>1) 使用!!将变量转换成布尔类型</h3><p>有时，我们需要检查一些变量是否存在，或者它是否具有有效值，从而将它们的值视为true。对于做这样的检查，你可以使用||（双重否定运算符），它能自动将任何类型的数据转换为布尔值，只有这些变量才会返回false：0，null，””，undefined或NaN，其他的都返回true。我们来看看这个简单的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function Account(cash) &#123;  </div><div class="line">    this.cash = cash;</div><div class="line">    this.hasMoney = !!cash;</div><div class="line">&#125;</div><div class="line">var account = new Account(100.50);  </div><div class="line">console.log(account.cash); // 100.50  </div><div class="line">console.log(account.hasMoney); // true</div><div class="line"></div><div class="line">var emptyAccount = new Account(0);  </div><div class="line">console.log(emptyAccount.cash); // 0  </div><div class="line">console.log(emptyAccount.hasMoney); // false</div></pre></td></tr></table></figure></p>
+<p>在这个例子中，如果account.cash的值大于零，则account.hasMoney的值就是true。</p>
+<h3 id="2-使用-将变量转换成数字"><a href="#2-使用-将变量转换成数字" class="headerlink" title="2) 使用+将变量转换成数字"></a>2) 使用+将变量转换成数字</h3><p>这个转换超级简单，但它只适用于数字字符串，不然就会返回NaN（不是数字）。看看这个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function toNumber(strNumber) &#123;  </div><div class="line">    return +strNumber;</div><div class="line">&#125;</div><div class="line">console.log(toNumber(&quot;1234&quot;)); // 1234  </div><div class="line">console.log(toNumber(&quot;ACB&quot;)); // NaN</div></pre></td></tr></table></figure>
+<p>这个转换操作也可以作用于Date，在这种情况下，它将返回时间戳：</p>
+<pre><code>console.log(+new Date()) // 1461288164385  
+</code></pre><h3 id="3-短路条件"><a href="#3-短路条件" class="headerlink" title="3) 短路条件"></a>3) 短路条件</h3><p>如果你看到过这种类似的代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (conected) &#123;  </div><div class="line">    login();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>那么你可以在这两个变量之间使用&amp;&amp;（AND运算符）来缩短代码。例如，前面的代码可以缩减到一行：</p>
+<pre><code>conected &amp;&amp; login();  
+</code></pre><p>你也可以用这种方法来检查对象中是否存在某些属性或函数。类似于以下代码：</p>
+<pre><code>user &amp;&amp; user.login();
+</code></pre><h3 id="4-使用-设置默认值"><a href="#4-使用-设置默认值" class="headerlink" title="4) 使用||设置默认值"></a>4) 使用||设置默认值</h3><p>在ES6中有默认参数这个功能。为了在旧版浏览器中模拟此功能，你可以使用||（OR运算符），并把默认值作为它的第二个参数。如果第一个参数返回false，那么第二个参数将会被作为默认值返回。看下这个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function User(name, age) &#123;  </div><div class="line">    this.name = name || &quot;Oliver Queen&quot;;</div><div class="line">    this.age = age || 27;</div><div class="line">&#125;</div><div class="line">var user1 = new User();  </div><div class="line">console.log(user1.name); // Oliver Queen  </div><div class="line">console.log(user1.age); // 27</div><div class="line"></div><div class="line">var user2 = new User(&quot;Barry Allen&quot;, 25);  </div><div class="line">console.log(user2.name); // Barry Allen  </div><div class="line">console.log(user2.age); // 25</div></pre></td></tr></table></figure>
+<h3 id="5-在循环中缓存array-length"><a href="#5-在循环中缓存array-length" class="headerlink" title="5) 在循环中缓存array.length"></a>5) 在循环中缓存array.length</h3><p>这个技巧非常简单，并且在循环处理大数组时能够避免对性能造成巨大的影响。基本上几乎每个人都是这样使用for来循环遍历一个数组的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for (var i = 0; i &lt; array.length; i++) &#123;  </div><div class="line">    console.log(array[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果你使用较小的数组，那还好，但是如果处理大数组，则此代码将在每个循环里重复计算数组的大小，这会产生一定的延迟。为了避免这种情况，你可以在变量中缓存array.length，以便在循环中每次都使用缓存来代替array.length：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var length = array.length;  </div><div class="line">for (var i = 0; i &lt; length; i++) &#123;  </div><div class="line">    console.log(array[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>为了更简洁，可以这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for (var i = 0, length = array.length; i &lt; length; i++) &#123;  </div><div class="line">    console.log(array[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="6-检测对象中的属性"><a href="#6-检测对象中的属性" class="headerlink" title="6) 检测对象中的属性"></a>6) 检测对象中的属性</h3><p>当你需要检查某些属性是否存在，避免运行未定义的函数或属性时，这个技巧非常有用。如果你打算编写跨浏览器代码，你也可能会用到这个技术。例如，我们假设你需要编写与旧版Internet Explorer 6兼容的代码，并且想要使用document.querySelector()来通过ID获取某些元素。 但是，在现代浏览器中，这个函数不存在。所以，要检查这个函数是否存在，你可以使用in运算符。看下这个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if (&apos;querySelector&apos; in document) &#123;  </div><div class="line">    document.querySelector(&quot;#id&quot;);</div><div class="line">&#125; else &#123;</div><div class="line">    document.getElementById(&quot;id&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这种情况下，如果在document中没有querySelector函数，它就会使用document.getElementById()作为代替。</p>
+<h3 id="7-获取数组的最后一个元素"><a href="#7-获取数组的最后一个元素" class="headerlink" title="7) 获取数组的最后一个元素"></a>7) 获取数组的最后一个元素</h3><p>Array.prototype.slice（begin，end）可以用来裁剪数组。但是如果没有设置结束参数end的值的话，该函数会自动将end设置为数组长度值。我认为很少有人知道这个函数可以接受负值，如果你将begin设置一个负数的话，你就能从数组中获取到倒数的元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var array = [1, 2, 3, 4, 5, 6];  </div><div class="line">console.log(array.slice(-1)); // [6]  </div><div class="line">console.log(array.slice(-2)); // [5,6]  </div><div class="line">console.log(array.slice(-3)); // [4,5,6]</div></pre></td></tr></table></figure>
+<h3 id="8-数组截断"><a href="#8-数组截断" class="headerlink" title="8) 数组截断"></a>8) 数组截断</h3><p>这个技术可以锁定数组的大小，这对于要删除数组中固定数量的元素是非常有用的。例如，如果你有一个包含10个元素的数组，但是你只想获得前五个元素，则可以通过设置array.length = 5来阶段数组。看下这个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var array = [1, 2, 3, 4, 5, 6];  </div><div class="line">console.log(array.length); // 6  </div><div class="line">array.length = 3;  </div><div class="line">console.log(array.length); // 3  </div><div class="line">console.log(array); // [1,2,3]</div></pre></td></tr></table></figure>
+<h3 id="9-全部替换"><a href="#9-全部替换" class="headerlink" title="9) 全部替换"></a>9) 全部替换</h3><p>String.replace()函数允许使用String和Regex来替换字符串，这个函数本身只能替换第一个匹配的串。但是你可以在正则表达式末尾添加/g来模拟replaceAll()函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var string = &quot;john john&quot;;  </div><div class="line">console.log(string.replace(/hn/, &quot;ana&quot;)); // &quot;joana john&quot;  </div><div class="line">console.log(string.replace(/hn/g, &quot;ana&quot;)); // &quot;joana joana&quot;</div></pre></td></tr></table></figure>
+<h3 id="10-合并数组"><a href="#10-合并数组" class="headerlink" title="10) 合并数组"></a>10) 合并数组</h3><p>如果你需要合并两个数组，你可以使用Array.concat()函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var array1 = [1, 2, 3];  </div><div class="line">var array2 = [4, 5, 6];  </div><div class="line">console.log(array1.concat(array2)); // [1,2,3,4,5,6];</div></pre></td></tr></table></figure>
+<p>但是，这个函数对于大数组来说不并合适，因为它将会创建一个新的数组并消耗大量的内存。在这种情况下，你可以使用Array.push.apply（arr1，arr2），它不会创建一个新数组，而是将第二个数组合并到第一个数组中，以减少内存使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var array1 = [1, 2, 3];  </div><div class="line">var array2 = [4, 5, 6];  </div><div class="line">console.log(array1.push.apply(array1, array2)); // [1,2,3,4,5,6];</div></pre></td></tr></table></figure>
+<h3 id="11-把NodeList转换成数组"><a href="#11-把NodeList转换成数组" class="headerlink" title="11) 把NodeList转换成数组"></a>11) 把NodeList转换成数组</h3><p>如果运行document.querySelectorAll(“p”)函数，它会返回一个DOM元素数组，即NodeList对象。但是这个对象并没有一些属于数组的函数，例如：sort()，reduce()，map()，filter()。为了启用这些函数，以及数组的其他的原生函数，你需要将NodeList转换为数组。要进行转换，只需使用这个函数：[] .slice.call（elements）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var elements = document.querySelectorAll(&quot;p&quot;); // NodeList  </div><div class="line">var arrayElements = [].slice.call(elements); // 现在已经转换成数组了</div><div class="line">var arrayElements = Array.from(elements); // 把NodeList转换成数组的另外一个方法</div></pre></td></tr></table></figure>
+<h3 id="12-对数组元素进行洗牌"><a href="#12-对数组元素进行洗牌" class="headerlink" title="12) 对数组元素进行洗牌"></a>12) 对数组元素进行洗牌</h3><p>如果要像外部库Lodash那样对数据元素重新洗牌，只需使用这个技巧：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var list = [1, 2, 3];  </div><div class="line">console.log(list.sort(function() &#123;  </div><div class="line">    return Math.random() - 0.5</div><div class="line">&#125;)); // [2,1,3]</div></pre></td></tr></table></figure>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>现在，你已经学到了一些有用的JS技巧，它们主要用于缩减JavaScript代码量，其中一些技巧在许多流行的JS框架都使用到，如Lodash，Underscore.js，Strings.js等。如果你知道其他JS技巧，欢迎分享！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/03/25/←-imaxabsConfigure-HUAWEI-E1750-HSPA-USB-Stick-in-Linux-→Configure-USB-modem-HUAWEI-E3131-in-Linux/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/25/←-imaxabsConfigure-HUAWEI-E1750-HSPA-USB-Stick-in-Linux-→Configure-USB-modem-HUAWEI-E3131-in-Linux/" itemprop="url">
+                  imaxabsConfigure HUAWEI E1750 HSPA USB Stick in Linux → Configure USB modem HUAWEI E3131 in Linux
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T13:24:18+08:00">
+              2017-03-25
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-03-25T13:27:33+08:00">
+              2017-03-25
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>For installing device HUAWEI E3131 in CentOS 6.4 Linux you have to follow instructions below. Can be used to send SMS by AT command and also to establish HiSpeed Mobile Internet connection.</p>
+<p>##Install requirements</p>
+<p>You have to download usb_modeswitch and data with configurations.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]$ wget http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-1.2.7.tar.bz2</div><div class="line">[root@localhost ~]$ wget http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-data-20130807.tar.bz2</div><div class="line">[root@localhost ~]$ yum install libusb libusb-devel minicom wvdial</div><div class="line">[root@localhost ~]$ bzip2 -d usb-modeswitch-1.2.7.tar.bz2</div><div class="line">[root@localhost ~]$ bzip2 -d usb-modeswitch-data-20130807.tar.bz2</div><div class="line">[root@localhost ~]$ tar -xf usb-modeswitch-1.2.7.tar</div><div class="line">[root@localhost ~]$ tar -xf usb-modeswitch-data-20130807.tar</div><div class="line">[root@localhost ~]$ cd usb-modeswitch-1.2.7</div><div class="line">[root@localhost usb-modeswitch-1.2.7]$ make all</div><div class="line">cc -o usb_modeswitch usb_modeswitch.c -Wall -l usb</div><div class="line">sed &apos;s_!/usr/bin/tclsh_!&apos;&quot;/usr/bin/jimsh&quot;&apos;_&apos; &lt; usb_modeswitch.tcl &gt; usb_modeswitch_dispatcher</div><div class="line">[root@localhost usb-modeswitch-1.2.7]$ make install</div><div class="line">sed &apos;s_!/usr/bin/tclsh_!&apos;&quot;/usr/bin/jimsh&quot;&apos;_&apos; &lt; usb_modeswitch.tcl &gt; usb_modeswitch_dispatcher</div><div class="line">install -D --mode=755 usb_modeswitch /usr/sbin/usb_modeswitch</div><div class="line">install -D --mode=755 usb_modeswitch.sh /lib/udev/usb_modeswitch</div><div class="line">install -D --mode=644 usb_modeswitch.conf /etc/usb_modeswitch.conf</div><div class="line">install -D --mode=644 usb_modeswitch.1 /usr/share/man/man1/usb_modeswitch.1</div><div class="line">install -D --mode=755 usb_modeswitch_dispatcher /usr/sbin/usb_modeswitch_dispatcher</div><div class="line">install -d /var/lib/usb_modeswitch</div><div class="line">[root@localhost usb-modeswitch-1.2.7]$ cd ..</div><div class="line">[root@localhost ~]$ cd usb-modeswitch-data-20130807</div><div class="line">[root@localhost usb-modeswitch-data-20130807]$ make install</div><div class="line">install -d /usr/share/usb_modeswitch</div><div class="line">install -d /etc/usb_modeswitch.d</div><div class="line">install -D --mode=644 40-usb_modeswitch.rules /lib/udev/rules.d/40-usb_modeswitch.rules</div><div class="line">install --mode=644 -t /usr/share/usb_modeswitch ./usb_modeswitch.d/*</div><div class="line">custom logging function 0x7fd5344c7010 registered</div><div class="line">selinux=0</div><div class="line">calling: control</div></pre></td></tr></table></figure>
+<h2 id="Manual-configuration"><a href="#Manual-configuration" class="headerlink" title="Manual configuration"></a>Manual configuration</h2><p>Now we have to install modules and configure device to modem mode.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]$ lsusb</div><div class="line">Bus 001 Device 029: ID 12d1:14fe Huawei Technologies Co., Ltd.</div><div class="line">[root@localhost ~]$ modprobe option usbserial usb_wwan</div><div class="line">[root@localhost ~]$ /usr/sbin/usb_modeswitch -H -v 12d1 -p 14fe -c /etc/usb_modeswitch.d/12d1\:14fe</div><div class="line">[root@localhost ~]$ lsusb</div><div class="line">Bus 001 Device 030: ID 12d1:1506 Huawei Technologies Co., Ltd. E398 LTE/UMTS/GSM Modem/Networkcard</div><div class="line">[root@localhost ~]$ ls -la /dev/ttyUSB*</div><div class="line">crw-rw---- 1 root dialout 188,  0 23. srp 08.49 /dev/ttyUSB0</div><div class="line">crw-rw---- 1 root dialout 188,  1 23. srp 08.49 /dev/ttyUSB1</div><div class="line">crw-rw---- 1 root dialout 188,  2 23. srp 08.49 /dev/ttyUSB2</div><div class="line">crw-rw---- 1 root dialout 188,  3 23. srp 08.49 /dev/ttyUSB3</div></pre></td></tr></table></figure></p>
+<h2 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h2><p>Now we have 4 USB serial ports then we can use minicom -s -c on command to test send SMS by<br>AT commands. For dialup internet you have to use wvdial.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Now we have 4 USB serial ports then we can use minicom -s -c on command to test send SMS by</div><div class="line">AT commands. For dialup internet you have to use wvdial.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[Dialer Defaults]</div><div class="line">Init1 = AT+CGDCONT=1,&quot;IP&quot;,&quot;internet.t-mobile.cz&quot;</div><div class="line">Init2 =</div><div class="line">Init3 =</div><div class="line">Stupid Mode = 1</div><div class="line">Ask Password = 0</div><div class="line">Phone = *99***1#</div><div class="line">Modem = /dev/ttyUSB0</div><div class="line">Username = neco</div><div class="line">Password = neco</div><div class="line">Baud = 9600</div><div class="line">Auto DNS = yes</div><div class="line">Dial Command = ATDT</div></pre></td></tr></table></figure>
+<blockquote>
+<p>ystem: CentOS 6.4 x86_64<br>GIMP: 2.6 x86_64<br>Inkscape: 0.47 x86_64<br>GNOME: 2.28.2 x86_64</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/03/23/Shell-前后台进程切换/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/23/Shell-前后台进程切换/" itemprop="url">
+                  Shell 前后台进程切换
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-23T09:19:29+08:00">
+              2017-03-23
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-03-23T09:24:23+08:00">
+              2017-03-23
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Shell 前后台进程切换</p>
+<p>当你用 shell 启动一个程序时，往往他是在前台工作的。比如执行命令</p>
+<pre><code>redis-server
+</code></pre><p>启动 redis 后，shell 就不能再输入了。因为此时 redis 在前台。</p>
+<p>Shell 支持作用控制，有以下命令：</p>
+<ul>
+<li>command &amp; 让进程在后台运行</li>
+<li>jobs –l 查看后台运行的进程</li>
+<li>fg %n 让后台运行的进程 n 到前台来</li>
+<li>bg %n 让进程 n 到后台去;</li>
+</ul>
+<p><code>PS：n 为 jobs 查看到的进程编号。</code></p>
+<h3 id="1、执行命令-amp-切换至后台"><a href="#1、执行命令-amp-切换至后台" class="headerlink" title="1、执行命令 &amp; 切换至后台"></a>1、执行命令 &amp; 切换至后台</h3><p>在 Mac 终端运行命令的时候，在命令末尾加上 &amp; 符号，就可以让程序在后台运行</p>
+<h3 id="2、切换正在运行的程序到后台"><a href="#2、切换正在运行的程序到后台" class="headerlink" title="2、切换正在运行的程序到后台"></a>2、切换正在运行的程序到后台</h3><p>如果程序正在前台运行，可以使用 Ctrl+z 选项把程序暂停，然后用 bg %[number] 命令把这个程序放到后台运行，这个步骤分为3步，如下：</p>
+<h4 id="2-1-暂停程序运行Ctrl-z"><a href="#2-1-暂停程序运行Ctrl-z" class="headerlink" title="2.1 暂停程序运行Ctrl+z"></a>2.1 暂停程序运行Ctrl+z</h4><p>Ctrl+z 跟系统任务有关的，Ctrl+z 可以将一个正在前台执行的命令放到后台，并且暂停。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">➜ /Users/apple git:(master) ✗&gt; redis-server</div><div class="line"></div><div class="line">^Z</div><div class="line">[1]  + 18669 suspended  redis-server</div></pre></td></tr></table></figure></p>
+<h4 id="2-2-查看暂停的程序"><a href="#2-2-查看暂停的程序" class="headerlink" title="2.2 查看暂停的程序"></a>2.2 查看暂停的程序</h4><p>察看 jobs 使用 jobs 或 ps 命令可以察看正在执行的 jobs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">➜ /Users/apple git:(master) ✗&gt; jobs -l</div><div class="line">[1]  + running    redis-server</div></pre></td></tr></table></figure>
+<ul>
+<li><p>jobs 命令执行的结果，+ 表示是一个当前的作业，减号表示是当前作业之后的一个作业。</p>
+</li>
+<li><p>jobs -l 选项可显示所有任务的 PID，jobs 的状态可以是 running， stopped， Terminated</p>
+</li>
+</ul>
+<h4 id="2-3-切换程序至后台"><a href="#2-3-切换程序至后台" class="headerlink" title="2.3 切换程序至后台"></a>2.3 切换程序至后台</h4><p>bg 将一个在后台暂停的命令，变成继续执行如果后台中有多个命令，可以用 bg %jobnumber 将选中的命令调出.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">➜ /Users/apple git:(source) ✗&gt; bg</div><div class="line">[1]  + 18823 continued  redis-server</div><div class="line">➜ /Users/apple git:(source) ✗&gt; jobs -l</div><div class="line">[1]  + 18823 running    redis-server</div></pre></td></tr></table></figure>
+<h4 id="2-4-切换程序至前台"><a href="#2-4-切换程序至前台" class="headerlink" title="2.4 切换程序至前台"></a>2.4 切换程序至前台</h4><p>也可以用 <code>fg %[number]</code> 指令把一个程序掉到前台运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">➜ /Users/apple git:(source) ✗&gt; fg %1</div><div class="line">[1]  + 18823 running    redis-server</div></pre></td></tr></table></figure></p>
+<h4 id="2-5-终止后台程序"><a href="#2-5-终止后台程序" class="headerlink" title="2.5 终止后台程序"></a>2.5 终止后台程序</h4><p>也可以直接终止后台运行的程序，使用 kill 命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">➜ /Users/apple git:(source) ✗&gt; kill %1</div></pre></td></tr></table></figure></p>
+<p>但是如果任务被终止了 kill，shell 从当前的 shell 环境已知的列表中删除任务的进程标识;也就是说，jobs 命令显示的是当前 shell 环境中所起的后台正在运行或者被挂起的任务信息。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/03/22/Can-t-resume-screen-says-I-am-already-attached/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/22/Can-t-resume-screen-says-I-am-already-attached/" itemprop="url">
+                  Can't resume screen, says I am already attached?
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-22T16:54:10+08:00">
+              2017-03-22
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-03-22T16:55:06+08:00">
+              2017-03-22
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>he session is still attached on another terminal. The server hasn’t detected the network outage on that connection: it only detects the outage when it tries to send a packet and gets an error back or no response after a timeout, but this hasn’t happened yet. You’re in a common situation where the client detected the outage because it tried to send some input and failed, but the server is just sitting there waiting for input. Eventually the server will send a keepalive packet and detect that the connection is dead.</p>
+<p>In the meantime, use the <code>-d</code> option to detach the screen session from the terminal where it’s in.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">screen -r -d 30608</div><div class="line">screen -rd is pretty much the standard way to attach to an</div></pre></td></tr></table></figure>
+<p>existing screen session.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/03/10/Save-MySQL-query-results-into-a-text-or-CSV-file/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -530,1025 +1617,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/03/10/How-to-remove-old-Docker-containers/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/10/How-to-remove-old-Docker-containers/" itemprop="url">
-                  How to remove old Docker containers
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-10T10:08:34+08:00">
-              2017-03-10
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-03-10T10:42:40+08:00">
-              2017-03-10
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1、remove-exit-containers"><a href="#1、remove-exit-containers" class="headerlink" title="1、remove exit containers"></a>1、remove <code>exit</code> containers</h3><p>Until that command is available, you can string docker commands together with other unix commands to get what you need. Here is an example on how to clean up old containers that are weeks old.</p>
-<pre><code>$ docker ps --filter &quot;status=exited&quot; | grep &apos;weeks ago&apos; | awk &apos;{print $1}&apos; | xargs --no-run-if-empty docker rm
-</code></pre><h3 id="2、remove-images"><a href="#2、remove-images" class="headerlink" title="2、remove images"></a>2、remove images</h3><pre><code>$ docker images | grep &quot;&lt;none&gt;&quot; | awk &apos;{print $3}&apos; | xargs docker rmi
-</code></pre><h3 id="3-rm-all-stopped-containers"><a href="#3-rm-all-stopped-containers" class="headerlink" title="3 rm all stopped containers"></a>3 rm all <code>stopped</code> containers</h3><p>If you want to use awk for this consider this command if you want do rm all stopped containers (without a error because of the first line):</p>
-<pre><code>$ docker ps -a | awk &apos;NR &gt; 1 {print $1}&apos; | xargs docker rm
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/03/07/linux文件名编码转换工具convmv/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/07/linux文件名编码转换工具convmv/" itemprop="url">
-                  linux文件名编码转换工具convmv
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-07T17:07:49+08:00">
-              2017-03-07
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-03-07T17:13:55+08:00">
-              2017-03-07
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>今天介绍个文件名转码的工具–convmv，convmv能帮助我们很容易地对一个文件，一个目录下所有文件进行编码转换，比如gbk转为utf8等。</p>
-<h3 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h3><pre><code>convmv [options] FILE(S) … DIRECTORY(S)
-</code></pre><h3 id="主要选项："><a href="#主要选项：" class="headerlink" title="主要选项："></a>主要选项：</h3><ul>
-<li>1、-f ENCODING<br>指定目前文件名的编码，如-f gbk</li>
-<li>2、-t ENCODING<br>指定将要转换成的编码，如-t utf-8</li>
-<li>3、-r<br>递归转换目录下所有文件名</li>
-<li>4、–list<br>列出所有支持的编码</li>
-<li><p>5、–notest<br>默认是只打印转换后的效果，加这个选项才真正执行转换操作。</p>
-</li>
-<li><p>更多选项请man convmv。</p>
-</li>
-</ul>
-<p>例子：<br>递归转换centos目录下的目前文件名编码gbk为utf-8:</p>
-<pre><code>convmv -f gbk -t utf-8 --notest -r  centos
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/03/07/latest-ffmpeg-centos6-sh/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/07/latest-ffmpeg-centos6-sh/" itemprop="url">
-                  latest-ffmpeg-centos6.sh
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-07T11:31:15+08:00">
-              2017-03-07
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-03-07T12:13:20+08:00">
-              2017-03-07
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="脚本-latest-ffmpeg-centos6-sh"><a href="#脚本-latest-ffmpeg-centos6-sh" class="headerlink" title="脚本 latest-ffmpeg-centos6.sh"></a>脚本 <code>latest-ffmpeg-centos6.sh</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div></pre></td><td class="code"><pre><div class="line"># source: https://trac.ffmpeg.org/wiki/CentosCompilationGuide</div><div class="line"></div><div class="line">yum install autoconf automake gcc gcc-c++ git libtool make nasm pkgconfig zlib-devel</div><div class="line"></div><div class="line">mkdir ~/ffmpeg_sources</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -O http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz</div><div class="line">tar xzvf yasm-1.2.0.tar.gz</div><div class="line">cd yasm-1.2.0</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot;</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line">. ~/.bash_profile</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">git clone --depth 1 git://git.videolan.org/x264</div><div class="line">cd x264</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot; --enable-static</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">git clone --depth 1 git://github.com/mstorsjo/fdk-aac.git</div><div class="line">cd fdk-aac</div><div class="line">autoreconf -fiv</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -L -O http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz</div><div class="line">tar xzvf lame-3.99.5.tar.gz</div><div class="line">cd lame-3.99.5</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot; --disable-shared --enable-nasm</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -O http://downloads.xiph.org/releases/opus/opus-1.0.3.tar.gz</div><div class="line">tar xzvf opus-1.0.3.tar.gz</div><div class="line">cd opus-1.0.3</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -O http://downloads.xiph.org/releases/ogg/libogg-1.3.1.tar.gz</div><div class="line">tar xzvf libogg-1.3.1.tar.gz</div><div class="line">cd libogg-1.3.1</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -O http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.3.tar.gz</div><div class="line">tar xzvf libvorbis-1.3.3.tar.gz</div><div class="line">cd libvorbis-1.3.3</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --with-ogg=&quot;$HOME/ffmpeg_build&quot; --disable-shared</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">git clone --depth 1 https://chromium.googlesource.com/webm/libvpx</div><div class="line">cd libvpx</div><div class="line">git checkout tags/v1.3.0</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-examples</div><div class="line">make</div><div class="line">make install</div><div class="line">make clean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -O http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.gz</div><div class="line">tar xzvf libtheora-1.1.1.tar.gz</div><div class="line">cd libtheora-1.1.1</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --with-ogg=&quot;$HOME/ffmpeg_build&quot; --disable-examples --disable-shared --disable-sdltest --disable-vorbistest</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">yum -y install freetype-devel speex-devel</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">git clone --depth 1 git://source.ffmpeg.org/ffmpeg</div><div class="line">cd ffmpeg</div><div class="line">PKG_CONFIG_PATH=&quot;$HOME/ffmpeg_build/lib/pkgconfig&quot;</div><div class="line">export PKG_CONFIG_PATH</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --extra-cflags=&quot;-I$HOME/ffmpeg_build/include&quot; --extra-ldflags=&quot;-L$HOME/ffmpeg_build/lib&quot; --bindir=&quot;$HOME/bin&quot; --extra-libs=&quot;-ldl&quot; --enable-gpl --enable-nonfree --enable-libfdk_aac --enable-libmp3lame --enable-libopus --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libfreetype --enable-libspeex --enable-libtheora</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line">hash -r</div><div class="line">. ~/.bash_profile</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources/ffmpeg/tools</div><div class="line">make qt-faststart</div><div class="line">cp qt-faststart /usr/bin</div><div class="line">ldconfig</div><div class="line">cd</div></pre></td></tr></table></figure>
-<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ:"></a>FAQ:</h2><ul>
-<li><p>ERROR: libvpx decoder version must be &gt;=0.9.1</p>
-<pre><code>sudo yum install libvpx.x86_64 libvpx-devel.x86_64
-</code></pre></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/03/06/docker-mysql-Access-denied-for-user/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/06/docker-mysql-Access-denied-for-user/" itemprop="url">
-                  docker mysql Access denied for user
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-06T12:38:28+08:00">
-              2017-03-06
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-03-06T13:19:53+08:00">
-              2017-03-06
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD</div><div class="line">&quot;MYSQL_ROOT_PASSWORD=test&quot;,</div><div class="line">root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -p</div><div class="line">Enter password: test</div><div class="line">ERROR 1045 (28000): Access denied for user &apos;root&apos;@&apos;localhost&apos; (using password: YES)</div></pre></td></tr></table></figure>
-<p>I’ve gratuitously rebuilt, recreated, <code>--no-cache&#39;d</code>, <code>--force-recreate&#39;d</code>.. nothing is working. I’ve also tried putting the environment variable directly in a mysql Dockerfile and as an “environment” argument in my docker-compose.yml.</p>
-<p>The only thing that IS working is passing -e ‘MYSQL_ROOT_PASSWORD=test’ in a docker run statement.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/02/24/flock防止重复rsync/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/24/flock防止重复rsync/" itemprop="url">
-                  flock防止重复rsync
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-24T15:26:43+08:00">
-              2017-02-24
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-02-24T15:28:12+08:00">
-              2017-02-24
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>我使用crontab同步一个文件夹时，发现一个问题，我在crontab中设置的1分钟运行一次.但当那个文件夹的内容改变时。1分钟不一定能同步完，但这时第二个rsync进行又起来了。</p>
-<p>这个就产生一个问题，二个rsync一起处理相同的文件，这样会出问题。如下</p>
-<pre><code>* * * * /usr/bin/rsync -avlR /data/files    172.16.xxx.xxx:/data
-</code></pre><p>本来想写个脚本来解决，但太麻烦。所以用了个linux下的锁。。呵呵，象下面这个.</p>
-<pre><code>1 * * * * flock -xn /var/run/rsync.lock -c &quot;rsync -avlR /data/files    172.16.xxx.xxx:/data&quot;
-</code></pre><p>这样,使用flock的<code>-x</code>参数先建一个锁文件，然后<code>-n</code>指定，如果锁存在，就等待。直到建成功锁在会运行-c后面的命令。这样第一个进程没有运行完前，锁文件都会存在。这样就不会二个rsync同时并发处理一个东西了</p>
-<p><code>来源</code>: <a href="http://www.cnblogs.com/cmsd/p/3697049.html" target="_blank" rel="external">http://www.cnblogs.com/cmsd/p/3697049.html</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/02/15/rsync-只同步指定类型的文件/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/15/rsync-只同步指定类型的文件/" itemprop="url">
-                  rsync 只同步指定类型的文件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-15T10:27:09+08:00">
-              2017-02-15
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-02-15T10:27:58+08:00">
-              2017-02-15
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>需求： 同步某个目录下所有的图片（<em>.jpg），该目录下有很多其他的文件，但只想同步</em>.jpg的文件。</p>
-<p>rsync 有一个–exclude 可以排除指定文件，还有个–include选项的作用正好和–exclude相反。<br>那直接使用–include=”*.jpg”是否可以呢？</p>
-<p>rsync -av  –include=”*.jpg”  /src/   /des/</p>
-<p>实验证明，这样是不对的。</p>
-<p>而正确的答案是<br>rsync -av  –include=”<em>.jpg” –exclude=</em>  /src/ /des/</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/02/09/MySQL-导入慢的解决方法/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/09/MySQL-导入慢的解决方法/" itemprop="url">
-                  MySQL 导入慢的解决方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-09T09:20:22+08:00">
-              2017-02-09
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-02-09T09:22:57+08:00">
-              2017-02-09
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>MySQL导出的SQL语句在导入时有可能会非常非常慢，经历过导入仅45万条记录，竟用了近3个小时。在导出时合理使用几个参数，可以大大加快导 入的速度。</p>
-<ul>
-<li><code>-e</code> 使用包括几个VALUES列表的多行INSERT语法;</li>
-<li><code>-max_allowed_packet=XXX</code> 客户端/服务器之间通信的缓存区的最大大小;</li>
-<li><code>--net_buffer_length=XXX</code>  TCP/IP和套接字通信缓冲区大小,创建长度达net_buffer_length的行。</li>
-</ul>
-<p><code>注意</code>：max_allowed_packet和net_buffer_length不能比目标数据库的设定数值 大，否则可能出错。</p>
-<p>首先确定目标库的参数值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt;show variables like &apos;max_allowed_packet&apos;;</div><div class="line">mysql&gt;show variables like &apos;net_buffer_length&apos;;</div></pre></td></tr></table></figure></p>
-<p>根据参数值书写mysqldump命令，如：</p>
-<pre><code>E:\eis&gt;mysqldump -uroot -p eis_db goodclassification -e --max_allowed_packet=1048576 --net_buffer_length=16384 &gt;good3.sql
-</code></pre><p>之前2小时才能导入的sql现在几十秒就可以完成了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/02/04/svn-merge-合并单个文件/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/04/svn-merge-合并单个文件/" itemprop="url">
-                  svn merge 合并单个文件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-04T18:24:01+08:00">
-              2017-02-04
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-02-04T18:27:24+08:00">
-              2017-02-04
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>I’m not sure exactly what you’re asking as the title talks about merging single files but the text of the question talks about single revisions. In the case of merging single revisions you need: (to merge the changes committed in revisions 100, 105, 115)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd trunk</div><div class="line">svn merge -c 100 -c 105 -c 115 http://..../branches/mybranch .</div></pre></td></tr></table></figure>
-<p>If you want to merge only the part of revision 100 that affects file.cpp:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd trunk/path/to/file.cpp</div><div class="line">svn merge -c 100 http://../branches/mybranch/path/to/file.cpp file.cpp</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1589,7 +1662,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">119</span>
+              <span class="site-state-item-count">127</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1606,7 +1679,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
