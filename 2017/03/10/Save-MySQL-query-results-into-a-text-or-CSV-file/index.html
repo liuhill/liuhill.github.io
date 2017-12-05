@@ -84,12 +84,13 @@
 
 
 
-<meta name="description" content="MySQL provides an easy mechanism for writing the results of a select statement into a text file on the server. Using extended options of the INTO OUTFILE nomenclature, it is possible to create a comma">
+<meta name="description" content="MySQL provides an easy mechanism for writing the results of a select statement into a text file on the server. Using extended options of the INTO OUTFILE nomenc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Save MySQL query results into a text or CSV file">
 <meta property="og:url" content="http://www.wulai.me/2017/03/10/Save-MySQL-query-results-into-a-text-or-CSV-file/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="MySQL provides an easy mechanism for writing the results of a select statement into a text file on the server. Using extended options of the INTO OUTFILE nomenclature, it is possible to create a comma">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-03-10T09:38:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Save MySQL query results into a text or CSV file">
@@ -349,12 +350,12 @@
       
         <p>MySQL provides an easy mechanism for writing the results of a select statement into a text file on the server. Using extended options of the INTO OUTFILE nomenclature, it is possible to create a comma separated value (CSV) which can be imported into a spreadsheet application such as OpenOffice or Excel or any other applciation which accepts data in CSV format.</p>
 <p>Given a query such as</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT order_id,product_name,qty FROM orders</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT order_id,product_name,qty FROM orders</span><br></pre></td></tr></table></figure>
 <p>which returns three columns of data, the results can be placed into the file /tmo/orders.txt using the query:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT order_id,product_name,qty FROM orders</div><div class="line">INTO OUTFILE &apos;/tmp/orders.txt&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT order_id,product_name,qty FROM orders</span><br><span class="line">INTO OUTFILE &apos;/tmp/orders.txt&apos;</span><br></pre></td></tr></table></figure>
 <p>This will create a tab-separated file, each row on its own line. To alter this behavior, it is possible to add modifiers to the query:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SELECT order_id,product_name,qty FROM orders</div><div class="line">INTO OUTFILE &apos;/tmp/orders.csv&apos;</div><div class="line">FIELDS TERMINATED BY &apos;,&apos;</div><div class="line">ENCLOSED BY &apos;&quot;&apos;</div><div class="line">LINES TERMINATED BY &apos;\n&apos;</div></pre></td></tr></table></figure>
-<p>In this example, each field will be enclosed in “double quotes,” the fields will be separated by commas, and each row will be output on a new line separated by a newline (\n). Sample output of this command would look like:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;1&quot;,&quot;Tech-Recipes sock puppet&quot;,&quot;14.95&quot; &quot;2&quot;,&quot;Tech-Recipes chef&apos;s hat&quot;,&quot;18.95&quot;</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT order_id,product_name,qty FROM orders</span><br><span class="line">INTO OUTFILE &apos;/tmp/orders.csv&apos;</span><br><span class="line">FIELDS TERMINATED BY &apos;,&apos;</span><br><span class="line">ENCLOSED BY &apos;&quot;&apos;</span><br><span class="line">LINES TERMINATED BY &apos;\n&apos;</span><br></pre></td></tr></table></figure>
+<p>In this example, each field will be enclosed in “double quotes,” the fields will be separated by commas, and each row will be output on a new line separated by a newline (\n). Sample output of this command would look like:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;1&quot;,&quot;Tech-Recipes sock puppet&quot;,&quot;14.95&quot; &quot;2&quot;,&quot;Tech-Recipes chef&apos;s hat&quot;,&quot;18.95&quot;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
 <p>Keep in mind that the output file must not already exist and that the user MySQL is running as has write permissions to the directory MySQL is attempting to write the file to.</p>
 
       
@@ -453,7 +454,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -84,28 +84,17 @@
 
 
 
-<meta name="description" content="今天看一段anguarjs的代码发现，有一段for语句后面没有｛｝，后面跟着3个表达式，中间用,分割.但是觉得很奇怪，写段代码测试一下，发觉用,分割语句会连续执行。123b=1;for(i=0;i&amp;lt;5;i++)a=1,b++;console.log(b);
-返回值6
-123b=1;for(i=0;i&amp;lt;5;i++)a=1;b++;console.log(b);
-返回值2
-后来查找了一下,">
+<meta name="description" content="今天看一段anguarjs的代码发现，有一段for语句后面没有｛｝，后面跟着3个表达式，中间用,分割.但是觉得很奇怪，写段代码测试一下，发觉用,分割语句会连续执行。123b=1;for(i=0;i&amp;lt;5;i++)a=1,b++;console.log(b); 返回值6 123b=1;for(i=0;i&am">
 <meta property="og:type" content="article">
 <meta property="og:title" content="运算符，；的优先级">
 <meta property="og:url" content="http://www.wulai.me/2016/09/18/运算符，；的优先级/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="今天看一段anguarjs的代码发现，有一段for语句后面没有｛｝，后面跟着3个表达式，中间用,分割.但是觉得很奇怪，写段代码测试一下，发觉用,分割语句会连续执行。123b=1;for(i=0;i&amp;lt;5;i++)a=1,b++;console.log(b);
-返回值6
-123b=1;for(i=0;i&amp;lt;5;i++)a=1;b++;console.log(b);
-返回值2
-后来查找了一下,">
+<meta property="og:description" content="今天看一段anguarjs的代码发现，有一段for语句后面没有｛｝，后面跟着3个表达式，中间用,分割.但是觉得很奇怪，写段代码测试一下，发觉用,分割语句会连续执行。123b=1;for(i=0;i&amp;lt;5;i++)a=1,b++;console.log(b); 返回值6 123b=1;for(i=0;i&amp;lt;5;i++)a=1;b++;console.log(b); 返回值2 后来查找了一下,">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-09-18T03:01:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运算符，；的优先级">
-<meta name="twitter:description" content="今天看一段anguarjs的代码发现，有一段for语句后面没有｛｝，后面跟着3个表达式，中间用,分割.但是觉得很奇怪，写段代码测试一下，发觉用,分割语句会连续执行。123b=1;for(i=0;i&amp;lt;5;i++)a=1,b++;console.log(b);
-返回值6
-123b=1;for(i=0;i&amp;lt;5;i++)a=1;b++;console.log(b);
-返回值2
-后来查找了一下,">
+<meta name="twitter:description" content="今天看一段anguarjs的代码发现，有一段for语句后面没有｛｝，后面跟着3个表达式，中间用,分割.但是觉得很奇怪，写段代码测试一下，发觉用,分割语句会连续执行。123b=1;for(i=0;i&amp;lt;5;i++)a=1,b++;console.log(b); 返回值6 123b=1;for(i=0;i&amp;lt;5;i++)a=1;b++;console.log(b); 返回值2 后来查找了一下,">
 
 
 
@@ -359,9 +348,9 @@
       
 
       
-        <p>今天看一段anguarjs的代码发现，有一段for语句后面没有｛｝，后面跟着3个表达式，中间用<code>,</code>分割.但是觉得很奇怪，写段代码测试一下，发觉用<code>,</code>分割语句会连续执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">b=1;</div><div class="line">for(i=0;i&lt;5;i++)a=1,b++;</div><div class="line">console.log(b);</div></pre></td></tr></table></figure></p>
+        <p>今天看一段anguarjs的代码发现，有一段for语句后面没有｛｝，后面跟着3个表达式，中间用<code>,</code>分割.但是觉得很奇怪，写段代码测试一下，发觉用<code>,</code>分割语句会连续执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b=1;</span><br><span class="line">for(i=0;i&lt;5;i++)a=1,b++;</span><br><span class="line">console.log(b);</span><br></pre></td></tr></table></figure></p>
 <p>返回值<code>6</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">b=1;</div><div class="line">for(i=0;i&lt;5;i++)a=1;b++;</div><div class="line">console.log(b);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b=1;</span><br><span class="line">for(i=0;i&lt;5;i++)a=1;b++;</span><br><span class="line">console.log(b);</span><br></pre></td></tr></table></figure>
 <p>返回值<code>2</code></p>
 <p>后来查找了一下<code>,</code>从左到右依次运算。属于表达式</p>
 
@@ -461,7 +450,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

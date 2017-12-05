@@ -84,12 +84,13 @@
 
 
 
-<meta name="description" content="I’ve learned how to continue to use the ethX prefix. I’m still using the udev rules that I mentioned in post above. So at bootup udev will rename my interfaces netX. And then using /etc/rc.local I’ve">
+<meta name="description" content="I’ve learned how to continue to use the ethX prefix. I’m still using the udev rules that I mentioned in post above. So at bootup udev will rename my interfaces ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="name ethernet interfaces on CentOS7">
 <meta property="og:url" content="http://www.wulai.me/2017/07/27/name-ethernet-interfaces-on-CentOS7/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="I’ve learned how to continue to use the ethX prefix. I’m still using the udev rules that I mentioned in post above. So at bootup udev will rename my interfaces netX. And then using /etc/rc.local I’ve">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-07-27T08:12:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="name ethernet interfaces on CentOS7">
@@ -348,7 +349,7 @@
 
       
         <p>I’ve learned how to continue to use the ethX prefix. I’m still using the udev rules that I mentioned in post above. So at bootup udev will rename my interfaces netX. And then using /etc/rc.local I’ve included the following commands to rename them from netX back to ethX.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/sbin/ip link set net0 down</div><div class="line">/sbin/ip link set net0 name eth0</div><div class="line">/sbin/ip link set eth0 up</div><div class="line">...</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/sbin/ip link set net0 down</span><br><span class="line">/sbin/ip link set net0 name eth0</span><br><span class="line">/sbin/ip link set eth0 up</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <p>Using the ip command I can change the name of the interfaces after the initial bootup is completed.</p>
 
       
@@ -447,7 +448,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

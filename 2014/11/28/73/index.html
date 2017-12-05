@@ -84,12 +84,13 @@
 
 
 
-<meta name="description" content="1、APC缓存简介 APC，全称是Alternative PHP Cache，官方翻译叫”可选PHP缓存”。它为我们提供了缓存和优化PHP的中间代码的框架。 APC的缓存分两部分:系统缓存和用户数据缓存。 系统缓存 它是指APC把PHP文件源码的编译结果缓存起来，然后在每次调用时先对比时间标记。如果未过期，则使用缓存的中间代码运行。默认缓存 3600s(一小时)。但是这样仍会浪费大量CPU时间。因">
+<meta name="description" content="1、APC缓存简介 APC，全称是Alternative PHP Cache，官方翻译叫”可选PHP缓存”。它为我们提供了缓存和优化PHP的中间代码的框架。 APC的缓存分两部分:系统缓存和用户数据缓存。 系统缓存 它是指APC把PHP文件源码的编译结果缓存起来，然后在每次调用时先对比时间标记。如果未过期，则使用缓存的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="APC缓存简介">
 <meta property="og:url" content="http://www.wulai.me/2014/11/28/73/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="1、APC缓存简介 APC，全称是Alternative PHP Cache，官方翻译叫”可选PHP缓存”。它为我们提供了缓存和优化PHP的中间代码的框架。 APC的缓存分两部分:系统缓存和用户数据缓存。 系统缓存 它是指APC把PHP文件源码的编译结果缓存起来，然后在每次调用时先对比时间标记。如果未过期，则使用缓存的中间代码运行。默认缓存 3600s(一小时)。但是这样仍会浪费大量CPU时间。因">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-08-29T05:34:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="APC缓存简介">
@@ -367,7 +368,7 @@
 
       
         <p>1、APC缓存简介 APC，全称是Alternative PHP Cache，官方翻译叫”可选PHP缓存”。它为我们提供了缓存和优化PHP的中间代码的框架。 APC的缓存分两部分:系统缓存和用户数据缓存。 系统缓存 它是指APC把PHP文件源码的编译结果缓存起来，然后在每次调用时先对比时间标记。如果未过期，则使用缓存的中间代码运行。默认缓存 3600s(一小时)。但是这样仍会浪费大量CPU时间。因此可以在php.ini中设置system缓存为永不过期(apc.ttl=0)。不过如果这样设置，改运php代码后需要重启WEB服务器。目前使用较多的是指此类缓存。 用户数据缓存 缓存由用户在编写PHP代码时用apc_store和apc_fetch函数操作读取、写入的。如果数据量不大的话，可以一试。如果数据量大，使用类似memcache此类的更加专著的内存缓存方案会更好 缓存key生成规则 APC的缓存中的每个slot都会有一个key，key是 apc_cache_key_t结构体类型，除了key相关的属性，关键是h字段的生成。 h字段决定了此元素落于slots数组的哪一个位置。对于用户缓存和系统缓存，其生成规则不同。 用户缓存通过apc_cache_make_user_key函数生成key。通过用户传递进来的key字符串，依赖PHP内核中的hash函数（PHP的hashtable所使用的hash函数：zend_inline_hash_func），生成h值。 系统缓存通过apc_cache_make_file_key函数生成key。通过APC的配置项apc.stat的开关来区别对待不同的方案。在打开的情况下，即 apc.stat= On 时，如果被更新则自动重新编译和缓存编译后的内容。此时的h值是文件的device和inode相加所得的值。在关闭的情况下，即apc.stat=off时，当文件被修改后，如果要使更新的内容生效，则必须重启Web服务器。此时h值是根据文件的路径地址生成，并且这里的路径是绝对路径。即使你是使用的相对路径，也会查找PG(include_path)定位文件，以取得绝对路径，所以使用绝对路径会跳过检查，可以提高代码的效率。 添加缓存过程 以用户缓存为例，apc_add函数用于给APC缓存中添加内容。如果key参数为字符串中，APC会根据此字符串生成key，如果key参数为数组，APC会遍历整个数组，生成key。根据这些key，APC会调用&#95;apc&#95;store将值存储到缓存中。由于这是用户缓存，当前使用的缓存为apc_user_cache。执行写入操作的是apc_cache_make_user_entry函数，其最终调用apc_cache_user_insert执行遍历查询和写入操作。与此对应，系统缓存使用apc_cache_insert执行写入操作，其最终都会调用&#95;apc&#95;cache_insert。 不管是用户缓存还是系统缓存，大体的执行过程类似，步骤如下：</p>
-<p>通过求余操作，定位当前key的在slots数组中的位置： cache-&gt;slots[key.h % cache-&gt;num_slots]; 在定位到slots数组中的位置后，遍历当前key对应的slot链表，如果存在slot的key和要写入的key匹配或slot过期，清除当前slot。 在最后一个slot的后面插入新的slot。 2、APC模块安装 WINDOWS 第一步：下载php_apc.dll 在<a href="http://pecl.php.net/package/apc" target="_blank" rel="external">http://pecl.php.net/package/apc</a> 要与php版本对应 将php_apc.dll放入你的ext目录</p>
+<p>通过求余操作，定位当前key的在slots数组中的位置： cache-&gt;slots[key.h % cache-&gt;num_slots]; 在定位到slots数组中的位置后，遍历当前key对应的slot链表，如果存在slot的key和要写入的key匹配或slot过期，清除当前slot。 在最后一个slot的后面插入新的slot。 2、APC模块安装 WINDOWS 第一步：下载php_apc.dll 在<a href="http://pecl.php.net/package/apc" target="_blank" rel="noopener">http://pecl.php.net/package/apc</a> 要与php版本对应 将php_apc.dll放入你的ext目录</p>
 <p>第二步：让php.ini支持apc扩展模块。 然后打开php.ini 加入：</p>
 <p>extension=php_apc.dll</p>
 <p>apc.rfc1867 = on</p>
@@ -386,7 +387,7 @@
 <p>6,PHP预定义常量，可以使用apc_define_constants()函数。不过据APC开发者介绍说pecl hidef性能更佳，抛异define吧，它是低效的。</p>
 <p>7,函数apc_store()，对于系统设置等PHP变量，生命周期是整个应用(从httpd守护进程直到httpd守护进程关闭)，使用APC比Memcached会更好。必竟不要经过网络传输协议tcp。</p>
 <p>8,APC不适于通过函数apc_store()缓存频繁变更的用户数据，会出现一些奇异现象。</p>
-<p>LIUNX wget <a href="http://pecl.php.net/get/APC-3.1.8.tgz" target="_blank" rel="external">http://pecl.php.net/get/APC-3.1.8.tgz</a></p>
+<p>LIUNX wget <a href="http://pecl.php.net/get/APC-3.1.8.tgz" target="_blank" rel="noopener">http://pecl.php.net/get/APC-3.1.8.tgz</a></p>
 <p>tar -zxvf APC-3.1.8.tgz cd APC-3.1.8</p>
 <p>/usr/local/php/bin/phpize</p>
 <p>./configure –enable-apc –enable-mmap –enable-apc-spinlocks –disable-apc-pthreadmutex –with-php-config=/usr/local/php/bin/php-config</p>
@@ -576,7 +577,7 @@ public function info() {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

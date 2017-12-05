@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="12345678910111213141516171819$ cat /etc/tmpfiles.d/tmp.conf#  This file is part of systemd.##  systemd is free software; you can redistribute it and/or modify it#  under the terms of the GNU Lesser Ge">
+<meta name="description" content="12345678910111213141516171819$ cat /etc/tmpfiles.d/tmp.conf#  This file is part of systemd.##  systemd is free software; you can redistribute it and/or modify i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HOWTO disable tmpfs on /tmp?">
+<meta property="og:title" content="HOWTO disable tmpfs on &#x2F;tmp?">
 <meta property="og:url" content="http://www.wulai.me/2017/08/02/HOWTO-disable-tmpfs-on-tmp/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="12345678910111213141516171819$ cat /etc/tmpfiles.d/tmp.conf#  This file is part of systemd.##  systemd is free software; you can redistribute it and/or modify it#  under the terms of the GNU Lesser Ge">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-08-02T02:22:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HOWTO disable tmpfs on /tmp?">
+<meta name="twitter:title" content="HOWTO disable tmpfs on &#x2F;tmp?">
 <meta name="twitter:description" content="12345678910111213141516171819$ cat /etc/tmpfiles.d/tmp.conf#  This file is part of systemd.##  systemd is free software; you can redistribute it and/or modify it#  under the terms of the GNU Lesser Ge">
 
 
@@ -347,7 +348,7 @@
       
 
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">$ cat /etc/tmpfiles.d/tmp.conf</div><div class="line">#  This file is part of systemd.</div><div class="line">#</div><div class="line">#  systemd is free software; you can redistribute it and/or modify it</div><div class="line">#  under the terms of the GNU Lesser General Public License as published by</div><div class="line">#  the Free Software Foundation; either version 2.1 of the License, or</div><div class="line">#  (at your option) any later version.</div><div class="line"></div><div class="line"># See tmpfiles.d(5) for details</div><div class="line"></div><div class="line"># Clear tmp directories separately, to make them easier to override</div><div class="line">D /tmp 1777 root root 0</div><div class="line">D /var/tmp 1777 root root 10d</div><div class="line"></div><div class="line"># Exclude namespace mountpoints created with PrivateTmp=yes</div><div class="line">x /tmp/systemd-private-*</div><div class="line">x /var/tmp/systemd-private-*</div><div class="line">X /tmp/systemd-private-*/tmp</div><div class="line">X /var/tmp/systemd-private-*/tmp</div></pre></td></tr></table></figure>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/tmpfiles.d/tmp.conf</span><br><span class="line">#  This file is part of systemd.</span><br><span class="line">#</span><br><span class="line">#  systemd is free software; you can redistribute it and/or modify it</span><br><span class="line">#  under the terms of the GNU Lesser General Public License as published by</span><br><span class="line">#  the Free Software Foundation; either version 2.1 of the License, or</span><br><span class="line">#  (at your option) any later version.</span><br><span class="line"></span><br><span class="line"># See tmpfiles.d(5) for details</span><br><span class="line"></span><br><span class="line"># Clear tmp directories separately, to make them easier to override</span><br><span class="line">D /tmp 1777 root root 0</span><br><span class="line">D /var/tmp 1777 root root 10d</span><br><span class="line"></span><br><span class="line"># Exclude namespace mountpoints created with PrivateTmp=yes</span><br><span class="line">x /tmp/systemd-private-*</span><br><span class="line">x /var/tmp/systemd-private-*</span><br><span class="line">X /tmp/systemd-private-*/tmp</span><br><span class="line">X /var/tmp/systemd-private-*/tmp</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -445,7 +446,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

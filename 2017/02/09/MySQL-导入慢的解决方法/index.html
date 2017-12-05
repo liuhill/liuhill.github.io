@@ -84,28 +84,17 @@
 
 
 
-<meta name="description" content="MySQL导出的SQL语句在导入时有可能会非常非常慢，经历过导入仅45万条记录，竟用了近3个小时。在导出时合理使用几个参数，可以大大加快导 入的速度。
-
--e 使用包括几个VALUES列表的多行INSERT语法;
--max_allowed_packet=XXX 客户端/服务器之间通信的缓存区的最大大小;
---net_buffer_length=XXX  TCP/IP和套接字通信缓冲区大小,创建长度">
+<meta name="description" content="MySQL导出的SQL语句在导入时有可能会非常非常慢，经历过导入仅45万条记录，竟用了近3个小时。在导出时合理使用几个参数，可以大大加快导 入的速度。  -e 使用包括几个VALUES列表的多行INSERT语法; -max_allowed_packet=XXX 客户端/服务器之间通信的缓存区的最大大小; --net_b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL 导入慢的解决方法">
 <meta property="og:url" content="http://www.wulai.me/2017/02/09/MySQL-导入慢的解决方法/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="MySQL导出的SQL语句在导入时有可能会非常非常慢，经历过导入仅45万条记录，竟用了近3个小时。在导出时合理使用几个参数，可以大大加快导 入的速度。
-
--e 使用包括几个VALUES列表的多行INSERT语法;
--max_allowed_packet=XXX 客户端/服务器之间通信的缓存区的最大大小;
---net_buffer_length=XXX  TCP/IP和套接字通信缓冲区大小,创建长度">
+<meta property="og:description" content="MySQL导出的SQL语句在导入时有可能会非常非常慢，经历过导入仅45万条记录，竟用了近3个小时。在导出时合理使用几个参数，可以大大加快导 入的速度。  -e 使用包括几个VALUES列表的多行INSERT语法; -max_allowed_packet=XXX 客户端/服务器之间通信的缓存区的最大大小; --net_buffer_length=XXX  TCP/IP和套接字通信缓冲区大小,创建长度">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-02-09T01:22:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 导入慢的解决方法">
-<meta name="twitter:description" content="MySQL导出的SQL语句在导入时有可能会非常非常慢，经历过导入仅45万条记录，竟用了近3个小时。在导出时合理使用几个参数，可以大大加快导 入的速度。
-
--e 使用包括几个VALUES列表的多行INSERT语法;
--max_allowed_packet=XXX 客户端/服务器之间通信的缓存区的最大大小;
---net_buffer_length=XXX  TCP/IP和套接字通信缓冲区大小,创建长度">
+<meta name="twitter:description" content="MySQL导出的SQL语句在导入时有可能会非常非常慢，经历过导入仅45万条记录，竟用了近3个小时。在导出时合理使用几个参数，可以大大加快导 入的速度。  -e 使用包括几个VALUES列表的多行INSERT语法; -max_allowed_packet=XXX 客户端/服务器之间通信的缓存区的最大大小; --net_buffer_length=XXX  TCP/IP和套接字通信缓冲区大小,创建长度">
 
 
 
@@ -366,7 +355,7 @@
 <li><code>--net_buffer_length=XXX</code>  TCP/IP和套接字通信缓冲区大小,创建长度达net_buffer_length的行。</li>
 </ul>
 <p><code>注意</code>：max_allowed_packet和net_buffer_length不能比目标数据库的设定数值 大，否则可能出错。</p>
-<p>首先确定目标库的参数值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt;show variables like &apos;max_allowed_packet&apos;;</div><div class="line">mysql&gt;show variables like &apos;net_buffer_length&apos;;</div></pre></td></tr></table></figure></p>
+<p>首先确定目标库的参数值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show variables like &apos;max_allowed_packet&apos;;</span><br><span class="line">mysql&gt;show variables like &apos;net_buffer_length&apos;;</span><br></pre></td></tr></table></figure></p>
 <p>根据参数值书写mysqldump命令，如：</p>
 <pre><code>E:\eis&gt;mysqldump -uroot -p eis_db goodclassification -e --max_allowed_packet=1048576 --net_buffer_length=16384 &gt;good3.sql
 </code></pre><p>之前2小时才能导入的sql现在几十秒就可以完成了。</p>
@@ -467,7 +456,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

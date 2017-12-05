@@ -84,22 +84,17 @@
 
 
 
-<meta name="description" content="mysql 5.5已经出来有一段时间，性能有明显提升，特别是对多核CPU的支持与TPS性能的提升。上周博主介绍了linux下编译安装mysql 5.5的步骤，安装不出意外基本没有问题。不过可能很多朋友和我一样一直用的是mysql 5.1，现在想把数据库升级成5.5了。博主根据实际操作，记录这次升级操作。
-mysql基础信息
-1、安装目录[root@vm-199~]# /usr/local/mysq">
+<meta name="description" content="mysql 5.5已经出来有一段时间，性能有明显提升，特别是对多核CPU的支持与TPS性能的提升。上周博主介绍了linux下编译安装mysql 5.5的步骤，安装不出意外基本没有问题。不过可能很多朋友和我一样一直用的是mysql 5.1，现在想把数据库升级成5.5了。博主根据实际操作，记录这次升级操作。 mysql基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS下将MySQL 5.1升级到MySQL 5.5">
 <meta property="og:url" content="http://www.wulai.me/2016/04/01/centos-e4-b8-8b-e5-b0-86mysql-5-1-e5-8d-87-e7-ba-a7-e5-88-b0mysql-5-5/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="mysql 5.5已经出来有一段时间，性能有明显提升，特别是对多核CPU的支持与TPS性能的提升。上周博主介绍了linux下编译安装mysql 5.5的步骤，安装不出意外基本没有问题。不过可能很多朋友和我一样一直用的是mysql 5.1，现在想把数据库升级成5.5了。博主根据实际操作，记录这次升级操作。
-mysql基础信息
-1、安装目录[root@vm-199~]# /usr/local/mysq">
+<meta property="og:description" content="mysql 5.5已经出来有一段时间，性能有明显提升，特别是对多核CPU的支持与TPS性能的提升。上周博主介绍了linux下编译安装mysql 5.5的步骤，安装不出意外基本没有问题。不过可能很多朋友和我一样一直用的是mysql 5.1，现在想把数据库升级成5.5了。博主根据实际操作，记录这次升级操作。 mysql基础信息 1、安装目录[root@vm-199~]# /usr/local/mysq">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-08-29T05:34:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS下将MySQL 5.1升级到MySQL 5.5">
-<meta name="twitter:description" content="mysql 5.5已经出来有一段时间，性能有明显提升，特别是对多核CPU的支持与TPS性能的提升。上周博主介绍了linux下编译安装mysql 5.5的步骤，安装不出意外基本没有问题。不过可能很多朋友和我一样一直用的是mysql 5.1，现在想把数据库升级成5.5了。博主根据实际操作，记录这次升级操作。
-mysql基础信息
-1、安装目录[root@vm-199~]# /usr/local/mysq">
+<meta name="twitter:description" content="mysql 5.5已经出来有一段时间，性能有明显提升，特别是对多核CPU的支持与TPS性能的提升。上周博主介绍了linux下编译安装mysql 5.5的步骤，安装不出意外基本没有问题。不过可能很多朋友和我一样一直用的是mysql 5.1，现在想把数据库升级成5.5了。博主根据实际操作，记录这次升级操作。 mysql基础信息 1、安装目录[root@vm-199~]# /usr/local/mysq">
 
 
 
@@ -382,7 +377,7 @@ mysql基础信息
 [root@vm-199~]# cp /etc/my.cnf  ./</code></p>
 <p>数据备份好后关闭mysql数据库，<code>/etc/init.d/mysql stop</code>，删除/usr/local/mysql文件。</p>
 <p>安装mysql 5.5</p>
-<p>具体可以参考这篇文章《Linux下编译安装Mysql-5.5的简单步骤》（<a href="http://www.sijitao.net/1563.html），安装目录、数据目录和5.1的一样，都是/usr/local/mysql" target="_blank" rel="external">http://www.sijitao.net/1563.html），安装目录、数据目录和5.1的一样，都是/usr/local/mysql</a> 。</p>
+<p>具体可以参考这篇文章《Linux下编译安装Mysql-5.5的简单步骤》（<a href="http://www.sijitao.net/1563.html），安装目录、数据目录和5.1的一样，都是/usr/local/mysql" target="_blank" rel="noopener">http://www.sijitao.net/1563.html），安装目录、数据目录和5.1的一样，都是/usr/local/mysql</a> 。</p>
 <p>更新配置文件</p>
 <p><code>[root@vm-199 mysql-5.5.35]# cp support-files/my-huge.cnf /etc/my.cnf</code></p>
 <p>在配置文件中添加数据目录，datadir = /data/mysql 。</p>
@@ -519,7 +514,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

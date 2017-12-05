@@ -90,6 +90,7 @@
 <meta property="og:url" content="http://www.wulai.me/page/4/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="开发笔记而已～～～">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无来">
 <meta name="twitter:description" content="开发笔记而已～～～">
@@ -261,6 +262,145 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/03/10/MAGENTO-2-CHANGE-THE-BASE-URL-USING-THE-COMMAND-LINE/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/10/MAGENTO-2-CHANGE-THE-BASE-URL-USING-THE-COMMAND-LINE/" itemprop="url">
+                  MAGENTO 2: CHANGE THE BASE-URL USING THE COMMAND LINE
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-10T14:21:45+08:00">
+              2017-03-10
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-03-10T14:24:37+08:00">
+              2017-03-10
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>The following Magento 2’s CLI command will update the Magento base-url and the base-url-secure values.</p>
+<p>Go to the Magento’s root directory, then type within the console:</p>
+<pre><code>php bin/magento setup:store-config:set --base-url=&quot;http://localhost:8080/&quot;
+</code></pre><p>Replacing <a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> with your new base-url.</p>
+<p>You may want to change the base-url-secure also:</p>
+<pre><code>php bin/magento setup:store-config:set --base-url-secure=&quot;https://localhost:8080/&quot;
+</code></pre><p>Note: both base-url and base-url-secure values must contain the URL’s scheme, http:// or https://, and a trailing slash /.</p>
+<p>Then clear the cache:</p>
+<pre><code>php bin/magento cache:flush
+</code></pre><p>Troubleshooting<br>Clear current values from the database<br>Can happen that the above command doesn’t works as expected and you still have some url pointing to the old base-url. In these cases you have to clear some values in your db.</p>
+<p>Open the Magento 2 database with your favorite MySQL tool then go to the core_config_data table.</p>
+<p>Search for rows having these values in the column path (note that there could be more than one row for each value):</p>
+<ul>
+<li>“web/unsecure/base_url”</li>
+<li>“web/secure/base_url”<br>Delete these rows (Magento will recreate them).</li>
+</ul>
+<p>Now you can set the base-url value using the above CLI command.</p>
+<p>Single-Store Mode option enabled<br>If you have the Single-Store Mode option enabled this could bring to some problem with setting the base-url with the command line.</p>
+<p>In this case you should modify the base-url using only the command line and not the Magento’s Admin Panel. If you already saved the Base url field value using the Admin Panel you should clear values within the Magento’s core_config_data table as described above.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -612,7 +752,7 @@
       
         
           
-            <h2 id="脚本-latest-ffmpeg-centos6-sh"><a href="#脚本-latest-ffmpeg-centos6-sh" class="headerlink" title="脚本 latest-ffmpeg-centos6.sh"></a>脚本 <code>latest-ffmpeg-centos6.sh</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div></pre></td><td class="code"><pre><div class="line"># source: https://trac.ffmpeg.org/wiki/CentosCompilationGuide</div><div class="line"></div><div class="line">yum install autoconf automake gcc gcc-c++ git libtool make nasm pkgconfig zlib-devel</div><div class="line"></div><div class="line">mkdir ~/ffmpeg_sources</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -O http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz</div><div class="line">tar xzvf yasm-1.2.0.tar.gz</div><div class="line">cd yasm-1.2.0</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot;</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line">. ~/.bash_profile</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">git clone --depth 1 git://git.videolan.org/x264</div><div class="line">cd x264</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot; --enable-static</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">git clone --depth 1 git://github.com/mstorsjo/fdk-aac.git</div><div class="line">cd fdk-aac</div><div class="line">autoreconf -fiv</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -L -O http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz</div><div class="line">tar xzvf lame-3.99.5.tar.gz</div><div class="line">cd lame-3.99.5</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot; --disable-shared --enable-nasm</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -O http://downloads.xiph.org/releases/opus/opus-1.0.3.tar.gz</div><div class="line">tar xzvf opus-1.0.3.tar.gz</div><div class="line">cd opus-1.0.3</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -O http://downloads.xiph.org/releases/ogg/libogg-1.3.1.tar.gz</div><div class="line">tar xzvf libogg-1.3.1.tar.gz</div><div class="line">cd libogg-1.3.1</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -O http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.3.tar.gz</div><div class="line">tar xzvf libvorbis-1.3.3.tar.gz</div><div class="line">cd libvorbis-1.3.3</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --with-ogg=&quot;$HOME/ffmpeg_build&quot; --disable-shared</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">git clone --depth 1 https://chromium.googlesource.com/webm/libvpx</div><div class="line">cd libvpx</div><div class="line">git checkout tags/v1.3.0</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-examples</div><div class="line">make</div><div class="line">make install</div><div class="line">make clean</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">curl -O http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.gz</div><div class="line">tar xzvf libtheora-1.1.1.tar.gz</div><div class="line">cd libtheora-1.1.1</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --with-ogg=&quot;$HOME/ffmpeg_build&quot; --disable-examples --disable-shared --disable-sdltest --disable-vorbistest</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line"></div><div class="line">yum -y install freetype-devel speex-devel</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources</div><div class="line">git clone --depth 1 git://source.ffmpeg.org/ffmpeg</div><div class="line">cd ffmpeg</div><div class="line">PKG_CONFIG_PATH=&quot;$HOME/ffmpeg_build/lib/pkgconfig&quot;</div><div class="line">export PKG_CONFIG_PATH</div><div class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --extra-cflags=&quot;-I$HOME/ffmpeg_build/include&quot; --extra-ldflags=&quot;-L$HOME/ffmpeg_build/lib&quot; --bindir=&quot;$HOME/bin&quot; --extra-libs=&quot;-ldl&quot; --enable-gpl --enable-nonfree --enable-libfdk_aac --enable-libmp3lame --enable-libopus --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libfreetype --enable-libspeex --enable-libtheora</div><div class="line">make</div><div class="line">make install</div><div class="line">make distclean</div><div class="line">hash -r</div><div class="line">. ~/.bash_profile</div><div class="line"></div><div class="line">cd ~/ffmpeg_sources/ffmpeg/tools</div><div class="line">make qt-faststart</div><div class="line">cp qt-faststart /usr/bin</div><div class="line">ldconfig</div><div class="line">cd</div></pre></td></tr></table></figure>
+            <h2 id="脚本-latest-ffmpeg-centos6-sh"><a href="#脚本-latest-ffmpeg-centos6-sh" class="headerlink" title="脚本 latest-ffmpeg-centos6.sh"></a>脚本 <code>latest-ffmpeg-centos6.sh</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"># source: https://trac.ffmpeg.org/wiki/CentosCompilationGuide</span><br><span class="line"></span><br><span class="line">yum install autoconf automake gcc gcc-c++ git libtool make nasm pkgconfig zlib-devel</span><br><span class="line"></span><br><span class="line">mkdir ~/ffmpeg_sources</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -O http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz</span><br><span class="line">tar xzvf yasm-1.2.0.tar.gz</span><br><span class="line">cd yasm-1.2.0</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot;</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line">. ~/.bash_profile</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">git clone --depth 1 git://git.videolan.org/x264</span><br><span class="line">cd x264</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot; --enable-static</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">git clone --depth 1 git://github.com/mstorsjo/fdk-aac.git</span><br><span class="line">cd fdk-aac</span><br><span class="line">autoreconf -fiv</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -L -O http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz</span><br><span class="line">tar xzvf lame-3.99.5.tar.gz</span><br><span class="line">cd lame-3.99.5</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot; --disable-shared --enable-nasm</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -O http://downloads.xiph.org/releases/opus/opus-1.0.3.tar.gz</span><br><span class="line">tar xzvf opus-1.0.3.tar.gz</span><br><span class="line">cd opus-1.0.3</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -O http://downloads.xiph.org/releases/ogg/libogg-1.3.1.tar.gz</span><br><span class="line">tar xzvf libogg-1.3.1.tar.gz</span><br><span class="line">cd libogg-1.3.1</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -O http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.3.tar.gz</span><br><span class="line">tar xzvf libvorbis-1.3.3.tar.gz</span><br><span class="line">cd libvorbis-1.3.3</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --with-ogg=&quot;$HOME/ffmpeg_build&quot; --disable-shared</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">git clone --depth 1 https://chromium.googlesource.com/webm/libvpx</span><br><span class="line">cd libvpx</span><br><span class="line">git checkout tags/v1.3.0</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-examples</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make clean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -O http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.gz</span><br><span class="line">tar xzvf libtheora-1.1.1.tar.gz</span><br><span class="line">cd libtheora-1.1.1</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --with-ogg=&quot;$HOME/ffmpeg_build&quot; --disable-examples --disable-shared --disable-sdltest --disable-vorbistest</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">yum -y install freetype-devel speex-devel</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">git clone --depth 1 git://source.ffmpeg.org/ffmpeg</span><br><span class="line">cd ffmpeg</span><br><span class="line">PKG_CONFIG_PATH=&quot;$HOME/ffmpeg_build/lib/pkgconfig&quot;</span><br><span class="line">export PKG_CONFIG_PATH</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --extra-cflags=&quot;-I$HOME/ffmpeg_build/include&quot; --extra-ldflags=&quot;-L$HOME/ffmpeg_build/lib&quot; --bindir=&quot;$HOME/bin&quot; --extra-libs=&quot;-ldl&quot; --enable-gpl --enable-nonfree --enable-libfdk_aac --enable-libmp3lame --enable-libopus --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libfreetype --enable-libspeex --enable-libtheora</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line">hash -r</span><br><span class="line">. ~/.bash_profile</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources/ffmpeg/tools</span><br><span class="line">make qt-faststart</span><br><span class="line">cp qt-faststart /usr/bin</span><br><span class="line">ldconfig</span><br><span class="line">cd</span><br></pre></td></tr></table></figure>
 <h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ:"></a>FAQ:</h2><ul>
 <li><p>ERROR: libvpx decoder version must be &gt;=0.9.1</p>
 <pre><code>sudo yum install libvpx.x86_64 libvpx-devel.x86_64
@@ -738,7 +878,7 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD</div><div class="line">&quot;MYSQL_ROOT_PASSWORD=test&quot;,</div><div class="line">root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -p</div><div class="line">Enter password: test</div><div class="line">ERROR 1045 (28000): Access denied for user &apos;root&apos;@&apos;localhost&apos; (using password: YES)</div></pre></td></tr></table></figure>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD</span><br><span class="line">&quot;MYSQL_ROOT_PASSWORD=test&quot;,</span><br><span class="line">root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -p</span><br><span class="line">Enter password: test</span><br><span class="line">ERROR 1045 (28000): Access denied for user &apos;root&apos;@&apos;localhost&apos; (using password: YES)</span><br></pre></td></tr></table></figure>
 <p>I’ve gratuitously rebuilt, recreated, <code>--no-cache&#39;d</code>, <code>--force-recreate&#39;d</code>.. nothing is working. I’ve also tried putting the environment variable directly in a mysql Dockerfile and as an “environment” argument in my docker-compose.yml.</p>
 <p>The only thing that IS working is passing -e ‘MYSQL_ROOT_PASSWORD=test’ in a docker run statement.</p>
 
@@ -867,7 +1007,7 @@
 </code></pre><p>本来想写个脚本来解决，但太麻烦。所以用了个linux下的锁。。呵呵，象下面这个.</p>
 <pre><code>1 * * * * flock -xn /var/run/rsync.lock -c &quot;rsync -avlR /data/files    172.16.xxx.xxx:/data&quot;
 </code></pre><p>这样,使用flock的<code>-x</code>参数先建一个锁文件，然后<code>-n</code>指定，如果锁存在，就等待。直到建成功锁在会运行-c后面的命令。这样第一个进程没有运行完前，锁文件都会存在。这样就不会二个rsync同时并发处理一个东西了</p>
-<p><code>来源</code>: <a href="http://www.cnblogs.com/cmsd/p/3697049.html" target="_blank" rel="external">http://www.cnblogs.com/cmsd/p/3697049.html</a></p>
+<p><code>来源</code>: <a href="http://www.cnblogs.com/cmsd/p/3697049.html" target="_blank" rel="noopener">http://www.cnblogs.com/cmsd/p/3697049.html</a></p>
 
           
         
@@ -1120,7 +1260,7 @@
 <li><code>--net_buffer_length=XXX</code>  TCP/IP和套接字通信缓冲区大小,创建长度达net_buffer_length的行。</li>
 </ul>
 <p><code>注意</code>：max_allowed_packet和net_buffer_length不能比目标数据库的设定数值 大，否则可能出错。</p>
-<p>首先确定目标库的参数值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt;show variables like &apos;max_allowed_packet&apos;;</div><div class="line">mysql&gt;show variables like &apos;net_buffer_length&apos;;</div></pre></td></tr></table></figure></p>
+<p>首先确定目标库的参数值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show variables like &apos;max_allowed_packet&apos;;</span><br><span class="line">mysql&gt;show variables like &apos;net_buffer_length&apos;;</span><br></pre></td></tr></table></figure></p>
 <p>根据参数值书写mysqldump命令，如：</p>
 <pre><code>E:\eis&gt;mysqldump -uroot -p eis_db goodclassification -e --max_allowed_packet=1048576 --net_buffer_length=16384 &gt;good3.sql
 </code></pre><p>之前2小时才能导入的sql现在几十秒就可以完成了。</p>
@@ -1245,8 +1385,8 @@
         
           
             <p>I’m not sure exactly what you’re asking as the title talks about merging single files but the text of the question talks about single revisions. In the case of merging single revisions you need: (to merge the changes committed in revisions 100, 105, 115)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd trunk</div><div class="line">svn merge -c 100 -c 105 -c 115 http://..../branches/mybranch .</div></pre></td></tr></table></figure>
-<p>If you want to merge only the part of revision 100 that affects file.cpp:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd trunk/path/to/file.cpp</div><div class="line">svn merge -c 100 http://../branches/mybranch/path/to/file.cpp file.cpp</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd trunk</span><br><span class="line">svn merge -c 100 -c 105 -c 115 http://..../branches/mybranch .</span><br></pre></td></tr></table></figure>
+<p>If you want to merge only the part of revision 100 that affects file.cpp:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd trunk/path/to/file.cpp</span><br><span class="line">svn merge -c 100 http://../branches/mybranch/path/to/file.cpp file.cpp</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1367,138 +1507,9 @@
       
         
           
-            <h3 id="php-CMYK-to-RGB"><a href="#php-CMYK-to-RGB" class="headerlink" title="php CMYK to RGB"></a>php CMYK to RGB</h3><p><code>来源</code>:<a href="http://php.net/manual/en/imagick.setimagecolorspace.php" target="_blank" rel="external">http://php.net/manual/en/imagick.setimagecolorspace.php</a></p>
-<p>Simlest way converting from CMYK to RGB:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">if ($jpeg-&gt;getImageColorspace() == \Imagick::COLORSPACE_CMYK) &#123;</div><div class="line">    $jpeg-&gt;transformimagecolorspace(\Imagick::COLORSPACE_SRGB);</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+            <h3 id="php-CMYK-to-RGB"><a href="#php-CMYK-to-RGB" class="headerlink" title="php CMYK to RGB"></a>php CMYK to RGB</h3><p><code>来源</code>:<a href="http://php.net/manual/en/imagick.setimagecolorspace.php" target="_blank" rel="noopener">http://php.net/manual/en/imagick.setimagecolorspace.php</a></p>
+<p>Simlest way converting from CMYK to RGB:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if ($jpeg-&gt;getImageColorspace() == \Imagick::COLORSPACE_CMYK) &#123;</span><br><span class="line">    $jpeg-&gt;transformimagecolorspace(\Imagick::COLORSPACE_SRGB);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
 <p>It is pretty work in current stable Image Magick (6.9.0-4).</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/01/06/php-try-catch-a-warning/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/06/php-try-catch-a-warning/" itemprop="url">
-                  php try/catch a warning 
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-06T13:11:14+08:00">
-              2017-01-06
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-01-06T13:48:36+08:00">
-              2017-01-06
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="方案一，输出到系统错误"><a href="#方案一，输出到系统错误" class="headerlink" title="方案一，输出到系统错误"></a>方案一，输出到系统错误</h2><p>One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set_error_handler(function() &#123; /* ignore errors */ &#125;);</div><div class="line">dns_get_record();</div><div class="line">restore_error_handler();</div></pre></td></tr></table></figure></p>
-<p>You could build on this idea and write a re-usable error handler that logs the errors for you.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">set_error_handler([$logger, &apos;onSilencedError&apos;]);</div><div class="line">dns_get_record();</div><div class="line">restore_error_handler();</div><div class="line">Turning errors into exceptions</div></pre></td></tr></table></figure>
-<p>You can use <code>set_error_handler()</code> and the <code>ErrorException</code> class to turn all php errors into exceptions.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) &#123;</div><div class="line">    // error was suppressed with the @-operator</div><div class="line">    if (0 === error_reporting()) &#123;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    throw new ErrorException($errstr, 0, $errno, $errfile, $errline);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">try &#123;</div><div class="line">    dns_get_record();</div><div class="line">&#125; catch (ErrorException $e) &#123;</div><div class="line">    // ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>The important thing to note when using your own error handler is that it will bypass the <code>error_reporting</code> setting and pass all errors (notices, warnings, etc.) to your error handler. You can set a second argument on <code>set_error_handler()</code> to define which error types you want to receive, or access the current setting using … = <code>error_reporting()</code> inside the error handler.</p>
-<p>Suppressing the warning</p>
-<p>Another possibility is to suppress the call with the @ operator and check the return value of dns_get_record() afterwards. But I’d advise against this as errors/warnings are triggered to be handled, not to be suppressed.</p>
-<h2 id="方案二：-输出到自定义函数"><a href="#方案二：-输出到自定义函数" class="headerlink" title="方案二： 输出到自定义函数"></a>方案二： 输出到自定义函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">set_error_handler(function ($errno, $errstr) &#123;</div><div class="line">    // do something</div><div class="line">    echo &quot;\r\n～～～～～找到错误 :-D～～～～～\r\n&quot;;</div><div class="line">    echo &quot;错误信息:($errno)$errstr \r\n&quot;;</div><div class="line">    debug_print_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);</div><div class="line">    echo &quot;\r\n&quot;;</div><div class="line">&#125;, E_WARNING);</div><div class="line">$dir_handle = opendir(&quot;$dir/111&quot;);  //要catch的函数</div><div class="line">restore_error_handler();</div></pre></td></tr></table></figure>
 
           
         
@@ -1573,7 +1584,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

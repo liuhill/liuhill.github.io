@@ -84,43 +84,17 @@
 
 
 
-<meta name="description" content="通过命令列出文件夹并输出到指定文件
-ll |grep json | awk &amp;apos;{print &amp;quot;## &amp;quot;NR&amp;quot;.&amp;quot; ,$9}&amp;apos; &amp;gt; README.md
-说明：
-
-ll 列出夹所有文件
-grep json 仅显示包含 json 的文件名
-awk ‘{print “## “NR”.” ,$9}’
-awk 格式化grep的结果
-打印输出
-#">
+<meta name="description" content="通过命令列出文件夹并输出到指定文件 ll |grep json | awk &amp;apos;{print &amp;quot;## &amp;quot;NR&amp;quot;.&amp;quot; ,$9}&amp;apos; &amp;gt; README.md 说明：  ll 列出夹所有文件 grep jso">
 <meta property="og:type" content="article">
 <meta property="og:title" content="awk列出文件夹所有文件导入到md文件">
 <meta property="og:url" content="http://www.wulai.me/2016/12/12/awk列出文件夹所有文件导入到md文件/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="通过命令列出文件夹并输出到指定文件
-ll |grep json | awk &amp;apos;{print &amp;quot;## &amp;quot;NR&amp;quot;.&amp;quot; ,$9}&amp;apos; &amp;gt; README.md
-说明：
-
-ll 列出夹所有文件
-grep json 仅显示包含 json 的文件名
-awk ‘{print “## “NR”.” ,$9}’
-awk 格式化grep的结果
-打印输出
-#">
+<meta property="og:description" content="通过命令列出文件夹并输出到指定文件 ll |grep json | awk &amp;apos;{print &amp;quot;## &amp;quot;NR&amp;quot;.&amp;quot; ,$9}&amp;apos; &amp;gt; README.md 说明：  ll 列出夹所有文件 grep json 仅显示包含 json 的文件名 awk ‘{print “## “NR”.” ,$9}’ awk 格式化grep的结果 打印输出 #">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-12-12T03:20:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="awk列出文件夹所有文件导入到md文件">
-<meta name="twitter:description" content="通过命令列出文件夹并输出到指定文件
-ll |grep json | awk &amp;apos;{print &amp;quot;## &amp;quot;NR&amp;quot;.&amp;quot; ,$9}&amp;apos; &amp;gt; README.md
-说明：
-
-ll 列出夹所有文件
-grep json 仅显示包含 json 的文件名
-awk ‘{print “## “NR”.” ,$9}’
-awk 格式化grep的结果
-打印输出
-#">
+<meta name="twitter:description" content="通过命令列出文件夹并输出到指定文件 ll |grep json | awk &amp;apos;{print &amp;quot;## &amp;quot;NR&amp;quot;.&amp;quot; ,$9}&amp;apos; &amp;gt; README.md 说明：  ll 列出夹所有文件 grep json 仅显示包含 json 的文件名 awk ‘{print “## “NR”.” ,$9}’ awk 格式化grep的结果 打印输出 #">
 
 
 
@@ -392,8 +366,8 @@ awk 格式化grep的结果
 </li>
 </ul>
 <p>实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">localhost:IFE8.0 json.json liuligang$ ll</div><div class="line">total 944</div><div class="line">-rw-r--r--@ 1 liuligang  staff    510 12 12 10:39 README.md</div><div class="line">-rw-r--r--@ 1 liuligang  staff  21499 11 28 10:40 airshop.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff  36993 11 28 12:17 en_culture.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff  17351 11 28 12:18 en_gourmet.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff   6548 11 28 12:18 en_magazines.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff  25975 11 28 12:17 en_movies.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff  21805 11 28 12:16 en_recommend.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff  29110 11 28 12:18 en_travel.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff   1082 11 28 11:43 english_menu.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff  28534 11 28 11:48 ent_cars.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff  29919 11 28 11:46 ent_film.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff  27993 11 28 11:47 ent_finance.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff  26844 11 28 11:49 ent_travel.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff   5409 11 28 11:49 ent_video.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff   1331 11 28 11:48 entertainment_menu.json</div><div class="line">-rw-r--r--  1 liuligang  staff    350 12 12 10:21 file.list</div><div class="line">-rw-r--r--@ 1 liuligang  staff   7247 11 28 10:39 game.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff  36349 11 28 11:49 gossip.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff   8555 11 28 10:37 home.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff  31678 11 28 11:50 lifestyle.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff   1673 11 28 10:48 mainMenu.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff  43716 11 28 11:50 recommend.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff   8423 11 28 10:41 topic2.json</div><div class="line">-rw-r--r--@ 1 liuligang  staff   7047 11 28 10:40 topic4.json</div></pre></td></tr></table></figure>
-<p>输出README.md文件如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">## 1. airshop.json</div><div class="line">## 2. en_culture.json</div><div class="line">## 3. en_gourmet.json</div><div class="line">## 4. en_magazines.json</div><div class="line">## 5. en_movies.json</div><div class="line">## 6. en_recommend.json</div><div class="line">## 7. en_travel.json</div><div class="line">## 8. english_menu.json</div><div class="line">## 9. ent_cars.json</div><div class="line">## 10. ent_film.json</div><div class="line">## 11. ent_finance.json</div><div class="line">## 12. ent_travel.json</div><div class="line">## 13. ent_video.json</div><div class="line">## 14. entertainment_menu.json</div><div class="line">## 15. game.json</div><div class="line">## 16. gossip.json</div><div class="line">## 17. home.json</div><div class="line">## 18. lifestyle.json</div><div class="line">## 19. mainMenu.json</div><div class="line">## 20. recommend.json</div><div class="line">## 21. topic2.json</div><div class="line">## 22. topic4.json</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">localhost:IFE8.0 json.json liuligang$ ll</span><br><span class="line">total 944</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff    510 12 12 10:39 README.md</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff  21499 11 28 10:40 airshop.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff  36993 11 28 12:17 en_culture.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff  17351 11 28 12:18 en_gourmet.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff   6548 11 28 12:18 en_magazines.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff  25975 11 28 12:17 en_movies.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff  21805 11 28 12:16 en_recommend.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff  29110 11 28 12:18 en_travel.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff   1082 11 28 11:43 english_menu.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff  28534 11 28 11:48 ent_cars.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff  29919 11 28 11:46 ent_film.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff  27993 11 28 11:47 ent_finance.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff  26844 11 28 11:49 ent_travel.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff   5409 11 28 11:49 ent_video.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff   1331 11 28 11:48 entertainment_menu.json</span><br><span class="line">-rw-r--r--  1 liuligang  staff    350 12 12 10:21 file.list</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff   7247 11 28 10:39 game.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff  36349 11 28 11:49 gossip.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff   8555 11 28 10:37 home.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff  31678 11 28 11:50 lifestyle.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff   1673 11 28 10:48 mainMenu.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff  43716 11 28 11:50 recommend.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff   8423 11 28 10:41 topic2.json</span><br><span class="line">-rw-r--r--@ 1 liuligang  staff   7047 11 28 10:40 topic4.json</span><br></pre></td></tr></table></figure>
+<p>输出README.md文件如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">## 1. airshop.json</span><br><span class="line">## 2. en_culture.json</span><br><span class="line">## 3. en_gourmet.json</span><br><span class="line">## 4. en_magazines.json</span><br><span class="line">## 5. en_movies.json</span><br><span class="line">## 6. en_recommend.json</span><br><span class="line">## 7. en_travel.json</span><br><span class="line">## 8. english_menu.json</span><br><span class="line">## 9. ent_cars.json</span><br><span class="line">## 10. ent_film.json</span><br><span class="line">## 11. ent_finance.json</span><br><span class="line">## 12. ent_travel.json</span><br><span class="line">## 13. ent_video.json</span><br><span class="line">## 14. entertainment_menu.json</span><br><span class="line">## 15. game.json</span><br><span class="line">## 16. gossip.json</span><br><span class="line">## 17. home.json</span><br><span class="line">## 18. lifestyle.json</span><br><span class="line">## 19. mainMenu.json</span><br><span class="line">## 20. recommend.json</span><br><span class="line">## 21. topic2.json</span><br><span class="line">## 22. topic4.json</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -491,7 +465,7 @@ awk 格式化grep的结果
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

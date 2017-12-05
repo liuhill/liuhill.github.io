@@ -90,6 +90,7 @@
 <meta property="og:url" content="http://www.wulai.me/page/2/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="开发笔记而已～～～">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无来">
 <meta name="twitter:description" content="开发笔记而已～～～">
@@ -271,6 +272,131 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/08/01/Linux-分区只读/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/01/Linux-分区只读/" itemprop="url">
+                  Linux 分区只读
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-01T13:31:25+08:00">
+              2017-08-01
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-08-01T13:42:45+08:00">
+              2017-08-01
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1<br>down vote<br>In case it is a fixed drive and not a removable drive, you can add the entry permanently.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/fstab</span><br></pre></td></tr></table></figure>
+<p>Add an entry in the following format:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;file-system&gt; &lt;mount-point&gt; &lt;type&gt; &lt;options&gt; &lt;dump&gt; &lt;pass&gt;</span><br></pre></td></tr></table></figure></p>
+<p>And then do:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -a</span><br></pre></td></tr></table></figure></p>
+<p>mount -o remount,rw /</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/07/31/Centos-7-failed-to-bring-up-down-networking-configure-interface-for-a-trunk-interface/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -354,7 +480,7 @@
         
           
             <p>it seems that disabling NetworkManager did the trick :)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">systemctl stop NetworkManager</div><div class="line">systemctl disable NetworkManager</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop NetworkManager</span><br><span class="line">systemctl disable NetworkManager</span><br></pre></td></tr></table></figure>
 
           
         
@@ -476,10 +602,10 @@
         
           
             <h3 id="0-Prepare"><a href="#0-Prepare" class="headerlink" title="0 Prepare"></a>0 Prepare</h3><pre><code>yum install pciutils -y
-</code></pre><h3 id="1-get-PCI-info"><a href="#1-get-PCI-info" class="headerlink" title="1 get PCI info:"></a>1 get PCI info:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~] lspci | grep Ethernet   </div><div class="line">05:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </div><div class="line">06:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </div><div class="line">07:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </div><div class="line">08:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection</div></pre></td></tr></table></figure>
+</code></pre><h3 id="1-get-PCI-info"><a href="#1-get-PCI-info" class="headerlink" title="1 get PCI info:"></a>1 get PCI info:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] lspci | grep Ethernet   </span><br><span class="line">05:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </span><br><span class="line">06:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </span><br><span class="line">07:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </span><br><span class="line">08:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection</span><br></pre></td></tr></table></figure>
 <h3 id="2-add-config-to-cat-usr-lib-udev-rules-d-60-net-rules"><a href="#2-add-config-to-cat-usr-lib-udev-rules-d-60-net-rules" class="headerlink" title="2 add config to cat /usr/lib/udev/rules.d/60-net.rules."></a>2 add config to <code>cat /usr/lib/udev/rules.d/60-net.rules</code>.</h3><p><strong><em>Notice:</em></strong> param <code>KERNELS</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# cat /usr/lib/udev/rules.d/60-net.rules</div><div class="line">ACTION==&quot;add&quot;, SUBSYSTEM==&quot;net&quot;, DRIVERS==&quot;?*&quot;, ATTR&#123;type&#125;==&quot;1&quot;, PROGRAM=&quot;/lib/udev/rename_device&quot;, RESULT==&quot;?*&quot;, NAME=&quot;$result&quot;</div><div class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:05.0&quot;, NAME=&quot;vfnet0&quot;</div><div class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:06.0&quot;, NAME=&quot;vfnet1&quot;</div><div class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:07.0&quot;, NAME=&quot;vfnet2&quot;</div><div class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:08.0&quot;, NAME=&quot;vfnet3&quot;</div></pre></td></tr></table></figure>
-<h3 id="3-reboot"><a href="#3-reboot" class="headerlink" title="3 reboot"></a>3 reboot</h3><h3 id="4-check"><a href="#4-check" class="headerlink" title="4 check"></a>4 check</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# cat /usr/lib/udev/rules.d/60-net.rules</div><div class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN</div><div class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</div><div class="line">    inet 127.0.0.1/8 scope host lo</div><div class="line">       valid_lft forever preferred_lft forever</div><div class="line">    inet6 ::1/128 scope host</div><div class="line">       valid_lft forever preferred_lft forever</div><div class="line">2: vfnet0: &lt;BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master bond0 state UP qlen 1000</div><div class="line">    link/ether f2:d5:5d:21:4e:38 brd ff:ff:ff:ff:ff:ff</div><div class="line">3: vfnet1: &lt;BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master bond0 state UP qlen 1000</div><div class="line">    link/ether 3e:ec:21:1a:d2:86 brd ff:ff:ff:ff:ff:ff</div><div class="line">4: vfnet2: &lt;BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master bond0 state UP qlen 1000</div><div class="line">    link/ether be:70:05:01:46:04 brd ff:ff:ff:ff:ff:ff</div><div class="line">5: vfnet3: &lt;BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master bond0 state UP qlen 1000</div><div class="line">    link/ether e6:de:61:c9:a8:d1 brd ff:ff:ff:ff:ff:ff</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /usr/lib/udev/rules.d/60-net.rules</span><br><span class="line">ACTION==&quot;add&quot;, SUBSYSTEM==&quot;net&quot;, DRIVERS==&quot;?*&quot;, ATTR&#123;type&#125;==&quot;1&quot;, PROGRAM=&quot;/lib/udev/rename_device&quot;, RESULT==&quot;?*&quot;, NAME=&quot;$result&quot;</span><br><span class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:05.0&quot;, NAME=&quot;vfnet0&quot;</span><br><span class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:06.0&quot;, NAME=&quot;vfnet1&quot;</span><br><span class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:07.0&quot;, NAME=&quot;vfnet2&quot;</span><br><span class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:08.0&quot;, NAME=&quot;vfnet3&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="3-reboot"><a href="#3-reboot" class="headerlink" title="3 reboot"></a>3 reboot</h3><h3 id="4-check"><a href="#4-check" class="headerlink" title="4 check"></a>4 check</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /usr/lib/udev/rules.d/60-net.rules</span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: vfnet0: &lt;BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master bond0 state UP qlen 1000</span><br><span class="line">    link/ether f2:d5:5d:21:4e:38 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">3: vfnet1: &lt;BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master bond0 state UP qlen 1000</span><br><span class="line">    link/ether 3e:ec:21:1a:d2:86 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">4: vfnet2: &lt;BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master bond0 state UP qlen 1000</span><br><span class="line">    link/ether be:70:05:01:46:04 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">5: vfnet3: &lt;BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master bond0 state UP qlen 1000</span><br><span class="line">    link/ether e6:de:61:c9:a8:d1 brd ff:ff:ff:ff:ff:ff</span><br></pre></td></tr></table></figure>
 
           
         
@@ -601,7 +727,7 @@
         
           
             <p>I’ve learned how to continue to use the ethX prefix. I’m still using the udev rules that I mentioned in post above. So at bootup udev will rename my interfaces netX. And then using /etc/rc.local I’ve included the following commands to rename them from netX back to ethX.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/sbin/ip link set net0 down</div><div class="line">/sbin/ip link set net0 name eth0</div><div class="line">/sbin/ip link set eth0 up</div><div class="line">...</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/sbin/ip link set net0 down</span><br><span class="line">/sbin/ip link set net0 name eth0</span><br><span class="line">/sbin/ip link set eth0 up</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <p>Using the ip command I can change the name of the interfaces after the initial bootup is completed.</p>
 
           
@@ -843,7 +969,7 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ networksetup -listallnetworkservices  </div><div class="line">An asterisk (*) denotes that a network service is disabled.  </div><div class="line">SAMSUNG Modem  </div><div class="line">Bluetooth DUN  </div><div class="line">Thunderbolt Ethernet  </div><div class="line">Wi-Fi  </div><div class="line">Bluetooth PAN  </div><div class="line">Thunderbolt Bridge  </div><div class="line">$ networksetup -setv6off Wi-Fi</div></pre></td></tr></table></figure>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ networksetup -listallnetworkservices  </span><br><span class="line">An asterisk (*) denotes that a network service is disabled.  </span><br><span class="line">SAMSUNG Modem  </span><br><span class="line">Bluetooth DUN  </span><br><span class="line">Thunderbolt Ethernet  </span><br><span class="line">Wi-Fi  </span><br><span class="line">Bluetooth PAN  </span><br><span class="line">Thunderbolt Bridge  </span><br><span class="line">$ networksetup -setv6off Wi-Fi</span><br></pre></td></tr></table></figure>
 
           
         
@@ -964,31 +1090,31 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Author: Dude</div><div class="line">Date: 01-Jun-2013</div><div class="line">Version: B</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Last updates:</div><div class="line">23-Jul-2013, changes required due to forum upgrade</div></pre></td></tr></table></figure>
-<p><a href="https://community.oracle.com/thread/2546040" target="_blank" rel="external">https://community.oracle.com/thread/2546040</a></p>
-<p>What is Linux network interface bonding? Simply put, the Linux system provides a kernel driver, which can create a logical network device (bond) using 2 or more Network Interface Controllers (NIC) to accomplish link-aggregation and adapter fault-tolerance. For more information, please see the Deployment Guide at <a href="https://linux.oracle.com/documentation/" target="_blank" rel="external">https://linux.oracle.com/documentation/</a></p>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Author: Dude</span><br><span class="line">Date: 01-Jun-2013</span><br><span class="line">Version: B</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Last updates:</span><br><span class="line">23-Jul-2013, changes required due to forum upgrade</span><br></pre></td></tr></table></figure>
+<p><a href="https://community.oracle.com/thread/2546040" target="_blank" rel="noopener">https://community.oracle.com/thread/2546040</a></p>
+<p>What is Linux network interface bonding? Simply put, the Linux system provides a kernel driver, which can create a logical network device (bond) using 2 or more Network Interface Controllers (NIC) to accomplish link-aggregation and adapter fault-tolerance. For more information, please see the Deployment Guide at <a href="https://linux.oracle.com/documentation/" target="_blank" rel="noopener">https://linux.oracle.com/documentation/</a></p>
 <p>The channel bonding interface supports several modes of operation. In a typical active-backup set up for fault-tolerance, the system performs MII-based health monitoring of the network interface slaves (eth0, eth1) and assigns them according to bond options and interface availability. In active-backup mode (mode 1), only the current active network device is seen externally.</p>
 <p>Linux bonding for fault-tolerance under Oracle VM VirtualBox does not seem to function as advertised. Searching the Internet for more information shows that other people have tried to set up Linux bonding using various virtualization products, virtual host network adapter and bonding options, but without success.</p>
 <p>It appears the management of Media Access Control addresses (MAC) interferes with internal routing methods between the host and the virtual machine guest. Using the <strong><em>modinfo bonding</em></strong> command (fig. 1) shows a listing of available parameters for the bonding kernel module. The <strong><em>fail_over_mac</em></strong> parameter addresses the Mac address issue in VirtualBox.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># modinfo bonding</div><div class="line">filename:       /lib/modules/2.6.39-400.17.1.el6uek.x86_64</div><div class="line">                /kernel/drivers/net/bonding/bonding.ko</div><div class="line">parm:           fail_over_mac:For active-backup,</div><div class="line">                do not set all slaves to the same MAC;</div><div class="line">                0 for none (default), 1 for active, 2 for follow (charp)</div></pre></td></tr></table></figure>
-<h3 id="Configuration-Example"><a href="#Configuration-Example" class="headerlink" title="Configuration Example"></a>Configuration Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Virtualization Product: Oracle VM VirtualBox 4.2.10</div><div class="line">VM Guest OS: Oracle Linux 6.4 (x64)</div></pre></td></tr></table></figure>
-<p>VM adapter settings: <strong>Bridged Adapter</strong>, Paravirtualized Network (virtio-net)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Adapter1 (eth0): 080027436617, en0, Ethernet 1</div><div class="line">Adapter2 (eth1): 08002708F36A, en0, Ethernet 1</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># modinfo bonding</span><br><span class="line">filename:       /lib/modules/2.6.39-400.17.1.el6uek.x86_64</span><br><span class="line">                /kernel/drivers/net/bonding/bonding.ko</span><br><span class="line">parm:           fail_over_mac:For active-backup,</span><br><span class="line">                do not set all slaves to the same MAC;</span><br><span class="line">                0 for none (default), 1 for active, 2 for follow (charp)</span><br></pre></td></tr></table></figure>
+<h3 id="Configuration-Example"><a href="#Configuration-Example" class="headerlink" title="Configuration Example"></a>Configuration Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Virtualization Product: Oracle VM VirtualBox 4.2.10</span><br><span class="line">VM Guest OS: Oracle Linux 6.4 (x64)</span><br></pre></td></tr></table></figure>
+<p>VM adapter settings: <strong>Bridged Adapter</strong>, Paravirtualized Network (virtio-net)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Adapter1 (eth0): 080027436617, en0, Ethernet 1</span><br><span class="line">Adapter2 (eth1): 08002708F36A, en0, Ethernet 1</span><br></pre></td></tr></table></figure></p>
 <p>Note: If you wish to reset the network adapter names and MAC addresses used by the Oracle Linux guest system, erase the content of <code>/etc/udev/rules.d/70-persistent-net.rules</code> and restart the virtual machine.</p>
 <h4 id="1-Create-or-modify-the-following-configuration-files"><a href="#1-Create-or-modify-the-following-configuration-files" class="headerlink" title="1. Create or modify the following configuration files:"></a>1. Create or modify the following configuration files:</h4><p><code>/etc/modprobe.d/bonding-eth0_eth1.conf</code></p>
 <pre><code>alias bond0 bonding
-</code></pre><p><code>/etc/sysconfig/network-scripts/ifcfg-bond0</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">DEVICE=bond0</div><div class="line">IPADDR=10.0.2.12</div><div class="line">NETMASK=255.0.0.0</div><div class="line">GATEWAY=10.0.0.138</div><div class="line">DNS1=10.0.0.138</div><div class="line">DNS2=8.8.8.8</div><div class="line">ONBOOT=yes</div><div class="line">BOOTPROTO=none</div><div class="line">USERCTL=no</div><div class="line">BONDING_OPTS=&quot;mode=1 miimon=100 fail_over_mac=1&quot;</div></pre></td></tr></table></figure></p>
+</code></pre><p><code>/etc/sysconfig/network-scripts/ifcfg-bond0</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DEVICE=bond0</span><br><span class="line">IPADDR=10.0.2.12</span><br><span class="line">NETMASK=255.0.0.0</span><br><span class="line">GATEWAY=10.0.0.138</span><br><span class="line">DNS1=10.0.0.138</span><br><span class="line">DNS2=8.8.8.8</span><br><span class="line">ONBOOT=yes</span><br><span class="line">BOOTPROTO=none</span><br><span class="line">USERCTL=no</span><br><span class="line">BONDING_OPTS=&quot;mode=1 miimon=100 fail_over_mac=1&quot;</span><br></pre></td></tr></table></figure></p>
 <p><code>/etc/sysconfig/network-scripts/ifcfg-eth0</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">DEVICE=eth0</div><div class="line">BOOTPROTO=none</div><div class="line">ONBOOT=yes</div><div class="line">MASTER=bond0</div><div class="line">SLAVE=yes</div><div class="line">USERCTL=no</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DEVICE=eth0</span><br><span class="line">BOOTPROTO=none</span><br><span class="line">ONBOOT=yes</span><br><span class="line">MASTER=bond0</span><br><span class="line">SLAVE=yes</span><br><span class="line">USERCTL=no</span><br></pre></td></tr></table></figure>
 <p><code>/etc/sysconfig/network-scripts/ifcfg-eth1</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">DEVICE=eth1</div><div class="line">BOOTPROTO=none</div><div class="line">ONBOOT=yes</div><div class="line">MASTER=bond0</div><div class="line">SLAVE=yes</div><div class="line">USERCTL=no</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DEVICE=eth1</span><br><span class="line">BOOTPROTO=none</span><br><span class="line">ONBOOT=yes</span><br><span class="line">MASTER=bond0</span><br><span class="line">SLAVE=yes</span><br><span class="line">USERCTL=no</span><br></pre></td></tr></table></figure>
 <h4 id="2-Restart-the-system-or-network-services-root"><a href="#2-Restart-the-system-or-network-services-root" class="headerlink" title="2. Restart the system or network services (root):"></a>2. Restart the system or network services (root):</h4><pre><code># service network restart
 </code></pre><h4 id="Configuration-Test"><a href="#Configuration-Test" class="headerlink" title="Configuration Test"></a>Configuration Test</h4><p>Enter the following commands as user root to verify proper operation of NIC bonding:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># tail /var/log/messages</div><div class="line">bond0: setting mode to active-backup (1).</div><div class="line">bond0: Setting MII monitoring interval to 100.</div><div class="line">bond0: Setting fail_over_mac to active (1).</div><div class="line">bond0: Adding slave eth0.</div><div class="line">bond0: making interface eth0 the new active one.</div><div class="line">bond0: first active interface up!</div><div class="line">bond0: enslaving eth0 as an active interface with an up link.</div><div class="line">bond0: Adding slave eth1.</div><div class="line">bond0: enslaving eth1 as a backup interface with an up link.</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># ifconfig</div><div class="line">bond0     Link encap:Ethernet  HWaddr 08:00:27:43:66:17  </div><div class="line">          inet addr:10.0.2.12  Bcast:10.255.255.255  Mask:255.0.0.0</div><div class="line">          inet6 addr: fe80::a00:27ff:fe43:6617/64 Scope:Link</div><div class="line">          UP BROADCAST RUNNING MASTER MULTICAST  MTU:1500  Metric:1</div><div class="line"></div><div class="line">eth0      Link encap:Ethernet  HWaddr 08:00:27:43:66:17  </div><div class="line">          UP BROADCAST RUNNING SLAVE MULTICAST  MTU:1500  Metric:1</div><div class="line"></div><div class="line">eth1      Link encap:Ethernet  HWaddr 08:00:27:08:F3:6A  </div><div class="line">          UP BROADCAST RUNNING SLAVE MULTICAST  MTU:1500  Metric:1</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># netstat -rn</div><div class="line">Kernel IP routing table</div><div class="line">Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface</div><div class="line">0.0.0.0         10.0.0.138      0.0.0.0         UG        0 0          0 bond0</div><div class="line">10.0.0.0        0.0.0.0         255.0.0.0       U         0 0          0 bond0</div><div class="line">169.254.0.0     0.0.0.0         255.255.0.0     U         0 0          0 bond0</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"># ifconfig eth0 down</div><div class="line"></div><div class="line"># tail /var/log/messages</div><div class="line">bond0: link status definitely down for interface eth0, disabling it</div><div class="line">bond0: making interface eth1 the new active one.</div><div class="line"></div><div class="line"># ifconfig</div><div class="line">bond0     Link encap:Ethernet  HWaddr 08:00:27:08:F3:6A  </div><div class="line">          inet addr:10.0.2.12  Bcast:10.255.255.255  Mask:255.0.0.0</div><div class="line">          inet6 addr: fe80::a00:27ff:fe43:6617/64 Scope:Link</div><div class="line">          UP BROADCAST RUNNING MASTER MULTICAST  MTU:1500  Metric:1</div><div class="line"></div><div class="line">eth1      Link encap:Ethernet  HWaddr 08:00:27:08:F3:6A  </div><div class="line">          UP BROADCAST RUNNING SLAVE MULTICAST  MTU:1500  Metric:1</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># ifconfig eth0 up</div><div class="line"></div><div class="line"># ifconfig eth1 down</div><div class="line"></div><div class="line"># tail /var/log/messages</div><div class="line">bond0: link status definitely up for interface eth0, 4294967295 Mbps full duplex.</div><div class="line">bond0: link status definitely down for interface eth1, disabling it</div><div class="line">bond0: making interface eth0 the new active one.</div><div class="line"></div><div class="line"># ifconfig</div><div class="line">bond0     Link encap:Ethernet  HWaddr 08:00:27:43:66:17  </div><div class="line">          inet addr:10.0.2.12  Bcast:10.255.255.255  Mask:255.0.0.0</div><div class="line">          inet6 addr: fe80::a00:27ff:fe43:6617/64 Scope:Link</div><div class="line">          UP BROADCAST RUNNING MASTER MULTICAST  MTU:1500  Metric:1</div><div class="line"></div><div class="line">eth0      Link encap:Ethernet  HWaddr 08:00:27:43:66:17  </div><div class="line">          UP BROADCAST RUNNING SLAVE MULTICAST  MTU:1500  Metric:1</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># tail /var/log/messages</span><br><span class="line">bond0: setting mode to active-backup (1).</span><br><span class="line">bond0: Setting MII monitoring interval to 100.</span><br><span class="line">bond0: Setting fail_over_mac to active (1).</span><br><span class="line">bond0: Adding slave eth0.</span><br><span class="line">bond0: making interface eth0 the new active one.</span><br><span class="line">bond0: first active interface up!</span><br><span class="line">bond0: enslaving eth0 as an active interface with an up link.</span><br><span class="line">bond0: Adding slave eth1.</span><br><span class="line">bond0: enslaving eth1 as a backup interface with an up link.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig</span><br><span class="line">bond0     Link encap:Ethernet  HWaddr 08:00:27:43:66:17  </span><br><span class="line">          inet addr:10.0.2.12  Bcast:10.255.255.255  Mask:255.0.0.0</span><br><span class="line">          inet6 addr: fe80::a00:27ff:fe43:6617/64 Scope:Link</span><br><span class="line">          UP BROADCAST RUNNING MASTER MULTICAST  MTU:1500  Metric:1</span><br><span class="line"></span><br><span class="line">eth0      Link encap:Ethernet  HWaddr 08:00:27:43:66:17  </span><br><span class="line">          UP BROADCAST RUNNING SLAVE MULTICAST  MTU:1500  Metric:1</span><br><span class="line"></span><br><span class="line">eth1      Link encap:Ethernet  HWaddr 08:00:27:08:F3:6A  </span><br><span class="line">          UP BROADCAST RUNNING SLAVE MULTICAST  MTU:1500  Metric:1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># netstat -rn</span><br><span class="line">Kernel IP routing table</span><br><span class="line">Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface</span><br><span class="line">0.0.0.0         10.0.0.138      0.0.0.0         UG        0 0          0 bond0</span><br><span class="line">10.0.0.0        0.0.0.0         255.0.0.0       U         0 0          0 bond0</span><br><span class="line">169.254.0.0     0.0.0.0         255.255.0.0     U         0 0          0 bond0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig eth0 down</span><br><span class="line"></span><br><span class="line"># tail /var/log/messages</span><br><span class="line">bond0: link status definitely down for interface eth0, disabling it</span><br><span class="line">bond0: making interface eth1 the new active one.</span><br><span class="line"></span><br><span class="line"># ifconfig</span><br><span class="line">bond0     Link encap:Ethernet  HWaddr 08:00:27:08:F3:6A  </span><br><span class="line">          inet addr:10.0.2.12  Bcast:10.255.255.255  Mask:255.0.0.0</span><br><span class="line">          inet6 addr: fe80::a00:27ff:fe43:6617/64 Scope:Link</span><br><span class="line">          UP BROADCAST RUNNING MASTER MULTICAST  MTU:1500  Metric:1</span><br><span class="line"></span><br><span class="line">eth1      Link encap:Ethernet  HWaddr 08:00:27:08:F3:6A  </span><br><span class="line">          UP BROADCAST RUNNING SLAVE MULTICAST  MTU:1500  Metric:1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig eth0 up</span><br><span class="line"></span><br><span class="line"># ifconfig eth1 down</span><br><span class="line"></span><br><span class="line"># tail /var/log/messages</span><br><span class="line">bond0: link status definitely up for interface eth0, 4294967295 Mbps full duplex.</span><br><span class="line">bond0: link status definitely down for interface eth1, disabling it</span><br><span class="line">bond0: making interface eth0 the new active one.</span><br><span class="line"></span><br><span class="line"># ifconfig</span><br><span class="line">bond0     Link encap:Ethernet  HWaddr 08:00:27:43:66:17  </span><br><span class="line">          inet addr:10.0.2.12  Bcast:10.255.255.255  Mask:255.0.0.0</span><br><span class="line">          inet6 addr: fe80::a00:27ff:fe43:6617/64 Scope:Link</span><br><span class="line">          UP BROADCAST RUNNING MASTER MULTICAST  MTU:1500  Metric:1</span><br><span class="line"></span><br><span class="line">eth0      Link encap:Ethernet  HWaddr 08:00:27:43:66:17  </span><br><span class="line">          UP BROADCAST RUNNING SLAVE MULTICAST  MTU:1500  Metric:1</span><br></pre></td></tr></table></figure>
 <p>During the above test, the client network connection from host 10.0.0.1 (ssh) was maintained without any noticeable interruption. As it can be seen from the syslog and ifconfig command output, the bond0 interface was automatically assigned either the MAC address of eth0 or eth1 and the fail-over worked as advertised.</p>
 
           
@@ -1247,7 +1373,7 @@
           
             <p>Ever tried logging into a machine with ssh and found you have to wait much longer than reasonable for the session to start? This happened to me a few times and was especially annoying with machines on my local network (or a VM attached to a virtual network) that should be letting me in immediately.</p>
 <p>I eventually got mad enough to strace the SSH daemon and debug what was going on and it turns out it’s a DNS thing. Basically the session is slow to start because the SSH server is trying to lookup the hostname of the SSH client and for whatever reason it’s timing out (e.g., it can’t reach a nameserver, because you happen to be offline)</p>
-<p>There are a couple of very simple ways to fix that:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">add &quot;UseDNS no&quot; to /etc/ssh/sshd_config</div><div class="line">add the client&apos;s net address to the server&apos;s /etc/hosts</div></pre></td></tr></table></figure></p>
+<p>There are a couple of very simple ways to fix that:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add &quot;UseDNS no&quot; to /etc/ssh/sshd_config</span><br><span class="line">add the client&apos;s net address to the server&apos;s /etc/hosts</span><br></pre></td></tr></table></figure></p>
 <p><em>*</em> 改项可能会导致远程连接失败</p>
 
           
@@ -1406,129 +1532,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/07/06/硬盘只读模式/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/06/硬盘只读模式/" itemprop="url">
-                  硬盘只读模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-06T14:52:31+08:00">
-              2017-07-06
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-07-06T14:56:18+08:00">
-              2017-07-06
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-先改为可编辑模式"><a href="#1-先改为可编辑模式" class="headerlink" title="1 先改为可编辑模式"></a>1 先改为可编辑模式</h3><p> mount -o  remount,rw /</p>
-<h3 id="2-编辑文件-etc-fstab"><a href="#2-编辑文件-etc-fstab" class="headerlink" title="2 编辑文件  /etc/fstab"></a>2 编辑文件  <code>/etc/fstab</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/fstab</div></pre></td></tr></table></figure>
-<p>将<code>ro</code>修改为<code>rw</code></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1574,7 +1577,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

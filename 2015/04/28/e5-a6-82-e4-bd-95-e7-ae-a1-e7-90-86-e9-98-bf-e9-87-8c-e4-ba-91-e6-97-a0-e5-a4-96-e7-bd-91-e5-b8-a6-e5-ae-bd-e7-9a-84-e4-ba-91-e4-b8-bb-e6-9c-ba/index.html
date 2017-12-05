@@ -84,22 +84,17 @@
 
 
 
-<meta name="description" content="可见，某些情况下还是值得这么做的。但开通主机之后，因为没有公网带宽，所以也给我们的使用带来了一些麻烦，这里讲一下我的解决办法。 没有公网，用不了外网的，无论上传还是下载，但在同一机房的其他主机，还是可以访问的，所以我们要做一个跳板，利用我们已有的云主机跳转。
-这里要明确以下要点： 1、两台服务器必须在同一个数据中心，比如一台在杭州，一台在青岛，不在一个内网，肯定没法操作的；
-2、两太服务器必须在同">
+<meta name="description" content="可见，某些情况下还是值得这么做的。但开通主机之后，因为没有公网带宽，所以也给我们的使用带来了一些麻烦，这里讲一下我的解决办法。 没有公网，用不了外网的，无论上传还是下载，但在同一机房的其他主机，还是可以访问的，所以我们要做一个跳板，利用我们已有的云主机跳转。 这里要明确以下要点： 1、两台服务器必须在同一个数据中心，比">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何管理阿里云无外网带宽的云主机">
 <meta property="og:url" content="http://www.wulai.me/2015/04/28/e5-a6-82-e4-bd-95-e7-ae-a1-e7-90-86-e9-98-bf-e9-87-8c-e4-ba-91-e6-97-a0-e5-a4-96-e7-bd-91-e5-b8-a6-e5-ae-bd-e7-9a-84-e4-ba-91-e4-b8-bb-e6-9c-ba/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="可见，某些情况下还是值得这么做的。但开通主机之后，因为没有公网带宽，所以也给我们的使用带来了一些麻烦，这里讲一下我的解决办法。 没有公网，用不了外网的，无论上传还是下载，但在同一机房的其他主机，还是可以访问的，所以我们要做一个跳板，利用我们已有的云主机跳转。
-这里要明确以下要点： 1、两台服务器必须在同一个数据中心，比如一台在杭州，一台在青岛，不在一个内网，肯定没法操作的；
-2、两太服务器必须在同">
+<meta property="og:description" content="可见，某些情况下还是值得这么做的。但开通主机之后，因为没有公网带宽，所以也给我们的使用带来了一些麻烦，这里讲一下我的解决办法。 没有公网，用不了外网的，无论上传还是下载，但在同一机房的其他主机，还是可以访问的，所以我们要做一个跳板，利用我们已有的云主机跳转。 这里要明确以下要点： 1、两台服务器必须在同一个数据中心，比如一台在杭州，一台在青岛，不在一个内网，肯定没法操作的； 2、两太服务器必须在同">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-08-29T05:31:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何管理阿里云无外网带宽的云主机">
-<meta name="twitter:description" content="可见，某些情况下还是值得这么做的。但开通主机之后，因为没有公网带宽，所以也给我们的使用带来了一些麻烦，这里讲一下我的解决办法。 没有公网，用不了外网的，无论上传还是下载，但在同一机房的其他主机，还是可以访问的，所以我们要做一个跳板，利用我们已有的云主机跳转。
-这里要明确以下要点： 1、两台服务器必须在同一个数据中心，比如一台在杭州，一台在青岛，不在一个内网，肯定没法操作的；
-2、两太服务器必须在同">
+<meta name="twitter:description" content="可见，某些情况下还是值得这么做的。但开通主机之后，因为没有公网带宽，所以也给我们的使用带来了一些麻烦，这里讲一下我的解决办法。 没有公网，用不了外网的，无论上传还是下载，但在同一机房的其他主机，还是可以访问的，所以我们要做一个跳板，利用我们已有的云主机跳转。 这里要明确以下要点： 1、两台服务器必须在同一个数据中心，比如一台在杭州，一台在青岛，不在一个内网，肯定没法操作的； 2、两太服务器必须在同">
 
 
 
@@ -491,7 +486,7 @@ iptables -t nat -A POSTROUTING -d 10.160.30.11 -p tcp --dport 22 -j SNAT --to 10
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

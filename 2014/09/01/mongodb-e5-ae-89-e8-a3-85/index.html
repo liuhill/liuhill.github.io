@@ -84,25 +84,17 @@
 
 
 
-<meta name="description" content="MongoDB安装wget -c http://fastdl.mongodb.org/linux/mongodb-linux-i686-2.4.1.tgz ;
-tar zxvf mongodb-src-r2.4.1.tar.gz
-mv mongodb-linux-i686-2.4.1 /usr/local/mongodb/
-/usr/local/mongodb/bin/mongod --dbpat">
+<meta name="description" content="MongoDB安装wget -c http://fastdl.mongodb.org/linux/mongodb-linux-i686-2.4.1.tgz ; tar zxvf mongodb-src-r2.4.1.tar.gz mv mongodb-linux-i686-2.4.1 /usr/local/mongod">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MongoDB安装">
 <meta property="og:url" content="http://www.wulai.me/2014/09/01/mongodb-e5-ae-89-e8-a3-85/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="MongoDB安装wget -c http://fastdl.mongodb.org/linux/mongodb-linux-i686-2.4.1.tgz ;
-tar zxvf mongodb-src-r2.4.1.tar.gz
-mv mongodb-linux-i686-2.4.1 /usr/local/mongodb/
-/usr/local/mongodb/bin/mongod --dbpat">
+<meta property="og:description" content="MongoDB安装wget -c http://fastdl.mongodb.org/linux/mongodb-linux-i686-2.4.1.tgz ; tar zxvf mongodb-src-r2.4.1.tar.gz mv mongodb-linux-i686-2.4.1 /usr/local/mongodb/ /usr/local/mongodb/bin/mongod --dbpat">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-08-29T05:51:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB安装">
-<meta name="twitter:description" content="MongoDB安装wget -c http://fastdl.mongodb.org/linux/mongodb-linux-i686-2.4.1.tgz ;
-tar zxvf mongodb-src-r2.4.1.tar.gz
-mv mongodb-linux-i686-2.4.1 /usr/local/mongodb/
-/usr/local/mongodb/bin/mongod --dbpat">
+<meta name="twitter:description" content="MongoDB安装wget -c http://fastdl.mongodb.org/linux/mongodb-linux-i686-2.4.1.tgz ; tar zxvf mongodb-src-r2.4.1.tar.gz mv mongodb-linux-i686-2.4.1 /usr/local/mongodb/ /usr/local/mongodb/bin/mongod --dbpat">
 
 
 
@@ -398,7 +390,7 @@ cd ./mongo-1.4.4
 make &amp;amp;&amp;amp; make install
 </code></pre><p>完成后，编辑你 php.ini 文件增加一行。</p>
 <pre><code>extension=mongo.so
-</code></pre><h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>关闭注意 这里禁止使用 kill -9 PID 关闭mongodb进程，会导致mongod.lock导致再一次无法开启mongodb，必须删除mongod.lock再能开启 可以使用pkill mongod 或者 killall mongod 来结束mongodb进程 出处：<a href="http://www.crackedzone.com" target="_blank" rel="external">http://www.crackedzone.com</a> 完成后，请编辑你php.ini文件增加一行 extension=mongo.so 一般默认的编译php的ini文件在 /usr/local/php/etc/php.ini 重启你的web服务器或者php-fpm，打印phpinfo，如果看到mongo项表，那么mongodb的扩展安装成功了</p>
+</code></pre><h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>关闭注意 这里禁止使用 kill -9 PID 关闭mongodb进程，会导致mongod.lock导致再一次无法开启mongodb，必须删除mongod.lock再能开启 可以使用pkill mongod 或者 killall mongod 来结束mongodb进程 出处：<a href="http://www.crackedzone.com" target="_blank" rel="noopener">http://www.crackedzone.com</a> 完成后，请编辑你php.ini文件增加一行 extension=mongo.so 一般默认的编译php的ini文件在 /usr/local/php/etc/php.ini 重启你的web服务器或者php-fpm，打印phpinfo，如果看到mongo项表，那么mongodb的扩展安装成功了</p>
 
       
     </div>
@@ -505,7 +497,7 @@ make &amp;amp;&amp;amp; make install
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -84,25 +84,17 @@
 
 
 
-<meta name="description" content="我使用crontab同步一个文件夹时，发现一个问题，我在crontab中设置的1分钟运行一次.但当那个文件夹的内容改变时。1分钟不一定能同步完，但这时第二个rsync进行又起来了。
-这个就产生一个问题，二个rsync一起处理相同的文件，这样会出问题。如下
-* * * * /usr/bin/rsync -avlR /data/files    172.16.xxx.xxx:/data
-本来想写个脚本">
+<meta name="description" content="我使用crontab同步一个文件夹时，发现一个问题，我在crontab中设置的1分钟运行一次.但当那个文件夹的内容改变时。1分钟不一定能同步完，但这时第二个rsync进行又起来了。 这个就产生一个问题，二个rsync一起处理相同的文件，这样会出问题。如下 * * * * /usr/bin/rsync -avlR /da">
 <meta property="og:type" content="article">
 <meta property="og:title" content="flock防止重复rsync">
 <meta property="og:url" content="http://www.wulai.me/2017/02/24/flock防止重复rsync/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="我使用crontab同步一个文件夹时，发现一个问题，我在crontab中设置的1分钟运行一次.但当那个文件夹的内容改变时。1分钟不一定能同步完，但这时第二个rsync进行又起来了。
-这个就产生一个问题，二个rsync一起处理相同的文件，这样会出问题。如下
-* * * * /usr/bin/rsync -avlR /data/files    172.16.xxx.xxx:/data
-本来想写个脚本">
+<meta property="og:description" content="我使用crontab同步一个文件夹时，发现一个问题，我在crontab中设置的1分钟运行一次.但当那个文件夹的内容改变时。1分钟不一定能同步完，但这时第二个rsync进行又起来了。 这个就产生一个问题，二个rsync一起处理相同的文件，这样会出问题。如下 * * * * /usr/bin/rsync -avlR /data/files    172.16.xxx.xxx:/data 本来想写个脚本">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-02-24T07:28:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flock防止重复rsync">
-<meta name="twitter:description" content="我使用crontab同步一个文件夹时，发现一个问题，我在crontab中设置的1分钟运行一次.但当那个文件夹的内容改变时。1分钟不一定能同步完，但这时第二个rsync进行又起来了。
-这个就产生一个问题，二个rsync一起处理相同的文件，这样会出问题。如下
-* * * * /usr/bin/rsync -avlR /data/files    172.16.xxx.xxx:/data
-本来想写个脚本">
+<meta name="twitter:description" content="我使用crontab同步一个文件夹时，发现一个问题，我在crontab中设置的1分钟运行一次.但当那个文件夹的内容改变时。1分钟不一定能同步完，但这时第二个rsync进行又起来了。 这个就产生一个问题，二个rsync一起处理相同的文件，这样会出问题。如下 * * * * /usr/bin/rsync -avlR /data/files    172.16.xxx.xxx:/data 本来想写个脚本">
 
 
 
@@ -362,7 +354,7 @@
 </code></pre><p>本来想写个脚本来解决，但太麻烦。所以用了个linux下的锁。。呵呵，象下面这个.</p>
 <pre><code>1 * * * * flock -xn /var/run/rsync.lock -c &quot;rsync -avlR /data/files    172.16.xxx.xxx:/data&quot;
 </code></pre><p>这样,使用flock的<code>-x</code>参数先建一个锁文件，然后<code>-n</code>指定，如果锁存在，就等待。直到建成功锁在会运行-c后面的命令。这样第一个进程没有运行完前，锁文件都会存在。这样就不会二个rsync同时并发处理一个东西了</p>
-<p><code>来源</code>: <a href="http://www.cnblogs.com/cmsd/p/3697049.html" target="_blank" rel="external">http://www.cnblogs.com/cmsd/p/3697049.html</a></p>
+<p><code>来源</code>: <a href="http://www.cnblogs.com/cmsd/p/3697049.html" target="_blank" rel="noopener">http://www.cnblogs.com/cmsd/p/3697049.html</a></p>
 
       
     </div>
@@ -460,7 +452,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
