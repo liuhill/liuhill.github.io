@@ -367,7 +367,7 @@
       
 
       
-        <p>在配置Hadoop集群分布时，要使用SSH免密码登录，假设现在有两台机器hadoop@wang-PC(192.168.10.100)，作为A机，hadoop@chen-PC(192.168.10.107)，作为B机。现想hadoop@wang-PC通过ssh免密码登录到hadoop@chen-PC。</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>在配置Hadoop集群分布时，要使用SSH免密码登录，假设现在有两台机器hadoop@wang-PC(192.168.10.100)，作为A机，hadoop@chen-PC(192.168.10.107)，作为B机。现想hadoop@wang-PC通过ssh免密码登录到hadoop@chen-PC。</p>
 <h3 id="1-在A机下生成公钥-私钥对。"><a href="#1-在A机下生成公钥-私钥对。" class="headerlink" title="1.在A机下生成公钥/私钥对。"></a>1.在A机下生成公钥/私钥对。</h3><pre><code>[hadoop@wang-PC ~]$ ssh-keygen -t rsa -P &apos;&apos;
 </code></pre><p>敲击回车键即可，<br>它在/home/hadoop下生成.ssh目录，.ssh下有id_rsa和id_rsa.pub。</p>
 <h3 id="2-把A机器下的id-rsa-pub复制到B机器下的-ssh-authorized-keys文件里。"><a href="#2-把A机器下的id-rsa-pub复制到B机器下的-ssh-authorized-keys文件里。" class="headerlink" title="2.把A机器下的id_rsa.pub复制到B机器下的.ssh/authorized_keys文件里。"></a>2.把A机器下的id_rsa.pub复制到B机器下的.ssh/authorized_keys文件里。</h3><pre><code>[hadoop@wang-PC ~]$ scp .ssh/id_rsa.pub hadoop@192.168.10.107:/home/hadoop/id_rsa.pub.hadoop_wang
@@ -507,7 +507,7 @@ hadoop@192.168.10.107&apos;s password:
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

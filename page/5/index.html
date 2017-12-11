@@ -354,7 +354,7 @@
       
         
           
-            <h3 id="php-CMYK-to-RGB"><a href="#php-CMYK-to-RGB" class="headerlink" title="php CMYK to RGB"></a>php CMYK to RGB</h3><p><code>来源</code>:<a href="http://php.net/manual/en/imagick.setimagecolorspace.php" target="_blank" rel="noopener">http://php.net/manual/en/imagick.setimagecolorspace.php</a></p>
+            <script src="/assets/js/APlayer.min.js"> </script><h3 id="php-CMYK-to-RGB"><a href="#php-CMYK-to-RGB" class="headerlink" title="php CMYK to RGB"></a>php CMYK to RGB</h3><p><code>来源</code>:<a href="http://php.net/manual/en/imagick.setimagecolorspace.php" target="_blank" rel="noopener">http://php.net/manual/en/imagick.setimagecolorspace.php</a></p>
 <p>Simlest way converting from CMYK to RGB:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if ($jpeg-&gt;getImageColorspace() == \Imagick::COLORSPACE_CMYK) &#123;</span><br><span class="line">    $jpeg-&gt;transformimagecolorspace(\Imagick::COLORSPACE_SRGB);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
 <p>It is pretty work in current stable Image Magick (6.9.0-4).</p>
 
@@ -477,7 +477,7 @@
       
         
           
-            <h2 id="方案一，输出到系统错误"><a href="#方案一，输出到系统错误" class="headerlink" title="方案一，输出到系统错误"></a>方案一，输出到系统错误</h2><p>One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set_error_handler(function() &#123; /* ignore errors */ &#125;);</span><br><span class="line">dns_get_record();</span><br><span class="line">restore_error_handler();</span><br></pre></td></tr></table></figure></p>
+            <script src="/assets/js/APlayer.min.js"> </script><h2 id="方案一，输出到系统错误"><a href="#方案一，输出到系统错误" class="headerlink" title="方案一，输出到系统错误"></a>方案一，输出到系统错误</h2><p>One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set_error_handler(function() &#123; /* ignore errors */ &#125;);</span><br><span class="line">dns_get_record();</span><br><span class="line">restore_error_handler();</span><br></pre></td></tr></table></figure></p>
 <p>You could build on this idea and write a re-usable error handler that logs the errors for you.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set_error_handler([$logger, &apos;onSilencedError&apos;]);</span><br><span class="line">dns_get_record();</span><br><span class="line">restore_error_handler();</span><br><span class="line">Turning errors into exceptions</span><br></pre></td></tr></table></figure>
 <p>You can use <code>set_error_handler()</code> and the <code>ErrorException</code> class to turn all php errors into exceptions.</p>
@@ -606,7 +606,7 @@
       
         
           
-            <blockquote>
+            <script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>欢迎转载，但请务必在明确位置注明文章出处！ &gt;<a href="http://johnnyshieh.github.io/python/2015/08/02/python-remove-utf8-bom/" target="_blank" rel="noopener">http://johnnyshieh.github.io/python/2015/08/02/python-remove-utf8-bom/</a></p>
 </blockquote>
 <p>前几天我在Windows写完一篇markdown格式的文章，上传到github page后，这个文章的页面把jekyll的YAML头信息也显示出来了，没有像我之前在ubuntu中写的文章一样正常解析YAML头信息，最后谷歌了半天发现原因是在Windows用记事本保存utf-8编码的文件时会默认加上BOM头字符。而jekyll的文档中也明确写明了如果使用UTF-8编码，那么在文件中一定不要出现BOM头字符。</p>
@@ -756,7 +756,7 @@
       
         
           
-            <p>将扩展名为<code>.json</code>的文件名添加前缀<code>ad_</code></p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>将扩展名为<code>.json</code>的文件名添加前缀<code>ad_</code></p>
 <pre><code>for i in `ls *.json`;do mv -f $i `echo &quot;ad_&quot;$i`;done
 </code></pre>
           
@@ -878,7 +878,7 @@
       
         
           
-            <p>通过命令列出文件夹并输出到指定文件</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>通过命令列出文件夹并输出到指定文件</p>
 <pre><code>ll |grep json | awk &apos;{print &quot;## &quot;NR&quot;.&quot; ,$9}&apos; &gt; README.md
 </code></pre><p>说明：</p>
 <ul>
@@ -1018,7 +1018,7 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态</span><br><span class="line">git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。</span><br><span class="line">git reset --hard HASH #返回到某个节点，不保留修改。</span><br><span class="line">git reset --soft HASH #返回到某个节点。保留修改</span><br></pre></td></tr></table></figure>
+            <script src="/assets/js/APlayer.min.js"> </script><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态</span><br><span class="line">git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。</span><br><span class="line">git reset --hard HASH #返回到某个节点，不保留修改。</span><br><span class="line">git reset --soft HASH #返回到某个节点。保留修改</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1139,7 +1139,7 @@
       
         
           
-            <p>快捷键:</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>快捷键:</p>
 <pre><code>Command-Shift-.(句号)
 </code></pre><p>快速显示目录内的隐藏文件.</p>
 
@@ -1262,7 +1262,7 @@
       
         
           
-            <p>如果在命终端中用svn命令操作文件名中有“@”符号的文件（ios开发的朋友应该很清楚），会遇到：</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>如果在命终端中用svn命令操作文件名中有“@”符号的文件（ios开发的朋友应该很清楚），会遇到：</p>
 <pre><code>svn: E205000: Syntax error parsing peg revision ‘3x.png’
 </code></pre><p>或者：</p>
 <pre><code>svn: E200009: ‘welcome1@3x.png&apos;: a peg revision is not allowed here
@@ -1389,7 +1389,7 @@
       
         
           
-            <p>站点远程同步脚本，实现数据库本地镜像。</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>站点远程同步脚本，实现数据库本地镜像。</p>
 <p><code>如果源文件删除，目标文件夹也会删除。因此该脚本只能够作为镜像，不能作为备份</code></p>
 <h3 id="rsync-sh-执行脚本"><a href="#rsync-sh-执行脚本" class="headerlink" title="rsync.sh 执行脚本"></a>rsync.sh 执行脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">path=$1</span><br><span class="line"></span><br><span class="line">host=rsync@103.235.220.108</span><br><span class="line">port=2222</span><br><span class="line"></span><br><span class="line">dbuser=root</span><br><span class="line">dbpwd=111111</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#远程服务器运行dbdump.sh脚本dump数据库</span><br><span class="line">echo &quot;dump msyql&quot;</span><br><span class="line">ssh $host -p $port &quot;~/dbdump.sh&quot;</span><br><span class="line"></span><br><span class="line">src=$host:/home/wwwroot/html</span><br><span class="line">dst=/home/wwwroot/html</span><br><span class="line">exculude=/home/wwwroot/rsync_exclude.list</span><br><span class="line"></span><br><span class="line">echo &quot;源:&quot;$src/$path</span><br><span class="line">echo &quot;目标:&quot;$dst/$path</span><br><span class="line">rsync -avzO -e &quot;ssh -p $port&quot; --exclude-from=$exculude   --delete  $src/$path  $dst/$path</span><br><span class="line"></span><br><span class="line">echo &quot;&gt;&gt;&gt;更新数据库&quot;</span><br><span class="line">CurrentDate=$(date +%Y%m%d)</span><br><span class="line">mysql -u$dbuser -p$dbpwd test &lt; $dst/db/test.$&#123;CurrentDate&#125;.sql</span><br><span class="line"></span><br><span class="line">echo &quot;同步完成&quot;</span><br></pre></td></tr></table></figure>
 <h3 id="rsync-exclude-list"><a href="#rsync-exclude-list" class="headerlink" title="rsync_exclude.list"></a>rsync_exclude.list</h3><p>忽略的文件,文件夹路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.svn/</span><br><span class="line">Upload/</span><br><span class="line">logs/</span><br></pre></td></tr></table></figure></p>
@@ -1518,7 +1518,7 @@
       
         
           
-            <h1 id="1、作者：谢科"><a href="#1、作者：谢科" class="headerlink" title="1、作者：谢科"></a>1、作者：谢科</h1><p>链接：<a href="https://www.zhihu.com/question/21592677/answer/24663656" target="_blank" rel="noopener">https://www.zhihu.com/question/21592677/answer/24663656</a><br>来源：知乎<br>著作权归作者所有，转载请联系作者获得授权。</p>
+            <script src="/assets/js/APlayer.min.js"> </script><h1 id="1、作者：谢科"><a href="#1、作者：谢科" class="headerlink" title="1、作者：谢科"></a>1、作者：谢科</h1><p>链接：<a href="https://www.zhihu.com/question/21592677/answer/24663656" target="_blank" rel="noopener">https://www.zhihu.com/question/21592677/answer/24663656</a><br>来源：知乎<br>著作权归作者所有，转载请联系作者获得授权。</p>
 <p>“Data Science = statistics who uses python and lives in San Francisco”</p>
 <p>恰好我马上启程到Twitter的data science team，而且恰巧懂一点点统计和住在旧金山，所以冲动地没有邀请就厚脸回答了:D</p>
 <p>我认为有几个大方面</p>
@@ -1804,7 +1804,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

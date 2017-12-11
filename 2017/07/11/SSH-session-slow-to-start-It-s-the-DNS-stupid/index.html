@@ -89,12 +89,12 @@
 <meta property="og:title" content="SSH session slow to start? It&#39;s the DNS stupid~~">
 <meta property="og:url" content="http://www.wulai.me/2017/07/11/SSH-session-slow-to-start-It-s-the-DNS-stupid/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="Ever tried logging into a machine with ssh and found you have to wait much longer than reasonable for the session to start? This happened to me a few times and was especially annoying with machines on">
+<meta property="og:description" content="Ever tried logging into a machine with ssh and found you have to wait much longer than reasonable for the session to start? This happened to me a few times and was especially annoying with machines o">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-07-11T03:24:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSH session slow to start? It&#39;s the DNS stupid~~">
-<meta name="twitter:description" content="Ever tried logging into a machine with ssh and found you have to wait much longer than reasonable for the session to start? This happened to me a few times and was especially annoying with machines on">
+<meta name="twitter:description" content="Ever tried logging into a machine with ssh and found you have to wait much longer than reasonable for the session to start? This happened to me a few times and was especially annoying with machines o">
 
 
 
@@ -348,7 +348,7 @@
       
 
       
-        <p>Ever tried logging into a machine with ssh and found you have to wait much longer than reasonable for the session to start? This happened to me a few times and was especially annoying with machines on my local network (or a VM attached to a virtual network) that should be letting me in immediately.</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>Ever tried logging into a machine with ssh and found you have to wait much longer than reasonable for the session to start? This happened to me a few times and was especially annoying with machines on my local network (or a VM attached to a virtual network) that should be letting me in immediately.</p>
 <p>I eventually got mad enough to strace the SSH daemon and debug what was going on and it turns out it’s a DNS thing. Basically the session is slow to start because the SSH server is trying to lookup the hostname of the SSH client and for whatever reason it’s timing out (e.g., it can’t reach a nameserver, because you happen to be offline)</p>
 <p>There are a couple of very simple ways to fix that:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add &quot;UseDNS no&quot; to /etc/ssh/sshd_config</span><br><span class="line">add the client&apos;s net address to the server&apos;s /etc/hosts</span><br></pre></td></tr></table></figure></p>
 <p><em>*</em> 改项可能会导致远程连接失败</p>
@@ -466,7 +466,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

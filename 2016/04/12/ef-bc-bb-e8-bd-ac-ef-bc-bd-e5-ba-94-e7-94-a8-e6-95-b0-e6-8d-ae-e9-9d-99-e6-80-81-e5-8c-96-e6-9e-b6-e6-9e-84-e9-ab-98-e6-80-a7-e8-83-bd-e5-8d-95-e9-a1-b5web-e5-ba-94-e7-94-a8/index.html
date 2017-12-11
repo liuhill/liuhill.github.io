@@ -89,14 +89,14 @@
 <meta property="og:title" content="［转］应用数据静态化架构高性能单页Web应用">
 <meta property="og:url" content="http://www.wulai.me/2016/04/12/ef-bc-bb-e8-bd-ac-ef-bc-bd-e5-ba-94-e7-94-a8-e6-95-b0-e6-8d-ae-e9-9d-99-e6-80-81-e5-8c-96-e6-9e-b6-e6-9e-84-e9-ab-98-e6-80-a7-e8-83-bd-e5-8d-95-e9-a1-b5web-e5-ba-94-e7-94-a8/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="在电商网站中，单页Web是非常常见的一种形式，比如首页、频道页、广告页等都属于单页应用。而这种页面是由模板+数据组成。传统的构建方式一般通过静态化实现。而这种方式的灵活性并不是很好，比如页面模板部分变更了需要重新全部生成。因此最好能有一种实现方式是可以实时动态渲染，以支持模板的多变性。另外也要考虑好如下几个问题： 1、动态化模板渲染支持；2、数据和模板的多版本化：生产版本、灰度版本和预发布版本；3">
+<meta property="og:description" content="在电商网站中，单页Web是非常常见的一种形式，比如首页、频道页、广告页等都属于单页应用。而这种页面是由模板+数据组成。传统的构建方式一般通过静态化实现。而这种方式的灵活性并不是很好，比如页面模板部分变更了需要重新全部生成。因此最好能有一种实现方式是可以实时动态渲染，以支持模板的多变性。另外也要考虑好如下几个问题： 1、动态化模板渲染支持；2、数据和模板的多版本化：生产版本、灰度版本和预发布版本；">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://res.hillock.com.cn/web/640">
 <meta property="og:image" content="http://res.hillock.com.cn/web/6402">
 <meta property="og:updated_time" content="2016-08-29T05:34:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="［转］应用数据静态化架构高性能单页Web应用">
-<meta name="twitter:description" content="在电商网站中，单页Web是非常常见的一种形式，比如首页、频道页、广告页等都属于单页应用。而这种页面是由模板+数据组成。传统的构建方式一般通过静态化实现。而这种方式的灵活性并不是很好，比如页面模板部分变更了需要重新全部生成。因此最好能有一种实现方式是可以实时动态渲染，以支持模板的多变性。另外也要考虑好如下几个问题： 1、动态化模板渲染支持；2、数据和模板的多版本化：生产版本、灰度版本和预发布版本；3">
+<meta name="twitter:description" content="在电商网站中，单页Web是非常常见的一种形式，比如首页、频道页、广告页等都属于单页应用。而这种页面是由模板+数据组成。传统的构建方式一般通过静态化实现。而这种方式的灵活性并不是很好，比如页面模板部分变更了需要重新全部生成。因此最好能有一种实现方式是可以实时动态渲染，以支持模板的多变性。另外也要考虑好如下几个问题： 1、动态化模板渲染支持；2、数据和模板的多版本化：生产版本、灰度版本和预发布版本；">
 <meta name="twitter:image" content="http://res.hillock.com.cn/web/640">
 
 
@@ -370,7 +370,7 @@
       
 
       
-        <p>在电商网站中，单页Web是非常常见的一种形式，比如首页、频道页、广告页等都属于单页应用。而这种页面是由模板+数据组成。传统的构建方式一般通过静态化实现。而这种方式的灵活性并不是很好，比如页面模板部分变更了需要重新全部生成。因此最好能有一种实现方式是可以实时动态渲染，以支持模板的多变性。另外也要考虑好如下几个问题：</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>在电商网站中，单页Web是非常常见的一种形式，比如首页、频道页、广告页等都属于单页应用。而这种页面是由模板+数据组成。传统的构建方式一般通过静态化实现。而这种方式的灵活性并不是很好，比如页面模板部分变更了需要重新全部生成。因此最好能有一种实现方式是可以实时动态渲染，以支持模板的多变性。另外也要考虑好如下几个问题：</p>
 <li><br>1、动态化模板渲染支持；<br>2、数据和模板的多版本化：生产版本、灰度版本和预发布版本；<br>3、版本回滚问题，假设当前发布的生产版本出问题了如何快速的回滚到上一个版本；<br>4、异常问题，假设渲染模板时遇到了异常情况（比如获取Redis出问题了），如何处理；<br>5、灰度发布问题，比如切20%量给灰度版本；<br>6、预发布问题，目的是在正式环境测试数据和模板的正确性。<br> </li>
 
 <p><strong>整体架构</strong></p>
@@ -524,7 +524,7 @@ ngx.say(content)
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

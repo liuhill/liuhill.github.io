@@ -348,7 +348,7 @@
       
 
       
-        <p>I’ve learned how to continue to use the ethX prefix. I’m still using the udev rules that I mentioned in post above. So at bootup udev will rename my interfaces netX. And then using /etc/rc.local I’ve included the following commands to rename them from netX back to ethX.</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>I’ve learned how to continue to use the ethX prefix. I’m still using the udev rules that I mentioned in post above. So at bootup udev will rename my interfaces netX. And then using /etc/rc.local I’ve included the following commands to rename them from netX back to ethX.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/sbin/ip link set net0 down</span><br><span class="line">/sbin/ip link set net0 name eth0</span><br><span class="line">/sbin/ip link set eth0 up</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <p>Using the ip command I can change the name of the interfaces after the initial bootup is completed.</p>
 
@@ -465,7 +465,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

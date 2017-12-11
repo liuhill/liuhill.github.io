@@ -89,12 +89,12 @@
 <meta property="og:title" content="CentOS &#x2F; RHEL: Remove Routes 169.254.0.0 &#x2F; 255.255.0.0 From the System">
 <meta property="og:url" content="http://www.wulai.me/2017/08/08/CentOS-RHEL-Remove-Routes-169-254-0-0-255-255-0-0-From-the-System/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="zeroconf (Zero configuration networking), is a techniques that automatically creates a usable Internet Protocol (IP) network without manual operator intervention or special configuration servers. 169.">
+<meta property="og:description" content="zeroconf (Zero configuration networking), is a techniques that automatically creates a usable Internet Protocol (IP) network without manual operator intervention or special configuration servers. 169">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-08-08T10:53:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS &#x2F; RHEL: Remove Routes 169.254.0.0 &#x2F; 255.255.0.0 From the System">
-<meta name="twitter:description" content="zeroconf (Zero configuration networking), is a techniques that automatically creates a usable Internet Protocol (IP) network without manual operator intervention or special configuration servers. 169.">
+<meta name="twitter:description" content="zeroconf (Zero configuration networking), is a techniques that automatically creates a usable Internet Protocol (IP) network without manual operator intervention or special configuration servers. 169">
 
 
 
@@ -348,7 +348,7 @@
       
 
       
-        <p>zeroconf (Zero configuration networking), is a techniques that automatically creates a usable Internet Protocol (IP) network without manual operator intervention or special configuration servers. 169.254.0.0/255.255.0.0 route is part of zeroconf under RHEL 6 / CentOS 6 or older versions. To see current routing table, enter:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># route -n</span><br></pre></td></tr></table></figure></p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>zeroconf (Zero configuration networking), is a techniques that automatically creates a usable Internet Protocol (IP) network without manual operator intervention or special configuration servers. 169.254.0.0/255.255.0.0 route is part of zeroconf under RHEL 6 / CentOS 6 or older versions. To see current routing table, enter:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># route -n</span><br></pre></td></tr></table></figure></p>
 <p>Sample outputs:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Kernel IP routing table</span><br><span class="line">Destination     Gateway         Genmask         Flags Metric Ref    Use Iface</span><br><span class="line">74.8x.4y.zz     0.0.0.0         255.255.255.248 U     0      0        0 eth1</span><br><span class="line">10.10.29.64     0.0.0.0         255.255.255.192 U     0      0        0 eth0</span><br><span class="line">169.254.0.0     0.0.0.0         255.255.0.0     U     1002   0        0 eth0</span><br><span class="line">169.254.0.0     0.0.0.0         255.255.0.0     U     1003   0        0 eth1</span><br><span class="line">10.0.0.0        10.10.29.65     255.0.0.0       UG    0      0        0 eth0</span><br><span class="line">0.0.0.0         74.8x.yy.zz     0.0.0.0         UG    0      0        0 eth1</span><br></pre></td></tr></table></figure>
 <p>Every time the server or Linux desktop boots, the zeroconf route 169.254.0.0 is enabled and added to the kernel routing table. To disable zeroconf route under RHEL / CentOS / Fedora Linux, enter:</p>
@@ -480,7 +480,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

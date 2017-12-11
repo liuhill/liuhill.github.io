@@ -89,12 +89,12 @@
 <meta property="og:title" content="php try&#x2F;catch a warning ">
 <meta property="og:url" content="http://www.wulai.me/2017/01/06/php-try-catch-a-warning/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="方案一，输出到系统错误One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().123set_error_handler(function() &amp;#123; /* ignore e">
+<meta property="og:description" content="方案一，输出到系统错误One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().123set_error_handler(function() &amp;#123; /* ignore">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-01-06T05:48:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php try&#x2F;catch a warning ">
-<meta name="twitter:description" content="方案一，输出到系统错误One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().123set_error_handler(function() &amp;#123; /* ignore e">
+<meta name="twitter:description" content="方案一，输出到系统错误One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().123set_error_handler(function() &amp;#123; /* ignore">
 
 
 
@@ -348,7 +348,7 @@
       
 
       
-        <h2 id="方案一，输出到系统错误"><a href="#方案一，输出到系统错误" class="headerlink" title="方案一，输出到系统错误"></a>方案一，输出到系统错误</h2><p>One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set_error_handler(function() &#123; /* ignore errors */ &#125;);</span><br><span class="line">dns_get_record();</span><br><span class="line">restore_error_handler();</span><br></pre></td></tr></table></figure></p>
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="方案一，输出到系统错误"><a href="#方案一，输出到系统错误" class="headerlink" title="方案一，输出到系统错误"></a>方案一，输出到系统错误</h2><p>One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set_error_handler(function() &#123; /* ignore errors */ &#125;);</span><br><span class="line">dns_get_record();</span><br><span class="line">restore_error_handler();</span><br></pre></td></tr></table></figure></p>
 <p>You could build on this idea and write a re-usable error handler that logs the errors for you.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set_error_handler([$logger, &apos;onSilencedError&apos;]);</span><br><span class="line">dns_get_record();</span><br><span class="line">restore_error_handler();</span><br><span class="line">Turning errors into exceptions</span><br></pre></td></tr></table></figure>
 <p>You can use <code>set_error_handler()</code> and the <code>ErrorException</code> class to turn all php errors into exceptions.</p>
@@ -480,7 +480,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

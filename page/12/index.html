@@ -373,7 +373,7 @@
       
         
           
-            <p>英文原文： <a href="http://www.c-sharpcorner.com/UploadFile/shivprasadk/11-important-database-designing-rules/" target="_blank" rel="noopener">11 Important Database designing rules</a></p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>英文原文： <a href="http://www.c-sharpcorner.com/UploadFile/shivprasadk/11-important-database-designing-rules/" target="_blank" rel="noopener">11 Important Database designing rules</a></p>
 <h3 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h3><p>　　在您开始阅读这篇文章之前，我得明确地告诉您，我并不是一个数据库设计领域的大师。以下列出的 11 点是我对自己在平时项目实践和阅读中学习到的经验总结出来的个人见解。我个人认为它们对我的数据库设计提供了很大的帮助。实属一家之言，欢迎拍砖 : )</p>
 <p>　　我之所以写下这篇这么完整的文章是因为，很多开发者一参与到数据库设计，就会很自然地把 “三范式” 当作银弹一样来使用。他们往往认为遵循这个规范就是数据库设计的唯一标准。由于这种心态，他们往往尽管一路碰壁也会坚持把项目做下去。</p>
 <p>　　如果你对 “三范式” 不清楚，<a href="http://www.hillock.com.cn/?p=77" target="_blank" rel="noopener">请点击这里（FQ）</a>一步一步的了解什么是“三范式”。</p>
@@ -565,7 +565,7 @@
       
         
           
-            <p>&lt;&lt; <a href="http://wowubuntu.com" target="_blank" rel="noopener">访问 Wow!Ubuntu</a></p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>&lt;&lt; <a href="http://wowubuntu.com" target="_blank" rel="noopener">访问 Wow!Ubuntu</a></p>
 <p><strong>声明：</strong> 这份文档派生(fork)于<a href="http://markdown.tw/" target="_blank" rel="noopener">繁体中文版</a>，在此基础上进行了繁体转简体工作，并进行了适当的润色。此文档用 Markdown 语法编写，你可以到这里<a href="http://gitcafe.com/riku/Markdown-Syntax-CN/blob/master/basics.md" target="_blank" rel="noopener">查看它的源文件</a>。「繁体中文版的原始文件可以<a href="https://github.com/othree/markdown-syntax-zhtw/blob/master/basics.md" target="_blank" rel="noopener">查看这里</a>」–By @<a href="http://twitter.com/riku" target="_blank" rel="noopener">riku</a></p>
 <p><strong>注：</strong> 本项目托管于 <a href="http://gitcafe.com/riku/Markdown-Syntax-CN/" target="_blank" rel="noopener">GitCafe</a>上，请通过”派生”和”合并请求”来帮忙改进本项目。</p>
 <h1 id="Markdown-Basics-（快速入门）-点击查看完整语法说明"><a href="#Markdown-Basics-（快速入门）-点击查看完整语法说明" class="headerlink" title="Markdown: Basics （快速入门） / (点击查看完整语法说明)"></a>Markdown: Basics （快速入门） / (<a href="./index.html">点击查看完整语法说明</a>)</h1><h2 id="Getting-the-Gist-of-Markdown’s-Formatting-Syntax"><a href="#Getting-the-Gist-of-Markdown’s-Formatting-Syntax" class="headerlink" title="Getting the Gist of Markdown’s Formatting Syntax"></a>Getting the Gist of Markdown’s Formatting Syntax</h2><p>此页提供了 Markdown 的简单概念， <a href="http://gitcafe.com/riku/Markdown-Syntax-CN/blob/master/syntax.md" title="Markdown Syntax" target="_blank" rel="noopener">语法说明</a> 页提供了完整详细的文档，说明了每项功能。但是 Markdown 其实很简单就可以上手，此页文档提供了一些范例，并且每个范例都会提供输出的 HTML 结果。</p>
@@ -862,7 +862,7 @@ you&apos;ve got to put paragraph tags in your blockquotes:&lt;/p&gt;
       
         
           
-            <p>为了建立冗余较小、结构合理的数据库，设计数据库时必须遵循一定的规则。在关系型数据库中这种规则就称为范式。范式是符合某一种设计要求的总结。要想设计一个结构合理的关系型数据库，必须满足一定的范式。</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>为了建立冗余较小、结构合理的数据库，设计数据库时必须遵循一定的规则。在关系型数据库中这种规则就称为范式。范式是符合某一种设计要求的总结。要想设计一个结构合理的关系型数据库，必须满足一定的范式。</p>
 <p>在实际开发中最为常见的设计范式有三个：</p>
 <h3 id="1．第一范式-确保每列保持原子性"><a href="#1．第一范式-确保每列保持原子性" class="headerlink" title="1．第一范式(确保每列保持原子性)"></a>1．第一范式(确保每列保持原子性)</h3><p>第一范式是最基本的范式。如果数据库表中的所有字段值都是不可分解的原子值，就说明该数据库表满足了第一范式。</p>
 <p>第一范式的合理遵循需要根据系统的实际需求来定。比如某些数据库系统中需要用到“地址”这个属性，本来直接将“地址”属性设计成一个数据库表的字段就行。但是如果系统经常会访问“地址”属性中的“城市”部分，那么就非要将“地址”这个属性重新拆分为省份、城市、详细地址等多个部分进行存储，这样在对地址中某一部分操作的时候将非常方便。这样设计才算满足了数据库的第一范式，如下表所示。 <a href="http://www.hillock.com.cn/wp-content/uploads/2014/11/2012040114023352.png" target="_blank" rel="noopener"><img src="http://www.hillock.com.cn/wp-content/uploads/2014/11/2012040114023352.png" alt="2012040114023352"></a> 上表所示的用户信息遵循了第一范式的要求，这样在对用户使用城市进行分类的时候就非常方便，也提高了数据库的性能。</p>
@@ -1014,7 +1014,7 @@ you&apos;ve got to put paragraph tags in your blockquotes:&lt;/p&gt;
       
         
           
-            <p>&lt;&lt; <a href="http://wowubuntu.com" target="_blank" rel="noopener">访问 Wow!Ubuntu</a></p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>&lt;&lt; <a href="http://wowubuntu.com" target="_blank" rel="noopener">访问 Wow!Ubuntu</a></p>
 <p><strong>NOTE:</strong> This is Simplelified  Chinese Edition Document of Markdown Syntax. If you are seeking for English Edition Document. Please refer to <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank" rel="noopener">Markdown: Syntax</a>.</p>
 <p><strong>声明：</strong> 这份文档派生(fork)于<a href="http://markdown.tw/" target="_blank" rel="noopener">繁体中文版</a>，在此基础上进行了繁体转简体工作，并进行了适当的润色。此文档用 Markdown 语法编写，你可以到这里<a href="http://gitcafe.com/riku/Markdown-Syntax-CN/blob/master/syntax.md" target="_blank" rel="noopener">查看它的源文件</a>。「繁体中文版的原始文件可以<a href="https://github.com/othree/markdown-syntax-zhtw/blob/master/syntax.md" target="_blank" rel="noopener">查看这里</a> 。」–By @<a href="http://twitter.com/riku" target="_blank" rel="noopener">riku</a></p>
 <p><strong>注：</strong> 本项目托管于 <a href="http://gitcafe.com/riku/Markdown-Syntax-CN/" target="_blank" rel="noopener">GitCafe</a>上，请通过”派生”和”合并请求”来帮忙改进本项目。</p>
@@ -1928,7 +1928,7 @@ _   底线
       
         
           
-            <p>1、APC缓存简介 APC，全称是Alternative PHP Cache，官方翻译叫”可选PHP缓存”。它为我们提供了缓存和优化PHP的中间代码的框架。 APC的缓存分两部分:系统缓存和用户数据缓存。 系统缓存 它是指APC把PHP文件源码的编译结果缓存起来，然后在每次调用时先对比时间标记。如果未过期，则使用缓存的中间代码运行。默认缓存 3600s(一小时)。但是这样仍会浪费大量CPU时间。因此可以在php.ini中设置system缓存为永不过期(apc.ttl=0)。不过如果这样设置，改运php代码后需要重启WEB服务器。目前使用较多的是指此类缓存。 用户数据缓存 缓存由用户在编写PHP代码时用apc_store和apc_fetch函数操作读取、写入的。如果数据量不大的话，可以一试。如果数据量大，使用类似memcache此类的更加专著的内存缓存方案会更好 缓存key生成规则 APC的缓存中的每个slot都会有一个key，key是 apc_cache_key_t结构体类型，除了key相关的属性，关键是h字段的生成。 h字段决定了此元素落于slots数组的哪一个位置。对于用户缓存和系统缓存，其生成规则不同。 用户缓存通过apc_cache_make_user_key函数生成key。通过用户传递进来的key字符串，依赖PHP内核中的hash函数（PHP的hashtable所使用的hash函数：zend_inline_hash_func），生成h值。 系统缓存通过apc_cache_make_file_key函数生成key。通过APC的配置项apc.stat的开关来区别对待不同的方案。在打开的情况下，即 apc.stat= On 时，如果被更新则自动重新编译和缓存编译后的内容。此时的h值是文件的device和inode相加所得的值。在关闭的情况下，即apc.stat=off时，当文件被修改后，如果要使更新的内容生效，则必须重启Web服务器。此时h值是根据文件的路径地址生成，并且这里的路径是绝对路径。即使你是使用的相对路径，也会查找PG(include_path)定位文件，以取得绝对路径，所以使用绝对路径会跳过检查，可以提高代码的效率。 添加缓存过程 以用户缓存为例，apc_add函数用于给APC缓存中添加内容。如果key参数为字符串中，APC会根据此字符串生成key，如果key参数为数组，APC会遍历整个数组，生成key。根据这些key，APC会调用&#95;apc&#95;store将值存储到缓存中。由于这是用户缓存，当前使用的缓存为apc_user_cache。执行写入操作的是apc_cache_make_user_entry函数，其最终调用apc_cache_user_insert执行遍历查询和写入操作。与此对应，系统缓存使用apc_cache_insert执行写入操作，其最终都会调用&#95;apc&#95;cache_insert。 不管是用户缓存还是系统缓存，大体的执行过程类似，步骤如下：</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>1、APC缓存简介 APC，全称是Alternative PHP Cache，官方翻译叫”可选PHP缓存”。它为我们提供了缓存和优化PHP的中间代码的框架。 APC的缓存分两部分:系统缓存和用户数据缓存。 系统缓存 它是指APC把PHP文件源码的编译结果缓存起来，然后在每次调用时先对比时间标记。如果未过期，则使用缓存的中间代码运行。默认缓存 3600s(一小时)。但是这样仍会浪费大量CPU时间。因此可以在php.ini中设置system缓存为永不过期(apc.ttl=0)。不过如果这样设置，改运php代码后需要重启WEB服务器。目前使用较多的是指此类缓存。 用户数据缓存 缓存由用户在编写PHP代码时用apc_store和apc_fetch函数操作读取、写入的。如果数据量不大的话，可以一试。如果数据量大，使用类似memcache此类的更加专著的内存缓存方案会更好 缓存key生成规则 APC的缓存中的每个slot都会有一个key，key是 apc_cache_key_t结构体类型，除了key相关的属性，关键是h字段的生成。 h字段决定了此元素落于slots数组的哪一个位置。对于用户缓存和系统缓存，其生成规则不同。 用户缓存通过apc_cache_make_user_key函数生成key。通过用户传递进来的key字符串，依赖PHP内核中的hash函数（PHP的hashtable所使用的hash函数：zend_inline_hash_func），生成h值。 系统缓存通过apc_cache_make_file_key函数生成key。通过APC的配置项apc.stat的开关来区别对待不同的方案。在打开的情况下，即 apc.stat= On 时，如果被更新则自动重新编译和缓存编译后的内容。此时的h值是文件的device和inode相加所得的值。在关闭的情况下，即apc.stat=off时，当文件被修改后，如果要使更新的内容生效，则必须重启Web服务器。此时h值是根据文件的路径地址生成，并且这里的路径是绝对路径。即使你是使用的相对路径，也会查找PG(include_path)定位文件，以取得绝对路径，所以使用绝对路径会跳过检查，可以提高代码的效率。 添加缓存过程 以用户缓存为例，apc_add函数用于给APC缓存中添加内容。如果key参数为字符串中，APC会根据此字符串生成key，如果key参数为数组，APC会遍历整个数组，生成key。根据这些key，APC会调用&#95;apc&#95;store将值存储到缓存中。由于这是用户缓存，当前使用的缓存为apc_user_cache。执行写入操作的是apc_cache_make_user_entry函数，其最终调用apc_cache_user_insert执行遍历查询和写入操作。与此对应，系统缓存使用apc_cache_insert执行写入操作，其最终都会调用&#95;apc&#95;cache_insert。 不管是用户缓存还是系统缓存，大体的执行过程类似，步骤如下：</p>
 <p>通过求余操作，定位当前key的在slots数组中的位置： cache-&gt;slots[key.h % cache-&gt;num_slots]; 在定位到slots数组中的位置后，遍历当前key对应的slot链表，如果存在slot的key和要写入的key匹配或slot过期，清除当前slot。 在最后一个slot的后面插入新的slot。 2、APC模块安装 WINDOWS 第一步：下载php_apc.dll 在<a href="http://pecl.php.net/package/apc" target="_blank" rel="noopener">http://pecl.php.net/package/apc</a> 要与php版本对应 将php_apc.dll放入你的ext目录</p>
 <p>第二步：让php.ini支持apc扩展模块。 然后打开php.ini 加入：</p>
 <p>extension=php_apc.dll</p>
@@ -2192,7 +2192,7 @@ public function info() {
       
         
           
-            <p><code>http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login</code></p>
+            <script src="/assets/js/APlayer.min.js"> </script><p><code>http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login</code></p>
 
           
         
@@ -2332,7 +2332,7 @@ public function info() {
       
         
           
-            <p>CentOS 6 ，在SSH时回显中文乱码，则：</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>CentOS 6 ，在SSH时回显中文乱码，则：</p>
 <p>修改 /etc/sysconfig/i18n 文件</p>
 <p>命令：</p>
 <pre><code>vi /etc/sysconfig/i18n
@@ -2484,7 +2484,7 @@ SYSFONT=&quot;lat0-sun16&quot;
       
         
           
-            <p>CentOS安装好如果希望开放其他端口的话，需要打开所需端口,比如打开http的默认端口80</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>CentOS安装好如果希望开放其他端口的话，需要打开所需端口,比如打开http的默认端口80</p>
 <p>编辑iptables</p>
 <pre><code>root:vi /etc/sysconfig/iptables
 </code></pre><p>添加</p>
@@ -2632,7 +2632,7 @@ SYSFONT=&quot;lat0-sun16&quot;
       
         
           
-            <p>编译并安装fileinfo插件</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>编译并安装fileinfo插件</p>
 <pre><code>cd /root/lnmp1.0-full/php-5.3.17/ext/fileinfo
 /usr/local/php/bin/phpize
 ./configure --with-php-config=/usr/local/php/bin/php-config
@@ -2794,7 +2794,7 @@ extension = fileinfo.so
       
         
           
-            <p>linux下删除所有.svn目录方法为</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>linux下删除所有.svn目录方法为</p>
 <pre><code>find . -type d -name &quot;.svn&quot;|xargs rm -rf
 </code></pre>
           
@@ -2887,7 +2887,7 @@ extension = fileinfo.so
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

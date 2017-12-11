@@ -354,7 +354,7 @@
       
         
           
-            <p>548<br>down vote<br>yes, Brian, you are right: those are the steps, but if you want to end having back a vmdk hard disk (maybe you are interested in using the disk in vwmare too) you miss one more step. So the complete howto is:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage clonehd &quot;source.vmdk&quot; &quot;cloned.vdi&quot; --format vdi</span><br><span class="line">VBoxManage modifyhd &quot;cloned.vdi&quot; --resize 51200</span><br><span class="line">VBoxManage clonehd &quot;cloned.vdi&quot; &quot;resized.vmdk&quot; --format vmdk</span><br><span class="line">The above will resize the hard disk up to 50GB (50 * 1024MB).</span><br></pre></td></tr></table></figure></p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>548<br>down vote<br>yes, Brian, you are right: those are the steps, but if you want to end having back a vmdk hard disk (maybe you are interested in using the disk in vwmare too) you miss one more step. So the complete howto is:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage clonehd &quot;source.vmdk&quot; &quot;cloned.vdi&quot; --format vdi</span><br><span class="line">VBoxManage modifyhd &quot;cloned.vdi&quot; --resize 51200</span><br><span class="line">VBoxManage clonehd &quot;cloned.vdi&quot; &quot;resized.vmdk&quot; --format vmdk</span><br><span class="line">The above will resize the hard disk up to 50GB (50 * 1024MB).</span><br></pre></td></tr></table></figure></p>
 <p>To complete things you need to resize the drive too! To achieve this, you might want to download gparted iso and boot from that iso to resize your drive (select the iso from within the virtualbox settings).</p>
 <p>P.S. If your new size is too small, you’ll get the same error even with your new vdi file.</p>
 
@@ -477,7 +477,7 @@
       
         
           
-            <p>1<br>down vote<br>In case it is a fixed drive and not a removable drive, you can add the entry permanently.</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>1<br>down vote<br>In case it is a fixed drive and not a removable drive, you can add the entry permanently.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/fstab</span><br></pre></td></tr></table></figure>
 <p>Add an entry in the following format:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;file-system&gt; &lt;mount-point&gt; &lt;type&gt; &lt;options&gt; &lt;dump&gt; &lt;pass&gt;</span><br></pre></td></tr></table></figure></p>
 <p>And then do:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -a</span><br></pre></td></tr></table></figure></p>
@@ -602,7 +602,7 @@
       
         
           
-            <p>it seems that disabling NetworkManager did the trick :)</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>it seems that disabling NetworkManager did the trick :)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop NetworkManager</span><br><span class="line">systemctl disable NetworkManager</span><br></pre></td></tr></table></figure>
 
           
@@ -724,7 +724,7 @@
       
         
           
-            <h3 id="0-Prepare"><a href="#0-Prepare" class="headerlink" title="0 Prepare"></a>0 Prepare</h3><pre><code>yum install pciutils -y
+            <script src="/assets/js/APlayer.min.js"> </script><h3 id="0-Prepare"><a href="#0-Prepare" class="headerlink" title="0 Prepare"></a>0 Prepare</h3><pre><code>yum install pciutils -y
 </code></pre><h3 id="1-get-PCI-info"><a href="#1-get-PCI-info" class="headerlink" title="1 get PCI info:"></a>1 get PCI info:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] lspci | grep Ethernet   </span><br><span class="line">05:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </span><br><span class="line">06:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </span><br><span class="line">07:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </span><br><span class="line">08:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection</span><br></pre></td></tr></table></figure>
 <h3 id="2-add-config-to-cat-usr-lib-udev-rules-d-60-net-rules"><a href="#2-add-config-to-cat-usr-lib-udev-rules-d-60-net-rules" class="headerlink" title="2 add config to cat /usr/lib/udev/rules.d/60-net.rules."></a>2 add config to <code>cat /usr/lib/udev/rules.d/60-net.rules</code>.</h3><p><strong><em>Notice:</em></strong> param <code>KERNELS</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /usr/lib/udev/rules.d/60-net.rules</span><br><span class="line">ACTION==&quot;add&quot;, SUBSYSTEM==&quot;net&quot;, DRIVERS==&quot;?*&quot;, ATTR&#123;type&#125;==&quot;1&quot;, PROGRAM=&quot;/lib/udev/rename_device&quot;, RESULT==&quot;?*&quot;, NAME=&quot;$result&quot;</span><br><span class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:05.0&quot;, NAME=&quot;vfnet0&quot;</span><br><span class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:06.0&quot;, NAME=&quot;vfnet1&quot;</span><br><span class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:07.0&quot;, NAME=&quot;vfnet2&quot;</span><br><span class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:08.0&quot;, NAME=&quot;vfnet3&quot;</span><br></pre></td></tr></table></figure>
@@ -849,7 +849,7 @@
       
         
           
-            <p>I’ve learned how to continue to use the ethX prefix. I’m still using the udev rules that I mentioned in post above. So at bootup udev will rename my interfaces netX. And then using /etc/rc.local I’ve included the following commands to rename them from netX back to ethX.</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>I’ve learned how to continue to use the ethX prefix. I’m still using the udev rules that I mentioned in post above. So at bootup udev will rename my interfaces netX. And then using /etc/rc.local I’ve included the following commands to rename them from netX back to ethX.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/sbin/ip link set net0 down</span><br><span class="line">/sbin/ip link set net0 name eth0</span><br><span class="line">/sbin/ip link set eth0 up</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <p>Using the ip command I can change the name of the interfaces after the initial bootup is completed.</p>
 
@@ -972,7 +972,7 @@
       
         
           
-            
+            <script src="/assets/js/APlayer.min.js"> </script>
           
         
       
@@ -1092,7 +1092,7 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ networksetup -listallnetworkservices  </span><br><span class="line">An asterisk (*) denotes that a network service is disabled.  </span><br><span class="line">SAMSUNG Modem  </span><br><span class="line">Bluetooth DUN  </span><br><span class="line">Thunderbolt Ethernet  </span><br><span class="line">Wi-Fi  </span><br><span class="line">Bluetooth PAN  </span><br><span class="line">Thunderbolt Bridge  </span><br><span class="line">$ networksetup -setv6off Wi-Fi</span><br></pre></td></tr></table></figure>
+            <script src="/assets/js/APlayer.min.js"> </script><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ networksetup -listallnetworkservices  </span><br><span class="line">An asterisk (*) denotes that a network service is disabled.  </span><br><span class="line">SAMSUNG Modem  </span><br><span class="line">Bluetooth DUN  </span><br><span class="line">Thunderbolt Ethernet  </span><br><span class="line">Wi-Fi  </span><br><span class="line">Bluetooth PAN  </span><br><span class="line">Thunderbolt Bridge  </span><br><span class="line">$ networksetup -setv6off Wi-Fi</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1213,7 +1213,7 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Author: Dude</span><br><span class="line">Date: 01-Jun-2013</span><br><span class="line">Version: B</span><br></pre></td></tr></table></figure>
+            <script src="/assets/js/APlayer.min.js"> </script><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Author: Dude</span><br><span class="line">Date: 01-Jun-2013</span><br><span class="line">Version: B</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Last updates:</span><br><span class="line">23-Jul-2013, changes required due to forum upgrade</span><br></pre></td></tr></table></figure>
 <p><a href="https://community.oracle.com/thread/2546040" target="_blank" rel="noopener">https://community.oracle.com/thread/2546040</a></p>
 <p>What is Linux network interface bonding? Simply put, the Linux system provides a kernel driver, which can create a logical network device (bond) using 2 or more Network Interface Controllers (NIC) to accomplish link-aggregation and adapter fault-tolerance. For more information, please see the Deployment Guide at <a href="https://linux.oracle.com/documentation/" target="_blank" rel="noopener">https://linux.oracle.com/documentation/</a></p>
@@ -1359,7 +1359,7 @@
       
         
           
-            <h2 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h2><p>Restarting network (via systemctl):  Job for network.service failed. See ‘systemctl status network.service’ and ‘journalctl -xn’ for details.</p>
+            <script src="/assets/js/APlayer.min.js"> </script><h2 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h2><p>Restarting network (via systemctl):  Job for network.service failed. See ‘systemctl status network.service’ and ‘journalctl -xn’ for details.</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="查找原因"><a href="#查找原因" class="headerlink" title="查找原因"></a>查找原因</h3><pre><code>systemctl status network.service
 
  cat /var/log/message |grep network
@@ -1494,7 +1494,7 @@
       
         
           
-            <p>Ever tried logging into a machine with ssh and found you have to wait much longer than reasonable for the session to start? This happened to me a few times and was especially annoying with machines on my local network (or a VM attached to a virtual network) that should be letting me in immediately.</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>Ever tried logging into a machine with ssh and found you have to wait much longer than reasonable for the session to start? This happened to me a few times and was especially annoying with machines on my local network (or a VM attached to a virtual network) that should be letting me in immediately.</p>
 <p>I eventually got mad enough to strace the SSH daemon and debug what was going on and it turns out it’s a DNS thing. Basically the session is slow to start because the SSH server is trying to lookup the hostname of the SSH client and for whatever reason it’s timing out (e.g., it can’t reach a nameserver, because you happen to be offline)</p>
 <p>There are a couple of very simple ways to fix that:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add &quot;UseDNS no&quot; to /etc/ssh/sshd_config</span><br><span class="line">add the client&apos;s net address to the server&apos;s /etc/hosts</span><br></pre></td></tr></table></figure></p>
 <p><em>*</em> 改项可能会导致远程连接失败</p>
@@ -1589,7 +1589,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

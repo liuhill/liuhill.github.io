@@ -89,12 +89,12 @@
 <meta property="og:title" content="svn externals">
 <meta property="og:url" content="http://www.wulai.me/2016/09/09/svn-externals/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="Externals DefinitionsSometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different l">
+<meta property="og:description" content="Externals DefinitionsSometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-09-26T03:24:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="svn externals">
-<meta name="twitter:description" content="Externals DefinitionsSometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different l">
+<meta name="twitter:description" content="Externals DefinitionsSometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different">
 
 
 
@@ -348,7 +348,7 @@
       
 
       
-        <h1 id="Externals-Definitions"><a href="#Externals-Definitions" class="headerlink" title="Externals Definitions"></a>Externals Definitions</h1><p>Sometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different locations in a repository, or perhaps from different repositories altogether. You could certainly setup such a scenario by hand—using <code>svn checkout</code> to create the sort of nested working copy structure you are trying to achieve. But if this layout is important for everyone who uses your repository, every other user will need to perform the same checkout operations that you did.</p>
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="Externals-Definitions"><a href="#Externals-Definitions" class="headerlink" title="Externals Definitions"></a>Externals Definitions</h1><p>Sometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different locations in a repository, or perhaps from different repositories altogether. You could certainly setup such a scenario by hand—using <code>svn checkout</code> to create the sort of nested working copy structure you are trying to achieve. But if this layout is important for everyone who uses your repository, every other user will need to perform the same checkout operations that you did.</p>
 <p>Fortunately, Subversion provides support for externals definitions. An externals definition is a mapping of a local directory to the URL—and possibly a particular revision—of a versioned resource. In Subversion, you declare externals definitions in groups using the <code>svn:externals</code> property. You can create or modify this property using <code>svn propset</code> or <code>svn propedit</code> (see <a href="http://svnbook.red-bean.com/en/1.0/ch07s02.html#svn-ch-7-sect-2.1" target="_blank" rel="noopener">the section called “Why Properties?”</a>). It can be set on any versioned directory, and its value is a multi-line table of subdirectories (relative to the versioned directory on which the property is set) and fully qualified, absolute Subversion repository URLs.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ svn propget svn:externals calc</span><br><span class="line">third-party/sounds             http://sounds.red-bean.com/repos</span><br><span class="line">third-party/skins              http://skins.red-bean.com/repositories/skinproj</span><br><span class="line">third-party/skins/toolkit -r21 http://svn.red-bean.com/repos/skin-maker</span><br></pre></td></tr></table></figure>
 <p>he convenience of the svn:externals property is that once it is set on a versioned directory, everyone who checks out a working copy with that directory also gets the benefit of the externals definition. In other words, once one person has made the effort to define those nested working copy checkouts, no one else has to bother—Subversion will, upon checkout of the original working copy, also checkout the external working copies.</p>
@@ -483,7 +483,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

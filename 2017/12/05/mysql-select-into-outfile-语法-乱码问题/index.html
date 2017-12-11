@@ -348,7 +348,7 @@
       
 
       
-        <p>一个常见的问题，mysql 导出csv格式的语法，已经乱码问题：<br>由于数据库一般默认的是UTF-8 格式的字符集，而execl默认的是gbk格式的字符集，这里有两种方法解决乱码：</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>一个常见的问题，mysql 导出csv格式的语法，已经乱码问题：<br>由于数据库一般默认的是UTF-8 格式的字符集，而execl默认的是gbk格式的字符集，这里有两种方法解决乱码：</p>
 <h4 id="方法一：-先转出-txt格式的文件，然后选择用excel打开时，提示选择哪种编码打开，选择gbk即可"><a href="#方法一：-先转出-txt格式的文件，然后选择用excel打开时，提示选择哪种编码打开，选择gbk即可" class="headerlink" title="方法一： 先转出.txt格式的文件，然后选择用excel打开时，提示选择哪种编码打开，选择gbk即可"></a>方法一： 先转出.txt格式的文件，然后选择用excel打开时，提示选择哪种编码打开，选择gbk即可</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from mobile_order_region where school_id=6921 into outfile &apos;/tmp/6921.txt&apos;</span><br></pre></td></tr></table></figure>
 <h4 id="方法二：导出时直接设置字符集格式："><a href="#方法二：导出时直接设置字符集格式：" class="headerlink" title="方法二：导出时直接设置字符集格式："></a>方法二：导出时直接设置字符集格式：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from mobile_order_region where school_id=6921 into outfile &apos;/tmp/6921.csv&apos;</span><br><span class="line">CHARACTER SET gbk</span><br><span class="line">FIELDS TERMINATED BY &apos;,&apos;</span><br><span class="line">OPTIONALLY ENCLOSED BY &apos;&quot;&apos;</span><br><span class="line"> LINES TERMINATED BY &apos;\n&apos;;</span><br><span class="line">Query OK, 6888 rows affected (0.11 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mysql&gt; \q</span><br></pre></td></tr></table></figure>
 
@@ -474,7 +474,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -89,12 +89,12 @@
 <meta property="og:title" content="docker mysql Access denied for user">
 <meta property="og:url" content="http://www.wulai.me/2017/03/06/docker-mysql-Access-denied-for-user/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="12345root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD&amp;quot;MYSQL_ROOT_PASSWORD=test&amp;quot;,root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -pEnter password:">
+<meta property="og:description" content="12345root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD&amp;quot;MYSQL_ROOT_PASSWORD=test&amp;quot;,root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -pEnter password">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-03-06T05:19:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker mysql Access denied for user">
-<meta name="twitter:description" content="12345root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD&amp;quot;MYSQL_ROOT_PASSWORD=test&amp;quot;,root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -pEnter password:">
+<meta name="twitter:description" content="12345root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD&amp;quot;MYSQL_ROOT_PASSWORD=test&amp;quot;,root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -pEnter password">
 
 
 
@@ -348,7 +348,7 @@
       
 
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD</span><br><span class="line">&quot;MYSQL_ROOT_PASSWORD=test&quot;,</span><br><span class="line">root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -p</span><br><span class="line">Enter password: test</span><br><span class="line">ERROR 1045 (28000): Access denied for user &apos;root&apos;@&apos;localhost&apos; (using password: YES)</span><br></pre></td></tr></table></figure>
+        <script src="/assets/js/APlayer.min.js"> </script><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD</span><br><span class="line">&quot;MYSQL_ROOT_PASSWORD=test&quot;,</span><br><span class="line">root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -p</span><br><span class="line">Enter password: test</span><br><span class="line">ERROR 1045 (28000): Access denied for user &apos;root&apos;@&apos;localhost&apos; (using password: YES)</span><br></pre></td></tr></table></figure>
 <p>I’ve gratuitously rebuilt, recreated, <code>--no-cache&#39;d</code>, <code>--force-recreate&#39;d</code>.. nothing is working. I’ve also tried putting the environment variable directly in a mysql Dockerfile and as an “environment” argument in my docker-compose.yml.</p>
 <p>The only thing that IS working is passing -e ‘MYSQL_ROOT_PASSWORD=test’ in a docker run statement.</p>
 
@@ -465,7 +465,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -89,12 +89,12 @@
 <meta property="og:title" content="How to remove old Docker containers">
 <meta property="og:url" content="http://www.wulai.me/2017/03/10/How-to-remove-old-Docker-containers/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="1、remove exit containersUntil that command is available, you can string docker commands together with other unix commands to get what you need. Here is an example on how to clean up old containers tha">
+<meta property="og:description" content="1、remove exit containersUntil that command is available, you can string docker commands together with other unix commands to get what you need. Here is an example on how to clean up old containers th">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-03-10T02:42:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to remove old Docker containers">
-<meta name="twitter:description" content="1、remove exit containersUntil that command is available, you can string docker commands together with other unix commands to get what you need. Here is an example on how to clean up old containers tha">
+<meta name="twitter:description" content="1、remove exit containersUntil that command is available, you can string docker commands together with other unix commands to get what you need. Here is an example on how to clean up old containers th">
 
 
 
@@ -348,7 +348,7 @@
       
 
       
-        <h3 id="1、remove-exit-containers"><a href="#1、remove-exit-containers" class="headerlink" title="1、remove exit containers"></a>1、remove <code>exit</code> containers</h3><p>Until that command is available, you can string docker commands together with other unix commands to get what you need. Here is an example on how to clean up old containers that are weeks old.</p>
+        <script src="/assets/js/APlayer.min.js"> </script><h3 id="1、remove-exit-containers"><a href="#1、remove-exit-containers" class="headerlink" title="1、remove exit containers"></a>1、remove <code>exit</code> containers</h3><p>Until that command is available, you can string docker commands together with other unix commands to get what you need. Here is an example on how to clean up old containers that are weeks old.</p>
 <pre><code>$ docker ps --filter &quot;status=exited&quot; | grep &apos;weeks ago&apos; | awk &apos;{print $1}&apos; | xargs --no-run-if-empty docker rm
 </code></pre><h3 id="2、remove-images"><a href="#2、remove-images" class="headerlink" title="2、remove images"></a>2、remove images</h3><pre><code>$ docker images | grep &quot;&lt;none&gt;&quot; | awk &apos;{print $3}&apos; | xargs docker rmi
 </code></pre><h3 id="3-rm-all-stopped-containers"><a href="#3-rm-all-stopped-containers" class="headerlink" title="3 rm all stopped containers"></a>3 rm all <code>stopped</code> containers</h3><p>If you want to use awk for this consider this command if you want do rm all stopped containers (without a error because of the first line):</p>
@@ -476,7 +476,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
