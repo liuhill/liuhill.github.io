@@ -272,6 +272,138 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/09/09/svn-externals/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/09/svn-externals/" itemprop="url">
+                  svn externals
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-09T14:32:47+08:00">
+              2016-09-09
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2016-09-26T11:24:58+08:00">
+              2016-09-26
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><h1 id="Externals-Definitions"><a href="#Externals-Definitions" class="headerlink" title="Externals Definitions"></a>Externals Definitions</h1><p>Sometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different locations in a repository, or perhaps from different repositories altogether. You could certainly setup such a scenario by hand—using <code>svn checkout</code> to create the sort of nested working copy structure you are trying to achieve. But if this layout is important for everyone who uses your repository, every other user will need to perform the same checkout operations that you did.</p>
+<p>Fortunately, Subversion provides support for externals definitions. An externals definition is a mapping of a local directory to the URL—and possibly a particular revision—of a versioned resource. In Subversion, you declare externals definitions in groups using the <code>svn:externals</code> property. You can create or modify this property using <code>svn propset</code> or <code>svn propedit</code> (see <a href="http://svnbook.red-bean.com/en/1.0/ch07s02.html#svn-ch-7-sect-2.1" target="_blank" rel="noopener">the section called “Why Properties?”</a>). It can be set on any versioned directory, and its value is a multi-line table of subdirectories (relative to the versioned directory on which the property is set) and fully qualified, absolute Subversion repository URLs.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ svn propget svn:externals calc</span><br><span class="line">third-party/sounds             http://sounds.red-bean.com/repos</span><br><span class="line">third-party/skins              http://skins.red-bean.com/repositories/skinproj</span><br><span class="line">third-party/skins/toolkit -r21 http://svn.red-bean.com/repos/skin-maker</span><br></pre></td></tr></table></figure>
+<p>he convenience of the svn:externals property is that once it is set on a versioned directory, everyone who checks out a working copy with that directory also gets the benefit of the externals definition. In other words, once one person has made the effort to define those nested working copy checkouts, no one else has to bother—Subversion will, upon checkout of the original working copy, also checkout the external working copies.</p>
+<p>Note the previous externals definition example. When someone checks out a working copy of the calc directory, Subversion also continues to checkout the items found in its externals definition.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ svn checkout http://svn.example.com/repos/calc</span><br><span class="line">A  calc</span><br><span class="line">A  calc/Makefile</span><br><span class="line">A  calc/integer.c</span><br><span class="line">A  calc/button.c</span><br><span class="line">Checked out revision 148.</span><br><span class="line"></span><br><span class="line">Fetching external item into calc/third-party/sounds</span><br><span class="line">A  calc/third-party/sounds/ding.ogg</span><br><span class="line">A  calc/third-party/sounds/dong.ogg</span><br><span class="line">A  calc/third-party/sounds/clang.ogg</span><br><span class="line">…</span><br><span class="line">A  calc/third-party/sounds/bang.ogg</span><br><span class="line">A  calc/third-party/sounds/twang.ogg</span><br><span class="line">Checked out revision 14.</span><br><span class="line"></span><br><span class="line">Fetching external item into calc/third-party/skins</span><br><span class="line">…</span><br></pre></td></tr></table></figure>
+<p>If you need to change the externals definition, you can do so using the regular property modification subcommands. When you commit a change to the <code>svn:externals</code> property, Subversion will synchronize the checked-out items against the changed externals definition when you next run <code>svn update</code>. The same thing will happen when others update their working copies and receive your changes to the externals definition.</p>
+<p>The <code>svn status</code> command also recognizes externals definitions, displaying a status code of X for the disjoint subdirectories into which externals are checked out, and then recursing into those subdirectories to display the status of the external items themselves.</p>
+<p>The support that exists for externals definitions in Subversion today can be a little misleading, though. First, an externals definition can only point to directories, not files. Second, the externals definition cannot point to relative paths (paths like ../../skins/myskin). Third, the working copies created via the externals definition support are still disconnected from the primary working copy (on whose versioned directories the <code>svn:externals</code> property was actually set). And Subversion still only truly operates on non-disjoint working copies. So, for example, if you want to commit changes that you’ve made in one or more of those external working copies, you must run <code>svn commit</code> explicitly on those working copies—committing on the primary working copy will not recurse into any external ones.</p>
+<p>Also, since the definitions themselves use absolute URLs, moving or copying a directory to which they are attached will not affect what gets checked out as an external (though the relative local target subdirectory will, of course, move with renamed directory). This can be confusing—even frustrating—in certain situations. For example, if you use externals definitions on a directory in your /trunk development line which point to other areas of that same line, and then you use <code>svn copy</code> to branch that line to some new location /branches/my-branch, the externals definitions on items in your new branch will still refer to versioned resources in /trunk. Also, be aware that if you need to re-parent your working copy (using svn switch –relocate), externals definitions will not also be re-parented.</p>
+<h1 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn propdel -R svn:externals</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn propdel PROPNAME</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/07/06/linux-e5-a6-82-e4-bd-95-e6-98-be-e7-a4-ba-e4-b8-80-e4-b8-aa-e6-96-87-e4-bb-b6-e7-9a-84-e6-9f-90-e5-87-a0-e8-a1-8c-e4-b8-ad-e9-97-b4-e5-87-a0-e8-a1-8c/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1870,185 +2002,6 @@ if(r==null)alert(&apos;Date format error!&apos;);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/04/12/ef-bc-bb-e8-bd-ac-ef-bc-bd-e5-ba-94-e7-94-a8-e6-95-b0-e6-8d-ae-e9-9d-99-e6-80-81-e5-8c-96-e6-9e-b6-e6-9e-84-e9-ab-98-e6-80-a7-e8-83-bd-e5-8d-95-e9-a1-b5web-e5-ba-94-e7-94-a8/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/12/ef-bc-bb-e8-bd-ac-ef-bc-bd-e5-ba-94-e7-94-a8-e6-95-b0-e6-8d-ae-e9-9d-99-e6-80-81-e5-8c-96-e6-9e-b6-e6-9e-84-e9-ab-98-e6-80-a7-e8-83-bd-e5-8d-95-e9-a1-b5web-e5-ba-94-e7-94-a8/" itemprop="url">
-                  ［转］应用数据静态化架构高性能单页Web应用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-12T13:04:59+08:00">
-              2016-04-12
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2016-08-29T13:34:08+08:00">
-              2016-08-29
-            </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><p>在电商网站中，单页Web是非常常见的一种形式，比如首页、频道页、广告页等都属于单页应用。而这种页面是由模板+数据组成。传统的构建方式一般通过静态化实现。而这种方式的灵活性并不是很好，比如页面模板部分变更了需要重新全部生成。因此最好能有一种实现方式是可以实时动态渲染，以支持模板的多变性。另外也要考虑好如下几个问题：</p>
-<li><br>1、动态化模板渲染支持；<br>2、数据和模板的多版本化：生产版本、灰度版本和预发布版本；<br>3、版本回滚问题，假设当前发布的生产版本出问题了如何快速的回滚到上一个版本；<br>4、异常问题，假设渲染模板时遇到了异常情况（比如获取Redis出问题了），如何处理；<br>5、灰度发布问题，比如切20%量给灰度版本；<br>6、预发布问题，目的是在正式环境测试数据和模板的正确性。<br> </li>
-
-<p><strong>整体架构</strong></p>
-<p>静态化页面的方案如下图所示：<br><img src="http://res.hillock.com.cn/web/640" alt="［转］应用数据静态化架构高性能单页Web应用" title="［转］应用数据静态化架构高性能单页Web应用"></p>
-<p>直接将生成的静态页推送到相关服务器即可。使用这种方式要考虑文件操作的原子化问题（即从老版本切换到新版本如何做到文件操作原子化）。</p>
-<p>而动态化方案的整体架构如下图所示，分为三大系统：CMS系统、控制系统和前端展示系统。<br><img src="http://res.hillock.com.cn/web/6402" alt="［转］应用数据静态化架构高性能单页Web应用" title="［转］应用数据静态化架构高性能单页Web应用"></p>
-<p>###CMS系统<br>1、在CMS系统可以配置页面的模板和数据；<br>1.1、模板动态在CMS系统中维护，即模板不是一个静态文件，而是存储在CMS中的一条数据，最终发布到“发布数据存储Redis”中，前端展示系统从Redis中获取该模板进行渲染，从而前端展示系统更换了模板也不需要重启，纯动态维护模板数据；<br>2、原始数据存储到“元数据存储Mysql”中即可，比如频道页一般需要：前端访问的URL、分类、轮播图、商品楼层数据等；这些数据按照相应的维度存储在CMS系统中；<br>3、提供发布到“发布数据存储Redis”的控制，将CMS系统中的原始数据和模板数据组装成聚合数据（JSON存储）同步到“发布数据存储Redis”，以便前端展示系统获取进行展示；此处提供三个发布按钮：正式版本、灰度版本和预发布版本。</p>
-<p>目前存在如下几个问题：<br>1、用户如访问<a href="http://channel.jd.com/fashion.html怎么定位到对应的聚合数据呢？" target="_blank" rel="noopener">http://channel.jd.com/fashion.html怎么定位到对应的聚合数据呢？</a> 我们可以在CMS元数据中定义URL作为KEY，如果没有URL，则使用ID作为KEY，或者自动生成一个URL。<br>2、多版本如何存储呢？ 使用Redis的Hash结构存储即可，KEY为URL（比如<a href="http://channel.jd.com/fashion.html），字段按照维度存储：正式版本使用当前时间戳存储（这样前端系统可以根据时间戳排序然后获取最新的版本）、预发布版本使用“predeploy”作为字段，灰度版本使用“abVersion”作为字段即可，这样就区分开了多版本。" target="_blank" rel="noopener">http://channel.jd.com/fashion.html），字段按照维度存储：正式版本使用当前时间戳存储（这样前端系统可以根据时间戳排序然后获取最新的版本）、预发布版本使用“predeploy”作为字段，灰度版本使用“abVersion”作为字段即可，这样就区分开了多版本。</a><br>3、灰度版本如何控制呢？这个通过控制系统的开关来控制如何灰度；<br>4、如何访问预发布版本呢？比如在URL参数总带上predeploy=true，另外可以限定只有内网可以访问或者访问时带上访问密码，比如pwd=absdfedwqdqw。<br>5、模板变更的历史数据校验问题？比如模板变更了，但是使用历史数据渲染该模板会出现问题，即模板要兼容历史数据的；此处的方案不存在这个问题，因为每次存储时是当时的模板快照，即数据快照和模板快照推送到“发布数据存储Redis”中。</p>
-<p><strong>前端展示系统</strong><br>1、获取当前URL，使用URL作为KEY首先从本机“发布数据存储Redis”获取数据；<br>2、如果没有数据或者异常则从主“发布数据存储Redis”获取；<br>3、如果主“发布数据存储Redis”也发生了异常，那么会直接调用CMS系统暴露的API直接从元数据存储Mysql中获取数据进行处理。</p>
-<p>展示系统的伪代码</p>
-<pre><code>Java代码  
---1、加载Lua模块库  
-local template = require(&quot;resty.template&quot;)  
-template.load = function(s) return s end  
-
---2、动态获取模板  
-local myTemplate = &quot;&lt;html&gt;{* title *}&lt;/html&gt;&quot;  
---3、动态获取数据  
-local data = {title = &quot;iphone6s&quot;}  
-
---4、渲染模板  
-local func = template.compile(myTemplate)  
-local content = func(data)  
-
---5、通过ngx API输出内容  
-ngx.say(content)  
-即模板和数据都是动态获取的，然后使用动态获取的模板和数据进行渲染。
-</code></pre><p>此处假设最新版本的模板或数据有问题怎么办？这个可以从流程上避免：1、首先进行预发布版本发布，测试人员验证没问题后；2、接着发布灰度版本，在灰度时自动去掉CDN功能（即不设置页面的缓存时间），发布验证OK；3、发布正式版本即可；正式版本发布的5分钟内是不设置页面缓存的，这样就可以防止发版时遇到问题，但是问题版本已经在CDN上给全部用户造成问题。当然这个流程很麻烦，可以按照自己的场景进行简化。</p>
-<p>控制系统<br>控制系统用于版本降级和灰度发布的，当然可以把这个功能放在CMS系统中实现。<br>版本降级：假设当前线上的版本遇到问题了，想要快速切换回上一个版本，可以使用控制系统实现，选中其中一个历史版本然后通知给前端展示系统即可，使用URL和当前版本的字段即可，这样前端展示系统就可以自动切换到选中的那个版本；当问题修复后，再删除该降级配置即切换回最新版本。<br>灰度发布：在控制系统控制哪些URL需要灰度发布和灰度发布的比例，同版本降级类似将相关的数据推送到前端展示系统即可，当不想灰度发布时删除相关数据即可。</p>
-<p>数据和模板动态化</p>
-<p>我们将数据和模板都进行动态化存储，这样可以在CMS进行数据和模板的变更；实现了前端和后端开发人员的分离；前端开发人员进行CMS数据配置和模板开发，而后端开发人员只进行系统的维护。另外因为模板的动态化存储，每次发布新的模板不需要老重启前端展示系统，后端开发人员更好地得到了解放。</p>
-<p>模板和数据可以是一对多的关系，即一个模板可以被多个数据使用。假设模板发生变更后，我们可以批量推送模板关联的数据，首先进行预发布版本的发布，测试人员进行验证，验证没问题即可发布正式版本。</p>
-<p>多版本机制</p>
-<p>我们将数据和模板分为多版本后，可以实现：<br>预发布版本：更容易让测试人员在实际环境进行验证；<br>灰度版本：只需要简单的开关控制，就可以进行A/B测试；<br>正式版本：存储多个历史正式版本，假设最新的正式版本出现问题，可以非常快速的切换回之前的版本。</p>
-<p>异常问题</p>
-<p>其中一个担心就是本机从“发布数据存储Redis”和主“发布数据存储Redis”都挂了，那么我们直接调用CMS系统暴露的HTTP服务直接从元数据存储Mysql获取数据。</p>
-<p>另外一个担心是数据和模板获取到了，但是渲染模板出错了，比如遇到500、503；解决方案是：使用上一个版本的数据进行渲染。</p>
-<p>另外还一种问题是数据和模板都没问题，但是因为一些疏忽，渲染出来的页面错乱了或者有些区域出现了空白；对于这种问题没有很好的解决方案；可以根据自己的场景定义异常扫描库，扫描当前版本有异常就发警告给相关人员，并自动降级到上一个版本。</p>
-<p>来源：开涛的博客</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2094,7 +2047,7 @@ ngx.say(content)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-count">130</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2111,7 +2064,7 @@ ngx.say(content)
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
