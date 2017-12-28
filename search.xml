@@ -4,6 +4,16 @@
   
     
     <entry>
+      <title><![CDATA[CentOS中修改系统默认语言]]></title>
+      <url>http://www.wulai.me/2017/12/27/CentOS%E4%B8%AD%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E8%AF%AD%E8%A8%80/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>操作系统安装时选择了中文字符，导致命令行下的错误提示信息也显示中文。这样无法在google上搜索到相对应的解决方法。所以需要临时修改提示信息为英文</p>
+<pre><code>#export LANG=&quot;en_US.UTF-8&quot;
+</code></pre>]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[centos 6.5 把光盘设置为本地yum源]]></title>
       <url>http://www.wulai.me/2017/12/20/centos-6-5-%E6%8A%8A%E5%85%89%E7%9B%98%E8%AE%BE%E7%BD%AE%E4%B8%BA%E6%9C%AC%E5%9C%B0yum%E6%BA%90/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>为了搞学习内核编译，需要安装一些开发工具包，索性把光盘镜像设置成本地yum源，这样更快些！以下是一些基本步骤：</p>
