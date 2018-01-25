@@ -4,6 +4,23 @@
   
     
     <entry>
+      <title><![CDATA[Nginx 设置临时维护页面]]></title>
+      <url>http://www.wulai.me/2018/01/25/Nginx-%E8%AE%BE%E7%BD%AE%E4%B8%B4%E6%97%B6%E7%BB%B4%E6%8A%A4%E9%A1%B5%E9%9D%A2/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>nginx维护页面处理-全部URL指向同一个页面<br>一般来说nginx的维护页面需要把所有访问本站的链接全部重定向到某个指定页面</p>
+<h2 id="1-rewrite"><a href="#1-rewrite" class="headerlink" title="1.rewrite"></a>1.rewrite</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rewrite ^(.*)$ /maintain.html break;</span><br></pre></td></tr></table></figure>
+<p>注意这句后面如果有重定向等语句，那么后面执行的重定向等语句需要全部注释掉</p>
+<h2 id="2-使用状态码"><a href="#2-使用状态码" class="headerlink" title="2.使用状态码"></a>2.使用状态码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location /&#123;</span><br><span class="line">return 503;</span><br><span class="line">&#125;</span><br><span class="line">#注意其他location优先级高的匹配均需要注释掉</span><br><span class="line">error_page 503 /maintain.html;</span><br></pre></td></tr></table></figure>
+<p>每当服务器遇到 502 代码时，就自动转到临时维护的静态页：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">listen 80;</span><br><span class="line">server_name mydomain.com;</span><br><span class="line"></span><br><span class="line"># ... 省略掉 N 行代码</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">error_page 502 = @tempdown;</span><br><span class="line"></span><br><span class="line">location @tempdown &#123;</span><br><span class="line">rewrite ^(.*)$ /pages/maintain.html break;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果你只想要【临时维护页面】就这样写（适合服务器更新东西或者改版）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">listen 80;</span><br><span class="line">server_name mydomain.com;</span><br><span class="line"></span><br><span class="line"># ... 省略掉 N 行代码</span><br><span class="line"></span><br><span class="line"># 所有页面都转跳到维护页</span><br><span class="line">rewrite ^(.*)$ /pages/maintain.html break;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><em> 注：</em></strong><br><strong><em> 临时维护页要找对正确的路径，我的例子是 <a href="http://mydomain.com/page/maintain.html。所以路径是" target="_blank" rel="noopener">http://mydomain.com/page/maintain.html。所以路径是</a> /page/maintain.html </em></strong></p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[文件夹对比并提取差异]]></title>
       <url>http://www.wulai.me/2018/01/10/%E6%96%87%E4%BB%B6%E5%A4%B9%E5%AF%B9%E6%AF%94%E5%B9%B6%E6%8F%90%E5%8F%96%E5%B7%AE%E5%BC%82/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="STEP1"><a href="#STEP1" class="headerlink" title="STEP1"></a>STEP1</h2><p>A1.1是新文件夹，A1.0是旧文件夹，out是放置 A1.0到A1.1的保持目录结构的增量文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync --dry-run -rcnC --out-format=&quot;%n&quot;  A1.1/  A1.0/</span><br></pre></td></tr></table></figure></p>

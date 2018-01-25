@@ -272,6 +272,162 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/09/27/MySQL-字符串拼接/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/27/MySQL-字符串拼接/" itemprop="url">
+                  MySQL 字符串拼接
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-27T10:43:00+08:00">
+              2017-09-27
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-09-27T10:46:24+08:00">
+              2017-09-27
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><p>在Mysql 数据库中存在两种字符串连接操作.具体操作如下</p>
+<p>一. 语法:</p>
+<ol>
+<li><p>CONCAT(string1,string2,…)   说明 : string1,string2代表字符串,concat函数在连接字符串的时候，只要其中一个是NULL,那么将返回NULL</p>
+<p>例1:</p>
+</li>
+</ol>
+<p>   例2:</p>
+<ol>
+<li><p>CONCAT_WS(separator,str1,str2,…)</p>
+<p>说明 : string1,string2代表字符串,concat_ws 代表 concat with separator,第一个参数是其它参数的分隔符。分隔符的位置放在要连接的两个字符串之间。分隔符可以是一个字符串，也可以是其它参数。如果分隔符为 NULL，则结果为 NULL。函数会忽略任何分隔符参数后的 NULL 值。</p>
+<p>举例1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   mysql&gt; select concat_ws(&apos;#&apos;,&apos;dbdh=&apos;,&apos;NorthEastTrcoon&apos;,null) AS dbdh_name_three;</span><br><span class="line">+-----------------------+</span><br><span class="line">| dbdh_name_three       |</span><br><span class="line">+-----------------------+</span><br><span class="line">| dbdh=#NorthEastTrcoon |</span><br><span class="line">+-----------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>例2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select concat_ws(null,&apos;dbdh=&apos;,&apos;NorthEastTrcoon&apos;,null) AS dbdh_name_fourth</span><br><span class="line">;</span><br><span class="line">+------------------+</span><br><span class="line">| dbdh_name_fourth |</span><br><span class="line">+------------------+</span><br><span class="line">| NULL             |</span><br><span class="line">+------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>例3:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">     mysql&gt; select concat_ws(&apos;*&apos;,&apos;dbdh=&apos;,&apos;NorthEastTrcoon&apos;,null) AS dbdh_name_fifth;</span><br><span class="line">+-----------------------+</span><br><span class="line">| dbdh_name_fifth       |</span><br><span class="line">+-----------------------+</span><br><span class="line">| dbdh=*NorthEastTrcoon |</span><br><span class="line">+-----------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li>MySQL中group_concat函数<br>完整的语法如下：<br> group_concat([DISTINCT] 要连接的字段 [Order BY ASC/DESC 排序字段] [Separator ‘分隔符’])</li>
+</ol>
+<p>基本查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from stu1;</span><br><span class="line">+------+------+</span><br><span class="line">| id| name |</span><br><span class="line">+------+------+</span><br><span class="line">|1 | 10|</span><br><span class="line">|1 | 20|</span><br><span class="line">|1 | 20|</span><br><span class="line">|2 | 20|</span><br><span class="line">|3 | 200   |</span><br><span class="line">|3 | 500   |</span><br><span class="line">+------+------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>以id分组，把name字段的值打印在一行，逗号分隔(默认)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(name) from aa group by id;</span><br><span class="line">+------+--------------------+</span><br><span class="line">| id| group_concat(name) |</span><br><span class="line">+------+--------------------+</span><br><span class="line">|1 | 10,20,20|</span><br><span class="line">|2 | 20 |</span><br><span class="line">|3 | 200,500|</span><br><span class="line">+------+--------------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>以id分组，把name字段的值打印在一行，分号分隔</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(name separator &apos;;&apos;) from aa group by id;</span><br><span class="line">+------+----------------------------------+</span><br><span class="line">| id| group_concat(name separator &apos;;&apos;) |</span><br><span class="line">+------+----------------------------------+</span><br><span class="line">|1 | 10;20;20 |</span><br><span class="line">|2 | 20|</span><br><span class="line">|3 | 200;500   |</span><br><span class="line">+------+----------------------------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>以id分组，把去冗余的name字段的值打印在一行，</p>
+<p>逗号分隔</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(distinct name) from aa group by id;</span><br><span class="line">+------+-----------------------------+</span><br><span class="line">| id| group_concat(distinct name) |</span><br><span class="line">+------+-----------------------------+</span><br><span class="line">|1 | 10,20|</span><br><span class="line">|2 | 20   |</span><br><span class="line">|3 | 200,500 |</span><br><span class="line">+------+-----------------------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>以id分组，把name字段的值打印在一行，逗号分隔，以name排倒序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(name order by name desc) from aa group by id;</span><br><span class="line">+------+---------------------------------------+</span><br><span class="line">| id| group_concat(name order by name desc) |</span><br><span class="line">+------+---------------------------------------+</span><br><span class="line">|1 | 20,20,10   |</span><br><span class="line">|2 | 20|</span><br><span class="line">|3 | 500,200|</span><br><span class="line">+------+---------------------------------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>还有一个简单的连接方式为: ||</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select *  from student;</span><br><span class="line">+----+------+-------+----------+------------+</span><br><span class="line">| id | age  | score | name     | birth      |</span><br><span class="line">+----+------+-------+----------+------------+</span><br><span class="line">|  1 |   23 |    78 | 李四     | 2017-10-10 |</span><br><span class="line">|  2 |   24 |    78 | zhangsan | 2017-10-10 |</span><br><span class="line">|  3 |   25 |    99 | 王五     | 2016-05-17 |</span><br><span class="line">+----+------+-------+----------+------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select id+999,name,name+99,name+&apos;999&apos; from student;</span><br><span class="line">+--------+----------+---------+------------+</span><br><span class="line">| id+999 | name     | name+99 | name+&apos;999&apos; |</span><br><span class="line">+--------+----------+---------+------------+</span><br><span class="line">|   1000 | 李四     |      99 |        999 |</span><br><span class="line">|   1001 | zhangsan |      99 |        999 |</span><br><span class="line">|   1002 | 王五     |      99 |        999 |</span><br><span class="line">+--------+----------+---------+------------+</span><br><span class="line">3 rows in set, 6 warnings (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/09/14/LNMP的并发与资源分配/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1498,128 +1654,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/07/31/Centos-7-failed-to-bring-up-down-networking-configure-interface-for-a-trunk-interface/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/31/Centos-7-failed-to-bring-up-down-networking-configure-interface-for-a-trunk-interface/" itemprop="url">
-                  Centos 7: failed to bring up/down networking: configure interface for a trunk interface
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-31T12:41:46+08:00">
-              2017-07-31
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-07-31T12:42:47+08:00">
-              2017-07-31
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><p>it seems that disabling NetworkManager did the trick :)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop NetworkManager</span><br><span class="line">systemctl disable NetworkManager</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1665,7 +1699,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">136</span>
+              <span class="site-state-item-count">137</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
