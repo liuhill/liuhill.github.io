@@ -60,6 +60,7 @@
 </li>
 </ul>
 <p>前二次，我安装sphinx，必须在mysql中安装sphinx存储插件，而这次没有，看下图</p>
+<img src="http://res.hillock.com.cn/wulai/images/sphinx_no_plugin.jpg">
 <h3 id="五，测试sphinx全文检索"><a href="#五，测试sphinx全文检索" class="headerlink" title="五，测试sphinx全文检索"></a>五，测试sphinx全文检索</h3><ul>
 <li>1,命令行的测试</li>
 </ul>
