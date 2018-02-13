@@ -84,7 +84,7 @@
 
 
 
-<meta name="description" content="解决方法：123UPDATE tablename SET field = REPLACE(REPLACE(field, CHAR(10), &amp;apos;&amp;apos;), CHAR(13), &amp;apos;&amp;apos;);char(10):  换行符char(13):  回车符 MySQL的">
+<meta name="description" content="解决方法：123UPDATE tablename SET field = REPLACE(REPLACE(field, CHAR(10), &amp;apos;&amp;apos;), CHAR(13), &amp;apos;&amp;apos;);char(10):  换行符char(13):  回车符 MySQL的trim函数没办法去掉回车和换行，只能去掉多余的空格，可以用MySQL的replace函数，解决掉这个问题，具">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL 去掉字段中的换行和回车符">
 <meta property="og:url" content="http://www.wulai.me/2017/05/22/MySQL-去掉字段中的换行和回车符/index.html">
@@ -453,7 +453,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">140</span>
+              <span class="site-state-item-count">141</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -470,7 +470,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

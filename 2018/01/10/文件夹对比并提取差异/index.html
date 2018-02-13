@@ -84,14 +84,14 @@
 
 
 
-<meta name="description" content="STEP1A1.1是新文件夹，A1.0是旧文件夹，out是放置 A1.0到A1.1的保持目录结构的增量文件。1rsync --dry-run -rcnC --out-format=&amp;quot;%n&amp;quot;  A1.1/  A1.0/ 注意该处的-C参数是按照cvs的ignore规则来过滤不需要同步的">
+<meta name="description" content="STEP1A1.1是新文件夹，A1.0是旧文件夹，out是放置 A1.0到A1.1的保持目录结构的增量文件。1rsync --dry-run -rcnC --out-format=&amp;quot;%n&amp;quot;  A1.1/  A1.0/ 注意该处的-C参数是按照cvs的ignore规则来过滤不需要同步的文件，在CVS中，默认是不会提交二进制文件的，所以如果需要进行二进制文件提取，那就不要加C.执">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文件夹对比并提取差异">
 <meta property="og:url" content="http://www.wulai.me/2018/01/10/文件夹对比并提取差异/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="STEP1A1.1是新文件夹，A1.0是旧文件夹，out是放置 A1.0到A1.1的保持目录结构的增量文件。1rsync --dry-run -rcnC --out-format=&amp;quot;%n&amp;quot;  A1.1/  A1.0/ 注意该处的-C参数是按照cvs的ignore规则来过滤不需要同步的文件，在CVS中，默认是不会提交二进制文件的，所以如果需要进行二进制文件提取，那就不要加C.执">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-10T02:02:21.241Z">
+<meta property="og:updated_time" content="2018-01-10T02:02:21.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件夹对比并提取差异">
 <meta name="twitter:description" content="STEP1A1.1是新文件夹，A1.0是旧文件夹，out是放置 A1.0到A1.1的保持目录结构的增量文件。1rsync --dry-run -rcnC --out-format=&amp;quot;%n&amp;quot;  A1.1/  A1.0/ 注意该处的-C参数是按照cvs的ignore规则来过滤不需要同步的文件，在CVS中，默认是不会提交二进制文件的，所以如果需要进行二进制文件提取，那就不要加C.执">
@@ -461,7 +461,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">140</span>
+              <span class="site-state-item-count">141</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -478,7 +478,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

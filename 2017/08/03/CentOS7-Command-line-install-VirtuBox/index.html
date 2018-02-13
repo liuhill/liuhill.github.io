@@ -84,7 +84,7 @@
 
 
 
-<meta name="description" content="1.导出OVA -&amp;gt; test.ova2.copy到服务器&amp;amp;导入1[root@localhost vm] BoxManage import test.ovf 查看虚拟机镜像文件配置信息12345678910111213141516171819202122232425262728293031">
+<meta name="description" content="1.导出OVA -&amp;gt; test.ova2.copy到服务器&amp;amp;导入1[root@localhost vm] BoxManage import test.ovf 查看虚拟机镜像文件配置信息1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS7 Command line install VirtuBox">
 <meta property="og:url" content="http://www.wulai.me/2017/08/03/CentOS7-Command-line-install-VirtuBox/index.html">
@@ -467,7 +467,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">140</span>
+              <span class="site-state-item-count">141</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -484,7 +484,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -548,7 +548,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-导出OVA-gt-test-ova"><span class="nav-number">1.</span> <span class="nav-text">1.导出OVA -> test.ova</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-copy到服务器-amp-导入"><span class="nav-number">2.</span> <span class="nav-text">2.copy到服务器&导入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看虚拟机镜像文件配置信息"><span class="nav-number">3.</span> <span class="nav-text">查看虚拟机镜像文件配置信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-检查服务器的网卡名称"><span class="nav-number">4.</span> <span class="nav-text">3.检查服务器的网卡名称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-启动网卡配置"><span class="nav-number">5.</span> <span class="nav-text">5. 启动网卡配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-安装内核"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 安装内核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-查看内核"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 查看内核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-下载匹配内核"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 下载匹配内核</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装依赖包"><span class="nav-number">5.3.1.</span> <span class="nav-text">安装依赖包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">5.4.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看Bradge接口"><span class="nav-number">6.</span> <span class="nav-text">查看Bradge接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改网卡设备的名称"><span class="nav-number">6.1.</span> <span class="nav-text">修改网卡设备的名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动虚拟机"><span class="nav-number">6.2.</span> <span class="nav-text">启动虚拟机</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-导出OVA-gt-test-ova"><span class="nav-number">1.</span> <span class="nav-text">1.导出OVA -&gt; test.ova</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-copy到服务器-amp-导入"><span class="nav-number">2.</span> <span class="nav-text">2.copy到服务器&amp;导入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看虚拟机镜像文件配置信息"><span class="nav-number">3.</span> <span class="nav-text">查看虚拟机镜像文件配置信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-检查服务器的网卡名称"><span class="nav-number">4.</span> <span class="nav-text">3.检查服务器的网卡名称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-启动网卡配置"><span class="nav-number">5.</span> <span class="nav-text">5. 启动网卡配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-安装内核"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 安装内核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-查看内核"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 查看内核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-下载匹配内核"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 下载匹配内核</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装依赖包"><span class="nav-number">5.3.1.</span> <span class="nav-text">安装依赖包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">5.4.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看Bradge接口"><span class="nav-number">6.</span> <span class="nav-text">查看Bradge接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改网卡设备的名称"><span class="nav-number">6.1.</span> <span class="nav-text">修改网卡设备的名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动虚拟机"><span class="nav-number">6.2.</span> <span class="nav-text">启动虚拟机</span></a></li></ol></li></ol></div>
             
 
           </div>
