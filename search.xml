@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title><![CDATA[lnmp在浏览器显示php错误信息]]></title>
+      <url>http://www.wulai.me/2018/02/14/lnmp%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%BE%E7%A4%BAphp%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><ul>
+<li>1、下载安装lnmp一建安装脚本 <a href="https://lnmp.org/" target="_blank" rel="noopener">https://lnmp.org/</a></li>
+<li>2、修改<code>/usr/local/php/etc/php-fpm.conf</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">pid = /usr/local/php/var/run/php-fpm.pid</span><br><span class="line">error_log = /usr/local/php/var/log/php-fpm.log</span><br><span class="line">log_level = notice</span><br><span class="line"></span><br><span class="line">[www]</span><br><span class="line">catch_workers_output = yes</span><br><span class="line">listen = /tmp/php-cgi.sock</span><br><span class="line">listen.backlog = -1</span><br><span class="line">listen.allowed_clients = 127.0.0.1</span><br><span class="line">listen.owner = www</span><br><span class="line">listen.group = www</span><br><span class="line">listen.mode = 0666</span><br><span class="line">user = www</span><br><span class="line">group = www</span><br><span class="line">pm = dynamic</span><br><span class="line">pm.max_children = 80</span><br><span class="line">pm.start_servers = 40</span><br><span class="line">pm.min_spare_servers = 40</span><br><span class="line">pm.max_spare_servers = 80</span><br><span class="line">request_terminate_timeout = 100</span><br><span class="line">request_slowlog_timeout = 0</span><br><span class="line">slowlog = var/log/slow.log</span><br><span class="line">php_flag[display_errors] = On</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[ffmpeg 多个音频合并 截取 拆分]]></title>
       <url>http://www.wulai.me/2018/01/29/ffmpeg-%E5%A4%9A%E4%B8%AA%E9%9F%B3%E9%A2%91%E5%90%88%E5%B9%B6-%E6%88%AA%E5%8F%96-%E6%8B%86%E5%88%86/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="多个mp3文件合并成一个mp3文件"><a href="#多个mp3文件合并成一个mp3文件" class="headerlink" title="多个mp3文件合并成一个mp3文件"></a>多个mp3文件合并成一个mp3文件</h3><p>一种方法是连接到一起<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg64.exe -i &quot;concat:123.mp3|124.mp3&quot; -acodec copy output.mp3</span><br></pre></td></tr></table></figure></p>

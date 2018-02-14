@@ -272,6 +272,260 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/04/27/e7-9f-a5-e9-81-93-e8-bf-9920-e4-b8-aa-e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f-ef-bc-8c-e8-83-bd-e8-ae-a9-e4-bd-a0-e5-b0-91-e5-86-991000-e8-a1-8c-e4-bb-a3-e7-a0-81/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/27/e7-9f-a5-e9-81-93-e8-bf-9920-e4-b8-aa-e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f-ef-bc-8c-e8-83-bd-e8-ae-a9-e4-bd-a0-e5-b0-91-e5-86-991000-e8-a1-8c-e4-bb-a3-e7-a0-81/" itemprop="url">
+                  知道这20个正则表达式，能让你少写1,000行代码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-27T13:23:09+08:00">
+              2016-04-27
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2016-08-29T13:51:07+08:00">
+              2016-08-29
+            </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/未分类/" itemprop="url" rel="index">
+                    <span itemprop="name">未分类</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><p>正则表达式，一个十分古老而又强大的文本处理工具，仅仅用一段非常简短的表达式语句，便能够快速实现一个非常复杂的业务逻辑。熟练地掌握正则表达式的话，能够使你的开发效率得到极大的提升。</p>
+<p>正则表达式经常被用于字段或任意字符串的校验，如下面这段校验基本日期格式的JavaScript代码：</p>
+<pre><code>var reg = /^(\\d{1,4})(-|\\/)(\\d{1,2})\\2(\\d{1,2})$/; 
+var r = fieldValue.match(reg);             
+if(r==null)alert(&apos;Date format error!&apos;);
+
+
+下面是技匠整理的，在前端开发中经常使用到的20个正则表达式。
+</code></pre><ul>
+<li><p>1、校验密码强度    密码的强度必须是包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间。</p>
+<p>^(?=.<em>\d)(?=.</em>[a-z])(?=.*[A-Z]).{8,10}$</p>
+</li>
+</ul>
+<ul>
+<li><p>2、校验中文    字符串仅能是中文。</p>
+<p>^[\u4e00-\u9fa5]{0,}$</p>
+</li>
+</ul>
+<ul>
+<li><p>3、由数字、26个英文字母或下划线组成的字符串</p>
+<p>^\w+$</p>
+</li>
+</ul>
+<ul>
+<li><p>4、校验E-Mail 地址    同密码一样，下面是E-mail地址合规性的正则检查语句。</p>
+<p>[\w!#$%&amp;’<em>+/=?^_`{|}~-]+(?:\.[\w!#$%&amp;’</em>+/=?^_`{|}~-]+)<em>@(?:[\w](?:[\w-]</em>[\w])?\.)+<a href="?:[\\w-]*[\\w]">\w</a>?</p>
+</li>
+</ul>
+<ul>
+<li><p>5、校验身份证号码</p>
+<p>下面是身份证号码的正则校验。15 或 18位。</p>
+<p>15位：</p>
+<p>^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$</p>
+</li>
+</ul>
+<pre><code>18位：
+
+^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)$
+</code></pre><ul>
+<li><p>6、校验日期    “yyyy-mm-dd“ 格式的日期校验，已考虑平闰年。</p>
+<p>^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$</p>
+</li>
+</ul>
+<ul>
+<li><p>7、校验金额    金额校验，精确到2位小数。</p>
+<p>^[0-9]+(.[0-9]{2})?$</p>
+</li>
+</ul>
+<ul>
+<li><p>8、校验手机号    下面是国内 13、15、18开头的手机号正则表达式。</p>
+<p>^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$</p>
+</li>
+</ul>
+<ul>
+<li><p>9、判断IE的版本    IE目前还没被完全取代，很多页面还是需要做版本兼容，下面是IE版本检查的表达式。</p>
+<p>^.<em>MSIE <a href="?:\\.[0-9]+">5-8</a>?(?!.</em>Trident\/[5-9]\.0).*$</p>
+</li>
+</ul>
+<ul>
+<li><p>10、校验IP-v4地址    IP4 正则语句。</p>
+<p>\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b</p>
+</li>
+</ul>
+<ul>
+<li><p>11、校验IP-v6地址    IP6 正则语句。</p>
+<p>(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))</p>
+</li>
+</ul>
+<ul>
+<li><p>12、检查URL的前缀    应用开发中很多时候需要区分请求是HTTPS还是HTTP，通过下面的表达式可以取出一个url的前缀然后再逻辑判断。</p>
+<p>if (!s.match(/^[a-zA-Z]+:\/\//))<br>{</p>
+<pre><code>s = &apos;http://&apos; + s;
+</code></pre><p>}</p>
+</li>
+</ul>
+<ul>
+<li>13、提取URL链接    下面的这个表达式可以筛选出一段文本中的URL。<br>^(f|ht){1}(tp|tps):&#92;/&#92;/([&#92;w-]+&#92;.)+[&#92;w-]+(&#92;/[&#92;w- ./?%&amp;=]*)?<p></p></li>
+<li><p>14、文件路径及扩展名校验    验证文件路径和扩展名</p>
+<p>^([a-zA-Z]\:|\\)\\([^\\]+\\)<em>[^\/:</em>?”&lt;&gt;|]+\.txt(l)?$</p>
+</li>
+</ul>
+<ul>
+<li><p>15、提取Color Hex Codes    有时需要抽取网页中的颜色代码，可以使用下面的表达式。</p>
+<pre><code>\\#([a-fA-F]|[0-9]){3,6}
+</code></pre></li>
+</ul>
+<ul>
+<li><p>16、提取网页图片    假若你想提取网页中所有图片信息，可以利用下面的表达式。</p>
+<pre><code>\\&lt; *[img][^\\&gt;]*[src] *= *[\\&quot;\\&apos;]{0,1}([^\\&quot;\\&apos;\\ &gt;]*)
+</code></pre></li>
+</ul>
+<ul>
+<li><p>17、提取页面超链接    提取html中的超链接。</p>
+<pre><code>(&lt;a\\s*(?!.*\\brel=)[^&gt;]*)(href=&quot;https?://)((?!(?:(?:www\\.)?&apos;.implode(&apos;|(?:www\\.)?&apos;, $follow_list).&apos;))[^&quot;]+)&quot;((?!.*\\brel=)[^&gt;]*)(?:[^&gt;]*)&gt;
+</code></pre></li>
+</ul>
+<ul>
+<li><p>18、精炼CSS    通过下面的表达式，可以搜索相同属性值的CSS，从而达到精炼代码的目的。</p>
+<pre><code>^\\s*[a-zA-Z\\-]+\\s*[:]{1}\\s[a-zA-Z0-9\\s.#]+[;]{1}
+</code></pre></li>
+</ul>
+<ul>
+<li><p>19、抽取注释    如果你需要移除HMTL中的注释，可以使用如下的表达式。</p>
+ <!--(.*?)-->
+</li>
+</ul>
+<ul>
+<li><p>20、匹配HTML标签    通过下面的表达式可以匹配出HTML中的标签。</p>
+<p>&lt;/?\w+((\s+\w+(\s<em>=\s</em>(?:”.<em>?”|’.</em>?’|[\^’”&gt;\s]+))?)+\s<em>|\s</em>)/?&gt;</p>
+</li>
+</ul>
+<h2 id="正则表达式的相关语法"><a href="#正则表达式的相关语法" class="headerlink" title="正则表达式的相关语法"></a>正则表达式的相关语法</h2><p></p><p>下面是我找到的一张非常不错的正则表达式 Cheat Sheet，可以用来快速查找相关语法。<br><img src="http://res.hillock.com.cn/web/reg1" alt="正则表达图"></p>
+<h2 id="学习正则表达式"><a href="#学习正则表达式" class="headerlink" title="学习正则表达式"></a>学习正则表达式</h2><p>我在网上看到了一篇相当不错的正则表达式快速学习指南，有兴趣继续深入学习的同学可以参考。<br><img src="http://res.hillock.com.cn/web/reg2" alt="图像"></p>
+<h2 id="正则表达式在线测试工具"><a href="#正则表达式在线测试工具" class="headerlink" title="正则表达式在线测试工具"></a>正则表达式在线测试工具</h2><p>regex101是一个非常不错的正则表达式在线测试工具，你可以直接在线测试你的正则表达式哦。</p>
+<p><img src="http://res.hillock.com.cn/web/reg3" alt="学习正则表达"></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/04/25/linux-ll-e5-91-bd-e4-bb-a4-e5-88-97-e5-87-ba-e6-96-87-e4-bb-b6-e5-88-b6-e5-ae-9a-e7-9a-84-e5-b1-9e-e6-80-a7/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1666,146 +1920,6 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/01/03/e5-95-86-e4-b8-9a-e6-a8-a1-e5-bc-8f/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/03/e5-95-86-e4-b8-9a-e6-a8-a1-e5-bc-8f/" itemprop="url">
-                  商业模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-03T12:49:41+08:00">
-              2016-01-03
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2016-08-03T09:53:27+08:00">
-              2016-08-03
-            </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/未分类/" itemprop="url" rel="index">
-                    <span itemprop="name">未分类</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><p>不能够形成一个生态的商业模式都是危险的。可能就是庞氏骗局或者传销</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1851,7 +1965,7 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">141</span>
+              <span class="site-state-item-count">142</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
