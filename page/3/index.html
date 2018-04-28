@@ -272,6 +272,341 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/09/14/LNMP的并发与资源分配/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/14/LNMP的并发与资源分配/" itemprop="url">
+                  LNMP的并发与资源分配
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-14T11:01:35+08:00">
+              2017-09-14
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-09-14T11:48:25+08:00">
+              2017-09-14
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><h1 id="0-写作背景"><a href="#0-写作背景" class="headerlink" title="0. 写作背景"></a>0. 写作背景</h1><p>好久没有写博客了，前端时间来了一场说走就走的旅行，和爱人一起辞职，去云南玩了半个月，才刚回来，最近一段时间在找工作，没事就上网看看技术相关的文章，充充电，昨天偶尔发现一遍讲解LNMP的并发与资源分配的文章，感觉不错，和大家分享下。<br>很多时候面试官都会问你，你们的程序性能如何？程序的并发可以达到多少？程序的瓶颈在哪儿？为了满足业务需求应该购买多少台服务器？负载均衡中php应用服务器需要多少台？<br>可能这些问题在面试中会设置一个应用的场景及一些前提条件，让面试的人去设计，并提出看法建议，能够回答得很好的人还是比较少的。</p>
+<h1 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h1><h2 id="1-1-LNMP中的N是nginx充当Web-Server"><a href="#1-1-LNMP中的N是nginx充当Web-Server" class="headerlink" title="1.1 LNMP中的N是nginx充当Web Server"></a>1.1 LNMP中的N是nginx充当Web Server</h2><p>内容的分发者，会在文件系统找到相应的文件，就返回给浏览器，如：nginx。如果是静态的文件，就可以直接返回，但是如果是index.php需要解析并执行的脚本文件时，Web Server就无力了，需要将请求转发给相应的脚本语言的解析器来解释并执行，最终将程序的执行结果，返回给Web Server，再返回给浏览器。</p>
+<h2 id="1-2-LNMP中的P是php充当后端的逻辑处理程序"><a href="#1-2-LNMP中的P是php充当后端的逻辑处理程序" class="headerlink" title="1.2 LNMP中的P是php充当后端的逻辑处理程序"></a>1.2 LNMP中的P是php充当后端的逻辑处理程序</h2><p>那么php与nginx的常规协作方式是如何的呢？需要我们明确几个概念</p>
+<h2 id="1-3-cgi"><a href="#1-3-cgi" class="headerlink" title="1.3 cgi"></a>1.3 cgi</h2><p>通用网关接口，是HTTP协议中描述的，Web Server与后端处理程序进程间通信的协议</p>
+<h2 id="1-4-php-cgi"><a href="#1-4-php-cgi" class="headerlink" title="1.4 php-cgi"></a>1.4 php-cgi</h2><p>php实现了cgi协议，使得web server与php共同完成一个动态网页的请求响应</p>
+<h2 id="1-5-fastcgi"><a href="#1-5-fastcgi" class="headerlink" title="1.5 fastcgi"></a>1.5 fastcgi</h2><p>是为了解决cgi性能问题，而规范的另外一种协议，为什么说解决cgi性能问题，因为在面对各大中型网站的业务需求中，cgi程序表现得越来越无力，因为cgi程序在每次接收到请求时都需要启动新的进程，并初始化环境，然后执行程序，具体的协议内容，在此不引述。</p>
+<h2 id="1-6-php-fpm"><a href="#1-6-php-fpm" class="headerlink" title="1.6 php-fpm"></a>1.6 php-fpm</h2><p>实现了fastcgi协议，是php-cgi的进程管理器，解决高并发网站的性能问题。<br>在最终回答LNMP的并发考虑与资源分配还需要明确的几个概念</p>
+<h2 id="1-7-并发"><a href="#1-7-并发" class="headerlink" title="1.7 并发"></a>1.7 并发</h2><p>一般由单位内完成的请求数来衡量，如，每秒事务数（TPS），每秒HTTP请求数（HPS），每秒查询数（QPS）。通常情况下，我们说PHP的并发，都是指一秒内PHP完成的动态请求的次数。如某网站高峰期的动态请求并发为5000每秒，这个数字不算太高，但也不低。一般日活跃用户数在1000万-5000万的网站应用才能达到这个级别。</p>
+<h2 id="1-8-性能"><a href="#1-8-性能" class="headerlink" title="1.8 性能"></a>1.8 性能</h2><p>一般是指应用程序的处理速度，如果php的应用程序，打开一个页面（执行一个脚本程序）通常需要在50-100ms完成，这对程序的性能要求还是比较高的。但是这还仅仅只是程序处理，php处理完成之后，还要交给web server，web server再将数据返回浏览器，这中间会有一个网络延迟，通常网络正常的情况下，需要大约100ms，最终一个动态网页的请求大约200ms（理想的情况下）可以到达用户浏览器端（仅仅是一个html结构）。</p>
+<h1 id="2-资源分配"><a href="#2-资源分配" class="headerlink" title="2.资源分配"></a>2.资源分配</h1><h2 id="2-1-php-fpm进程数"><a href="#2-1-php-fpm进程数" class="headerlink" title="2.1 php-fpm进程数"></a>2.1 php-fpm进程数</h2><p>按照上面的描述，并发为5000每秒，每个请求完成大约200ms（具体页面要具体分析，这里只是一个理想值），如果只有5台PHP应用程序服务器，那么每台机器平均为并发1000每秒，如果是使用nginx+php-fpm的架构，php-fpm的php-cgi进程管理器的配置应该如何呢？我计算的结果为（具体的配置项说明在后文）：</p>
+<ul>
+<li>pm=static</li>
+<li>pm.max_children=100<br>上面的100是如何得来的，由于机器平均并发为1000每秒，每个动态请求的处理时间为100ms，也就是说1个php-fpm的worker处理进程在1秒内可以处理10个请求，100个php-fpm的worker处理进程，就可以处理1000个请求。<br>当然需要结合服务器硬件资源来进行配置，如果配置不当，很容易在请求高峰期或者流量猛增导致服务器宕机。</li>
+</ul>
+<h2 id="2-2-网络带宽"><a href="#2-2-网络带宽" class="headerlink" title="2.2 网络带宽"></a>2.2 网络带宽</h2><p>网络带宽也会是一个重要的因素，如果你的服务处理很强，但是用户的请求和响应不能及时到达也是白忙活，这个参数如何计算呢？<br>并发5000每秒，每个请求的输出为20K，则5000x20K=100000K=100M<br>这就要求你的公网负载均衡器外网出口带宽至少要达到100M</p>
+<h2 id="2-3-内存"><a href="#2-3-内存" class="headerlink" title="2.3 内存"></a>2.3 内存</h2><p>上述中100个php-fpm的worker处理进程，理论上如果服务器只运行php-fpm，那么我们可以将服务器内存的一半分配给php-fpm，通常情况下，我们可以认为一个php-fpm的worker处理进程占用内存20M，那么100x20M=2G，也就是说明服务器的内存大约为4G</p>
+<h2 id="2-4-CPU"><a href="#2-4-CPU" class="headerlink" title="2.4 CPU"></a>2.4 CPU</h2><p>由于php-fpm是一个多进程的模型应用，CPU进程调度消耗也是很大的，并且PHP应用程序有问题也会导致CPU占用率高，这就没有量化的指标，需要具体情况具体分析了。但是有一个小建议，可以部署一个crontab每隔一分钟检测cpu占用率超过多少就kill掉相应的php-fpm的worker处理进程。</p>
+<h2 id="2-5-php-fpm-Unix-Socket"><a href="#2-5-php-fpm-Unix-Socket" class="headerlink" title="2.5 php-fpm Unix Socket"></a>2.5 php-fpm Unix Socket</h2><p>如果nginx与php在同一台机器，nginx与php-fpm使用unix域套接字代替tcp socke进行通信，这个配置挺关键的，纯echo的ab测试，采用unix域套接字每秒请求数提升10%-20%</p>
+<p>即nginx中配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastcgi_pass unix:/data/server/var/php/php-fpm.sock;</span><br></pre></td></tr></table></figure></p>
+<p>php-fpm.conf中配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listen = /data/server/var/php/php-fpm.sock</span><br></pre></td></tr></table></figure></p>
+<p>最后遇到很多同学对php-fpm的进程管理器的核心配置不太了解，下面是我翻译的配置说明：</p>
+<h1 id="3-php-fpm配置项"><a href="#3-php-fpm配置项" class="headerlink" title="3. php-fpm配置项"></a>3. php-fpm配置项</h1><h2 id="3-1-pm"><a href="#3-1-pm" class="headerlink" title="3.1 pm"></a>3.1 pm</h2><ul>
+<li>static 一个固定的值，由pm.max_children指定</li>
+<li>dynamic 动态的（工作方式和Apache的prefork模式一致），但是保持至少一个，由<ul>
+<li>pm.max_children 在同一时间最大的进程数</li>
+<li>pm.start_servers php-fpm启动时开启的等待请求到来的进程数</li>
+<li>pm.min_spare_servers 在空闲状态下，运行的最小进程数，如果小于此值，会创建新的进程</li>
+<li>pm.max_spare_servers 在空闲状态下，运行的最大进程数，如果大于此值，会kill部分进程</li>
+<li>ondemand 启动时不会创建进程，当请求达到时创建子进程处理请求</li>
+<li>pm.max_children 在同一时间最大的进程数</li>
+<li>pm.process_idle_timeout 空闲多少秒之后进程会被kill</li>
+</ul>
+</li>
+<li>pm = static</li>
+</ul>
+<h2 id="3-2-pm-max-children"><a href="#3-2-pm-max-children" class="headerlink" title="3.2 pm.max_children"></a>3.2 pm.max_children</h2><p>在同一时间最大的进程数</p>
+<ul>
+<li>pm.max_children = 120</li>
+</ul>
+<h2 id="3-3-pm-start-servers"><a href="#3-3-pm-start-servers" class="headerlink" title="3.3 pm.start_servers"></a>3.3 pm.start_servers</h2><p>php-fpm启动时开启的等待请求到来的进程数，默认值为：min_spare_servers + (max_spare_servers – min_spare_servers) / 2</p>
+<ul>
+<li>pm.start_servers = 80</li>
+</ul>
+<h2 id="3-4-pm-min-spare-servers"><a href="#3-4-pm-min-spare-servers" class="headerlink" title="3.4 pm.min_spare_servers"></a>3.4 pm.min_spare_servers</h2><p>在空闲状态下，运行的最小进程数，如果小于此值，会创建新的进程</p>
+<ul>
+<li>pm.min_spare_servers = 60</li>
+</ul>
+<h2 id="3-5-pm-max-spare-servers"><a href="#3-5-pm-max-spare-servers" class="headerlink" title="3.5 pm.max_spare_servers"></a>3.5 pm.max_spare_servers</h2><p>在空闲状态下，运行的最大进程数，如果大于此值，会kill部分进程</p>
+<ul>
+<li>pm.max_spare_servers = 120</li>
+</ul>
+<h2 id="3-6-pm-process-idle-timeout"><a href="#3-6-pm-process-idle-timeout" class="headerlink" title="3.6 pm.process_idle_timeout"></a>3.6 pm.process_idle_timeout</h2><p>空闲多少秒之后进程会被kill，默认为10s</p>
+<ul>
+<li>pm.process_idle_timeout = 10s</li>
+</ul>
+<h2 id="3-7-pm-max-requests"><a href="#3-7-pm-max-requests" class="headerlink" title="3.7 pm.max_requests"></a>3.7 pm.max_requests</h2><p>每个进程处理多少个请求之后自动终止，可以有效防止内存溢出，如果为0则不会自动终止，默认为0</p>
+<ul>
+<li>pm.max_requests = 5000</li>
+</ul>
+<h2 id="3-8-pm-status-path"><a href="#3-8-pm-status-path" class="headerlink" title="3.8 pm.status_path"></a>3.8 pm.status_path</h2><p>注册的URI，以展示php-fpm状态的统计信息</p>
+<ul>
+<li>pm.status_path = /status<br>其中统计页面信息有：<ul>
+<li>pool 进程池名称</li>
+<li>process manager 进程管理器名称（static, dynamic or ondemand）</li>
+<li>start time php-fpm启动时间</li>
+<li>start since php-fpm启动的总秒数</li>
+<li>accepted conn 当前进程池接收的请求数</li>
+<li>listen queue 等待队列的请求数</li>
+<li>max listen queue 自启动以来等待队列中最大的请求数</li>
+<li>listen queue len 等待连接socket队列大小</li>
+<li>idle processes 当前空闲的进程数</li>
+<li>active processes 活动的进程数</li>
+<li>total processes 总共的进程数（idle+active）</li>
+<li>max active processes 自启动以来活动的进程数最大值</li>
+<li>max children reached 达到最大进程数的次数</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-9-ping-path"><a href="#3-9-ping-path" class="headerlink" title="3.9 ping.path"></a>3.9 ping.path</h2><p>ping url，可以用来测试php-fpm是否存活并可以响应</p>
+<ul>
+<li>ping.path = /ping</li>
+</ul>
+<h2 id="ping-response"><a href="#ping-response" class="headerlink" title="ping.response"></a>ping.response</h2><p>ping url的响应正文</p>
+<ul>
+<li>ping.response = pong</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/08/08/CentOS-RHEL-Remove-Routes-169-254-0-0-255-255-0-0-From-the-System/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hillock">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="无来">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="无来" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/08/CentOS-RHEL-Remove-Routes-169-254-0-0-255-255-0-0-From-the-System/" itemprop="url">
+                  CentOS / RHEL: Remove Routes 169.254.0.0 / 255.255.0.0 From the System
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-08T18:52:17+08:00">
+              2017-08-08
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-08-08T18:53:27+08:00">
+              2017-08-08
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><p>zeroconf (Zero configuration networking), is a techniques that automatically creates a usable Internet Protocol (IP) network without manual operator intervention or special configuration servers. 169.254.0.0/255.255.0.0 route is part of zeroconf under RHEL 6 / CentOS 6 or older versions. To see current routing table, enter:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># route -n</span><br></pre></td></tr></table></figure></p>
+<p>Sample outputs:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Kernel IP routing table</span><br><span class="line">Destination     Gateway         Genmask         Flags Metric Ref    Use Iface</span><br><span class="line">74.8x.4y.zz     0.0.0.0         255.255.255.248 U     0      0        0 eth1</span><br><span class="line">10.10.29.64     0.0.0.0         255.255.255.192 U     0      0        0 eth0</span><br><span class="line">169.254.0.0     0.0.0.0         255.255.0.0     U     1002   0        0 eth0</span><br><span class="line">169.254.0.0     0.0.0.0         255.255.0.0     U     1003   0        0 eth1</span><br><span class="line">10.0.0.0        10.10.29.65     255.0.0.0       UG    0      0        0 eth0</span><br><span class="line">0.0.0.0         74.8x.yy.zz     0.0.0.0         UG    0      0        0 eth1</span><br></pre></td></tr></table></figure>
+<p>Every time the server or Linux desktop boots, the zeroconf route 169.254.0.0 is enabled and added to the kernel routing table. To disable zeroconf route under RHEL / CentOS / Fedora Linux, enter:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># vi /etc/sysconfig/network</span><br></pre></td></tr></table></figure>
+<p>Append the following directive:</p>
+<p>NOZEROCONF=yes<br>Save and close the file. Reboot the system / server or restart the networking service:</p>
+<h1 id="etc-init-d-network-restart"><a href="#etc-init-d-network-restart" class="headerlink" title="/etc/init.d/network restart"></a>/etc/init.d/network restart</h1><p>Verify routing table, enter:</p>
+<h1 id="route-n"><a href="#route-n" class="headerlink" title="route -n"></a>route -n</h1><p>OR</p>
+<h1 id="ip-route"><a href="#ip-route" class="headerlink" title="ip route"></a>ip route</h1>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/08/08/How-to-Install-Oracle-VirtualBox-5-1-on-CentOS-RHEL-7-6-and-Fedora-25/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1285,254 +1620,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/07/31/Rename-ethernet-interfaces-on-Centos7/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/31/Rename-ethernet-interfaces-on-Centos7/" itemprop="url">
-                  Rename ethernet interfaces on Centos7
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-31T11:17:33+08:00">
-              2017-07-31
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-08-02T13:38:56+08:00">
-              2017-08-02
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><h3 id="0-Prepare"><a href="#0-Prepare" class="headerlink" title="0 Prepare"></a>0 Prepare</h3><pre><code>yum install pciutils -y
-</code></pre><h3 id="1-get-PCI-info"><a href="#1-get-PCI-info" class="headerlink" title="1 get PCI info:"></a>1 get PCI info:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] lspci | grep Ethernet   </span><br><span class="line">05:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </span><br><span class="line">06:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </span><br><span class="line">07:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </span><br><span class="line">08:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection</span><br></pre></td></tr></table></figure>
-<h3 id="2-add-config-to-cat-usr-lib-udev-rules-d-60-net-rules"><a href="#2-add-config-to-cat-usr-lib-udev-rules-d-60-net-rules" class="headerlink" title="2 add config to cat /usr/lib/udev/rules.d/60-net.rules."></a>2 add config to <code>cat /usr/lib/udev/rules.d/60-net.rules</code>.</h3><p><strong><em>Notice:</em></strong> param <code>KERNELS</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /usr/lib/udev/rules.d/60-net.rules</span><br><span class="line">ACTION==&quot;add&quot;, SUBSYSTEM==&quot;net&quot;, DRIVERS==&quot;?*&quot;, ATTR&#123;type&#125;==&quot;1&quot;, PROGRAM=&quot;/lib/udev/rename_device&quot;, RESULT==&quot;?*&quot;, NAME=&quot;$result&quot;</span><br><span class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:05.0&quot;, NAME=&quot;vfnet0&quot;</span><br><span class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:06.0&quot;, NAME=&quot;vfnet1&quot;</span><br><span class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:07.0&quot;, NAME=&quot;vfnet2&quot;</span><br><span class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:08.0&quot;, NAME=&quot;vfnet3&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="3-reboot"><a href="#3-reboot" class="headerlink" title="3 reboot"></a>3 reboot</h3><h3 id="4-check"><a href="#4-check" class="headerlink" title="4 check"></a>4 check</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /usr/lib/udev/rules.d/60-net.rules</span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: vfnet0: &lt;BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master bond0 state UP qlen 1000</span><br><span class="line">    link/ether f2:d5:5d:21:4e:38 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">3: vfnet1: &lt;BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master bond0 state UP qlen 1000</span><br><span class="line">    link/ether 3e:ec:21:1a:d2:86 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">4: vfnet2: &lt;BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master bond0 state UP qlen 1000</span><br><span class="line">    link/ether be:70:05:01:46:04 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">5: vfnet3: &lt;BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master bond0 state UP qlen 1000</span><br><span class="line">    link/ether e6:de:61:c9:a8:d1 brd ff:ff:ff:ff:ff:ff</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/07/27/name-ethernet-interfaces-on-CentOS7/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="无来">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/27/name-ethernet-interfaces-on-CentOS7/" itemprop="url">
-                  name ethernet interfaces on CentOS7
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-27T15:14:53+08:00">
-              2017-07-27
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-07-27T16:12:06+08:00">
-              2017-07-27
-            </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><p>I’ve learned how to continue to use the ethX prefix. I’m still using the udev rules that I mentioned in post above. So at bootup udev will rename my interfaces netX. And then using /etc/rc.local I’ve included the following commands to rename them from netX back to ethX.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/sbin/ip link set net0 down</span><br><span class="line">/sbin/ip link set net0 name eth0</span><br><span class="line">/sbin/ip link set eth0 up</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>Using the ip command I can change the name of the interfaces after the initial bootup is completed.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1578,7 +1665,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">144</span>
+              <span class="site-state-item-count">146</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
