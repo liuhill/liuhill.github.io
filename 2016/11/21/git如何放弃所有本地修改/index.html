@@ -84,17 +84,17 @@
 
 
 
-<meta name="description" content="1234git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。git reset --hard HASH #返回到某个节点，不保留修改。git reset --soft HASH #返回到某个节点。保留修改">
+<meta name="description" content="1234git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。git reset --hard HASH #返回到某个节点，不保留修改。git reset --soft HASH #返回到某个节点。保留修改 git丢弃本地修改的所有文件（新增、删除、修改） 12345gi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git如何放弃所有本地修改">
 <meta property="og:url" content="http://www.wulai.me/2016/11/21/git如何放弃所有本地修改/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="1234git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。git reset --hard HASH #返回到某个节点，不保留修改。git reset --soft HASH #返回到某个节点。保留修改">
+<meta property="og:description" content="1234git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。git reset --hard HASH #返回到某个节点，不保留修改。git reset --soft HASH #返回到某个节点。保留修改 git丢弃本地修改的所有文件（新增、删除、修改） 12345gi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-11-21T03:51:55.000Z">
+<meta property="og:updated_time" content="2018-11-15T03:14:01.905Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git如何放弃所有本地修改">
-<meta name="twitter:description" content="1234git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。git reset --hard HASH #返回到某个节点，不保留修改。git reset --soft HASH #返回到某个节点。保留修改">
+<meta name="twitter:description" content="1234git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。git reset --hard HASH #返回到某个节点，不保留修改。git reset --soft HASH #返回到某个节点。保留修改 git丢弃本地修改的所有文件（新增、删除、修改） 12345gi">
 
 
 
@@ -316,8 +316,8 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2016-11-21T11:51:55+08:00">
-              2016-11-21
+            <time title="Post modified" itemprop="dateModified" datetime="2018-11-15T11:14:01+08:00">
+              2018-11-15
             </time>
             
           </span>
@@ -349,6 +349,9 @@
 
       
         <script src="/assets/js/APlayer.min.js"> </script><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态</span><br><span class="line">git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。</span><br><span class="line">git reset --hard HASH #返回到某个节点，不保留修改。</span><br><span class="line">git reset --soft HASH #返回到某个节点。保留修改</span><br></pre></td></tr></table></figure>
+<p>git丢弃本地修改的所有文件（新增、删除、修改）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clean -df #返回到某个节点</span><br><span class="line">git clean 参数</span><br><span class="line">    -n 显示 将要 删除的 文件 和  目录</span><br><span class="line">    -f 删除 文件</span><br><span class="line">    -df 删除 文件 和 目录</span><br></pre></td></tr></table></figure>
+<p>也可以使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout . &amp;&amp; git clean -xdf</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
