@@ -84,17 +84,17 @@
 
 
 
-<meta name="description" content="查找目录下的所有文件中是否含有某个字符串find .|xargs grep -ri &amp;quot;IBM&amp;quot; 查找目录下的所有文件中是否含有某个字符串,并且只打印出文件名find .|xargs grep -ri &amp;quot;IBM&amp;quot; -l 仅查找文件find . -type f|xargs grep -ri &amp;quot;IBM&amp;quot; -l">
+<meta name="description" content="查找目录下的所有文件中是否含有某个字符串find .|xargs grep -ri &amp;quot;IBM&amp;quot; 查找目录下的所有文件中是否含有某个字符串,并且只打印出文件名find .|xargs grep -ri &amp;quot;IBM&amp;quot; -l 仅查找文件find . -type f|xargs grep -ri &amp;quot;IBM&amp;quot; -l  查找文件为0，包括空格处理f">
 <meta property="og:type" content="article">
 <meta property="og:title" content="查找目录下的所有文件中是否含有某个字符串">
 <meta property="og:url" content="http://www.wulai.me/2016/03/01/e6-9f-a5-e6-89-be-e7-9b-ae-e5-bd-95-e4-b8-8b-e7-9a-84-e6-89-80-e6-9c-89-e6-96-87-e4-bb-b6-e4-b8-ad-e6-98-af-e5-90-a6-e5-90-ab-e6-9c-89-e6-9f-90-e4-b8-aa-e5-ad-97-e7-ac-a6-e4-b8-b2/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="查找目录下的所有文件中是否含有某个字符串find .|xargs grep -ri &amp;quot;IBM&amp;quot; 查找目录下的所有文件中是否含有某个字符串,并且只打印出文件名find .|xargs grep -ri &amp;quot;IBM&amp;quot; -l 仅查找文件find . -type f|xargs grep -ri &amp;quot;IBM&amp;quot; -l">
+<meta property="og:description" content="查找目录下的所有文件中是否含有某个字符串find .|xargs grep -ri &amp;quot;IBM&amp;quot; 查找目录下的所有文件中是否含有某个字符串,并且只打印出文件名find .|xargs grep -ri &amp;quot;IBM&amp;quot; -l 仅查找文件find . -type f|xargs grep -ri &amp;quot;IBM&amp;quot; -l  查找文件为0，包括空格处理f">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-21T07:47:16.434Z">
+<meta property="og:updated_time" content="2019-03-25T02:03:28.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="查找目录下的所有文件中是否含有某个字符串">
-<meta name="twitter:description" content="查找目录下的所有文件中是否含有某个字符串find .|xargs grep -ri &amp;quot;IBM&amp;quot; 查找目录下的所有文件中是否含有某个字符串,并且只打印出文件名find .|xargs grep -ri &amp;quot;IBM&amp;quot; -l 仅查找文件find . -type f|xargs grep -ri &amp;quot;IBM&amp;quot; -l">
+<meta name="twitter:description" content="查找目录下的所有文件中是否含有某个字符串find .|xargs grep -ri &amp;quot;IBM&amp;quot; 查找目录下的所有文件中是否含有某个字符串,并且只打印出文件名find .|xargs grep -ri &amp;quot;IBM&amp;quot; -l 仅查找文件find . -type f|xargs grep -ri &amp;quot;IBM&amp;quot; -l  查找文件为0，包括空格处理f">
 
 
 
@@ -316,8 +316,8 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-05-21T15:47:16+08:00">
-              2018-05-21
+            <time title="Post modified" itemprop="dateModified" datetime="2019-03-25T10:03:28+08:00">
+              2019-03-25
             </time>
             
           </span>
@@ -370,7 +370,12 @@
         <script src="/assets/js/APlayer.min.js"> </script><ul>
 <li>查找目录下的所有文件中是否含有某个字符串<br><code>find .|xargs grep -ri &quot;IBM&quot;</code></li>
 <li>查找目录下的所有文件中是否含有某个字符串,并且只打印出文件名<br><code>find .|xargs grep -ri &quot;IBM&quot; -l</code></li>
-<li>仅查找文件<br><code>find . -type f|xargs grep -ri &quot;IBM&quot; -l</code></li>
+<li><p>仅查找文件<br><code>find . -type f|xargs grep -ri &quot;IBM&quot; -l</code></p>
+</li>
+<li><p>查找文件为0，包括空格处理<br><code>find . -type f -size 0c -print0 |xargs -0 ls -l {}</code></p>
+</li>
+<li><p>删除为0的文件<br><code>find . -type f -size 0c -print0 |xargs -0 ls -l {}</code></p>
+</li>
 </ul>
 
       
@@ -469,7 +474,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">153</span>
+              <span class="site-state-item-count">154</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -555,7 +560,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
