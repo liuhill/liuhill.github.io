@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,38 +63,38 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="刘立岗, 博客" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="刘立岗, 博客">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
 
 
 
-<meta name="description" content="1、从第3000行开始，显示1000行。即显示3000~3999行cat filename | tail -n +3000 | head -n 1000 2、显示1000行到3000行cat filename| head -n 3000 | tail -n +1000 *注意两种方法的顺序  分解：       tail -n 1000：显示最后1000行       tail -n +1000">
+<meta name="description" content="1、从第3000行开始，显示1000行。即显示3000~3999行cat filename | tail -n +3000 | head -n 10002、显示1000行到3000行cat filename| head -n 3000 | tail -n +1000*注意两种方法的顺序  分解：       tail -n 1000：显示最后1000行       tail -n +1000：从">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux 如何显示一个文件的某几行(中间几行)">
 <meta property="og:url" content="http://www.wulai.me/2016/07/06/linux-e5-a6-82-e4-bd-95-e6-98-be-e7-a4-ba-e4-b8-80-e4-b8-aa-e6-96-87-e4-bb-b6-e7-9a-84-e6-9f-90-e5-87-a0-e8-a1-8c-e4-b8-ad-e9-97-b4-e5-87-a0-e8-a1-8c/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="1、从第3000行开始，显示1000行。即显示3000~3999行cat filename | tail -n +3000 | head -n 1000 2、显示1000行到3000行cat filename| head -n 3000 | tail -n +1000 *注意两种方法的顺序  分解：       tail -n 1000：显示最后1000行       tail -n +1000">
+<meta property="og:description" content="1、从第3000行开始，显示1000行。即显示3000~3999行cat filename | tail -n +3000 | head -n 10002、显示1000行到3000行cat filename| head -n 3000 | tail -n +1000*注意两种方法的顺序  分解：       tail -n 1000：显示最后1000行       tail -n +1000：从">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-08-29T05:58:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux 如何显示一个文件的某几行(中间几行)">
-<meta name="twitter:description" content="1、从第3000行开始，显示1000行。即显示3000~3999行cat filename | tail -n +3000 | head -n 1000 2、显示1000行到3000行cat filename| head -n 3000 | tail -n +1000 *注意两种方法的顺序  分解：       tail -n 1000：显示最后1000行       tail -n +1000">
+<meta name="twitter:description" content="1、从第3000行开始，显示1000行。即显示3000~3999行cat filename | tail -n +3000 | head -n 10002、显示1000行到3000行cat filename| head -n 3000 | tail -n +1000*注意两种方法的顺序  分解：       tail -n 1000：显示最后1000行       tail -n +1000：从">
 
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wulai.me/2016/07/06/linux-e5-a6-82-e4-bd-95-e6-98-be-e7-a4-ba-e4-b8-80-e4-b8-aa-e6-96-87-e4-bb-b6-e7-9a-84-e6-9f-90-e5-87-a0-e8-a1-8c-e4-b8-ad-e9-97-b4-e5-87-a0-e8-a1-8c/"/>
+  <link rel="canonical" href="http://www.wulai.me/2016/07/06/linux-e5-a6-82-e4-bd-95-e6-98-be-e7-a4-ba-e4-b8-80-e4-b8-aa-e6-96-87-e4-bb-b6-e7-9a-84-e6-9f-90-e5-87-a0-e8-a1-8c-e4-b8-ad-e9-97-b4-e5-87-a0-e8-a1-8c/">
 
 
 
@@ -166,13 +166,13 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">无来</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">不管你来还是不来<br />我都在这里，夜夜点亮<br />不是为了守候<br />只是为了做好我自己</p>
+  <p class="site-subtitle">不管你来还是不来<br>我都在这里，夜夜点亮<br>不是为了守候<br>只是为了做好我自己</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -193,7 +193,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -203,7 +203,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -213,7 +213,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -226,7 +226,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -275,14 +275,14 @@
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
+    <meta itemprop="description" content>
     <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="无来">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
+      <img style="display:none;" itemprop="url image" alt="无来" src>
     </span>
   </span>
 
@@ -323,7 +323,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -367,14 +367,11 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><h3 id="1、从第3000行开始，显示1000行。即显示3000-3999行"><a href="#1、从第3000行开始，显示1000行。即显示3000-3999行" class="headerlink" title="1、从第3000行开始，显示1000行。即显示3000~3999行"></a>1、从第3000行开始，显示1000行。即显示3000~3999行</h3><pre><code>cat filename | tail -n +3000 | head -n 1000
-</code></pre><h3 id="2、显示1000行到3000行"><a href="#2、显示1000行到3000行" class="headerlink" title="2、显示1000行到3000行"></a>2、显示1000行到3000行</h3><pre><code>cat filename| head -n 3000 | tail -n +1000
-</code></pre><p><code>*注意两种方法的顺序</code></p>
+        <script src="/assets/js/APlayer.min.js"> </script><h3 id="1、从第3000行开始，显示1000行。即显示3000-3999行"><a href="#1、从第3000行开始，显示1000行。即显示3000-3999行" class="headerlink" title="1、从第3000行开始，显示1000行。即显示3000~3999行"></a>1、从第3000行开始，显示1000行。即显示3000~3999行</h3><pre><code>cat filename | tail -n +3000 | head -n 1000</code></pre><h3 id="2、显示1000行到3000行"><a href="#2、显示1000行到3000行" class="headerlink" title="2、显示1000行到3000行"></a>2、显示1000行到3000行</h3><pre><code>cat filename| head -n 3000 | tail -n +1000</code></pre><p><code>*注意两种方法的顺序</code></p>
 <blockquote>
 <p>分解：<br>       tail -n 1000：显示最后1000行<br>       tail -n +1000：从1000行开始显示，显示1000行以后的<br>       head -n 1000：显示前面1000行</p>
 </blockquote>
-<h2 id="3、用sed命令"><a href="#3、用sed命令" class="headerlink" title="3、用sed命令"></a>3、用sed命令</h2><pre><code>sed -n &apos;5,10p&apos; filename
-</code></pre><p>这样你就可以只查看文件的第5行到第10行。</p>
+<h2 id="3、用sed命令"><a href="#3、用sed命令" class="headerlink" title="3、用sed命令"></a>3、用sed命令</h2><pre><code>sed -n &apos;5,10p&apos; filename</code></pre><p>这样你就可以只查看文件的第5行到第10行。</p>
 
       
     </div>
@@ -461,7 +458,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -472,16 +469,14 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460"
-               alt="Hillock" />
+          <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460" alt="Hillock">
           <p class="site-author-name" itemprop="name">Hillock</p>
           <p class="site-description motion-element" itemprop="description">开发笔记而已～～～</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">154</span>
+              <span class="site-state-item-count">155</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -498,7 +493,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -562,7 +557,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、从第3000行开始，显示1000行。即显示3000-3999行"><span class="nav-number">1.</span> <span class="nav-text">1、从第3000行开始，显示1000行。即显示3000~3999行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、显示1000行到3000行"><span class="nav-number">2.</span> <span class="nav-text">2、显示1000行到3000行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、用sed命令"><span class="nav-number"></span> <span class="nav-text">3、用sed命令</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、从第3000行开始，显示1000行。即显示3000-3999行"><span class="nav-number">1.</span> <span class="nav-text">1、从第3000行开始，显示1000行。即显示3000~3999行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、显示1000行到3000行"><span class="nav-number">2.</span> <span class="nav-text">2、显示1000行到3000行</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#3、用sed命令"><span class="nav-number"></span> <span class="nav-text">3、用sed命令</span></a></li></div>
             
 
           </div>
@@ -580,7 +575,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2019</span>

@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,21 +63,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="刘立岗, 博客" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="刘立岗, 博客">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wulai.me/2018/08/06/mysqldiff实现MySQL数据表比较/"/>
+  <link rel="canonical" href="http://www.wulai.me/2018/08/06/mysqldiff实现MySQL数据表比较/">
 
 
 
@@ -166,13 +166,13 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">无来</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">不管你来还是不来<br />我都在这里，夜夜点亮<br />不是为了守候<br />只是为了做好我自己</p>
+  <p class="site-subtitle">不管你来还是不来<br>我都在这里，夜夜点亮<br>不是为了守候<br>只是为了做好我自己</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -193,7 +193,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -203,7 +203,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -213,7 +213,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -226,7 +226,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -275,14 +275,14 @@
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
+    <meta itemprop="description" content>
     <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="无来">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
+      <img style="display:none;" itemprop="url image" alt="无来" src>
     </span>
   </span>
 
@@ -354,15 +354,21 @@
 <p>以下是mysqldiff的用法。</p>
 <h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1 安装"></a>1 安装</h2><p>mysqldiff是MySQL Utilities中的一个脚本，默认的MySQL不包含这个工具集，所以需要独立安装。</p>
 <p>MySQL Utilities下载地址：<a href="http://downloads.mysql.com/archives/utilities/。" target="_blank" rel="noopener">http://downloads.mysql.com/archives/utilities/。</a><br>Windows系统中需提前安装“Visual C++ Redistributable Packages for Visual Studio 2013”，下载地址：<a href="https://www.microsoft.com/en-gb/download/details.aspx?id=40784。" target="_blank" rel="noopener">https://www.microsoft.com/en-gb/download/details.aspx?id=40784。</a><br>Linux系统在下载页面选择对应发行版。</p>
-<h2 id="2-语法"><a href="#2-语法" class="headerlink" title="2 语法"></a>2 语法</h2><p>mysqldiff的语法格式是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldiff --server1=user:pass@host:port:socket --server2=user:pass@host:port:socket db1.object1:db2.object1 db3:db4</span><br></pre></td></tr></table></figure></p>
-<p>这个语法有两个用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">db1:db2：如果只指定数据库，那么就将两个数据库中互相缺少的对象显示出来，不比较对象里面的差异。这里的对象包括表、存储过程、函数、触发器等。</span><br><span class="line">db1.object1:db2.object1：如果指定了具体表对象，那么就会详细对比两个表的差异，包括表名、字段名、备注、索引、大小写等所有的表相关的对象。</span><br><span class="line">接下来看一些主要的参数：</span><br><span class="line"></span><br><span class="line">--server1：配置server1的连接。</span><br><span class="line">--server2：配置server2的连接。</span><br><span class="line">--character-set：配置连接时用的字符集，如果不显示配置默认使用character_set_client。</span><br><span class="line">--width：配置显示的宽度。</span><br><span class="line">--skip-table-options：保持表的选项不变，即对比的差异里面不包括表名、AUTO_INCREMENT、ENGINE、CHARSET等差异。</span><br><span class="line">-d DIFFTYPE,--difftype=DIFFTYPE：差异的信息显示的方式，有[unified|context|differ|sql]，默认是unified。如果使用sql，那么就直接生成差异的SQL，这样非常方便。</span><br><span class="line">--changes-for=：修改对象。例如--changes-for=server2，那么对比以sever1为主，生成的差异的修改也是针对server2的对象的修改。</span><br><span class="line">--show-reverse：在生成的差异修改里面，同时会包含server2和server1的修改。</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-语法"><a href="#2-语法" class="headerlink" title="2 语法"></a>2 语法</h2><p>mysqldiff的语法格式是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldiff --server1=user:pass@host:port:socket --server2=user:pass@host:port:socket db1.object1:db2.object1 db3:db4</span><br></pre></td></tr></table></figure>
+
+<p>这个语法有两个用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">db1:db2：如果只指定数据库，那么就将两个数据库中互相缺少的对象显示出来，不比较对象里面的差异。这里的对象包括表、存储过程、函数、触发器等。</span><br><span class="line">db1.object1:db2.object1：如果指定了具体表对象，那么就会详细对比两个表的差异，包括表名、字段名、备注、索引、大小写等所有的表相关的对象。</span><br><span class="line">接下来看一些主要的参数：</span><br><span class="line"></span><br><span class="line">--server1：配置server1的连接。</span><br><span class="line">--server2：配置server2的连接。</span><br><span class="line">--character-set：配置连接时用的字符集，如果不显示配置默认使用character_set_client。</span><br><span class="line">--width：配置显示的宽度。</span><br><span class="line">--skip-table-options：保持表的选项不变，即对比的差异里面不包括表名、AUTO_INCREMENT、ENGINE、CHARSET等差异。</span><br><span class="line">-d DIFFTYPE,--difftype=DIFFTYPE：差异的信息显示的方式，有[unified|context|differ|sql]，默认是unified。如果使用sql，那么就直接生成差异的SQL，这样非常方便。</span><br><span class="line">--changes-for=：修改对象。例如--changes-for=server2，那么对比以sever1为主，生成的差异的修改也是针对server2的对象的修改。</span><br><span class="line">--show-reverse：在生成的差异修改里面，同时会包含server2和server1的修改。</span><br></pre></td></tr></table></figure>
+
 <h2 id="3-范例"><a href="#3-范例" class="headerlink" title="3 范例"></a>3 范例</h2><p>先创建两个表。</p>
 <p>use study;</p>
 <p>create table test1(<br>    id int not null primary key,<br>    a varchar(10) not null,<br>    b varchar(10),<br>    c varchar(10) comment ‘c’,<br>    d int<br>)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=’test1’;</p>
 <p>create table test2(<br>    id int not null,<br>    a varchar(10),<br>    b varchar(5),<br>    c varchar(10),<br>    D int<br>)ENGINE=myisam DEFAULT CHARSET=utf8 COMMENT=’test2’;<br>不使用–skip-table-options，</p>
 <p>mysqldiff –server1=root:root@localhost –server2=root:root@localhost –changes-for=server2 –show-reverse –difftype=sql study.test1:study.test2</p>
 <p>使用<code>--skip-table-options</code>，</p>
-<p>如果需要生成SQL文件，加上输出就可以了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldiff --server1=root:root@localhost --server2=root:root@localhost --changes-for=server2 --show-reverse --difftype=sql study.test1:study.test2 &gt; output.sql</span><br></pre></td></tr></table></figure></p>
+<p>如果需要生成SQL文件，加上输出就可以了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldiff --server1=root:root@localhost --server2=root:root@localhost --changes-for=server2 --show-reverse --difftype=sql study.test1:study.test2 &gt; output.sql</span><br></pre></td></tr></table></figure>
+
 <p><code>说明</code>：执行MySQL语句时可能会遇到这样错误：`Error 1054 - Unknown column ‘name’ in ‘aspect’``</p>
 <p>这是因为mysqldbcompare生成的ALTER语句中，用逗号,拼装了多条ADD、CHANGE等语句，如果这些语句还包含AFTER关键字，就会提示这个错误并中断执行MySQL语句。解决的办法就是：去除AFTER及其后面的条件。</p>
 <p>这可能是MySQL的一个Bug，详情参考：<a href="http://bugs.mysql.com/bug.php?id=34972" target="_blank" rel="noopener">http://bugs.mysql.com/bug.php?id=34972</a> 和 <a href="http://bugs.mysql.com/bug.php?id=60650。" target="_blank" rel="noopener">http://bugs.mysql.com/bug.php?id=60650。</a></p>
@@ -452,7 +458,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -463,16 +469,14 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460"
-               alt="Hillock" />
+          <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460" alt="Hillock">
           <p class="site-author-name" itemprop="name">Hillock</p>
           <p class="site-description motion-element" itemprop="description">开发笔记而已～～～</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">154</span>
+              <span class="site-state-item-count">155</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -489,7 +493,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -571,7 +575,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2019</span>

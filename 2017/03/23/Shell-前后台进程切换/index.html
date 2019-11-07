@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,38 +63,38 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="刘立岗, 博客" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="刘立岗, 博客">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
 
 
 
-<meta name="description" content="Shell 前后台进程切换 当你用 shell 启动一个程序时，往往他是在前台工作的。比如执行命令 redis-server 启动 redis 后，shell 就不能再输入了。因为此时 redis 在前台。 Shell 支持作用控制，有以下命令：  command &amp;amp; 让进程在后台运行 jobs –l 查看后台运行的进程 fg %n 让后台运行的进程 n 到前台来 bg %n 让进程 n">
+<meta name="description" content="Shell 前后台进程切换 当你用 shell 启动一个程序时，往往他是在前台工作的。比如执行命令 redis-server启动 redis 后，shell 就不能再输入了。因为此时 redis 在前台。 Shell 支持作用控制，有以下命令：  command &amp;amp; 让进程在后台运行 jobs –l 查看后台运行的进程 fg %n 让后台运行的进程 n 到前台来 bg %n 让进程 n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shell 前后台进程切换">
 <meta property="og:url" content="http://www.wulai.me/2017/03/23/Shell-前后台进程切换/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="Shell 前后台进程切换 当你用 shell 启动一个程序时，往往他是在前台工作的。比如执行命令 redis-server 启动 redis 后，shell 就不能再输入了。因为此时 redis 在前台。 Shell 支持作用控制，有以下命令：  command &amp;amp; 让进程在后台运行 jobs –l 查看后台运行的进程 fg %n 让后台运行的进程 n 到前台来 bg %n 让进程 n">
+<meta property="og:description" content="Shell 前后台进程切换 当你用 shell 启动一个程序时，往往他是在前台工作的。比如执行命令 redis-server启动 redis 后，shell 就不能再输入了。因为此时 redis 在前台。 Shell 支持作用控制，有以下命令：  command &amp;amp; 让进程在后台运行 jobs –l 查看后台运行的进程 fg %n 让后台运行的进程 n 到前台来 bg %n 让进程 n">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-03-23T01:24:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shell 前后台进程切换">
-<meta name="twitter:description" content="Shell 前后台进程切换 当你用 shell 启动一个程序时，往往他是在前台工作的。比如执行命令 redis-server 启动 redis 后，shell 就不能再输入了。因为此时 redis 在前台。 Shell 支持作用控制，有以下命令：  command &amp;amp; 让进程在后台运行 jobs –l 查看后台运行的进程 fg %n 让后台运行的进程 n 到前台来 bg %n 让进程 n">
+<meta name="twitter:description" content="Shell 前后台进程切换 当你用 shell 启动一个程序时，往往他是在前台工作的。比如执行命令 redis-server启动 redis 后，shell 就不能再输入了。因为此时 redis 在前台。 Shell 支持作用控制，有以下命令：  command &amp;amp; 让进程在后台运行 jobs –l 查看后台运行的进程 fg %n 让后台运行的进程 n 到前台来 bg %n 让进程 n">
 
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wulai.me/2017/03/23/Shell-前后台进程切换/"/>
+  <link rel="canonical" href="http://www.wulai.me/2017/03/23/Shell-前后台进程切换/">
 
 
 
@@ -166,13 +166,13 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">无来</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">不管你来还是不来<br />我都在这里，夜夜点亮<br />不是为了守候<br />只是为了做好我自己</p>
+  <p class="site-subtitle">不管你来还是不来<br>我都在这里，夜夜点亮<br>不是为了守候<br>只是为了做好我自己</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -193,7 +193,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -203,7 +203,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -213,7 +213,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -226,7 +226,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -275,14 +275,14 @@
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
+    <meta itemprop="description" content>
     <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="无来">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
+      <img style="display:none;" itemprop="url image" alt="无来" src>
     </span>
   </span>
 
@@ -350,8 +350,7 @@
       
         <script src="/assets/js/APlayer.min.js"> </script><p>Shell 前后台进程切换</p>
 <p>当你用 shell 启动一个程序时，往往他是在前台工作的。比如执行命令</p>
-<pre><code>redis-server
-</code></pre><p>启动 redis 后，shell 就不能再输入了。因为此时 redis 在前台。</p>
+<pre><code>redis-server</code></pre><p>启动 redis 后，shell 就不能再输入了。因为此时 redis 在前台。</p>
 <p>Shell 支持作用控制，有以下命令：</p>
 <ul>
 <li>command &amp; 让进程在后台运行</li>
@@ -362,9 +361,12 @@
 <p><code>PS：n 为 jobs 查看到的进程编号。</code></p>
 <h3 id="1、执行命令-amp-切换至后台"><a href="#1、执行命令-amp-切换至后台" class="headerlink" title="1、执行命令 &amp; 切换至后台"></a>1、执行命令 &amp; 切换至后台</h3><p>在 Mac 终端运行命令的时候，在命令末尾加上 &amp; 符号，就可以让程序在后台运行</p>
 <h3 id="2、切换正在运行的程序到后台"><a href="#2、切换正在运行的程序到后台" class="headerlink" title="2、切换正在运行的程序到后台"></a>2、切换正在运行的程序到后台</h3><p>如果程序正在前台运行，可以使用 Ctrl+z 选项把程序暂停，然后用 bg %[number] 命令把这个程序放到后台运行，这个步骤分为3步，如下：</p>
-<h4 id="2-1-暂停程序运行Ctrl-z"><a href="#2-1-暂停程序运行Ctrl-z" class="headerlink" title="2.1 暂停程序运行Ctrl+z"></a>2.1 暂停程序运行Ctrl+z</h4><p>Ctrl+z 跟系统任务有关的，Ctrl+z 可以将一个正在前台执行的命令放到后台，并且暂停。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜ /Users/apple git:(master) ✗&gt; redis-server</span><br><span class="line"></span><br><span class="line">^Z</span><br><span class="line">[1]  + 18669 suspended  redis-server</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-1-暂停程序运行Ctrl-z"><a href="#2-1-暂停程序运行Ctrl-z" class="headerlink" title="2.1 暂停程序运行Ctrl+z"></a>2.1 暂停程序运行Ctrl+z</h4><p>Ctrl+z 跟系统任务有关的，Ctrl+z 可以将一个正在前台执行的命令放到后台，并且暂停。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜ /Users/apple git:(master) ✗&gt; redis-server</span><br><span class="line"></span><br><span class="line">^Z</span><br><span class="line">[1]  + 18669 suspended  redis-server</span><br></pre></td></tr></table></figure>
+
 <h4 id="2-2-查看暂停的程序"><a href="#2-2-查看暂停的程序" class="headerlink" title="2.2 查看暂停的程序"></a>2.2 查看暂停的程序</h4><p>察看 jobs 使用 jobs 或 ps 命令可以察看正在执行的 jobs</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜ /Users/apple git:(master) ✗&gt; jobs -l</span><br><span class="line">[1]  + running    redis-server</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>jobs 命令执行的结果，+ 表示是一个当前的作业，减号表示是当前作业之后的一个作业。</p>
 </li>
@@ -373,8 +375,13 @@
 </ul>
 <h4 id="2-3-切换程序至后台"><a href="#2-3-切换程序至后台" class="headerlink" title="2.3 切换程序至后台"></a>2.3 切换程序至后台</h4><p>bg 将一个在后台暂停的命令，变成继续执行如果后台中有多个命令，可以用 bg %jobnumber 将选中的命令调出.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜ /Users/apple git:(source) ✗&gt; bg</span><br><span class="line">[1]  + 18823 continued  redis-server</span><br><span class="line">➜ /Users/apple git:(source) ✗&gt; jobs -l</span><br><span class="line">[1]  + 18823 running    redis-server</span><br></pre></td></tr></table></figure>
-<h4 id="2-4-切换程序至前台"><a href="#2-4-切换程序至前台" class="headerlink" title="2.4 切换程序至前台"></a>2.4 切换程序至前台</h4><p>也可以用 <code>fg %[number]</code> 指令把一个程序掉到前台运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜ /Users/apple git:(source) ✗&gt; fg %1</span><br><span class="line">[1]  + 18823 running    redis-server</span><br></pre></td></tr></table></figure></p>
-<h4 id="2-5-终止后台程序"><a href="#2-5-终止后台程序" class="headerlink" title="2.5 终止后台程序"></a>2.5 终止后台程序</h4><p>也可以直接终止后台运行的程序，使用 kill 命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜ /Users/apple git:(source) ✗&gt; kill %1</span><br></pre></td></tr></table></figure></p>
+
+<h4 id="2-4-切换程序至前台"><a href="#2-4-切换程序至前台" class="headerlink" title="2.4 切换程序至前台"></a>2.4 切换程序至前台</h4><p>也可以用 <code>fg %[number]</code> 指令把一个程序掉到前台运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜ /Users/apple git:(source) ✗&gt; fg %1</span><br><span class="line">[1]  + 18823 running    redis-server</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-5-终止后台程序"><a href="#2-5-终止后台程序" class="headerlink" title="2.5 终止后台程序"></a>2.5 终止后台程序</h4><p>也可以直接终止后台运行的程序，使用 kill 命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜ /Users/apple git:(source) ✗&gt; kill %1</span><br></pre></td></tr></table></figure>
+
 <p>但是如果任务被终止了 kill，shell 从当前的 shell 环境已知的列表中删除任务的进程标识;也就是说，jobs 命令显示的是当前 shell 环境中所起的后台正在运行或者被挂起的任务信息。</p>
 
       
@@ -462,7 +469,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -473,16 +480,14 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460"
-               alt="Hillock" />
+          <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460" alt="Hillock">
           <p class="site-author-name" itemprop="name">Hillock</p>
           <p class="site-description motion-element" itemprop="description">开发笔记而已～～～</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">154</span>
+              <span class="site-state-item-count">155</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -499,7 +504,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -581,7 +586,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2019</span>

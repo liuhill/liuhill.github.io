@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,21 +63,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="刘立岗, 博客" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="刘立岗, 博客">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wulai.me/2018/01/03/bin-wipefs挖矿程序排查/"/>
+  <link rel="canonical" href="http://www.wulai.me/2018/01/03/bin-wipefs挖矿程序排查/">
 
 
 
@@ -166,13 +166,13 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">无来</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">不管你来还是不来<br />我都在这里，夜夜点亮<br />不是为了守候<br />只是为了做好我自己</p>
+  <p class="site-subtitle">不管你来还是不来<br>我都在这里，夜夜点亮<br>不是为了守候<br>只是为了做好我自己</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -193,7 +193,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -203,7 +203,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -213,7 +213,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -226,7 +226,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -275,14 +275,14 @@
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
+    <meta itemprop="description" content>
     <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="无来">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
+      <img style="display:none;" itemprop="url image" alt="无来" src>
     </span>
   </span>
 
@@ -349,9 +349,13 @@
 
       
         <script src="/assets/js/APlayer.min.js"> </script><h3 id="基本情况"><a href="#基本情况" class="headerlink" title="基本情况"></a>基本情况</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@test ~]# cat /etc/redhat-release</span><br><span class="line">CentOS release 6.5 (Final)</span><br><span class="line">[root@test ~]# uname -a</span><br><span class="line">Linux test 2.6.32-431.el6.x86_64 #1 SMP Fri Nov 22 03:15:09 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux</span><br><span class="line">[root@test ~]# file /bin/wipefs</span><br><span class="line">/bin/wipefs: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, stripped</span><br><span class="line">[root@test ~]# ll /bin/wipefs</span><br><span class="line">-rwxr-xr-x 1 root root 2384177 Jul 18 2013 /bin/wipefs</span><br><span class="line">[root@monitor ~]# lsattr /bin/wipefs</span><br><span class="line">----i--------e- /bin/wipefs</span><br><span class="line">[root@monitor ~]# lsattr /bin/ddus-uidgen</span><br><span class="line">----i--------e- /bin/ddus-uidgen</span><br></pre></td></tr></table></figure>
+
 <h3 id="改动了dns配置"><a href="#改动了dns配置" class="headerlink" title="改动了dns配置"></a>改动了dns配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@test rc3.d]# stat /etc/resolv.conf</span><br><span class="line">File: `/etc/resolv.conf&apos;</span><br><span class="line">Size: 106 Blocks: 8 IO Block: 4096 regular file</span><br><span class="line">Device: 802h/2050d Inode: 1182160 Links: 1</span><br><span class="line">Access: (0644/-rw-r--r--) Uid: ( 0/ root) Gid: ( 0/ root)</span><br><span class="line">Access: 2017-11-22 06:00:02.797144215 +0800</span><br><span class="line">Modify: 2017-11-22 06:00:02.795144215 +0800</span><br><span class="line">Change: 2017-11-22 06:00:02.795144215 +0800</span><br><span class="line">[root@test rc3.d]# cat /etc/resolv.conf</span><br><span class="line">nameserver 208.67.222.222	#加拿大DNS</span><br><span class="line">nameserver 114.114.114.114</span><br><span class="line">nameserver 208.67.222.222</span><br><span class="line">nameserver 114.114.114.114</span><br></pre></td></tr></table></figure>
+
 <h3 id="增加了开机启动"><a href="#增加了开机启动" class="headerlink" title="增加了开机启动"></a>增加了开机启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[root@test cron]# ll /etc/init.d/wipefs</span><br><span class="line">lrwxrwxrwx 1 root root 11 Nov 22 06:00 /etc/init.d/wipefs -&gt; /bin/wipefs</span><br><span class="line">[root@test rc3.d]# pwd</span><br><span class="line">/etc/rc.d/rc3.d</span><br><span class="line">[root@test rc3.d]# ll -h |grep wipefs</span><br><span class="line">lrwxrwxrwx 1 root root 18 Nov 22 06:00 S01wipefs -&gt; /etc/init.d/wipefs</span><br><span class="line">[root@test rc3.d]# cd /etc/rc3.d/</span><br><span class="line">[root@test rc3.d]# ll -h |grep wipefs</span><br><span class="line">lrwxrwxrwx 1 root root 18 Nov 22 06:00 S01wipefs -&gt; /etc/init.d/wipefs</span><br><span class="line">[root@test init.d]# pwd</span><br><span class="line">/etc/init.d</span><br><span class="line">[root@test init.d]# ll acpidtd</span><br><span class="line">-rwxr-xr-x 1 root root 1223753 Nov 20 16:03 acpidtd</span><br><span class="line">[root@test rc3.d]# ll -h |grep acpidtd</span><br><span class="line">lrwxrwxrwx 1 root root 19 Nov 20 16:03 S01acpidtd -&gt; /etc/init.d/acpidtd</span><br><span class="line">[root@test rc3.d]# pwd</span><br><span class="line">/etc/rc3.d</span><br><span class="line">[root@test rc3.d]# cd /etc/rc.d/rc3.d/</span><br><span class="line">[root@test rc3.d]# ll -h |grep acpidtd</span><br><span class="line">lrwxrwxrwx 1 root root 19 Nov 20 16:03 S01acpidtd -&gt; /etc/init.d/acpidtd</span><br><span class="line">[root@test rc3.d]# ll /bin/ddus-uidgen</span><br><span class="line">-rwxr-xr-x 1 root root 1223753 Nov 20 16:03 /bin/ddus-uidgen</span><br><span class="line">[root@test rc3.d]# ll /etc/resolv.conf</span><br><span class="line">-rw-r--r-- 1 root root 106 Nov 22 06:00 /etc/resolv.conf</span><br></pre></td></tr></table></figure>
+
 <h3 id="清理"><a href="#清理" class="headerlink" title="清理"></a>清理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">pkill wipefs</span><br><span class="line">echo &quot;nameserver 114.114.114.114&quot; &gt; /etc/resolv.conf</span><br><span class="line">chattr -i /bin/wipefs</span><br><span class="line">chattr -i /bin/ddus-uidgen</span><br><span class="line">chattr -i /etc/init.d/acpidtd</span><br><span class="line">rm -rf /bin/wipefs</span><br><span class="line">rm -rf /etc/init.d/wipefs</span><br><span class="line">rm -rf /bin/ddus-uidgen</span><br><span class="line">rm -rf /etc/init.d/acpidtd</span><br><span class="line">rm -rf /etc/rc0.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc1.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc2.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc3.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc4.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc5.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc6.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc0.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc1.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc2.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc3.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc4.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc5.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc6.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc0.d/acpidtd</span><br><span class="line">rm -rf /etc/rc1.d/acpidtd</span><br><span class="line">rm -rf /etc/rc2.d/acpidtd</span><br><span class="line">rm -rf /etc/rc3.d/acpidtd</span><br><span class="line">rm -rf /etc/rc4.d/acpidtd</span><br><span class="line">rm -rf /etc/rc5.d/acpidtd</span><br><span class="line">rm -rf /etc/rc6.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc0.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc1.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc2.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc3.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc4.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc5.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc6.d/acpidtd</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -438,7 +442,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -449,16 +453,14 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460"
-               alt="Hillock" />
+          <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460" alt="Hillock">
           <p class="site-author-name" itemprop="name">Hillock</p>
           <p class="site-description motion-element" itemprop="description">开发笔记而已～～～</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">154</span>
+              <span class="site-state-item-count">155</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -475,7 +477,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -557,7 +559,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2019</span>

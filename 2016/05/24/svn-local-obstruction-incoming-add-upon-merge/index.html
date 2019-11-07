@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,21 +63,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="刘立岗, 博客" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="刘立岗, 博客">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wulai.me/2016/05/24/svn-local-obstruction-incoming-add-upon-merge/"/>
+  <link rel="canonical" href="http://www.wulai.me/2016/05/24/svn-local-obstruction-incoming-add-upon-merge/">
 
 
 
@@ -166,13 +166,13 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">无来</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">不管你来还是不来<br />我都在这里，夜夜点亮<br />不是为了守候<br />只是为了做好我自己</p>
+  <p class="site-subtitle">不管你来还是不来<br>我都在这里，夜夜点亮<br>不是为了守候<br>只是为了做好我自己</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -193,7 +193,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -203,7 +203,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -213,7 +213,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -226,7 +226,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -275,14 +275,14 @@
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
+    <meta itemprop="description" content>
     <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="无来">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
+      <img style="display:none;" itemprop="url image" alt="无来" src>
     </span>
   </span>
 
@@ -323,7 +323,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -373,18 +373,14 @@
       &gt;   local obstruction, incoming add upon merge
 ...
 Summary of conflicts:
-  Tree conflicts: 1
-</code></pre><h2 id="The-Cause"><a href="#The-Cause" class="headerlink" title="The Cause"></a>The Cause</h2><pre><code>This special conflict message is created when the same file has been added to both the place your merging from as well as the place your merging to since the last merge. Since these evil twins both have completely different histories and no common state (as would exist if the image had been added before you branched), svn is totally unable to provide you advice. This is why you will see no `merge-left` or `merge-right` files.
-</code></pre><h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><pre><code>In the example above the same binary file has been added to both a branch and a trunk. Since the image is identical, the solution was simply to pick one. I picked the working copy.
+  Tree conflicts: 1</code></pre><h2 id="The-Cause"><a href="#The-Cause" class="headerlink" title="The Cause"></a>The Cause</h2><pre><code>This special conflict message is created when the same file has been added to both the place your merging from as well as the place your merging to since the last merge. Since these evil twins both have completely different histories and no common state (as would exist if the image had been added before you branched), svn is totally unable to provide you advice. This is why you will see no `merge-left` or `merge-right` files.</code></pre><h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><pre><code>In the example above the same binary file has been added to both a branch and a trunk. Since the image is identical, the solution was simply to pick one. I picked the working copy.
 
     svn resolve --accept working ./web-app/images/widget.png
 
 
 Another possible case is that two totally different files have been checked in with the same name and path. In this case, you’re going to need to rename one version and refactor the rest of your code to accommodate that name change. SVN has no easy way to do this so you’ll need to do it manually.
 
-The last case is that the same file has been created but you need a super set of the functionality provided by both versions. Again, SVN does not offer any speedy tools for this so you’ll simply need to do a manual merger.
-</code></pre><h3 id="一次修复所有的错误信息"><a href="#一次修复所有的错误信息" class="headerlink" title="一次修复所有的错误信息"></a>一次修复所有的错误信息</h3><pre><code>svn st | awk &apos;{if ( $1 == &quot;C&quot;) { print $2}}&apos; | xargs svn resolve --accept working
-</code></pre>
+The last case is that the same file has been created but you need a super set of the functionality provided by both versions. Again, SVN does not offer any speedy tools for this so you’ll simply need to do a manual merger.</code></pre><h3 id="一次修复所有的错误信息"><a href="#一次修复所有的错误信息" class="headerlink" title="一次修复所有的错误信息"></a>一次修复所有的错误信息</h3><pre><code>svn st | awk &apos;{if ( $1 == &quot;C&quot;) { print $2}}&apos; | xargs svn resolve --accept working</code></pre>
       
     </div>
 
@@ -470,7 +466,7 @@ The last case is that the same file has been created but you need a super set of
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -481,16 +477,14 @@ The last case is that the same file has been created but you need a super set of
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460"
-               alt="Hillock" />
+          <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460" alt="Hillock">
           <p class="site-author-name" itemprop="name">Hillock</p>
           <p class="site-description motion-element" itemprop="description">开发笔记而已～～～</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">154</span>
+              <span class="site-state-item-count">155</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -507,7 +501,7 @@ The last case is that the same file has been created but you need a super set of
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -589,7 +583,7 @@ The last case is that the same file has been created but you need a super set of
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2019</span>

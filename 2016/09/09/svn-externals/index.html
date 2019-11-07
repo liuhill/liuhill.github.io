@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,21 +63,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="刘立岗, 博客" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="刘立岗, 博客">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wulai.me/2016/09/09/svn-externals/"/>
+  <link rel="canonical" href="http://www.wulai.me/2016/09/09/svn-externals/">
 
 
 
@@ -166,13 +166,13 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">无来</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">不管你来还是不来<br />我都在这里，夜夜点亮<br />不是为了守候<br />只是为了做好我自己</p>
+  <p class="site-subtitle">不管你来还是不来<br>我都在这里，夜夜点亮<br>不是为了守候<br>只是为了做好我自己</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -193,7 +193,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -203,7 +203,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -213,7 +213,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -226,7 +226,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -275,14 +275,14 @@
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
-    <meta itemprop="description" content="">
+    <meta itemprop="description" content>
     <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="无来">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="无来" src="">
+      <img style="display:none;" itemprop="url image" alt="无来" src>
     </span>
   </span>
 
@@ -351,15 +351,19 @@
         <script src="/assets/js/APlayer.min.js"> </script><h1 id="Externals-Definitions"><a href="#Externals-Definitions" class="headerlink" title="Externals Definitions"></a>Externals Definitions</h1><p>Sometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different locations in a repository, or perhaps from different repositories altogether. You could certainly setup such a scenario by hand—using <code>svn checkout</code> to create the sort of nested working copy structure you are trying to achieve. But if this layout is important for everyone who uses your repository, every other user will need to perform the same checkout operations that you did.</p>
 <p>Fortunately, Subversion provides support for externals definitions. An externals definition is a mapping of a local directory to the URL—and possibly a particular revision—of a versioned resource. In Subversion, you declare externals definitions in groups using the <code>svn:externals</code> property. You can create or modify this property using <code>svn propset</code> or <code>svn propedit</code> (see <a href="http://svnbook.red-bean.com/en/1.0/ch07s02.html#svn-ch-7-sect-2.1" target="_blank" rel="noopener">the section called “Why Properties?”</a>). It can be set on any versioned directory, and its value is a multi-line table of subdirectories (relative to the versioned directory on which the property is set) and fully qualified, absolute Subversion repository URLs.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ svn propget svn:externals calc</span><br><span class="line">third-party/sounds             http://sounds.red-bean.com/repos</span><br><span class="line">third-party/skins              http://skins.red-bean.com/repositories/skinproj</span><br><span class="line">third-party/skins/toolkit -r21 http://svn.red-bean.com/repos/skin-maker</span><br></pre></td></tr></table></figure>
+
 <p>he convenience of the svn:externals property is that once it is set on a versioned directory, everyone who checks out a working copy with that directory also gets the benefit of the externals definition. In other words, once one person has made the effort to define those nested working copy checkouts, no one else has to bother—Subversion will, upon checkout of the original working copy, also checkout the external working copies.</p>
 <p>Note the previous externals definition example. When someone checks out a working copy of the calc directory, Subversion also continues to checkout the items found in its externals definition.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ svn checkout http://svn.example.com/repos/calc</span><br><span class="line">A  calc</span><br><span class="line">A  calc/Makefile</span><br><span class="line">A  calc/integer.c</span><br><span class="line">A  calc/button.c</span><br><span class="line">Checked out revision 148.</span><br><span class="line"></span><br><span class="line">Fetching external item into calc/third-party/sounds</span><br><span class="line">A  calc/third-party/sounds/ding.ogg</span><br><span class="line">A  calc/third-party/sounds/dong.ogg</span><br><span class="line">A  calc/third-party/sounds/clang.ogg</span><br><span class="line">…</span><br><span class="line">A  calc/third-party/sounds/bang.ogg</span><br><span class="line">A  calc/third-party/sounds/twang.ogg</span><br><span class="line">Checked out revision 14.</span><br><span class="line"></span><br><span class="line">Fetching external item into calc/third-party/skins</span><br><span class="line">…</span><br></pre></td></tr></table></figure>
+
 <p>If you need to change the externals definition, you can do so using the regular property modification subcommands. When you commit a change to the <code>svn:externals</code> property, Subversion will synchronize the checked-out items against the changed externals definition when you next run <code>svn update</code>. The same thing will happen when others update their working copies and receive your changes to the externals definition.</p>
 <p>The <code>svn status</code> command also recognizes externals definitions, displaying a status code of X for the disjoint subdirectories into which externals are checked out, and then recursing into those subdirectories to display the status of the external items themselves.</p>
 <p>The support that exists for externals definitions in Subversion today can be a little misleading, though. First, an externals definition can only point to directories, not files. Second, the externals definition cannot point to relative paths (paths like ../../skins/myskin). Third, the working copies created via the externals definition support are still disconnected from the primary working copy (on whose versioned directories the <code>svn:externals</code> property was actually set). And Subversion still only truly operates on non-disjoint working copies. So, for example, if you want to commit changes that you’ve made in one or more of those external working copies, you must run <code>svn commit</code> explicitly on those working copies—committing on the primary working copy will not recurse into any external ones.</p>
 <p>Also, since the definitions themselves use absolute URLs, moving or copying a directory to which they are attached will not affect what gets checked out as an external (though the relative local target subdirectory will, of course, move with renamed directory). This can be confusing—even frustrating—in certain situations. For example, if you use externals definitions on a directory in your /trunk development line which point to other areas of that same line, and then you use <code>svn copy</code> to branch that line to some new location /branches/my-branch, the externals definitions on items in your new branch will still refer to versioned resources in /trunk. Also, be aware that if you need to re-parent your working copy (using svn switch –relocate), externals definitions will not also be re-parented.</p>
 <h1 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn propdel -R svn:externals</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn propdel PROPNAME</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -446,7 +450,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -457,16 +461,14 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460"
-               alt="Hillock" />
+          <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460" alt="Hillock">
           <p class="site-author-name" itemprop="name">Hillock</p>
           <p class="site-description motion-element" itemprop="description">开发笔记而已～～～</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">154</span>
+              <span class="site-state-item-count">155</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -483,7 +485,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -565,7 +567,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2019</span>
