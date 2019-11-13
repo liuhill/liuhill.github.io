@@ -9,17 +9,19 @@
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p><em>原文:</em> (今日头条、抖音推荐算法原理全文详解) <a href="https://mp.weixin.qq.com/s/e0KgNOn3vIKn-nc1l-XBqw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/e0KgNOn3vIKn-nc1l-XBqw</a></p>
 <h2 id="1、系统概览"><a href="#1、系统概览" class="headerlink" title="1、系统概览"></a>1、系统概览</h2><h3 id="1-1）推荐系统"><a href="#1-1）推荐系统" class="headerlink" title="1.1）推荐系统"></a>1.1）推荐系统</h3><p>推荐系统就是拟合一个用户对内容满意度的函数，这个函数需要输入三个维度的变量：</p>
 <ul>
-<li>内容：提取不同内容类型的特征做好推荐。</li>
+<li>内容特征：提取不同内容类型的特征做好推荐。</li>
 <li>用户特征：兴趣标签，职业、年龄、性别等。</li>
-<li>环境特征：在工作场合、通勤、旅游等不同的场景，信息偏好有所偏移。</li>
+<li>环境特征：在工作场合、通勤、旅游等不同的场景，信息偏好有所偏移。<img title="推荐系统匹配函数" alt="推荐系统匹配函数" src="http://res.hillock.com.cn/wulai/images/今日头条/推荐系统匹配.webp">
+
+</li>
 </ul>
 <h3 id="1-2）推荐系统的目标"><a href="#1-2）推荐系统的目标" class="headerlink" title="1.2）推荐系统的目标"></a>1.2）推荐系统的目标</h3><ul>
 <li>可量化目标：点击率、阅读时间、点赞、评论、转发包括点赞</li>
 <li>无法直接衡量的目标<ul>
-<li>广告 &amp; å特型内容频控</li>
-<li>低俗内容打压 &amp; 频控</li>
+<li>广告&amp;特型内容频控</li>
+<li>低俗内容打压&amp;频控</li>
 <li>标题党，低质，恶心内容打压</li>
-<li>重要新闻置顶 &amp; 强插 &amp; 加权</li>
+<li>重要新闻置顶&amp;强插&amp;加权</li>
 <li>低级别账号内容降权</li>
 </ul>
 </li>
@@ -31,7 +33,7 @@
 <li>Factorization Machine</li>
 <li>GBDT</li>
 </ul>
-<p><em>* 需要非常灵活的算法实验平台，可以支持多种算法组合，包括模型结构调整。</em></p>
+<p><em>注：需要非常灵活的算法实验平台，可以支持多种算法组合，包括模型结构调整。</em></p>
 <h3 id="1-4）推荐特征"><a href="#1-4）推荐特征" class="headerlink" title="1.4）推荐特征"></a>1.4）推荐特征</h3><ul>
 <li>第一类是相关性特征</li>
 </ul>
