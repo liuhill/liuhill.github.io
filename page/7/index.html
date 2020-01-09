@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="刘立岗, 博客">
+  <meta name="keywords" content="刘立岗,博客">
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="开发笔记而已～～～">
+<meta name="description" content="使人成熟的不是岁月而是经历">
 <meta property="og:type" content="website">
 <meta property="og:title" content="无来">
 <meta property="og:url" content="http://www.wulai.me/page/7/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="开发笔记而已～～～">
+<meta property="og:description" content="使人成熟的不是岁月而是经历">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无来">
-<meta name="twitter:description" content="开发笔记而已～～～">
+<meta name="twitter:description" content="使人成熟的不是岁月而是经历">
 
 
 
@@ -277,7 +277,7 @@
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
     <meta itemprop="description" content>
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+    <meta itemprop="image" content="http://res.hillock.com.cn/cola.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -354,7 +354,7 @@
       
         
           
-            <script src="/assets/js/APlayer.min.js"> </script><h2 id="脚本-latest-ffmpeg-centos6-sh"><a href="#脚本-latest-ffmpeg-centos6-sh" class="headerlink" title="脚本 latest-ffmpeg-centos6.sh"></a>脚本 <code>latest-ffmpeg-centos6.sh</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"># source: https://trac.ffmpeg.org/wiki/CentosCompilationGuide</span><br><span class="line"></span><br><span class="line">yum install autoconf automake gcc gcc-c++ git libtool make nasm pkgconfig zlib-devel</span><br><span class="line"></span><br><span class="line">mkdir ~/ffmpeg_sources</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -O http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz</span><br><span class="line">tar xzvf yasm-1.2.0.tar.gz</span><br><span class="line">cd yasm-1.2.0</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot;</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line">. ~/.bash_profile</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">git clone --depth 1 git://git.videolan.org/x264</span><br><span class="line">cd x264</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot; --enable-static</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">git clone --depth 1 git://github.com/mstorsjo/fdk-aac.git</span><br><span class="line">cd fdk-aac</span><br><span class="line">autoreconf -fiv</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -L -O http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz</span><br><span class="line">tar xzvf lame-3.99.5.tar.gz</span><br><span class="line">cd lame-3.99.5</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot; --disable-shared --enable-nasm</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -O http://downloads.xiph.org/releases/opus/opus-1.0.3.tar.gz</span><br><span class="line">tar xzvf opus-1.0.3.tar.gz</span><br><span class="line">cd opus-1.0.3</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -O http://downloads.xiph.org/releases/ogg/libogg-1.3.1.tar.gz</span><br><span class="line">tar xzvf libogg-1.3.1.tar.gz</span><br><span class="line">cd libogg-1.3.1</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -O http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.3.tar.gz</span><br><span class="line">tar xzvf libvorbis-1.3.3.tar.gz</span><br><span class="line">cd libvorbis-1.3.3</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --with-ogg=&quot;$HOME/ffmpeg_build&quot; --disable-shared</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">git clone --depth 1 https://chromium.googlesource.com/webm/libvpx</span><br><span class="line">cd libvpx</span><br><span class="line">git checkout tags/v1.3.0</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-examples</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make clean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -O http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.gz</span><br><span class="line">tar xzvf libtheora-1.1.1.tar.gz</span><br><span class="line">cd libtheora-1.1.1</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --with-ogg=&quot;$HOME/ffmpeg_build&quot; --disable-examples --disable-shared --disable-sdltest --disable-vorbistest</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">yum -y install freetype-devel speex-devel</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">git clone --depth 1 git://source.ffmpeg.org/ffmpeg</span><br><span class="line">cd ffmpeg</span><br><span class="line">PKG_CONFIG_PATH=&quot;$HOME/ffmpeg_build/lib/pkgconfig&quot;</span><br><span class="line">export PKG_CONFIG_PATH</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --extra-cflags=&quot;-I$HOME/ffmpeg_build/include&quot; --extra-ldflags=&quot;-L$HOME/ffmpeg_build/lib&quot; --bindir=&quot;$HOME/bin&quot; --extra-libs=&quot;-ldl&quot; --enable-gpl --enable-nonfree --enable-libfdk_aac --enable-libmp3lame --enable-libopus --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libfreetype --enable-libspeex --enable-libtheora</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line">hash -r</span><br><span class="line">. ~/.bash_profile</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources/ffmpeg/tools</span><br><span class="line">make qt-faststart</span><br><span class="line">cp qt-faststart /usr/bin</span><br><span class="line">ldconfig</span><br><span class="line">cd</span><br></pre></td></tr></table></figure>
+            <h2 id="脚本-latest-ffmpeg-centos6-sh"><a href="#脚本-latest-ffmpeg-centos6-sh" class="headerlink" title="脚本 latest-ffmpeg-centos6.sh"></a>脚本 <code>latest-ffmpeg-centos6.sh</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"># source: https://trac.ffmpeg.org/wiki/CentosCompilationGuide</span><br><span class="line"></span><br><span class="line">yum install autoconf automake gcc gcc-c++ git libtool make nasm pkgconfig zlib-devel</span><br><span class="line"></span><br><span class="line">mkdir ~/ffmpeg_sources</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -O http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz</span><br><span class="line">tar xzvf yasm-1.2.0.tar.gz</span><br><span class="line">cd yasm-1.2.0</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot;</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line">. ~/.bash_profile</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">git clone --depth 1 git://git.videolan.org/x264</span><br><span class="line">cd x264</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot; --enable-static</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">git clone --depth 1 git://github.com/mstorsjo/fdk-aac.git</span><br><span class="line">cd fdk-aac</span><br><span class="line">autoreconf -fiv</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -L -O http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz</span><br><span class="line">tar xzvf lame-3.99.5.tar.gz</span><br><span class="line">cd lame-3.99.5</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --bindir=&quot;$HOME/bin&quot; --disable-shared --enable-nasm</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -O http://downloads.xiph.org/releases/opus/opus-1.0.3.tar.gz</span><br><span class="line">tar xzvf opus-1.0.3.tar.gz</span><br><span class="line">cd opus-1.0.3</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -O http://downloads.xiph.org/releases/ogg/libogg-1.3.1.tar.gz</span><br><span class="line">tar xzvf libogg-1.3.1.tar.gz</span><br><span class="line">cd libogg-1.3.1</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-shared</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -O http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.3.tar.gz</span><br><span class="line">tar xzvf libvorbis-1.3.3.tar.gz</span><br><span class="line">cd libvorbis-1.3.3</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --with-ogg=&quot;$HOME/ffmpeg_build&quot; --disable-shared</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">git clone --depth 1 https://chromium.googlesource.com/webm/libvpx</span><br><span class="line">cd libvpx</span><br><span class="line">git checkout tags/v1.3.0</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --disable-examples</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make clean</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">curl -O http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.gz</span><br><span class="line">tar xzvf libtheora-1.1.1.tar.gz</span><br><span class="line">cd libtheora-1.1.1</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --with-ogg=&quot;$HOME/ffmpeg_build&quot; --disable-examples --disable-shared --disable-sdltest --disable-vorbistest</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line"></span><br><span class="line">yum -y install freetype-devel speex-devel</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources</span><br><span class="line">git clone --depth 1 git://source.ffmpeg.org/ffmpeg</span><br><span class="line">cd ffmpeg</span><br><span class="line">PKG_CONFIG_PATH=&quot;$HOME/ffmpeg_build/lib/pkgconfig&quot;</span><br><span class="line">export PKG_CONFIG_PATH</span><br><span class="line">./configure --prefix=&quot;$HOME/ffmpeg_build&quot; --extra-cflags=&quot;-I$HOME/ffmpeg_build/include&quot; --extra-ldflags=&quot;-L$HOME/ffmpeg_build/lib&quot; --bindir=&quot;$HOME/bin&quot; --extra-libs=&quot;-ldl&quot; --enable-gpl --enable-nonfree --enable-libfdk_aac --enable-libmp3lame --enable-libopus --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libfreetype --enable-libspeex --enable-libtheora</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make distclean</span><br><span class="line">hash -r</span><br><span class="line">. ~/.bash_profile</span><br><span class="line"></span><br><span class="line">cd ~/ffmpeg_sources/ffmpeg/tools</span><br><span class="line">make qt-faststart</span><br><span class="line">cp qt-faststart /usr/bin</span><br><span class="line">ldconfig</span><br><span class="line">cd</span><br></pre></td></tr></table></figure>
 
 <h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ:"></a>FAQ:</h2><ul>
 <li><p>ERROR: libvpx decoder version must be &gt;=0.9.1</p>
@@ -403,7 +403,7 @@
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
     <meta itemprop="description" content>
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+    <meta itemprop="image" content="http://res.hillock.com.cn/cola.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -446,7 +446,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-03-06T13:19:53+08:00">
+            <time title="Post modified" itemprop="dateModified" datetime="2017-03-06T13:19:52+08:00">
               2017-03-06
             </time>
             
@@ -480,7 +480,7 @@
       
         
           
-            <script src="/assets/js/APlayer.min.js"> </script><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD</span><br><span class="line">&quot;MYSQL_ROOT_PASSWORD=test&quot;,</span><br><span class="line">root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -p</span><br><span class="line">Enter password: test</span><br><span class="line">ERROR 1045 (28000): Access denied for user &apos;root&apos;@&apos;localhost&apos; (using password: YES)</span><br></pre></td></tr></table></figure>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD</span><br><span class="line">&quot;MYSQL_ROOT_PASSWORD=test&quot;,</span><br><span class="line">root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -p</span><br><span class="line">Enter password: test</span><br><span class="line">ERROR 1045 (28000): Access denied for user &apos;root&apos;@&apos;localhost&apos; (using password: YES)</span><br></pre></td></tr></table></figure>
 
 <p>I’ve gratuitously rebuilt, recreated, <code>--no-cache&#39;d</code>, <code>--force-recreate&#39;d</code>.. nothing is working. I’ve also tried putting the environment variable directly in a mysql Dockerfile and as an “environment” argument in my docker-compose.yml.</p>
 <p>The only thing that IS working is passing -e ‘MYSQL_ROOT_PASSWORD=test’ in a docker run statement.</p>
@@ -527,7 +527,7 @@
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
     <meta itemprop="description" content>
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+    <meta itemprop="image" content="http://res.hillock.com.cn/cola.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -604,7 +604,7 @@
       
         
           
-            <script src="/assets/js/APlayer.min.js"> </script><p>我使用crontab同步一个文件夹时，发现一个问题，我在crontab中设置的1分钟运行一次.但当那个文件夹的内容改变时。1分钟不一定能同步完，但这时第二个rsync进行又起来了。</p>
+            <p>我使用crontab同步一个文件夹时，发现一个问题，我在crontab中设置的1分钟运行一次.但当那个文件夹的内容改变时。1分钟不一定能同步完，但这时第二个rsync进行又起来了。</p>
 <p>这个就产生一个问题，二个rsync一起处理相同的文件，这样会出问题。如下</p>
 <pre><code>* * * * /usr/bin/rsync -avlR /data/files    172.16.xxx.xxx:/data</code></pre><p>本来想写个脚本来解决，但太麻烦。所以用了个linux下的锁。。呵呵，象下面这个.</p>
 <pre><code>1 * * * * flock -xn /var/run/rsync.lock -c &quot;rsync -avlR /data/files    172.16.xxx.xxx:/data&quot;</code></pre><p>这样,使用flock的<code>-x</code>参数先建一个锁文件，然后<code>-n</code>指定，如果锁存在，就等待。直到建成功锁在会运行-c后面的命令。这样第一个进程没有运行完前，锁文件都会存在。这样就不会二个rsync同时并发处理一个东西了</p>
@@ -652,7 +652,7 @@
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
     <meta itemprop="description" content>
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+    <meta itemprop="image" content="http://res.hillock.com.cn/cola.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -729,7 +729,7 @@
       
         
           
-            <script src="/assets/js/APlayer.min.js"> </script><p>需求： 同步某个目录下所有的图片（<em>.jpg），该目录下有很多其他的文件，但只想同步</em>.jpg的文件。</p>
+            <p>需求： 同步某个目录下所有的图片（<em>.jpg），该目录下有很多其他的文件，但只想同步</em>.jpg的文件。</p>
 <p>rsync 有一个–exclude 可以排除指定文件，还有个–include选项的作用正好和–exclude相反。<br>那直接使用–include=”*.jpg”是否可以呢？</p>
 <p>rsync -av  –include=”*.jpg”  /src/   /des/</p>
 <p>实验证明，这样是不对的。</p>
@@ -777,7 +777,7 @@
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
     <meta itemprop="description" content>
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+    <meta itemprop="image" content="http://res.hillock.com.cn/cola.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -820,7 +820,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-02-09T09:22:57+08:00">
+            <time title="Post modified" itemprop="dateModified" datetime="2017-02-09T09:22:56+08:00">
               2017-02-09
             </time>
             
@@ -854,7 +854,7 @@
       
         
           
-            <script src="/assets/js/APlayer.min.js"> </script><p>MySQL导出的SQL语句在导入时有可能会非常非常慢，经历过导入仅45万条记录，竟用了近3个小时。在导出时合理使用几个参数，可以大大加快导 入的速度。</p>
+            <p>MySQL导出的SQL语句在导入时有可能会非常非常慢，经历过导入仅45万条记录，竟用了近3个小时。在导出时合理使用几个参数，可以大大加快导 入的速度。</p>
 <ul>
 <li><code>-e</code> 使用包括几个VALUES列表的多行INSERT语法;</li>
 <li><code>-max_allowed_packet=XXX</code> 客户端/服务器之间通信的缓存区的最大大小;</li>
@@ -909,7 +909,7 @@
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
     <meta itemprop="description" content>
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+    <meta itemprop="image" content="http://res.hillock.com.cn/cola.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -986,7 +986,7 @@
       
         
           
-            <script src="/assets/js/APlayer.min.js"> </script><p>I’m not sure exactly what you’re asking as the title talks about merging single files but the text of the question talks about single revisions. In the case of merging single revisions you need: (to merge the changes committed in revisions 100, 105, 115)</p>
+            <p>I’m not sure exactly what you’re asking as the title talks about merging single files but the text of the question talks about single revisions. In the case of merging single revisions you need: (to merge the changes committed in revisions 100, 105, 115)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd trunk</span><br><span class="line">svn merge -c 100 -c 105 -c 115 http://..../branches/mybranch .</span><br></pre></td></tr></table></figure>
 
 <p>If you want to merge only the part of revision 100 that affects file.cpp:</p>
@@ -1035,7 +1035,7 @@
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
     <meta itemprop="description" content>
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+    <meta itemprop="image" content="http://res.hillock.com.cn/cola.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1112,7 +1112,7 @@
       
         
           
-            <script src="/assets/js/APlayer.min.js"> </script><h3 id="php-CMYK-to-RGB"><a href="#php-CMYK-to-RGB" class="headerlink" title="php CMYK to RGB"></a>php CMYK to RGB</h3><p><code>来源</code>:<a href="http://php.net/manual/en/imagick.setimagecolorspace.php" target="_blank" rel="noopener">http://php.net/manual/en/imagick.setimagecolorspace.php</a></p>
+            <h3 id="php-CMYK-to-RGB"><a href="#php-CMYK-to-RGB" class="headerlink" title="php CMYK to RGB"></a>php CMYK to RGB</h3><p><code>来源</code>:<a href="http://php.net/manual/en/imagick.setimagecolorspace.php" target="_blank" rel="noopener">http://php.net/manual/en/imagick.setimagecolorspace.php</a></p>
 <p>Simlest way converting from CMYK to RGB:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if ($jpeg-&gt;getImageColorspace() == \Imagick::COLORSPACE_CMYK) &#123;</span><br><span class="line">    $jpeg-&gt;transformimagecolorspace(\Imagick::COLORSPACE_SRGB);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 
@@ -1160,7 +1160,7 @@
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
     <meta itemprop="description" content>
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+    <meta itemprop="image" content="http://res.hillock.com.cn/cola.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1237,7 +1237,7 @@
       
         
           
-            <script src="/assets/js/APlayer.min.js"> </script><h2 id="方案一，输出到系统错误"><a href="#方案一，输出到系统错误" class="headerlink" title="方案一，输出到系统错误"></a>方案一，输出到系统错误</h2><p>One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().</p>
+            <h2 id="方案一，输出到系统错误"><a href="#方案一，输出到系统错误" class="headerlink" title="方案一，输出到系统错误"></a>方案一，输出到系统错误</h2><p>One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set_error_handler(function() &#123; /* ignore errors */ &#125;);</span><br><span class="line">dns_get_record();</span><br><span class="line">restore_error_handler();</span><br></pre></td></tr></table></figure>
 
 <p>You could build on this idea and write a re-usable error handler that logs the errors for you.</p>
@@ -1294,7 +1294,7 @@
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
     <meta itemprop="description" content>
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+    <meta itemprop="image" content="http://res.hillock.com.cn/cola.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1371,7 +1371,7 @@
       
         
           
-            <script src="/assets/js/APlayer.min.js"> </script><blockquote>
+            <blockquote>
 <p>欢迎转载，但请务必在明确位置注明文章出处！ &gt;<a href="http://johnnyshieh.github.io/python/2015/08/02/python-remove-utf8-bom/" target="_blank" rel="noopener">http://johnnyshieh.github.io/python/2015/08/02/python-remove-utf8-bom/</a></p>
 </blockquote>
 <p>前几天我在Windows写完一篇markdown格式的文章，上传到github page后，这个文章的页面把jekyll的YAML头信息也显示出来了，没有像我之前在ubuntu中写的文章一样正常解析YAML头信息，最后谷歌了半天发现原因是在Windows用记事本保存utf-8编码的文件时会默认加上BOM头字符。而jekyll的文档中也明确写明了如果使用UTF-8编码，那么在文件中一定不要出现BOM头字符。</p>
@@ -1441,7 +1441,7 @@
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
     <meta itemprop="description" content>
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+    <meta itemprop="image" content="http://res.hillock.com.cn/cola.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1484,7 +1484,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2016-12-12T12:21:53+08:00">
+            <time title="Post modified" itemprop="dateModified" datetime="2016-12-12T12:21:52+08:00">
               2016-12-12
             </time>
             
@@ -1518,7 +1518,7 @@
       
         
           
-            <script src="/assets/js/APlayer.min.js"> </script><p>将扩展名为<code>.json</code>的文件名添加前缀<code>ad_</code></p>
+            <p>将扩展名为<code>.json</code>的文件名添加前缀<code>ad_</code></p>
 <pre><code>for i in `ls *.json`;do mv -f $i `echo &quot;ad_&quot;$i`;done</code></pre>
           
         
@@ -1584,9 +1584,9 @@
 
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460" alt="Hillock">
+          <img class="site-author-image" itemprop="image" src="http://res.hillock.com.cn/cola.jpg" alt="Hillock">
           <p class="site-author-name" itemprop="name">Hillock</p>
-          <p class="site-description motion-element" itemprop="description">开发笔记而已～～～</p>
+          <p class="site-description motion-element" itemprop="description">使人成熟的不是岁月而是经历</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
@@ -1677,7 +1677,7 @@
         <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

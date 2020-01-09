@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="刘立岗, 博客">
+  <meta name="keywords" content="刘立岗,博客">
 
 
 
@@ -84,17 +84,17 @@
 
 
 
-<meta name="description" content="12345678910111213141516171819$ cat /etc/tmpfiles.d/tmp.conf#  This file is part of systemd.##  systemd is free software; you can redistribute it and/or modify it#  under the terms of the GNU Lesser G">
+<meta name="description" content="12345678910111213141516171819$ cat /etc/tmpfiles.d/tmp.conf#  This file is part of systemd.##  systemd is free software; you can redistribute it and/or modify it#  under the terms of the GNU Lesser Ge">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HOWTO disable tmpfs on &#x2F;tmp?">
 <meta property="og:url" content="http://www.wulai.me/2017/08/02/HOWTO-disable-tmpfs-on-tmp/index.html">
 <meta property="og:site_name" content="无来">
-<meta property="og:description" content="12345678910111213141516171819$ cat /etc/tmpfiles.d/tmp.conf#  This file is part of systemd.##  systemd is free software; you can redistribute it and/or modify it#  under the terms of the GNU Lesser G">
+<meta property="og:description" content="12345678910111213141516171819$ cat /etc/tmpfiles.d/tmp.conf#  This file is part of systemd.##  systemd is free software; you can redistribute it and/or modify it#  under the terms of the GNU Lesser Ge">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-08-02T02:22:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HOWTO disable tmpfs on &#x2F;tmp?">
-<meta name="twitter:description" content="12345678910111213141516171819$ cat /etc/tmpfiles.d/tmp.conf#  This file is part of systemd.##  systemd is free software; you can redistribute it and/or modify it#  under the terms of the GNU Lesser G">
+<meta name="twitter:description" content="12345678910111213141516171819$ cat /etc/tmpfiles.d/tmp.conf#  This file is part of systemd.##  systemd is free software; you can redistribute it and/or modify it#  under the terms of the GNU Lesser Ge">
 
 
 
@@ -276,7 +276,7 @@
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Hillock">
     <meta itemprop="description" content>
-    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460">
+    <meta itemprop="image" content="http://res.hillock.com.cn/cola.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -348,7 +348,7 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/tmpfiles.d/tmp.conf</span><br><span class="line">#  This file is part of systemd.</span><br><span class="line">#</span><br><span class="line">#  systemd is free software; you can redistribute it and/or modify it</span><br><span class="line">#  under the terms of the GNU Lesser General Public License as published by</span><br><span class="line">#  the Free Software Foundation; either version 2.1 of the License, or</span><br><span class="line">#  (at your option) any later version.</span><br><span class="line"></span><br><span class="line"># See tmpfiles.d(5) for details</span><br><span class="line"></span><br><span class="line"># Clear tmp directories separately, to make them easier to override</span><br><span class="line">D /tmp 1777 root root 0</span><br><span class="line">D /var/tmp 1777 root root 10d</span><br><span class="line"></span><br><span class="line"># Exclude namespace mountpoints created with PrivateTmp=yes</span><br><span class="line">x /tmp/systemd-private-*</span><br><span class="line">x /var/tmp/systemd-private-*</span><br><span class="line">X /tmp/systemd-private-*/tmp</span><br><span class="line">X /var/tmp/systemd-private-*/tmp</span><br></pre></td></tr></table></figure>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/tmpfiles.d/tmp.conf</span><br><span class="line">#  This file is part of systemd.</span><br><span class="line">#</span><br><span class="line">#  systemd is free software; you can redistribute it and/or modify it</span><br><span class="line">#  under the terms of the GNU Lesser General Public License as published by</span><br><span class="line">#  the Free Software Foundation; either version 2.1 of the License, or</span><br><span class="line">#  (at your option) any later version.</span><br><span class="line"></span><br><span class="line"># See tmpfiles.d(5) for details</span><br><span class="line"></span><br><span class="line"># Clear tmp directories separately, to make them easier to override</span><br><span class="line">D /tmp 1777 root root 0</span><br><span class="line">D /var/tmp 1777 root root 10d</span><br><span class="line"></span><br><span class="line"># Exclude namespace mountpoints created with PrivateTmp=yes</span><br><span class="line">x /tmp/systemd-private-*</span><br><span class="line">x /var/tmp/systemd-private-*</span><br><span class="line">X /tmp/systemd-private-*/tmp</span><br><span class="line">X /var/tmp/systemd-private-*/tmp</span><br></pre></td></tr></table></figure>
 
 
       
@@ -438,9 +438,9 @@
 
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/3354580?v=3&s=460" alt="Hillock">
+          <img class="site-author-image" itemprop="image" src="http://res.hillock.com.cn/cola.jpg" alt="Hillock">
           <p class="site-author-name" itemprop="name">Hillock</p>
-          <p class="site-description motion-element" itemprop="description">开发笔记而已～～～</p>
+          <p class="site-description motion-element" itemprop="description">使人成熟的不是岁月而是经历</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
@@ -531,7 +531,7 @@
         <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
