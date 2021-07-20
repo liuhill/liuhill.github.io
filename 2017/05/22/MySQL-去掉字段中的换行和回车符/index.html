@@ -10,20 +10,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="解决方法： 123UPDATE tablename SET field &#x3D; REPLACE(REPLACE(field, CHAR(10), &amp;#x27;&amp;#x27;), CHAR(13), &amp;#x27;&amp;#x27;);char(10):  换行符char(13):  回车符 MySQL的trim函数没办法去掉回车和换行，只能去掉多余的空格，可以用MySQL的replace函数，解决掉这个问题，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL 去掉字段中的换行和回车符">
-<meta property="og:url" content="2017/05/22/MySQL-%E5%8E%BB%E6%8E%89%E5%AD%97%E6%AE%B5%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E5%92%8C%E5%9B%9E%E8%BD%A6%E7%AC%A6/index.html">
+<meta property="og:url" content="https://www.wulai.me/2017/05/22/MySQL-%E5%8E%BB%E6%8E%89%E5%AD%97%E6%AE%B5%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E5%92%8C%E5%9B%9E%E8%BD%A6%E7%AC%A6/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="解决方法： 123UPDATE tablename SET field &#x3D; REPLACE(REPLACE(field, CHAR(10), &amp;#x27;&amp;#x27;), CHAR(13), &amp;#x27;&amp;#x27;);char(10):  换行符char(13):  回车符 MySQL的trim函数没办法去掉回车和换行，只能去掉多余的空格，可以用MySQL的replace函数，解决掉这个问题，">
 <meta property="og:locale" content="zh_CN">
@@ -32,7 +32,7 @@
 <meta property="article:author" content="Hillock">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="2017/05/22/MySQL-去掉字段中的换行和回车符/">
+<link rel="canonical" href="https://www.wulai.me/2017/05/22/MySQL-%E5%8E%BB%E6%8E%89%E5%AD%97%E6%AE%B5%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E5%92%8C%E5%9B%9E%E8%BD%A6%E7%AC%A6/">
 
 
 <script id="page-configurations">
@@ -188,7 +188,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="2017/05/22/MySQL-去掉字段中的换行和回车符/">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2017/05/22/MySQL-%E5%8E%BB%E6%8E%89%E5%AD%97%E6%AE%B5%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E5%92%8C%E5%9B%9E%E8%BD%A6%E7%AC%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -259,11 +259,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="2017/05/12/12个非常有用的JavaScript技巧/" rel="prev" title="12个非常有用的JavaScript技巧">
+    <a href="/2017/05/12/12%E4%B8%AA%E9%9D%9E%E5%B8%B8%E6%9C%89%E7%94%A8%E7%9A%84JavaScript%E6%8A%80%E5%B7%A7/" rel="prev" title="12个非常有用的JavaScript技巧">
       <i class="fa fa-chevron-left"></i> 12个非常有用的JavaScript技巧
     </a></div>
       <div class="post-nav-item">
-    <a href="2017/05/26/互联网公司用户体验的盲区/" rel="next" title="购买墨迹天气空气果，看互联网公司用户体验的盲区">
+    <a href="/2017/05/26/%E4%BA%92%E8%81%94%E7%BD%91%E5%85%AC%E5%8F%B8%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C%E7%9A%84%E7%9B%B2%E5%8C%BA/" rel="next" title="购买墨迹天气空气果，看互联网公司用户体验的盲区">
       购买墨迹天气空气果，看互联网公司用户体验的盲区 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -412,30 +412,30 @@
   </div>
 
   
-  <script src="lib/anime.min.js"></script>
-  <script src="lib/velocity/velocity.min.js"></script>
-  <script src="lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="js/utils.js"></script>
+<script src="/js/utils.js"></script>
 
-<script src="js/motion.js"></script>
-
-
-<script src="js/schemes/pisces.js"></script>
+<script src="/js/motion.js"></script>
 
 
-<script src="js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
-
-
-  
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
-<script src="js/local-search.js"></script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 

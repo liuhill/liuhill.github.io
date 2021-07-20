@@ -10,20 +10,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="概述通过执行以下命令，可以在1分钟内对系统资源使用情况有个大致的了解。  uptime dmesg | tail vmstat 1 mpstat -P ALL 1 pidstat 1 iostat -xz 1 free -m sar -n DEV 1 sar -n TCP,ETCP 1 top  其中一些命令需要安装sysstat包，有一些由procps包提供。这些命令的输出，有助于快速定位性能">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何用十条命令在一分钟内检查Linux服务器性能">
-<meta property="og:url" content="2016/09/23/%E5%A6%82%E4%BD%95%E7%94%A8%E5%8D%81%E6%9D%A1%E5%91%BD%E4%BB%A4%E5%9C%A8%E4%B8%80%E5%88%86%E9%92%9F%E5%86%85%E6%A3%80%E6%9F%A5Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD/index.html">
+<meta property="og:url" content="https://www.wulai.me/2016/09/23/%E5%A6%82%E4%BD%95%E7%94%A8%E5%8D%81%E6%9D%A1%E5%91%BD%E4%BB%A4%E5%9C%A8%E4%B8%80%E5%88%86%E9%92%9F%E5%86%85%E6%A3%80%E6%9F%A5Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="概述通过执行以下命令，可以在1分钟内对系统资源使用情况有个大致的了解。  uptime dmesg | tail vmstat 1 mpstat -P ALL 1 pidstat 1 iostat -xz 1 free -m sar -n DEV 1 sar -n TCP,ETCP 1 top  其中一些命令需要安装sysstat包，有一些由procps包提供。这些命令的输出，有助于快速定位性能">
 <meta property="og:locale" content="zh_CN">
@@ -32,7 +32,7 @@
 <meta property="article:author" content="Hillock">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="2016/09/23/如何用十条命令在一分钟内检查Linux服务器性能/">
+<link rel="canonical" href="https://www.wulai.me/2016/09/23/%E5%A6%82%E4%BD%95%E7%94%A8%E5%8D%81%E6%9D%A1%E5%91%BD%E4%BB%A4%E5%9C%A8%E4%B8%80%E5%88%86%E9%92%9F%E5%86%85%E6%A3%80%E6%9F%A5Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD/">
 
 
 <script id="page-configurations">
@@ -188,7 +188,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="2016/09/23/如何用十条命令在一分钟内检查Linux服务器性能/">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2016/09/23/%E5%A6%82%E4%BD%95%E7%94%A8%E5%8D%81%E6%9D%A1%E5%91%BD%E4%BB%A4%E5%9C%A8%E4%B8%80%E5%88%86%E9%92%9F%E5%86%85%E6%A3%80%E6%9F%A5Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -324,11 +324,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="2016/09/18/运算符，；的优先级/" rel="prev" title="运算符，；的优先级">
+    <a href="/2016/09/18/%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8C%EF%BC%9B%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7/" rel="prev" title="运算符，；的优先级">
       <i class="fa fa-chevron-left"></i> 运算符，；的优先级
     </a></div>
       <div class="post-nav-item">
-    <a href="2016/09/24/多个网站使用不同的SSH密钥登陆/" rel="next" title="多个网站使用不同的SSH密钥登陆">
+    <a href="/2016/09/24/%E5%A4%9A%E4%B8%AA%E7%BD%91%E7%AB%99%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C%E7%9A%84SSH%E5%AF%86%E9%92%A5%E7%99%BB%E9%99%86/" rel="next" title="多个网站使用不同的SSH密钥登陆">
       多个网站使用不同的SSH密钥登陆 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -478,30 +478,30 @@
   </div>
 
   
-  <script src="lib/anime.min.js"></script>
-  <script src="lib/velocity/velocity.min.js"></script>
-  <script src="lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="js/utils.js"></script>
+<script src="/js/utils.js"></script>
 
-<script src="js/motion.js"></script>
-
-
-<script src="js/schemes/pisces.js"></script>
+<script src="/js/motion.js"></script>
 
 
-<script src="js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
-
-
-  
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
-<script src="js/local-search.js"></script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 

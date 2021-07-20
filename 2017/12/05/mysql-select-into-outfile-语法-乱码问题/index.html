@@ -10,20 +10,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="一个常见的问题，mysql 导出csv格式的语法，已经乱码问题：由于数据库一般默认的是UTF-8 格式的字符集，而execl默认的是gbk格式的字符集，这里有两种方法解决乱码： 方法一： 先转出.txt格式的文件，然后选择用excel打开时，提示选择哪种编码打开，选择gbk即可1select * from mobile_order_region where school_id&#x3D;6921 into">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql select into outfile 语法 乱码问题">
-<meta property="og:url" content="2017/12/05/mysql-select-into-outfile-%E8%AF%AD%E6%B3%95-%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:url" content="https://www.wulai.me/2017/12/05/mysql-select-into-outfile-%E8%AF%AD%E6%B3%95-%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="一个常见的问题，mysql 导出csv格式的语法，已经乱码问题：由于数据库一般默认的是UTF-8 格式的字符集，而execl默认的是gbk格式的字符集，这里有两种方法解决乱码： 方法一： 先转出.txt格式的文件，然后选择用excel打开时，提示选择哪种编码打开，选择gbk即可1select * from mobile_order_region where school_id&#x3D;6921 into">
 <meta property="og:locale" content="zh_CN">
@@ -32,7 +32,7 @@
 <meta property="article:author" content="Hillock">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="2017/12/05/mysql-select-into-outfile-语法-乱码问题/">
+<link rel="canonical" href="https://www.wulai.me/2017/12/05/mysql-select-into-outfile-%E8%AF%AD%E6%B3%95-%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/">
 
 
 <script id="page-configurations">
@@ -188,7 +188,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="2017/12/05/mysql-select-into-outfile-语法-乱码问题/">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2017/12/05/mysql-select-into-outfile-%E8%AF%AD%E6%B3%95-%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -251,11 +251,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="2017/09/27/MySQL-字符串拼接/" rel="prev" title="MySQL 字符串拼接">
+    <a href="/2017/09/27/MySQL-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/" rel="prev" title="MySQL 字符串拼接">
       <i class="fa fa-chevron-left"></i> MySQL 字符串拼接
     </a></div>
       <div class="post-nav-item">
-    <a href="2017/12/11/带你去探险/" rel="next" title="带你去探险">
+    <a href="/2017/12/11/%E5%B8%A6%E4%BD%A0%E5%8E%BB%E6%8E%A2%E9%99%A9/" rel="next" title="带你去探险">
       带你去探险 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -405,30 +405,30 @@
   </div>
 
   
-  <script src="lib/anime.min.js"></script>
-  <script src="lib/velocity/velocity.min.js"></script>
-  <script src="lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="js/utils.js"></script>
+<script src="/js/utils.js"></script>
 
-<script src="js/motion.js"></script>
-
-
-<script src="js/schemes/pisces.js"></script>
+<script src="/js/motion.js"></script>
 
 
-<script src="js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
-
-
-  
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
-<script src="js/local-search.js"></script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 

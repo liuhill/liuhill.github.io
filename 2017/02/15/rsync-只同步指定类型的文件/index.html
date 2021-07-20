@@ -10,20 +10,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="需求： 同步某个目录下所有的图片（.jpg），该目录下有很多其他的文件，但只想同步.jpg的文件。 rsync 有一个–exclude 可以排除指定文件，还有个–include选项的作用正好和–exclude相反。那直接使用–include&#x3D;”*.jpg”是否可以呢？ rsync -av  –include&#x3D;”*.jpg”  &#x2F;src&#x2F;   &#x2F;des&#x2F; 实验证明，这样是不对的。 而正确的答案是r">
 <meta property="og:type" content="article">
 <meta property="og:title" content="rsync 只同步指定类型的文件">
-<meta property="og:url" content="2017/02/15/rsync-%E5%8F%AA%E5%90%8C%E6%AD%A5%E6%8C%87%E5%AE%9A%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:url" content="https://www.wulai.me/2017/02/15/rsync-%E5%8F%AA%E5%90%8C%E6%AD%A5%E6%8C%87%E5%AE%9A%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%87%E4%BB%B6/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="需求： 同步某个目录下所有的图片（.jpg），该目录下有很多其他的文件，但只想同步.jpg的文件。 rsync 有一个–exclude 可以排除指定文件，还有个–include选项的作用正好和–exclude相反。那直接使用–include&#x3D;”*.jpg”是否可以呢？ rsync -av  –include&#x3D;”*.jpg”  &#x2F;src&#x2F;   &#x2F;des&#x2F; 实验证明，这样是不对的。 而正确的答案是r">
 <meta property="og:locale" content="zh_CN">
@@ -32,7 +32,7 @@
 <meta property="article:author" content="Hillock">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="2017/02/15/rsync-只同步指定类型的文件/">
+<link rel="canonical" href="https://www.wulai.me/2017/02/15/rsync-%E5%8F%AA%E5%90%8C%E6%AD%A5%E6%8C%87%E5%AE%9A%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%87%E4%BB%B6/">
 
 
 <script id="page-configurations">
@@ -188,7 +188,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="2017/02/15/rsync-只同步指定类型的文件/">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2017/02/15/rsync-%E5%8F%AA%E5%90%8C%E6%AD%A5%E6%8C%87%E5%AE%9A%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%87%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -252,11 +252,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="2017/02/09/MySQL-导入慢的解决方法/" rel="prev" title="MySQL 导入慢的解决方法">
+    <a href="/2017/02/09/MySQL-%E5%AF%BC%E5%85%A5%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" rel="prev" title="MySQL 导入慢的解决方法">
       <i class="fa fa-chevron-left"></i> MySQL 导入慢的解决方法
     </a></div>
       <div class="post-nav-item">
-    <a href="2017/02/24/flock防止重复rsync/" rel="next" title="flock防止重复rsync">
+    <a href="/2017/02/24/flock%E9%98%B2%E6%AD%A2%E9%87%8D%E5%A4%8Drsync/" rel="next" title="flock防止重复rsync">
       flock防止重复rsync <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -405,30 +405,30 @@
   </div>
 
   
-  <script src="lib/anime.min.js"></script>
-  <script src="lib/velocity/velocity.min.js"></script>
-  <script src="lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="js/utils.js"></script>
+<script src="/js/utils.js"></script>
 
-<script src="js/motion.js"></script>
-
-
-<script src="js/schemes/pisces.js"></script>
+<script src="/js/motion.js"></script>
 
 
-<script src="js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
-
-
-  
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
-<script src="js/local-search.js"></script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 

@@ -10,20 +10,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="QEMU VM ESCAPE 环境搭建0.参考 https:&#x2F;&#x2F;bbs.pediy.com&#x2F;thread-225211.htm https:&#x2F;&#x2F;dangokyo.me&#x2F;2018&#x2F;03&#x2F;02&#x2F;qemu-escape-part-1-environment-set-up&#x2F; https:&#x2F;&#x2F;dangokyo.me&#x2F;2018&#x2F;03&#x2F;08&#x2F;qemu-escape-part-2-debugging-envir">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QEMU VM ESCAPE 环境搭建">
-<meta property="og:url" content="2018/04/28/QEMU-VM-ESCAPE-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:url" content="https://www.wulai.me/2018/04/28/QEMU-VM-ESCAPE-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="QEMU VM ESCAPE 环境搭建0.参考 https:&#x2F;&#x2F;bbs.pediy.com&#x2F;thread-225211.htm https:&#x2F;&#x2F;dangokyo.me&#x2F;2018&#x2F;03&#x2F;02&#x2F;qemu-escape-part-1-environment-set-up&#x2F; https:&#x2F;&#x2F;dangokyo.me&#x2F;2018&#x2F;03&#x2F;08&#x2F;qemu-escape-part-2-debugging-envir">
 <meta property="og:locale" content="zh_CN">
@@ -32,7 +32,7 @@
 <meta property="article:author" content="Hillock">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="2018/04/28/QEMU-VM-ESCAPE-环境搭建/">
+<link rel="canonical" href="https://www.wulai.me/2018/04/28/QEMU-VM-ESCAPE-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
 
 
 <script id="page-configurations">
@@ -188,7 +188,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="2018/04/28/QEMU-VM-ESCAPE-环境搭建/">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2018/04/28/QEMU-VM-ESCAPE-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -285,11 +285,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="2018/03/01/命令行跟踪url跳转/" rel="prev" title="命令行跟踪url跳转">
+    <a href="/2018/03/01/%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%B7%9F%E8%B8%AAurl%E8%B7%B3%E8%BD%AC/" rel="prev" title="命令行跟踪url跳转">
       <i class="fa fa-chevron-left"></i> 命令行跟踪url跳转
     </a></div>
       <div class="post-nav-item">
-    <a href="2018/05/08/批量删除指定类型文件/" rel="next" title="批量删除指定类型文件">
+    <a href="/2018/05/08/%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E7%B1%BB%E5%9E%8B%E6%96%87%E4%BB%B6/" rel="next" title="批量删除指定类型文件">
       批量删除指定类型文件 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -439,30 +439,30 @@
   </div>
 
   
-  <script src="lib/anime.min.js"></script>
-  <script src="lib/velocity/velocity.min.js"></script>
-  <script src="lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="js/utils.js"></script>
+<script src="/js/utils.js"></script>
 
-<script src="js/motion.js"></script>
-
-
-<script src="js/schemes/pisces.js"></script>
+<script src="/js/motion.js"></script>
 
 
-<script src="js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
-
-
-  
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
-<script src="js/local-search.js"></script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 

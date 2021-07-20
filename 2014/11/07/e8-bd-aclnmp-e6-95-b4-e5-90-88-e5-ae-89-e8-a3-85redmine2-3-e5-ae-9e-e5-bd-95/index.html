@@ -10,20 +10,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="自上一次在LNMP环境下安装过Redmine之后发表了《LNMP下安装Redmine2.3手记》，Inhu决定再一次尝试。因为上一次Inhu是通过折中的办法，也就是利用bitnami+lnmp这种做法实现的。现在我再一次决定在LNMP环境下不利用任何的一键安装包安装Redmine。 首先，我在这里不得不声明几点。 服务器系统时Centos6，试过在Centos5下安装，但由于软件库等各种问题最后">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(转)LNMP整合安装Redmine2.3实录">
-<meta property="og:url" content="2014/11/07/e8-bd-aclnmp-e6-95-b4-e5-90-88-e5-ae-89-e8-a3-85redmine2-3-e5-ae-9e-e5-bd-95/index.html">
+<meta property="og:url" content="https://www.wulai.me/2014/11/07/e8-bd-aclnmp-e6-95-b4-e5-90-88-e5-ae-89-e8-a3-85redmine2-3-e5-ae-9e-e5-bd-95/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="自上一次在LNMP环境下安装过Redmine之后发表了《LNMP下安装Redmine2.3手记》，Inhu决定再一次尝试。因为上一次Inhu是通过折中的办法，也就是利用bitnami+lnmp这种做法实现的。现在我再一次决定在LNMP环境下不利用任何的一键安装包安装Redmine。 首先，我在这里不得不声明几点。 服务器系统时Centos6，试过在Centos5下安装，但由于软件库等各种问题最后">
 <meta property="og:locale" content="zh_CN">
@@ -34,7 +34,7 @@
 <meta property="article:tag" content="redmine">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="2014/11/07/e8-bd-aclnmp-e6-95-b4-e5-90-88-e5-ae-89-e8-a3-85redmine2-3-e5-ae-9e-e5-bd-95/">
+<link rel="canonical" href="https://www.wulai.me/2014/11/07/e8-bd-aclnmp-e6-95-b4-e5-90-88-e5-ae-89-e8-a3-85redmine2-3-e5-ae-9e-e5-bd-95/">
 
 
 <script id="page-configurations">
@@ -190,7 +190,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="2014/11/07/e8-bd-aclnmp-e6-95-b4-e5-90-88-e5-ae-89-e8-a3-85redmine2-3-e5-ae-9e-e5-bd-95/">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2014/11/07/e8-bd-aclnmp-e6-95-b4-e5-90-88-e5-ae-89-e8-a3-85redmine2-3-e5-ae-9e-e5-bd-95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -228,7 +228,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="categories/server/" itemprop="url" rel="index"><span itemprop="name">server</span></a>
+                  <a href="/categories/server/" itemprop="url" rel="index"><span itemprop="name">server</span></a>
                 </span>
             </span>
 
@@ -375,8 +375,8 @@ server &#123;
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="tags/nginx/" rel="tag"># nginx</a>
-              <a href="tags/redmine/" rel="tag"># redmine</a>
+              <a href="/tags/nginx/" rel="tag"># nginx</a>
+              <a href="/tags/redmine/" rel="tag"># redmine</a>
           </div>
 
         
@@ -385,11 +385,11 @@ server &#123;
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="2014/10/20/js-e6-88-96css-e5-90-8e-e5-8a-a0v-e7-89-88-e6-9c-ac-e5-8f-b7-e7-9a-84-e7-94-a8-e6-b3-95/" rel="prev" title="js或css后加?v= 版本号的用法">
+    <a href="/2014/10/20/js-e6-88-96css-e5-90-8e-e5-8a-a0v-e7-89-88-e6-9c-ac-e5-8f-b7-e7-9a-84-e7-94-a8-e6-b3-95/" rel="prev" title="js或css后加?v= 版本号的用法">
       <i class="fa fa-chevron-left"></i> js或css后加?v= 版本号的用法
     </a></div>
       <div class="post-nav-item">
-    <a href="2014/11/12/linux-e4-b8-8b-e5-88-a0-e9-99-a4-e6-89-80-e6-9c-89-svn-e7-9b-ae-e5-bd-95/" rel="next" title="linux下删除所有.svn目录">
+    <a href="/2014/11/12/linux-e4-b8-8b-e5-88-a0-e9-99-a4-e6-89-80-e6-9c-89-svn-e7-9b-ae-e5-bd-95/" rel="next" title="linux下删除所有.svn目录">
       linux下删除所有.svn目录 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -539,30 +539,30 @@ server &#123;
   </div>
 
   
-  <script src="lib/anime.min.js"></script>
-  <script src="lib/velocity/velocity.min.js"></script>
-  <script src="lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="js/utils.js"></script>
+<script src="/js/utils.js"></script>
 
-<script src="js/motion.js"></script>
-
-
-<script src="js/schemes/pisces.js"></script>
+<script src="/js/motion.js"></script>
 
 
-<script src="js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
-
-
-  
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
-<script src="js/local-search.js"></script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 

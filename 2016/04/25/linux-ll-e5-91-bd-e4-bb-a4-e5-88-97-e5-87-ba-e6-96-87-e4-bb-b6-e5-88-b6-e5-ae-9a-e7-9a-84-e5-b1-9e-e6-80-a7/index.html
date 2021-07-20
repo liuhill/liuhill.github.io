@@ -10,20 +10,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="ll -Sh *.mp4 | grep ^[^d] | awk &#39;&amp;#123;print $5,$9;&amp;#125;&#39;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux ll命令列出文件制定的属性">
-<meta property="og:url" content="2016/04/25/linux-ll-e5-91-bd-e4-bb-a4-e5-88-97-e5-87-ba-e6-96-87-e4-bb-b6-e5-88-b6-e5-ae-9a-e7-9a-84-e5-b1-9e-e6-80-a7/index.html">
+<meta property="og:url" content="https://www.wulai.me/2016/04/25/linux-ll-e5-91-bd-e4-bb-a4-e5-88-97-e5-87-ba-e6-96-87-e4-bb-b6-e5-88-b6-e5-ae-9a-e7-9a-84-e5-b1-9e-e6-80-a7/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="ll -Sh *.mp4 | grep ^[^d] | awk &#39;&amp;#123;print $5,$9;&amp;#125;&#39;">
 <meta property="og:locale" content="zh_CN">
@@ -32,7 +32,7 @@
 <meta property="article:author" content="Hillock">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="2016/04/25/linux-ll-e5-91-bd-e4-bb-a4-e5-88-97-e5-87-ba-e6-96-87-e4-bb-b6-e5-88-b6-e5-ae-9a-e7-9a-84-e5-b1-9e-e6-80-a7/">
+<link rel="canonical" href="https://www.wulai.me/2016/04/25/linux-ll-e5-91-bd-e4-bb-a4-e5-88-97-e5-87-ba-e6-96-87-e4-bb-b6-e5-88-b6-e5-ae-9a-e7-9a-84-e5-b1-9e-e6-80-a7/">
 
 
 <script id="page-configurations">
@@ -188,7 +188,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="2016/04/25/linux-ll-e5-91-bd-e4-bb-a4-e5-88-97-e5-87-ba-e6-96-87-e4-bb-b6-e5-88-b6-e5-ae-9a-e7-9a-84-e5-b1-9e-e6-80-a7/">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2016/04/25/linux-ll-e5-91-bd-e4-bb-a4-e5-88-97-e5-87-ba-e6-96-87-e4-bb-b6-e5-88-b6-e5-ae-9a-e7-9a-84-e5-b1-9e-e6-80-a7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -226,7 +226,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="categories/未分类/" itemprop="url" rel="index"><span itemprop="name">未分类</span></a>
+                  <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/" itemprop="url" rel="index"><span itemprop="name">未分类</span></a>
                 </span>
             </span>
 
@@ -257,11 +257,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="2016/04/12/ef-bc-bb-e8-bd-ac-ef-bc-bd-e5-ba-94-e7-94-a8-e6-95-b0-e6-8d-ae-e9-9d-99-e6-80-81-e5-8c-96-e6-9e-b6-e6-9e-84-e9-ab-98-e6-80-a7-e8-83-bd-e5-8d-95-e9-a1-b5web-e5-ba-94-e7-94-a8/" rel="prev" title="［转］应用数据静态化架构高性能单页Web应用">
+    <a href="/2016/04/12/ef-bc-bb-e8-bd-ac-ef-bc-bd-e5-ba-94-e7-94-a8-e6-95-b0-e6-8d-ae-e9-9d-99-e6-80-81-e5-8c-96-e6-9e-b6-e6-9e-84-e9-ab-98-e6-80-a7-e8-83-bd-e5-8d-95-e9-a1-b5web-e5-ba-94-e7-94-a8/" rel="prev" title="［转］应用数据静态化架构高性能单页Web应用">
       <i class="fa fa-chevron-left"></i> ［转］应用数据静态化架构高性能单页Web应用
     </a></div>
       <div class="post-nav-item">
-    <a href="2016/04/27/e7-9f-a5-e9-81-93-e8-bf-9920-e4-b8-aa-e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f-ef-bc-8c-e8-83-bd-e8-ae-a9-e4-bd-a0-e5-b0-91-e5-86-991000-e8-a1-8c-e4-bb-a3-e7-a0-81/" rel="next" title="知道这20个正则表达式，能让你少写1,000行代码">
+    <a href="/2016/04/27/e7-9f-a5-e9-81-93-e8-bf-9920-e4-b8-aa-e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f-ef-bc-8c-e8-83-bd-e8-ae-a9-e4-bd-a0-e5-b0-91-e5-86-991000-e8-a1-8c-e4-bb-a3-e7-a0-81/" rel="next" title="知道这20个正则表达式，能让你少写1,000行代码">
       知道这20个正则表达式，能让你少写1,000行代码 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -410,30 +410,30 @@
   </div>
 
   
-  <script src="lib/anime.min.js"></script>
-  <script src="lib/velocity/velocity.min.js"></script>
-  <script src="lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="js/utils.js"></script>
+<script src="/js/utils.js"></script>
 
-<script src="js/motion.js"></script>
-
-
-<script src="js/schemes/pisces.js"></script>
+<script src="/js/motion.js"></script>
 
 
-<script src="js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
-
-
-  
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
-<script src="js/local-search.js"></script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
