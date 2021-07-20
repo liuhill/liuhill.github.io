@@ -10,20 +10,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="1. 查看docker信息（version、info）# 查看docker版本   $docker version    # 显示docker系统的信息   $docker info  2. 对image的操作（search、pull、images、rmi、history）# 检索image   $docker search image_name    # 下载image   $docker p">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker之常用命令 ">
-<meta property="og:url" content="http://www.wulai.me/2015/08/08/docker-e4-b9-8b-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4/index.html">
+<meta property="og:url" content="2015/08/08/docker-e4-b9-8b-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="1. 查看docker信息（version、info）# 查看docker版本   $docker version    # 显示docker系统的信息   $docker info  2. 对image的操作（search、pull、images、rmi、history）# 检索image   $docker search image_name    # 下载image   $docker p">
 <meta property="og:locale" content="zh_CN">
@@ -32,7 +32,7 @@
 <meta property="article:author" content="Hillock">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://www.wulai.me/2015/08/08/docker-e4-b9-8b-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4/">
+<link rel="canonical" href="2015/08/08/docker-e4-b9-8b-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4/">
 
 
 <script id="page-configurations">
@@ -113,6 +113,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -132,11 +133,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -160,7 +188,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2015/08/08/docker-e4-b9-8b-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4/">
+    <link itemprop="mainEntityOfPage" href="2015/08/08/docker-e4-b9-8b-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -198,7 +226,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+                  <a href="categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
                 </span>
             </span>
 
@@ -315,11 +343,11 @@ $docker build -t image_name Dockerfile_path</code></pre>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2015/08/06/an-error-occurred-trying-to-connect-get-https192-168-xx-xx2376v1-18containersjson-remote-error-bad-certificate/" rel="prev" title="An error occurred trying to connect: Get https://192.168.xx.xx:2376/v1.18/containers/json: remote error: bad certificate">
+    <a href="2015/08/06/an-error-occurred-trying-to-connect-get-https192-168-xx-xx2376v1-18containersjson-remote-error-bad-certificate/" rel="prev" title="An error occurred trying to connect: Get https://192.168.xx.xx:2376/v1.18/containers/json: remote error: bad certificate">
       <i class="fa fa-chevron-left"></i> An error occurred trying to connect: Get https://192.168.xx.xx:2376/v1.18/containers/json: remote error: bad certificate
     </a></div>
       <div class="post-nav-item">
-    <a href="/2015/08/08/e5-a6-82-e4-bd-95-e5-88-a0-e9-99-a4docker-imagescontainers/" rel="next" title="如何删除docker images/containers">
+    <a href="2015/08/08/e5-a6-82-e4-bd-95-e5-88-a0-e9-99-a4docker-imagescontainers/" rel="next" title="如何删除docker images/containers">
       如何删除docker images/containers <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -469,19 +497,19 @@ $docker build -t image_name Dockerfile_path</code></pre>
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="lib/anime.min.js"></script>
+  <script src="lib/velocity/velocity.min.js"></script>
+  <script src="lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="js/schemes/pisces.js"></script>
+
+
+<script src="js/next-boot.js"></script>
 
 
 
@@ -489,6 +517,10 @@ $docker build -t image_name Dockerfile_path</code></pre>
   
 
 
+
+
+  
+<script src="js/local-search.js"></script>
 
 
 

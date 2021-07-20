@@ -10,20 +10,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="mysql 5.5已经出来有一段时间，性能有明显提升，特别是对多核CPU的支持与TPS性能的提升。上周博主介绍了linux下编译安装mysql 5.5的步骤，安装不出意外基本没有问题。不过可能很多朋友和我一样一直用的是mysql 5.1，现在想把数据库升级成5.5了。博主根据实际操作，记录这次升级操作。 mysql基础信息 1、安装目录[root@vm-199~]# &#x2F;usr&#x2F;local&#x2F;mys">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS下将MySQL 5.1升级到MySQL 5.5">
-<meta property="og:url" content="http://www.wulai.me/2016/04/01/centos-e4-b8-8b-e5-b0-86mysql-5-1-e5-8d-87-e7-ba-a7-e5-88-b0mysql-5-5/index.html">
+<meta property="og:url" content="2016/04/01/centos-e4-b8-8b-e5-b0-86mysql-5-1-e5-8d-87-e7-ba-a7-e5-88-b0mysql-5-5/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="mysql 5.5已经出来有一段时间，性能有明显提升，特别是对多核CPU的支持与TPS性能的提升。上周博主介绍了linux下编译安装mysql 5.5的步骤，安装不出意外基本没有问题。不过可能很多朋友和我一样一直用的是mysql 5.1，现在想把数据库升级成5.5了。博主根据实际操作，记录这次升级操作。 mysql基础信息 1、安装目录[root@vm-199~]# &#x2F;usr&#x2F;local&#x2F;mys">
 <meta property="og:locale" content="zh_CN">
@@ -32,7 +32,7 @@
 <meta property="article:author" content="Hillock">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://www.wulai.me/2016/04/01/centos-e4-b8-8b-e5-b0-86mysql-5-1-e5-8d-87-e7-ba-a7-e5-88-b0mysql-5-5/">
+<link rel="canonical" href="2016/04/01/centos-e4-b8-8b-e5-b0-86mysql-5-1-e5-8d-87-e7-ba-a7-e5-88-b0mysql-5-5/">
 
 
 <script id="page-configurations">
@@ -113,6 +113,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -132,11 +133,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -160,7 +188,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/04/01/centos-e4-b8-8b-e5-b0-86mysql-5-1-e5-8d-87-e7-ba-a7-e5-88-b0mysql-5-5/">
+    <link itemprop="mainEntityOfPage" href="2016/04/01/centos-e4-b8-8b-e5-b0-86mysql-5-1-e5-8d-87-e7-ba-a7-e5-88-b0mysql-5-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -198,7 +226,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/" itemprop="url" rel="index"><span itemprop="name">未分类</span></a>
+                  <a href="categories/未分类/" itemprop="url" rel="index"><span itemprop="name">未分类</span></a>
                 </span>
             </span>
 
@@ -278,11 +306,11 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2016/03/16/svn-file-is-scheduled-for-addition-but-is-missing/" rel="prev" title="svn: file is scheduled for addition, but is missing">
+    <a href="2016/03/16/svn-file-is-scheduled-for-addition-but-is-missing/" rel="prev" title="svn: file is scheduled for addition, but is missing">
       <i class="fa fa-chevron-left"></i> svn: file is scheduled for addition, but is missing
     </a></div>
       <div class="post-nav-item">
-    <a href="/2016/04/12/ef-bc-bb-e8-bd-ac-ef-bc-bd-e5-ba-94-e7-94-a8-e6-95-b0-e6-8d-ae-e9-9d-99-e6-80-81-e5-8c-96-e6-9e-b6-e6-9e-84-e9-ab-98-e6-80-a7-e8-83-bd-e5-8d-95-e9-a1-b5web-e5-ba-94-e7-94-a8/" rel="next" title="［转］应用数据静态化架构高性能单页Web应用">
+    <a href="2016/04/12/ef-bc-bb-e8-bd-ac-ef-bc-bd-e5-ba-94-e7-94-a8-e6-95-b0-e6-8d-ae-e9-9d-99-e6-80-81-e5-8c-96-e6-9e-b6-e6-9e-84-e9-ab-98-e6-80-a7-e8-83-bd-e5-8d-95-e9-a1-b5web-e5-ba-94-e7-94-a8/" rel="next" title="［转］应用数据静态化架构高性能单页Web应用">
       ［转］应用数据静态化架构高性能单页Web应用 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -431,19 +459,19 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="lib/anime.min.js"></script>
+  <script src="lib/velocity/velocity.min.js"></script>
+  <script src="lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="js/schemes/pisces.js"></script>
+
+
+<script src="js/next-boot.js"></script>
 
 
 
@@ -451,6 +479,10 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
   
 
 
+
+
+  
+<script src="js/local-search.js"></script>
 
 
 

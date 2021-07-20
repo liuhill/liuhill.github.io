@@ -10,20 +10,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="通过命令列出文件夹并输出到指定文件 ll |grep json | awk &amp;apos;&amp;#123;print &quot;## &quot;NR&quot;.&quot; ,$9&amp;#125;&amp;apos; &gt; README.md说明：  ll 列出夹所有文件 grep json 仅显示包含 json 的文件名 awk ‘{print “## “NR”.” ,$9}’ awk 格式化grep">
 <meta property="og:type" content="article">
 <meta property="og:title" content="awk列出文件夹所有文件导入到md文件">
-<meta property="og:url" content="http://www.wulai.me/2016/12/12/awk%E5%88%97%E5%87%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E5%88%B0md%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:url" content="2016/12/12/awk%E5%88%97%E5%87%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E5%88%B0md%E6%96%87%E4%BB%B6/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="通过命令列出文件夹并输出到指定文件 ll |grep json | awk &amp;apos;&amp;#123;print &quot;## &quot;NR&quot;.&quot; ,$9&amp;#125;&amp;apos; &gt; README.md说明：  ll 列出夹所有文件 grep json 仅显示包含 json 的文件名 awk ‘{print “## “NR”.” ,$9}’ awk 格式化grep">
 <meta property="og:locale" content="zh_CN">
@@ -32,7 +32,7 @@
 <meta property="article:author" content="Hillock">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://www.wulai.me/2016/12/12/awk%E5%88%97%E5%87%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E5%88%B0md%E6%96%87%E4%BB%B6/">
+<link rel="canonical" href="2016/12/12/awk列出文件夹所有文件导入到md文件/">
 
 
 <script id="page-configurations">
@@ -113,6 +113,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -132,11 +133,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -160,7 +188,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/12/12/awk%E5%88%97%E5%87%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E5%88%B0md%E6%96%87%E4%BB%B6/">
+    <link itemprop="mainEntityOfPage" href="2016/12/12/awk列出文件夹所有文件导入到md文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -240,11 +268,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2016/11/21/git%E5%A6%82%E4%BD%95%E6%94%BE%E5%BC%83%E6%89%80%E6%9C%89%E6%9C%AC%E5%9C%B0%E4%BF%AE%E6%94%B9/" rel="prev" title="git如何放弃所有本地修改">
+    <a href="2016/11/21/git如何放弃所有本地修改/" rel="prev" title="git如何放弃所有本地修改">
       <i class="fa fa-chevron-left"></i> git如何放弃所有本地修改
     </a></div>
       <div class="post-nav-item">
-    <a href="/2016/12/12/%E6%89%B9%E9%87%8F%E6%94%B9%E5%90%8D/" rel="next" title="批量改名">
+    <a href="2016/12/12/批量改名/" rel="next" title="批量改名">
       批量改名 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -393,19 +421,19 @@
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="lib/anime.min.js"></script>
+  <script src="lib/velocity/velocity.min.js"></script>
+  <script src="lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="js/schemes/pisces.js"></script>
+
+
+<script src="js/next-boot.js"></script>
 
 
 
@@ -413,6 +441,10 @@
   
 
 
+
+
+  
+<script src="js/local-search.js"></script>
 
 
 

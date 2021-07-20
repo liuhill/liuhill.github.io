@@ -10,20 +10,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="转载： http:&#x2F;&#x2F;blog.51yip.com&#x2F;mysql&#x2F;1659.html  环境：centos 6.5 x86，php 5.3.3，mysql 5.5.8 一，下载sphinx,scws相关包sphinx下载地址：http:&#x2F;&#x2F;sphinxsearch.com&#x2F;downloads&#x2F;release&#x2F; sphinx php扩展下载地址：http:&#x2F;&#x2F;pecl.php.net&#x2F;packag">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sphinx scws 全文检索安装配置详解">
-<meta property="og:url" content="http://www.wulai.me/2018/01/29/sphinx-scws-%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:url" content="2018/01/29/sphinx-scws-%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="转载： http:&#x2F;&#x2F;blog.51yip.com&#x2F;mysql&#x2F;1659.html  环境：centos 6.5 x86，php 5.3.3，mysql 5.5.8 一，下载sphinx,scws相关包sphinx下载地址：http:&#x2F;&#x2F;sphinxsearch.com&#x2F;downloads&#x2F;release&#x2F; sphinx php扩展下载地址：http:&#x2F;&#x2F;pecl.php.net&#x2F;packag">
 <meta property="og:locale" content="zh_CN">
@@ -35,7 +35,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://res.hillock.com.cn/wulai/images/sphinx_no_plugin.jpg">
 
-<link rel="canonical" href="http://www.wulai.me/2018/01/29/sphinx-scws-%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/">
+<link rel="canonical" href="2018/01/29/sphinx-scws-全文检索安装配置详解/">
 
 
 <script id="page-configurations">
@@ -116,6 +116,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -135,11 +136,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -163,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2018/01/29/sphinx-scws-%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/">
+    <link itemprop="mainEntityOfPage" href="2018/01/29/sphinx-scws-全文检索安装配置详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -277,7 +305,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/scws-sphinx-%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D-%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2-%E5%AE%89%E8%A3%85/" rel="tag"># scws, sphinx, 中文分词, 全文检索, 安装</a>
+              <a href="tags/scws-sphinx-中文分词-全文检索-安装/" rel="tag"># scws, sphinx, 中文分词, 全文检索, 安装</a>
           </div>
 
         
@@ -286,12 +314,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2018/01/25/%E5%AE%9E%E7%8E%B0%E7%BD%91%E9%A1%B5%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95-meta%E6%A0%87%E7%AD%BE%E3%80%81js%E5%AE%9E%E7%8E%B0%E3%80%81php%E5%AE%9E%E7%8E%B0/" rel="prev" title="实现网页页面跳转的几种方法(meta标签、js实现、php实现)">
-      <i class="fa fa-chevron-left"></i> 实现网页页面跳转的几种方法(meta标签、js实现、php实现)
+    <a href="2018/01/29/sphinx-scws-全文检索(PHP7、MariaDB)/" rel="prev" title="sphinx-scws-全文检索(PHP7、MariaDB)">
+      <i class="fa fa-chevron-left"></i> sphinx-scws-全文检索(PHP7、MariaDB)
     </a></div>
       <div class="post-nav-item">
-    <a href="/2018/01/29/sphinx-scws-%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2(PHP7%E3%80%81MariaDB)/" rel="next" title="sphinx-scws-全文检索(PHP7、MariaDB)">
-      sphinx-scws-全文检索(PHP7、MariaDB) <i class="fa fa-chevron-right"></i>
+    <a href="2018/01/29/ffmpeg-多个音频合并-截取-拆分/" rel="next" title="ffmpeg 多个音频合并 截取 拆分">
+      ffmpeg 多个音频合并 截取 拆分 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -440,19 +468,19 @@
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="lib/anime.min.js"></script>
+  <script src="lib/velocity/velocity.min.js"></script>
+  <script src="lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="js/schemes/pisces.js"></script>
+
+
+<script src="js/next-boot.js"></script>
 
 
 
@@ -460,6 +488,10 @@
   
 
 
+
+
+  
+<script src="js/local-search.js"></script>
 
 
 

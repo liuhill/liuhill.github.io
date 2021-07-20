@@ -10,20 +10,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="1、作者：谢科链接：https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;21592677&#x2F;answer&#x2F;24663656来源：知乎著作权归作者所有，转载请联系作者获得授权。 “Data Science &#x3D; statistics who uses python and lives in San Francisco” 恰好我马上启程到Twitter的data science team，而且">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何成为一名数据科学家？">
-<meta property="og:url" content="http://www.wulai.me/2016/10/26/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%B8%80%E5%90%8D%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%B6%EF%BC%9F/index.html">
+<meta property="og:url" content="2016/10/26/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%B8%80%E5%90%8D%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%B6%EF%BC%9F/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="1、作者：谢科链接：https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;21592677&#x2F;answer&#x2F;24663656来源：知乎著作权归作者所有，转载请联系作者获得授权。 “Data Science &#x3D; statistics who uses python and lives in San Francisco” 恰好我马上启程到Twitter的data science team，而且">
 <meta property="og:locale" content="zh_CN">
@@ -38,7 +38,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://pic4.zhimg.com/25d0cdcafeee8e2b332910b6aec61f27_200x112.jpg">
 
-<link rel="canonical" href="http://www.wulai.me/2016/10/26/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%B8%80%E5%90%8D%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%B6%EF%BC%9F/">
+<link rel="canonical" href="2016/10/26/如何成为一名数据科学家？/">
 
 
 <script id="page-configurations">
@@ -119,6 +119,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -138,11 +139,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -166,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/10/26/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%B8%80%E5%90%8D%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%B6%EF%BC%9F/">
+    <link itemprop="mainEntityOfPage" href="2016/10/26/如何成为一名数据科学家？/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -432,11 +460,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2016/10/26/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E8%87%AA%E5%AD%A6%EF%BC%8C%E6%88%90%E4%B8%BA%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E2%80%9C%E9%AB%98%E6%89%8B%E2%80%9D%EF%BC%9F/" rel="prev" title="如何通过自学，成为数据挖掘“高手”？">
+    <a href="2016/10/26/如何通过自学，成为数据挖掘“高手”？/" rel="prev" title="如何通过自学，成为数据挖掘“高手”？">
       <i class="fa fa-chevron-left"></i> 如何通过自学，成为数据挖掘“高手”？
     </a></div>
       <div class="post-nav-item">
-    <a href="/2016/10/27/rsync%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/" rel="next" title="rsync进行网站异地镜像">
+    <a href="2016/10/27/rsync同步配置/" rel="next" title="rsync进行网站异地镜像">
       rsync进行网站异地镜像 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -586,19 +614,19 @@
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="lib/anime.min.js"></script>
+  <script src="lib/velocity/velocity.min.js"></script>
+  <script src="lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="js/schemes/pisces.js"></script>
+
+
+<script src="js/next-boot.js"></script>
 
 
 
@@ -606,6 +634,10 @@
   
 
 
+
+
+  
+<script src="js/local-search.js"></script>
 
 
 

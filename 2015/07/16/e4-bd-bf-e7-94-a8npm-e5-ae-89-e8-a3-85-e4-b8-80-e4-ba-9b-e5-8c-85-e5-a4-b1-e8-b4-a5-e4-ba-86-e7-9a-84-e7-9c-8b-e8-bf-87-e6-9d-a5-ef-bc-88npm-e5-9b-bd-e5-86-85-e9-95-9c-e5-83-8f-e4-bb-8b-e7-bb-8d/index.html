@@ -10,20 +10,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="这个也是网上搜的，亲自试过，非常好用！ 镜像使用方法（三种办法任意一种都能解决问题，建议使用第三种，将配置写死，下次用的时候配置还在）: 1.通过config命令 npm config set registry https:&#x2F;&#x2F;registry.npm.taobao.org  npm info underscore （如果上面配置正确这个命令会有字符串response）   2.命令行指定  n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用npm安装一些包失败了的看过来（npm国内镜像介绍）">
-<meta property="og:url" content="http://www.wulai.me/2015/07/16/e4-bd-bf-e7-94-a8npm-e5-ae-89-e8-a3-85-e4-b8-80-e4-ba-9b-e5-8c-85-e5-a4-b1-e8-b4-a5-e4-ba-86-e7-9a-84-e7-9c-8b-e8-bf-87-e6-9d-a5-ef-bc-88npm-e5-9b-bd-e5-86-85-e9-95-9c-e5-83-8f-e4-bb-8b-e7-bb-8d/index.html">
+<meta property="og:url" content="2015/07/16/e4-bd-bf-e7-94-a8npm-e5-ae-89-e8-a3-85-e4-b8-80-e4-ba-9b-e5-8c-85-e5-a4-b1-e8-b4-a5-e4-ba-86-e7-9a-84-e7-9c-8b-e8-bf-87-e6-9d-a5-ef-bc-88npm-e5-9b-bd-e5-86-85-e9-95-9c-e5-83-8f-e4-bb-8b-e7-bb-8d/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="这个也是网上搜的，亲自试过，非常好用！ 镜像使用方法（三种办法任意一种都能解决问题，建议使用第三种，将配置写死，下次用的时候配置还在）: 1.通过config命令 npm config set registry https:&#x2F;&#x2F;registry.npm.taobao.org  npm info underscore （如果上面配置正确这个命令会有字符串response）   2.命令行指定  n">
 <meta property="og:locale" content="zh_CN">
@@ -32,7 +32,7 @@
 <meta property="article:author" content="Hillock">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://www.wulai.me/2015/07/16/e4-bd-bf-e7-94-a8npm-e5-ae-89-e8-a3-85-e4-b8-80-e4-ba-9b-e5-8c-85-e5-a4-b1-e8-b4-a5-e4-ba-86-e7-9a-84-e7-9c-8b-e8-bf-87-e6-9d-a5-ef-bc-88npm-e5-9b-bd-e5-86-85-e9-95-9c-e5-83-8f-e4-bb-8b-e7-bb-8d/">
+<link rel="canonical" href="2015/07/16/e4-bd-bf-e7-94-a8npm-e5-ae-89-e8-a3-85-e4-b8-80-e4-ba-9b-e5-8c-85-e5-a4-b1-e8-b4-a5-e4-ba-86-e7-9a-84-e7-9c-8b-e8-bf-87-e6-9d-a5-ef-bc-88npm-e5-9b-bd-e5-86-85-e9-95-9c-e5-83-8f-e4-bb-8b-e7-bb-8d/">
 
 
 <script id="page-configurations">
@@ -113,6 +113,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -132,11 +133,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -160,7 +188,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2015/07/16/e4-bd-bf-e7-94-a8npm-e5-ae-89-e8-a3-85-e4-b8-80-e4-ba-9b-e5-8c-85-e5-a4-b1-e8-b4-a5-e4-ba-86-e7-9a-84-e7-9c-8b-e8-bf-87-e6-9d-a5-ef-bc-88npm-e5-9b-bd-e5-86-85-e9-95-9c-e5-83-8f-e4-bb-8b-e7-bb-8d/">
+    <link itemprop="mainEntityOfPage" href="2015/07/16/e4-bd-bf-e7-94-a8npm-e5-ae-89-e8-a3-85-e4-b8-80-e4-ba-9b-e5-8c-85-e5-a4-b1-e8-b4-a5-e4-ba-86-e7-9a-84-e7-9c-8b-e8-bf-87-e6-9d-a5-ef-bc-88npm-e5-9b-bd-e5-86-85-e9-95-9c-e5-83-8f-e4-bb-8b-e7-bb-8d/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -198,7 +226,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/nodejs/" itemprop="url" rel="index"><span itemprop="name">nodejs</span></a>
+                  <a href="categories/nodejs/" itemprop="url" rel="index"><span itemprop="name">nodejs</span></a>
                 </span>
             </span>
 
@@ -245,11 +273,11 @@ registry = https://registry.npm.taobao.org</code></pre><p>搜索镜像: <a targe
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2015/07/13/paypal-e9-ab-98-e7-ba-a7-e5-b7-a5-e7-a8-8b-e6-80-bb-e7-9b-91-ef-bc-9a-e8-af-bb-e5-ae-8c-e8-bf-99100-e7-af-87-e8-ae-ba-e6-96-87-e5-b0-b1-e8-83-bd-e6-88-90-e5-a4-a7-e6-95-b0-e6-8d-ae-e9-ab-98-e6-89-8b/" rel="prev" title="PayPal高级工程总监：读完这100篇论文 就能成大数据高手">
+    <a href="2015/07/13/paypal-e9-ab-98-e7-ba-a7-e5-b7-a5-e7-a8-8b-e6-80-bb-e7-9b-91-ef-bc-9a-e8-af-bb-e5-ae-8c-e8-bf-99100-e7-af-87-e8-ae-ba-e6-96-87-e5-b0-b1-e8-83-bd-e6-88-90-e5-a4-a7-e6-95-b0-e6-8d-ae-e9-ab-98-e6-89-8b/" rel="prev" title="PayPal高级工程总监：读完这100篇论文 就能成大数据高手">
       <i class="fa fa-chevron-left"></i> PayPal高级工程总监：读完这100篇论文 就能成大数据高手
     </a></div>
       <div class="post-nav-item">
-    <a href="/2015/07/25/e5-8a-a8-e6-80-81-e7-94-9f-e6-88-90-e5-85-83-e7-b4-a0-e4-b8-8d-e5-93-8d-e5-ba-94jquery-e4-ba-8b-e4-bb-b6/" rel="next" title="动态生成元素不响应jquery事件">
+    <a href="2015/07/25/e5-8a-a8-e6-80-81-e7-94-9f-e6-88-90-e5-85-83-e7-b4-a0-e4-b8-8d-e5-93-8d-e5-ba-94jquery-e4-ba-8b-e4-bb-b6/" rel="next" title="动态生成元素不响应jquery事件">
       动态生成元素不响应jquery事件 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -399,19 +427,19 @@ registry = https://registry.npm.taobao.org</code></pre><p>搜索镜像: <a targe
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="lib/anime.min.js"></script>
+  <script src="lib/velocity/velocity.min.js"></script>
+  <script src="lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="js/schemes/pisces.js"></script>
+
+
+<script src="js/next-boot.js"></script>
 
 
 
@@ -419,6 +447,10 @@ registry = https://registry.npm.taobao.org</code></pre><p>搜索镜像: <a targe
   
 
 
+
+
+  
+<script src="js/local-search.js"></script>
 
 
 

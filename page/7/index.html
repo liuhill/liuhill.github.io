@@ -10,27 +10,27 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="开发笔记而已～～～">
 <meta property="og:type" content="website">
 <meta property="og:title" content="无来">
-<meta property="og:url" content="http://www.wulai.me/page/7/index.html">
+<meta property="og:url" content="page/7/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="开发笔记而已～～～">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Hillock">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://www.wulai.me/page/7/">
+<link rel="canonical" href="page/7/">
 
 
 <script id="page-configurations">
@@ -111,6 +111,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -130,11 +131,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -157,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/03/07/latest-ffmpeg-centos6-sh/">
+    <link itemprop="mainEntityOfPage" href="2017/03/07/latest-ffmpeg-centos6-sh/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -171,7 +199,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2017/03/07/latest-ffmpeg-centos6-sh/" class="post-title-link" itemprop="url">latest-ffmpeg-centos6.sh</a>
+            <a href="2017/03/07/latest-ffmpeg-centos6-sh/" class="post-title-link" itemprop="url">latest-ffmpeg-centos6.sh</a>
         </h2>
 
         <div class="post-meta">
@@ -227,7 +255,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/03/06/docker-mysql-Access-denied-for-user/">
+    <link itemprop="mainEntityOfPage" href="2017/03/06/docker-mysql-Access-denied-for-user/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -241,7 +269,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2017/03/06/docker-mysql-Access-denied-for-user/" class="post-title-link" itemprop="url">docker mysql Access denied for user</a>
+            <a href="2017/03/06/docker-mysql-Access-denied-for-user/" class="post-title-link" itemprop="url">docker mysql Access denied for user</a>
         </h2>
 
         <div class="post-meta">
@@ -295,7 +323,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/02/24/flock%E9%98%B2%E6%AD%A2%E9%87%8D%E5%A4%8Drsync/">
+    <link itemprop="mainEntityOfPage" href="2017/02/24/flock防止重复rsync/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -309,7 +337,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2017/02/24/flock%E9%98%B2%E6%AD%A2%E9%87%8D%E5%A4%8Drsync/" class="post-title-link" itemprop="url">flock防止重复rsync</a>
+            <a href="2017/02/24/flock%E9%98%B2%E6%AD%A2%E9%87%8D%E5%A4%8Drsync/" class="post-title-link" itemprop="url">flock防止重复rsync</a>
         </h2>
 
         <div class="post-meta">
@@ -364,7 +392,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/02/15/rsync-%E5%8F%AA%E5%90%8C%E6%AD%A5%E6%8C%87%E5%AE%9A%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%87%E4%BB%B6/">
+    <link itemprop="mainEntityOfPage" href="2017/02/15/rsync-只同步指定类型的文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -378,7 +406,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2017/02/15/rsync-%E5%8F%AA%E5%90%8C%E6%AD%A5%E6%8C%87%E5%AE%9A%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">rsync 只同步指定类型的文件</a>
+            <a href="2017/02/15/rsync-%E5%8F%AA%E5%90%8C%E6%AD%A5%E6%8C%87%E5%AE%9A%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">rsync 只同步指定类型的文件</a>
         </h2>
 
         <div class="post-meta">
@@ -433,7 +461,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/02/09/MySQL-%E5%AF%BC%E5%85%A5%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="2017/02/09/MySQL-导入慢的解决方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -447,7 +475,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2017/02/09/MySQL-%E5%AF%BC%E5%85%A5%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">MySQL 导入慢的解决方法</a>
+            <a href="2017/02/09/MySQL-%E5%AF%BC%E5%85%A5%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">MySQL 导入慢的解决方法</a>
         </h2>
 
         <div class="post-meta">
@@ -508,7 +536,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/02/04/svn-merge-%E5%90%88%E5%B9%B6%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/">
+    <link itemprop="mainEntityOfPage" href="2017/02/04/svn-merge-合并单个文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -522,7 +550,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2017/02/04/svn-merge-%E5%90%88%E5%B9%B6%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">svn merge 合并单个文件</a>
+            <a href="2017/02/04/svn-merge-%E5%90%88%E5%B9%B6%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">svn merge 合并单个文件</a>
         </h2>
 
         <div class="post-meta">
@@ -576,7 +604,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/02/04/php-CMYK-to-RGB/">
+    <link itemprop="mainEntityOfPage" href="2017/02/04/php-CMYK-to-RGB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -590,7 +618,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2017/02/04/php-CMYK-to-RGB/" class="post-title-link" itemprop="url">php CMYK to RGB</a>
+            <a href="2017/02/04/php-CMYK-to-RGB/" class="post-title-link" itemprop="url">php CMYK to RGB</a>
         </h2>
 
         <div class="post-meta">
@@ -644,7 +672,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/01/06/php-try-catch-a-warning/">
+    <link itemprop="mainEntityOfPage" href="2017/01/06/php-try-catch-a-warning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -658,7 +686,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2017/01/06/php-try-catch-a-warning/" class="post-title-link" itemprop="url">php try/catch a warning </a>
+            <a href="2017/01/06/php-try-catch-a-warning/" class="post-title-link" itemprop="url">php try/catch a warning </a>
         </h2>
 
         <div class="post-meta">
@@ -719,7 +747,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/12/14/UTF-8%E7%BC%96%E7%A0%81%E5%8E%BB%E9%99%A4BOM%E5%A4%B4%E7%9A%84python%E8%84%9A%E6%9C%AC/">
+    <link itemprop="mainEntityOfPage" href="2016/12/14/UTF-8编码去除BOM头的python脚本/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -733,7 +761,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2016/12/14/UTF-8%E7%BC%96%E7%A0%81%E5%8E%BB%E9%99%A4BOM%E5%A4%B4%E7%9A%84python%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">UTF-8编码去除BOM头的python脚本</a>
+            <a href="2016/12/14/UTF-8%E7%BC%96%E7%A0%81%E5%8E%BB%E9%99%A4BOM%E5%A4%B4%E7%9A%84python%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">UTF-8编码去除BOM头的python脚本</a>
         </h2>
 
         <div class="post-meta">
@@ -810,7 +838,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/12/12/%E6%89%B9%E9%87%8F%E6%94%B9%E5%90%8D/">
+    <link itemprop="mainEntityOfPage" href="2016/12/12/批量改名/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -824,7 +852,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2016/12/12/%E6%89%B9%E9%87%8F%E6%94%B9%E5%90%8D/" class="post-title-link" itemprop="url">批量改名</a>
+            <a href="2016/12/12/%E6%89%B9%E9%87%8F%E6%94%B9%E5%90%8D/" class="post-title-link" itemprop="url">批量改名</a>
         </h2>
 
         <div class="post-meta">
@@ -874,7 +902,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="">1</a><span class="space">&hellip;</span><a class="page-number" href="page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="page/16/">16</a><a class="extend next" rel="next" href="page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1015,19 +1043,19 @@
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="lib/anime.min.js"></script>
+  <script src="lib/velocity/velocity.min.js"></script>
+  <script src="lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="js/schemes/pisces.js"></script>
+
+
+<script src="js/next-boot.js"></script>
 
 
 
@@ -1035,6 +1063,10 @@
   
 
 
+
+
+  
+<script src="js/local-search.js"></script>
 
 
 

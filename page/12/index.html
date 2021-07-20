@@ -10,27 +10,27 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="开发笔记而已～～～">
 <meta property="og:type" content="website">
 <meta property="og:title" content="无来">
-<meta property="og:url" content="http://www.wulai.me/page/12/index.html">
+<meta property="og:url" content="page/12/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="开发笔记而已～～～">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Hillock">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://www.wulai.me/page/12/">
+<link rel="canonical" href="page/12/">
 
 
 <script id="page-configurations">
@@ -111,6 +111,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -130,11 +131,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -157,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2015/10/06/mysql-e6-9f-a5-e7-9c-8b-e5-a4-87-e6-b3-a8/">
+    <link itemprop="mainEntityOfPage" href="2015/10/06/mysql-e6-9f-a5-e7-9c-8b-e5-a4-87-e6-b3-a8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -171,7 +199,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/10/06/mysql-e6-9f-a5-e7-9c-8b-e5-a4-87-e6-b3-a8/" class="post-title-link" itemprop="url">mysql 查看备注</a>
+            <a href="2015/10/06/mysql-e6-9f-a5-e7-9c-8b-e5-a4-87-e6-b3-a8/" class="post-title-link" itemprop="url">mysql 查看备注</a>
         </h2>
 
         <div class="post-meta">
@@ -196,7 +224,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index"><span itemprop="name">server</span></a>
+                  <a href="categories/server/" itemprop="url" rel="index"><span itemprop="name">server</span></a>
                 </span>
             </span>
 
@@ -243,7 +271,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2015/09/29/ryan-hall-e6-95-99-e5-ad-a6-e8-a7-86-e9-a2-91/">
+    <link itemprop="mainEntityOfPage" href="2015/09/29/ryan-hall-e6-95-99-e5-ad-a6-e8-a7-86-e9-a2-91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -257,7 +285,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/09/29/ryan-hall-e6-95-99-e5-ad-a6-e8-a7-86-e9-a2-91/" class="post-title-link" itemprop="url">Ryan Hall 教学视频</a>
+            <a href="2015/09/29/ryan-hall-e6-95-99-e5-ad-a6-e8-a7-86-e9-a2-91/" class="post-title-link" itemprop="url">Ryan Hall 教学视频</a>
         </h2>
 
         <div class="post-meta">
@@ -282,7 +310,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                  <a href="categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
                 </span>
             </span>
 
@@ -331,7 +359,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2015/09/29/e7-a0-b4-e8-a7-a3-e6-ad-a5-e9-a2-91-e5-92-8c-e6-ad-a5-e5-b9-85-e7-bb-9f-e4-b8-80-e7-9a-84-e9-9a-be-e9-a2-98-ef-bc-81-ef-bc-88-e8-bd-ac-ef-bc-89/">
+    <link itemprop="mainEntityOfPage" href="2015/09/29/e7-a0-b4-e8-a7-a3-e6-ad-a5-e9-a2-91-e5-92-8c-e6-ad-a5-e5-b9-85-e7-bb-9f-e4-b8-80-e7-9a-84-e9-9a-be-e9-a2-98-ef-bc-81-ef-bc-88-e8-bd-ac-ef-bc-89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -345,7 +373,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/09/29/e7-a0-b4-e8-a7-a3-e6-ad-a5-e9-a2-91-e5-92-8c-e6-ad-a5-e5-b9-85-e7-bb-9f-e4-b8-80-e7-9a-84-e9-9a-be-e9-a2-98-ef-bc-81-ef-bc-88-e8-bd-ac-ef-bc-89/" class="post-title-link" itemprop="url">破解步频和步幅统一的难题！（转）</a>
+            <a href="2015/09/29/e7-a0-b4-e8-a7-a3-e6-ad-a5-e9-a2-91-e5-92-8c-e6-ad-a5-e5-b9-85-e7-bb-9f-e4-b8-80-e7-9a-84-e9-9a-be-e9-a2-98-ef-bc-81-ef-bc-88-e8-bd-ac-ef-bc-89/" class="post-title-link" itemprop="url">破解步频和步幅统一的难题！（转）</a>
         </h2>
 
         <div class="post-meta">
@@ -370,7 +398,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                  <a href="categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
                 </span>
             </span>
 
@@ -452,7 +480,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2015/09/12/e8-b7-91-e6-ad-a5-e5-89-8d-e5-90-8e-e6-8b-89-e4-bc-b8-ef-bc-8c-e8-ae-b0-e4-bd-8f-e5-87-a0-e5-bc-a0-e5-9b-be-e7-89-87/">
+    <link itemprop="mainEntityOfPage" href="2015/09/12/e8-b7-91-e6-ad-a5-e5-89-8d-e5-90-8e-e6-8b-89-e4-bc-b8-ef-bc-8c-e8-ae-b0-e4-bd-8f-e5-87-a0-e5-bc-a0-e5-9b-be-e7-89-87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -466,7 +494,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/09/12/e8-b7-91-e6-ad-a5-e5-89-8d-e5-90-8e-e6-8b-89-e4-bc-b8-ef-bc-8c-e8-ae-b0-e4-bd-8f-e5-87-a0-e5-bc-a0-e5-9b-be-e7-89-87/" class="post-title-link" itemprop="url">跑步前后拉伸，记住几张图片</a>
+            <a href="2015/09/12/e8-b7-91-e6-ad-a5-e5-89-8d-e5-90-8e-e6-8b-89-e4-bc-b8-ef-bc-8c-e8-ae-b0-e4-bd-8f-e5-87-a0-e5-bc-a0-e5-9b-be-e7-89-87/" class="post-title-link" itemprop="url">跑步前后拉伸，记住几张图片</a>
         </h2>
 
         <div class="post-meta">
@@ -491,7 +519,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                  <a href="categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
                 </span>
             </span>
 
@@ -528,7 +556,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2015/09/10/e9-a9-ac-e6-8b-89-e6-9d-be-e8-bf-90-e5-8a-a8-e5-91-98-e7-9a-84-e4-bc-b8-e5-b1-95-e8-bf-90-e5-8a-a8/">
+    <link itemprop="mainEntityOfPage" href="2015/09/10/e9-a9-ac-e6-8b-89-e6-9d-be-e8-bf-90-e5-8a-a8-e5-91-98-e7-9a-84-e4-bc-b8-e5-b1-95-e8-bf-90-e5-8a-a8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -542,7 +570,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/09/10/e9-a9-ac-e6-8b-89-e6-9d-be-e8-bf-90-e5-8a-a8-e5-91-98-e7-9a-84-e4-bc-b8-e5-b1-95-e8-bf-90-e5-8a-a8/" class="post-title-link" itemprop="url">马拉松运动员的伸展运动</a>
+            <a href="2015/09/10/e9-a9-ac-e6-8b-89-e6-9d-be-e8-bf-90-e5-8a-a8-e5-91-98-e7-9a-84-e4-bc-b8-e5-b1-95-e8-bf-90-e5-8a-a8/" class="post-title-link" itemprop="url">马拉松运动员的伸展运动</a>
         </h2>
 
         <div class="post-meta">
@@ -567,7 +595,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                  <a href="categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
                 </span>
             </span>
 
@@ -639,7 +667,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2015/08/14/220/">
+    <link itemprop="mainEntityOfPage" href="2015/08/14/220/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -653,7 +681,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/08/14/220/" class="post-title-link" itemprop="url">Cannot start PhantomJS  karma</a>
+            <a href="2015/08/14/220/" class="post-title-link" itemprop="url">Cannot start PhantomJS  karma</a>
         </h2>
 
         <div class="post-meta">
@@ -678,7 +706,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/nodejs/" itemprop="url" rel="index"><span itemprop="name">nodejs</span></a>
+                  <a href="categories/nodejs/" itemprop="url" rel="index"><span itemprop="name">nodejs</span></a>
                 </span>
             </span>
 
@@ -726,7 +754,7 @@ Done, but with warnings.</code></pre><h2 id="2、系统ubuntu-14-04"><a href="#2
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2015/08/09/ubuntu-e5-ae-89-e8-a3-85gem/">
+    <link itemprop="mainEntityOfPage" href="2015/08/09/ubuntu-e5-ae-89-e8-a3-85gem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -740,7 +768,7 @@ Done, but with warnings.</code></pre><h2 id="2、系统ubuntu-14-04"><a href="#2
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/08/09/ubuntu-e5-ae-89-e8-a3-85gem/" class="post-title-link" itemprop="url">ubuntu安装gem grunt-contrib-sass</a>
+            <a href="2015/08/09/ubuntu-e5-ae-89-e8-a3-85gem/" class="post-title-link" itemprop="url">ubuntu安装gem grunt-contrib-sass</a>
         </h2>
 
         <div class="post-meta">
@@ -765,7 +793,7 @@ Done, but with warnings.</code></pre><h2 id="2、系统ubuntu-14-04"><a href="#2
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+                  <a href="categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
                 </span>
             </span>
 
@@ -802,7 +830,7 @@ RUN gem install sass</code></pre>
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2015/08/08/e5-a6-82-e4-bd-95-e5-88-a0-e9-99-a4docker-imagescontainers/">
+    <link itemprop="mainEntityOfPage" href="2015/08/08/e5-a6-82-e4-bd-95-e5-88-a0-e9-99-a4docker-imagescontainers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -816,7 +844,7 @@ RUN gem install sass</code></pre>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/08/08/e5-a6-82-e4-bd-95-e5-88-a0-e9-99-a4docker-imagescontainers/" class="post-title-link" itemprop="url">如何删除docker images/containers</a>
+            <a href="2015/08/08/e5-a6-82-e4-bd-95-e5-88-a0-e9-99-a4docker-imagescontainers/" class="post-title-link" itemprop="url">如何删除docker images/containers</a>
         </h2>
 
         <div class="post-meta">
@@ -841,7 +869,7 @@ RUN gem install sass</code></pre>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+                  <a href="categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
                 </span>
             </span>
 
@@ -905,7 +933,7 @@ docker rmi $(docker images -q)</code></pre>
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2015/08/08/docker-e4-b9-8b-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4/">
+    <link itemprop="mainEntityOfPage" href="2015/08/08/docker-e4-b9-8b-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -919,7 +947,7 @@ docker rmi $(docker images -q)</code></pre>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/08/08/docker-e4-b9-8b-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4/" class="post-title-link" itemprop="url">Docker之常用命令 </a>
+            <a href="2015/08/08/docker-e4-b9-8b-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4/" class="post-title-link" itemprop="url">Docker之常用命令 </a>
         </h2>
 
         <div class="post-meta">
@@ -944,7 +972,7 @@ docker rmi $(docker images -q)</code></pre>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+                  <a href="categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
                 </span>
             </span>
 
@@ -1065,7 +1093,7 @@ $docker build -t image_name Dockerfile_path</code></pre>
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2015/08/06/an-error-occurred-trying-to-connect-get-https192-168-xx-xx2376v1-18containersjson-remote-error-bad-certificate/">
+    <link itemprop="mainEntityOfPage" href="2015/08/06/an-error-occurred-trying-to-connect-get-https192-168-xx-xx2376v1-18containersjson-remote-error-bad-certificate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -1079,7 +1107,7 @@ $docker build -t image_name Dockerfile_path</code></pre>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/08/06/an-error-occurred-trying-to-connect-get-https192-168-xx-xx2376v1-18containersjson-remote-error-bad-certificate/" class="post-title-link" itemprop="url">An error occurred trying to connect: Get https://192.168.xx.xx:2376/v1.18/containers/json: remote error: bad certificate</a>
+            <a href="2015/08/06/an-error-occurred-trying-to-connect-get-https192-168-xx-xx2376v1-18containersjson-remote-error-bad-certificate/" class="post-title-link" itemprop="url">An error occurred trying to connect: Get https://192.168.xx.xx:2376/v1.18/containers/json: remote error: bad certificate</a>
         </h2>
 
         <div class="post-meta">
@@ -1104,7 +1132,7 @@ $docker build -t image_name Dockerfile_path</code></pre>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+                  <a href="categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
                 </span>
             </span>
 
@@ -1141,7 +1169,7 @@ boot2docker start</code></pre>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="page/11/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="">1</a><span class="space">&hellip;</span><a class="page-number" href="page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="page/16/">16</a><a class="extend next" rel="next" href="page/13/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1282,19 +1310,19 @@ boot2docker start</code></pre>
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="lib/anime.min.js"></script>
+  <script src="lib/velocity/velocity.min.js"></script>
+  <script src="lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="js/schemes/pisces.js"></script>
+
+
+<script src="js/next-boot.js"></script>
 
 
 
@@ -1302,6 +1330,10 @@ boot2docker start</code></pre>
   
 
 
+
+
+  
+<script src="js/local-search.js"></script>
 
 
 

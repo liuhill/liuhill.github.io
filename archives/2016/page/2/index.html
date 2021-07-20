@@ -10,27 +10,27 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="开发笔记而已～～～">
 <meta property="og:type" content="website">
 <meta property="og:title" content="无来">
-<meta property="og:url" content="http://www.wulai.me/archives/2016/page/2/index.html">
+<meta property="og:url" content="archives/2016/page/2/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="开发笔记而已～～～">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Hillock">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://www.wulai.me/archives/2016/page/2/">
+<link rel="canonical" href="archives/2016/page/2/">
 
 
 <script id="page-configurations">
@@ -111,6 +111,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -130,11 +131,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -181,7 +209,7 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2016/10/04/%E3%80%90%E5%AE%8C%E6%95%B4%E7%89%88%E3%80%91%E5%A6%82%E6%9E%9C%E7%9C%8B%E4%BA%86%E6%AD%A4%E6%96%87%E4%BD%A0%E8%BF%98%E4%B8%8D%E6%87%82%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%EF%BC%8C%E9%82%A3%E5%B0%B1%E8%BF%87%E6%9D%A5%E6%8E%90%E6%AD%BB%E6%88%91%E5%90%A7/" itemprop="url">
+          <a class="post-title-link" href="2016/10/04/【完整版】如果看了此文你还不懂傅里叶变换，那就过来掐死我吧/" itemprop="url">
             <span itemprop="name">【完整版】如果看了此文你还不懂傅里叶变换，那就过来掐死我吧</span>
           </a>
       </div>
@@ -201,7 +229,7 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2016/09/24/this-is-incompatible-with-sql-mode-only-full-group-by/" itemprop="url">
+          <a class="post-title-link" href="2016/09/24/this-is-incompatible-with-sql-mode-only-full-group-by/" itemprop="url">
             <span itemprop="name">this is incompatible with sql_mode=only_full_group_by</span>
           </a>
       </div>
@@ -221,7 +249,7 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2016/09/24/%E5%A4%9A%E4%B8%AA%E7%BD%91%E7%AB%99%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C%E7%9A%84SSH%E5%AF%86%E9%92%A5%E7%99%BB%E9%99%86/" itemprop="url">
+          <a class="post-title-link" href="2016/09/24/多个网站使用不同的SSH密钥登陆/" itemprop="url">
             <span itemprop="name">多个网站使用不同的SSH密钥登陆</span>
           </a>
       </div>
@@ -241,7 +269,7 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2016/09/23/%E5%A6%82%E4%BD%95%E7%94%A8%E5%8D%81%E6%9D%A1%E5%91%BD%E4%BB%A4%E5%9C%A8%E4%B8%80%E5%88%86%E9%92%9F%E5%86%85%E6%A3%80%E6%9F%A5Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD/" itemprop="url">
+          <a class="post-title-link" href="2016/09/23/如何用十条命令在一分钟内检查Linux服务器性能/" itemprop="url">
             <span itemprop="name">如何用十条命令在一分钟内检查Linux服务器性能</span>
           </a>
       </div>
@@ -261,7 +289,7 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2016/09/18/%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8C%EF%BC%9B%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7/" itemprop="url">
+          <a class="post-title-link" href="2016/09/18/运算符，；的优先级/" itemprop="url">
             <span itemprop="name">运算符，；的优先级</span>
           </a>
       </div>
@@ -281,7 +309,7 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2016/09/12/Docker-client-is-newer-than-server/" itemprop="url">
+          <a class="post-title-link" href="2016/09/12/Docker-client-is-newer-than-server/" itemprop="url">
             <span itemprop="name">Docker client is newer than server</span>
           </a>
       </div>
@@ -301,7 +329,7 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2016/09/10/nginx-php-fpm-%E8%AE%BF%E9%97%AEphp%E6%96%87%E4%BB%B6%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E8%80%8C%E4%B8%8D%E8%BF%90%E8%A1%8C/" itemprop="url">
+          <a class="post-title-link" href="2016/09/10/nginx-php-fpm-访问php文件直接下载而不运行/" itemprop="url">
             <span itemprop="name">nginx/php-fpm 访问php文件直接下载而不运行</span>
           </a>
       </div>
@@ -321,7 +349,7 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2016/09/09/svn-externals/" itemprop="url">
+          <a class="post-title-link" href="2016/09/09/svn-externals/" itemprop="url">
             <span itemprop="name">svn externals</span>
           </a>
       </div>
@@ -341,7 +369,7 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2016/07/06/linux-e5-a6-82-e4-bd-95-e6-98-be-e7-a4-ba-e4-b8-80-e4-b8-aa-e6-96-87-e4-bb-b6-e7-9a-84-e6-9f-90-e5-87-a0-e8-a1-8c-e4-b8-ad-e9-97-b4-e5-87-a0-e8-a1-8c/" itemprop="url">
+          <a class="post-title-link" href="2016/07/06/linux-e5-a6-82-e4-bd-95-e6-98-be-e7-a4-ba-e4-b8-80-e4-b8-aa-e6-96-87-e4-bb-b6-e7-9a-84-e6-9f-90-e5-87-a0-e8-a1-8c-e4-b8-ad-e9-97-b4-e5-87-a0-e8-a1-8c/" itemprop="url">
             <span itemprop="name">linux 如何显示一个文件的某几行(中间几行)</span>
           </a>
       </div>
@@ -361,7 +389,7 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2016/06/28/docker-dial-tcp-lookup-index-docker-io-no-such-host-solution/" itemprop="url">
+          <a class="post-title-link" href="2016/06/28/docker-dial-tcp-lookup-index-docker-io-no-such-host-solution/" itemprop="url">
             <span itemprop="name">Docker - dial tcp: lookup index.docker.io: no such host - Solution</span>
           </a>
       </div>
@@ -378,7 +406,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2016/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/2016/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2016/page/3/">3</a><a class="page-number" href="/archives/2016/page/4/">4</a><a class="extend next" rel="next" href="/archives/2016/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="archives/2016/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="archives/2016/">1</a><span class="page-number current">2</span><a class="page-number" href="archives/2016/page/3/">3</a><a class="page-number" href="archives/2016/page/4/">4</a><a class="extend next" rel="next" href="archives/2016/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -519,19 +547,19 @@
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="lib/anime.min.js"></script>
+  <script src="lib/velocity/velocity.min.js"></script>
+  <script src="lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="js/schemes/pisces.js"></script>
+
+
+<script src="js/next-boot.js"></script>
 
 
 
@@ -539,6 +567,10 @@
   
 
 
+
+
+  
+<script src="js/local-search.js"></script>
 
 
 

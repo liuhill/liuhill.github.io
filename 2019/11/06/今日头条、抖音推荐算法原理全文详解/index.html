@@ -10,20 +10,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="原文: (今日头条、抖音推荐算法原理全文详解) https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;e0KgNOn3vIKn-nc1l-XBqw 1、系统概览1.1）推荐系统推荐系统就是拟合一个用户对内容满意度的函数，这个函数需要输入三个维度的变量：  内容特征：提取不同内容类型的特征做好推荐。 用户特征：兴趣标签，职业、年龄、性别等。 环境特征：在工作场合、通勤、旅游等不同的场景，信息偏好有">
 <meta property="og:type" content="article">
 <meta property="og:title" content="今日头条、抖音推荐算法原理全文详解--笔记">
-<meta property="og:url" content="http://www.wulai.me/2019/11/06/%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1%E3%80%81%E6%8A%96%E9%9F%B3%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%85%A8%E6%96%87%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:url" content="2019/11/06/%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1%E3%80%81%E6%8A%96%E9%9F%B3%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%85%A8%E6%96%87%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="原文: (今日头条、抖音推荐算法原理全文详解) https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;e0KgNOn3vIKn-nc1l-XBqw 1、系统概览1.1）推荐系统推荐系统就是拟合一个用户对内容满意度的函数，这个函数需要输入三个维度的变量：  内容特征：提取不同内容类型的特征做好推荐。 用户特征：兴趣标签，职业、年龄、性别等。 环境特征：在工作场合、通勤、旅游等不同的场景，信息偏好有">
 <meta property="og:locale" content="zh_CN">
@@ -36,7 +36,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://res.hillock.com.cn/wulai/images/今日头条/推荐系统函数匹配.webp">
 
-<link rel="canonical" href="http://www.wulai.me/2019/11/06/%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1%E3%80%81%E6%8A%96%E9%9F%B3%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%85%A8%E6%96%87%E8%AF%A6%E8%A7%A3/">
+<link rel="canonical" href="2019/11/06/今日头条、抖音推荐算法原理全文详解/">
 
 
 <script id="page-configurations">
@@ -117,6 +117,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -136,11 +137,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -164,7 +192,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2019/11/06/%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1%E3%80%81%E6%8A%96%E9%9F%B3%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%85%A8%E6%96%87%E8%AF%A6%E8%A7%A3/">
+    <link itemprop="mainEntityOfPage" href="2019/11/06/今日头条、抖音推荐算法原理全文详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -444,7 +472,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F-%E8%BF%91%E6%97%A5%E5%A4%B4%E6%9D%A1-%E6%8A%96%E9%9F%B3/" rel="tag"># 推荐系统 近日头条 抖音</a>
+              <a href="tags/推荐系统-近日头条-抖音/" rel="tag"># 推荐系统 近日头条 抖音</a>
           </div>
 
         
@@ -453,7 +481,7 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/04/08/%E5%9B%BE%E7%89%87%E5%B1%85%E4%B8%AD/" rel="prev" title="图片居中">
+    <a href="2019/04/08/图片居中/" rel="prev" title="图片居中">
       <i class="fa fa-chevron-left"></i> 图片居中
     </a></div>
       <div class="post-nav-item"></div>
@@ -604,19 +632,19 @@
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="lib/anime.min.js"></script>
+  <script src="lib/velocity/velocity.min.js"></script>
+  <script src="lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="js/schemes/pisces.js"></script>
+
+
+<script src="js/next-boot.js"></script>
 
 
 
@@ -624,6 +652,10 @@
   
 
 
+
+
+  
+<script src="js/local-search.js"></script>
 
 
 

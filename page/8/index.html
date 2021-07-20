@@ -10,27 +10,27 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="开发笔记而已～～～">
 <meta property="og:type" content="website">
 <meta property="og:title" content="无来">
-<meta property="og:url" content="http://www.wulai.me/page/8/index.html">
+<meta property="og:url" content="page/8/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="开发笔记而已～～～">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Hillock">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://www.wulai.me/page/8/">
+<link rel="canonical" href="page/8/">
 
 
 <script id="page-configurations">
@@ -111,6 +111,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -130,11 +131,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -157,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/12/12/awk%E5%88%97%E5%87%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E5%88%B0md%E6%96%87%E4%BB%B6/">
+    <link itemprop="mainEntityOfPage" href="2016/12/12/awk列出文件夹所有文件导入到md文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -171,7 +199,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2016/12/12/awk%E5%88%97%E5%87%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E5%88%B0md%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">awk列出文件夹所有文件导入到md文件</a>
+            <a href="2016/12/12/awk%E5%88%97%E5%87%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E5%88%B0md%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">awk列出文件夹所有文件导入到md文件</a>
         </h2>
 
         <div class="post-meta">
@@ -242,7 +270,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/11/21/git%E5%A6%82%E4%BD%95%E6%94%BE%E5%BC%83%E6%89%80%E6%9C%89%E6%9C%AC%E5%9C%B0%E4%BF%AE%E6%94%B9/">
+    <link itemprop="mainEntityOfPage" href="2016/11/21/git如何放弃所有本地修改/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -256,7 +284,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2016/11/21/git%E5%A6%82%E4%BD%95%E6%94%BE%E5%BC%83%E6%89%80%E6%9C%89%E6%9C%AC%E5%9C%B0%E4%BF%AE%E6%94%B9/" class="post-title-link" itemprop="url">git如何放弃所有本地修改</a>
+            <a href="2016/11/21/git%E5%A6%82%E4%BD%95%E6%94%BE%E5%BC%83%E6%89%80%E6%9C%89%E6%9C%AC%E5%9C%B0%E4%BF%AE%E6%94%B9/" class="post-title-link" itemprop="url">git如何放弃所有本地修改</a>
         </h2>
 
         <div class="post-meta">
@@ -312,7 +340,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/11/18/macOS-10-12-Finder%E5%B0%8F%E6%8A%80%E5%B7%A7-%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6/">
+    <link itemprop="mainEntityOfPage" href="2016/11/18/macOS-10-12-Finder小技巧-快捷键显示隐藏文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -326,7 +354,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2016/11/18/macOS-10-12-Finder%E5%B0%8F%E6%8A%80%E5%B7%A7-%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">macOS 10.12 Finder小技巧 快捷键显示隐藏文件</a>
+            <a href="2016/11/18/macOS-10-12-Finder%E5%B0%8F%E6%8A%80%E5%B7%A7-%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">macOS 10.12 Finder小技巧 快捷键显示隐藏文件</a>
         </h2>
 
         <div class="post-meta">
@@ -378,7 +406,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/11/14/svn%E4%B8%AD%E6%93%8D%E4%BD%9C%E5%B8%A6%E6%9C%89%E2%80%9D-%E2%80%9D%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%96%87%E4%BB%B6/">
+    <link itemprop="mainEntityOfPage" href="2016/11/14/svn中操作带有”-”符号的文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -392,7 +420,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2016/11/14/svn%E4%B8%AD%E6%93%8D%E4%BD%9C%E5%B8%A6%E6%9C%89%E2%80%9D-%E2%80%9D%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">svn中操作带有”@”符号的文件</a>
+            <a href="2016/11/14/svn%E4%B8%AD%E6%93%8D%E4%BD%9C%E5%B8%A6%E6%9C%89%E2%80%9D-%E2%80%9D%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">svn中操作带有”@”符号的文件</a>
         </h2>
 
         <div class="post-meta">
@@ -446,7 +474,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/10/27/rsync%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/">
+    <link itemprop="mainEntityOfPage" href="2016/10/27/rsync同步配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -460,7 +488,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2016/10/27/rsync%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">rsync进行网站异地镜像</a>
+            <a href="2016/10/27/rsync%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">rsync进行网站异地镜像</a>
         </h2>
 
         <div class="post-meta">
@@ -522,7 +550,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/10/26/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%B8%80%E5%90%8D%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%B6%EF%BC%9F/">
+    <link itemprop="mainEntityOfPage" href="2016/10/26/如何成为一名数据科学家？/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -536,7 +564,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2016/10/26/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%B8%80%E5%90%8D%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%B6%EF%BC%9F/" class="post-title-link" itemprop="url">如何成为一名数据科学家？</a>
+            <a href="2016/10/26/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%B8%80%E5%90%8D%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%B6%EF%BC%9F/" class="post-title-link" itemprop="url">如何成为一名数据科学家？</a>
         </h2>
 
         <div class="post-meta">
@@ -793,7 +821,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/10/26/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E8%87%AA%E5%AD%A6%EF%BC%8C%E6%88%90%E4%B8%BA%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E2%80%9C%E9%AB%98%E6%89%8B%E2%80%9D%EF%BC%9F/">
+    <link itemprop="mainEntityOfPage" href="2016/10/26/如何通过自学，成为数据挖掘“高手”？/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -807,7 +835,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2016/10/26/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E8%87%AA%E5%AD%A6%EF%BC%8C%E6%88%90%E4%B8%BA%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E2%80%9C%E9%AB%98%E6%89%8B%E2%80%9D%EF%BC%9F/" class="post-title-link" itemprop="url">如何通过自学，成为数据挖掘“高手”？</a>
+            <a href="2016/10/26/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E8%87%AA%E5%AD%A6%EF%BC%8C%E6%88%90%E4%B8%BA%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E2%80%9C%E9%AB%98%E6%89%8B%E2%80%9D%EF%BC%9F/" class="post-title-link" itemprop="url">如何通过自学，成为数据挖掘“高手”？</a>
         </h2>
 
         <div class="post-meta">
@@ -883,7 +911,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/10/13/MySQL-%E4%B8%BB%E4%B8%BB%E5%A4%8D%E5%88%B6-LVS-Keepalived-%E5%AE%9E%E7%8E%B0-MySQL-%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7/">
+    <link itemprop="mainEntityOfPage" href="2016/10/13/MySQL-主主复制-LVS-Keepalived-实现-MySQL-高可用性/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -897,7 +925,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2016/10/13/MySQL-%E4%B8%BB%E4%B8%BB%E5%A4%8D%E5%88%B6-LVS-Keepalived-%E5%AE%9E%E7%8E%B0-MySQL-%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7/" class="post-title-link" itemprop="url">MySQL 主主复制 + LVS + Keepalived 实现 MySQL 高可用性</a>
+            <a href="2016/10/13/MySQL-%E4%B8%BB%E4%B8%BB%E5%A4%8D%E5%88%B6-LVS-Keepalived-%E5%AE%9E%E7%8E%B0-MySQL-%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7/" class="post-title-link" itemprop="url">MySQL 主主复制 + LVS + Keepalived 实现 MySQL 高可用性</a>
         </h2>
 
         <div class="post-meta">
@@ -1018,7 +1046,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/10/04/%E3%80%90%E5%AE%8C%E6%95%B4%E7%89%88%E3%80%91%E5%A6%82%E6%9E%9C%E7%9C%8B%E4%BA%86%E6%AD%A4%E6%96%87%E4%BD%A0%E8%BF%98%E4%B8%8D%E6%87%82%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%EF%BC%8C%E9%82%A3%E5%B0%B1%E8%BF%87%E6%9D%A5%E6%8E%90%E6%AD%BB%E6%88%91%E5%90%A7/">
+    <link itemprop="mainEntityOfPage" href="2016/10/04/【完整版】如果看了此文你还不懂傅里叶变换，那就过来掐死我吧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -1032,7 +1060,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2016/10/04/%E3%80%90%E5%AE%8C%E6%95%B4%E7%89%88%E3%80%91%E5%A6%82%E6%9E%9C%E7%9C%8B%E4%BA%86%E6%AD%A4%E6%96%87%E4%BD%A0%E8%BF%98%E4%B8%8D%E6%87%82%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%EF%BC%8C%E9%82%A3%E5%B0%B1%E8%BF%87%E6%9D%A5%E6%8E%90%E6%AD%BB%E6%88%91%E5%90%A7/" class="post-title-link" itemprop="url">【完整版】如果看了此文你还不懂傅里叶变换，那就过来掐死我吧</a>
+            <a href="2016/10/04/%E3%80%90%E5%AE%8C%E6%95%B4%E7%89%88%E3%80%91%E5%A6%82%E6%9E%9C%E7%9C%8B%E4%BA%86%E6%AD%A4%E6%96%87%E4%BD%A0%E8%BF%98%E4%B8%8D%E6%87%82%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%EF%BC%8C%E9%82%A3%E5%B0%B1%E8%BF%87%E6%9D%A5%E6%8E%90%E6%AD%BB%E6%88%91%E5%90%A7/" class="post-title-link" itemprop="url">【完整版】如果看了此文你还不懂傅里叶变换，那就过来掐死我吧</a>
         </h2>
 
         <div class="post-meta">
@@ -1291,7 +1319,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2016/09/24/this-is-incompatible-with-sql-mode-only-full-group-by/">
+    <link itemprop="mainEntityOfPage" href="2016/09/24/this-is-incompatible-with-sql-mode-only-full-group-by/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -1305,7 +1333,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2016/09/24/this-is-incompatible-with-sql-mode-only-full-group-by/" class="post-title-link" itemprop="url">this is incompatible with sql_mode=only_full_group_by</a>
+            <a href="2016/09/24/this-is-incompatible-with-sql-mode-only-full-group-by/" class="post-title-link" itemprop="url">this is incompatible with sql_mode=only_full_group_by</a>
         </h2>
 
         <div class="post-meta">
@@ -1379,7 +1407,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="">1</a><span class="space">&hellip;</span><a class="page-number" href="page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="page/16/">16</a><a class="extend next" rel="next" href="page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1520,19 +1548,19 @@
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="lib/anime.min.js"></script>
+  <script src="lib/velocity/velocity.min.js"></script>
+  <script src="lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="js/schemes/pisces.js"></script>
+
+
+<script src="js/next-boot.js"></script>
 
 
 
@@ -1540,6 +1568,10 @@
   
 
 
+
+
+  
+<script src="js/local-search.js"></script>
 
 
 

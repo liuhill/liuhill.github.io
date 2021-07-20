@@ -10,20 +10,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/wulai-16x16.png">
   <link rel="mask-icon" href="/images/wulai.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"http:/www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="写作背景好久没有写博客了，前端时间来了一场说走就走的旅行，和爱人一起辞职，去云南玩了半个月，才刚回来，最近一段时间在找工作，没事就上网看看技术相关的文章，充充电，昨天偶尔发现一遍讲解LNMP的并发与资源分配的文章，感觉不错，和大家分享下。很多时候面试官都会问你，你们的程序性能如何？程序的并发可以达到多少？程序的瓶颈在哪儿？为了满足业务需求应该购买多少台服务器？负载均衡中php应用服务器需要多少">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LNMP的并发与资源分配">
-<meta property="og:url" content="http://www.wulai.me/2017/09/14/LNMP%E7%9A%84%E5%B9%B6%E5%8F%91%E4%B8%8E%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D/index.html">
+<meta property="og:url" content="2017/09/14/LNMP%E7%9A%84%E5%B9%B6%E5%8F%91%E4%B8%8E%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D/index.html">
 <meta property="og:site_name" content="无来">
 <meta property="og:description" content="写作背景好久没有写博客了，前端时间来了一场说走就走的旅行，和爱人一起辞职，去云南玩了半个月，才刚回来，最近一段时间在找工作，没事就上网看看技术相关的文章，充充电，昨天偶尔发现一遍讲解LNMP的并发与资源分配的文章，感觉不错，和大家分享下。很多时候面试官都会问你，你们的程序性能如何？程序的并发可以达到多少？程序的瓶颈在哪儿？为了满足业务需求应该购买多少台服务器？负载均衡中php应用服务器需要多少">
 <meta property="og:locale" content="zh_CN">
@@ -33,7 +33,7 @@
 <meta property="article:tag" content="Linux, LNMP, nginx, 高并发解决方案">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://www.wulai.me/2017/09/14/LNMP%E7%9A%84%E5%B9%B6%E5%8F%91%E4%B8%8E%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D/">
+<link rel="canonical" href="2017/09/14/LNMP的并发与资源分配/">
 
 
 <script id="page-configurations">
@@ -114,6 +114,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -133,11 +134,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -161,7 +189,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.wulai.me/2017/09/14/LNMP%E7%9A%84%E5%B9%B6%E5%8F%91%E4%B8%8E%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D/">
+    <link itemprop="mainEntityOfPage" href="2017/09/14/LNMP的并发与资源分配/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
@@ -310,7 +338,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Linux-LNMP-nginx-%E9%AB%98%E5%B9%B6%E5%8F%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="tag"># Linux, LNMP, nginx, 高并发解决方案</a>
+              <a href="tags/Linux-LNMP-nginx-高并发解决方案/" rel="tag"># Linux, LNMP, nginx, 高并发解决方案</a>
           </div>
 
         
@@ -319,11 +347,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2017/08/08/CentOS-RHEL-Remove-Routes-169-254-0-0-255-255-0-0-From-the-System/" rel="prev" title="CentOS / RHEL: Remove Routes 169.254.0.0 / 255.255.0.0 From the System">
+    <a href="2017/08/08/CentOS-RHEL-Remove-Routes-169-254-0-0-255-255-0-0-From-the-System/" rel="prev" title="CentOS / RHEL: Remove Routes 169.254.0.0 / 255.255.0.0 From the System">
       <i class="fa fa-chevron-left"></i> CentOS / RHEL: Remove Routes 169.254.0.0 / 255.255.0.0 From the System
     </a></div>
       <div class="post-nav-item">
-    <a href="/2017/09/27/MySQL-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/" rel="next" title="MySQL 字符串拼接">
+    <a href="2017/09/27/MySQL-字符串拼接/" rel="next" title="MySQL 字符串拼接">
       MySQL 字符串拼接 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -473,19 +501,19 @@
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="lib/anime.min.js"></script>
+  <script src="lib/velocity/velocity.min.js"></script>
+  <script src="lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="js/schemes/pisces.js"></script>
+
+
+<script src="js/next-boot.js"></script>
 
 
 
@@ -493,6 +521,10 @@
   
 
 
+
+
+  
+<script src="js/local-search.js"></script>
 
 
 
