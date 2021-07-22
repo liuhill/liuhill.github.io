@@ -12,7 +12,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://www.wulai.me
+url: https://www.wulai.me
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -82,7 +82,7 @@ qiniu:
   access_key: ru7LURnT08EhPERkiRq4hWw8-IdtsyG3-m7QVsI0
   secret_key: eDiCa1kVr96UewozuVUx8BtJBO6vp0MuJoEo73PP
   dirPrefix: wulai
-  urlPrefix: http://res.hillock.com.cn/wulai
+  urlPrefix: https://res.hillock.com.cn/wulai
   up_host: http://up-z0.qiniu.com
   local_dir: static
   update_exist: true
@@ -93,3 +93,11 @@ qiniu:
     folder: js
   css:
     folder: css
+
+
+# Search Config
+search:
+  path: search.xml 
+  field: post
+  format: html
+  limit: 10
