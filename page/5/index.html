@@ -185,6 +185,76 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2017/07/31/Rename-ethernet-interfaces-on-Centos7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="开发笔记而已～～～">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/07/31/Rename-ethernet-interfaces-on-Centos7/" class="post-title-link" itemprop="url">Rename ethernet interfaces on Centos7</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-07-31 11:17:33" itemprop="dateCreated datePublished" datetime="2017-07-31T11:17:33+08:00">2017-07-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-10 14:04:38" itemprop="dateModified" datetime="2021-07-10T14:04:38+08:00">2021-07-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script src="\assets\js\APlayer.min.js"> </script><h3 id="0-Prepare"><a href="#0-Prepare" class="headerlink" title="0 Prepare"></a>0 Prepare</h3><pre><code>yum install pciutils -y</code></pre><h3 id="1-get-PCI-info"><a href="#1-get-PCI-info" class="headerlink" title="1 get PCI info:"></a>1 get PCI info:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] lspci | grep Ethernet   </span><br><span class="line">05:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </span><br><span class="line">06:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </span><br><span class="line">07:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </span><br><span class="line">08:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-add-config-to-cat-usr-lib-udev-rules-d-60-net-rules"><a href="#2-add-config-to-cat-usr-lib-udev-rules-d-60-net-rules" class="headerlink" title="2 add config to cat /usr/lib/udev/rules.d/60-net.rules."></a>2 add config to <code>cat /usr/lib/udev/rules.d/60-net.rules</code>.</h3><p><strong><em>Notice:</em></strong> param <code>KERNELS</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /usr/lib/udev/rules.d/60-net.rules</span><br><span class="line">ACTION==&quot;add&quot;, SUBSYSTEM==&quot;net&quot;, DRIVERS==&quot;?*&quot;, ATTR&#123;type&#125;==&quot;1&quot;, PROGRAM=&quot;/lib/udev/rename_device&quot;, RESULT==&quot;?*&quot;, NAME=&quot;$result&quot;</span><br><span class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:05.0&quot;, NAME=&quot;vfnet0&quot;</span><br><span class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:06.0&quot;, NAME=&quot;vfnet1&quot;</span><br><span class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:07.0&quot;, NAME=&quot;vfnet2&quot;</span><br><span class="line">SUBSYSTEMS==&quot;pci&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, KERNELS==&quot;0000:00:08.0&quot;, NAME=&quot;vfnet3&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-reboot"><a href="#3-reboot" class="headerlink" title="3 reboot"></a>3 reboot</h3><h3 id="4-check"><a href="#4-check" class="headerlink" title="4 check"></a>4 check</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /usr/lib/udev/rules.d/60-net.rules</span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: vfnet0: &lt;BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master bond0 state UP qlen 1000</span><br><span class="line">    link/ether f2:d5:5d:21:4e:38 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">3: vfnet1: &lt;BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master bond0 state UP qlen 1000</span><br><span class="line">    link/ether 3e:ec:21:1a:d2:86 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">4: vfnet2: &lt;BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master bond0 state UP qlen 1000</span><br><span class="line">    link/ether be:70:05:01:46:04 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">5: vfnet3: &lt;BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast master bond0 state UP qlen 1000</span><br><span class="line">    link/ether e6:de:61:c9:a8:d1 brd ff:ff:ff:ff:ff:ff</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2017/07/27/name-ethernet-interfaces-on-CentOS7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -849,72 +919,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2017/06/06/svn-%E5%8F%96%E6%B6%88%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
-      <meta itemprop="name" content="Hillock">
-      <meta itemprop="description" content="开发笔记而已～～～">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无来">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/06/06/svn-%E5%8F%96%E6%B6%88%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="post-title-link" itemprop="url">svn 取消版本控制</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-06-06 17:05:17" itemprop="dateCreated datePublished" datetime="2017-06-06T17:05:17+08:00">2017-06-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-10 14:04:38" itemprop="dateModified" datetime="2021-07-10T14:04:38+08:00">2021-07-10</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <script src="\assets\js\APlayer.min.js"> </script><p>删除这些目录是很简单的，命令如下</p>
-<pre><code>find . -type d -name &quot;.svn&quot;|xargs rm -rf</code></pre><p>或者</p>
-<pre><code>find . -type d -iname &quot;.svn&quot; -exec rm -rf &#123;&#125; \;  </code></pre>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -986,7 +990,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">155</span>
+          <span class="site-state-item-count">156</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -995,7 +999,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

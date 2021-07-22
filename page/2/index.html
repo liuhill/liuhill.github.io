@@ -185,6 +185,108 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2018/04/28/QEMU-VM-ESCAPE-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="开发笔记而已～～～">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/04/28/QEMU-VM-ESCAPE-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="post-title-link" itemprop="url">QEMU VM ESCAPE 环境搭建</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-04-28 12:17:26" itemprop="dateCreated datePublished" datetime="2018-04-28T12:17:26+08:00">2018-04-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-10 14:04:38" itemprop="dateModified" datetime="2021-07-10T14:04:38+08:00">2021-07-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script src="\assets\js\APlayer.min.js"> </script><h1 id="QEMU-VM-ESCAPE-环境搭建"><a href="#QEMU-VM-ESCAPE-环境搭建" class="headerlink" title="QEMU VM ESCAPE 环境搭建"></a>QEMU VM ESCAPE 环境搭建</h1><h2 id="0-参考"><a href="#0-参考" class="headerlink" title="0.参考"></a>0.参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://bbs.pediy.com/thread-225211.htm">https://bbs.pediy.com/thread-225211.htm</a></li>
+<li><a target="_blank" rel="noopener" href="https://dangokyo.me/2018/03/02/qemu-escape-part-1-environment-set-up/">https://dangokyo.me/2018/03/02/qemu-escape-part-1-environment-set-up/</a></li>
+<li><a target="_blank" rel="noopener" href="https://dangokyo.me/2018/03/08/qemu-escape-part-2-debugging-environment-set-up/">https://dangokyo.me/2018/03/08/qemu-escape-part-2-debugging-environment-set-up/</a></li>
+</ul>
+<h2 id="1-安装操作系统-ubuntu-17-10"><a href="#1-安装操作系统-ubuntu-17-10" class="headerlink" title="1.安装操作系统 ubuntu 17.10"></a>1.安装操作系统 <code>ubuntu 17.10</code></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://mirrors.163.com/ubuntu-releases/17.10/ubuntu-17.10.1-desktop-amd64.iso</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-安装指定版本的qemu"><a href="#2-安装指定版本的qemu" class="headerlink" title="2. 安装指定版本的qemu"></a>2. 安装指定版本的qemu</h2><p>不要使用make install. 后续使用绝对路径执行qemu</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git://git.qemu-project.org/qemu.git</span><br><span class="line">$ cd qemu</span><br><span class="line">$ git checkout bd80b59</span><br><span class="line">$ mkdir -p bin/debug/native</span><br><span class="line">$ cd bin/debug/native</span><br><span class="line">$ ../../../configure --target-list=x86_64-softmmu --enable-debug \</span><br><span class="line">$                    --disable-werror</span><br><span class="line">$ make -j 4</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-创建ubuntu镜像-用户qemu运行虚拟机"><a href="#3-创建ubuntu镜像-用户qemu运行虚拟机" class="headerlink" title="3. 创建ubuntu镜像,用户qemu运行虚拟机"></a>3. 创建ubuntu镜像,用户qemu运行虚拟机</h2><h3 id="3-1-下载linux源代码"><a href="#3-1-下载linux源代码" class="headerlink" title="3.1) 下载linux源代码"></a>3.1) 下载linux源代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.15.18.tar.xz</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-编译内核"><a href="#3-2-编译内核" class="headerlink" title="3.2) 编译内核"></a>3.2) 编译内核</h3><p>可能需要安装一下依赖包，发现错误百度一下即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">make defconfig</span><br><span class="line">make kvmconfig</span><br><span class="line">make -j 4</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-创建Debian-Stretch-image"><a href="#3-3-创建Debian-Stretch-image" class="headerlink" title="3.3) 创建Debian-Stretch image"></a>3.3) 创建Debian-Stretch image</h3><ul>
+<li><p>3.3.1） 安装debootstrap工具</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install debootstrap</span><br></pre></td></tr></table></figure></li>
+<li><p>3.3.2）安装Debian镜像需要的依赖包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir qemu</span><br><span class="line">sudo debootstrap --include=openssh-server,curl,tar,gcc,\</span><br><span class="line">libc6-dev,time,strace,sudo,less,psmisc,\</span><br><span class="line">selinux-utils,policycoreutils,checkpolicy,selinux-policy-default \</span><br><span class="line">stretch qemu</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.3.4） 创建镜像<br>这个镜像配置后，可以通过ssh使用root用户免密钥登录。</p>
+</li>
+</ul>
+<p><em>*脚本中 enp0s3为host机网卡的名称，通过ifconfig先查看后，修改脚本保持一至</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">set -eux</span><br><span class="line"></span><br><span class="line"># Set some defaults and enable promtless ssh to the machine for root.</span><br><span class="line">sudo sed -i &#x27;/^root/ &#123; s/:x:/::/ &#125;&#x27; qemu/etc/passwd</span><br><span class="line">echo &#x27;T0:23:respawn:/sbin/getty -L ttyS0 115200 vt100&#x27; | sudo tee -a qemu/etc/inittab</span><br><span class="line">printf &#x27;\nauto enp0s3\niface enp0s3 inet dhcp\n&#x27; | sudo tee -a qemu/etc/network/interfaces</span><br><span class="line">echo &#x27;debugfs /sys/kernel/debug debugfs defaults 0 0&#x27; | sudo tee -a qemu/etc/fstab</span><br><span class="line">echo &quot;kernel.printk = 7 4 1 3&quot; | sudo tee -a qemu/etc/sysctl.conf</span><br><span class="line">echo &#x27;debug.exception-trace = 0&#x27; | sudo tee -a qemu/etc/sysctl.conf</span><br><span class="line">echo &quot;net.core.bpf_jit_enable = 1&quot; | sudo tee -a qemu/etc/sysctl.conf</span><br><span class="line">echo &quot;net.core.bpf_jit_harden = 2&quot; | sudo tee -a qemu/etc/sysctl.conf</span><br><span class="line">echo &quot;net.ipv4.ping_group_range = 0 65535&quot; | sudo tee -a qemu/etc/sysctl.conf</span><br><span class="line">echo -en &quot;127.0.0.1\tlocalhost\n&quot; | sudo tee qemu/etc/hosts</span><br><span class="line">echo &quot;nameserver 8.8.8.8&quot; | sudo tee -a qemu/etc/resolve.conf</span><br><span class="line">echo &quot;ubuntu&quot; | sudo tee qemu/etc/hostname</span><br><span class="line">sudo mkdir -p qemu/root/.ssh/</span><br><span class="line">rm -rf ssh</span><br><span class="line">mkdir -p ssh</span><br><span class="line">ssh-keygen -f ssh/id_rsa -t rsa -N &#x27;&#x27;</span><br><span class="line">cat ssh/id_rsa.pub | sudo tee qemu/root/.ssh/authorized_keys</span><br><span class="line"></span><br><span class="line"># Build a disk image</span><br><span class="line">dd if=/dev/zero of=qemu.img bs=1M seek=2047 count=1</span><br><span class="line">sudo mkfs.ext4 -F qemu.img</span><br><span class="line">sudo mkdir -p /mnt/qemu</span><br><span class="line">sudo mount -o loop qemu.img /mnt/qemu</span><br><span class="line">sudo cp -a qemu/. /mnt/qemu/.</span><br><span class="line">sudo umount /mnt/qemu</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-运行qemu"><a href="#4-运行qemu" class="headerlink" title="4.运行qemu"></a>4.运行qemu</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">../Security/qemu/bin/debug/build/x86_64-softmmu/qemu-system-x86_64   \</span><br><span class="line">-kernel /home/dango/Kernel/linux-4.15.7/arch/x86/boot/bzImage  \</span><br><span class="line">-append &quot;console=ttyS0 root=/dev/sda rw&quot;  \</span><br><span class="line">-hda /home/dango/Kernel/Image/image03/qemu.img  \</span><br><span class="line">-enable-kvm -m 2G -nographic \</span><br><span class="line">-netdev user,id=t0, -device rtl8139,netdev=t0,id=nic0 \</span><br><span class="line">-netdev user,id=t1, -device pcnet,netdev=t1,id=nic1</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>../Security/qemu/bin/debug/build/x86_64-softmmu/qemu-system-x86_64</code>为第2步生成qemu程序路径</li>
+<li><code>/home/dango/Kernel/linux-4.15.7/arch/x86/boot/bzImage</code> 为第3.2中生成的路径</li>
+<li><code>/home/dango/Kernel/Image/image03/qemu.img</code> 为第3.3.4中生成文件</li>
+</ul>
+<p>虚拟机运行起来后，提示输入用户名root,即登录guest虚拟机。</p>
+<h2 id="5-测试qemu。"><a href="#5-测试qemu。" class="headerlink" title="5.测试qemu。"></a>5.测试qemu。</h2><p>在第4步中运行起的客户机,在guest 虚拟机执行如下操作</p>
+<h3 id="5-1-用vim创建c源代码文件mmu-c"><a href="#5-1-用vim创建c源代码文件mmu-c" class="headerlink" title="5.1 用vim创建c源代码文件mmu.c"></a>5.1 用vim创建c源代码文件mmu.c</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">//mmu.c</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;stdint.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;fcntl.h&gt;</span><br><span class="line">#include &lt;assert.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line"></span><br><span class="line">#define PAGE_SHIFT  12</span><br><span class="line">#define PAGE_SIZE   (1 &lt;&lt; PAGE_SHIFT)</span><br><span class="line">#define PFN_PRESENT (1ull &lt;&lt; 63)</span><br><span class="line">#define PFN_PFN     ((1ull &lt;&lt; 55) - 1)</span><br><span class="line"></span><br><span class="line">int fd;</span><br><span class="line"></span><br><span class="line">uint32_t page_offset(uint32_t addr)</span><br><span class="line">&#123;</span><br><span class="line">    return addr &amp; ((1 &lt;&lt; PAGE_SHIFT) - 1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">uint64_t gva_to_gfn(void *addr)</span><br><span class="line">&#123;</span><br><span class="line">    uint64_t pme, gfn;</span><br><span class="line">    size_t offset;</span><br><span class="line">    offset = ((uintptr_t)addr &gt;&gt; 9) &amp; ~7;</span><br><span class="line">    lseek(fd, offset, SEEK_SET);</span><br><span class="line">    read(fd, &amp;pme, 8);</span><br><span class="line">    if (!(pme &amp; PFN_PRESENT))</span><br><span class="line">        return -1;</span><br><span class="line">    gfn = pme &amp; PFN_PFN;</span><br><span class="line">    return gfn;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">uint64_t gva_to_gpa(void *addr)</span><br><span class="line">&#123;</span><br><span class="line">    uint64_t gfn = gva_to_gfn(addr);</span><br><span class="line">    assert(gfn != -1);</span><br><span class="line">    return (gfn &lt;&lt; PAGE_SHIFT) | page_offset((uint64_t)addr);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    uint8_t *ptr;</span><br><span class="line">    uint64_t ptr_mem;</span><br><span class="line"></span><br><span class="line">    fd = open(&quot;/proc/self/pagemap&quot;, O_RDONLY);</span><br><span class="line">    if (fd &lt; 0) &#123;</span><br><span class="line">        perror(&quot;open&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ptr = malloc(256);</span><br><span class="line">    strcpy(ptr, &quot;Where am I?&quot;);</span><br><span class="line">    printf(&quot;%s\n&quot;, ptr);</span><br><span class="line">    ptr_mem = gva_to_gpa(ptr);</span><br><span class="line">    printf(&quot;Your physical address is at 0x%&quot;PRIx64&quot;\n&quot;, ptr_mem);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-2-用gcc编译如下代码"><a href="#5-2-用gcc编译如下代码" class="headerlink" title="5.2 用gcc编译如下代码"></a>5.2 用gcc编译如下代码</h3><p>如果没有先安装gcc,编译可能会有一些warning，不用在意。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -c  mmu.c</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-执行程序"><a href="#5-3-执行程序" class="headerlink" title="5.3 执行程序"></a>5.3 执行程序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./mmu.o</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2018/03/01/%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%B7%9F%E8%B8%AAurl%E8%B7%B3%E8%BD%AC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -999,79 +1101,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2018/01/10/%E6%96%87%E4%BB%B6%E5%A4%B9%E5%AF%B9%E6%AF%94%E5%B9%B6%E6%8F%90%E5%8F%96%E5%B7%AE%E5%BC%82/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/3354580?v=3&s=468">
-      <meta itemprop="name" content="Hillock">
-      <meta itemprop="description" content="开发笔记而已～～～">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无来">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/01/10/%E6%96%87%E4%BB%B6%E5%A4%B9%E5%AF%B9%E6%AF%94%E5%B9%B6%E6%8F%90%E5%8F%96%E5%B7%AE%E5%BC%82/" class="post-title-link" itemprop="url">文件夹对比并提取差异</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-01-10 10:01:03" itemprop="dateCreated datePublished" datetime="2018-01-10T10:01:03+08:00">2018-01-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-10 14:04:38" itemprop="dateModified" datetime="2021-07-10T14:04:38+08:00">2021-07-10</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <script src="\assets\js\APlayer.min.js"> </script><h2 id="STEP1"><a href="#STEP1" class="headerlink" title="STEP1"></a>STEP1</h2><p>A1.1是新文件夹，A1.0是旧文件夹，out是放置 A1.0到A1.1的保持目录结构的增量文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync --dry-run -rcnC --out-format=&quot;%n&quot;  A1.1/  A1.0/</span><br></pre></td></tr></table></figure>
-<p>注意该处的-C参数是按照cvs的ignore规则来过滤不需要同步的文件，在CVS中，默认是不会提交二进制文件的，所以如果需要进行二进制文件提取，那就不要加C.<br>执行了该命令后，得到了一个A1目录的文件列表：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A1.1/system/app/</span><br><span class="line">A1.1/system/app/A.apk</span><br><span class="line">A1.1/system/app/B.apk</span><br><span class="line">A1.1/system/app/C.apk</span><br></pre></td></tr></table></figure>
-<p>也就是差异文件，由于这里默认会显示出文件夹，所以要过滤掉以『/』结尾的文件夹的显示</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync --dry-run -rcnC --out-format=&quot;%n&quot;  A1.1/  A1.0/ |grep -v &quot;/$&quot;</span><br></pre></td></tr></table></figure>
-<p>这样就得到了一个纯增量文件的列表</p>
-<h2 id="STEP2"><a href="#STEP2" class="headerlink" title="STEP2"></a>STEP2</h2><p>有了文件列表，复制的操作方法就很多了。可以继续使用rsync同步到新的out目录，以防止多次执行后错误文件修复问题<br>完整代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync --dry-run -rcnC --out-format=&quot;%n&quot;  A1.1/  A1.0/ |grep -v &quot;/$&quot;|xargs -I&#123;&#125; rsync -R A1/./&#123;&#125; out/</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1143,7 +1172,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">155</span>
+          <span class="site-state-item-count">156</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1152,7 +1181,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
