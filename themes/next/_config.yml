@@ -41,10 +41,10 @@ custom_file_path:
 
 favicon:
   # small: /images/favicon-16x16-next.png
-  small: /images/favicon-16x16-wulai.png
-  medium: /images/favicon-32x32-wulai.png # /images/favicon-32x32-next.png
-  apple_touch_icon: /images/favicon-128x128-wulai.png # /images/apple-touch-icon-next.png
-  safari_pinned_tab: /images/favicon-wulai.svg # /images/logo.svg
+  small: /images/favicon-16x16-bolder.png
+  medium: /images/favicon-32x32-bolder.png # /images/favicon-32x32-next.png
+  apple_touch_icon: /images/favicon-128x128-bolder.png # /images/apple-touch-icon-next.png
+  safari_pinned_tab: /images/wulai-bolder.svg # /images/logo.svg
   #android_manifest: /images/manifest.json
   #ms_browserconfig: /images/browserconfig.xml
 
