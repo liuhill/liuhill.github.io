@@ -6309,4 +6309,10 @@ RUN gem install sass</code></pre>]]></content>
         <tag>git</tag>
       </tags>
   </entry>
+  <entry>
+    <title>mysql数据库导出问题之表结构自带AUTO_INCREMENT默认值</title>
+    <url>/2022/04/13/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%87%BA%E9%97%AE%E9%A2%98%E4%B9%8B%E8%A1%A8%E7%BB%93%E6%9E%84%E8%87%AA%E5%B8%A6AUTO-INCREMENT%E9%BB%98%E8%AE%A4%E5%80%BC/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>解决：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysqldump -uroot -p -d test -S /tmp/mysql.sock | sed &#x27;s/AUTO_INCREMENT=[0-9]*\s*//g&#x27; &gt; test.sql</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
 </search>

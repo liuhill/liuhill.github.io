@@ -195,6 +195,80 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2014/12/05/nginx-e5-85-a8-e5-b1-80-e5-8f-98-e9-87-8f-e5-af-b9-e7-85-a7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/12/05/nginx-e5-85-a8-e5-b1-80-e5-8f-98-e9-87-8f-e5-af-b9-e7-85-a7/" class="post-title-link" itemprop="url">nginx 全局变量对照</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-12-05 11:29:27" itemprop="dateCreated datePublished" datetime="2014-12-05T11:29:27+08:00">2014-12-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-10 14:04:38" itemprop="dateModified" datetime="2021-07-10T14:04:38+08:00">2021-07-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index"><span itemprop="name">server</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script src="\assets\js\APlayer.min.js"> </script><p>remote_addr     客户端ip,如：192.168.4.2<br>binary_remote_addr  客户端ip（二进制)<br>remote_port     客户端port，如：50472<br>remote_user     已经经过Auth Basic Module验证的用户名<br>host            请求主机头字段，否则为服务器名称，如:dwz.stamhe.com<br>request         用户请求信息，如：GET /?_a=index&amp;_m=show&amp;count=10 HTTP/1.1<br>request_filename    当前请求的文件的路径名，由root或alias和URI request组合而成，如：/webserver/htdocs/dwz/index.php<br>status          请求的响应状态码,如:200<br>body_bytes_sent 响应时送出的body字节数数量。即使连接中断，这个数据也是精确的,如：40<br>content_length  请求头中的Content-length字段<br>content_type    请求头中的Content-Type字段<br>http_referer    引用地址<br>http_user_agent 客户端agent信息,如：Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11<br>args            如：_a=index&amp;_m=show&amp;count=10<br>document_uri    与$uri相同,如：/index.php<br>document_root   针对当前请求的根路径设置值,如：/webserver/htdocs/dwz<br>hostname        如：centos53.localdomain<br>http_cookie     客户端cookie信息<br>cookie_COOKIE   cookie COOKIE变量的值<br>is_args         如果有$args参数，这个变量等于”?”，否则等于””，空值，如?<br>limit_rate      这个变量可以限制连接速率，0表示不限速<br>query_string    与$args相同,如：_a=index&amp;_m=show&amp;count=10<br>realpath_root   如：/webserver/htdocs/dwz<br>request_body     记录POST过来的数据信息<br>request_body_file   客户端请求主体信息的临时文件名<br>request_method  客户端请求的动作，通常为GET或POST,如：GET<br>request_uri     包含请求参数的原始URI，不包含主机名，如：”/foo/bar.php?arg=baz”。不能修改。如：/index.php?_a=index&amp;_m=show&amp;count=10<br>scheme          HTTP方法（如http，https）,如：http<br>uri             如：/index.php<br>request_completion  如果请求结束，设置为OK. 当请求未结束或如果该请求不是请求链串的最后一个时，为空(Empty)，如：OK<br>server_protocol 请求使用的协议，通常是HTTP/1.0或HTTP/1.1，如：HTTP/1.1<br>server_addr     服务器地址，在完成一次系统调用后可以确定这个值，如：192.168.4.129<br>server_name     服务器名称，如：dwz.stamhe.com<br>server_port     请求到达服务器的端口号,如：80</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2014/12/05/e6-9f-a5-e7-9c-8bjquery-e7-89-88-e6-9c-ac/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1950,105 +2024,10 @@ SYSFONT=&quot;lat0-sun16&quot;</code></pre><p>最后，断开重连SSH就可以�
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2014/11/15/e8-a7-a3-e5-86-b3lnmp-e4-b8-8b-e6-8f-90-e7-a4-bafileinfo-e6-8f-92-e4-bb-b6-e6-b2-a1-e5-ae-89-e8-a3-85-ef-bc-88php-e5-ae-89-e8-a3-85fileinfo-e6-89-a9-e5-b1-95-e6-95-99-e7-a8-8b-ef-bc-89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
-      <meta itemprop="name" content="Hillock">
-      <meta itemprop="description" content="努力奔跑，向着诗和远方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无来">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2014/11/15/e8-a7-a3-e5-86-b3lnmp-e4-b8-8b-e6-8f-90-e7-a4-bafileinfo-e6-8f-92-e4-bb-b6-e6-b2-a1-e5-ae-89-e8-a3-85-ef-bc-88php-e5-ae-89-e8-a3-85fileinfo-e6-89-a9-e5-b1-95-e6-95-99-e7-a8-8b-ef-bc-89/" class="post-title-link" itemprop="url">解决LNMP下提示fileinfo插件没安装（PHP安装fileinfo扩展教程）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2014-11-15 18:08:13" itemprop="dateCreated datePublished" datetime="2014-11-15T18:08:13+08:00">2014-11-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-10 14:04:38" itemprop="dateModified" datetime="2021-07-10T14:04:38+08:00">2021-07-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/server/" itemprop="url" rel="index"><span itemprop="name">server</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <script src="\assets\js\APlayer.min.js"> </script><p>编译并安装fileinfo插件</p>
-<pre><code>cd /root/lnmp1.0-full/php-5.3.17/ext/fileinfo
-/usr/local/php/bin/phpize
-./configure --with-php-config=/usr/local/php/bin/php-config
-make &amp;amp;&amp;amp; make install
-
-
-在PHP配置中添加fileinfo插件
-用vim编辑php.ini
-
-vim /usr/local/php/etc/php.ini
-
-
-找到 &quot;;extension=php_bz2.dll&quot; 这一行
-在其上面添加一行：
-
-extension = fileinfo.so
-
-
-然后重启lnmp
-
-/root/lnmp restart</code></pre><p>结束！</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2116,7 +2095,7 @@ extension = fileinfo.so
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">160</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

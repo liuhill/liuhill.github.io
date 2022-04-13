@@ -195,6 +195,91 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2018/08/06/mysqldiff%E5%AE%9E%E7%8E%B0MySQL%E6%95%B0%E6%8D%AE%E8%A1%A8%E6%AF%94%E8%BE%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/08/06/mysqldiff%E5%AE%9E%E7%8E%B0MySQL%E6%95%B0%E6%8D%AE%E8%A1%A8%E6%AF%94%E8%BE%83/" class="post-title-link" itemprop="url">mysqldiff实现MySQL数据表比较</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-08-06 15:44:09" itemprop="dateCreated datePublished" datetime="2018-08-06T15:44:09+08:00">2018-08-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-10 14:04:38" itemprop="dateModified" datetime="2021-07-10T14:04:38+08:00">2021-07-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script src="\assets\js\APlayer.min.js"> </script><p>本文介绍mysqldiff工具来比较数据表结构，并生成差异SQL语句。</p>
+<p>mysqldiff类似Linux下的diff命令，用来比较对象的定义是否相同，并显示不同的地方。</p>
+<p>如果要比较数据库是否一致，可以用另外一个工具：mysqldbcompare（点击查看教程）。</p>
+<p>以下是mysqldiff的用法。</p>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1 安装"></a>1 安装</h2><p>mysqldiff是MySQL Utilities中的一个脚本，默认的MySQL不包含这个工具集，所以需要独立安装。</p>
+<p>MySQL Utilities下载地址：<a target="_blank" rel="noopener" href="http://downloads.mysql.com/archives/utilities/。">http://downloads.mysql.com/archives/utilities/。</a><br>Windows系统中需提前安装“Visual C++ Redistributable Packages for Visual Studio 2013”，下载地址：<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-gb/download/details.aspx?id=40784。">https://www.microsoft.com/en-gb/download/details.aspx?id=40784。</a><br>Linux系统在下载页面选择对应发行版。</p>
+<h2 id="2-语法"><a href="#2-语法" class="headerlink" title="2 语法"></a>2 语法</h2><p>mysqldiff的语法格式是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldiff --server1=user:pass@host:port:socket --server2=user:pass@host:port:socket db1.object1:db2.object1 db3:db4</span><br></pre></td></tr></table></figure>
+<p>这个语法有两个用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">db1:db2：如果只指定数据库，那么就将两个数据库中互相缺少的对象显示出来，不比较对象里面的差异。这里的对象包括表、存储过程、函数、触发器等。</span><br><span class="line">db1.object1:db2.object1：如果指定了具体表对象，那么就会详细对比两个表的差异，包括表名、字段名、备注、索引、大小写等所有的表相关的对象。</span><br><span class="line">接下来看一些主要的参数：</span><br><span class="line"></span><br><span class="line">--server1：配置server1的连接。</span><br><span class="line">--server2：配置server2的连接。</span><br><span class="line">--character-set：配置连接时用的字符集，如果不显示配置默认使用character_set_client。</span><br><span class="line">--width：配置显示的宽度。</span><br><span class="line">--skip-table-options：保持表的选项不变，即对比的差异里面不包括表名、AUTO_INCREMENT、ENGINE、CHARSET等差异。</span><br><span class="line">-d DIFFTYPE,--difftype=DIFFTYPE：差异的信息显示的方式，有[unified|context|differ|sql]，默认是unified。如果使用sql，那么就直接生成差异的SQL，这样非常方便。</span><br><span class="line">--changes-for=：修改对象。例如--changes-for=server2，那么对比以sever1为主，生成的差异的修改也是针对server2的对象的修改。</span><br><span class="line">--show-reverse：在生成的差异修改里面，同时会包含server2和server1的修改。</span><br></pre></td></tr></table></figure>
+<h2 id="3-范例"><a href="#3-范例" class="headerlink" title="3 范例"></a>3 范例</h2><p>先创建两个表。</p>
+<p>use study;</p>
+<p>create table test1(<br>    id int not null primary key,<br>    a varchar(10) not null,<br>    b varchar(10),<br>    c varchar(10) comment ‘c’,<br>    d int<br>)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=’test1’;</p>
+<p>create table test2(<br>    id int not null,<br>    a varchar(10),<br>    b varchar(5),<br>    c varchar(10),<br>    D int<br>)ENGINE=myisam DEFAULT CHARSET=utf8 COMMENT=’test2’;<br>不使用–skip-table-options，</p>
+<p>mysqldiff –server1=root:root@localhost –server2=root:root@localhost –changes-for=server2 –show-reverse –difftype=sql study.test1:study.test2</p>
+<p>使用<code>--skip-table-options</code>，</p>
+<p>如果需要生成SQL文件，加上输出就可以了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldiff --server1=root:root@localhost --server2=root:root@localhost --changes-for=server2 --show-reverse --difftype=sql study.test1:study.test2 &gt; output.sql</span><br></pre></td></tr></table></figure>
+<p><code>说明</code>：执行MySQL语句时可能会遇到这样错误：`Error 1054 - Unknown column ‘name’ in ‘aspect’``</p>
+<p>这是因为mysqldbcompare生成的ALTER语句中，用逗号,拼装了多条ADD、CHANGE等语句，如果这些语句还包含AFTER关键字，就会提示这个错误并中断执行MySQL语句。解决的办法就是：去除AFTER及其后面的条件。</p>
+<p>这可能是MySQL的一个Bug，详情参考：<a target="_blank" rel="noopener" href="http://bugs.mysql.com/bug.php?id=34972">http://bugs.mysql.com/bug.php?id=34972</a> 和 <a target="_blank" rel="noopener" href="http://bugs.mysql.com/bug.php?id=60650。">http://bugs.mysql.com/bug.php?id=60650。</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2018/08/06/mysqldbcompare-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E6%AF%94%E8%BE%83%E5%B7%A5%E5%85%B7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -925,113 +1010,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2018/01/29/ffmpeg-%E5%A4%9A%E4%B8%AA%E9%9F%B3%E9%A2%91%E5%90%88%E5%B9%B6-%E6%88%AA%E5%8F%96-%E6%8B%86%E5%88%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
-      <meta itemprop="name" content="Hillock">
-      <meta itemprop="description" content="努力奔跑，向着诗和远方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无来">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/01/29/ffmpeg-%E5%A4%9A%E4%B8%AA%E9%9F%B3%E9%A2%91%E5%90%88%E5%B9%B6-%E6%88%AA%E5%8F%96-%E6%8B%86%E5%88%86/" class="post-title-link" itemprop="url">ffmpeg 多个音频合并 截取 拆分</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-01-29 13:27:09" itemprop="dateCreated datePublished" datetime="2018-01-29T13:27:09+08:00">2018-01-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-10 14:04:38" itemprop="dateModified" datetime="2021-07-10T14:04:38+08:00">2021-07-10</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <script src="\assets\js\APlayer.min.js"> </script><h3 id="多个mp3文件合并成一个mp3文件"><a href="#多个mp3文件合并成一个mp3文件" class="headerlink" title="多个mp3文件合并成一个mp3文件"></a>多个mp3文件合并成一个mp3文件</h3><p>一种方法是连接到一起</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg64.exe -i &quot;concat:123.mp3|124.mp3&quot; -acodec copy output.mp3</span><br></pre></td></tr></table></figure>
-<p>解释：</p>
-<ul>
-<li>-i代表输入参数</li>
-<li>contact:123.mp3|124.mp3代表着需要连接到一起的音频文件</li>
-<li>-acodec copy output.mp3 重新编码并复制到新文件中</li>
-</ul>
-<h3 id="另一种方法是混合到一起"><a href="#另一种方法是混合到一起" class="headerlink" title="另一种方法是混合到一起"></a>另一种方法是混合到一起</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg64.exe -i 124.mp3 -i 123.mp3 -filter_complex amix=inputs=2:duration=first:dropout_transition=2 -f mp3 remix.mp3</span><br></pre></td></tr></table></figure>
-<p>解释：</p>
-<ul>
-<li>-i代表输入参数</li>
-<li>-filter_complex ffmpeg滤镜功能，非常强大，详细请查看文档</li>
-<li>amix是混合多个音频到单个音频输出</li>
-<li>inputs=2代表是2个音频文件，如果更多则代表对应数字</li>
-<li>duration 确定最终输出文件的长度</li>
-<li>longest(最长)|shortest（最短）|first（第一个文件）</li>
-<li>dropout_transition<br>The transition time, in seconds, for volume renormalization when an input stream ends. The default value is 2 seconds.</li>
-<li>-f mp3  输出文件格式</li>
-</ul>
-<h3 id="音频文件截取指定时间部分"><a href="#音频文件截取指定时间部分" class="headerlink" title="音频文件截取指定时间部分"></a>音频文件截取指定时间部分</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg64.exe -i 124.mp3 -vn -acodec copy -ss 00:00:00 -t 00:01:32 output.mp3</span><br></pre></td></tr></table></figure>
-<p>解释：</p>
-<ul>
-<li>-i代表输入参数</li>
-<li>-acodec copy output.mp3 重新编码并复制到新文件中</li>
-<li>-ss 开始截取的时间点</li>
-<li>-t 截取音频时间长度</li>
-</ul>
-<p>音频文件格式转换</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg64.exe -i null.ape -ar 44100 -ac 2 -ab 16k -vol 50 -f mp3 null.mp3</span><br></pre></td></tr></table></figure>
-<p>解释：</p>
-<ul>
-<li>-i代表输入参数</li>
-<li>-acodec aac（音频编码用AAC）</li>
-<li>-ar 设置音频采样频率</li>
-<li>-ac  设置音频通道数</li>
-<li>-ab 设定声音比特率</li>
-<li>-vol &lt;百分比&gt; 设定音量</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1099,7 +1081,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">160</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
