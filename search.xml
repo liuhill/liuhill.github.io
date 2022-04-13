@@ -6290,4 +6290,23 @@ RUN gem install sass</code></pre>]]></content>
 <h3 id="回向偈"><a href="#回向偈" class="headerlink" title="回向偈"></a>回向偈</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">愿以此功德</span><br><span class="line">庄严佛净土</span><br><span class="line">上报四重恩，</span><br><span class="line">下济三途苦</span><br><span class="line">若有见闻者</span><br><span class="line">悉发菩提心</span><br><span class="line">尽此一报身</span><br><span class="line">同生极乐国</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
+  <entry>
+    <title>Git忽略已经提交过一次文件</title>
+    <url>/2022/04/13/Git%E5%BF%BD%E7%95%A5%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E8%BF%87%E4%B8%80%E6%AC%A1%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h3 id="一、平时忽略未提交的文件"><a href="#一、平时忽略未提交的文件" class="headerlink" title="一、平时忽略未提交的文件"></a>一、平时忽略未提交的文件</h3><p>从未提交过的文件可以用<code>.gitignore</code><br>也就是添加之后从来没有提交（commit）过的文件，可以使用<code>.gitignore</code>忽略该文件<br>该文件只能作用于未跟踪的文件（Untracked Files），也就是那些从来没有被 git 记录过的文件<br>在<code>.gitignore</code>中写忽略文件或文件夹。注意相对路径是项目根数据，文件格式如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/.gradle/</span><br><span class="line">/.idea/</span><br><span class="line">/local.properties</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、已经Push过的文件"><a href="#二、已经Push过的文件" class="headerlink" title="二、已经Push过的文件"></a>二、已经Push过的文件</h3><p>需要删除Git仓库的文件，本址的文件需要保留，并且在以后提交中忽略</p>
+<p>1、从本地Git缓存中删除文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//忽略文件 aaa.txt</span><br><span class="line">git rm --cached aaa.txt</span><br><span class="line">//忽略文件夹 abc</span><br><span class="line">git rm -r --cached abc</span><br></pre></td></tr></table></figure>
+
+<p>2、提交到仓库里面</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;delete somefile&#x27;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p>3、修改文件.gitignore，把刚才删除的文件或者文件夹加入.gitignore文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/aaa.txt</span><br><span class="line">/abc/</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
 </search>
