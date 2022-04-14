@@ -195,6 +195,102 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2022/04/14/hexo%E8%AE%BE%E7%BD%AE%E5%85%B3%E4%BA%8E%E3%80%81%E6%A0%87%E7%AD%BE%E3%80%81%E5%88%86%E7%B1%BB%E3%80%81%E5%BD%92%E6%A1%A3%E3%80%81%E6%97%B6%E9%97%B4%E7%BA%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/14/hexo%E8%AE%BE%E7%BD%AE%E5%85%B3%E4%BA%8E%E3%80%81%E6%A0%87%E7%AD%BE%E3%80%81%E5%88%86%E7%B1%BB%E3%80%81%E5%BD%92%E6%A1%A3%E3%80%81%E6%97%B6%E9%97%B4%E7%BA%BF/" class="post-title-link" itemprop="url">hexo设置关于、标签、分类、归档、时间线</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-14 15:43:08 / 修改时间：15:51:39" itemprop="dateCreated datePublished" datetime="2022-04-14T15:43:08+08:00">2022-04-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script src="\assets\js\APlayer.min.js"> </script><h3 id="1、添加-关于页面"><a href="#1、添加-关于页面" class="headerlink" title="1、添加 关于页面"></a>1、添加 关于页面</h3><p>使用：<code>hexo new page &quot;about&quot;</code> 新建一个 <code>关于我</code> 页面。<br>主题的 <code>_config.yml</code> 文件中的 <code>menu</code> 中进行匹配<br>不同主题 <code>_config.yml</code>文件有区别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /      //主页</span><br><span class="line">  categories: /categories //分类</span><br><span class="line">  archives: /archives   //归档</span><br><span class="line">  tags: /tags   //标签</span><br><span class="line">  about: /about   //关于                  （添加此行即可）</span><br></pre></td></tr></table></figure>
+<p>或 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  - page: home</span><br><span class="line">    directory: .      //主页</span><br><span class="line">    icon: fa-home</span><br><span class="line">  - page: archive</span><br><span class="line">    directory: archives/    //归档</span><br><span class="line">    icon: fa-archive</span><br><span class="line">  - page: about</span><br><span class="line">    directory: about/    //关于</span><br><span class="line">    icon: fa-user</span><br><span class="line">  - page: rss</span><br><span class="line">    directory: atom.xml    //rss订阅</span><br><span class="line">    icon: fa-rss</span><br></pre></td></tr></table></figure>
+<p>编辑 about 关于页面 md文件 部署就能看到</p>
+<h3 id="2、添加-标签页面"><a href="#2、添加-标签页面" class="headerlink" title="2、添加 标签页面"></a>2、添加 标签页面</h3><p>使用： <code>hexo new page tags</code> 新建一个 标签 页面。<br>主题的 <code>_config.yml</code> 文件中的 <code>menu</code> 中进行匹配</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /      //主页</span><br><span class="line">  categories: /categories //分类</span><br><span class="line">  archives: /archives   //归档</span><br><span class="line">  tags: /tags   //标签                  （添加此行即可）</span><br><span class="line">  about: /about   //关于</span><br></pre></td></tr></table></figure>
+<p>底下代码是一篇包含 标签 文章的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: 标签测试</span><br><span class="line">tags:</span><br><span class="line">  - Testing                   （这个就是文章的标签了）</span><br><span class="line">  - Another Tag               （这个就是文章的标签了）</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h3 id="3、添加-分类页面"><a href="#3、添加-分类页面" class="headerlink" title="3、添加 分类页面"></a>3、添加 分类页面</h3><p>使用： <code>hexo new page categories</code> 新建一个 分类 页面。<br>主题的 <code>_config.yml</code> 文件中的 <code>menu</code> 中进行匹配</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /      //主页</span><br><span class="line">  categories: /categories //分类        （添加此行即可）</span><br><span class="line">  archives: /archives   //归档</span><br><span class="line">  tags: /tags   //标签                  </span><br><span class="line">  about: /about   //关于</span><br></pre></td></tr></table></figure>
+<p>底下代码是一篇包含 分类 文章的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: 分类测试</span><br><span class="line">categories:</span><br><span class="line">- hexo                       （这个就是文章的分类了）</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h3 id="4、添加-归档页面"><a href="#4、添加-归档页面" class="headerlink" title="4、添加 归档页面"></a>4、添加 归档页面</h3><p>使用： <code>hexo new page archives</code> 新建一个 归档 页面。</p>
+<p>主题的 _config.yml 文件中的 menu 中进行匹配</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /      //主页</span><br><span class="line">  categories: /categories //分类        </span><br><span class="line">  archives: /archives   //归档             （添加此行即可）</span><br><span class="line">  tags: /tags   //标签                  </span><br><span class="line">  about: /about   //关于</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、添加-时间线页面"><a href="#5、添加-时间线页面" class="headerlink" title="5、添加 时间线页面"></a>5、添加 时间线页面</h3><p>使用： <code>hexo new page timeline</code> 新建一个 归档 页面。</p>
+<p>主题的 <code>_config.yml</code> 文件中的 <code>menu</code> 中进行匹配</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /      //主页</span><br><span class="line">  categories: /categories //分类        </span><br><span class="line">  archives: /archives   //归档             （添加此行即可）</span><br><span class="line">  tags: /tags   //标签    </span><br><span class="line">-page: history   (时间线)</span><br><span class="line">     directory: timeline/</span><br><span class="line">      icon: fa-history              </span><br><span class="line">  about: /about   //关于</span><br></pre></td></tr></table></figure>
+
+<p>修改timeline对应的列表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">timeline:</span><br><span class="line">  - num: 1</span><br><span class="line">    word: 2018/08/16-Start </span><br><span class="line">  - num: 2</span><br><span class="line">    word: writing</span><br><span class="line">  - num: 3</span><br><span class="line">    word: More</span><br></pre></td></tr></table></figure>
+<h3 id="6、添加-自定义页面"><a href="#6、添加-自定义页面" class="headerlink" title="6、添加 自定义页面"></a>6、添加 自定义页面</h3><p>使用： <code>hexo new page &quot;guestbook&quot;</code> 新建一个 自定义 页面。<br>主题的 <code>_config.yml</code> 文件中的 <code>menu</code> 中进行匹配</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /      //主页</span><br><span class="line">  categories: /categories //分类        </span><br><span class="line">  archives: /archives   //归档   </span><br><span class="line">  tags: /tags   //标签                  </span><br><span class="line">  about: /about   //关于</span><br><span class="line">  guestbook: /guestbook    //自定义             （添加此行即可）</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>作者：hiekay<br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ebbbc8edcc24">https://www.jianshu.com/p/ebbbc8edcc24</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2022/04/14/%E5%B7%A5%E4%BD%9C%E4%B8%89%E5%A2%83%E7%95%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1144,71 +1240,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2019/04/08/%E5%9B%BE%E7%89%87%E5%B1%85%E4%B8%AD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
-      <meta itemprop="name" content="Hillock">
-      <meta itemprop="description" content="努力奔跑，向着诗和远方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无来">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/04/08/%E5%9B%BE%E7%89%87%E5%B1%85%E4%B8%AD/" class="post-title-link" itemprop="url">图片居中</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-04-08 16:20:36" itemprop="dateCreated datePublished" datetime="2019-04-08T16:20:36+08:00">2019-04-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-10 14:04:38" itemprop="dateModified" datetime="2021-07-10T14:04:38+08:00">2021-07-10</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <script src="\assets\js\APlayer.min.js"> </script><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;pic&quot;&gt;&lt;img src=&quot;ttt.jpg&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">.pic &#123;</span><br><span class="line"></span><br><span class="line">  width:182px;</span><br><span class="line">  height:277px;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  align-items: center;</span><br><span class="line"></span><br><span class="line">  img &#123;</span><br><span class="line">    //width: 100%;</span><br><span class="line">    //height: 4.61333rem;</span><br><span class="line"></span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">    object-fit:cover;</span><br><span class="line">    /*object-fit:none;*/ //none则不改变图片原始尺寸</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1280,20 +1311,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">163</span>
+          <span class="site-state-item-count">164</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
