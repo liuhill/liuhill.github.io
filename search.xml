@@ -6435,4 +6435,41 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
 <h3 id="回向偈"><a href="#回向偈" class="headerlink" title="回向偈"></a>回向偈</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">愿以此功德</span><br><span class="line">庄严佛净土</span><br><span class="line">上报四重恩，</span><br><span class="line">下济三途苦</span><br><span class="line">若有见闻者</span><br><span class="line">悉发菩提心</span><br><span class="line">尽此一报身</span><br><span class="line">同生极乐国</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
+  <entry>
+    <title>Yii2 ajax错误请求（＃400）</title>
+    <url>/2022/05/05/Yii2-ajax%E9%94%99%E8%AF%AF%E8%AF%B7%E6%B1%82%EF%BC%88%EF%BC%83400%EF%BC%89/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>yii ajax post 请求出现400错误,如下：</p>
+<blockquote>
+<p>Bad Request (#400): Unable to verify your data submission.</p>
+</blockquote>
+<p>或者</p>
+<blockquote>
+<p>错误请求（＃400）：无法验证您的数据</p>
+</blockquote>
+<p>整个页面所有ajax请求都出现错误，在ajax请求的header里面包含了_csrf信息,由于使用了<code>yii2-sortable-grid-view-widget</code>控件，所以无法通过ajax添加csrf来处理。</p>
+<p>在网上总结了一下方法，将所有方法列出如下：</p>
+<h3 id="1、禁用csrf验证"><a href="#1、禁用csrf验证" class="headerlink" title="1、禁用csrf验证"></a>1、禁用csrf验证</h3><p>在controller里面添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public $enableCsrfValidation = false;</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public function init()&#123;</span><br><span class="line">     $this-&gt;enableCsrfValidation = false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>禁止某一个action使用crsf验证</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public function beforeAction($action) &#123;</span><br><span class="line">       $this-&gt;enableCsrfValidation = ($action-&gt;id !== &quot;save-order&quot;); // &lt;-- here</span><br><span class="line">       return parent::beforeAction($action);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、在ajax添加-csrf参数"><a href="#2、在ajax添加-csrf参数" class="headerlink" title="2、在ajax添加_csrf参数"></a>2、在ajax添加<code>_csrf</code>参数</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var csrfToken = $(&#x27;meta[name=&quot;csrf-token&quot;]&#x27;).attr(&quot;content&quot;);</span><br><span class="line">$.ajax(&#123;</span><br><span class="line">         url: &#x27;request&#x27;,</span><br><span class="line">         type: &#x27;post&#x27;,</span><br><span class="line">         dataType: &#x27;json&#x27;,</span><br><span class="line">         data: &#123;param1: param1, _csrf : csrfToken&#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">  url: &#x27;$urlSave&#x27;,</span><br><span class="line">  type: &#x27;post&#x27;,</span><br><span class="line">  data: &#123;payload: payload, _csrf: yii.getCsrfToken()&#125;,        </span><br><span class="line">  dataType: &#x27;json&#x27;,</span><br><span class="line">&#125;).success(function(response) &#123;</span><br><span class="line">    //处理</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、在全局里面添加csrf数据"><a href="#3、在全局里面添加csrf数据" class="headerlink" title="3、在全局里面添加csrf数据"></a>3、在全局里面添加csrf数据</h3><p>我采用这种方式，所有的ajax都会更新csrf，包括第三方控件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    $.ajaxSetup(&#123;</span><br><span class="line">        data: &lt;?= yiihelpersJson::encode([</span><br><span class="line">            yii::$app-&gt;request-&gt;csrfParam =&gt; yii::$app-&gt;request-&gt;csrfToken,</span><br><span class="line">        ]) ?&gt;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>yii2</tag>
+        <tag>400</tag>
+        <tag>csrf</tag>
+      </tags>
+  </entry>
 </search>
