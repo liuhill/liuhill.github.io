@@ -6472,4 +6472,21 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
         <tag>csrf</tag>
       </tags>
   </entry>
+  <entry>
+    <title>nginx显示PHP 500错误</title>
+    <url>/2022/12/28/nginx%E6%98%BE%E7%A4%BAPHP-500%E9%94%99%E8%AF%AF/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h3 id="1-修改-usr-local-php-etc-php-ini"><a href="#1-修改-usr-local-php-etc-php-ini" class="headerlink" title="1 修改 /usr/local/php/etc/php.ini"></a>1 修改 <code>/usr/local/php/etc/php.ini</code></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">display_errors = On</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-在-usr-local-php-etc-php-fpm-conf-添加"><a href="#2-在-usr-local-php-etc-php-fpm-conf-添加" class="headerlink" title="2 在 /usr/local/php/etc/php-fpm.conf 添加"></a>2 在 <code>/usr/local/php/etc/php-fpm.conf</code> 添加</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">......</span><br><span class="line">error_log = /usr/local/php/var/log/php-fpm.log</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">[www]</span><br><span class="line">catch_workers_output = yes</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-重启php-fpm"><a href="#3-重启php-fpm" class="headerlink" title="3 重启php-fpm"></a>3 重启<code>php-fpm</code></h3>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+        <tag>500</tag>
+        <tag>ngnix</tag>
+      </tags>
+  </entry>
 </search>
