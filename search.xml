@@ -6489,4 +6489,40 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
 <h3 id="回向偈"><a href="#回向偈" class="headerlink" title="回向偈"></a>回向偈</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">愿以此功德</span><br><span class="line">庄严佛净土</span><br><span class="line">上报四重恩，</span><br><span class="line">下济三途苦</span><br><span class="line">若有见闻者</span><br><span class="line">悉发菩提心</span><br><span class="line">尽此一报身</span><br><span class="line">同生极乐国</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
+  <entry>
+    <title>ubuntu 22.04 设置svn server 开机启动</title>
+    <url>/2023/01/03/ubuntu-22-04-%E8%AE%BE%E7%BD%AEsvn-server-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><ol>
+<li>创建svnserve系统服务配置文件<code>/etc/systemd/system/svnserve.service</code>：</li>
+</ol>
+<p>Create systemd service configuration for svnserve <code>/etc/systemd/system/svnserve.service</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=SVN server</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=svn</span><br><span class="line">Group=svn</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/bin/svnserve -d -r /home/svn</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><em>Note that I set Type=forking because svnserve daemonizes itself with -d.</em> </p>
+</blockquote>
+<blockquote>
+<p><em>请注意，我设置Type=forking是因为svnserve使用-d.</em></p>
+</blockquote>
+<blockquote>
+<p><em>Side note: Your own service definitions should go to /etc/systemd/system/, /lib/systemd/system/ is reserved for unit definitions that come with system packages.</em></p>
+</blockquote>
+<blockquote>
+<p><em>旁注：您自己的服务定义应该转到/etc/systemd/system/，/lib/systemd/system/保留给系统包附带的单元定义。</em></p>
+</blockquote>
+<ol start="2">
+<li><p>启动服务器<code>sudo systemctl start svnserve.service</code></p>
+</li>
+<li><p>添加到开机启动 <code>sudo systemctl enable  svnserve.service</code></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>ubunt 22.04</tag>
+        <tag>svn server</tag>
+      </tags>
+  </entry>
 </search>
