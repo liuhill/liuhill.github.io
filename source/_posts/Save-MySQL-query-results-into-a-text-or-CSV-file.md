@@ -2,6 +2,10 @@
 title: Save MySQL query results into a text or CSV file
 date: 2017-03-10 17:37:27
 tags:
+  - mysql
+  - 备份
+categories:
+  - 技术
 ---
 MySQL provides an easy mechanism for writing the results of a select statement into a text file on the server. Using extended options of the INTO OUTFILE nomenclature, it is possible to create a comma separated value (CSV) which can be imported into a spreadsheet application such as OpenOffice or Excel or any other applciation which accepts data in CSV format.
 

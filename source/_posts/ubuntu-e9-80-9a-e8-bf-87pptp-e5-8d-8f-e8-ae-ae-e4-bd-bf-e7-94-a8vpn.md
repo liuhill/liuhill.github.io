@@ -2,9 +2,11 @@
 title: Ubuntu通过PPTP协议使用VPN
 id: 198
 categories:
-  - server
+  - 技术
 date: 2015-07-27 13:50:22
 tags:
+    - ubuntu
+    - PPTP
 ---
 
 # 1、安装pptp客户端软件

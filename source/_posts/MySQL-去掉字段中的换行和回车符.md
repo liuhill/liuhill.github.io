@@ -2,6 +2,11 @@
 title: MySQL 去掉字段中的换行和回车符
 date: 2017-05-22 10:39:21
 tags:
+  - mysql
+  - 命令行
+categories:
+  - 技术
+
 ---
 解决方法：
 ```

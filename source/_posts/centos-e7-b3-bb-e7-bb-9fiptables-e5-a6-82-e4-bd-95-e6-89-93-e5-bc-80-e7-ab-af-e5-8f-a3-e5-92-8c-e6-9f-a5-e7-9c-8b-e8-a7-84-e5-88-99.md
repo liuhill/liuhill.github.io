@@ -2,9 +2,11 @@
 title: CentOS系统iptables如何打开端口和查看规则
 id: 64
 categories:
-  - server
+  - 技术
 date: 2014-11-16 15:40:23
 tags:
+    - centos
+    - iptables
 ---
 
 CentOS安装好如果希望开放其他端口的话，需要打开所需端口,比如打开http的默认端口80

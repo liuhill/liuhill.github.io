@@ -2,6 +2,9 @@
 title: Linux 分区只读
 date: 2017-08-01 13:31:25
 tags:
+categories:
+  - 技术
+
 ---
 
 1

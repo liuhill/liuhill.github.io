@@ -2,6 +2,11 @@
 title: MySQL 字符串拼接
 date: 2017-09-27 10:43:00
 tags:
+  - mysql
+  - 命令行
+categories:
+  - 技术
+
 ---
 在Mysql 数据库中存在两种字符串连接操作.具体操作如下
 

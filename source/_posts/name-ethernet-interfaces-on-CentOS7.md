@@ -2,6 +2,11 @@
 title: name ethernet interfaces on CentOS7
 date: 2017-07-27 15:14:53
 tags:
+  - centos
+  - 网络
+categories:
+  - 技术
+
 ---
 I've learned how to continue to use the ethX prefix. I'm still using the udev rules that I mentioned in post above. So at bootup udev will rename my interfaces netX. And then using /etc/rc.local I've included the following commands to rename them from netX back to ethX.
 

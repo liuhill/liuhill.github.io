@@ -1,7 +1,13 @@
 ---
 title: sphinx scws 全文检索安装配置详解
 date: 2018-01-29 09:45:21
-tags: scws, sphinx, 中文分词, 全文检索, 安装
+tags: 
+    - scws
+    - sphinx
+    - 中文分词
+    - 全文检索
+categories:
+  - 技术
 ---
 >转载： http://blog.51yip.com/mysql/1659.html
 

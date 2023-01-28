@@ -2,6 +2,11 @@
 title: UTF-8编码去除BOM头的python脚本
 date: 2016-12-14 09:58:23
 tags:
+    - 转码
+    - python 
+categories:
+  - 技术
+
 ---
 > 欢迎转载，但请务必在明确位置注明文章出处！ >http://johnnyshieh.github.io/python/2015/08/02/python-remove-utf8-bom/
 

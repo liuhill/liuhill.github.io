@@ -2,6 +2,10 @@
 title: 'MAGENTO 2: CHANGE THE BASE-URL USING THE COMMAND LINE'
 date: 2017-03-10 14:21:45
 tags:
+    - 
+categories:
+  - 技术
+
 ---
 The following Magento 2’s CLI command will update the Magento base-url and the base-url-secure values.
 

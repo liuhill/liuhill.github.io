@@ -2,6 +2,10 @@
 title: Shell 前后台进程切换
 date: 2017-03-23 09:19:29
 tags:
+    - 命令上
+    
+categories:
+  - 技术
 ---
 Shell 前后台进程切换
 

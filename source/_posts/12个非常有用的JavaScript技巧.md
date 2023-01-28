@@ -1,7 +1,11 @@
 ---
 title: '12个非常有用的JavaScript技巧'
 date: 2017-05-12 08:49:44
+categories:
+  - 技术
 tags:
+    - JavaScript
+    - js
 ---
 
 >原文：[12 Extremely Useful Hacks for JavaScript](https://blog.jscrambler.com/12-extremely-useful-hacks-for-javascript/?utm_source=tuicool&utm_medium=referral )

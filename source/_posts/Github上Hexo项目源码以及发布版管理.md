@@ -1,7 +1,12 @@
 ---
 title: Github上Hexo项目源码以及发布版管理
 date: 2022-03-22 15:40:03
-tags: github hexo 分支 源代码
+categories:
+  - 技术
+
+tags: 
+  - github
+  - hexo
 ---
 ## 前言
 在原来的电脑中，我的 hexo 备份在 GitHub上，除了一个 User Page 用来发布文章以外，还有一个 hexo-backup 的仓库，用来保存 hexo 的源代码。

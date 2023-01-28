@@ -2,6 +2,9 @@
 title: git如何放弃所有本地修改
 date: 2016-11-21 11:50:29
 tags:
+categories:
+  - 技术
+
 ---
 
 ```

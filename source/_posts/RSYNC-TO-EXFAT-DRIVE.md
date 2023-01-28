@@ -2,6 +2,10 @@
 title: RSYNC TO EXFAT DRIVE
 date: 2018-12-29 17:15:33
 tags:
+  - rsync
+  - 命令行
+categories:
+  - 技术
 ---
 RSYNC TO EXFAT DRIVE
 These options are friendly to sync to/from an ExFAT drive:

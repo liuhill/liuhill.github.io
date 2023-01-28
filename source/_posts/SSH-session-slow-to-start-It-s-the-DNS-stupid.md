@@ -2,6 +2,10 @@
 title: SSH session slow to start? It's the DNS stupid~~
 date: 2017-07-11 11:23:09
 tags:
+  - ssh
+  - 命令行
+categories:
+  - 技术
 ---
 Ever tried logging into a machine with ssh and found you have to wait much longer than reasonable for the session to start? This happened to me a few times and was especially annoying with machines on my local network (or a VM attached to a virtual network) that should be letting me in immediately.
 

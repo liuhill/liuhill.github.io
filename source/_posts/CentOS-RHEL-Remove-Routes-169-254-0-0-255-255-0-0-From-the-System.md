@@ -2,6 +2,11 @@
 title: 'CentOS / RHEL: Remove Routes 169.254.0.0 / 255.255.0.0 From the System'
 date: 2017-08-08 18:52:17
 tags:
+  - centos
+  - 网络
+categories:
+  - 技术
+
 ---
 zeroconf (Zero configuration networking), is a techniques that automatically creates a usable Internet Protocol (IP) network without manual operator intervention or special configuration servers. 169.254.0.0/255.255.0.0 route is part of zeroconf under RHEL 6 / CentOS 6 or older versions. To see current routing table, enter:
 ```

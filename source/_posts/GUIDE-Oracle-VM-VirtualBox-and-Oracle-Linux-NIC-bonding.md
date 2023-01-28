@@ -2,6 +2,9 @@
 title: 'GUIDE: Oracle VM VirtualBox and Oracle Linux NIC bonding'
 date: 2017-07-11 17:54:32
 tags:
+categories:
+  - 技术
+
 ---
 ```
 Author: Dude

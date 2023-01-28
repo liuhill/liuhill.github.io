@@ -2,7 +2,7 @@
 title: IE提交ajax提交304
 id: 157
 categories:
-  - 技术文章
+  - 技术
 date: 2014-12-30 11:32:19
 tags:
 ---

@@ -2,6 +2,11 @@
 title: mysqldiff实现MySQL数据表比较
 date: 2018-08-06 15:44:09
 tags:
+  - mysql
+  - 备份
+categories:
+  - 技术
+
 ---
 
 本文介绍mysqldiff工具来比较数据表结构，并生成差异SQL语句。

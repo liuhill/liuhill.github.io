@@ -2,9 +2,11 @@
 title: CentOS中SSH连接中文乱码
 id: 68
 categories:
-  - server
+  - 技术
 date: 2014-11-17 23:01:48
 tags:
+  - centos
+  - ssh
 ---
 
 CentOS 6 ，在SSH时回显中文乱码，则：

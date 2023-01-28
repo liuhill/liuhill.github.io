@@ -2,6 +2,11 @@
 title: /bin/wipefs挖矿程序排查
 date: 2018-01-03 13:20:36
 tags:
+    - 木马
+    - 挖矿
+categories:
+  - 技术
+
 ---
 ### 基本情况
 ```

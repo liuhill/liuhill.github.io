@@ -2,9 +2,11 @@
 title: MongoDB安装
 id: 16
 categories:
-  - 技术文章
+  - 技术
 date: 2014-09-01 11:10:32
 tags:
+    - 数据库
+    - mongodb
 ---
 
 ### MongoDB安装

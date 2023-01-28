@@ -2,9 +2,10 @@
 title: Ryan Hall 教学视频
 id: 236
 categories:
-  - 随笔
+  - 运动
 date: 2015-09-29 13:27:38
 tags:
+  - 跑步
 ---
 
 后踢腿训练和高抬腿训练 http://v.youku.com/v_show/id_XMzA0Njc4OTQ0.html

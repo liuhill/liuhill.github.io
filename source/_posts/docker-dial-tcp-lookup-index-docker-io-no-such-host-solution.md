@@ -2,9 +2,10 @@
 title: 'Docker - dial tcp: lookup index.docker.io: no such host - Solution'
 id: 378
 categories:
-  - 未分类
+  - 技术
 date: 2016-06-28 17:04:17
 tags:
+    - docker
 ---
 
 ## 1. Symptoms

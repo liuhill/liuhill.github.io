@@ -2,9 +2,10 @@
 title: Markdown 语法说明 (简体中文版)
 id: 83
 categories:
-  - 技术文章
+  - 技术
 date: 2014-11-29 12:36:20
 tags:
+    - markdown
 ---
 
 << [访问 Wow!Ubuntu](http://wowubuntu.com)

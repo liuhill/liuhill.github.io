@@ -2,9 +2,11 @@
 title: mysql 查看备注
 id: 240
 categories:
-  - server
+  - 技术
 date: 2015-10-06 14:23:24
 tags:
+  - mysql
+  - 命令行
 ---
 
 ## 简单的用法

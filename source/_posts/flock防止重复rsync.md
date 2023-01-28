@@ -2,6 +2,9 @@
 title: flock防止重复rsync
 date: 2017-02-24 15:26:43
 tags:
+categories:
+  - 技术
+
 ---
 我使用crontab同步一个文件夹时，发现一个问题，我在crontab中设置的1分钟运行一次.但当那个文件夹的内容改变时。1分钟不一定能同步完，但这时第二个rsync进行又起来了。
 

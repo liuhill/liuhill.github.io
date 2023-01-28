@@ -1,7 +1,12 @@
 ---
 title: imaxabsConfigure HUAWEI E1750 HSPA USB Stick in Linux → Configure USB modem HUAWEI E3131 in Linux
 date: 2017-03-25 13:24:18
+categories:
+    - 技术
 tags:
+    - USB modem
+    - 硬件
+    
 ---
 For installing device HUAWEI E3131 in CentOS 6.4 Linux you have to follow instructions below. Can be used to send SMS by AT command and also to establish HiSpeed Mobile Internet connection.
 

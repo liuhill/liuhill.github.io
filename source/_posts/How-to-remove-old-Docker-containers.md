@@ -2,6 +2,9 @@
 title: How to remove old Docker containers
 date: 2017-03-10 10:08:34
 tags:
+categories:
+  - 技术
+
 ---
 
 ### 1、remove `exit` containers

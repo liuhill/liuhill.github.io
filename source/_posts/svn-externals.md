@@ -2,6 +2,9 @@
 title: svn externals
 date: 2016-09-09 14:32:47
 tags:
+      - svn
+categories:
+  - 技术
 ---
 # Externals Definitions
 Sometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different locations in a repository, or perhaps from different repositories altogether. You could certainly setup such a scenario by hand—using `svn checkout` to create the sort of nested working copy structure you are trying to achieve. But if this layout is important for everyone who uses your repository, every other user will need to perform the same checkout operations that you did.

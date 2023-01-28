@@ -1,7 +1,11 @@
 ---
 title: 解决 MySQL 的 Table is marked as crashed and should be repaired 问题
 date: 2018-01-09 15:52:21
+categories:
+  - 技术
 tags:
+    - mysql
+    - 数据恢复
 ---
 来源: [https://www.vpsee.com/2013/08/how-to-fix-mysql-table-is-marked-as-crashed-and-should-be-repaird/]
 

@@ -2,6 +2,11 @@
 title: 在Mac OS X系统下 用dd命令将iso镜像写入u盘
 date: 2017-08-07 18:38:21
 tags:
+    - macOS
+    - iso制作
+categories:
+  - 技术
+
 ---
 ## 一、 Mac下将ISO写入U盘可使用命令行工具dd，操作如下：
 

@@ -2,6 +2,11 @@
 title: Nginx 设置临时维护页面
 date: 2018-01-25 11:39:26
 tags:
+  - lnmp
+  - nginx
+categories:
+  - 技术
+
 ---
 nginx维护页面处理-全部URL指向同一个页面
 一般来说nginx的维护页面需要把所有访问本站的链接全部重定向到某个指定页面

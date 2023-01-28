@@ -2,6 +2,11 @@
 title: mysql数据库导出问题之表结构自带AUTO_INCREMENT默认值
 date: 2022-04-13 19:02:57
 tags:
+  - mysql
+  - 备份
+categories:
+  - 技术
+
 ---
 解决：
 ```

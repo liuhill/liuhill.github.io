@@ -2,6 +2,9 @@
 title: HOWTO disable tmpfs on /tmp?
 date: 2017-08-02 10:21:16
 tags:
+categories:
+  - 技术
+
 ---
 ```
 $ cat /etc/tmpfiles.d/tmp.conf

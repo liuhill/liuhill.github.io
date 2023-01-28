@@ -2,9 +2,12 @@
 title: 在ubuntu下搭建pptp vpn服务器
 id: 196
 categories:
-  - server
+  - 技术
 date: 2015-07-27 13:31:10
 tags:
+    - ubuntu
+    - vpn
+    - pptp
 ---
 
 # pptp配置

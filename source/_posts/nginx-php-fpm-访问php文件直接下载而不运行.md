@@ -2,6 +2,12 @@
 title: nginx/php-fpm 访问php文件直接下载而不运行
 date: 2016-09-10 22:07:59
 tags:
+  - lnmp
+  - nginx
+  - php
+categories:
+  - 技术
+
 ---
 一般都是由于nginx的配置文件引起的。注意一下部分`fastcgi_param`,默认为`/script$fastcgi_script_name`,修改为`$document_root$fastcgi_script_name`可以解决
 ```

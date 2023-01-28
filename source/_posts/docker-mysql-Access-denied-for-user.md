@@ -2,6 +2,10 @@
 title: docker mysql Access denied for user
 date: 2017-03-06 12:38:28
 tags:
+    - docker
+categories:
+  - 技术
+
 ---
 ```
 root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD

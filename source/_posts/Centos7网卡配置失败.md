@@ -2,6 +2,11 @@
 title: Centos7网卡配置失败
 date: 2017-07-11 15:22:34
 tags:
+  - centos
+  - 网络
+categories:
+  - 技术
+
 ---
 ## 错误提示
 

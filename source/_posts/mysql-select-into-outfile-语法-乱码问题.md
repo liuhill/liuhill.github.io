@@ -2,6 +2,11 @@
 title: mysql select into outfile 语法 乱码问题
 date: 2017-12-05 12:53:58
 tags:
+  - mysql 
+  - 命令行
+categories:
+  - 技术
+
 ---
 一个常见的问题，mysql 导出csv格式的语法，已经乱码问题：
 由于数据库一般默认的是UTF-8 格式的字符集，而execl默认的是gbk格式的字符集，这里有两种方法解决乱码：

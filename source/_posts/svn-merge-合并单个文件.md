@@ -2,6 +2,10 @@
 title: svn merge 合并单个文件
 date: 2017-02-04 18:24:01
 tags:
+  - svn
+  - 版本管理
+categories:
+  - 技术
 ---
 
 I'm not sure exactly what you're asking as the title talks about merging single files but the text of the question talks about single revisions. In the case of merging single revisions you need: (to merge the changes committed in revisions 100, 105, 115)

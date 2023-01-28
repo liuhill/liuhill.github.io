@@ -2,6 +2,11 @@
 title: Nslookup works but ping fails
 date: 2022-03-22 11:14:08
 tags:
+  - 命令行
+  - 网络
+categories:
+  - 技术
+
 ---
 ### QUESTION 
 On my Windows XP workstation, I can find the machine I want to connect to in DNS with nslookup:

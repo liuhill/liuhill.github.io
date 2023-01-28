@@ -2,6 +2,10 @@
 title: php CMYK to RGB
 date: 2017-02-04 16:46:01
 tags:
+  - php
+  - image
+categories:
+  - 技术
 ---
 ### php CMYK to RGB
 

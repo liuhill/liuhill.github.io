@@ -2,9 +2,11 @@
 title: 解决LNMP下提示fileinfo插件没安装（PHP安装fileinfo扩展教程）
 id: 62
 categories:
-  - server
+  - 技术
 date: 2014-11-15 18:08:13
 tags:
+  - lnmp
+  - 编译
 ---
 
 编译并安装fileinfo插件

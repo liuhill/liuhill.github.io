@@ -2,9 +2,11 @@
 title: 'MYSQL服务无法启动：InnoDB: .\ibdata1 can&#039;t be opened in read-write mode'
 id: 168
 categories:
-  - 技术文章
+  - 技术
 date: 2015-04-22 13:19:55
 tags:
+  - mysql
+  - 命令行
 ---
 
 今天在那做实验倒腾mysql数据库，后来发现服务无法启动，查看日志报错如下：

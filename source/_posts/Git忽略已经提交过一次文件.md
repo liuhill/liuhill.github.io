@@ -1,7 +1,11 @@
 ---
 title: Git忽略已经提交过一次文件
 date: 2022-04-13 17:57:46
-tags: git 
+tags: 
+    - git 
+categories:
+  - 技术
+
 ---
 ### 一、平时忽略未提交的文件
 从未提交过的文件可以用`.gitignore`

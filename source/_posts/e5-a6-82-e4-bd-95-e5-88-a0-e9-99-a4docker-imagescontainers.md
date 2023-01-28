@@ -2,9 +2,11 @@
 title: 如何删除docker images/containers
 id: 209
 categories:
-  - docker
+  - 技术
 date: 2015-08-08 11:22:02
 tags:
+  - docker
+  - 命令行
 ---
 
 ## 1.进入root权限

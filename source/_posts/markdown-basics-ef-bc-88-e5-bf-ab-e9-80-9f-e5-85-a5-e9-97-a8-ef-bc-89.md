@@ -2,9 +2,10 @@
 title: 'Markdown: Basics （快速入门）'
 id: 94
 categories:
-  - 技术文章
+  - 技术
 date: 2014-11-29 13:02:12
 tags:
+    - markdown
 ---
 
 << [访问 Wow!Ubuntu](http://wowubuntu.com)

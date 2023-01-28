@@ -2,6 +2,9 @@
 title: How to resize a VirtualBox vmdk file
 date: 2017-08-01 14:48:57
 tags:
+categories:
+  - 技术
+
 ---
 
 548

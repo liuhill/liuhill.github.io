@@ -2,6 +2,12 @@
 title: CentOS7 Command line install VirtuBox
 date: 2017-08-03 20:24:12
 tags:
+        - centos
+        - 命令行
+        - 虚拟机
+categories:
+  - 技术
+
 ---
 ## 1.导出OVA -> test.ova
 

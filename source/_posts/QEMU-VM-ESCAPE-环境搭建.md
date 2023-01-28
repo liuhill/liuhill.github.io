@@ -2,6 +2,11 @@
 title: QEMU VM ESCAPE 环境搭建
 date: 2018-04-28 12:17:26
 tags:
+    - 虚拟机
+    - qemu
+    - vm
+categories:
+  - 技术
 ---
 # QEMU VM ESCAPE 环境搭建
 ## 0.参考

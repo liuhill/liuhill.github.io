@@ -2,6 +2,10 @@
 title: this is incompatible with sql_mode=only_full_group_by
 date: 2016-09-24 22:57:18
 tags:
+  - mysql
+  - 备份
+categories:
+  - 技术
 ---
 I was working on a legacy project recently and needed to import some data from MySQL 5.5. All the queries in the code worked perfectly in MySQL 5.5, so I assumed an upgrade to 5.7 would be seamless. Not so.
 

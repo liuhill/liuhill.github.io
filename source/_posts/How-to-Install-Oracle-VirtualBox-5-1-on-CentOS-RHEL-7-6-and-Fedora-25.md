@@ -2,6 +2,9 @@
 title: How to Install Oracle VirtualBox 5.1 on CentOS/RHEL 7/6 and Fedora 25
 date: 2017-08-08 10:24:22
 tags:
+categories:
+  - 技术
+
 ---
 Oracle VirtualBox is a cross-platform virtualization application. It installs on your existing Intel or AMD-based computers, whether they are running Windows, Mac, Linux or Solaris operating systems. It extends the capabilities of your existing computer so that it can run multiple operating systems at the same time. Click here to read more about VirtualBox
 

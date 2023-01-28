@@ -5,7 +5,7 @@ tags:
   - redmine
 id: 50
 categories:
-  - server
+  - 技术
 date: 2014-11-07 18:23:00
 ---
 

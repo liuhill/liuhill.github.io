@@ -2,7 +2,7 @@
 title: json解析错误
 id: 269
 categories:
-  - 未分类
+  - 技术
 date: 2016-01-05 21:18:06
 tags:
 ---

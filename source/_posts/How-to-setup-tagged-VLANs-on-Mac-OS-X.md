@@ -2,6 +2,9 @@
 title: How to setup tagged VLANs on Mac OS X
 date: 2017-07-04 14:27:14
 tags:
+categories:
+  - 技术
+
 ---
 1. From the Apple menu (upper left corner of your desktop) choose System Preferences...
 - Open Network

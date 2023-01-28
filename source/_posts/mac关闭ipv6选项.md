@@ -2,6 +2,11 @@
 title: mac关闭ipv6选项
 date: 2017-07-18 17:43:42
 tags:
+  - mac
+  - 命令行
+categories:
+  - 技术
+
 ---
 ```
 $ networksetup -listallnetworkservices  

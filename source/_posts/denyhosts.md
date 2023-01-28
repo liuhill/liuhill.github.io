@@ -2,9 +2,12 @@
 title: DenyHosts
 id: 27
 categories:
-  - 技术文章
+  - 技术
 date: 2014-09-30 13:14:59
 tags:
+  - python
+  - ssh
+  - 安全
 ---
 
 ### DenyHosts介绍

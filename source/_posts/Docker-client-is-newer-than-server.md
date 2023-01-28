@@ -2,6 +2,10 @@
 title: Docker client is newer than server
 date: 2016-09-12 16:20:54
 tags:
+  - docker
+categories:
+  - 技术
+
 ---
 ###Docker client is newer than server
 执行`docker pull voduytuan/jenkins-php-docker`时出错

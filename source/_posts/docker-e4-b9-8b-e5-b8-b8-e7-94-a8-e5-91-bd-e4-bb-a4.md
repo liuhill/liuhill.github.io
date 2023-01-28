@@ -2,9 +2,11 @@
 title: 'Docker之常用命令 '
 id: 207
 categories:
-  - docker
+  - 技术
 date: 2015-08-08 11:16:29
 tags:
+    - docker
+    - 命令行
 ---
 
 ## 1. 查看docker信息（version、info）

@@ -2,6 +2,11 @@
 title: lnmp在浏览器显示php错误信息
 date: 2018-02-14 11:13:53
 tags:
+  - lnmp
+  - 调试
+categories:
+  - 技术
+
 ---
 - 1、下载安装lnmp一建安装脚本 https://lnmp.org/
 - 2、修改`/usr/local/php/etc/php-fpm.conf`

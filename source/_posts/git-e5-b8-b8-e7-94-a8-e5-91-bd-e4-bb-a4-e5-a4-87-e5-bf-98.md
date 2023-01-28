@@ -2,7 +2,7 @@
 title: Git常用命令备忘
 id: 363
 categories:
-  - 未分类
+  - 技术
 date: 2016-05-19 15:03:08
 tags:
 ---

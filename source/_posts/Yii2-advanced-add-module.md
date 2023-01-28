@@ -2,6 +2,9 @@
 title: Yii2 advanced add module
 date: 2018-06-07 11:31:14
 tags:
+    - yii2
+categories:
+  - 技术
 ---
 # Yii2 advanced add module
 *在Yii2高级版添加新的模块*

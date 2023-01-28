@@ -2,6 +2,11 @@
 title: Rename ethernet interfaces on Centos7
 date: 2017-07-31 11:17:33
 tags:
+    - 网络
+    - 命令行
+    - centos 7
+categories:
+  - 技术
 ---
 ### 0 Prepare
       yum install pciutils -y

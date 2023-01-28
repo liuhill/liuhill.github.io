@@ -2,6 +2,11 @@
 title: mysqldump –ignore-databases
 date: 2018-02-22 15:18:13
 tags:
+  - mysql
+  - 备份
+categories:
+  - 技术
+
 ---
 With mysqldump it is not possible by the parameters to exclude individual databases. However, the database can be easily queried from the information_schema and this makes an exclude.
 ```

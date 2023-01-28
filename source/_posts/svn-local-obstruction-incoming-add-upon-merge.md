@@ -2,9 +2,11 @@
 title: 'svn local obstruction, incoming add upon merge'
 id: 369
 categories:
-  - 未分类
+  - 技术
 date: 2016-05-24 14:26:52
 tags:
+    - svn
+    - 版本管理
 ---
 
 If you’ve found this entry, you probably ran into your first SVN Tree conflict. This is also called an ‘evil twin conflict’ in some other revision control systems.

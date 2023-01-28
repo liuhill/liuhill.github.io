@@ -2,6 +2,11 @@
 title: 'NFS mount.nfs: access denied by server while mountin'
 date: 2017-12-28 14:44:51
 tags:
+    - nfs
+    - 命令行
+categories:
+  - 技术
+
 ---
 setup NFS but when trying to mount getting the following errors
 

@@ -1,7 +1,12 @@
 ---
 title: ntp服务器测试
 date: 2021-07-22 10:15:44
-tags: ntp 时间服务器 测试
+tags: 
+    - ntp
+    - 时间服务器
+categories:
+  - 技术
+
 ---
 
 ## 1. windows 测试

@@ -2,7 +2,7 @@
 title: Linux 刪除 Delete all root mail
 id: 284
 categories:
-  - 未分类
+  - 技术
 date: 2016-01-21 10:16:47
 tags:
 ---

@@ -1,9 +1,13 @@
 ---
 title: 命令行跟踪url跳转
 date: 2018-03-01 18:20:23
+categories:
+  - 技术
 tags:
+  - url 跳转
+  - 调试
 ---
-
+```
 hillock:~ liuligang$ wget -O /dev/null --content-disposition  http://airhubdemo.shareco.cn
 --2018-03-01 18:19:17--  http://airhubdemo.shareco.cn/
 正在解析主机 airhubdemo.shareco.cn (airhubdemo.shareco.cn)... 119.61.68.138
@@ -16,3 +20,4 @@ hillock:~ liuligang$ wget -O /dev/null --content-disposition  http://airhubdemo.
   出现了自己签名的证书。
     错误: 证书通用名 “www.h3c.com” 与所要求的主机名 “airhubdemo.shareco.cn” 不符。
 要以不安全的方式连接至 airhubdemo.shareco.cn，使用“--no-check-certificate”
+```

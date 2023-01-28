@@ -1,7 +1,11 @@
 ---
 title: ffmpeg 多个音频合并 截取 拆分
 date: 2018-01-29 13:27:09
-tags: ffmpeg 合并 截取 拆分
+categories:
+  - 技术
+tags: 
+    - ffmpeg
+    - 音频
 ---
 ### 多个mp3文件合并成一个mp3文件
 一种方法是连接到一起

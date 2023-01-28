@@ -2,9 +2,11 @@
 title: 让wordpress主题绕开对google的依赖
 id: 10
 categories:
-  - 技术文章
+  - 技术
 date: 2014-08-21 14:37:28
 tags:
+  - wordpress
+  - Google依赖
 ---
 
 终于有个借着写技术博客顺便吐槽GFW的机会了。每当网速很快，却偏偏不能谷歌搜索，好不容易搜到个跟问题十分匹配的网站，结果点进去菊花转了几百圈页面还是加载不出来，这显然是件让人很蛋疼的事情。虽然我学会了安装和配置翻墙神器goagent，但我仍然为很多很多很多不会翻墙和不愿意或者没钱买vpn的人叫一下委屈，其实会弄goagent这种的除了少数的一些个搞技术的一般人也弄不来。还有，即使是弄goagent，一，它也是很费时的，配置麻烦，偶尔还要更新程序，二，最近装新系统，准备下载goagent和浏览器代理插件的时候发现，goagent的程序托管在google仓库，proxyswitch要去google应用商店下，但问题是尼玛要访问google的东西你得先翻墙啊~为了能翻墙得先翻墙才行，悖论啊~ 呃。。好了，吐槽结束。该说正事儿了。对了，不知道GFW的去谷歌吧，哦不对，还是去百度吧，谷歌怕你上不去呢。 事情是这样的，基于wordpress的网站里面的主题会用到google的资源，比如我的[blog站](http://sudodev.cn/)用的twentytwelve主题就引用了谷歌的字体，里面就有个这样的链接:[http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&amp;subset=latin,latin-ext](http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&subset=latin,latin-ext) 由于身在天朝的原因，你在访问我的blog的时候就会由于浏览器请求不到这个资源而一直在转菊花（loading加载），运气好只能显示部分图片信息，字看不见，而且是永远看不见那种，除非你像我一样翻墙了。好，既然是这样，那我们把它要请求的东西都下载到服务器上，把链接换成内部链接就好了。here we go:

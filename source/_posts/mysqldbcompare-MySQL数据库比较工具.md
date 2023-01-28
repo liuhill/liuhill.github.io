@@ -2,6 +2,11 @@
 title: mysqldbcompare MySQL数据库比较工具
 date: 2018-08-06 15:40:16
 tags:
+  - mysql
+  - 备份
+categories:
+  - 技术
+
 ---
 mysqldbcompare用于比较两个服务器或同个服务器上的数据库，有文件和数据，并生成差异性SQL语句。
 

@@ -2,6 +2,9 @@
 title: 'fsck error on boot: /dev/sda6: UNEXPECTED INCONSISTENCY; RUN fsck MANUALLY'
 date: 2018-01-03 12:06:12
 tags:
+categories:
+  - 技术
+
 ---
 I have noticed that even if you do a fsck on the disk the problem may occur again in a few days.
 

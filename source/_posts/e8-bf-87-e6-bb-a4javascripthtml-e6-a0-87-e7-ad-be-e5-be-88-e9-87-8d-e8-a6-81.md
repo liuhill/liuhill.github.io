@@ -2,9 +2,11 @@
 title: '过滤javascript,html标签很重要'
 id: 8
 categories:
-  - 技术文章
+  - 技术
 date: 2014-08-21 14:27:44
 tags:
+  - javascript
+  - 过滤
 ---
 
 <div class="title" style="color: #000000;">

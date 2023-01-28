@@ -2,6 +2,9 @@
 title: WSL(Windows Subsystem for Linux)的安装与使用
 date: 2018-02-28 16:31:22
 tags:
+  - wsl
+categories:
+  - 技术
 ---
 ## 1 按照官网安装手册安装WSL UBUNTU
 在windows10 上安装linux系统。具体参考官方文档。

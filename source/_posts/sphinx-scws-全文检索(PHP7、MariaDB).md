@@ -1,7 +1,13 @@
 ---
 title: sphinx-scws-全文检索(PHP7、MariaDB)
 date: 2018-01-29 09:45:21
-tags: scws, sphinx, 中文分词, 全文检索, 安装, PHP7, MariaDB
+tags: 
+    - scws
+    - sphinx
+    - 中文分词
+    - 全文检索
+categories:
+  - 技术
 ---
 
 环境：centos 7 x86_64，php 7.1.7， MariaDB 10.1.23

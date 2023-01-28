@@ -2,6 +2,9 @@
 title: latest-ffmpeg-centos6.sh
 date: 2017-03-07 11:31:15
 tags:
+categories:
+  - 技术
+
 ---
 ## 脚本 `latest-ffmpeg-centos6.sh`
 ```
