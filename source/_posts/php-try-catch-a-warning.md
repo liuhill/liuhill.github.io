@@ -2,6 +2,8 @@
 title: 'php try/catch a warning '
 date: 2017-01-06 13:11:14
 tags:
+    - php
+    - 调试
 categories:
   - 技术
 ---

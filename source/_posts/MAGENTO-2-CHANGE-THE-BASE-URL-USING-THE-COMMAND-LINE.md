@@ -2,7 +2,8 @@
 title: 'MAGENTO 2: CHANGE THE BASE-URL USING THE COMMAND LINE'
 date: 2017-03-10 14:21:45
 tags:
-    - 
+    - 电商
+    - Magento 2
 categories:
   - 技术
 
