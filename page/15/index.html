@@ -195,6 +195,100 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2015/04/28/e5-a6-82-e4-bd-95-e7-ae-a1-e7-90-86-e9-98-bf-e9-87-8c-e4-ba-91-e6-97-a0-e5-a4-96-e7-bd-91-e5-b8-a6-e5-ae-bd-e7-9a-84-e4-ba-91-e4-b8-bb-e6-9c-ba/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/04/28/e5-a6-82-e4-bd-95-e7-ae-a1-e7-90-86-e9-98-bf-e9-87-8c-e4-ba-91-e6-97-a0-e5-a4-96-e7-bd-91-e5-b8-a6-e5-ae-bd-e7-9a-84-e4-ba-91-e4-b8-bb-e6-9c-ba/" class="post-title-link" itemprop="url">如何管理阿里云无外网带宽的云主机</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-04-28 23:28:37" itemprop="dateCreated datePublished" datetime="2015-04-28T23:28:37+08:00">2015-04-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-01-28 16:08:08" itemprop="dateModified" datetime="2023-01-28T16:08:08+08:00">2023-01-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script src="\assets\js\APlayer.min.js"> </script><p>可见，某些情况下还是值得这么做的。但开通主机之后，因为没有公网带宽，所以也给我们的使用带来了一些麻烦，这里讲一下我的解决办法。 没有公网，用不了外网的，无论上传还是下载，但在同一机房的其他主机，还是可以访问的，所以我们要做一个跳板，利用我们已有的云主机跳转。</p>
+<p>这里要明确以下要点： </p>
+<ul>
+<li><p>1、两台服务器必须在同一个数据中心，比如一台在杭州，一台在青岛，不在一个内网，肯定没法操作的；</p>
+</li>
+<li><p>2、两太服务器必须在同一个帐号下。不在同一个下面，默认有防火墙阻止，不能互相访问的，需要提交工单请客服设置；</p>
+</li>
+</ul>
+<p>技术上，通过Linux iptables，或者ssh转发都可以实现，iptables转发更简单，比如我们的主服务器，就是有公网带宽，可以访问外网的那一台， 一般我们通过22端口进行ssh操作。我们可以将2222端口转发到数据库服务器，在ssh工具里面就可以管理了。</p>
+<p>首先，打开ip转发：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo 1 &gt; /proc/sys/net/ipv4/ip_forward</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>然后依次输入以下命令：</code></pre><blockquote>
+<blockquote>
+<p>A机有公网IP ，内网IP为 10.160.39.22</p>
+<p>B机无公网IP ，内网IP为 10.160.30.11</p>
+</blockquote>
+</blockquote>
+<pre><code>规则：</code></pre><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 2222 -j DNAT --to-destination 10.160.30.11:22</span><br><span class="line">iptables -t nat -A POSTROUTING -d 10.160.30.11 -p tcp --dport 22 -j SNAT --to 10.160.39.22</span><br></pre></td></tr></table></figure>
+<p>然后保存、重启 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service iptables save </span><br><span class="line">service iptables restart</span><br></pre></td></tr></table></figure>
+<p>现在，我们就能通过putty、xshell等工具管理了。ip地址填有公网ip的，端口填2222，其他如旧，很快就能登录上去了</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2015/04/22/mysql-e6-9c-8d-e5-8a-a1-e6-97-a0-e6-b3-95-e5-90-af-e5-8a-a8-ef-bc-9ainnodb-ibdata1-cant-be-opened-in-read-write-mode/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1024,210 +1118,6 @@ SELECT * FROM category ORDER BY category_id;</code></pre><p>在这种数据结�
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2014/11/29/markdown-basics-ef-bc-88-e5-bf-ab-e9-80-9f-e5-85-a5-e9-97-a8-ef-bc-89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
-      <meta itemprop="name" content="Hillock">
-      <meta itemprop="description" content="努力奔跑，向着诗和远方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无来">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2014/11/29/markdown-basics-ef-bc-88-e5-bf-ab-e9-80-9f-e5-85-a5-e9-97-a8-ef-bc-89/" class="post-title-link" itemprop="url">Markdown: Basics （快速入门）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2014-11-29 13:02:12" itemprop="dateCreated datePublished" datetime="2014-11-29T13:02:12+08:00">2014-11-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 16:19:15" itemprop="dateModified" datetime="2023-01-28T16:19:15+08:00">2023-01-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <script src="\assets\js\APlayer.min.js"> </script><p>&lt;&lt; <a target="_blank" rel="noopener" href="http://wowubuntu.com">访问 Wow!Ubuntu</a></p>
-<p><strong>声明：</strong> 这份文档派生(fork)于<a target="_blank" rel="noopener" href="http://markdown.tw/">繁体中文版</a>，在此基础上进行了繁体转简体工作，并进行了适当的润色。此文档用 Markdown 语法编写，你可以到这里<a target="_blank" rel="noopener" href="http://gitcafe.com/riku/Markdown-Syntax-CN/blob/master/basics.md">查看它的源文件</a>。「繁体中文版的原始文件可以<a target="_blank" rel="noopener" href="https://github.com/othree/markdown-syntax-zhtw/blob/master/basics.md">查看这里</a>」–By @<a target="_blank" rel="noopener" href="http://twitter.com/riku">riku</a></p>
-<p><strong>注：</strong> 本项目托管于 <a target="_blank" rel="noopener" href="http://gitcafe.com/riku/Markdown-Syntax-CN/">GitCafe</a>上，请通过”派生”和”合并请求”来帮忙改进本项目。</p>
-<h1 id="Markdown-Basics-（快速入门）-点击查看完整语法说明"><a href="#Markdown-Basics-（快速入门）-点击查看完整语法说明" class="headerlink" title="Markdown: Basics （快速入门） / (点击查看完整语法说明)"></a>Markdown: Basics （快速入门） / (<a href="./index.html">点击查看完整语法说明</a>)</h1><h2 id="Getting-the-Gist-of-Markdown’s-Formatting-Syntax"><a href="#Getting-the-Gist-of-Markdown’s-Formatting-Syntax" class="headerlink" title="Getting the Gist of Markdown’s Formatting Syntax"></a>Getting the Gist of Markdown’s Formatting Syntax</h2><p>此页提供了 Markdown 的简单概念， <a target="_blank" rel="noopener" href="http://gitcafe.com/riku/Markdown-Syntax-CN/blob/master/syntax.md" title="Markdown Syntax">语法说明</a> 页提供了完整详细的文档，说明了每项功能。但是 Markdown 其实很简单就可以上手，此页文档提供了一些范例，并且每个范例都会提供输出的 HTML 结果。</p>
-<p>其实直接试试看也是一个很不错的方法， <a target="_blank" rel="noopener" href="http://daringfireball.net/projects/markdown/dingus" title="Markdown Dingus">Dingus</a> 是一个网页应用程序，你可以把自已编写的 Markdown 文档转成 XHTML。</p>
-<h2 id="段落、标题、区块代码"><a href="#段落、标题、区块代码" class="headerlink" title="段落、标题、区块代码"></a>段落、标题、区块代码</h2><p>一个段落是由一个以上的连接的行句组成，而一个以上的空行则会划分出不同的段落（空行的定义是显示上看起来像是空行，就被视为空行，例如有一行只有空白和 tab，那该行也会被视为空行），一般的段落不需要用空白或换行缩进。</p>
-<p>Markdown 支持两种标题的语法，<a target="_blank" rel="noopener" href="http://docutils.sourceforge.net/mirror/setext.html">Setext</a> 和 <a target="_blank" rel="noopener" href="http://www.aaronsw.com/2002/atx/">atx</a> 形式。Setext 形式是用底线的形式，利用 <code>=</code> （最高阶标题）和 <code>-</code> （第二阶标题），Atx 形式在行首插入 1 到 6 个 <code>#</code> ，对应到标题 1 到 6 阶。</p>
-<p>区块引用则使用 email 形式的 ‘<code>&gt;</code>‘ 角括号。</p>
-<p>Markdown 语法:</p>
-<pre><code>A First Level Header
-====================
-A Second Level Header
----------------------
-
-Now is the time for all good men to come to
-the aid of their country. This is just a
-regular paragraph.
-
-The quick brown fox jumped over the lazy
-dog&apos;s back.
-### Header 3
-
-&gt; This is a blockquote.
-&gt;
-&gt; This is the second paragraph in the blockquote.
-&gt;
-&gt; ## This is an H2 in a blockquote</code></pre><p>输出 HTML 为：</p>
-<pre><code>&lt;h1&gt;A First Level Header&lt;/h1&gt;
-&lt;h2&gt;A Second Level Header&lt;/h2&gt;
-&lt;p&gt;Now is the time for all good men to come to
-the aid of their country. This is just a
-regular paragraph.&lt;/p&gt;
-&lt;p&gt;The quick brown fox jumped over the lazy
-dog&apos;s back.&lt;/p&gt;
-&lt;h3&gt;Header 3&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This is a blockquote.&lt;/p&gt;
-&lt;p&gt;This is the second paragraph in the blockquote.&lt;/p&gt;
-&lt;h2&gt;This is an H2 in a blockquote&lt;/h2&gt;
-&lt;/blockquote&gt;</code></pre><h3 id="修辞和强调"><a href="#修辞和强调" class="headerlink" title="修辞和强调"></a>修辞和强调</h3><p>Markdown 使用星号和底线来标记需要强调的区段。</p>
-<p>Markdown 语法:</p>
-<pre><code>Some of these words *are emphasized*.
-Some of these words _are emphasized also_.
-Use two asterisks for **strong emphasis**.
-Or, if you prefer, __use two underscores instead__.</code></pre><p>输出 HTML 为:</p>
-<pre><code>&lt;p&gt;Some of these words &lt;em&gt;are emphasized&lt;/em&gt;.
-Some of these words &lt;em&gt;are emphasized also&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Use two asterisks for &lt;strong&gt;strong emphasis&lt;/strong&gt;.
-Or, if you prefer, &lt;strong&gt;use two underscores instead&lt;/strong&gt;.&lt;/p&gt;</code></pre><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>无序列表使用星号、加号和减号来做为列表的项目标记，这些符号是都可以使用的，使用星号：</p>
-<pre><code>* Candy.
-* Gum.
-* Booze.</code></pre><p>加号：</p>
-<pre><code>+ Candy.
-+ Gum.
-+ Booze.</code></pre><p>和减号</p>
-<pre><code>- Candy.
-- Gum.
-- Booze.</code></pre><p>都会输出 HTML 为：</p>
-<pre><code>&lt;ul&gt;
-&lt;li&gt;Candy.&lt;/li&gt;
-&lt;li&gt;Gum.&lt;/li&gt;
-&lt;li&gt;Booze.&lt;/li&gt;
-&lt;/ul&gt;</code></pre><p>有序的列表则是使用一般的数字接着一个英文句点作为项目标记：</p>
-<pre><code>1. Red
-2. Green
-3. Blue</code></pre><p>输出 HTML 为：</p>
-<pre><code>&lt;ol&gt;
-&lt;li&gt;Red&lt;/li&gt;
-&lt;li&gt;Green&lt;/li&gt;
-&lt;li&gt;Blue&lt;/li&gt;
-&lt;/ol&gt;</code></pre><p>如果你在项目之间插入空行，那项目的内容会用 <code>&lt;p&gt;</code> 包起来，你也可以在一个项目内放上多个段落，只要在它前面缩排 4 个空白或 1 个 tab 。</p>
-<pre><code>* A list item.
-
-    With multiple paragraphs.
-
-* Another item in the list.</code></pre><p>输出 HTML 为：</p>
-<pre><code>&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;A list item.&lt;/p&gt;
-&lt;p&gt;With multiple paragraphs.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Another item in the list.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;</code></pre><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>Markdown 支援两种形式的链接语法： <em>行内</em> 和 <em>参考</em> 两种形式，两种都是使用角括号来把文字转成连结。</p>
-<p>行内形式是直接在后面用括号直接接上链接：</p>
-<pre><code>This is an [example link](http://example.com/).</code></pre><p>输出 HTML 为：</p>
-<pre><code>&lt;p&gt;This is an &lt;a href=&quot;http://example.com/&quot;&gt;
-example link&lt;/a&gt;.&lt;/p&gt;</code></pre><p>你也可以选择性的加上 title 属性：</p>
-<pre><code>This is an [example link](http://example.com/ &quot;With a Title&quot;).</code></pre><p>输出 HTML 为：</p>
-<pre><code>&lt;p&gt;This is an &lt;a href=&quot;http://example.com/&quot; title=&quot;With a Title&quot;&gt;
-example link&lt;/a&gt;.&lt;/p&gt;</code></pre><p>参考形式的链接让你可以为链接定一个名称，之后你可以在文件的其他地方定义该链接的内容：</p>
-<pre><code>I get 10 times more traffic from [Google][1] than from
-[Yahoo][2] or [MSN][3].
-
-[1]: http://google.com/ &quot;Google&quot;
-[2]: http://search.yahoo.com/ &quot;Yahoo Search&quot;
-[3]: http://search.msn.com/ &quot;MSN Search&quot;</code></pre><p>输出 HTML 为：</p>
-<pre><code>&lt;p&gt;I get 10 times more traffic from &lt;a href=&quot;http://google.com/&quot;
-title=&quot;Google&quot;&gt;Google&lt;/a&gt; than from &lt;a href=&quot;http://search.yahoo.com/&quot;
-title=&quot;Yahoo Search&quot;&gt;Yahoo&lt;/a&gt; or &lt;a href=&quot;http://search.msn.com/&quot;
-title=&quot;MSN Search&quot;&gt;MSN&lt;/a&gt;.&lt;/p&gt;</code></pre><p>title 属性是选择性的，链接名称可以用字母、数字和空格，但是不分大小写：</p>
-<pre><code>I start my morning with a cup of coffee and
-[The New York Times][NY Times].
-
-[ny times]: http://www.nytimes.com/</code></pre><p>输出 HTML 为：</p>
-<pre><code>&lt;p&gt;I start my morning with a cup of coffee and
-&lt;a href=&quot;http://www.nytimes.com/&quot;&gt;The New York Times&lt;/a&gt;.&lt;/p&gt;</code></pre><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>图片的语法和链接很像。</p>
-<p>行内形式（title 是选择性的）：</p>
-<pre><code>![alt text](/path/to/img.jpg &quot;Title&quot;)</code></pre><p>参考形式：</p>
-<pre><code>![alt text][id]
-
-[id]: /path/to/img.jpg &quot;Title&quot;</code></pre><p>上面两种方法都会输出 HTML 为：</p>
-<pre><code>&lt;img src=&quot;/path/to/img.jpg&quot; alt=&quot;alt text&quot; title=&quot;Title&quot; /&gt;</code></pre><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>在一般的段落文字中，你可以使用反引号 ``` 来标记代码区段，区段内的 <code>&amp;amp;</code>、<code>&lt;</code> 和 <code>&gt;</code> 都会被自动的转换成 HTML 实体，这项特性让你可以很容易的在代码区段内插入 HTML 码：</p>
-<pre><code>I strongly recommend against using any `&lt;blink&gt;` tags.
-
-I wish SmartyPants used named entities like `&amp;amp;mdash;`
-instead of decimal-encoded entites like `&amp;amp;#8212;`.</code></pre><p>输出 HTML 为：</p>
-<pre><code>&lt;p&gt;I strongly recommend against using any
-&lt;code&gt;&amp;amp;lt;blink&amp;amp;gt;&lt;/code&gt; tags.&lt;/p&gt;
-&lt;p&gt;I wish SmartyPants used named entities like
-&lt;code&gt;&amp;amp;amp;mdash;&lt;/code&gt; instead of decimal-encoded
-entites like &lt;code&gt;&amp;amp;amp;#8212;&lt;/code&gt;.&lt;/p&gt;</code></pre><p>如果要建立一个已经格式化好的代码区块，只要每行都缩进 4 个空格或是一个 tab 就可以了，而 <code>&amp;amp;</code>、<code>&lt;</code> 和 <code>&gt;</code> 也一样会自动转成 HTML 实体。</p>
-<p>Markdown 语法:</p>
-<pre><code>If you want your page to validate under XHTML 1.0 Strict,
-you&apos;ve got to put paragraph tags in your blockquotes:
-
-&lt;blockquote&gt;
-&lt;p&gt;For example.&lt;/p&gt;
-&lt;/blockquote&gt;</code></pre><p>输出 HTML 为：</p>
-<pre><code>&lt;p&gt;If you want your page to validate under XHTML 1.0 Strict,
-you&apos;ve got to put paragraph tags in your blockquotes:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;amp;lt;blockquote&amp;amp;gt;
-&amp;amp;lt;p&amp;amp;gt;For example.&amp;amp;lt;/p&amp;amp;gt;
-&amp;amp;lt;/blockquote&amp;amp;gt;
-&lt;/code&gt;&lt;/pre&gt;</code></pre>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1299,7 +1189,7 @@ you&apos;ve got to put paragraph tags in your blockquotes:&lt;/p&gt;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">167</span>
+          <span class="site-state-item-count">168</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1312,7 +1202,7 @@ you&apos;ve got to put paragraph tags in your blockquotes:&lt;/p&gt;
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">142</span>
+        <span class="site-state-item-count">143</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

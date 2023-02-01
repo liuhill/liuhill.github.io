@@ -7314,4 +7314,17 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
         <tag>金刚经</tag>
       </tags>
   </entry>
+  <entry>
+    <title>mysqldump备份多个数据库命令</title>
+    <url>/2023/02/01/mysqldump%E5%A4%87%E4%BB%BD%E5%A4%9A%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysqldump -u root -p --databases 数据库1 数据库2 &gt; xxx.sql</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+        <tag>备份</tag>
+        <tag>mysqldump</tag>
+      </tags>
+  </entry>
 </search>
