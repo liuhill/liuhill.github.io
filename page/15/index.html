@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-128x128-bolder.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bolder.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bolder.png">
@@ -191,6 +191,89 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2015/05/29/svn-e7-89-88-e6-9c-ac-e7-ae-a1-e7-90-86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/05/29/svn-e7-89-88-e6-9c-ac-e7-ae-a1-e7-90-86/" class="post-title-link" itemprop="url">SVN版本管理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-05-29 13:15:25" itemprop="dateCreated datePublished" datetime="2015-05-29T13:15:25+08:00">2015-05-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-01-28 16:30:44" itemprop="dateModified" datetime="2023-01-28T16:30:44+08:00">2023-01-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script src="\assets\js\APlayer.min.js"> </script><h2 id="一、版本库结构"><a href="#一、版本库结构" class="headerlink" title="一、版本库结构"></a>一、版本库结构</h2><h3 id="1-1-项目在版本仓库中的目录"><a href="#1-1-项目在版本仓库中的目录" class="headerlink" title="1.1 项目在版本仓库中的目录"></a>1.1 项目在版本仓库中的目录</h3><p>trunk、branches、tags，这是一个项目在版本仓库中典型的目录布局。</p>
+<ul>
+<li>trunk：主干，如果说把一个软件项目从开始到消亡比作一个故事的话，主线情节都在这里被SVN记录着。</li>
+<li>branches：分支，有很多种用法，比如：版本发布维护分支、新特性开发分支，甚至是缺陷修复分支等等。</li>
+<li>tags：标签，或者叫快照，某个版本发布时候，都在这里留档。</li>
+</ul>
+<h3 id="1-2-示例如下图："><a href="#1-2-示例如下图：" class="headerlink" title="1.2 示例如下图："></a>1.2 示例如下图：</h3><h2 id="二、命令行"><a href="#二、命令行" class="headerlink" title="二、命令行"></a>二、命令行</h2><h3 id="2-1-svnadmin-create"><a href="#2-1-svnadmin-create" class="headerlink" title="2.1 svnadmin create"></a>2.1 svnadmin create</h3><p>创建版本库</p>
+<h3 id="2-2-svn-cp"><a href="#2-2-svn-cp" class="headerlink" title="2.2 svn cp"></a>2.2 svn cp</h3><p>复制版本</p>
+<h3 id="2-3-svn-branch"><a href="#2-3-svn-branch" class="headerlink" title="2.3 svn branch"></a>2.3 svn branch</h3><p>创建分支</p>
+<h3 id="2-4-svn-merge"><a href="#2-4-svn-merge" class="headerlink" title="2.4 svn merge"></a>2.4 svn merge</h3><p>合并分支</p>
+<h3 id="2-5-svn-tag"><a href="#2-5-svn-tag" class="headerlink" title="2.5 svn tag"></a>2.5 svn tag</h3>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -995,79 +1078,6 @@ SELECT * FROM category ORDER BY category_id;</code></pre><p>在这种数据结�
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2014/12/05/e6-9f-a5-e7-9c-8bjquery-e7-89-88-e6-9c-ac/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
-      <meta itemprop="name" content="Hillock">
-      <meta itemprop="description" content="努力奔跑，向着诗和远方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无来">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2014/12/05/e6-9f-a5-e7-9c-8bjquery-e7-89-88-e6-9c-ac/" class="post-title-link" itemprop="url">查看jquery版本</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2014-12-05 09:19:11" itemprop="dateCreated datePublished" datetime="2014-12-05T09:19:11+08:00">2014-12-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 16:10:20" itemprop="dateModified" datetime="2023-01-28T16:10:20+08:00">2023-01-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <script src="\assets\js\APlayer.min.js"> </script><pre><code>alert($.fn.jquery);</code></pre>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1139,7 +1149,7 @@ SELECT * FROM category ORDER BY category_id;</code></pre><p>在这种数据结�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">170</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1152,7 +1162,7 @@ SELECT * FROM category ORDER BY category_id;</code></pre><p>在这种数据结�
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">145</span>
+        <span class="site-state-item-count">146</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1193,7 +1203,7 @@ SELECT * FROM category ORDER BY category_id;</code></pre><p>在这种数据结�
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
