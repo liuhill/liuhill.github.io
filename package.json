@@ -21,7 +21,6 @@
     "hexo-renderer-marked": "^2.0.0",
     "hexo-renderer-stylus": "^0.3.1",
     "hexo-server": "^0.2.0",
-    "hexo-site": "file:",
     "hexo-tag-aplayer": "^2.0.7"
   },
   "resolutions": {
