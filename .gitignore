@@ -8,6 +8,6 @@ node_modules/
 public/
 .deploy*/
 hexo
-.gitignore
 hexo.cmd
 hexo.ps1
+github*
