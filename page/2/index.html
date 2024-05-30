@@ -195,90 +195,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2022/04/13/Git%E5%BF%BD%E7%95%A5%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E8%BF%87%E4%B8%80%E6%AC%A1%E6%96%87%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
-      <meta itemprop="name" content="Hillock">
-      <meta itemprop="description" content="努力奔跑，向着诗和远方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无来">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/13/Git%E5%BF%BD%E7%95%A5%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E8%BF%87%E4%B8%80%E6%AC%A1%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">Git忽略已经提交过一次文件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-13 17:57:46" itemprop="dateCreated datePublished" datetime="2022-04-13T17:57:46+08:00">2022-04-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-05-30 22:25:48" itemprop="dateModified" datetime="2024-05-30T22:25:48+08:00">2024-05-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <script src="/assets/js/APlayer.min.js"> </script><h3 id="一、平时忽略未提交的文件"><a href="#一、平时忽略未提交的文件" class="headerlink" title="一、平时忽略未提交的文件"></a>一、平时忽略未提交的文件</h3><p>从未提交过的文件可以用<code>.gitignore</code><br>也就是添加之后从来没有提交（commit）过的文件，可以使用<code>.gitignore</code>忽略该文件<br>该文件只能作用于未跟踪的文件（Untracked Files），也就是那些从来没有被 git 记录过的文件<br>在<code>.gitignore</code>中写忽略文件或文件夹。注意相对路径是项目根数据，文件格式如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/.gradle/</span><br><span class="line">/.idea/</span><br><span class="line">/local.properties</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、已经Push过的文件"><a href="#二、已经Push过的文件" class="headerlink" title="二、已经Push过的文件"></a>二、已经Push过的文件</h3><p>需要删除Git仓库的文件，本址的文件需要保留，并且在以后提交中忽略</p>
-<p>1、从本地Git缓存中删除文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//忽略文件 aaa.txt</span><br><span class="line">git rm --cached aaa.txt</span><br><span class="line">//忽略文件夹 abc</span><br><span class="line">git rm -r --cached abc</span><br></pre></td></tr></table></figure>
-
-<p>2、提交到仓库里面</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#x27;delete somefile&#x27;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<p>3、修改文件.gitignore，把刚才删除的文件或者文件夹加入.gitignore文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/aaa.txt</span><br><span class="line">/abc/</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2022/03/22/Github%E4%B8%8AHexo%E9%A1%B9%E7%9B%AE%E6%BA%90%E7%A0%81%E4%BB%A5%E5%8F%8A%E5%8F%91%E5%B8%83%E7%89%88%E7%AE%A1%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1334,6 +1250,95 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2018/08/06/mysqldbcompare-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E6%AF%94%E8%BE%83%E5%B7%A5%E5%85%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/08/06/mysqldbcompare-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E6%AF%94%E8%BE%83%E5%B7%A5%E5%85%B7/" class="post-title-link" itemprop="url">mysqldbcompare MySQL数据库比较工具</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-08-06 15:40:16" itemprop="dateCreated datePublished" datetime="2018-08-06T15:40:16+08:00">2018-08-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-05-30 22:25:48" itemprop="dateModified" datetime="2024-05-30T22:25:48+08:00">2024-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script src="/assets/js/APlayer.min.js"> </script><p>mysqldbcompare用于比较两个服务器或同个服务器上的数据库，有文件和数据，并生成差异性SQL语句。</p>
+<p>要比较数据表，请用另外一个工具：mysqldiff（点击查看教程）。</p>
+<p>以下是mysqldbcompare的用法。</p>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1 安装"></a>1 安装</h2><p>mysqldbcompare是MySQL Utilities中的一个脚本，默认的MySQL不包含工具集，所以需要独立安装。</p>
+<p>MySQL Utilities下载地址：<a target="_blank" rel="noopener" href="http://downloads.mysql.com/archives/utilities/。">http://downloads.mysql.com/archives/utilities/。</a><br>Windows系统中需提前安装“Visual C++ Redistributable Packages for Visual Studio 2013”，下载地址：<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-gb/download/details.aspx?id=40784。">https://www.microsoft.com/en-gb/download/details.aspx?id=40784。</a><br>Linux系统在下载页面选择对应发行版。</p>
+<h2 id="2-语法"><a href="#2-语法" class="headerlink" title="2 语法"></a>2 语法</h2><p>mysqldbcompare的语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldbcompare --server1=user:pass@host:port:socket --server2=user:pass@host:port:socket db1:db2</span><br></pre></td></tr></table></figure>
+<p>以上参数中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">--server1：MySQL服务器1配置。</span><br><span class="line">--server2：MySQL服务器2配置。如果是同一服务器，--server2可以省略。</span><br><span class="line">db1:db2：要比较的两个数据库。如果比较不同服务器上的同名数据库，可以省略:db2。</span><br><span class="line">--all：比较所有两服务器上所有的同名数据库。--exclude排除无需比较的数据库。</span><br><span class="line">--run-all-tests：运行完整比较，遇到第一次差异时不停止。</span><br><span class="line">--changes-for=：修改对象。例如--changes-for=server2，那么对比以sever1为主，生成的差异的修改也是针对server2的对象的修改。</span><br><span class="line">-d DIFFTYPE,--difftype=DIFFTYPE：差异的信息显示的方式，有[unified|context|differ|sql]，默认是unified。如果使用sql，那么就直接生成差异的SQL，这样非常方便。</span><br><span class="line">--show-reverse：在生成的差异修改里面，同时会包含server2和server1的修改。</span><br><span class="line">--skip-table-options：保持表的选项不变，即对比的差异里面不包括表名、AUTO_INCREMENT、ENGINE、CHARSET等差异。</span><br><span class="line">--skip-diff：跳过对象定义比较检查。所谓对象定义，就是CREATE语句()里面的部分，--skip-table-options是()外面的部分。</span><br><span class="line">--skip-object-compare：默认情况下，先检查两个数据库中相互缺失的对象，再对都存在对象间的差异。这个参数的作用就是，跳过第一步，不检查相互缺失的对象。</span><br><span class="line">--skip-checksum-table：数据一致性验证时跳过CHECKSUM TABLE。</span><br><span class="line">--skip-data-check：跳过数据一致性验证。</span><br><span class="line">--skip-row-count：跳过字段数量检查。</span><br></pre></td></tr></table></figure>
+<h2 id="3-示例"><a href="#3-示例" class="headerlink" title="3 示例"></a>3 示例</h2><p>比较两个数据库，并生成差异SQL：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldbcompare --server1=root:root@localhost --server2=root:root@localhost db1:db2 --changes-for=server1 -a --difftype=sql</span><br><span class="line"></span><br><span class="line"># WARNING: Objects in server1.db1 but not in server1.db2:</span><br><span class="line"># TABLE: table2</span><br><span class="line">#</span><br><span class="line"># WARNING: Objects in server1.db2 but not in server1.tb1:</span><br><span class="line"># TABLE: table3</span><br><span class="line">#</span><br><span class="line">#                                                   Defn    Row     Data</span><br><span class="line"># Type      Object Name                             Diff    Count   Check</span><br><span class="line">#-------------------------------------------------------------------------</span><br><span class="line"># TABLE     t1                                      pass    pass    -</span><br><span class="line">#           - Compare table checksum                                FAIL</span><br><span class="line">#           - Find row differences                                  FAIL</span><br><span class="line">#</span><br><span class="line"># Transformation for --changes-for=server1:</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"># Data differences found among rows:</span><br><span class="line">UPDATE db1.t1 SET b = &#x27;Test 123&#x27; WHERE a = &#x27;1&#x27;;</span><br><span class="line">UPDATE db1.t1 SET b = &#x27;Test 789&#x27; WHERE a = &#x27;3&#x27;;</span><br><span class="line">DELETE FROM db1.t1 WHERE a = &#x27;4&#x27;;</span><br><span class="line">INSERT INTO db1.t1 (a, b) VALUES(&#x27;5&#x27;, &#x27;New row - db2&#x27;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Database consistency check failed.</span><br><span class="line">#</span><br><span class="line"># ...done</span><br></pre></td></tr></table></figure>
+<p>WARNING之后提示两个数据库表之间的差异，也就是一个数据库中有，另一个数据库没有的数据表。</p>
+<p>之后就是差异的SQL语句了，把有#号注释的行删掉，就能直接在数据库中执行了。</p>
+<p><code>说明</code>：执行MySQL语句时可能会遇到这样错误：`Error 1054 - Unknown column ‘name’ in ‘aspect’``</p>
+<p>这是因为mysqldbcompare生成的ALTER语句中，用逗号,拼装了多条ADD、CHANGE等语句，如果这些语句还包含AFTER关键字，就会提示这个错误并中断执行MySQL语句。解决的办法就是：去除AFTER及其后面的条件。</p>
+<p>这可能是MySQL的一个Bug，详情参考：<a target="_blank" rel="noopener" href="http://bugs.mysql.com/bug.php?id=34972">http://bugs.mysql.com/bug.php?id=34972</a> 和 <a target="_blank" rel="noopener" href="http://bugs.mysql.com/bug.php?id=60650。">http://bugs.mysql.com/bug.php?id=60650。</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -1405,7 +1410,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">170</span>
+          <span class="site-state-item-count">169</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
