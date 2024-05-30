@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-128x128-bolder.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bolder.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bolder.png">
+  <link rel="mask-icon" href="/images/wulai-bolder.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="0. 写作背景好久没有写博客了，前端时间来了一场说走就走的旅行，和爱人一起辞职，去云南玩了半个月，才刚回来，最近一段时间在找工作，没事就上网看看技术相关的文章，充充电，昨天偶尔发现一遍讲解LNMP的并发与资源分配的文章，感觉不错，和大家分享下。很多时候面试官都会问你，你们的程序性能如何？程序的并发可以达到多少？程序的瓶颈在哪儿？为了满足业务需求应该购买多少台服务器？负载均衡中php应用服务器需要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LNMP的并发与资源分配">
+<meta property="og:url" content="https://www.wulai.me/2017/09/14/LNMP%E7%9A%84%E5%B9%B6%E5%8F%91%E4%B8%8E%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D/index.html">
+<meta property="og:site_name" content="无来">
+<meta property="og:description" content="0. 写作背景好久没有写博客了，前端时间来了一场说走就走的旅行，和爱人一起辞职，去云南玩了半个月，才刚回来，最近一段时间在找工作，没事就上网看看技术相关的文章，充充电，昨天偶尔发现一遍讲解LNMP的并发与资源分配的文章，感觉不错，和大家分享下。很多时候面试官都会问你，你们的程序性能如何？程序的并发可以达到多少？程序的瓶颈在哪儿？为了满足业务需求应该购买多少台服务器？负载均衡中php应用服务器需要">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-09-14T03:01:35.000Z">
+<meta property="article:modified_time" content="2024-05-30T14:25:48.498Z">
+<meta property="article:author" content="Hillock">
+<meta property="article:tag" content="LNMP">
+<meta property="article:tag" content="高并发">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://www.wulai.me/2017/09/14/LNMP%E7%9A%84%E5%B9%B6%E5%8F%91%E4%B8%8E%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>LNMP的并发与资源分配 | 无来</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81208215-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-81208215-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">无来</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">不管你来还是不来<br />我都在这里，夜夜点亮<br />不是为了守候<br />只是为了做好我自己</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2017/09/14/LNMP%E7%9A%84%E5%B9%B6%E5%8F%91%E4%B8%8E%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LNMP的并发与资源分配
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-09-14 11:01:35" itemprop="dateCreated datePublished" datetime="2017-09-14T11:01:35+08:00">2017-09-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-05-30 22:25:48" itemprop="dateModified" datetime="2024-05-30T22:25:48+08:00">2024-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="0-写作背景"><a href="#0-写作背景" class="headerlink" title="0. 写作背景"></a>0. 写作背景</h1><p>好久没有写博客了，前端时间来了一场说走就走的旅行，和爱人一起辞职，去云南玩了半个月，才刚回来，最近一段时间在找工作，没事就上网看看技术相关的文章，充充电，昨天偶尔发现一遍讲解LNMP的并发与资源分配的文章，感觉不错，和大家分享下。<br>很多时候面试官都会问你，你们的程序性能如何？程序的并发可以达到多少？程序的瓶颈在哪儿？为了满足业务需求应该购买多少台服务器？负载均衡中php应用服务器需要多少台？<br>可能这些问题在面试中会设置一个应用的场景及一些前提条件，让面试的人去设计，并提出看法建议，能够回答得很好的人还是比较少的。</p>
+<h1 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h1><h2 id="1-1-LNMP中的N是nginx充当Web-Server"><a href="#1-1-LNMP中的N是nginx充当Web-Server" class="headerlink" title="1.1 LNMP中的N是nginx充当Web Server"></a>1.1 LNMP中的N是nginx充当Web Server</h2><p>内容的分发者，会在文件系统找到相应的文件，就返回给浏览器，如：nginx。如果是静态的文件，就可以直接返回，但是如果是index.php需要解析并执行的脚本文件时，Web Server就无力了，需要将请求转发给相应的脚本语言的解析器来解释并执行，最终将程序的执行结果，返回给Web Server，再返回给浏览器。</p>
+<h2 id="1-2-LNMP中的P是php充当后端的逻辑处理程序"><a href="#1-2-LNMP中的P是php充当后端的逻辑处理程序" class="headerlink" title="1.2 LNMP中的P是php充当后端的逻辑处理程序"></a>1.2 LNMP中的P是php充当后端的逻辑处理程序</h2><p>那么php与nginx的常规协作方式是如何的呢？需要我们明确几个概念</p>
+<h2 id="1-3-cgi"><a href="#1-3-cgi" class="headerlink" title="1.3 cgi"></a>1.3 cgi</h2><p>通用网关接口，是HTTP协议中描述的，Web Server与后端处理程序进程间通信的协议</p>
+<h2 id="1-4-php-cgi"><a href="#1-4-php-cgi" class="headerlink" title="1.4 php-cgi"></a>1.4 php-cgi</h2><p>php实现了cgi协议，使得web server与php共同完成一个动态网页的请求响应</p>
+<h2 id="1-5-fastcgi"><a href="#1-5-fastcgi" class="headerlink" title="1.5 fastcgi"></a>1.5 fastcgi</h2><p>是为了解决cgi性能问题，而规范的另外一种协议，为什么说解决cgi性能问题，因为在面对各大中型网站的业务需求中，cgi程序表现得越来越无力，因为cgi程序在每次接收到请求时都需要启动新的进程，并初始化环境，然后执行程序，具体的协议内容，在此不引述。</p>
+<h2 id="1-6-php-fpm"><a href="#1-6-php-fpm" class="headerlink" title="1.6 php-fpm"></a>1.6 php-fpm</h2><p>实现了fastcgi协议，是php-cgi的进程管理器，解决高并发网站的性能问题。<br>在最终回答LNMP的并发考虑与资源分配还需要明确的几个概念</p>
+<h2 id="1-7-并发"><a href="#1-7-并发" class="headerlink" title="1.7 并发"></a>1.7 并发</h2><p>一般由单位内完成的请求数来衡量，如，每秒事务数（TPS），每秒HTTP请求数（HPS），每秒查询数（QPS）。通常情况下，我们说PHP的并发，都是指一秒内PHP完成的动态请求的次数。如某网站高峰期的动态请求并发为5000每秒，这个数字不算太高，但也不低。一般日活跃用户数在1000万-5000万的网站应用才能达到这个级别。</p>
+<h2 id="1-8-性能"><a href="#1-8-性能" class="headerlink" title="1.8 性能"></a>1.8 性能</h2><p>一般是指应用程序的处理速度，如果php的应用程序，打开一个页面（执行一个脚本程序）通常需要在50-100ms完成，这对程序的性能要求还是比较高的。但是这还仅仅只是程序处理，php处理完成之后，还要交给web server，web server再将数据返回浏览器，这中间会有一个网络延迟，通常网络正常的情况下，需要大约100ms，最终一个动态网页的请求大约200ms（理想的情况下）可以到达用户浏览器端（仅仅是一个html结构）。</p>
+<p>#2.资源分配</p>
+<h2 id="2-1-php-fpm进程数"><a href="#2-1-php-fpm进程数" class="headerlink" title="2.1 php-fpm进程数"></a>2.1 php-fpm进程数</h2><p>按照上面的描述，并发为5000每秒，每个请求完成大约200ms（具体页面要具体分析，这里只是一个理想值），如果只有5台PHP应用程序服务器，那么每台机器平均为并发1000每秒，如果是使用nginx+php-fpm的架构，php-fpm的php-cgi进程管理器的配置应该如何呢？我计算的结果为（具体的配置项说明在后文）：</p>
+<ul>
+<li>pm=static</li>
+<li>pm.max_children=100<br>上面的100是如何得来的，由于机器平均并发为1000每秒，每个动态请求的处理时间为100ms，也就是说1个php-fpm的worker处理进程在1秒内可以处理10个请求，100个php-fpm的worker处理进程，就可以处理1000个请求。<br>当然需要结合服务器硬件资源来进行配置，如果配置不当，很容易在请求高峰期或者流量猛增导致服务器宕机。</li>
+</ul>
+<h2 id="2-2-网络带宽"><a href="#2-2-网络带宽" class="headerlink" title="2.2 网络带宽"></a>2.2 网络带宽</h2><p>网络带宽也会是一个重要的因素，如果你的服务处理很强，但是用户的请求和响应不能及时到达也是白忙活，这个参数如何计算呢？<br>并发5000每秒，每个请求的输出为20K，则5000x20K=100000K=100M<br>这就要求你的公网负载均衡器外网出口带宽至少要达到100M</p>
+<h2 id="2-3-内存"><a href="#2-3-内存" class="headerlink" title="2.3 内存"></a>2.3 内存</h2><p>上述中100个php-fpm的worker处理进程，理论上如果服务器只运行php-fpm，那么我们可以将服务器内存的一半分配给php-fpm，通常情况下，我们可以认为一个php-fpm的worker处理进程占用内存20M，那么100x20M=2G，也就是说明服务器的内存大约为4G</p>
+<h2 id="2-4-CPU"><a href="#2-4-CPU" class="headerlink" title="2.4 CPU"></a>2.4 CPU</h2><p>由于php-fpm是一个多进程的模型应用，CPU进程调度消耗也是很大的，并且PHP应用程序有问题也会导致CPU占用率高，这就没有量化的指标，需要具体情况具体分析了。但是有一个小建议，可以部署一个crontab每隔一分钟检测cpu占用率超过多少就kill掉相应的php-fpm的worker处理进程。</p>
+<h2 id="2-5-php-fpm-Unix-Socket"><a href="#2-5-php-fpm-Unix-Socket" class="headerlink" title="2.5 php-fpm Unix Socket"></a>2.5 php-fpm Unix Socket</h2><p>如果nginx与php在同一台机器，nginx与php-fpm使用unix域套接字代替tcp socke进行通信，这个配置挺关键的，纯echo的ab测试，采用unix域套接字每秒请求数提升10%-20%</p>
+<p>即nginx中配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastcgi_pass unix:/data/server/var/php/php-fpm.sock;</span><br></pre></td></tr></table></figure>
+
+<p>php-fpm.conf中配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listen = /data/server/var/php/php-fpm.sock</span><br></pre></td></tr></table></figure>
+<p>最后遇到很多同学对php-fpm的进程管理器的核心配置不太了解，下面是我翻译的配置说明：</p>
+<h1 id="3-php-fpm配置项"><a href="#3-php-fpm配置项" class="headerlink" title="3. php-fpm配置项"></a>3. php-fpm配置项</h1><h2 id="3-1-pm"><a href="#3-1-pm" class="headerlink" title="3.1 pm"></a>3.1 pm</h2><ul>
+<li>static 一个固定的值，由pm.max_children指定</li>
+<li>dynamic 动态的（工作方式和Apache的prefork模式一致），但是保持至少一个，由<ul>
+<li>pm.max_children 在同一时间最大的进程数</li>
+<li>pm.start_servers php-fpm启动时开启的等待请求到来的进程数</li>
+<li>pm.min_spare_servers 在空闲状态下，运行的最小进程数，如果小于此值，会创建新的进程</li>
+<li>pm.max_spare_servers 在空闲状态下，运行的最大进程数，如果大于此值，会kill部分进程</li>
+<li>ondemand 启动时不会创建进程，当请求达到时创建子进程处理请求</li>
+<li>pm.max_children 在同一时间最大的进程数</li>
+<li>pm.process_idle_timeout 空闲多少秒之后进程会被kill</li>
+</ul>
+</li>
+<li>pm = static</li>
+</ul>
+<h2 id="3-2-pm-max-children"><a href="#3-2-pm-max-children" class="headerlink" title="3.2 pm.max_children"></a>3.2 pm.max_children</h2><p>在同一时间最大的进程数</p>
+<ul>
+<li>pm.max_children = 120</li>
+</ul>
+<h2 id="3-3-pm-start-servers"><a href="#3-3-pm-start-servers" class="headerlink" title="3.3 pm.start_servers"></a>3.3 pm.start_servers</h2><p>php-fpm启动时开启的等待请求到来的进程数，默认值为：min_spare_servers + (max_spare_servers – min_spare_servers) / 2</p>
+<ul>
+<li>pm.start_servers = 80</li>
+</ul>
+<h2 id="3-4-pm-min-spare-servers"><a href="#3-4-pm-min-spare-servers" class="headerlink" title="3.4 pm.min_spare_servers"></a>3.4 pm.min_spare_servers</h2><p>在空闲状态下，运行的最小进程数，如果小于此值，会创建新的进程</p>
+<ul>
+<li>pm.min_spare_servers = 60</li>
+</ul>
+<h2 id="3-5-pm-max-spare-servers"><a href="#3-5-pm-max-spare-servers" class="headerlink" title="3.5 pm.max_spare_servers"></a>3.5 pm.max_spare_servers</h2><p>在空闲状态下，运行的最大进程数，如果大于此值，会kill部分进程</p>
+<ul>
+<li>pm.max_spare_servers = 120</li>
+</ul>
+<h2 id="3-6-pm-process-idle-timeout"><a href="#3-6-pm-process-idle-timeout" class="headerlink" title="3.6 pm.process_idle_timeout"></a>3.6 pm.process_idle_timeout</h2><p>空闲多少秒之后进程会被kill，默认为10s</p>
+<ul>
+<li>pm.process_idle_timeout = 10s</li>
+</ul>
+<h2 id="3-7-pm-max-requests"><a href="#3-7-pm-max-requests" class="headerlink" title="3.7 pm.max_requests"></a>3.7 pm.max_requests</h2><p>每个进程处理多少个请求之后自动终止，可以有效防止内存溢出，如果为0则不会自动终止，默认为0</p>
+<ul>
+<li>pm.max_requests = 5000</li>
+</ul>
+<h2 id="3-8-pm-status-path"><a href="#3-8-pm-status-path" class="headerlink" title="3.8 pm.status_path"></a>3.8 pm.status_path</h2><p>注册的URI，以展示php-fpm状态的统计信息</p>
+<ul>
+<li>pm.status_path = /status<br>其中统计页面信息有：<ul>
+<li>pool 进程池名称</li>
+<li>process manager 进程管理器名称（static, dynamic or ondemand）</li>
+<li>start time php-fpm启动时间</li>
+<li>start since php-fpm启动的总秒数</li>
+<li>accepted conn 当前进程池接收的请求数</li>
+<li>listen queue 等待队列的请求数</li>
+<li>max listen queue 自启动以来等待队列中最大的请求数</li>
+<li>listen queue len 等待连接socket队列大小</li>
+<li>idle processes 当前空闲的进程数</li>
+<li>active processes 活动的进程数</li>
+<li>total processes 总共的进程数（idle+active）</li>
+<li>max active processes 自启动以来活动的进程数最大值</li>
+<li>max children reached 达到最大进程数的次数</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-9-ping-path"><a href="#3-9-ping-path" class="headerlink" title="3.9 ping.path"></a>3.9 ping.path</h2><p>ping url，可以用来测试php-fpm是否存活并可以响应</p>
+<ul>
+<li>ping.path = /ping</li>
+</ul>
+<h2 id="ping-response"><a href="#ping-response" class="headerlink" title="ping.response"></a>ping.response</h2><p>ping url的响应正文</p>
+<ul>
+<li>ping.response = pong</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/LNMP/" rel="tag"># LNMP</a>
+              <a href="/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/" rel="tag"># 高并发</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/08/08/CentOS-RHEL-Remove-Routes-169-254-0-0-255-255-0-0-From-the-System/" rel="prev" title="CentOS / RHEL: Remove Routes 169.254.0.0 / 255.255.0.0 From the System">
+      <i class="fa fa-chevron-left"></i> CentOS / RHEL: Remove Routes 169.254.0.0 / 255.255.0.0 From the System
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/09/27/MySQL-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/" rel="next" title="MySQL 字符串拼接">
+      MySQL 字符串拼接 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-%E5%86%99%E4%BD%9C%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">0. 写作背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">1. 概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-LNMP%E4%B8%AD%E7%9A%84N%E6%98%AFnginx%E5%85%85%E5%BD%93Web-Server"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 LNMP中的N是nginx充当Web Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-LNMP%E4%B8%AD%E7%9A%84P%E6%98%AFphp%E5%85%85%E5%BD%93%E5%90%8E%E7%AB%AF%E7%9A%84%E9%80%BB%E8%BE%91%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 LNMP中的P是php充当后端的逻辑处理程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-cgi"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 cgi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-php-cgi"><span class="nav-number">2.4.</span> <span class="nav-text">1.4 php-cgi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-fastcgi"><span class="nav-number">2.5.</span> <span class="nav-text">1.5 fastcgi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-php-fpm"><span class="nav-number">2.6.</span> <span class="nav-text">1.6 php-fpm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7-%E5%B9%B6%E5%8F%91"><span class="nav-number">2.7.</span> <span class="nav-text">1.7 并发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-8-%E6%80%A7%E8%83%BD"><span class="nav-number">2.8.</span> <span class="nav-text">1.8 性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-php-fpm%E8%BF%9B%E7%A8%8B%E6%95%B0"><span class="nav-number">2.9.</span> <span class="nav-text">2.1 php-fpm进程数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD"><span class="nav-number">2.10.</span> <span class="nav-text">2.2 网络带宽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%86%85%E5%AD%98"><span class="nav-number">2.11.</span> <span class="nav-text">2.3 内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-CPU"><span class="nav-number">2.12.</span> <span class="nav-text">2.4 CPU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-php-fpm-Unix-Socket"><span class="nav-number">2.13.</span> <span class="nav-text">2.5 php-fpm Unix Socket</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-php-fpm%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="nav-number">3.</span> <span class="nav-text">3. php-fpm配置项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-pm"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 pm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-pm-max-children"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 pm.max_children</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-pm-start-servers"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 pm.start_servers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-pm-min-spare-servers"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 pm.min_spare_servers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-pm-max-spare-servers"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 pm.max_spare_servers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-pm-process-idle-timeout"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 pm.process_idle_timeout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7-pm-max-requests"><span class="nav-number">3.7.</span> <span class="nav-text">3.7 pm.max_requests</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-8-pm-status-path"><span class="nav-number">3.8.</span> <span class="nav-text">3.8 pm.status_path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-9-ping-path"><span class="nav-number">3.9.</span> <span class="nav-text">3.9 ping.path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ping-response"><span class="nav-number">3.10.</span> <span class="nav-text">ping.response</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hillock"
+      src="https://res.hillock.com.cn/cola.jpg">
+  <p class="site-author-name" itemprop="name">Hillock</p>
+  <div class="site-description" itemprop="description">努力奔跑，向着诗和远方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">170</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">145</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/liuhill" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;liuhill" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:9986778@qq.com" title="E-Mail → mailto:9986778@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/liu-hill" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;liu-hill" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/LiuLig" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;LiuLig" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hillock</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

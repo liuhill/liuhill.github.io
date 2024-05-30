@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-128x128-bolder.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bolder.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bolder.png">
+  <link rel="mask-icon" href="/images/wulai-bolder.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1.导出OVA -&gt; test.ova2.copy到服务器&amp;导入1[root@localhost vm] BoxManage import test.ovf   查看虚拟机镜像文件配置信息12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS7 Command line install VirtuBox">
+<meta property="og:url" content="https://www.wulai.me/2017/08/03/CentOS7-Command-line-install-VirtuBox/index.html">
+<meta property="og:site_name" content="无来">
+<meta property="og:description" content="1.导出OVA -&gt; test.ova2.copy到服务器&amp;导入1[root@localhost vm] BoxManage import test.ovf   查看虚拟机镜像文件配置信息12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-08-03T12:24:12.000Z">
+<meta property="article:modified_time" content="2024-05-30T14:25:48.523Z">
+<meta property="article:author" content="Hillock">
+<meta property="article:tag" content="centos">
+<meta property="article:tag" content="命令行">
+<meta property="article:tag" content="虚拟机">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://www.wulai.me/2017/08/03/CentOS7-Command-line-install-VirtuBox/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CentOS7 Command line install VirtuBox | 无来</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81208215-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-81208215-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">无来</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">不管你来还是不来<br />我都在这里，夜夜点亮<br />不是为了守候<br />只是为了做好我自己</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2017/08/03/CentOS7-Command-line-install-VirtuBox/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CentOS7 Command line install VirtuBox
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-08-03 20:24:12" itemprop="dateCreated datePublished" datetime="2017-08-03T20:24:12+08:00">2017-08-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-05-30 22:25:48" itemprop="dateModified" datetime="2024-05-30T22:25:48+08:00">2024-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="1-导出OVA-gt-test-ova"><a href="#1-导出OVA-gt-test-ova" class="headerlink" title="1.导出OVA -&gt; test.ova"></a>1.导出OVA -&gt; test.ova</h2><h2 id="2-copy到服务器-amp-导入"><a href="#2-copy到服务器-amp-导入" class="headerlink" title="2.copy到服务器&amp;导入"></a>2.copy到服务器&amp;导入</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vm] BoxManage import test.ovf</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="查看虚拟机镜像文件配置信息"><a href="#查看虚拟机镜像文件配置信息" class="headerlink" title="查看虚拟机镜像文件配置信息"></a>查看虚拟机镜像文件配置信息</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vm]# VBoxManage showvminfo HKAirline</span><br><span class="line">Name:            HKAirline</span><br><span class="line">Groups:          /</span><br><span class="line">Guest OS:        Red Hat (64-bit)</span><br><span class="line">UUID:            041f669d-2974-4322-a046-a55903285424</span><br><span class="line">Config file:     /root/VirtualBox VMs/HKAirline/HKAirline.vbox</span><br><span class="line">Snapshot folder: /root/VirtualBox VMs/HKAirline/Snapshots</span><br><span class="line">Log folder:      /root/VirtualBox VMs/HKAirline/Logs</span><br><span class="line">Hardware UUID:   041f669d-2974-4322-a046-a55903285424</span><br><span class="line">Memory size:     2048MB</span><br><span class="line">Page Fusion:     off</span><br><span class="line">VRAM size:       16MB</span><br><span class="line">CPU exec cap:    100%</span><br><span class="line">HPET:            off</span><br><span class="line">Chipset:         piix3</span><br><span class="line">Firmware:        BIOS</span><br><span class="line">Number of CPUs:  1</span><br><span class="line">PAE:             on</span><br><span class="line">Long Mode:       on</span><br><span class="line">Triple Fault Reset: off</span><br><span class="line">APIC:            on</span><br><span class="line">X2APIC:          on</span><br><span class="line">CPUID Portability Level: 0</span><br><span class="line">CPUID overrides: None</span><br><span class="line">Boot menu mode:  message and menu</span><br><span class="line">Boot Device (1): Floppy</span><br><span class="line">Boot Device (2): DVD</span><br><span class="line">Boot Device (3): HardDisk</span><br><span class="line">Boot Device (4): Not Assigned</span><br><span class="line">ACPI:            on</span><br><span class="line">IOAPIC:          on</span><br><span class="line">BIOS APIC mode:  APIC</span><br><span class="line">Time offset:     0ms</span><br><span class="line">RTC:             UTC</span><br><span class="line">Hardw. virt.ext: on</span><br><span class="line">Nested Paging:   on</span><br><span class="line">Large Pages:     on</span><br><span class="line">VT-x VPID:       on</span><br><span class="line">VT-x unr. exec.: on</span><br><span class="line">Paravirt. Provider: Default</span><br><span class="line">Effective Paravirt. Provider: KVM</span><br><span class="line">State:           powered off (since 2017-08-03T11:27:45.000000000)</span><br><span class="line">Monitor count:   1</span><br><span class="line">3D Acceleration: off</span><br><span class="line">2D Video Acceleration: off</span><br><span class="line">Teleporter Enabled: off</span><br><span class="line">Teleporter Port: 0</span><br><span class="line">Teleporter Address:</span><br><span class="line">Teleporter Password:</span><br><span class="line">Tracing Enabled: off</span><br><span class="line">Allow Tracing to Access VM: off</span><br><span class="line">Tracing Configuration:</span><br><span class="line">Autostart Enabled: off</span><br><span class="line">Autostart Delay: 0</span><br><span class="line">Default Frontend:</span><br><span class="line">Storage Controller Name (0):            IDE</span><br><span class="line">Storage Controller Type (0):            PIIX4</span><br><span class="line">Storage Controller Instance Number (0): 0</span><br><span class="line">Storage Controller Max Port Count (0):  2</span><br><span class="line">Storage Controller Port Count (0):      2</span><br><span class="line">Storage Controller Bootable (0):        on</span><br><span class="line">Storage Controller Name (1):            SATA</span><br><span class="line">Storage Controller Type (1):            IntelAhci</span><br><span class="line">Storage Controller Instance Number (1): 0</span><br><span class="line">Storage Controller Max Port Count (1):  30</span><br><span class="line">Storage Controller Port Count (1):      2</span><br><span class="line">Storage Controller Bootable (1):        on</span><br><span class="line">IDE (1, 0): Empty</span><br><span class="line">SATA (0, 0): /root/VirtualBox VMs/HKAirline/HKAirline-disk001.vmdk (UUID: 6afa88f3-3035-4aa5-a940-f6ec43bc56bb)</span><br><span class="line">NIC 1:           MAC: 0800274D5932, Attachment: Bridged Interface &#x27;eth0&#x27;, Cable connected: on, Trace: off (file: none), Type: 82540EM, Reported speed: 0 Mbps, Boot priority: 0, Promisc Policy: deny, Bandwidth group: none</span><br><span class="line">NIC 2:           MAC: 0800279B57E7, Attachment: Bridged Interface &#x27;eth0&#x27;, Cable connected: on, Trace: off (file: none), Type: 82540EM, Reported speed: 0 Mbps, Boot priority: 0, Promisc Policy: deny, Bandwidth group: none</span><br><span class="line">NIC 3:           MAC: 080027716E47, Attachment: Bridged Interface &#x27;eth0&#x27;, Cable connected: on, Trace: off (file: none), Type: 82540EM, Reported speed: 0 Mbps, Boot priority: 0, Promisc Policy: deny, Bandwidth group: none</span><br><span class="line">NIC 4:           MAC: 080027C363BB, Attachment: Bridged Interface &#x27;eth0&#x27;, Cable connected: on, Trace: off (file: none), Type: 82540EM, Reported speed: 0 Mbps, Boot priority: 0, Promisc Policy: deny, Bandwidth group: none</span><br><span class="line">NIC 5:           disabled</span><br><span class="line">NIC 6:           disabled</span><br><span class="line">NIC 7:           disabled</span><br><span class="line">NIC 8:           disabled</span><br><span class="line">Pointing Device: PS/2 Mouse</span><br><span class="line">Keyboard Device: PS/2 Keyboard</span><br><span class="line">UART 1:          disabled</span><br><span class="line">UART 2:          disabled</span><br><span class="line">UART 3:          disabled</span><br><span class="line">UART 4:          disabled</span><br><span class="line">LPT 1:           disabled</span><br><span class="line">LPT 2:           disabled</span><br><span class="line">Audio:           enabled (Driver: ALSA, Controller: AC97, Codec: AD1980)</span><br><span class="line">Clipboard Mode:  disabled</span><br><span class="line">Drag and drop Mode: disabled</span><br><span class="line">VRDE:            enabled (Address 0.0.0.0, Ports 3389, MultiConn: off, ReuseSingleConn: off, Authentication type: external)</span><br><span class="line">Video redirection: disabled</span><br><span class="line">VRDE property: TCP/Ports  = &quot;3389&quot;</span><br><span class="line">VRDE property: TCP/Address = &lt;not set&gt;</span><br><span class="line">VRDE property: VideoChannel/Enabled = &lt;not set&gt;</span><br><span class="line">VRDE property: VideoChannel/Quality = &lt;not set&gt;</span><br><span class="line">VRDE property: VideoChannel/DownscaleProtection = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableDisplay = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableInput = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableAudio = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableUSB = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableClipboard = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableUpstreamAudio = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableRDPDR = &lt;not set&gt;</span><br><span class="line">VRDE property: H3DRedirect/Enabled = &lt;not set&gt;</span><br><span class="line">VRDE property: Security/Method = &lt;not set&gt;</span><br><span class="line">VRDE property: Security/ServerCertificate = &lt;not set&gt;</span><br><span class="line">VRDE property: Security/ServerPrivateKey = &lt;not set&gt;</span><br><span class="line">VRDE property: Security/CACertificate = &lt;not set&gt;</span><br><span class="line">VRDE property: Audio/RateCorrectionMode = &lt;not set&gt;</span><br><span class="line">VRDE property: Audio/LogPath = &lt;not set&gt;</span><br><span class="line">USB:             enabled</span><br><span class="line">EHCI:            disabled</span><br><span class="line">XHCI:            disabled</span><br><span class="line"></span><br><span class="line">USB Device Filters:</span><br><span class="line"></span><br><span class="line">&lt;none&gt;</span><br><span class="line"></span><br><span class="line">Bandwidth groups:  &lt;none&gt;</span><br><span class="line"></span><br><span class="line">Shared folders:  &lt;none&gt;</span><br><span class="line"></span><br><span class="line">Video capturing:    not active</span><br><span class="line">Capture screens:    0</span><br><span class="line">Capture file:       /root/VirtualBox VMs/HKAirline/HKAirline.webm</span><br><span class="line">Capture dimensions: 1024x768</span><br><span class="line">Capture rate:       512 kbps</span><br><span class="line">Capture FPS:        25</span><br><span class="line"></span><br><span class="line">Guest:</span><br><span class="line"></span><br><span class="line">Configured memory balloon size:      0 MB</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-检查服务器的网卡名称"><a href="#3-检查服务器的网卡名称" class="headerlink" title="3.检查服务器的网卡名称"></a>3.检查服务器的网卡名称</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost var]# ifconfig</span><br><span class="line">enp3s0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 11.0.0.30  netmask 255.255.255.0  broadcast 11.0.0.255</span><br><span class="line">        inet6 fe80::7627:eaff:fe0b:cbdd  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 74:27:ea:0b:cb:dd  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 1176518  bytes 1473593219 (1.3 GiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 629933  bytes 45138166 (43.0 MiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;</span><br><span class="line">        loop  txqueuelen 0  (Local Loopback)</span><br><span class="line">        RX packets 83  bytes 7928 (7.7 KiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 83  bytes 7928 (7.7 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="5-启动网卡配置"><a href="#5-启动网卡配置" class="headerlink" title="5. 启动网卡配置"></a>5. 启动网卡配置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/lib/virtualbox/vboxdrv.sh setup</span><br></pre></td></tr></table></figure>
+<h3 id="5-1-安装内核"><a href="#5-1-安装内核" class="headerlink" title="5.1 安装内核"></a>5.1 安装内核</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum install kernel-headers-$(uname -r)</span><br><span class="line">Loaded plugins: fastestmirror</span><br><span class="line">Loading mirror speeds from cached hostfile</span><br><span class="line"> * base: mirror.bit.edu.cn</span><br><span class="line"> * epel: mirrors.tuna.tsinghua.edu.cn</span><br><span class="line"> * extras: mirrors.btte.net</span><br><span class="line"> * updates: mirror.bit.edu.cn</span><br><span class="line">No package kernel-headers-3.10.0-327.el7.x86_64 available.</span><br><span class="line">Error: Nothing to do</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-查看内核"><a href="#5-2-查看内核" class="headerlink" title="5.2 查看内核"></a>5.2 查看内核</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# uname -a</span><br><span class="line">Linux localhost.localdomain 3.10.0-327.el7.x86_64 #1 SMP Thu Nov 19 22:10:57 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="5-3-下载匹配内核"><a href="#5-3-下载匹配内核" class="headerlink" title="5.3 下载匹配内核"></a>5.3 下载匹配内核</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# wget ftp://ftp.pbone.net/mirror/ftp.scientificlinux.org/linux/scientific/7.0/x86_64/updates/security/kernel-devel-3.10.0-</span><br><span class="line">327.el7.x86_64.rpm</span><br><span class="line">--2017-08-03 09:00:48--  ftp://ftp.pbone.net/mirror/ftp.scientificlinux.org/linux/scientific/7.0/x86_64/updates/security/kernel-devel-3.10.0-327.el7.x86_64.rpm</span><br><span class="line">           =&gt; ‘kernel-devel-3.10.0-327.el7.x86_64.rpm.1’</span><br><span class="line">Resolving ftp.pbone.net (ftp.pbone.net)... 85.14.85.4</span><br><span class="line">Connecting to ftp.pbone.net (ftp.pbone.net)|85.14.85.4|:21... connected.</span><br><span class="line">Logging in as anonymous ... Logged in!</span><br><span class="line">==&gt; SYST ... done.    ==&gt; PWD ... done.</span><br><span class="line">==&gt; TYPE I ... done.  ==&gt; CWD (1) /mirror/ftp.scientificlinux.org/linux/scientific/7.0/x86_64/updates/security ... done.</span><br><span class="line">==&gt; SIZE kernel-devel-3.10.0-327.el7.x86_64.rpm ... 11470260</span><br><span class="line">==&gt; PASV ... done.    ==&gt; RETR kernel-devel-3.10.0-327.el7.x86_64.rpm ... done.</span><br><span class="line">Length: 11470260 (11M) (unauthoritative)</span><br><span class="line"></span><br><span class="line">100%[====================================================================================================&gt;] 11,470,260   603KB/s   in 28s    </span><br><span class="line"></span><br><span class="line">2017-08-03 09:01:21 (406 KB/s) - ‘kernel-devel-3.10.0-327.el7.x86_64.rpm’ saved [11470260]</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install make gcc libpcap libpcap-devel -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>通过如下命令直接安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh kernel-devel-3.10.0-327.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<p>如果系统已经安装了较高版本的内核头文件，则需要通过如下命令实现降级：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh --oldpackage kernel-devel-3.10.0-327.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看Bradge接口"><a href="#查看Bradge接口" class="headerlink" title="查看Bradge接口"></a>查看Bradge接口</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vm]# VBoxManage list bridgedifs</span><br><span class="line">Name:            enp3s0</span><br><span class="line">GUID:            33706e65-3073-4000-8000-7427ea0bcbdd</span><br><span class="line">DHCP:            Disabled</span><br><span class="line">IPAddress:       11.0.0.30</span><br><span class="line">NetworkMask:     255.255.255.0</span><br><span class="line">IPV6Address:     fe80:0000:0000:0000:7627:eaff:fe0b:cbdd</span><br><span class="line">IPV6NetworkMaskPrefixLength: 64</span><br><span class="line">HardwareAddress: 74:27:ea:0b:cb:dd</span><br><span class="line">MediumType:      Ethernet</span><br><span class="line">Status:          Up</span><br><span class="line">VBoxNetworkName: HostInterfaceNetworking-enp3s0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="修改网卡设备的名称"><a href="#修改网卡设备的名称" class="headerlink" title="修改网卡设备的名称"></a>修改网卡设备的名称</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vm]# VBoxManage modifyvm HKAirline --bridgeadapter4 enp3s0</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="启动虚拟机"><a href="#启动虚拟机" class="headerlink" title="启动虚拟机"></a>启动虚拟机</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage startvm HKAirline --type headless</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/centos/" rel="tag"># centos</a>
+              <a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" rel="tag"># 命令行</a>
+              <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="tag"># 虚拟机</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/08/02/HOWTO-disable-tmpfs-on-tmp/" rel="prev" title="HOWTO disable tmpfs on /tmp?">
+      <i class="fa fa-chevron-left"></i> HOWTO disable tmpfs on /tmp?
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/08/07/%E5%9C%A8Mac-OS-X%E7%B3%BB%E7%BB%9F%E4%B8%8B-%E7%94%A8dd%E5%91%BD%E4%BB%A4%E5%B0%86iso%E9%95%9C%E5%83%8F%E5%86%99%E5%85%A5u%E7%9B%98/" rel="next" title="在Mac OS X系统下 用dd命令将iso镜像写入u盘">
+      在Mac OS X系统下 用dd命令将iso镜像写入u盘 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AF%BC%E5%87%BAOVA-gt-test-ova"><span class="nav-number">1.</span> <span class="nav-text">1.导出OVA -&gt; test.ova</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-copy%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8-amp-%E5%AF%BC%E5%85%A5"><span class="nav-number">2.</span> <span class="nav-text">2.copy到服务器&amp;导入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%95%9C%E5%83%8F%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="nav-number">3.</span> <span class="nav-text">查看虚拟机镜像文件配置信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%A3%80%E6%9F%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0"><span class="nav-number">4.</span> <span class="nav-text">3.检查服务器的网卡名称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%90%AF%E5%8A%A8%E7%BD%91%E5%8D%A1%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">5. 启动网卡配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E5%AE%89%E8%A3%85%E5%86%85%E6%A0%B8"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 安装内核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E6%9F%A5%E7%9C%8B%E5%86%85%E6%A0%B8"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 查看内核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E4%B8%8B%E8%BD%BD%E5%8C%B9%E9%85%8D%E5%86%85%E6%A0%B8"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 下载匹配内核</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E5%8C%85"><span class="nav-number">5.3.1.</span> <span class="nav-text">安装依赖包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">5.4.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8BBradge%E6%8E%A5%E5%8F%A3"><span class="nav-number">6.</span> <span class="nav-text">查看Bradge接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E8%AE%BE%E5%A4%87%E7%9A%84%E5%90%8D%E7%A7%B0"><span class="nav-number">6.1.</span> <span class="nav-text">修改网卡设备的名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">6.2.</span> <span class="nav-text">启动虚拟机</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hillock"
+      src="https://res.hillock.com.cn/cola.jpg">
+  <p class="site-author-name" itemprop="name">Hillock</p>
+  <div class="site-description" itemprop="description">努力奔跑，向着诗和远方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">170</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">145</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/liuhill" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;liuhill" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:9986778@qq.com" title="E-Mail → mailto:9986778@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/liu-hill" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;liu-hill" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/LiuLig" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;LiuLig" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hillock</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-128x128-bolder.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bolder.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bolder.png">
+  <link rel="mask-icon" href="/images/wulai-bolder.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本文是我学习MySQL官方教程Managing Hierarchical Data in MySQL的笔记 多层数据结构估计所有的web开发者估计都不会陌生，各种软件的分类都是基于多层结构来设计的。 下面是一个典型的多层数据结构示意图：  相关创建数据语句： CREATE TABLE category( category_id INT AUTO_INCREMENT PRIMARY KEY, na">
+<meta property="og:type" content="article">
+<meta property="og:title" content="预排序遍历树算法(modified preorder tree traversal algorithm)">
+<meta property="og:url" content="https://www.wulai.me/2014/12/13/e9-a2-84-e6-8e-92-e5-ba-8f-e9-81-8d-e5-8e-86-e6-a0-91-e7-ae-97-e6-b3-95-e9-9d-9e-e9-80-92-e5-bd-92-e6-97-a0-e9-99-90-e6-9e-81-e5-88-86-e7-b1-bb-e7-ae-97-e6-b3-95-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/index.html">
+<meta property="og:site_name" content="无来">
+<meta property="og:description" content="本文是我学习MySQL官方教程Managing Hierarchical Data in MySQL的笔记 多层数据结构估计所有的web开发者估计都不会陌生，各种软件的分类都是基于多层结构来设计的。 下面是一个典型的多层数据结构示意图：  相关创建数据语句： CREATE TABLE category( category_id INT AUTO_INCREMENT PRIMARY KEY, na">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-be1b6320354e5c0879737b855764e9d920100326152818.png">
+<meta property="og:image" content="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-90ef2a4a3357d5de8e8e0d1bc026294820100326152302.png">
+<meta property="og:image" content="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-a618905c95b8d6aa42cf4c29f7d0546a20100326152746.png">
+<meta property="og:image" content="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-be1b6320354e5c0879737b855764e9d9201003261528181.png">
+<meta property="article:published_time" content="2014-12-13T11:47:24.000Z">
+<meta property="article:modified_time" content="2024-05-30T14:25:48.518Z">
+<meta property="article:author" content="Hillock">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="遍历">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-be1b6320354e5c0879737b855764e9d920100326152818.png">
+
+<link rel="canonical" href="https://www.wulai.me/2014/12/13/e9-a2-84-e6-8e-92-e5-ba-8f-e9-81-8d-e5-8e-86-e6-a0-91-e7-ae-97-e6-b3-95-e9-9d-9e-e9-80-92-e5-bd-92-e6-97-a0-e9-99-90-e6-9e-81-e5-88-86-e7-b1-bb-e7-ae-97-e6-b3-95-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>预排序遍历树算法(modified preorder tree traversal algorithm) | 无来</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81208215-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-81208215-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">无来</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">不管你来还是不来<br />我都在这里，夜夜点亮<br />不是为了守候<br />只是为了做好我自己</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2014/12/13/e9-a2-84-e6-8e-92-e5-ba-8f-e9-81-8d-e5-8e-86-e6-a0-91-e7-ae-97-e6-b3-95-e9-9d-9e-e9-80-92-e5-bd-92-e6-97-a0-e9-99-90-e6-9e-81-e5-88-86-e7-b1-bb-e7-ae-97-e6-b3-95-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          预排序遍历树算法(modified preorder tree traversal algorithm)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-12-13 19:47:24" itemprop="dateCreated datePublished" datetime="2014-12-13T19:47:24+08:00">2014-12-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-05-30 22:25:48" itemprop="dateModified" datetime="2024-05-30T22:25:48+08:00">2024-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><p>本文是我学习MySQL官方教程Managing Hierarchical Data in MySQL的笔记 多层数据结构估计所有的web开发者估计都不会陌生，各种软件的分类都是基于多层结构来设计的。 下面是一个典型的多层数据结构示意图：</p>
+<p><a target="_blank" rel="noopener" href="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-be1b6320354e5c0879737b855764e9d920100326152818.png"><img src="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-be1b6320354e5c0879737b855764e9d920100326152818.png" alt="thum-be1b6320354e5c0879737b855764e9d920100326152818"></a></p>
+<p>相关创建数据语句：</p>
+<pre><code>CREATE TABLE category(
+category_id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(20) NOT NULL,
+parent INT DEFAULT NULL);
+
+INSERT INTO category
+VALUES(1,&apos;ELECTRONICS&apos;,NULL),(2,&apos;TELEVISIONS&apos;,1),(3,&apos;TUBE&apos;,2),
+(4,&apos;LCD&apos;,2),(5,&apos;PLASMA&apos;,2),(6,&apos;PORTABLE ELECTRONICS&apos;,1),
+(7,&apos;MP3 PLAYERS&apos;,6),(8,&apos;FLASH&apos;,7),
+(9,&apos;CD PLAYERS&apos;,6),(10,&apos;2 WAY RADIOS&apos;,6);
+
+SELECT * FROM category ORDER BY category_id;</code></pre><p>在这种数据结构中，各层之间通过字段 parent 来形成邻接表，我们查询某些层级的关系的时候一般都是通过递归的方式，遍历某个层级关系的SQL的查询次数会顺着层级的增加，想想在层级有20的时候，根据某个底层节点取它到顶层节点的查询次数吧。</p>
+<p>为了解决这个问题，人们想出了嵌套集模型（The Nested Set Model），请看下图：</p>
+<p><a target="_blank" rel="noopener" href="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-90ef2a4a3357d5de8e8e0d1bc026294820100326152302.png"><img src="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-90ef2a4a3357d5de8e8e0d1bc026294820100326152302.png" alt="thum-90ef2a4a3357d5de8e8e0d1bc026294820100326152302"></a></p>
+<p>上图依然是表现的与图一相同的层级关系，但是却更换了一种表现形式 下面是新的关系表和数据（关系和数据与之前相同，但是表结构不一样）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE nested_category (</span><br><span class="line">category_id INT AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line">name VARCHAR(20) NOT NULL,</span><br><span class="line">lft INT NOT NULL,</span><br><span class="line">rgt INT NOT NULL,</span><br><span class="line">deleted TINYINT(8)  NOT NULL DEFAULT &#x27;0&#x27;,</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">INSERT INTO nested_category</span><br><span class="line">VALUES(1,&#x27;ELECTRONICS&#x27;,1,20),(2,&#x27;TELEVISIONS&#x27;,2,9),(3,&#x27;TUBE&#x27;,3,4),</span><br><span class="line">(4,&#x27;LCD&#x27;,5,6),(5,&#x27;PLASMA&#x27;,7,8),(6,&#x27;PORTABLE ELECTRONICS&#x27;,10,19),</span><br><span class="line">(7,&#x27;MP3 PLAYERS&#x27;,11,14),(8,&#x27;FLASH&#x27;,12,13),</span><br><span class="line">(9,&#x27;CD PLAYERS&#x27;,15,16),(10,&#x27;2 WAY RADIOS&#x27;,17,18);</span><br><span class="line"></span><br><span class="line">SELECT * FROM nested_category ORDER BY category_id;</span><br></pre></td></tr></table></figure>
+
+<p>这里将 left,right 修改为 lft,rgt因为这两个词在MYSQL中属于关键字 下面我们将插入的数据标识在图上： <a target="_blank" rel="noopener" href="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-a618905c95b8d6aa42cf4c29f7d0546a20100326152746.png"><img src="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-a618905c95b8d6aa42cf4c29f7d0546a20100326152746.png" alt="thum-a618905c95b8d6aa42cf4c29f7d0546a20100326152746"></a> 同样，我们将数据标识在原来的结构上： <a target="_blank" rel="noopener" href="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-be1b6320354e5c0879737b855764e9d9201003261528181.png"><img src="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-be1b6320354e5c0879737b855764e9d9201003261528181.png" alt="thum-be1b6320354e5c0879737b855764e9d920100326152818"></a></p>
+<p>怎么样，是不是很明确了</p>
+<p>下面使我自己标定一种形式，方便理解</p>
+<pre><code>[1
+      [2
+           [3 4]
+           [5 6]
+           [7 8]
+      9]
+      [10
+           [11
+                 [12 13]
+           14]
+           [15 16]
+           [17 18]
+      19]
+20]</code></pre><p>遍历整个树，查询子集 条件：__ 左边 &gt; 父级L，右边 &lt; 父级R __</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT node.name</span><br><span class="line">FROM nested_category AS node,</span><br><span class="line">nested_category AS parent</span><br><span class="line">WHERE node.lft BETWEEN parent.lft AND parent.rgt</span><br><span class="line">AND parent.name = &#x27;ELECTRONICS&#x27;</span><br><span class="line">ORDER BY node.lft;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>查询所有无分支的节点 条件： __ 右边 = 左边L + 1 __</p>
+<pre><code>SELECT name FROM nested_category WHERE rgt = lft + 1;</code></pre></li>
+<li><p>查询某个字节点到根节点的路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT parent.name</span><br><span class="line">FROM nested_category AS node, nested_category AS parent</span><br><span class="line">WHERE</span><br><span class="line">  node.lft BETWEEN parent.lft AND parent.rgt AND</span><br><span class="line">  node.name = &#x27;FLASH&#x27;</span><br><span class="line">ORDER BY parent.lft;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询节点的深度</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT node.name, (COUNT(parent.name) - 1) AS depth</span><br><span class="line">FROM nested_category AS node, nested_category AS parent</span><br><span class="line">WHERE node.lft BETWEEN parent.lft AND parent.rgt</span><br><span class="line">GROUP BY node.name</span><br><span class="line">ORDER BY node.lft;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询子节点的深度</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">SELECT node.name, (COUNT(parent.name) - (sub_tree.depth + 1)) AS depth</span><br><span class="line">FROM</span><br><span class="line">  nested_category AS node,</span><br><span class="line">  nested_category AS parent,</span><br><span class="line">  nested_category AS sub_parent,</span><br><span class="line">  ( SELECT node.name, (COUNT(parent.name) - 1) AS depth</span><br><span class="line">    FROM nested_category AS node, nested_category AS parent</span><br><span class="line">    WHERE</span><br><span class="line">      node.lft BETWEEN parent.lft AND parent.rgt AND</span><br><span class="line">      node.name = &#x27;PORTABLE ELECTRONICS&#x27;</span><br><span class="line">      GROUP BY node.name ORDER BY node.lft</span><br><span class="line">  ) AS sub_tree</span><br><span class="line"></span><br><span class="line">WHERE</span><br><span class="line">  node.lft BETWEEN parent.lft AND parent.rgt AND</span><br><span class="line">  node.lft BETWEEN sub_parent.lft AND sub_parent.rgt AND</span><br><span class="line">  sub_parent.name = sub_tree.name</span><br><span class="line">GROUP BY node.name    </span><br><span class="line">ORDER BY node.lft;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>插入新节点 算法详解：</li>
+</ul>
+<ol>
+<li>所有分类 左边和右边的值 &gt; 插入节点的左边节点记录的右值 的全部 + 2</li>
+</ol>
+<ul>
+<li>插入节点 左值 = 插入位置左边节点记录的右值 + 1， 右值 = 插入位置左边节点记录的右值 + 2   <blockquote>
+<p>例子: 在 R = 9（L8, R9）与 L = 10（L10，R11） 节点之间插入一个新节点 那么所有 左值 和 右值 &gt; 9 的节点的左值和右值需要 + 2<br>例如新节点右边的节点（L10，R11）左值右值都需要 + 2 那么插入后的新值为 L12 R13 新节点的左值为 9 + 1 = 10 右值为 9 + 2 = 11 SQL语句实现</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">LOCK TABLE nested_category WRITE;</span><br><span class="line">SELECT @myRight := rgt FROM nested_category</span><br><span class="line">WHERE name = &#x27;TELEVISIONS&#x27;;</span><br><span class="line">UPDATE nested_category SET rgt = rgt + 2 WHERE rgt &gt; @myRight;</span><br><span class="line">UPDATE nested_category SET lft = lft + 2 WHERE lft &gt; @myRight;</span><br><span class="line">INSERT INTO nested_category(name, lft, rgt)</span><br><span class="line">  VALUES(&#x27;GAME CONSOLES&#x27;, @myRight + 1, @myRight + 2);</span><br><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除新节点 删除节点的算法与添加一个节点的算法相反</li>
+</ul>
+<ul>
+<li>删除一个没有子节点的节点</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LOCK TABLE nested_category WRITE;</span><br><span class="line">SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft + 1 FROM nested_category WHERE name = &#x27;GAME CONSOLES&#x27;;</span><br><span class="line">DELETE FROM nested_category WHERE lft BETWEEN @myLeft AND @myRight;</span><br><span class="line">UPDATE nested_category SET rgt = rgt - @myWidth WHERE rgt &gt; @myRight;</span><br><span class="line">UPDATE nested_category SET lft = lft - @myWidth WHERE lft &gt; @myRight;</span><br><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除一个分支节点和它所有的子节点</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LOCK TABLE nested_category WRITE;</span><br><span class="line">SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft + 1 FROM nested_category WHERE name = &#x27;MP3 PLAYERS&#x27;;</span><br><span class="line">DELETE FROM nested_category WHERE lft BETWEEN @myLeft AND @myRight;</span><br><span class="line">UPDATE nested_category SET rgt = rgt - @myWidth WHERE rgt &gt; @myRight;</span><br><span class="line">UPDATE nested_category SET lft = lft - @myWidth WHERE lft &gt; @myRight;</span><br><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除一个节点后移动其字节点到</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LOCK TABLE nested_category WRITE;</span><br><span class="line">SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft + 1 FROM nested_category WHERE name = &#x27;PORTABLE ELECTRONICS&#x27;;</span><br><span class="line">DELETE FROM nested_category WHERE lft = @myLeft;</span><br><span class="line">UPDATE nested_category SET rgt = rgt - 1, lft = lft - 1 WHERE lft BETWEEN @myLeft AND @myRight;</span><br><span class="line">UPDATE nested_category SET rgt = rgt - 2 WHERE rgt &gt; @myRight;</span><br><span class="line">UPDATE nested_category SET lft = lft - 2 WHERE lft &gt; @myRight;</span><br><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
+
+<h3 id="补充：移动一个分类"><a href="#补充：移动一个分类" class="headerlink" title="补充：移动一个分类"></a>补充：移动一个分类</h3><p>将分类5移动到分类9下面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">LOCK TABLE nested_category WRITE;</span><br><span class="line">SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft + 1</span><br><span class="line">FROM nested_category</span><br><span class="line">WHERE  category_id = 5;</span><br><span class="line">UPDATE nested_category SET deleted=2 WHERE lft BETWEEN @myLeft AND @myRight;</span><br><span class="line">UPDATE nested_category SET rgt = rgt - @myWidth WHERE rgt &gt; @myRight AND deleted=0;</span><br><span class="line">UPDATE nested_category SET lft = lft - @myWidth WHERE lft &gt; @myRight AND deleted=0;</span><br><span class="line"></span><br><span class="line">SELECT @destLeft := lft,@destRight := rgt FROM nested_category WHERE  category_id = 9;</span><br><span class="line"></span><br><span class="line">UPDATE nested_category SET rgt = rgt + @myWidth WHERE rgt &gt; @destRight AND deleted=0;</span><br><span class="line">UPDATE nested_category SET lft = lft + @myWidth WHERE lft &gt; @destRight AND deleted=0;</span><br><span class="line"></span><br><span class="line">UPDATE nested_category SET rgt = rgt -(@myLeft-@destRight) WHERE deleted=2;</span><br><span class="line">UPDATE nested_category SET lft = lft -(@myLeft-@destRight) WHERE deleted=2;</span><br><span class="line">UPDATE nested_category SET rgt = rgt + @myWidth WHERE category_id = 9;</span><br><span class="line">UPDATE nested_category SET deleted=0 WHERE  deleted=2;</span><br><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
+
+<p>将分类5移动到分类9前面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft + 1 FROM nested_category WHERE  category_id = 5;</span><br><span class="line">UPDATE nested_category SET deleted=2 WHERE lft BETWEEN @myLeft AND @myRight;</span><br><span class="line">UPDATE nested_category SET rgt = rgt - @myWidth WHERE rgt &gt; @myRight AND deleted=0;</span><br><span class="line">UPDATE nested_category SET lft = lft - @myWidth WHERE lft &gt; @myRight AND deleted=0;</span><br><span class="line"></span><br><span class="line">SELECT @destLeft := lft,@destRight := rgt FROM nested_category WHERE  category_id = 9;</span><br><span class="line"></span><br><span class="line">UPDATE nested_category SET rgt = rgt + @myWidth WHERE rgt &gt;= @destLeft  AND deleted=0;</span><br><span class="line">UPDATE nested_category SET lft = lft + @myWidth WHERE lft &gt;= @destLeft AND deleted=0;</span><br><span class="line"></span><br><span class="line">UPDATE nested_category SET rgt = rgt -(@myLeft-@destRight) WHERE deleted=2;</span><br><span class="line">UPDATE nested_category SET lft = lft -(@myLeft-@destRight) WHERE deleted=2;</span><br><span class="line">UPDATE nested_category SET deleted=0 WHERE  deleted=2;</span><br><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>预排序遍历树算法的核心就是牺牲了写的性能来换取读取的性能 在你的开发的应用遇到此类问题的时 <strong>（读压力 &gt; 写压力）</strong>，尝试下使用预排序遍历树算法来提高你的程序的性能吧。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/mysql/" rel="tag"># mysql</a>
+              <a href="/tags/%E9%81%8D%E5%8E%86/" rel="tag"># 遍历</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2014/12/05/nginx-e5-85-a8-e5-b1-80-e5-8f-98-e9-87-8f-e5-af-b9-e7-85-a7/" rel="prev" title="nginx 全局变量对照">
+      <i class="fa fa-chevron-left"></i> nginx 全局变量对照
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2014/12/19/php-echo-e6-88-96-e8-80-85exit-e8-be-93-e5-87-ba-e4-b8-ad-e6-96-87/" rel="next" title="php echo或者exit输出中文">
+      php echo或者exit输出中文 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%EF%BC%9A%E7%A7%BB%E5%8A%A8%E4%B8%80%E4%B8%AA%E5%88%86%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">补充：移动一个分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">总结：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hillock"
+      src="https://res.hillock.com.cn/cola.jpg">
+  <p class="site-author-name" itemprop="name">Hillock</p>
+  <div class="site-description" itemprop="description">努力奔跑，向着诗和远方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">170</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">145</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/liuhill" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;liuhill" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:9986778@qq.com" title="E-Mail → mailto:9986778@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/liu-hill" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;liu-hill" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/LiuLig" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;LiuLig" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hillock</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

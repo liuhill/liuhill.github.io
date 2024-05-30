@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-128x128-bolder.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bolder.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bolder.png">
+  <link rel="mask-icon" href="/images/wulai-bolder.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="原文: (今日头条、抖音推荐算法原理全文详解) https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;e0KgNOn3vIKn-nc1l-XBqw 1、系统概览1.1）推荐系统推荐系统就是拟合一个用户对内容满意度的函数，这个函数需要输入三个维度的变量：  内容特征：提取不同内容类型的特征做好推荐。 用户特征：兴趣标签，职业、年龄、性别等。 环境特征：在工作场合、通勤、旅游等不同的场景，信息偏好有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="今日头条、抖音推荐算法原理全文详解--笔记">
+<meta property="og:url" content="https://www.wulai.me/2019/11/06/%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1%E3%80%81%E6%8A%96%E9%9F%B3%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%85%A8%E6%96%87%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="无来">
+<meta property="og:description" content="原文: (今日头条、抖音推荐算法原理全文详解) https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;e0KgNOn3vIKn-nc1l-XBqw 1、系统概览1.1）推荐系统推荐系统就是拟合一个用户对内容满意度的函数，这个函数需要输入三个维度的变量：  内容特征：提取不同内容类型的特征做好推荐。 用户特征：兴趣标签，职业、年龄、性别等。 环境特征：在工作场合、通勤、旅游等不同的场景，信息偏好有">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://res.hillock.com.cn/wulai/images/今日头条/推荐系统函数匹配.webp">
+<meta property="og:image" content="https://res.hillock.com.cn/wulai/images/今日头条/今日头条-内容安全机制.webp">
+<meta property="article:published_time" content="2019-11-06T03:10:37.000Z">
+<meta property="article:modified_time" content="2024-05-30T14:25:48.513Z">
+<meta property="article:author" content="Hillock">
+<meta property="article:tag" content="推荐系统">
+<meta property="article:tag" content="今日头条">
+<meta property="article:tag" content="抖音">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://res.hillock.com.cn/wulai/images/今日头条/推荐系统函数匹配.webp">
+
+<link rel="canonical" href="https://www.wulai.me/2019/11/06/%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1%E3%80%81%E6%8A%96%E9%9F%B3%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%85%A8%E6%96%87%E8%AF%A6%E8%A7%A3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>今日头条、抖音推荐算法原理全文详解--笔记 | 无来</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81208215-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-81208215-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">无来</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">不管你来还是不来<br />我都在这里，夜夜点亮<br />不是为了守候<br />只是为了做好我自己</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2019/11/06/%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1%E3%80%81%E6%8A%96%E9%9F%B3%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%85%A8%E6%96%87%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          今日头条、抖音推荐算法原理全文详解--笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-06 11:10:37" itemprop="dateCreated datePublished" datetime="2019-11-06T11:10:37+08:00">2019-11-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-05-30 22:25:48" itemprop="dateModified" datetime="2024-05-30T22:25:48+08:00">2024-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><p><em>原文:</em> (今日头条、抖音推荐算法原理全文详解) <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/e0KgNOn3vIKn-nc1l-XBqw">https://mp.weixin.qq.com/s/e0KgNOn3vIKn-nc1l-XBqw</a></p>
+<h2 id="1、系统概览"><a href="#1、系统概览" class="headerlink" title="1、系统概览"></a>1、系统概览</h2><h3 id="1-1）推荐系统"><a href="#1-1）推荐系统" class="headerlink" title="1.1）推荐系统"></a>1.1）推荐系统</h3><p>推荐系统就是拟合一个用户对内容满意度的函数，这个函数需要输入三个维度的变量：</p>
+<ul>
+<li>内容特征：提取不同内容类型的特征做好推荐。</li>
+<li>用户特征：兴趣标签，职业、年龄、性别等。</li>
+<li>环境特征：在工作场合、通勤、旅游等不同的场景，信息偏好有所偏移。<img title="推荐系统匹配函数" alt="推荐系统匹配函数" src="https://res.hillock.com.cn/wulai/images/今日头条/推荐系统函数匹配.webp">
+
+</li>
+</ul>
+<h3 id="1-2）推荐系统的目标"><a href="#1-2）推荐系统的目标" class="headerlink" title="1.2）推荐系统的目标"></a>1.2）推荐系统的目标</h3><ul>
+<li>可量化目标：点击率、阅读时间、点赞、评论、转发包括点赞</li>
+<li>无法直接衡量的目标<ul>
+<li>广告&amp;特型内容频控</li>
+<li>低俗内容打压&amp;频控</li>
+<li>标题党，低质，恶心内容打压</li>
+<li>重要新闻置顶&amp;强插&amp;加权</li>
+<li>低级别账号内容降权</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3）典型推荐算法"><a href="#1-3）典型推荐算法" class="headerlink" title="1.3）典型推荐算法"></a>1.3）典型推荐算法</h3><ul>
+<li>协同过滤模型</li>
+<li>监督学习算法Logistic Regression模型</li>
+<li>基于深度学习的模型</li>
+<li>Factorization Machine</li>
+<li>GBDT</li>
+</ul>
+<p><em>注：需要非常灵活的算法实验平台，可以支持多种算法组合，包括模型结构调整。</em></p>
+<h3 id="1-4）推荐特征"><a href="#1-4）推荐特征" class="headerlink" title="1.4）推荐特征"></a>1.4）推荐特征</h3><ul>
+<li>第一类是相关性特征</li>
+</ul>
+<p>评估内容的属性和与用户是否匹配.<code>显性的匹配</code>包括关键词匹配、分类匹配、来源匹配、主题匹配等.<code>隐性匹配</code>从用户向量与内容向量的距离可以得出,如FM模型。</p>
+<ul>
+<li>第二类是环境特征</li>
+</ul>
+<p>包括地理位置、时间。这些既是bias特征，也能以此构建一些匹配特征。</p>
+<ul>
+<li>第三类是热度特征</li>
+</ul>
+<p>包括全局热度、分类热度，主题热度，以及关键词热度等。内容热度信息在大的推荐系统特别在用户冷启动的时候非常有效。</p>
+<ul>
+<li>第四类是协同特征</li>
+</ul>
+<p>它可以在部分程度上帮助解决所谓算法越推越窄的问题。通过用户行为分析不同用户间相似性，比如点击相似、兴趣分类相似、主题相似、兴趣词相似，甚至向量相似，从而扩展模型的探索能力。</p>
+<h3 id="1-5）模型训练"><a href="#1-5）模型训练" class="headerlink" title="1.5）模型训练"></a>1.5）模型训练</h3><ol>
+<li>线上服务器记录实时特征</li>
+<li>导入到Kafka文件队列中</li>
+<li>客户端回传推荐的label构造训练样本</li>
+<li>根据最新样本进行在线训练更新模型参数</li>
+<li>线上模型得到更新</li>
+</ol>
+<h3 id="1-6）召回策略"><a href="#1-6）召回策略" class="headerlink" title="1.6）召回策略"></a>1.6）召回策略</h3><ul>
+<li>为什么需要召回策略？<ul>
+<li>内容量非常大，加上小视频内容有千万级别，推荐系统不可能所有内容全部由模型预估。</li>
+<li>召回策略，每次推荐时从海量内容中筛选出千级别的内容库</li>
+<li>召回策略最重要的要求是性能要极致，一般超时不能超过50毫秒</li>
+</ul>
+</li>
+<li>召回策略的方案<ul>
+<li>离线维护一个倒排。key可以是分类，topic，实体，来源等。</li>
+<li>排序考虑热度、新鲜度、动作等</li>
+<li>线上召回可以迅速从倒排中根据用户兴趣标签对内容做截断，高效的从很大的内容库中筛选比较靠谱的一小部分内容</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-7）推荐系统的数据依赖"><a href="#1-7）推荐系统的数据依赖" class="headerlink" title="1.7）推荐系统的数据依赖"></a>1.7）推荐系统的数据依赖</h3><ul>
+<li>推荐模型的特征抽取需要用户侧和内容侧的各种标签。</li>
+<li>召回侧需要获取用户侧和内容侧的各种标签。</li>
+<li>内容分析和用户标签挖掘是搭建推荐系统的基石。</li>
+</ul>
+<h2 id="2、内容分析"><a href="#2、内容分析" class="headerlink" title="2、内容分析"></a>2、内容分析</h2><h3 id="2-1-文本分析"><a href="#2-1-文本分析" class="headerlink" title="2.1 文本分析"></a>2.1 文本分析</h3><ul>
+<li>推荐系统的应用<ul>
+<li>用户兴趣建模（user profile）: 如：给喜欢阅读”互联网”文章打上“互联网”标签。</li>
+<li>帮助内容推荐: “魅族”的内容推荐给关心“魅族”的用户</li>
+<li>生成频道内容: “德甲”的内容进“德甲频道”</li>
+</ul>
+</li>
+<li>今日头条抽取的文本特征<ul>
+<li>语义标签类特征<ul>
+<li>显式语义特征: 为文章打上语义标签。这部分标签是由人定义的特征，每个标签有明确的意义，标签体系是预定义的。</li>
+<li>隐式语义特征：主要是topic特征和关键词特征，其中topic特征是对于词概率分布的描述，无明确意义；而关键词特征会基于一些统一特征描述，无明确集合。</li>
+</ul>
+</li>
+<li>文本相似度特征: 用户反馈最大的问题之一就是为什么总推荐重复的内容。这个问题的难点在于，每个人对重复的定义不一样。</li>
+<li>质量相关特征: 判断内容是否低俗，色情，是否是软文，鸡汤？</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-头条语义标签的-特征-amp-使用场景"><a href="#2-2-头条语义标签的-特征-amp-使用场景" class="headerlink" title="2.2 头条语义标签的 特征 &amp; 使用场景"></a>2.2 头条语义标签的 特征 &amp; 使用场景</h3><ul>
+<li>分类：user profile; 过滤频道内容； 推荐召回； 推荐特征</li>
+<li>概念：过滤频道内容； 标签搜索；推荐召回（Like）</li>
+<li>实体：过滤频道内容；标签搜索；推荐召回（Like）</li>
+</ul>
+<h3 id="2-3-标签分层"><a href="#2-3-标签分层" class="headerlink" title="2.3 标签分层"></a>2.3 标签分层</h3><ul>
+<li>每个层级粒度不一样，要求也有区别</li>
+<li>分类体系要求覆盖全，希望任何一篇文章，总能找到合适的分类，精确性要求不高</li>
+<li>实体体系不要求覆盖全，只要覆盖每个领域人们的人物、机构，作品，产品即可</li>
+<li>概念体系负责表达比较精确，但是有属于抽象概念的语义，也不要求覆盖全</li>
+</ul>
+<blockquote>
+<p>分类的目标是覆盖全面，希望每篇内容每段视频都有分类；而实体体系要求精准，相同名字或内容要能明确区分究竟指代哪一个人或物，但不用覆盖很全。</p>
+</blockquote>
+<blockquote>
+<p>概念体系则负责解决比较精确又属于抽象概念的语义。</p>
+</blockquote>
+<h3 id="2-4-为什么要语义标签"><a href="#2-4-为什么要语义标签" class="headerlink" title="2.4 为什么要语义标签"></a>2.4 为什么要语义标签</h3><p>优点：</p>
+<ul>
+<li>隐式语义特征已经可以很好的帮助推荐</li>
+<li>语义标签做好的难度和资源投入远大于隐式语义特征<br>缺点：</li>
+<li>频道，兴趣表达等重要产品功能需要有一个有明确定义，容易理解的文本标签体系。</li>
+<li>语义标签的效果是检查一个公司NLP技术水平的试金石</li>
+</ul>
+<p><em>语义标签的效果是检查一个公司NLP技术水平的试金石。</em></p>
+<ul>
+<li>元分类器类型: SVM、CNN、RNN</li>
+</ul>
+<h3 id="2-2-图片分析"><a href="#2-2-图片分析" class="headerlink" title="2.2 图片分析"></a>2.2 图片分析</h3><h3 id="2-3-视频分析"><a href="#2-3-视频分析" class="headerlink" title="2.3 视频分析"></a>2.3 视频分析</h3><h2 id="3、用户标签"><a href="#3、用户标签" class="headerlink" title="3、用户标签"></a>3、用户标签</h2><h3 id="3-1-兴趣特征"><a href="#3-1-兴趣特征" class="headerlink" title="3.1 兴趣特征"></a>3.1 兴趣特征</h3><ul>
+<li>感兴趣的类别和主题</li>
+<li>感兴趣的关键词</li>
+<li>感兴趣的来源</li>
+<li>基于感兴趣额的用户聚类</li>
+<li>各种垂直兴趣特征（车型，体育球队，股票等）</li>
+</ul>
+<h3 id="3-2-身份特征"><a href="#3-2-身份特征" class="headerlink" title="3.2 身份特征"></a>3.2 身份特征</h3><ul>
+<li>性别</li>
+</ul>
+<p>性别信息通过用户第三方社交账号登录得到</p>
+<ul>
+<li>年龄</li>
+</ul>
+<p>年龄信息通常由模型预测，通过机型、阅读时间分布等预估。</p>
+<ul>
+<li>常驻点</li>
+</ul>
+<p>常驻地点来自用户授权访问位置信息，在位置信息的基础上通过传统聚类的方法拿到常驻点。<br>常驻点结合其他信息，可以推测用户的工作地点、出差地点、旅游地点。</p>
+<h3 id="3-3-行为特征"><a href="#3-3-行为特征" class="headerlink" title="3.3 行为特征"></a>3.3 行为特征</h3><ul>
+<li>晚上才看电视</li>
+<li>打开手机时间</li>
+</ul>
+<h3 id="3-4-对浏览内容标签进行数据处理策略"><a href="#3-4-对浏览内容标签进行数据处理策略" class="headerlink" title="3.4 对浏览内容标签进行数据处理策略"></a>3.4 对浏览内容标签进行数据处理策略</h3><ul>
+<li>过滤噪声。通过停留时间短的点击，过滤标题党。</li>
+<li>热点惩罚。对用户在一些热门文章（如前段时间PG One的新闻）上的动作做降权处理。理论上，传播范围较大的内容，置信度会下降。</li>
+<li>时间衰减。用户兴趣会发生偏移，因此策略更偏向新的用户行为。因此，随着用户动作的增加，老的特征权重会随时间衰减，新动作贡献的特征权重会更大。</li>
+<li>惩罚展现。如果一篇推荐给用户的文章没有被点击，相关特征（类别，关键词，来源）权重会被惩罚。当然同时，也要考虑全局背景，是不是相关内容推送比较多，以及相关的关闭和dislike信号等。</li>
+</ul>
+<h3 id="3-5-用户标签挖掘"><a href="#3-5-用户标签挖掘" class="headerlink" title="3.5 用户标签挖掘"></a>3.5 用户标签挖掘</h3><ul>
+<li><p>第一版: 用户标签批量计算框架</p>
+<ol>
+<li>Scribe收集原始日志</li>
+<li>导入Kafka文件队列</li>
+<li>导入Hadoop集群</li>
+<li>MapReduce Job批量计算</li>
+<li>写入高性能分布式存储系统</li>
+<li>线上读取高性能分布式存储系统</li>
+</ol>
+</li>
+<li><p>第二版: 用户标签流式计算框架</p>
+<ol>
+<li>Scribe收集原始日志</li>
+<li>导入Kafka文件队列</li>
+<li>导入Storm集群</li>
+<li>从高性能存储系统读取base</li>
+<li>基于动作bath更新用户模型</li>
+<li>线上直接读取高性能存储系统</li>
+</ol>
+</li>
+<li><p>流式计算和批量计算混合使用</p>
+<ul>
+<li><p>大部分user profile采用流式计算</p>
+<ul>
+<li>各个粒度的兴趣标签</li>
+<li>垂直领域profile</li>
+</ul>
+</li>
+<li><p>对时效性不敏感的user profile采用Batch计算</p>
+<ul>
+<li>性别，年龄</li>
+<li>常驻地点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="4、评估更新"><a href="#4、评估更新" class="headerlink" title="4、评估更新"></a>4、评估更新</h2><p><code>一个事情没法评估就没法优化</code></p>
+<h3 id="4-1-对推荐系统产生影响的因数"><a href="#4-1-对推荐系统产生影响的因数" class="headerlink" title="4.1 对推荐系统产生影响的因数"></a>4.1 对推荐系统产生影响的因数</h3><ul>
+<li>候选内容集合的变化</li>
+<li>召回模块的改进和增加</li>
+<li>推荐特征的增加</li>
+<li>推荐系统架构的改进</li>
+<li>算法参数的优化</li>
+<li>规则策略的改变</li>
+</ul>
+<h3 id="4-2-评估系统要求"><a href="#4-2-评估系统要求" class="headerlink" title="4.2 评估系统要求"></a>4.2 评估系统要求</h3><ul>
+<li>完备的评估系统</li>
+<li>强大的实验平台</li>
+<li>易用的实验分析工具</li>
+</ul>
+<h3 id="4-3-推荐系统评估需要注意的问题"><a href="#4-3-推荐系统评估需要注意的问题" class="headerlink" title="4.3 推荐系统评估需要注意的问题"></a>4.3 推荐系统评估需要注意的问题</h3><ul>
+<li>兼顾短期指标与长期指标</li>
+<li>要兼顾用户指标和生态指标</li>
+<li>注意协同效应的影响，有时候需要彻底的统计隔离</li>
+</ul>
+<h3 id="4-4-强大实验平台的优点"><a href="#4-4-强大实验平台的优点" class="headerlink" title="4.4 强大实验平台的优点"></a>4.4 强大实验平台的优点</h3><ul>
+<li>同时在线的实验多: 每天数百个</li>
+<li>高效管理和分配实验流量</li>
+<li>降低实验，分析成本，提高算法迭代效率</li>
+</ul>
+<h3 id="4-5-人工抽样评估分析"><a href="#4-5-人工抽样评估分析" class="headerlink" title="4.5 人工抽样评估分析"></a>4.5 人工抽样评估分析</h3><ul>
+<li>线上实验平台只能通过指标变化推测用户体验</li>
+<li>数据指标和用户体验存在差异</li>
+<li>重大改进需要人工评估二次确认</li>
+<li>头条利用内部和外包团队进行例行的人工抽样评估</li>
+</ul>
+<h2 id="5-内容安全"><a href="#5-内容安全" class="headerlink" title="5 内容安全"></a>5 内容安全</h2><h3 id="5-1-头条内容安全机制"><a href="#5-1-头条内容安全机制" class="headerlink" title="5.1 头条内容安全机制"></a>5.1 头条内容安全机制</h3><img title="内容安全机制" alt="内容安全机制" src="https://res.hillock.com.cn/wulai/images/今日头条/今日头条-内容安全机制.webp">
+
+<h3 id="5-2-分享内容识别技术"><a href="#5-2-分享内容识别技术" class="headerlink" title="5.2 分享内容识别技术"></a>5.2 分享内容识别技术</h3><ul>
+<li>鉴黄模型</li>
+<li>谩骂模型</li>
+<li>低俗模型</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注重召回率，准确率甚至可以牺牲一些。谩骂模型的样本库同样超过百万，召回率高达95%+，准确率80%+。如果用户经常出言不讳或者不当的评论，我们有一些惩罚机制。</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-泛低质内容识别技术"><a href="#5-3-泛低质内容识别技术" class="headerlink" title="5.3 泛低质内容识别技术"></a>5.3 泛低质内容识别技术</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">像假新闻、黑稿、题文不符、标题党、内容质量低等等，这部分内容由机器理解是非常难的，需要大量反馈信息，包括其他样本信息比对</span><br></pre></td></tr></table></figure>
+<ul>
+<li>低质模型是通过对评论做情感分析，结合用户其它的负反馈信息（举报、不感兴趣、踩）等信息，来解决很多语义上的低质问题，诸如题文不符、有头无尾、拼凑编造、黒稿谣言等</li>
+<li>目前低质模型的准确率为70%，召回率为60%，结合人工复审召回率能做到95%</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" rel="tag"># 推荐系统</a>
+              <a href="/tags/%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1/" rel="tag"># 今日头条</a>
+              <a href="/tags/%E6%8A%96%E9%9F%B3/" rel="tag"># 抖音</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/08/%E5%9B%BE%E7%89%87%E5%B1%85%E4%B8%AD/" rel="prev" title="图片居中">
+      <i class="fa fa-chevron-left"></i> 图片居中
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/07/22/ntp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B5%8B%E8%AF%95/" rel="next" title="ntp服务器测试">
+      ntp服务器测试 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%A7%88"><span class="nav-number">1.</span> <span class="nav-text">1、系统概览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1%EF%BC%89%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.</span> <span class="nav-text">1.1）推荐系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2%EF%BC%89%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="nav-number">1.2.</span> <span class="nav-text">1.2）推荐系统的目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3%EF%BC%89%E5%85%B8%E5%9E%8B%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">1.3）典型推荐算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4%EF%BC%89%E6%8E%A8%E8%8D%90%E7%89%B9%E5%BE%81"><span class="nav-number">1.4.</span> <span class="nav-text">1.4）推荐特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5%EF%BC%89%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83"><span class="nav-number">1.5.</span> <span class="nav-text">1.5）模型训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6%EF%BC%89%E5%8F%AC%E5%9B%9E%E7%AD%96%E7%95%A5"><span class="nav-number">1.6.</span> <span class="nav-text">1.6）召回策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7%EF%BC%89%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BE%9D%E8%B5%96"><span class="nav-number">1.7.</span> <span class="nav-text">1.7）推荐系统的数据依赖</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%86%85%E5%AE%B9%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">2、内容分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%96%87%E6%9C%AC%E5%88%86%E6%9E%90"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 文本分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%A4%B4%E6%9D%A1%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE%E7%9A%84-%E7%89%B9%E5%BE%81-amp-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 头条语义标签的 特征 &amp; 使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%A0%87%E7%AD%BE%E5%88%86%E5%B1%82"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 标签分层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 为什么要语义标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%9B%BE%E7%89%87%E5%88%86%E6%9E%90"><span class="nav-number">2.5.</span> <span class="nav-text">2.2 图片分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E8%A7%86%E9%A2%91%E5%88%86%E6%9E%90"><span class="nav-number">2.6.</span> <span class="nav-text">2.3 视频分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E7%94%A8%E6%88%B7%E6%A0%87%E7%AD%BE"><span class="nav-number">3.</span> <span class="nav-text">3、用户标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%85%B4%E8%B6%A3%E7%89%B9%E5%BE%81"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 兴趣特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E8%BA%AB%E4%BB%BD%E7%89%B9%E5%BE%81"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 身份特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E8%A1%8C%E4%B8%BA%E7%89%B9%E5%BE%81"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 行为特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E5%AF%B9%E6%B5%8F%E8%A7%88%E5%86%85%E5%AE%B9%E6%A0%87%E7%AD%BE%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 对浏览内容标签进行数据处理策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-%E7%94%A8%E6%88%B7%E6%A0%87%E7%AD%BE%E6%8C%96%E6%8E%98"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 用户标签挖掘</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E8%AF%84%E4%BC%B0%E6%9B%B4%E6%96%B0"><span class="nav-number">4.</span> <span class="nav-text">4、评估更新</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%AF%B9%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E4%BA%A7%E7%94%9F%E5%BD%B1%E5%93%8D%E7%9A%84%E5%9B%A0%E6%95%B0"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 对推荐系统产生影响的因数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E8%AF%84%E4%BC%B0%E7%B3%BB%E7%BB%9F%E8%A6%81%E6%B1%82"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 评估系统要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E8%AF%84%E4%BC%B0%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 推荐系统评估需要注意的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E5%BC%BA%E5%A4%A7%E5%AE%9E%E9%AA%8C%E5%B9%B3%E5%8F%B0%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 强大实验平台的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E4%BA%BA%E5%B7%A5%E6%8A%BD%E6%A0%B7%E8%AF%84%E4%BC%B0%E5%88%86%E6%9E%90"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 人工抽样评估分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8"><span class="nav-number">5.</span> <span class="nav-text">5 内容安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E5%A4%B4%E6%9D%A1%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 头条内容安全机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E5%88%86%E4%BA%AB%E5%86%85%E5%AE%B9%E8%AF%86%E5%88%AB%E6%8A%80%E6%9C%AF"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 分享内容识别技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E6%B3%9B%E4%BD%8E%E8%B4%A8%E5%86%85%E5%AE%B9%E8%AF%86%E5%88%AB%E6%8A%80%E6%9C%AF"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 泛低质内容识别技术</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hillock"
+      src="https://res.hillock.com.cn/cola.jpg">
+  <p class="site-author-name" itemprop="name">Hillock</p>
+  <div class="site-description" itemprop="description">努力奔跑，向着诗和远方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">170</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">145</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/liuhill" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;liuhill" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:9986778@qq.com" title="E-Mail → mailto:9986778@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/liu-hill" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;liu-hill" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/LiuLig" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;LiuLig" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hillock</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

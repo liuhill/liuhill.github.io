@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-128x128-bolder.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bolder.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bolder.png">
+  <link rel="mask-icon" href="/images/wulai-bolder.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一、 Mac下将ISO写入U盘可使用命令行工具dd，操作如下：1、找出U盘挂载的路径，使用如下命令：diskutil list2、将U盘unmount（将N替换为挂载路径）：diskutil unmountDisk &#x2F;dev&#x2F;disk[N]3、写入U盘：sudo dd if&#x3D;iso路径 of&#x3D;&#x2F;dev&#x2F;rdisk[N] bs&#x3D;1m  rdisk 中加入r可以让写入速度加快二、具体操作示例： 将i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Mac OS X系统下 用dd命令将iso镜像写入u盘">
+<meta property="og:url" content="https://www.wulai.me/2017/08/07/%E5%9C%A8Mac-OS-X%E7%B3%BB%E7%BB%9F%E4%B8%8B-%E7%94%A8dd%E5%91%BD%E4%BB%A4%E5%B0%86iso%E9%95%9C%E5%83%8F%E5%86%99%E5%85%A5u%E7%9B%98/index.html">
+<meta property="og:site_name" content="无来">
+<meta property="og:description" content="一、 Mac下将ISO写入U盘可使用命令行工具dd，操作如下：1、找出U盘挂载的路径，使用如下命令：diskutil list2、将U盘unmount（将N替换为挂载路径）：diskutil unmountDisk &#x2F;dev&#x2F;disk[N]3、写入U盘：sudo dd if&#x3D;iso路径 of&#x3D;&#x2F;dev&#x2F;rdisk[N] bs&#x3D;1m  rdisk 中加入r可以让写入速度加快二、具体操作示例： 将i">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-08-07T10:38:21.000Z">
+<meta property="article:modified_time" content="2024-05-30T14:25:48.500Z">
+<meta property="article:author" content="Hillock">
+<meta property="article:tag" content="macOS">
+<meta property="article:tag" content="iso制作">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://www.wulai.me/2017/08/07/%E5%9C%A8Mac-OS-X%E7%B3%BB%E7%BB%9F%E4%B8%8B-%E7%94%A8dd%E5%91%BD%E4%BB%A4%E5%B0%86iso%E9%95%9C%E5%83%8F%E5%86%99%E5%85%A5u%E7%9B%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>在Mac OS X系统下 用dd命令将iso镜像写入u盘 | 无来</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81208215-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-81208215-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">无来</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">不管你来还是不来<br />我都在这里，夜夜点亮<br />不是为了守候<br />只是为了做好我自己</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2017/08/07/%E5%9C%A8Mac-OS-X%E7%B3%BB%E7%BB%9F%E4%B8%8B-%E7%94%A8dd%E5%91%BD%E4%BB%A4%E5%B0%86iso%E9%95%9C%E5%83%8F%E5%86%99%E5%85%A5u%E7%9B%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在Mac OS X系统下 用dd命令将iso镜像写入u盘
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-08-07 18:38:21" itemprop="dateCreated datePublished" datetime="2017-08-07T18:38:21+08:00">2017-08-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-05-30 22:25:48" itemprop="dateModified" datetime="2024-05-30T22:25:48+08:00">2024-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="一、-Mac下将ISO写入U盘可使用命令行工具dd，操作如下："><a href="#一、-Mac下将ISO写入U盘可使用命令行工具dd，操作如下：" class="headerlink" title="一、 Mac下将ISO写入U盘可使用命令行工具dd，操作如下："></a>一、 Mac下将ISO写入U盘可使用命令行工具dd，操作如下：</h2><h3 id="1、找出U盘挂载的路径，使用如下命令：diskutil-list"><a href="#1、找出U盘挂载的路径，使用如下命令：diskutil-list" class="headerlink" title="1、找出U盘挂载的路径，使用如下命令：diskutil list"></a>1、找出U盘挂载的路径，使用如下命令：diskutil list</h3><h3 id="2、将U盘unmount（将N替换为挂载路径）：diskutil-unmountDisk-dev-disk-N"><a href="#2、将U盘unmount（将N替换为挂载路径）：diskutil-unmountDisk-dev-disk-N" class="headerlink" title="2、将U盘unmount（将N替换为挂载路径）：diskutil unmountDisk /dev/disk[N]"></a>2、将U盘unmount（将N替换为挂载路径）：diskutil unmountDisk /dev/disk[N]</h3><h3 id="3、写入U盘：sudo-dd-if-iso路径-of-dev-rdisk-N-bs-1m-rdisk-中加入r可以让写入速度加快"><a href="#3、写入U盘：sudo-dd-if-iso路径-of-dev-rdisk-N-bs-1m-rdisk-中加入r可以让写入速度加快" class="headerlink" title="3、写入U盘：sudo dd if=iso路径 of=/dev/rdisk[N] bs=1m  rdisk 中加入r可以让写入速度加快"></a>3、写入U盘：sudo dd if=iso路径 of=/dev/rdisk[N] bs=1m  rdisk 中加入r可以让写入速度加快</h3><h2 id="二、具体操作示例："><a href="#二、具体操作示例：" class="headerlink" title="二、具体操作示例："></a>二、具体操作示例：</h2><ol>
+<li>将iso转换成dmg 转iso 用</li>
+</ol>
+<p>UDRW 替换为 UDTO</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">lapommedeMacBook-Pro:~ lapomme$ sudo hdiutil convert -format UDRW -o /linux.dmg kali.iso</span><br><span class="line">Password:</span><br><span class="line">正在读取Master Boot Record（MBR：0）…</span><br><span class="line">正在读取Kali Live （Apple_ISO：1）…</span><br><span class="line">正在读取（Windows_NTFS_Hidden：2）…</span><br><span class="line">............................................................................</span><br><span class="line">正在读取（DOS_FAT_12：3）…</span><br><span class="line">..............................................................................</span><br><span class="line">已耗时：10.178s</span><br><span class="line">速度：288.3M 字节/秒</span><br><span class="line">节省：0.0%</span><br><span class="line">created: /linux.dmg</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>查看u盘盘符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">lapommedeMacBook-Pro:~ lapomme$ diskutil list</span><br><span class="line">/dev/disk0 (internal, physical):</span><br><span class="line">#: TYPE NAME SIZE IDENTIFIER</span><br><span class="line">0: GUID_partition_scheme *251.0 GB disk0</span><br><span class="line">1: EFI EFI 209.7 MB disk0s1</span><br><span class="line">2: Apple_CoreStorage Macintosh HD 250.1 GB disk0s2</span><br><span class="line">3: Apple_Boot Recovery HD 650.0 MB disk0s3</span><br><span class="line">/dev/disk1 (internal, virtual):</span><br><span class="line">#: TYPE NAME SIZE IDENTIFIER</span><br><span class="line">0: Apple_HFS Macintosh HD +249.8 GB disk1</span><br><span class="line">Logical Volume on disk0s2</span><br><span class="line">E2BD4617-5A22-46A9-A6F4-D54E3EE92BBC</span><br><span class="line">Unencrypted</span><br><span class="line">/dev/disk2 (external, physical):</span><br><span class="line">#: TYPE NAME SIZE IDENTIFIER</span><br><span class="line">0: FDisk_partition_scheme *62.0 GB disk2</span><br><span class="line">1: DOS_FAT_32 UNTITLED 1 62.0 GB disk2s1</span><br><span class="line">/dev/disk3 (disk image):</span><br><span class="line">#: TYPE NAME SIZE IDENTIFIER</span><br><span class="line">0: FDisk_partition_scheme +3.1 GB disk3</span><br><span class="line">1: 0x17 3.0 GB disk3s1</span><br><span class="line">2: DOS_FAT_12 NO NAME 110.1 MB disk3s2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>取消挂载U盘</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lapommedeMacBook-Pro:~ lapomme$ diskutil umountDisk /dev/disk2</span><br><span class="line">Unmount of all volumes on disk2 was successful</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用dd命令写入U盘</p>
+</li>
+</ol>
+<p>说明：</p>
+<p>（1）sudo dd if=源路径 of=/dev/r卷标 bs=1m ［‘r’ 会让命令执行加快一点］ ［‘bs’为一次填充的容量］</p>
+<p>（2）获取映像名称和完整路径可以直接将文件拖入终端，即在终端中显示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lapommedeMacBook-Pro:~ lapomme$ sudo dd if=/linux.dmg of=/dev/rdisk2 bs=1m</span><br><span class="line">2934+1 records in</span><br><span class="line">2934+1 records out</span><br><span class="line">3076767744 bytes transferred in 149.567568 secs (20571089 bytes/sec)</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><p>查看磁盘进度，可以用iostat命令查看磁盘写入状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lapommedeMacBook-Pro:~ lapomme$ iostat -w 2</span><br><span class="line">disk0 disk2 disk3 cpu load average</span><br><span class="line">KB/t tps MB/s KB/t tps MB/s KB/t tps MB/s us sy id 1m 5m 15m</span><br><span class="line">102.71 25 2.49 598.70 0 0.15 24.76 1 0.02 5 4 90 2.04 1.71 1.69</span><br><span class="line">512.00 48 23.93 1024.00 24 23.93 0.00 0 0.00 1 3 96 2.11 1.74 1.69</span><br><span class="line">473.00 26 11.99 1024.00 12 11.98 0.00 0 0.00 3 3 93 2.11 1.74 1.69</span><br><span class="line">491.68 50 23.99 1024.00 24 23.99 0.00 0 0.00 24 8 68 2.11 1.74 1.69</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>操作完毕后将U盘弹出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lapommedeMacBook-Pro:~ lapomme$ diskutil eject /dev/disk2</span><br><span class="line">Disk /dev/disk2 ejected</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/macOS/" rel="tag"># macOS</a>
+              <a href="/tags/iso%E5%88%B6%E4%BD%9C/" rel="tag"># iso制作</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/08/03/CentOS7-Command-line-install-VirtuBox/" rel="prev" title="CentOS7 Command line install VirtuBox">
+      <i class="fa fa-chevron-left"></i> CentOS7 Command line install VirtuBox
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/08/08/How-to-Install-Oracle-VirtualBox-5-1-on-CentOS-RHEL-7-6-and-Fedora-25/" rel="next" title="How to Install Oracle VirtualBox 5.1 on CentOS/RHEL 7/6 and Fedora 25">
+      How to Install Oracle VirtualBox 5.1 on CentOS/RHEL 7/6 and Fedora 25 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81-Mac%E4%B8%8B%E5%B0%86ISO%E5%86%99%E5%85%A5U%E7%9B%98%E5%8F%AF%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7dd%EF%BC%8C%E6%93%8D%E4%BD%9C%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">一、 Mac下将ISO写入U盘可使用命令行工具dd，操作如下：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E6%89%BE%E5%87%BAU%E7%9B%98%E6%8C%82%E8%BD%BD%E7%9A%84%E8%B7%AF%E5%BE%84%EF%BC%8C%E4%BD%BF%E7%94%A8%E5%A6%82%E4%B8%8B%E5%91%BD%E4%BB%A4%EF%BC%9Adiskutil-list"><span class="nav-number">1.1.</span> <span class="nav-text">1、找出U盘挂载的路径，使用如下命令：diskutil list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%B0%86U%E7%9B%98unmount%EF%BC%88%E5%B0%86N%E6%9B%BF%E6%8D%A2%E4%B8%BA%E6%8C%82%E8%BD%BD%E8%B7%AF%E5%BE%84%EF%BC%89%EF%BC%9Adiskutil-unmountDisk-dev-disk-N"><span class="nav-number">1.2.</span> <span class="nav-text">2、将U盘unmount（将N替换为挂载路径）：diskutil unmountDisk &#x2F;dev&#x2F;disk[N]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%86%99%E5%85%A5U%E7%9B%98%EF%BC%9Asudo-dd-if-iso%E8%B7%AF%E5%BE%84-of-dev-rdisk-N-bs-1m-rdisk-%E4%B8%AD%E5%8A%A0%E5%85%A5r%E5%8F%AF%E4%BB%A5%E8%AE%A9%E5%86%99%E5%85%A5%E9%80%9F%E5%BA%A6%E5%8A%A0%E5%BF%AB"><span class="nav-number">1.3.</span> <span class="nav-text">3、写入U盘：sudo dd if&#x3D;iso路径 of&#x3D;&#x2F;dev&#x2F;rdisk[N] bs&#x3D;1m  rdisk 中加入r可以让写入速度加快</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%85%B7%E4%BD%93%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">二、具体操作示例：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hillock"
+      src="https://res.hillock.com.cn/cola.jpg">
+  <p class="site-author-name" itemprop="name">Hillock</p>
+  <div class="site-description" itemprop="description">努力奔跑，向着诗和远方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">170</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">145</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/liuhill" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;liuhill" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:9986778@qq.com" title="E-Mail → mailto:9986778@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/liu-hill" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;liu-hill" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/LiuLig" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;LiuLig" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hillock</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

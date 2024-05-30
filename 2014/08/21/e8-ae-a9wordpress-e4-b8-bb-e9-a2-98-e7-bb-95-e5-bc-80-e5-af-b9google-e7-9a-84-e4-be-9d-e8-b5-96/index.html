@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-128x128-bolder.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bolder.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bolder.png">
+  <link rel="mask-icon" href="/images/wulai-bolder.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="终于有个借着写技术博客顺便吐槽GFW的机会了。每当网速很快，却偏偏不能谷歌搜索，好不容易搜到个跟问题十分匹配的网站，结果点进去菊花转了几百圈页面还是加载不出来，这显然是件让人很蛋疼的事情。虽然我学会了安装和配置翻墙神器goagent，但我仍然为很多很多很多不会翻墙和不愿意或者没钱买vpn的人叫一下委屈，其实会弄goagent这种的除了少数的一些个搞技术的一般人也弄不来。还有，即使是弄goagen">
+<meta property="og:type" content="article">
+<meta property="og:title" content="让wordpress主题绕开对google的依赖">
+<meta property="og:url" content="https://www.wulai.me/2014/08/21/e8-ae-a9wordpress-e4-b8-bb-e9-a2-98-e7-bb-95-e5-bc-80-e5-af-b9google-e7-9a-84-e4-be-9d-e8-b5-96/index.html">
+<meta property="og:site_name" content="无来">
+<meta property="og:description" content="终于有个借着写技术博客顺便吐槽GFW的机会了。每当网速很快，却偏偏不能谷歌搜索，好不容易搜到个跟问题十分匹配的网站，结果点进去菊花转了几百圈页面还是加载不出来，这显然是件让人很蛋疼的事情。虽然我学会了安装和配置翻墙神器goagent，但我仍然为很多很多很多不会翻墙和不愿意或者没钱买vpn的人叫一下委屈，其实会弄goagent这种的除了少数的一些个搞技术的一般人也弄不来。还有，即使是弄goagen">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2014-08-21T06:37:28.000Z">
+<meta property="article:modified_time" content="2024-05-30T14:25:48.513Z">
+<meta property="article:author" content="Hillock">
+<meta property="article:tag" content="wordpress">
+<meta property="article:tag" content="Google依赖">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://www.wulai.me/2014/08/21/e8-ae-a9wordpress-e4-b8-bb-e9-a2-98-e7-bb-95-e5-bc-80-e5-af-b9google-e7-9a-84-e4-be-9d-e8-b5-96/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>让wordpress主题绕开对google的依赖 | 无来</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81208215-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-81208215-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">无来</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">不管你来还是不来<br />我都在这里，夜夜点亮<br />不是为了守候<br />只是为了做好我自己</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2014/08/21/e8-ae-a9wordpress-e4-b8-bb-e9-a2-98-e7-bb-95-e5-bc-80-e5-af-b9google-e7-9a-84-e4-be-9d-e8-b5-96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          让wordpress主题绕开对google的依赖
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-08-21 14:37:28" itemprop="dateCreated datePublished" datetime="2014-08-21T14:37:28+08:00">2014-08-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-05-30 22:25:48" itemprop="dateModified" datetime="2024-05-30T22:25:48+08:00">2024-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><p>终于有个借着写技术博客顺便吐槽GFW的机会了。每当网速很快，却偏偏不能谷歌搜索，好不容易搜到个跟问题十分匹配的网站，结果点进去菊花转了几百圈页面还是加载不出来，这显然是件让人很蛋疼的事情。虽然我学会了安装和配置翻墙神器goagent，但我仍然为很多很多很多不会翻墙和不愿意或者没钱买vpn的人叫一下委屈，其实会弄goagent这种的除了少数的一些个搞技术的一般人也弄不来。还有，即使是弄goagent，一，它也是很费时的，配置麻烦，偶尔还要更新程序，二，最近装新系统，准备下载goagent和浏览器代理插件的时候发现，goagent的程序托管在google仓库，proxyswitch要去google应用商店下，但问题是尼玛要访问google的东西你得先翻墙啊<del>为了能翻墙得先翻墙才行，悖论啊</del> 呃。。好了，吐槽结束。该说正事儿了。对了，不知道GFW的去谷歌吧，哦不对，还是去百度吧，谷歌怕你上不去呢。 事情是这样的，基于wordpress的网站里面的主题会用到google的资源，比如我的<a target="_blank" rel="noopener" href="http://sudodev.cn/">blog站</a>用的twentytwelve主题就引用了谷歌的字体，里面就有个这样的链接:<a target="_blank" rel="noopener" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&subset=latin,latin-ext">http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&amp;subset=latin,latin-ext</a> 由于身在天朝的原因，你在访问我的blog的时候就会由于浏览器请求不到这个资源而一直在转菊花（loading加载），运气好只能显示部分图片信息，字看不见，而且是永远看不见那种，除非你像我一样翻墙了。好，既然是这样，那我们把它要请求的东西都下载到服务器上，把链接换成内部链接就好了。here we go:</p>
+<div class="md-section-divider">
+</div>
+
+<h2 id="1-离线资源"><a href="#1-离线资源" class="headerlink" title="1.离线资源"></a>1.离线资源</h2><ul>
+<li>把这个网站对应的css下载下来，给它取个名字，比如我叫他googlefonts.css。</li>
+<li>打开那个css文件，你会发现里面还有一些url是指向google的，分别都下载下来放在一起。比如我把css文件和里面的四个woff的url对应的字体文件都下下来放到了一个叫fonts的文件夹。</li>
+<li>修改那个googlefonts.css文件中指向google的url。由于你把离线下来的那些woff文件放在该css同一个目录，所以你把/前面的所有内容都去掉，留个文件名即可</li>
+<li>把fonts文件夹放在对应主题的目录里。比如我放在wp-content/twentytwelve/css/下面</li>
+</ul>
+<div class="md-section-divider">
+</div>
+
+<h2 id="2-修改引用url-原来主题上的url是指向google的，现在要将它改成指向内部的css文件，即前面的googlefonts-css文件。那么去哪里改呢？我是在主题目录里执行"><a href="#2-修改引用url-原来主题上的url是指向google的，现在要将它改成指向内部的css文件，即前面的googlefonts-css文件。那么去哪里改呢？我是在主题目录里执行" class="headerlink" title="2.修改引用url ,原来主题上的url是指向google的，现在要将它改成指向内部的css文件，即前面的googlefonts.css文件。那么去哪里改呢？我是在主题目录里执行"></a>2.修改引用url ,原来主题上的url是指向google的，现在要将它改成指向内部的css文件，即前面的googlefonts.css文件。那么去哪里改呢？我是在主题目录里执行</h2><p><code>grep googleapis . -r</code>找到的，是在wp-content/twentytwelve/functions.php文件里。在</p>
+<div class="md-section-divider">
+</div>
+
+<ol>
+<li><code>&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt;$font_url &lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt; add_query_arg&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt; $query_args&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;str&quot; style=&quot;color: #008800;&quot;&gt;&quot;$protocol://fonts.googleapis.com/css&quot;&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;);&lt;/span&gt;</code></li>
+</ol>
+<p>后面加两句</p>
+<div class="md-section-divider">
+</div>
+
+<ol>
+<li><code>&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt;$filePath &lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt; dirname&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt;__FILE__&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;str&quot; style=&quot;color: #008800;&quot;&gt;&quot;/css/fonts/googlefonts.css&quot;&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;;&lt;/span&gt;</code></li>
+<li><code>&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt;$font_url &lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;str&quot; style=&quot;color: #008800;&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt;$filePath&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt; strpos&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pln&quot; style=&quot;color: #000000;&quot;&gt;$filePath&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;str&quot; style=&quot;color: #008800;&quot;&gt;&quot;wp-content&quot;&lt;/span&gt;&lt;span class=&quot;pun&quot; style=&quot;color: #666600;&quot;&gt;));&lt;/span&gt;</code></li>
+</ol>
+<p>好了，网站已经彻底摆脱了对google的依赖，马麻再也不用担心访问我的网站只能看到转菊花了~ ：）</p>
+<blockquote>
+<p>你可能会眨巴着你一双无辜的水汪汪的大眼睛，问：你连谷歌都不上去又怎么离线它的css资源呢，这不也是悖论吗？我微风中头一甩，待额头上整齐的头发潇洒平安的降落在头的一侧的时候，答：当然是先把墙给翻了再做这件事喽，傻瓜~</p>
+</blockquote>
+<div class="md-section-divider">
+</div>
+
+<h2 id="另：网站中添加的谷歌analytics的js代码不会对网页加载产生影响。因为它是动态写上去，等网站发起对ga-js的请求的时候，网页中该请求的东西都请求完了。所以不会影响，只是有墙的情况下，由于ga-js请求不到，会影响google-analytics对你网站流量监控的准确性。-lt-转载于：http-sudodev-cn-articles-354-html-gt"><a href="#另：网站中添加的谷歌analytics的js代码不会对网页加载产生影响。因为它是动态写上去，等网站发起对ga-js的请求的时候，网页中该请求的东西都请求完了。所以不会影响，只是有墙的情况下，由于ga-js请求不到，会影响google-analytics对你网站流量监控的准确性。-lt-转载于：http-sudodev-cn-articles-354-html-gt" class="headerlink" title="另：网站中添加的谷歌analytics的js代码不会对网页加载产生影响。因为它是动态写上去，等网站发起对ga.js的请求的时候，网页中该请求的东西都请求完了。所以不会影响，只是有墙的情况下，由于ga.js请求不到，会影响google analytics对你网站流量监控的准确性。     &lt;转载于：http://sudodev.cn/articles/354.html&gt;"></a>另：网站中添加的谷歌analytics的js代码不会对网页加载产生影响。因为它是动态写上去，等网站发起对ga.js的请求的时候，网页中该请求的东西都请求完了。所以不会影响，只是有墙的情况下，由于ga.js请求不到，会影响google analytics对你网站流量监控的准确性。     &lt;转载于：<a target="_blank" rel="noopener" href="http://sudodev.cn/articles/354.html&gt;">http://sudodev.cn/articles/354.html&gt;</a></h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/wordpress/" rel="tag"># wordpress</a>
+              <a href="/tags/Google%E4%BE%9D%E8%B5%96/" rel="tag"># Google依赖</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2014/08/21/e8-bf-87-e6-bb-a4javascripthtml-e6-a0-87-e7-ad-be-e5-be-88-e9-87-8d-e8-a6-81/" rel="prev" title="过滤javascript,html标签很重要">
+      <i class="fa fa-chevron-left"></i> 过滤javascript,html标签很重要
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2014/08/28/nginxphp-e6-98-be-e7-a4-baphp/" rel="next" title="nginx+php 显示php">
+      nginx+php 显示php <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%A6%BB%E7%BA%BF%E8%B5%84%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">1.离线资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BF%AE%E6%94%B9%E5%BC%95%E7%94%A8url-%E5%8E%9F%E6%9D%A5%E4%B8%BB%E9%A2%98%E4%B8%8A%E7%9A%84url%E6%98%AF%E6%8C%87%E5%90%91google%E7%9A%84%EF%BC%8C%E7%8E%B0%E5%9C%A8%E8%A6%81%E5%B0%86%E5%AE%83%E6%94%B9%E6%88%90%E6%8C%87%E5%90%91%E5%86%85%E9%83%A8%E7%9A%84css%E6%96%87%E4%BB%B6%EF%BC%8C%E5%8D%B3%E5%89%8D%E9%9D%A2%E7%9A%84googlefonts-css%E6%96%87%E4%BB%B6%E3%80%82%E9%82%A3%E4%B9%88%E5%8E%BB%E5%93%AA%E9%87%8C%E6%94%B9%E5%91%A2%EF%BC%9F%E6%88%91%E6%98%AF%E5%9C%A8%E4%B8%BB%E9%A2%98%E7%9B%AE%E5%BD%95%E9%87%8C%E6%89%A7%E8%A1%8C"><span class="nav-number">2.</span> <span class="nav-text">2.修改引用url ,原来主题上的url是指向google的，现在要将它改成指向内部的css文件，即前面的googlefonts.css文件。那么去哪里改呢？我是在主题目录里执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%A6%EF%BC%9A%E7%BD%91%E7%AB%99%E4%B8%AD%E6%B7%BB%E5%8A%A0%E7%9A%84%E8%B0%B7%E6%AD%8Canalytics%E7%9A%84js%E4%BB%A3%E7%A0%81%E4%B8%8D%E4%BC%9A%E5%AF%B9%E7%BD%91%E9%A1%B5%E5%8A%A0%E8%BD%BD%E4%BA%A7%E7%94%9F%E5%BD%B1%E5%93%8D%E3%80%82%E5%9B%A0%E4%B8%BA%E5%AE%83%E6%98%AF%E5%8A%A8%E6%80%81%E5%86%99%E4%B8%8A%E5%8E%BB%EF%BC%8C%E7%AD%89%E7%BD%91%E7%AB%99%E5%8F%91%E8%B5%B7%E5%AF%B9ga-js%E7%9A%84%E8%AF%B7%E6%B1%82%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E7%BD%91%E9%A1%B5%E4%B8%AD%E8%AF%A5%E8%AF%B7%E6%B1%82%E7%9A%84%E4%B8%9C%E8%A5%BF%E9%83%BD%E8%AF%B7%E6%B1%82%E5%AE%8C%E4%BA%86%E3%80%82%E6%89%80%E4%BB%A5%E4%B8%8D%E4%BC%9A%E5%BD%B1%E5%93%8D%EF%BC%8C%E5%8F%AA%E6%98%AF%E6%9C%89%E5%A2%99%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E7%94%B1%E4%BA%8Ega-js%E8%AF%B7%E6%B1%82%E4%B8%8D%E5%88%B0%EF%BC%8C%E4%BC%9A%E5%BD%B1%E5%93%8Dgoogle-analytics%E5%AF%B9%E4%BD%A0%E7%BD%91%E7%AB%99%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7%E7%9A%84%E5%87%86%E7%A1%AE%E6%80%A7%E3%80%82-lt-%E8%BD%AC%E8%BD%BD%E4%BA%8E%EF%BC%9Ahttp-sudodev-cn-articles-354-html-gt"><span class="nav-number">3.</span> <span class="nav-text">另：网站中添加的谷歌analytics的js代码不会对网页加载产生影响。因为它是动态写上去，等网站发起对ga.js的请求的时候，网页中该请求的东西都请求完了。所以不会影响，只是有墙的情况下，由于ga.js请求不到，会影响google analytics对你网站流量监控的准确性。     &lt;转载于：http:&#x2F;&#x2F;sudodev.cn&#x2F;articles&#x2F;354.html&gt;</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hillock"
+      src="https://res.hillock.com.cn/cola.jpg">
+  <p class="site-author-name" itemprop="name">Hillock</p>
+  <div class="site-description" itemprop="description">努力奔跑，向着诗和远方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">170</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">145</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/liuhill" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;liuhill" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:9986778@qq.com" title="E-Mail → mailto:9986778@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/liu-hill" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;liu-hill" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/LiuLig" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;LiuLig" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hillock</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

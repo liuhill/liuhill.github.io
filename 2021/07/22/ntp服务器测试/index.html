@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-128x128-bolder.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bolder.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bolder.png">
+  <link rel="mask-icon" href="/images/wulai-bolder.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1. windows 测试命令行输入以下命令： 1w32tm &#x2F;stripchart &#x2F;computer:ntp_server_address 例如：w32tm &#x2F;stripchart &#x2F;computer:time.windows.com 2. linux 测试1234567891011121314151617181920212223242526[root@centos6 ~]# ntpdate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ntp服务器测试">
+<meta property="og:url" content="https://www.wulai.me/2021/07/22/ntp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:site_name" content="无来">
+<meta property="og:description" content="1. windows 测试命令行输入以下命令： 1w32tm &#x2F;stripchart &#x2F;computer:ntp_server_address 例如：w32tm &#x2F;stripchart &#x2F;computer:time.windows.com 2. linux 测试1234567891011121314151617181920212223242526[root@centos6 ~]# ntpdate">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-22T02:15:44.000Z">
+<meta property="article:modified_time" content="2024-05-30T14:25:48.526Z">
+<meta property="article:author" content="Hillock">
+<meta property="article:tag" content="ntp">
+<meta property="article:tag" content="时间服务器">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://www.wulai.me/2021/07/22/ntp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B5%8B%E8%AF%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ntp服务器测试 | 无来</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81208215-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-81208215-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">无来</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">不管你来还是不来<br />我都在这里，夜夜点亮<br />不是为了守候<br />只是为了做好我自己</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2021/07/22/ntp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ntp服务器测试
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-22 10:15:44" itemprop="dateCreated datePublished" datetime="2021-07-22T10:15:44+08:00">2021-07-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-05-30 22:25:48" itemprop="dateModified" datetime="2024-05-30T22:25:48+08:00">2024-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="1-windows-测试"><a href="#1-windows-测试" class="headerlink" title="1. windows 测试"></a>1. windows 测试</h2><p>命令行输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w32tm /stripchart /computer:ntp_server_address</span><br></pre></td></tr></table></figure>
+<p>例如：<code>w32tm /stripchart /computer:time.windows.com</code></p>
+<h2 id="2-linux-测试"><a href="#2-linux-测试" class="headerlink" title="2. linux 测试"></a>2. linux 测试</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# ntpdate -d ntp1.aliyun.com</span><br><span class="line">27 Mar 22:04:38 ntpdate[1049]: ntpdate 4.2.6p5@1.2349-o Wed Dec 19 20:22:35 UTC 2018 (1)</span><br><span class="line">Looking for host ntp1.aliyun.com and service ntp</span><br><span class="line">host found : 120.25.115.20</span><br><span class="line">transmit(120.25.115.20)</span><br><span class="line">receive(120.25.115.20)</span><br><span class="line">transmit(120.25.115.20)</span><br><span class="line">receive(120.25.115.20)</span><br><span class="line">transmit(120.25.115.20)</span><br><span class="line">receive(120.25.115.20)</span><br><span class="line">transmit(120.25.115.20)</span><br><span class="line">receive(120.25.115.20)</span><br><span class="line">server 120.25.115.20, port 123</span><br><span class="line">stratum 2, precision -25, leap 00, trust 000</span><br><span class="line">refid [120.25.115.20], delay 0.07951, dispersion 0.00424</span><br><span class="line">transmitted 4, in filter 4</span><br><span class="line">reference time:    e046016e.965c7e00  Wed, Mar 27 2019 22:04:30.587</span><br><span class="line">originate timestamp: e0460177.12bce60a  Wed, Mar 27 2019 22:04:39.073</span><br><span class="line">transmit timestamp:  e0460177.04f47dc5  Wed, Mar 27 2019 22:04:39.019</span><br><span class="line">filter delay:  0.09312  0.07951  0.08475  0.09390 </span><br><span class="line">         0.00000  0.00000  0.00000  0.00000 </span><br><span class="line">filter offset: 0.004349 0.010768 0.007720 0.019682</span><br><span class="line">         0.000000 0.000000 0.000000 0.000000</span><br><span class="line">delay 0.07951, dispersion 0.00424</span><br><span class="line">offset 0.010768</span><br><span class="line">27 Mar 22:04:39 ntpdate[1049]: adjust time server 120.25.115.20 offset 0.010768 sec</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-国内常用时间服务器地址"><a href="#3-国内常用时间服务器地址" class="headerlink" title="3. 国内常用时间服务器地址"></a>3. 国内常用时间服务器地址</h2><ul>
+<li>210.72.145.44  (国家授时中心服务器IP地址)</li>
+<li>133.100.11.8  日本 福冈大学</li>
+<li>time-a.nist.gov 129.6.15.28 NIST, Gaithersburg, Maryland </li>
+<li>time-b.nist.gov 129.6.15.29 NIST, Gaithersburg, Maryland </li>
+<li>time-a.timefreq.bldrdoc.gov 132.163.4.101 NIST, Boulder, Colorado </li>
+<li>time-b.timefreq.bldrdoc.gov 132.163.4.102 NIST, Boulder, Colorado </li>
+<li>time-c.timefreq.bldrdoc.gov 132.163.4.103 NIST, Boulder, Colorado </li>
+<li>utcnist.colorado.edu 128.138.140.44 University of Colorado, Boulder </li>
+<li>time.nist.gov 192.43.244.18 NCAR, Boulder, Colorado </li>
+<li>time-nw.nist.gov 131.107.1.10 Microsoft, Redmond, Washington </li>
+<li>nist1.symmetricom.com 69.25.96.13 Symmetricom, San Jose, California </li>
+<li>nist1-dc.glassey.com 216.200.93.8 Abovenet, Virginia </li>
+<li>nist1-ny.glassey.com 208.184.49.9 Abovenet, New York City </li>
+<li>nist1-sj.glassey.com 207.126.98.204 Abovenet, San Jose, California </li>
+<li>nist1.aol-ca.truetime.com 207.200.81.113 TrueTime, AOL facility, Sunnyvale, California </li>
+<li>nist1.aol-va.truetime.com 64.236.96.53 TrueTime, AOL facility, Virginia</li>
+</ul>
+<hr>
+<ul>
+<li>ntp.sjtu.edu.cn 202.120.2.101 (上海交通大学网络中心NTP服务器地址）</li>
+<li>s1a.time.edu.cn 北京邮电大学</li>
+<li>s1b.time.edu.cn 清华大学</li>
+<li>s1c.time.edu.cn 北京大学</li>
+<li>s1d.time.edu.cn 东南大学</li>
+<li>s1e.time.edu.cn 清华大学</li>
+<li>s2a.time.edu.cn 清华大学</li>
+<li>s2b.time.edu.cn 清华大学</li>
+<li>s2c.time.edu.cn 北京邮电大学</li>
+<li>s2d.time.edu.cn 西南地区网络中心</li>
+<li>s2e.time.edu.cn 西北地区网络中心</li>
+<li>s2f.time.edu.cn 东北地区网络中心</li>
+<li>s2g.time.edu.cn 华东南地区网络中心</li>
+<li>s2h.time.edu.cn 四川大学网络管理中心</li>
+<li>s2j.time.edu.cn 大连理工大学网络中心</li>
+<li>s2k.time.edu.cn CERNET桂林主节点</li>
+<li>s2m.time.edu.cn 北京大学</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ntp/" rel="tag"># ntp</a>
+              <a href="/tags/%E6%97%B6%E9%97%B4%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 时间服务器</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/11/06/%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1%E3%80%81%E6%8A%96%E9%9F%B3%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%85%A8%E6%96%87%E8%AF%A6%E8%A7%A3/" rel="prev" title="今日头条、抖音推荐算法原理全文详解--笔记">
+      <i class="fa fa-chevron-left"></i> 今日头条、抖音推荐算法原理全文详解--笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/07/23/9%E5%B2%81%E9%97%BA%E5%A5%B3%E7%8B%AC%E8%87%AA%E5%8F%82%E5%8A%A0%E8%8A%B1%E6%A0%B7%E6%B8%B8%E6%B3%B3%E9%9B%86%E8%AE%AD%E4%BA%86-20210723/" rel="next" title="9岁闺女，自己参加花样游泳集训了">
+      9岁闺女，自己参加花样游泳集训了 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-windows-%E6%B5%8B%E8%AF%95"><span class="nav-number">1.</span> <span class="nav-text">1. windows 测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-linux-%E6%B5%8B%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">2. linux 测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%9B%BD%E5%86%85%E5%B8%B8%E7%94%A8%E6%97%B6%E9%97%B4%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9C%B0%E5%9D%80"><span class="nav-number">3.</span> <span class="nav-text">3. 国内常用时间服务器地址</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hillock"
+      src="https://res.hillock.com.cn/cola.jpg">
+  <p class="site-author-name" itemprop="name">Hillock</p>
+  <div class="site-description" itemprop="description">努力奔跑，向着诗和远方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">170</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">145</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/liuhill" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;liuhill" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:9986778@qq.com" title="E-Mail → mailto:9986778@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/liu-hill" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;liu-hill" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/LiuLig" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;LiuLig" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hillock</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

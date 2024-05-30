@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-128x128-bolder.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bolder.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bolder.png">
+  <link rel="mask-icon" href="/images/wulai-bolder.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1、安装pptp客户端软件~ sudo apt-get install pptp-linux2、查看网络配置~ ifconfig eth0      Link encap:Ethernet  HWaddr 08:00:27:90:e8:19           inet addr:192.168.1.200  Bcast:192.168.1.255  Mask:255.255.255.0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu通过PPTP协议使用VPN">
+<meta property="og:url" content="https://www.wulai.me/2015/07/27/ubuntu-e9-80-9a-e8-bf-87pptp-e5-8d-8f-e8-ae-ae-e4-bd-bf-e7-94-a8vpn/index.html">
+<meta property="og:site_name" content="无来">
+<meta property="og:description" content="1、安装pptp客户端软件~ sudo apt-get install pptp-linux2、查看网络配置~ ifconfig eth0      Link encap:Ethernet  HWaddr 08:00:27:90:e8:19           inet addr:192.168.1.200  Bcast:192.168.1.255  Mask:255.255.255.0">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-07-27T05:50:22.000Z">
+<meta property="article:modified_time" content="2024-05-30T14:25:48.503Z">
+<meta property="article:author" content="Hillock">
+<meta property="article:tag" content="ubuntu">
+<meta property="article:tag" content="PPTP">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://www.wulai.me/2015/07/27/ubuntu-e9-80-9a-e8-bf-87pptp-e5-8d-8f-e8-ae-ae-e4-bd-bf-e7-94-a8vpn/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Ubuntu通过PPTP协议使用VPN | 无来</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81208215-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-81208215-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">无来</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">不管你来还是不来<br />我都在这里，夜夜点亮<br />不是为了守候<br />只是为了做好我自己</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2015/07/27/ubuntu-e9-80-9a-e8-bf-87pptp-e5-8d-8f-e8-ae-ae-e4-bd-bf-e7-94-a8vpn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ubuntu通过PPTP协议使用VPN
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-07-27 13:50:22" itemprop="dateCreated datePublished" datetime="2015-07-27T13:50:22+08:00">2015-07-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-05-30 22:25:48" itemprop="dateModified" datetime="2024-05-30T22:25:48+08:00">2024-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="1、安装pptp客户端软件"><a href="#1、安装pptp客户端软件" class="headerlink" title="1、安装pptp客户端软件"></a>1、安装pptp客户端软件</h1><pre><code>~ sudo apt-get install pptp-linux</code></pre><h1 id="2、查看网络配置"><a href="#2、查看网络配置" class="headerlink" title="2、查看网络配置"></a>2、查看网络配置</h1><pre><code>~ ifconfig
+eth0      Link encap:Ethernet  HWaddr 08:00:27:90:e8:19
+          inet addr:192.168.1.200  Bcast:192.168.1.255  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe90:e819/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:74 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:64 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:8112 (8.1 KB)  TX bytes:8542 (8.5 KB)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+~ route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         192.168.1.1     0.0.0.0         UG    100    0        0 eth0
+192.168.1.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
+
+~ ip route
+default via 192.168.1.1 dev eth0  metric 100
+192.168.1.0/24 dev eth0  proto kernel  scope link  src 192.168.1.200</code></pre><h1 id="3、初始化一个VPN的连接通道：myvpn"><a href="#3、初始化一个VPN的连接通道：myvpn" class="headerlink" title="3、初始化一个VPN的连接通道：myvpn"></a>3、初始化一个VPN的连接通道：myvpn</h1><pre><code>~ sudo pptpsetup --create myvpn --server xxx.xxx.xxx.xxx --username xx1--password xx2--encrypt --start
+
+Using interface ppp0
+Connect: ppp0  /dev/pts/1
+CHAP authentication succeeded
+MPPE 128-bit stateless compression enabled
+local  IP address 10.10.10.3
+remote IP address 10.10.10.1</code></pre><p>成功连接到远程VPN服务器。</p>
+<ul>
+<li>通过刚才的创建脚步：</li>
+<li>在/etc/ppp/peers目录下面，会生成一个叫myvpn的文件。</li>
+<li>在/etc/ppp目录下面，用户名和密码会写在chap-secrets文件中。</li>
+</ul>
+<h1 id="4、"><a href="#4、" class="headerlink" title="4、"></a>4、</h1><pre><code>~ sudo vi /etc/ppp/peers/myvpn
+
+# written by pptpsetup
+pty &quot;pptp xxx.xxx.xxx.xxx --nolaunchpppd&quot;
+lock
+noauth
+nobsdcomp
+nodeflate
+name conan2
+remotename myvpn
+ipparam myvpn
+require-mppe-128
+
+#生成用户名和密码
+~ sudo vi /etc/ppp/chap-secrets
+xx1 myvpn &quot;xx2&quot; *</code></pre><h1 id="5、通过网站路由功能，测试VPN"><a href="#5、通过网站路由功能，测试VPN" class="headerlink" title="5、通过网站路由功能，测试VPN"></a>5、通过网站路由功能，测试VPN</h1><pre><code># 安装traceroute
+
+~ sudo apt-get install traceroute
+
+~ traceroute www.163.com
+traceroute to www.163.com (101.23.128.17), 30 hops max, 60 byte packets
+ 1  localhost (192.168.1.1)  2.222 ms  3.144 ms  3.132 ms
+ 2  111.192.144.1 (111.192.144.1)  80.279 ms  80.632 ms  80.624 ms
+ 3  61.148.185.69 (61.148.185.69)  9.026 ms  9.492 ms  9.479 ms
+ 4  124.65.61.157 (124.65.61.157)  9.469 ms  9.459 ms  9.447 ms
+ 5  202.96.12.185 (202.96.12.185)  9.829 ms  9.783 ms  9.771 ms
+ 6  219.158.96.110 (219.158.96.110)  17.160 ms  17.210 ms  17.158 ms
+ 7  61.182.176.178 (61.182.176.178)  30.222 ms  28.589 ms  28.077 ms
+ 8  60.5.194.58 (60.5.194.58)  29.293 ms  29.287 ms  29.276 ms
+ 9  60.5.197.214 (60.5.197.214)  26.617 ms  26.724 ms  26.668 ms
+10  101.23.255.45 (101.23.255.45)  27.672 ms  28.147 ms  26.811 ms
+11  101.23.128.17 (101.23.128.17)  25.890 ms  28.065 ms  28.420 ms</code></pre><p>我们发现虽然VPN已经连接成功，但是路由没有通过VPN上网，第1跳还是localhost (192.168.1.1)</p>
+<p>再次查看网络连接配置</p>
+<pre><code>~ ifconfig
+eth0      Link encap:Ethernet  HWaddr 08:00:27:90:e8:19
+          inet addr:192.168.1.200  Bcast:192.168.1.255  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe90:e819/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:175 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:162 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:16817 (16.8 KB)  TX bytes:19723 (19.7 KB)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+ppp0      Link encap:Point-to-Point Protocol
+          inet addr:10.10.10.3  P-t-P:10.10.10.1  Mask:255.255.255.255
+          UP POINTOPOINT RUNNING NOARP MULTICAST  MTU:1496  Metric:1
+          RX packets:7 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:7 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:3
+          RX bytes:70 (70.0 B)  TX bytes:76 (76.0 B)
+
+~ route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         192.168.1.1     0.0.0.0         UG    100    0        0 eth0
+10.10.10.1      0.0.0.0         255.255.255.255 UH    0      0        0 ppp0
+50.116.27.194   192.168.1.1     255.255.255.255 UGH   0      0        0 eth0
+192.168.1.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
+
+~ ip route
+default via 192.168.1.1 dev eth0  metric 100
+10.10.10.1 dev ppp0  proto kernel  scope link  src 10.10.10.3
+50.116.27.194 via 192.168.1.1 dev eth0  src 192.168.1.200
+192.168.1.0/24 dev eth0  proto kernel  scope link  src 192.168.1.200</code></pre><p>我们发现默认路由是指向eth0。</p>
+<p>下面修改路由配置：</p>
+<pre><code>#修改路由命令
+~ sudo ip route del default
+~ sudo ip route add default dev ppp0
+
+~ route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         0.0.0.0         0.0.0.0         U     0      0        0 ppp0
+10.10.10.1      0.0.0.0         255.255.255.255 UH    0      0        0 ppp0
+50.116.27.194   192.168.1.1     255.255.255.255 UGH   0      0        0 eth0
+192.168.1.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
+
+~ ip route
+default dev ppp0  scope link
+10.10.10.1 dev ppp0  proto kernel  scope link  src 10.10.10.3
+50.116.27.194 via 192.168.1.1 dev eth0  src 192.168.1.200
+192.168.1.0/24 dev eth0  proto kernel  scope link  src 192.168.1.200
+
+~ traceroute www.163.com
+traceroute to www.163.com (101.23.128.17), 30 hops max, 60 byte packets
+ 1  localhost (10.10.10.1)  281.093 ms  281.414 ms  280.941 ms
+ 2  router2-dal.linode.com (67.18.7.162)  281.225 ms  281.109 ms  281.841 ms
+ 3  xe-2-0-0.car04.dllstx2.networklayer.com (67.18.7.93)  280.882 ms  284.002 ms  283.913 ms
+ 4  po102.dsr01.dllstx2.networklayer.com (70.87.254.81)  284.123 ms  284.087 ms  283.979 ms
+ 5  po21.dsr01.dllstx3.networklayer.com (70.87.255.65)  284.000 ms  283.921 ms  283.839 ms
+ 6  ae16.bbr01.eq01.dal03.networklayer.com (173.192.18.224)  283.542 ms  279.296 ms  290.455 ms
+ 7  dls-bb1-link.telia.net (213.248.102.173)  301.426 ms  302.092 ms  302.085 ms
+ 8  las-bb1-link.telia.net (213.155.131.77)  327.192 ms  327.350 ms  327.344 ms
+ 9  chinaunicom-ic-151188-las-bb1.telia.net (213.248.94.126)  478.941 ms  479.089 ms  479.083 ms
+10  219.158.30.173 (219.158.30.173)  496.679 ms  496.673 ms  496.667 ms
+11  219.158.97.57 (219.158.97.57)  516.819 ms  517.035 ms  517.011 ms
+12  219.158.5.129 (219.158.5.129)  491.084 ms  490.018 ms  497.472 ms
+13  219.158.100.130 (219.158.100.130)  518.239 ms  518.216 ms  518.192 ms
+14  61.182.176.186 (61.182.176.186)  533.695 ms  533.673 ms  533.666 ms
+15  101.23.255.230 (101.23.255.230)  512.212 ms  512.500 ms  512.479 ms
+16  60.5.194.74 (60.5.194.74)  519.246 ms  519.815 ms  519.791 ms
+17  101.23.255.45 (101.23.255.45)  526.522 ms  526.907 ms  526.844 ms
+18  101.23.128.17 (101.23.128.17)  522.068 ms  517.535 ms  517.240 ms</code></pre><p>查看第一跳，localhost (10.10.10.1)，已经通过VPN实现路由。</p>
+<p>停止VPN</p>
+<pre><code>~ sudo poff myvpn
+
+~ ifconfig
+eth0      Link encap:Ethernet  HWaddr 08:00:27:90:e8:19
+          inet addr:192.168.1.200  Bcast:192.168.1.255  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe90:e819/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:2270 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1991 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:207578 (207.5 KB)  TX bytes:184147 (184.1 KB)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)</code></pre><p>再ping网站，发现网络出现问题。Network is unreachable</p>
+<pre><code>~ ping www.163.com
+connect: Network is unreachable
+
+~ route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+50.116.27.194   192.168.1.1     255.255.255.255 UGH   0      0        0 eth0
+192.168.1.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
+
+~ ip route
+50.116.27.194 via 192.168.1.1 dev eth0  src 192.168.1.200
+192.168.1.0/24 dev eth0  proto kernel  scope link  src 192.168.1.200
+
+    ~ sudo ip route add default via 192.168.1.1
+
+    ~ route -n
+    Kernel IP routing table
+    Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+    0.0.0.0         192.168.1.1     0.0.0.0         UG    0      0        0 eth0
+    50.116.27.194   192.168.1.1     255.255.255.255 UGH   0      0        0 eth0
+    192.168.1.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
+
+    ~ ip route
+    default via 192.168.1.1 dev eth0
+    50.116.27.194 via 192.168.1.1 dev eth0  src 192.168.1.200
+    192.168.1.0/24 dev eth0  proto kernel  scope link  src 192.168.1.200
+
+    #再次ping网站，访问成功！
+    ~ ping www.163.com
+    PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
+    64 bytes from 101.23.128.17: icmp_req=1 ttl=54 time=25.6 ms
+    64 bytes from 101.23.128.17: icmp_req=2 ttl=54 time=25.5 ms
+    64 bytes from 101.23.128.17: icmp_req=3 ttl=54 time=27.8 ms</code></pre><p>通过ip-up, ip-down配置路由 ~ sudo vi /etc/ppp/ip-up.d/route-traffic</p>
+<pre><code>#!/bin/bash
+/sbin/ip route add 50.116.27.194 via 192.168.1.1
+/sbin/ip route del default
+/sbin/ip route add default dev ppp0
+
+~ sudo vi /etc/ppp/ip-down.d/disableroute
+
+#!/bin/bash
+/sbin/ip route add default via 192.168.1.1</code></pre><p>重启VPN连接</p>
+<pre><code>~ sudo pon myvpn
+#路由跟踪正确
+~ traceroute www.163.com
+traceroute to www.163.com (123.125.34.30), 30 hops max, 60 byte packets
+ 1  localhost (10.10.10.1)  293.397 ms  293.782 ms  293.668 ms
+ 2  router2-dal.linode.com (67.18.7.162)  293.530 ms  293.721 ms  294.223 ms
+ 3  xe-2-0-0.car04.dllstx2.networklayer.com (67.18.7.93)  293.454 ms  293.358 ms  293.239 ms
+ 4  po102.dsr02.dllstx2.networklayer.com (70.87.254.85)  293.749 ms  293.650 ms  293.544 ms
+ 5  po22.dsr02.dllstx3.networklayer.com (70.87.255.69)  293.444 ms  293.339 ms  293.242 ms
+ 6  ae17.bbr02.eq01.dal03.networklayer.com (173.192.18.230)  293.117 ms  293.525 ms  300.406 ms
+ 7  dls-bb1-link.telia.net (80.239.195.177)  300.850 ms  300.667 ms  300.320 ms
+
+#正常退出
+~ sudo poff myvpn
+#测试网络连接正常
+~ ping www.163.com
+PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
+64 bytes from 101.23.128.17: icmp_req=1 ttl=54 time=28.2 ms
+64 bytes from 101.23.128.17: icmp_req=2 ttl=54 time=28.1 ms</code></pre>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
+              <a href="/tags/PPTP/" rel="tag"># PPTP</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2015/07/27/e5-9c-a8ubuntu-e4-b8-8b-e6-90-ad-e5-bb-bapptp-vpn-e6-9c-8d-e5-8a-a1-e5-99-a8/" rel="prev" title="在ubuntu下搭建pptp vpn服务器">
+      <i class="fa fa-chevron-left"></i> 在ubuntu下搭建pptp vpn服务器
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2015/08/06/an-error-occurred-trying-to-connect-get-https192-168-xx-xx2376v1-18containersjson-remote-error-bad-certificate/" rel="next" title="An error occurred trying to connect: Get https://192.168.xx.xx:2376/v1.18/containers/json: remote error: bad certificate">
+      An error occurred trying to connect: Get https://192.168.xx.xx:2376/v1.18/containers/json: remote error: bad certificate <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85pptp%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BD%AF%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">1、安装pptp客户端软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%E3%80%81%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">2、查看网络配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AAVPN%E7%9A%84%E8%BF%9E%E6%8E%A5%E9%80%9A%E9%81%93%EF%BC%9Amyvpn"><span class="nav-number">3.</span> <span class="nav-text">3、初始化一个VPN的连接通道：myvpn</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4%E3%80%81"><span class="nav-number">4.</span> <span class="nav-text">4、</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5%E3%80%81%E9%80%9A%E8%BF%87%E7%BD%91%E7%AB%99%E8%B7%AF%E7%94%B1%E5%8A%9F%E8%83%BD%EF%BC%8C%E6%B5%8B%E8%AF%95VPN"><span class="nav-number">5.</span> <span class="nav-text">5、通过网站路由功能，测试VPN</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hillock"
+      src="https://res.hillock.com.cn/cola.jpg">
+  <p class="site-author-name" itemprop="name">Hillock</p>
+  <div class="site-description" itemprop="description">努力奔跑，向着诗和远方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">170</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">145</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/liuhill" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;liuhill" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:9986778@qq.com" title="E-Mail → mailto:9986778@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/liu-hill" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;liu-hill" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/LiuLig" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;LiuLig" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hillock</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

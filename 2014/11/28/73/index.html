@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-128x128-bolder.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bolder.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bolder.png">
+  <link rel="mask-icon" href="/images/wulai-bolder.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.wulai.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1、APC缓存简介APC，全称是Alternative PHP Cache，官方翻译叫”可选PHP缓存”。它为我们提供了缓存和优化PHP的中间代码的框架。 APC的缓存分两部分:系统缓存和用户数据缓存。 系统缓存 它是指APC把PHP文件源码的编译结果缓存起来，然后在每次调用时先对比时间标记。如果未过期，则使用缓存的中间代码运行。默认缓存 3600s(一小时)。但是这样仍会浪费大量CPU时间。因">
+<meta property="og:type" content="article">
+<meta property="og:title" content="APC缓存简介">
+<meta property="og:url" content="https://www.wulai.me/2014/11/28/73/index.html">
+<meta property="og:site_name" content="无来">
+<meta property="og:description" content="1、APC缓存简介APC，全称是Alternative PHP Cache，官方翻译叫”可选PHP缓存”。它为我们提供了缓存和优化PHP的中间代码的框架。 APC的缓存分两部分:系统缓存和用户数据缓存。 系统缓存 它是指APC把PHP文件源码的编译结果缓存起来，然后在每次调用时先对比时间标记。如果未过期，则使用缓存的中间代码运行。默认缓存 3600s(一小时)。但是这样仍会浪费大量CPU时间。因">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2014-11-28T13:16:53.000Z">
+<meta property="article:modified_time" content="2024-05-30T14:25:48.508Z">
+<meta property="article:author" content="Hillock">
+<meta property="article:tag" content="APC">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://www.wulai.me/2014/11/28/73/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>APC缓存简介 | 无来</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81208215-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-81208215-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">无来</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">不管你来还是不来<br />我都在这里，夜夜点亮<br />不是为了守候<br />只是为了做好我自己</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2014/11/28/73/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          APC缓存简介
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-11-28 21:16:53" itemprop="dateCreated datePublished" datetime="2014-11-28T21:16:53+08:00">2014-11-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-05-30 22:25:48" itemprop="dateModified" datetime="2024-05-30T22:25:48+08:00">2024-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h3 id="1、APC缓存简介"><a href="#1、APC缓存简介" class="headerlink" title="1、APC缓存简介"></a>1、APC缓存简介</h3><p>APC，全称是Alternative PHP Cache，官方翻译叫”可选PHP缓存”。它为我们提供了缓存和优化PHP的中间代码的框架。 APC的缓存分两部分:系统缓存和用户数据缓存。 系统缓存 它是指APC把PHP文件源码的编译结果缓存起来，然后在每次调用时先对比时间标记。如果未过期，则使用缓存的中间代码运行。默认缓存 3600s(一小时)。但是这样仍会浪费大量CPU时间。因此可以在<code>php.ini</code>中设置system缓存为永不过期(<code>apc.ttl=0</code>)。不过如果这样设置，改运php代码后需要重启WEB服务器。目前使用较多的是指此类缓存。 用户数据缓存 缓存由用户在编写PHP代码时用<code>apc_store</code>和<code>apc_fetch</code>函数操作读取、写入的。如果数据量不大的话，可以一试。如果数据量大，使用类似<code>memcache</code>此类的更加专著的内存缓存方案会更好 缓存key生成规则 APC的缓存中的每个slot都会有一个key，key是 apc_cache_key_t结构体类型，除了key相关的属性，关键是h字段的生成。 h字段决定了此元素落于slots数组的哪一个位置。对于用户缓存和系统缓存，其生成规则不同。 用户缓存通过<code>apc_cache_make_user_key</code>函数生成key。通过用户传递进来的key字符串，依赖PHP内核中的hash函数（PHP的hashtable所使用的hash函数：<code>zend_inline_hash_func</code>），生成h值。 系统缓存通过<code>apc_cache_make_file_key</code>函数生成key。通过APC的配置项apc.stat的开关来区别对待不同的方案。在打开的情况下，即<code>apc.stat= On</code>时，如果被更新则自动重新编译和缓存编译后的内容。此时的h值是文件的device和inode相加所得的值。在关闭的情况下，即<code>apc.stat=off</code>时，当文件被修改后，如果要使更新的内容生效，则必须重启Web服务器。此时h值是根据文件的路径地址生成，并且这里的路径是绝对路径。即使你是使用的相对路径，也会查找PG(<code>include_path</code>)定位文件，以取得绝对路径，所以使用绝对路径会跳过检查，可以提高代码的效率。 添加缓存过程 以用户缓存为例，apc_add函数用于给APC缓存中添加内容。如果key参数为字符串中，APC会根据此字符串生成key，如果key参数为数组，APC会遍历整个数组，生成key。根据这些key，APC会调用<code>_apc_store</code>将值存储到缓存中。由于这是用户缓存，当前使用的缓存为<code>apc_user_cache</code>。执行写入操作的是<code>apc_cache_make_user_entry</code>函数，其最终调用<code>apc_cache_user_insert</code>执行遍历查询和写入操作。与此对应，系统缓存使用<code>apc_cache_insert</code>执行写入操作，其最终都会调用<code>_apc_cache_insert</code>。 不管是用户缓存还是系统缓存，大体的执行过程类似，步骤如下：</p>
+<p>通过求余操作，定位当前key的在slots数组中的位置： <code>cache-&gt;slots[key.h % cache-&gt;num_slots]</code>; 在定位到slots数组中的位置后，遍历当前key对应的slot链表，如果存在slot的key和要写入的key匹配或slot过期，清除当前slot。 在最后一个slot的后面插入新的slot。 </p>
+<h3 id="2、APC模块安装-WINDOWS"><a href="#2、APC模块安装-WINDOWS" class="headerlink" title="2、APC模块安装 WINDOWS"></a>2、APC模块安装 WINDOWS</h3><ul>
+<li><p>第一步：下载php_apc.dll 在<code>http://pecl.php.net/package/apc</code> 要与php版本对应 将php_apc.dll放入你的ext目录</p>
+</li>
+<li><p>第二步：让php.ini支持apc扩展模块。 然后打开php.ini 加入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">extension=php_apc.dll</span><br><span class="line"></span><br><span class="line">apc.rfc1867 = on</span><br><span class="line"></span><br><span class="line">apc.max_file_size = 100M</span><br><span class="line"></span><br><span class="line">upload_max_filesize = 100M</span><br><span class="line"></span><br><span class="line">post_max_size = 100M</span><br><span class="line">//以上参数可自己定义</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第三步：检查是否支持PHP APC apc_store apc_fetch PHP APC 配置参数 把相关的配置放在一起解释。</p>
+</li>
+</ul>
+<p>apc.enabled=1 apc.enabled默认值是1，你可设成0禁用APC。如果你设置为0的时候，同样把extension=apc.so也注释掉（这样可以节约内存资源）。一旦启用了APC功能，则会缓存Opcodes到共享内存。</p>
+<p>apc.shm_segments = 1</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><p>1,使用Spinlocks锁机制，能够达到最佳性能。</p>
+</li>
+<li><p>2,APC提供了apc.php，用于监控与管理APC缓存。不要忘记修改管理员名和密码</p>
+</li>
+<li><p>3,APC默认通过mmap匿名映射创建共享内存，缓存对象都存放在这块”大型”的内存空间。由APC自行管理该共享内存</p>
+</li>
+<li><p>4,我们需要通过统计调整apc.shm_size、apc.num_files_hints、apc.user_entries_hint的值。直到最佳</p>
+</li>
+<li><p>5,好吧，我承认apc.stat = 0 可以获得更佳的性能。要我做什么都可以接受.</p>
+</li>
+<li><p>6,PHP预定义常量，可以使用apc_define_constants()函数。不过据APC开发者介绍说pecl hidef性能更佳，抛异define吧，它是低效的。</p>
+</li>
+<li><p>7,函数apc_store()，对于系统设置等PHP变量，生命周期是整个应用(从httpd守护进程直到httpd守护进程关闭)，使用APC比Memcached会更好。必竟不要经过网络传输协议tcp。</p>
+</li>
+<li><p>8,APC不适于通过函数apc_store()缓存频繁变更的用户数据，会出现一些奇异现象。</p>
+</li>
+</ul>
+<p>LIUNX </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">wget http://pecl.php.net/get/APC-3.1.8.tgz</span><br><span class="line"></span><br><span class="line">tar -zxvf APC-3.1.8.tgz cd APC-3.1.8</span><br><span class="line"></span><br><span class="line">/usr/local/php/bin/phpize</span><br><span class="line"></span><br><span class="line">./configure --enable-apc --enable-mmap --enable-apc-spinlocks --disable-apc-pthreadmutex --with-php-config=/usr/local/php/bin/php-config</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p>在/usr/local/php/etc/php.ini 加入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">extension = &quot;apc.so&quot; ;</span><br><span class="line"></span><br><span class="line">;APC setting</span><br><span class="line"></span><br><span class="line">apc.enabled = 1</span><br><span class="line"></span><br><span class="line">apc.shm_segments = 1</span><br><span class="line"></span><br><span class="line">apc.shm_size = 64M</span><br><span class="line"></span><br><span class="line">apc.optimization = 1</span><br><span class="line"></span><br><span class="line">apc.num_files_hint = 0</span><br><span class="line"></span><br><span class="line">apc.ttl = 0</span><br><span class="line"></span><br><span class="line">apc.gc_ttl = 3600</span><br><span class="line"></span><br><span class="line">apc.cache_by_default = on</span><br></pre></td></tr></table></figure>
+<p>重启apache 或者 /usr/local/php/sbin/php-fpm restart</p>
+<p>查看phpinfo apc</p>
+<p>下面引用<a target="_blank" rel="noopener" href="http://www.initphp.com">www.initphp.com</a> 框架的APC缓存类 initphp框架之APC缓存类 [php] &lt;?php if (!defined(‘IS_INITPHP’)) exit(‘Access Denied!’); /<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> * InitPHP 2.0 国产PHP开发框架 Dao-APC缓存 不适合频繁写入的缓存数据 <em>——————————————————————————- * 版权所有: CopyRight By initphp.com * 您可以自由使用该源码，但是在使用过程中，请保留作者信息。尊重他人劳动成果就是尊重自己 <em>——————————————————————————- * $Author:zhuli * $Dtime:2011-10-09 <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></em></em>/ class apcInit {</p>
+<pre><code>/**
+ * Apc缓存-设置缓存
+ * 设置缓存key，value和缓存时间
+ * @param  string $key   KEY值
+ * @param  string $value 值
+ * @param  string $time  缓存时间
+ */ 
+public function set_cache($key, $value, $time = 0) &#123;  
+    if ($time == 0) $time = null; //null情况下永久缓存 
+    return apc_store($key, $value, $time);; 
+&#125; 
+
+/**
+ * Apc缓存-获取缓存
+ * 通过KEY获取缓存数据
+ * @param  string $key   KEY值
+ */ 
+public function get_cache($key) &#123; 
+    return apc_fetch($key); 
+&#125; 
+
+/**
+ * Apc缓存-清除一个缓存
+ * 从memcache中删除一条缓存
+ * @param  string $key   KEY值
+ */ 
+public function clear($key) &#123; 
+    return apc_delete($key); 
+&#125; 
+
+/**
+ * Apc缓存-清空所有缓存
+ * 不建议使用该功能
+ * @return
+ */ 
+public function clear_all() &#123; 
+    apc_clear_cache(&apos;user&apos;); //清除用户缓存 
+    return apc_clear_cache(); //清楚缓存 
+&#125; 
+
+/**
+ * 检查APC缓存是否存在
+ * @param  string $key   KEY值
+ */ 
+public function exists($key) &#123; 
+    return apc_exists($key); 
+&#125; 
+
+/**
+ * 字段自增-用于记数
+ * @param string $key  KEY值
+ * @param int    $step 新增的step值
+ */ 
+public function inc($key, $step) &#123; 
+    return apc_inc($key, (int) $step); 
+&#125; 
+
+/**
+ * 字段自减-用于记数
+ * @param string $key  KEY值
+ * @param int    $step 新增的step值
+ */ 
+public function dec($key, $step) &#123; 
+    return apc_dec($key, (int) $step); 
+&#125; 
+
+/**
+ * 返回APC缓存信息
+ */ 
+public function info() &#123; 
+    return apc_cache_info(); 
+&#125; </code></pre><p>}</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/APC/" rel="tag"># APC</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2014/11/18/e5-be-ae-e4-bf-a1-e5-85-ac-e5-85-b1-e8-b4-a6-e5-8f-b7-e6-b5-8b-e8-af-95-e5-8f-b7-e7-94-b3-e8-af-b7/" rel="prev" title="微信公共账号测试号申请">
+      <i class="fa fa-chevron-left"></i> 微信公共账号测试号申请
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2014/11/29/markdown-e8-af-ad-e6-b3-95-e8-af-b4-e6-98-8e-e7-ae-80-e4-bd-93-e4-b8-ad-e6-96-87-e7-89-88/" rel="next" title="Markdown 语法说明 (简体中文版)">
+      Markdown 语法说明 (简体中文版) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81APC%E7%BC%93%E5%AD%98%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">1、APC缓存简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81APC%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85-WINDOWS"><span class="nav-number">2.</span> <span class="nav-text">2、APC模块安装 WINDOWS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hillock"
+      src="https://res.hillock.com.cn/cola.jpg">
+  <p class="site-author-name" itemprop="name">Hillock</p>
+  <div class="site-description" itemprop="description">努力奔跑，向着诗和远方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">170</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">145</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/liuhill" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;liuhill" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:9986778@qq.com" title="E-Mail → mailto:9986778@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/liu-hill" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;liu-hill" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/LiuLig" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;LiuLig" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hillock</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
