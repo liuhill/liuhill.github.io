@@ -195,6 +195,75 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2024/06/02/Composer%E6%93%8D%E4%BD%9C%E5%BF%BD%E7%95%A5%E7%89%88%E6%9C%AC%E5%8C%B9%E9%85%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/06/02/Composer%E6%93%8D%E4%BD%9C%E5%BF%BD%E7%95%A5%E7%89%88%E6%9C%AC%E5%8C%B9%E9%85%8D/" class="post-title-link" itemprop="url">Composer操作忽略版本匹配</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-06-02 16:19:42 / 修改时间：16:25:07" itemprop="dateCreated datePublished" datetime="2024-06-02T16:19:42+08:00">2024-06-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script src="/assets/js/APlayer.min.js"> </script><p>使用composer安装组件提示错误:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/www # composer require --prefer-dist powerkernel/yii2-photoswipe &quot;*&quot;</span><br><span class="line">./composer.json has been updated</span><br><span class="line">Running composer update powerkernel/yii2-photoswipe</span><br><span class="line">Loading composer repositories with package information</span><br><span class="line">Updating dependencies</span><br><span class="line">Your requirements could not be resolved to an installable set of packages.</span><br><span class="line"></span><br><span class="line">  Problem 1</span><br><span class="line">    - symfony/browser-kit is locked to version v4.2.4 and an update of this package was not requested.</span><br><span class="line">    - symfony/browser-kit v4.2.4 requires php ^7.1.3 -&gt; your php version (8.2.19) does not satisfy that requirement.</span><br><span class="line">  Problem 2</span><br><span class="line">    - codeception/module-yii2 is locked to version 1.1.5 and an update of this package was not requested.</span><br><span class="line">    - codeception/module-yii2 1.1.5 requires php &gt;=5.6.0 &lt;=8.1 | ~8.1.0 -&gt; your php version (8.2.19) does not satisfy that requirement.</span><br><span class="line">  Problem 3</span><br><span class="line">    - symfony/console v4.2.12 requires php ^7.1.3 -&gt; your php version (8.2.19) does not satisfy that requirement.</span><br><span class="line">    - codeception/codeception 4.2.2 requires symfony/console &gt;=2.7 &lt;6.0 -&gt; satisfiable by symfony/console[v4.2.12].</span><br><span class="line">    - codeception/codeception is locked to version 4.2.2 and an update of this package was not requested.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Installation failed, reverting ./composer.json and ./composer.lock to their original content.</span><br></pre></td></tr></table></figure>
+
+<p>修复方法，添加参数<code>--ignore-platform-reqs</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/www/www.heynet.com.cn # composer require --ignore-platform-reqs  --prefer-dist powerkernel/yii2-photoswipe &quot;*&quot;</span><br><span class="line">./composer.json has been updated</span><br><span class="line">Running composer update powerkernel/yii2-photoswipe</span><br><span class="line">Loading composer repositories with package information</span><br><span class="line">Updating dependencies</span><br><span class="line">Lock file operations: 2 installs, 0 updates, 0 removals</span><br><span class="line">  - Locking bower-asset/photoswipe (v4.1.3)</span><br><span class="line">  - Locking powerkernel/yii2-photoswipe (1.1.5)</span><br><span class="line">Writing lock file</span><br><span class="line">Installing dependencies from lock file (including require-dev)</span><br><span class="line">Package operations: 2 installs, 0 updates, 0 removals</span><br><span class="line">  - Downloading bower-asset/photoswipe (v4.1.3)</span><br><span class="line">  - Downloading powerkernel/yii2-photoswipe (1.1.5)</span><br><span class="line">  - Installing bower-asset/photoswipe (v4.1.3): Extracting archive</span><br><span class="line">  - Installing powerkernel/yii2-photoswipe (1.1.5): Extracting archive</span><br><span class="line">Package overtrue/wechat is abandoned, you should avoid using it. Use w7corp/easywechat instead.</span><br><span class="line">Package swiftmailer/swiftmailer is abandoned, you should avoid using it. Use symfony/mailer instead.</span><br><span class="line">Package phpunit/php-token-stream is abandoned, you should avoid using it. No replacement was suggested.</span><br><span class="line">Generating autoload files</span><br><span class="line">65 packages you are using are looking for funding.</span><br><span class="line">Use the `composer fund` command to find out more!</span><br><span class="line">No security vulnerability advisories found.</span><br></pre></td></tr></table></figure>
+
+
+<p>其他命令参考：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer install --ignore-platform-reqs</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer update --ignore-platform-reqs</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2024/05/31/MySQL%E6%8C%89%E4%B8%AD%E6%96%87%E6%8B%BC%E9%9F%B3%E6%8E%92%E5%BA%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2135,84 +2204,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2022/04/13/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%87%BA%E9%97%AE%E9%A2%98%E4%B9%8B%E8%A1%A8%E7%BB%93%E6%9E%84%E8%87%AA%E5%B8%A6AUTO-INCREMENT%E9%BB%98%E8%AE%A4%E5%80%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
-      <meta itemprop="name" content="Hillock">
-      <meta itemprop="description" content="努力奔跑，向着诗和远方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无来">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/13/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%87%BA%E9%97%AE%E9%A2%98%E4%B9%8B%E8%A1%A8%E7%BB%93%E6%9E%84%E8%87%AA%E5%B8%A6AUTO-INCREMENT%E9%BB%98%E8%AE%A4%E5%80%BC/" class="post-title-link" itemprop="url">mysql数据库导出问题之表结构自带AUTO_INCREMENT默认值</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-13 19:02:57" itemprop="dateCreated datePublished" datetime="2022-04-13T19:02:57+08:00">2022-04-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-05-30 22:24:56" itemprop="dateModified" datetime="2024-05-30T22:24:56+08:00">2024-05-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <script src="/assets/js/APlayer.min.js"> </script><p>解决：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -uroot -p -d test -S /tmp/mysql.sock | sed &#x27;s/AUTO_INCREMENT=[0-9]*\s*//g&#x27; &gt; test.sql</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2280,7 +2275,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">170</span>
+          <span class="site-state-item-count">171</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
