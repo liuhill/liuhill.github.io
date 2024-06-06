@@ -31,7 +31,7 @@ Installation failed, reverting ./composer.json and ./composer.lock to their orig
 修复方法，添加参数`--ignore-platform-reqs`:
 
 ```
-/www/www.heynet.com.cn # composer require --ignore-platform-reqs  --prefer-dist powerkernel/yii2-photoswipe "*"
+/www # composer require --ignore-platform-reqs  --prefer-dist powerkernel/yii2-photoswipe "*"
 ./composer.json has been updated
 Running composer update powerkernel/yii2-photoswipe
 Loading composer repositories with package information
