@@ -195,6 +195,331 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2015/07/27/e5-9c-a8ubuntu-e4-b8-8b-e6-90-ad-e5-bb-bapptp-vpn-e6-9c-8d-e5-8a-a1-e5-99-a8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/07/27/e5-9c-a8ubuntu-e4-b8-8b-e6-90-ad-e5-bb-bapptp-vpn-e6-9c-8d-e5-8a-a1-e5-99-a8/" class="post-title-link" itemprop="url">在ubuntu下搭建pptp vpn服务器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-07-27 13:31:10" itemprop="dateCreated datePublished" datetime="2015-07-27T13:31:10+08:00">2015-07-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-05-30 22:24:56" itemprop="dateModified" datetime="2024-05-30T22:24:56+08:00">2024-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script src="/assets/js/APlayer.min.js"> </script><h1 id="pptp配置"><a href="#pptp配置" class="headerlink" title="pptp配置"></a>pptp配置</h1><h2 id="1、安装pptp"><a href="#1、安装pptp" class="headerlink" title="1、安装pptp"></a>1、安装pptp</h2><p>安装pptp</p>
+<pre><code>sudo apt-get -y update
+sudo apt-get -y install pptpd
+
+
+## 2、修改配置脚本
+
+cat &gt;/etc/ppp/options.pptpd &lt;&lt;END
+name pptpd
+refuse-pap
+refuse-chap
+refuse-mschap
+require-mschap-v2
+require-mppe-128
+ms-dns 8.8.8.8
+ms-dns 8.8.4.4
+proxyarp
+lock
+nobsdcomp 
+novj
+novjccomp
+nologfd
+END
+
+
+说明</code></pre><ul>
+<li><p>name pptpd（pptpd服务名，可以随便填写。）</p>
+</li>
+<li><p>refuse-pap（拒绝pap身份认证模式。）</p>
+</li>
+<li><p>refuse-chap（拒绝chap身份认证模式。）</p>
+</li>
+<li><p>refuse-mschap（拒绝mschap身份认证模式。）</p>
+</li>
+<li><p>require-mschap-v2（在端点进行连接握手时需要使用微软的 mschap-v2 进行自身验证。）</p>
+</li>
+<li><p>require-mppe-128（MPPE 模块使用 128 位加密。）</p>
+</li>
+<li><p>ms-dns 8.8.8.8 (ppp 为 Windows 客户端提供 DNS 服务器 IP 地址。)</p>
+</li>
+<li><p>proxyarp (建立 ARP 代理键值。)</p>
+</li>
+<li><p>nodefaultroute（不替换默认路由）</p>
+</li>
+<li><p>debug（开启调试模式，相关信息记录在 /var/logs/message 中。）</p>
+</li>
+<li><p>lock（锁定客户端 PTY 设备文件。）</p>
+</li>
+<li><p>nobsdcomp (禁用 BSD 压缩模式。)</p>
+<h2 id="3、还有ip"><a href="#3、还有ip" class="headerlink" title="3、还有ip"></a>3、还有ip</h2><p>cat &gt; /etc/pptpd.conf &lt;&lt;END<br>option /etc/ppp/options.pptpd<br>logwtmp<br>localip 192.168.2.1<br>remoteip 192.168.2.10-100<br>END</p>
+</li>
+</ul>
+<pre><code>## 4、增加路由转发
+
+### 4.1 ipv4转发
+
+cat &gt;&gt; /etc/sysctl.conf &lt;&lt;END
+net.ipv4.ip_forward=1
+END
+sysctl -p   
+
+
+### 4.2 修改iptables</code></pre><ul>
+<li><p>备份当前iptables<br>iptables-save &gt; /etc/iptables.down.rules</p>
+</li>
+<li><p>修改iptable NAT转发<br>iptables -t nat -A POSTROUTING -s 192.168.2.0/24 -o eth0 -j MASQUERADE</p>
+</li>
+<li><p>设置MTU</p>
+<p>iptables -I FORWARD -s 192.168.2.0/24 -p tcp –syn -i ppp+ -j TCPMSS –set-mss 1300</p>
+</li>
+<li><p>保存新iptables</p>
+<p>iptables-save &gt; /etc/iptables.up.rules</p>
+</li>
+<li><p>重启后继续有效<br>cat &gt;&gt;/etc/ppp/pptpd-options&lt;&lt;EOF<br>pre-up iptables-restore &lt; /etc/iptables.up.rules<br>post-down iptables-restore &lt; /etc/iptables.down.rules<br>EOF</p>
+</li>
+<li><p>增加用户</p>
+</li>
+<li><p>增加帐号密码都是test的用户<br>cat &gt;/etc/ppp/chap-secrets &lt;&lt;END<br>test pptpd test *<br>END</p>
+</li>
+<li><p>重启服务<br>/etc/init.d/pptpd restart<br>netstat -lntp</p>
+</li>
+<li><p>自动脚本<br>wget -c <a target="_blank" rel="noopener" href="https://github.com/suyan/scripts/raw/master/Setup/pptp.sh">https://github.com/suyan/scripts/raw/master/Setup/pptp.sh</a></p>
+<h2 id="4、问题"><a href="#4、问题" class="headerlink" title="4、问题"></a>4、问题</h2><p>logwtmp.so 版本问题</p>
+<p>如果链接中断，并且出现下面问题：</p>
+<p>Plugin /usr/lib/pptpd/pptpd-logwtmp.so is for pppd version 2.4.5, this is 2.4.6</p>
+</li>
+</ul>
+<p>在 /etc/pptpd.conf 文件中把 logwtmp 删掉就好了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2015/07/25/e5-8a-a8-e6-80-81-e7-94-9f-e6-88-90-e5-85-83-e7-b4-a0-e4-b8-8d-e5-93-8d-e5-ba-94jquery-e4-ba-8b-e4-bb-b6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/07/25/e5-8a-a8-e6-80-81-e7-94-9f-e6-88-90-e5-85-83-e7-b4-a0-e4-b8-8d-e5-93-8d-e5-ba-94jquery-e4-ba-8b-e4-bb-b6/" class="post-title-link" itemprop="url">动态生成元素不响应jquery事件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-07-25 14:20:12" itemprop="dateCreated datePublished" datetime="2015-07-25T14:20:12+08:00">2015-07-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-05-30 22:24:56" itemprop="dateModified" datetime="2024-05-30T22:24:56+08:00">2024-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script src="/assets/js/APlayer.min.js"> </script><p>用on事件来解决</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2015/07/16/e4-bd-bf-e7-94-a8npm-e5-ae-89-e8-a3-85-e4-b8-80-e4-ba-9b-e5-8c-85-e5-a4-b1-e8-b4-a5-e4-ba-86-e7-9a-84-e7-9c-8b-e8-bf-87-e6-9d-a5-ef-bc-88npm-e5-9b-bd-e5-86-85-e9-95-9c-e5-83-8f-e4-bb-8b-e7-bb-8d/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/07/16/e4-bd-bf-e7-94-a8npm-e5-ae-89-e8-a3-85-e4-b8-80-e4-ba-9b-e5-8c-85-e5-a4-b1-e8-b4-a5-e4-ba-86-e7-9a-84-e7-9c-8b-e8-bf-87-e6-9d-a5-ef-bc-88npm-e5-9b-bd-e5-86-85-e9-95-9c-e5-83-8f-e4-bb-8b-e7-bb-8d/" class="post-title-link" itemprop="url">使用npm安装一些包失败了的看过来（npm国内镜像介绍）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-07-16 12:50:51" itemprop="dateCreated datePublished" datetime="2015-07-16T12:50:51+08:00">2015-07-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-05-30 22:24:56" itemprop="dateModified" datetime="2024-05-30T22:24:56+08:00">2024-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script src="/assets/js/APlayer.min.js"> </script><p>这个也是网上搜的，亲自试过，非常好用！</p>
+<p>镜像使用方法（三种办法任意一种都能解决问题，建议使用第三种，将配置写死，下次用的时候配置还在）:</p>
+<p>1.通过config命令</p>
+<pre><code>npm config set registry https://registry.npm.taobao.org 
+npm info underscore （如果上面配置正确这个命令会有字符串response）
+
+
+2.命令行指定
+
+npm --registry https://registry.npm.taobao.org info underscore 
+
+
+3.编辑 ~/.npmrc 加入下面内容
+
+registry = https://registry.npm.taobao.org</code></pre><p>搜索镜像: <a target="_blank" rel="noopener" href="https://npm.taobao.org">https://npm.taobao.org</a></p>
+<p>建立或使用镜像,参考: <a target="_blank" rel="noopener" href="https://github.com/cnpm/cnpmjs.org">https://github.com/cnpm/cnpmjs.org</a></p>
+<h2 id="国内镜像"><a href="#国内镜像" class="headerlink" title="国内镜像"></a>国内镜像</h2><p><code>http://cnpmjs.org/</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2015/07/13/paypal-e9-ab-98-e7-ba-a7-e5-b7-a5-e7-a8-8b-e6-80-bb-e7-9b-91-ef-bc-9a-e8-af-bb-e5-ae-8c-e8-bf-99100-e7-af-87-e8-ae-ba-e6-96-87-e5-b0-b1-e8-83-bd-e6-88-90-e5-a4-a7-e6-95-b0-e6-8d-ae-e9-ab-98-e6-89-8b/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1019,328 +1344,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2014/12/30/ie-e6-8f-90-e4-ba-a4ajax-e6-8f-90-e4-ba-a4304/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
-      <meta itemprop="name" content="Hillock">
-      <meta itemprop="description" content="努力奔跑，向着诗和远方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无来">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2014/12/30/ie-e6-8f-90-e4-ba-a4ajax-e6-8f-90-e4-ba-a4304/" class="post-title-link" itemprop="url">IE提交ajax提交304</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2014-12-30 11:32:19" itemprop="dateCreated datePublished" datetime="2014-12-30T11:32:19+08:00">2014-12-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-05-30 22:24:56" itemprop="dateModified" datetime="2024-05-30T22:24:56+08:00">2024-05-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <script src="/assets/js/APlayer.min.js"> </script><p>增加cache</p>
-<pre><code>$.ajax(&#123;  
-    cache : false,  
-    url : &quot;sendCode.html&quot;,  
-    data : &#123;phone : value&#125;  
-&#125;);  </code></pre>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2014/12/19/php-echo-e6-88-96-e8-80-85exit-e8-be-93-e5-87-ba-e4-b8-ad-e6-96-87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
-      <meta itemprop="name" content="Hillock">
-      <meta itemprop="description" content="努力奔跑，向着诗和远方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无来">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2014/12/19/php-echo-e6-88-96-e8-80-85exit-e8-be-93-e5-87-ba-e4-b8-ad-e6-96-87/" class="post-title-link" itemprop="url">php echo或者exit输出中文</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2014-12-19 10:01:06" itemprop="dateCreated datePublished" datetime="2014-12-19T10:01:06+08:00">2014-12-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-05-30 22:24:56" itemprop="dateModified" datetime="2024-05-30T22:24:56+08:00">2024-05-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <script src="/assets/js/APlayer.min.js"> </script><p>你这是中文乱码，原因是操作环境的编码和浏览器的编码不一致造成的 1. php文件本身的编码与网页的编码应匹配</p>
-<p>a. 如果欲使用gb2312编码，那么php要输出头：header(“Content-Type: text/html; charset=gb2312”)，静态页面添加<meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><br>，所有文件的编码格式为ANSI，可用记事本打开，另存为选择编码为ANSI，覆盖源文件。</p>
-<p>b. 如果欲使用utf-8编码，那么php要输出头 ：header(“Content-Type: text/html; charset=utf-8”)，静态页面添加<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><br>，所有文件的编码格式为utf-8。保存为utf-8可能会有点麻烦，一般utf-8文件开头会有BOM，如果使用 session就会出问题，可用editplus来保存，在editplus中，工具-&gt;参数选择-&gt;文件-&gt;UTF-8签名，选择总是删除，再保存就可以去掉BOM信息了。</p>
-<ol>
-<li>php本身不是Unicode的，所有substr之类的函数得改成mb_substr（需要装mbstring扩展）；或者用iconv转码。</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2014/12/13/e9-a2-84-e6-8e-92-e5-ba-8f-e9-81-8d-e5-8e-86-e6-a0-91-e7-ae-97-e6-b3-95-e9-9d-9e-e9-80-92-e5-bd-92-e6-97-a0-e9-99-90-e6-9e-81-e5-88-86-e7-b1-bb-e7-ae-97-e6-b3-95-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
-      <meta itemprop="name" content="Hillock">
-      <meta itemprop="description" content="努力奔跑，向着诗和远方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无来">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2014/12/13/e9-a2-84-e6-8e-92-e5-ba-8f-e9-81-8d-e5-8e-86-e6-a0-91-e7-ae-97-e6-b3-95-e9-9d-9e-e9-80-92-e5-bd-92-e6-97-a0-e9-99-90-e6-9e-81-e5-88-86-e7-b1-bb-e7-ae-97-e6-b3-95-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/" class="post-title-link" itemprop="url">预排序遍历树算法(modified preorder tree traversal algorithm)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2014-12-13 19:47:24" itemprop="dateCreated datePublished" datetime="2014-12-13T19:47:24+08:00">2014-12-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-05-30 22:24:56" itemprop="dateModified" datetime="2024-05-30T22:24:56+08:00">2024-05-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <script src="/assets/js/APlayer.min.js"> </script><p>本文是我学习MySQL官方教程Managing Hierarchical Data in MySQL的笔记 多层数据结构估计所有的web开发者估计都不会陌生，各种软件的分类都是基于多层结构来设计的。 下面是一个典型的多层数据结构示意图：</p>
-<p><a target="_blank" rel="noopener" href="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-be1b6320354e5c0879737b855764e9d920100326152818.png"><img src="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-be1b6320354e5c0879737b855764e9d920100326152818.png" alt="thum-be1b6320354e5c0879737b855764e9d920100326152818"></a></p>
-<p>相关创建数据语句：</p>
-<pre><code>CREATE TABLE category(
-category_id INT AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(20) NOT NULL,
-parent INT DEFAULT NULL);
-
-INSERT INTO category
-VALUES(1,&apos;ELECTRONICS&apos;,NULL),(2,&apos;TELEVISIONS&apos;,1),(3,&apos;TUBE&apos;,2),
-(4,&apos;LCD&apos;,2),(5,&apos;PLASMA&apos;,2),(6,&apos;PORTABLE ELECTRONICS&apos;,1),
-(7,&apos;MP3 PLAYERS&apos;,6),(8,&apos;FLASH&apos;,7),
-(9,&apos;CD PLAYERS&apos;,6),(10,&apos;2 WAY RADIOS&apos;,6);
-
-SELECT * FROM category ORDER BY category_id;</code></pre><p>在这种数据结构中，各层之间通过字段 parent 来形成邻接表，我们查询某些层级的关系的时候一般都是通过递归的方式，遍历某个层级关系的SQL的查询次数会顺着层级的增加，想想在层级有20的时候，根据某个底层节点取它到顶层节点的查询次数吧。</p>
-<p>为了解决这个问题，人们想出了嵌套集模型（The Nested Set Model），请看下图：</p>
-<p><a target="_blank" rel="noopener" href="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-90ef2a4a3357d5de8e8e0d1bc026294820100326152302.png"><img src="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-90ef2a4a3357d5de8e8e0d1bc026294820100326152302.png" alt="thum-90ef2a4a3357d5de8e8e0d1bc026294820100326152302"></a></p>
-<p>上图依然是表现的与图一相同的层级关系，但是却更换了一种表现形式 下面是新的关系表和数据（关系和数据与之前相同，但是表结构不一样）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE nested_category (</span><br><span class="line">category_id INT AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line">name VARCHAR(20) NOT NULL,</span><br><span class="line">lft INT NOT NULL,</span><br><span class="line">rgt INT NOT NULL,</span><br><span class="line">deleted TINYINT(8)  NOT NULL DEFAULT &#x27;0&#x27;,</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">INSERT INTO nested_category</span><br><span class="line">VALUES(1,&#x27;ELECTRONICS&#x27;,1,20),(2,&#x27;TELEVISIONS&#x27;,2,9),(3,&#x27;TUBE&#x27;,3,4),</span><br><span class="line">(4,&#x27;LCD&#x27;,5,6),(5,&#x27;PLASMA&#x27;,7,8),(6,&#x27;PORTABLE ELECTRONICS&#x27;,10,19),</span><br><span class="line">(7,&#x27;MP3 PLAYERS&#x27;,11,14),(8,&#x27;FLASH&#x27;,12,13),</span><br><span class="line">(9,&#x27;CD PLAYERS&#x27;,15,16),(10,&#x27;2 WAY RADIOS&#x27;,17,18);</span><br><span class="line"></span><br><span class="line">SELECT * FROM nested_category ORDER BY category_id;</span><br></pre></td></tr></table></figure>
-
-<p>这里将 left,right 修改为 lft,rgt因为这两个词在MYSQL中属于关键字 下面我们将插入的数据标识在图上： <a target="_blank" rel="noopener" href="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-a618905c95b8d6aa42cf4c29f7d0546a20100326152746.png"><img src="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-a618905c95b8d6aa42cf4c29f7d0546a20100326152746.png" alt="thum-a618905c95b8d6aa42cf4c29f7d0546a20100326152746"></a> 同样，我们将数据标识在原来的结构上： <a target="_blank" rel="noopener" href="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-be1b6320354e5c0879737b855764e9d9201003261528181.png"><img src="http://www.hillock.com.cn/wp-content/uploads/2014/12/thum-be1b6320354e5c0879737b855764e9d9201003261528181.png" alt="thum-be1b6320354e5c0879737b855764e9d920100326152818"></a></p>
-<p>怎么样，是不是很明确了</p>
-<p>下面使我自己标定一种形式，方便理解</p>
-<pre><code>[1
-      [2
-           [3 4]
-           [5 6]
-           [7 8]
-      9]
-      [10
-           [11
-                 [12 13]
-           14]
-           [15 16]
-           [17 18]
-      19]
-20]</code></pre><p>遍历整个树，查询子集 条件：__ 左边 &gt; 父级L，右边 &lt; 父级R __</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT node.name</span><br><span class="line">FROM nested_category AS node,</span><br><span class="line">nested_category AS parent</span><br><span class="line">WHERE node.lft BETWEEN parent.lft AND parent.rgt</span><br><span class="line">AND parent.name = &#x27;ELECTRONICS&#x27;</span><br><span class="line">ORDER BY node.lft;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>查询所有无分支的节点 条件： __ 右边 = 左边L + 1 __</p>
-<pre><code>SELECT name FROM nested_category WHERE rgt = lft + 1;</code></pre></li>
-<li><p>查询某个字节点到根节点的路径</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT parent.name</span><br><span class="line">FROM nested_category AS node, nested_category AS parent</span><br><span class="line">WHERE</span><br><span class="line">  node.lft BETWEEN parent.lft AND parent.rgt AND</span><br><span class="line">  node.name = &#x27;FLASH&#x27;</span><br><span class="line">ORDER BY parent.lft;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查询节点的深度</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT node.name, (COUNT(parent.name) - 1) AS depth</span><br><span class="line">FROM nested_category AS node, nested_category AS parent</span><br><span class="line">WHERE node.lft BETWEEN parent.lft AND parent.rgt</span><br><span class="line">GROUP BY node.name</span><br><span class="line">ORDER BY node.lft;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查询子节点的深度</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">SELECT node.name, (COUNT(parent.name) - (sub_tree.depth + 1)) AS depth</span><br><span class="line">FROM</span><br><span class="line">  nested_category AS node,</span><br><span class="line">  nested_category AS parent,</span><br><span class="line">  nested_category AS sub_parent,</span><br><span class="line">  ( SELECT node.name, (COUNT(parent.name) - 1) AS depth</span><br><span class="line">    FROM nested_category AS node, nested_category AS parent</span><br><span class="line">    WHERE</span><br><span class="line">      node.lft BETWEEN parent.lft AND parent.rgt AND</span><br><span class="line">      node.name = &#x27;PORTABLE ELECTRONICS&#x27;</span><br><span class="line">      GROUP BY node.name ORDER BY node.lft</span><br><span class="line">  ) AS sub_tree</span><br><span class="line"></span><br><span class="line">WHERE</span><br><span class="line">  node.lft BETWEEN parent.lft AND parent.rgt AND</span><br><span class="line">  node.lft BETWEEN sub_parent.lft AND sub_parent.rgt AND</span><br><span class="line">  sub_parent.name = sub_tree.name</span><br><span class="line">GROUP BY node.name    </span><br><span class="line">ORDER BY node.lft;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>插入新节点 算法详解：</li>
-</ul>
-<ol>
-<li>所有分类 左边和右边的值 &gt; 插入节点的左边节点记录的右值 的全部 + 2</li>
-</ol>
-<ul>
-<li>插入节点 左值 = 插入位置左边节点记录的右值 + 1， 右值 = 插入位置左边节点记录的右值 + 2   <blockquote>
-<p>例子: 在 R = 9（L8, R9）与 L = 10（L10，R11） 节点之间插入一个新节点 那么所有 左值 和 右值 &gt; 9 的节点的左值和右值需要 + 2<br>例如新节点右边的节点（L10，R11）左值右值都需要 + 2 那么插入后的新值为 L12 R13 新节点的左值为 9 + 1 = 10 右值为 9 + 2 = 11 SQL语句实现</p>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">LOCK TABLE nested_category WRITE;</span><br><span class="line">SELECT @myRight := rgt FROM nested_category</span><br><span class="line">WHERE name = &#x27;TELEVISIONS&#x27;;</span><br><span class="line">UPDATE nested_category SET rgt = rgt + 2 WHERE rgt &gt; @myRight;</span><br><span class="line">UPDATE nested_category SET lft = lft + 2 WHERE lft &gt; @myRight;</span><br><span class="line">INSERT INTO nested_category(name, lft, rgt)</span><br><span class="line">  VALUES(&#x27;GAME CONSOLES&#x27;, @myRight + 1, @myRight + 2);</span><br><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>删除新节点 删除节点的算法与添加一个节点的算法相反</li>
-</ul>
-<ul>
-<li>删除一个没有子节点的节点</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LOCK TABLE nested_category WRITE;</span><br><span class="line">SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft + 1 FROM nested_category WHERE name = &#x27;GAME CONSOLES&#x27;;</span><br><span class="line">DELETE FROM nested_category WHERE lft BETWEEN @myLeft AND @myRight;</span><br><span class="line">UPDATE nested_category SET rgt = rgt - @myWidth WHERE rgt &gt; @myRight;</span><br><span class="line">UPDATE nested_category SET lft = lft - @myWidth WHERE lft &gt; @myRight;</span><br><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>删除一个分支节点和它所有的子节点</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LOCK TABLE nested_category WRITE;</span><br><span class="line">SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft + 1 FROM nested_category WHERE name = &#x27;MP3 PLAYERS&#x27;;</span><br><span class="line">DELETE FROM nested_category WHERE lft BETWEEN @myLeft AND @myRight;</span><br><span class="line">UPDATE nested_category SET rgt = rgt - @myWidth WHERE rgt &gt; @myRight;</span><br><span class="line">UPDATE nested_category SET lft = lft - @myWidth WHERE lft &gt; @myRight;</span><br><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>删除一个节点后移动其字节点到</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LOCK TABLE nested_category WRITE;</span><br><span class="line">SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft + 1 FROM nested_category WHERE name = &#x27;PORTABLE ELECTRONICS&#x27;;</span><br><span class="line">DELETE FROM nested_category WHERE lft = @myLeft;</span><br><span class="line">UPDATE nested_category SET rgt = rgt - 1, lft = lft - 1 WHERE lft BETWEEN @myLeft AND @myRight;</span><br><span class="line">UPDATE nested_category SET rgt = rgt - 2 WHERE rgt &gt; @myRight;</span><br><span class="line">UPDATE nested_category SET lft = lft - 2 WHERE lft &gt; @myRight;</span><br><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
-
-<h3 id="补充：移动一个分类"><a href="#补充：移动一个分类" class="headerlink" title="补充：移动一个分类"></a>补充：移动一个分类</h3><p>将分类5移动到分类9下面</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">LOCK TABLE nested_category WRITE;</span><br><span class="line">SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft + 1</span><br><span class="line">FROM nested_category</span><br><span class="line">WHERE  category_id = 5;</span><br><span class="line">UPDATE nested_category SET deleted=2 WHERE lft BETWEEN @myLeft AND @myRight;</span><br><span class="line">UPDATE nested_category SET rgt = rgt - @myWidth WHERE rgt &gt; @myRight AND deleted=0;</span><br><span class="line">UPDATE nested_category SET lft = lft - @myWidth WHERE lft &gt; @myRight AND deleted=0;</span><br><span class="line"></span><br><span class="line">SELECT @destLeft := lft,@destRight := rgt FROM nested_category WHERE  category_id = 9;</span><br><span class="line"></span><br><span class="line">UPDATE nested_category SET rgt = rgt + @myWidth WHERE rgt &gt; @destRight AND deleted=0;</span><br><span class="line">UPDATE nested_category SET lft = lft + @myWidth WHERE lft &gt; @destRight AND deleted=0;</span><br><span class="line"></span><br><span class="line">UPDATE nested_category SET rgt = rgt -(@myLeft-@destRight) WHERE deleted=2;</span><br><span class="line">UPDATE nested_category SET lft = lft -(@myLeft-@destRight) WHERE deleted=2;</span><br><span class="line">UPDATE nested_category SET rgt = rgt + @myWidth WHERE category_id = 9;</span><br><span class="line">UPDATE nested_category SET deleted=0 WHERE  deleted=2;</span><br><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
-
-<p>将分类5移动到分类9前面</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft + 1 FROM nested_category WHERE  category_id = 5;</span><br><span class="line">UPDATE nested_category SET deleted=2 WHERE lft BETWEEN @myLeft AND @myRight;</span><br><span class="line">UPDATE nested_category SET rgt = rgt - @myWidth WHERE rgt &gt; @myRight AND deleted=0;</span><br><span class="line">UPDATE nested_category SET lft = lft - @myWidth WHERE lft &gt; @myRight AND deleted=0;</span><br><span class="line"></span><br><span class="line">SELECT @destLeft := lft,@destRight := rgt FROM nested_category WHERE  category_id = 9;</span><br><span class="line"></span><br><span class="line">UPDATE nested_category SET rgt = rgt + @myWidth WHERE rgt &gt;= @destLeft  AND deleted=0;</span><br><span class="line">UPDATE nested_category SET lft = lft + @myWidth WHERE lft &gt;= @destLeft AND deleted=0;</span><br><span class="line"></span><br><span class="line">UPDATE nested_category SET rgt = rgt -(@myLeft-@destRight) WHERE deleted=2;</span><br><span class="line">UPDATE nested_category SET lft = lft -(@myLeft-@destRight) WHERE deleted=2;</span><br><span class="line">UPDATE nested_category SET deleted=0 WHERE  deleted=2;</span><br><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
-
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>预排序遍历树算法的核心就是牺牲了写的性能来换取读取的性能 在你的开发的应用遇到此类问题的时 <strong>（读压力 &gt; 写压力）</strong>，尝试下使用预排序遍历树算法来提高你的程序的性能吧。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1412,7 +1415,7 @@ SELECT * FROM category ORDER BY category_id;</code></pre><p>在这种数据结�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">171</span>
+          <span class="site-state-item-count">174</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
