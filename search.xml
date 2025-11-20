@@ -129,22 +129,6 @@
       </tags>
   </entry>
   <entry>
-    <title>mac上eclipse 安装 javaHL时出错</title>
-    <url>/2015/05/28/176/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>一、下载serf-1.3.8.tar.bz2出错</p>
-<p>通过浏览器（可以翻出去）把serf-1.3.8.tar.bz2下载，更名为subversion–serf-1.3.8.tar.bz2<br>保存至/Library/Caches/Homebrew/subversion-1.8.13.tar.bz2路径下，就OK了～解决了shell不能翻出去的苦恼了～</p>
-<p>二、出现zlib错误</p>
-<pre><code>brew unlink zlib</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>mac</tag>
-        <tag>eclipse</tag>
-        <tag>javaHL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Cannot start PhantomJS  karma</title>
     <url>/2015/08/14/220/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="1、错误信息"><a href="#1、错误信息" class="headerlink" title="1、错误信息"></a>1、错误信息</h2><pre><code>Running &quot;karma:unit&quot; (karma) task
@@ -169,6 +153,22 @@ Done, but with warnings.</code></pre><h2 id="2、系统ubuntu-14-04"><a href="#2
         <tag>node.js</tag>
         <tag>PhantomJS</tag>
         <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mac上eclipse 安装 javaHL时出错</title>
+    <url>/2015/05/28/176/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>一、下载serf-1.3.8.tar.bz2出错</p>
+<p>通过浏览器（可以翻出去）把serf-1.3.8.tar.bz2下载，更名为subversion–serf-1.3.8.tar.bz2<br>保存至/Library/Caches/Homebrew/subversion-1.8.13.tar.bz2路径下，就OK了～解决了shell不能翻出去的苦恼了～</p>
+<p>二、出现zlib错误</p>
+<pre><code>brew unlink zlib</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>mac</tag>
+        <tag>eclipse</tag>
+        <tag>javaHL</tag>
       </tags>
   </entry>
   <entry>
@@ -296,16 +296,16 @@ public function info() &#123;
     <title>9岁闺女，自己参加花样游泳集训了</title>
     <url>/2021/07/23/9%E5%B2%81%E9%97%BA%E5%A5%B3%E7%8B%AC%E8%87%AA%E5%8F%82%E5%8A%A0%E8%8A%B1%E6%A0%B7%E6%B8%B8%E6%B3%B3%E9%9B%86%E8%AE%AD%E4%BA%86-20210723/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>今天，9岁的女儿自己参加花样游泳集训了，比赛、集训共10天。以前训练总是挨批评，一直抗拒参加集训，现在终于愿意参加比赛了。一上车就认识了新朋友，有小朋友同行，出发的心情不错。</p>
-<img title="集训出发" alt="集训出发" src="https://res.hillock.com.cn/wulai/images/Cola/20210723090331.jpg?imageView2/2/w/670">
+<img title="集训出发" alt="集训出发" src="https://res.heynet.com.cn/wulai/images/Cola/20210723090331.jpg?imageView2/2/w/670">
 
-<img title="新朋友" alt="新朋友" src="https://res.hillock.com.cn/wulai/images/Cola/202107230903311.jpg?imageView2/2/w/670">
+<img title="新朋友" alt="新朋友" src="https://res.heynet.com.cn/wulai/images/Cola/202107230903311.jpg?imageView2/2/w/670">
 
 
 <p>前几天，顺路送她去课外班补课。考虑她要在那儿呆一整天，中午可能无聊。在车上我说</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">“中午我来找你吃饭吧？”，</span><br><span class="line">“妈妈帮我定了”。</span><br><span class="line">“我中午过来找你玩吧，中午你一个人多无聊”，</span><br><span class="line">“我们老师给我们放电影”。</span><br></pre></td></tr></table></figure>
 <p>好吧，是我自作多情了…</p>
 <p>在刚出生的时候，我默默的想“我一定会放手，让你自己高飞！” 没想到,她想飞的心思来得这么快<del>~</del> </p>
-<img title="宝宝" alt="宝宝" src="https://res.hillock.com.cn/wulai/images/Cola/psb.jfif">
+<img title="宝宝" alt="宝宝" src="https://res.heynet.com.cn/wulai/images/Cola/psb.jfif">
 ]]></content>
       <categories>
         <category>随笔</category>
@@ -313,6 +313,22 @@ public function info() &#123;
       <tags>
         <tag>可乐</tag>
         <tag>花样游泳</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Can&#39;t resume screen, says I am already attached?</title>
+    <url>/2017/03/22/Can-t-resume-screen-says-I-am-already-attached/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>he session is still attached on another terminal. The server hasn’t detected the network outage on that connection: it only detects the outage when it tries to send a packet and gets an error back or no response after a timeout, but this hasn’t happened yet. You’re in a common situation where the client detected the outage because it tried to send some input and failed, but the server is just sitting there waiting for input. Eventually the server will send a keepalive packet and detect that the connection is dead.</p>
+<p>In the meantime, use the <code>-d</code> option to detach the screen session from the terminal where it’s in.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -r -d 30608</span><br><span class="line">screen -rd is pretty much the standard way to attach to an</span><br></pre></td></tr></table></figure>
+<p>existing screen session.</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>screen</tag>
+        <tag>远程桌面</tag>
       </tags>
   </entry>
   <entry>
@@ -336,22 +352,6 @@ public function info() &#123;
       <tags>
         <tag>centos</tag>
         <tag>网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Can&#39;t resume screen, says I am already attached?</title>
-    <url>/2017/03/22/Can-t-resume-screen-says-I-am-already-attached/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>he session is still attached on another terminal. The server hasn’t detected the network outage on that connection: it only detects the outage when it tries to send a packet and gets an error back or no response after a timeout, but this hasn’t happened yet. You’re in a common situation where the client detected the outage because it tried to send some input and failed, but the server is just sitting there waiting for input. Eventually the server will send a keepalive packet and detect that the connection is dead.</p>
-<p>In the meantime, use the <code>-d</code> option to detach the screen session from the terminal where it’s in.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -r -d 30608</span><br><span class="line">screen -rd is pretty much the standard way to attach to an</span><br></pre></td></tr></table></figure>
-<p>existing screen session.</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>screen</tag>
-        <tag>远程桌面</tag>
       </tags>
   </entry>
   <entry>
@@ -445,6 +445,21 @@ public function info() &#123;
       <tags>
         <tag>centos</tag>
         <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker client is newer than server</title>
+    <url>/2016/09/12/Docker-client-is-newer-than-server/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>###Docker client is newer than server<br>执行<code>docker pull voduytuan/jenkins-php-docker</code>时出错</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Using default tag: latest</span><br><span class="line">Warning: failed to get default registry endpoint from daemon (Error response from daemon: client is newer than server (client API version: 1.24, server API version: 1.23)). Using system default: https://index.docker.io/v1/</span><br><span class="line">Error response from daemon: client is newer than server (client API version: 1.24, server API version: 1.23)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>执行命令<br><code>export DOCKER_API_VERSION=1.23</code> solved my problem. </p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -548,41 +563,13 @@ public function info() &#123;
       </tags>
   </entry>
   <entry>
-    <title>Docker client is newer than server</title>
-    <url>/2016/09/12/Docker-client-is-newer-than-server/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>###Docker client is newer than server<br>执行<code>docker pull voduytuan/jenkins-php-docker</code>时出错</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Using default tag: latest</span><br><span class="line">Warning: failed to get default registry endpoint from daemon (Error response from daemon: client is newer than server (client API version: 1.24, server API version: 1.23)). Using system default: https://index.docker.io/v1/</span><br><span class="line">Error response from daemon: client is newer than server (client API version: 1.24, server API version: 1.23)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>执行命令<br><code>export DOCKER_API_VERSION=1.23</code> solved my problem. </p>
+    <title>HOWTO disable tmpfs on /tmp?</title>
+    <url>/2017/08/02/HOWTO-disable-tmpfs-on-tmp/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat /etc/tmpfiles.d/tmp.conf</span><br><span class="line">#  This file is part of systemd.</span><br><span class="line">#</span><br><span class="line">#  systemd is free software; you can redistribute it and/or modify it</span><br><span class="line">#  under the terms of the GNU Lesser General Public License as published by</span><br><span class="line">#  the Free Software Foundation; either version 2.1 of the License, or</span><br><span class="line">#  (at your option) any later version.</span><br><span class="line"></span><br><span class="line"># See tmpfiles.d(5) for details</span><br><span class="line"></span><br><span class="line"># Clear tmp directories separately, to make them easier to override</span><br><span class="line">D /tmp 1777 root root 0</span><br><span class="line">D /var/tmp 1777 root root 10d</span><br><span class="line"></span><br><span class="line"># Exclude namespace mountpoints created with PrivateTmp=yes</span><br><span class="line">x /tmp/systemd-private-*</span><br><span class="line">x /var/tmp/systemd-private-*</span><br><span class="line">X /tmp/systemd-private-*/tmp</span><br><span class="line">X /var/tmp/systemd-private-*/tmp</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git忽略已经提交过一次文件</title>
-    <url>/2022/04/13/Git%E5%BF%BD%E7%95%A5%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E8%BF%87%E4%B8%80%E6%AC%A1%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="一、平时忽略未提交的文件"><a href="#一、平时忽略未提交的文件" class="headerlink" title="一、平时忽略未提交的文件"></a>一、平时忽略未提交的文件</h3><p>从未提交过的文件可以用<code>.gitignore</code><br>也就是添加之后从来没有提交（commit）过的文件，可以使用<code>.gitignore</code>忽略该文件<br>该文件只能作用于未跟踪的文件（Untracked Files），也就是那些从来没有被 git 记录过的文件<br>在<code>.gitignore</code>中写忽略文件或文件夹。注意相对路径是项目根数据，文件格式如下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/.gradle/</span><br><span class="line">/.idea/</span><br><span class="line">/local.properties</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、已经Push过的文件"><a href="#二、已经Push过的文件" class="headerlink" title="二、已经Push过的文件"></a>二、已经Push过的文件</h3><p>需要删除Git仓库的文件，本址的文件需要保留，并且在以后提交中忽略</p>
-<p>1、从本地Git缓存中删除文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//忽略文件 aaa.txt</span><br><span class="line">git rm --cached aaa.txt</span><br><span class="line">//忽略文件夹 abc</span><br><span class="line">git rm -r --cached abc</span><br></pre></td></tr></table></figure>
-
-<p>2、提交到仓库里面</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;delete somefile&#x27;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<p>3、修改文件.gitignore，把刚才删除的文件或者文件夹加入.gitignore文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/aaa.txt</span><br><span class="line">/abc/</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
   </entry>
   <entry>
     <title>How to Install Oracle VirtualBox 5.1 on CentOS/RHEL 7/6 and Fedora 25</title>
@@ -636,6 +623,28 @@ public function info() &#123;
       </categories>
   </entry>
   <entry>
+    <title>Git忽略已经提交过一次文件</title>
+    <url>/2022/04/13/Git%E5%BF%BD%E7%95%A5%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E8%BF%87%E4%B8%80%E6%AC%A1%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="一、平时忽略未提交的文件"><a href="#一、平时忽略未提交的文件" class="headerlink" title="一、平时忽略未提交的文件"></a>一、平时忽略未提交的文件</h3><p>从未提交过的文件可以用<code>.gitignore</code><br>也就是添加之后从来没有提交（commit）过的文件，可以使用<code>.gitignore</code>忽略该文件<br>该文件只能作用于未跟踪的文件（Untracked Files），也就是那些从来没有被 git 记录过的文件<br>在<code>.gitignore</code>中写忽略文件或文件夹。注意相对路径是项目根数据，文件格式如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/.gradle/</span><br><span class="line">/.idea/</span><br><span class="line">/local.properties</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、已经Push过的文件"><a href="#二、已经Push过的文件" class="headerlink" title="二、已经Push过的文件"></a>二、已经Push过的文件</h3><p>需要删除Git仓库的文件，本址的文件需要保留，并且在以后提交中忽略</p>
+<p>1、从本地Git缓存中删除文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//忽略文件 aaa.txt</span><br><span class="line">git rm --cached aaa.txt</span><br><span class="line">//忽略文件夹 abc</span><br><span class="line">git rm -r --cached abc</span><br></pre></td></tr></table></figure>
+
+<p>2、提交到仓库里面</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;delete somefile&#x27;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p>3、修改文件.gitignore，把刚才删除的文件或者文件夹加入.gitignore文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/aaa.txt</span><br><span class="line">/abc/</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>How to setup tagged VLANs on Mac OS X</title>
     <url>/2017/07/04/How-to-setup-tagged-VLANs-on-Mac-OS-X/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><ol>
@@ -656,15 +665,6 @@ public function info() &#123;
 <li>Click Apply</li>
 <li>Close the network preferences window.</li>
 </ul>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>HOWTO disable tmpfs on /tmp?</title>
-    <url>/2017/08/02/HOWTO-disable-tmpfs-on-tmp/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat /etc/tmpfiles.d/tmp.conf</span><br><span class="line">#  This file is part of systemd.</span><br><span class="line">#</span><br><span class="line">#  systemd is free software; you can redistribute it and/or modify it</span><br><span class="line">#  under the terms of the GNU Lesser General Public License as published by</span><br><span class="line">#  the Free Software Foundation; either version 2.1 of the License, or</span><br><span class="line">#  (at your option) any later version.</span><br><span class="line"></span><br><span class="line"># See tmpfiles.d(5) for details</span><br><span class="line"></span><br><span class="line"># Clear tmp directories separately, to make them easier to override</span><br><span class="line">D /tmp 1777 root root 0</span><br><span class="line">D /var/tmp 1777 root root 10d</span><br><span class="line"></span><br><span class="line"># Exclude namespace mountpoints created with PrivateTmp=yes</span><br><span class="line">x /tmp/systemd-private-*</span><br><span class="line">x /var/tmp/systemd-private-*</span><br><span class="line">X /tmp/systemd-private-*/tmp</span><br><span class="line">X /var/tmp/systemd-private-*/tmp</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -825,7 +825,7 @@ public function info() &#123;
 <h2 id="Keepalived和LVS介绍"><a href="#Keepalived和LVS介绍" class="headerlink" title="Keepalived和LVS介绍"></a>Keepalived和LVS介绍</h2><p>Keepalived是一个基于VRRP（虚拟路由冗余协议）可用来实现服务高可用性的软件方案，避免出现单点故障。Keepalived一般用来实现轻量级高可用性，且不需要共享存储，一般用于两个节点之间，常见有LVS+Keepalived、Nginx+Keepalived组合。</p>
 <p>LVS(Linux Virtual Server)是一个高可用性虚拟的服务器集群系统。本项目在1998年5月由章文嵩博士成立，是中国国内最早出现的自由软件项目之一。</p>
 <p>LVS主要用于多服务器的负载均衡，作用于网络层。LVS构建的服务器集群系统中，前端的负载均衡层被称为Director Server；后端提供服务的服务器组层被称为Real Server。通过下图可以大致了解LVS的基础架构。</p>
-<img title="图片" alt="lvs结构" src="https://res.hillock.com.cn/wulai/images/mysql_lvs/lvs.jpg">
+<img title="图片" alt="lvs结构" src="https://res.heynet.com.cn/wulai/images/mysql_lvs/lvs.jpg">
 
 <p>LVS有三种工作模式，分别是DR（Direct Routing 直接路由）、TUN(Tunneling IP隧道）、NAT（Network Address Translation 网络地址转换）。其中TUN模式能够支持更多的Real Server，但需要所有服务器支持IP隧道协议；DR也可以支持相当的Real Server，但需要保证Director Server虚拟网卡与物理网卡在同一网段；NAT扩展性有限，无法支持更多的Real Server，因为所有的请求包和应答包都需要Director Server进行解析再生，影响效率。 同时，LVS负载均衡有10中调度算法，分别是rr、wrr、lc、wlc、lblc、lblcr、dh、sh、sed、nq</p>
 <p>本文中将利用LVS实现MySQL的读写负载均衡，Keepalived避免节点出现单点故障。</p>
@@ -1045,35 +1045,36 @@ public function info() &#123;
       </tags>
   </entry>
   <entry>
-    <title>One final update.</title>
-    <url>/2017/07/27/One-final-update/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>RSYNC TO EXFAT DRIVE</title>
-    <url>/2018/12/29/RSYNC-TO-EXFAT-DRIVE/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>RSYNC TO EXFAT DRIVE<br>These options are friendly to sync to/from an ExFAT drive:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rsync -vrltD --progress --stats /source/a/ /dest/a</span><br></pre></td></tr></table></figure>
-<p><code>-vrltD</code><br>options from <code>-a</code> friendly with EXFAT.</p>
-<p>non-ExFAT rsync:<br>If one uses the standard rsync options like:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rsync -a</span><br></pre></td></tr></table></figure>
-<p>they don’t work with an EXFAT drive. You’ll get errors like:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RSYNC: MKSTEMP … FAILED: FUNCTION NOT IMPLEMENTED (38)</span><br></pre></td></tr></table></figure>
-<p>because EXFAT doesn’t understand permissions, owners, or groups.</p>
-<p>RSYNC PROGRESS INDICATOR<br>In general, rsync progress can be observed on a per-file basis using commands starting with:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rsync -av --progress</span><br></pre></td></tr></table></figure>
-<p>Overall rsync progress can be observed by:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rsync -a --info=progress2</span><br></pre></td></tr></table></figure>
+    <title>Nslookup works but ping fails</title>
+    <url>/2022/03/22/Nslookup-works-but-ping-fails/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="QUESTION"><a href="#QUESTION" class="headerlink" title="QUESTION"></a>QUESTION</h3><p>On my Windows XP workstation, I can find the machine I want to connect to in DNS with nslookup:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nslookup wolfman</span><br><span class="line">Server: dns.company.com</span><br><span class="line">Address: 192.168.1.38</span><br><span class="line"></span><br><span class="line">Name: wolfman.company.com</span><br><span class="line">Address: 192.168.1.178</span><br></pre></td></tr></table></figure>
+<p>On my Windows XP workstation, I can find the machine I want to connect to in DNS with nslookup:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nslookup wolfman</span><br><span class="line">Server: dns.company.com</span><br><span class="line">Address: 192.168.1.38</span><br><span class="line">Name: wolfman.company.com</span><br><span class="line">Address: 192.168.1.178</span><br></pre></td></tr></table></figure>
+<p>But, when I try to connect to that machine, I get an error telling me that the machine can’t be found (i.e., can’t be looked up in DNS):</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\&gt; ping wolfman</span><br><span class="line">Ping request could not find host wolfman. Please check the name and try again.</span><br></pre></td></tr></table></figure>
+
+<p>I am able to connect if I use the IP address directly:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\&gt; ping 192.168.1.178</span><br><span class="line"></span><br><span class="line">Pinging 192.168.1.178 with 32 bytes of data:</span><br><span class="line"></span><br><span class="line">Reply from 192.168.1.178: bytes=32 time=41ms TTL=126</span><br><span class="line">Reply from 192.168.1.178: bytes=32 time=41ms TTL=126</span><br><span class="line">Reply from 192.168.1.178: bytes=32 time=44ms TTL=126</span><br><span class="line">Reply from 192.168.1.178: bytes=32 time=38ms TTL=126</span><br></pre></td></tr></table></figure>
+
+<h3 id="ANSWER-1"><a href="#ANSWER-1" class="headerlink" title="ANSWER 1"></a>ANSWER 1</h3><p>I believe that nslookup opens a winsock connection on the DNS port and issues a query, whereas ping uses the DNS Client service. You could try and stop this service and see whether this makes a difference.</p>
+<p>Some commands that will reinitialize various network states :</p>
+<ul>
+<li>Reset WINSOCK entries to installation defaults : <code>netsh winsock reset catalog</code></li>
+<li>Reset TCP/IP stack to installation defaults : <code>netsh int ip reset reset.log</code></li>
+<li>Flush DNS resolver cache : <code>ipconfig /flushdns</code></li>
+<li>Renew DNS client registration and refresh DHCP leases : <code>ipconfig /registerdns</code></li>
+<li>Flush routing table : <code>route /f</code> (this will remove all your gateways until you restart!)</li>
+</ul>
+<h3 id="ANSWER-2"><a href="#ANSWER-2" class="headerlink" title="ANSWER 2"></a>ANSWER 2</h3><p>Try ping with hostname followed by a dot. So instead of <code>ping wolfman</code> use <code>ping wolfman.</code></p>
+<p>That should get you resolving without having to do workarounds with hosts file, etc.</p>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
+        <tag>网络</tag>
         <tag>命令行</tag>
-        <tag>rsync</tag>
       </tags>
   </entry>
   <entry>
@@ -1128,36 +1129,35 @@ public function info() &#123;
       </tags>
   </entry>
   <entry>
-    <title>Nslookup works but ping fails</title>
-    <url>/2022/03/22/Nslookup-works-but-ping-fails/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="QUESTION"><a href="#QUESTION" class="headerlink" title="QUESTION"></a>QUESTION</h3><p>On my Windows XP workstation, I can find the machine I want to connect to in DNS with nslookup:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nslookup wolfman</span><br><span class="line">Server: dns.company.com</span><br><span class="line">Address: 192.168.1.38</span><br><span class="line"></span><br><span class="line">Name: wolfman.company.com</span><br><span class="line">Address: 192.168.1.178</span><br></pre></td></tr></table></figure>
-<p>On my Windows XP workstation, I can find the machine I want to connect to in DNS with nslookup:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nslookup wolfman</span><br><span class="line">Server: dns.company.com</span><br><span class="line">Address: 192.168.1.38</span><br><span class="line">Name: wolfman.company.com</span><br><span class="line">Address: 192.168.1.178</span><br></pre></td></tr></table></figure>
-<p>But, when I try to connect to that machine, I get an error telling me that the machine can’t be found (i.e., can’t be looked up in DNS):</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\&gt; ping wolfman</span><br><span class="line">Ping request could not find host wolfman. Please check the name and try again.</span><br></pre></td></tr></table></figure>
-
-<p>I am able to connect if I use the IP address directly:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\&gt; ping 192.168.1.178</span><br><span class="line"></span><br><span class="line">Pinging 192.168.1.178 with 32 bytes of data:</span><br><span class="line"></span><br><span class="line">Reply from 192.168.1.178: bytes=32 time=41ms TTL=126</span><br><span class="line">Reply from 192.168.1.178: bytes=32 time=41ms TTL=126</span><br><span class="line">Reply from 192.168.1.178: bytes=32 time=44ms TTL=126</span><br><span class="line">Reply from 192.168.1.178: bytes=32 time=38ms TTL=126</span><br></pre></td></tr></table></figure>
-
-<h3 id="ANSWER-1"><a href="#ANSWER-1" class="headerlink" title="ANSWER 1"></a>ANSWER 1</h3><p>I believe that nslookup opens a winsock connection on the DNS port and issues a query, whereas ping uses the DNS Client service. You could try and stop this service and see whether this makes a difference.</p>
-<p>Some commands that will reinitialize various network states :</p>
-<ul>
-<li>Reset WINSOCK entries to installation defaults : <code>netsh winsock reset catalog</code></li>
-<li>Reset TCP/IP stack to installation defaults : <code>netsh int ip reset reset.log</code></li>
-<li>Flush DNS resolver cache : <code>ipconfig /flushdns</code></li>
-<li>Renew DNS client registration and refresh DHCP leases : <code>ipconfig /registerdns</code></li>
-<li>Flush routing table : <code>route /f</code> (this will remove all your gateways until you restart!)</li>
-</ul>
-<h3 id="ANSWER-2"><a href="#ANSWER-2" class="headerlink" title="ANSWER 2"></a>ANSWER 2</h3><p>Try ping with hostname followed by a dot. So instead of <code>ping wolfman</code> use <code>ping wolfman.</code></p>
-<p>That should get you resolving without having to do workarounds with hosts file, etc.</p>
+    <title>One final update.</title>
+    <url>/2017/07/27/One-final-update/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>RSYNC TO EXFAT DRIVE</title>
+    <url>/2018/12/29/RSYNC-TO-EXFAT-DRIVE/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>RSYNC TO EXFAT DRIVE<br>These options are friendly to sync to/from an ExFAT drive:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rsync -vrltD --progress --stats /source/a/ /dest/a</span><br></pre></td></tr></table></figure>
+<p><code>-vrltD</code><br>options from <code>-a</code> friendly with EXFAT.</p>
+<p>non-ExFAT rsync:<br>If one uses the standard rsync options like:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rsync -a</span><br></pre></td></tr></table></figure>
+<p>they don’t work with an EXFAT drive. You’ll get errors like:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RSYNC: MKSTEMP … FAILED: FUNCTION NOT IMPLEMENTED (38)</span><br></pre></td></tr></table></figure>
+<p>because EXFAT doesn’t understand permissions, owners, or groups.</p>
+<p>RSYNC PROGRESS INDICATOR<br>In general, rsync progress can be observed on a per-file basis using commands starting with:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rsync -av --progress</span><br></pre></td></tr></table></figure>
+<p>Overall rsync progress can be observed by:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rsync -a --info=progress2</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>网络</tag>
         <tag>命令行</tag>
+        <tag>rsync</tag>
       </tags>
   </entry>
   <entry>
@@ -1297,31 +1297,6 @@ public function info() &#123;
       </tags>
   </entry>
   <entry>
-    <title>Save MySQL query results into a text or CSV file</title>
-    <url>/2017/03/10/Save-MySQL-query-results-into-a-text-or-CSV-file/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>MySQL provides an easy mechanism for writing the results of a select statement into a text file on the server. Using extended options of the INTO OUTFILE nomenclature, it is possible to create a comma separated value (CSV) which can be imported into a spreadsheet application such as OpenOffice or Excel or any other applciation which accepts data in CSV format.</p>
-<p>Given a query such as</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT order_id,product_name,qty FROM orders</span><br></pre></td></tr></table></figure>
-
-<p>which returns three columns of data, the results can be placed into the file /tmo/orders.txt using the query:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT order_id,product_name,qty FROM orders</span><br><span class="line">INTO OUTFILE &#x27;/tmp/orders.txt&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>This will create a tab-separated file, each row on its own line. To alter this behavior, it is possible to add modifiers to the query:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT order_id,product_name,qty FROM orders</span><br><span class="line">INTO OUTFILE &#x27;/tmp/orders.csv&#x27;</span><br><span class="line">FIELDS TERMINATED BY &#x27;,&#x27;</span><br><span class="line">ENCLOSED BY &#x27;&quot;&#x27;</span><br><span class="line">LINES TERMINATED BY &#x27;\n&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>In this example, each field will be enclosed in “double quotes,” the fields will be separated by commas, and each row will be output on a new line separated by a newline (\n). Sample output of this command would look like:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;1&quot;,&quot;Tech-Recipes sock puppet&quot;,&quot;14.95&quot; &quot;2&quot;,&quot;Tech-Recipes chef&#x27;s hat&quot;,&quot;18.95&quot;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>Keep in mind that the output file must not already exist and that the user MySQL is running as has write permissions to the directory MySQL is attempting to write the file to.</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
-        <tag>备份</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Yii2 advanced add module</title>
     <url>/2018/06/07/Yii2-advanced-add-module/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="Yii2-advanced-add-module"><a href="#Yii2-advanced-add-module" class="headerlink" title="Yii2 advanced add module"></a>Yii2 advanced add module</h1><p><em>在Yii2高级版添加新的模块</em></p>
@@ -1344,6 +1319,31 @@ public function info() &#123;
       </categories>
       <tags>
         <tag>yii2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Save MySQL query results into a text or CSV file</title>
+    <url>/2017/03/10/Save-MySQL-query-results-into-a-text-or-CSV-file/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>MySQL provides an easy mechanism for writing the results of a select statement into a text file on the server. Using extended options of the INTO OUTFILE nomenclature, it is possible to create a comma separated value (CSV) which can be imported into a spreadsheet application such as OpenOffice or Excel or any other applciation which accepts data in CSV format.</p>
+<p>Given a query such as</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT order_id,product_name,qty FROM orders</span><br></pre></td></tr></table></figure>
+
+<p>which returns three columns of data, the results can be placed into the file /tmo/orders.txt using the query:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT order_id,product_name,qty FROM orders</span><br><span class="line">INTO OUTFILE &#x27;/tmp/orders.txt&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>This will create a tab-separated file, each row on its own line. To alter this behavior, it is possible to add modifiers to the query:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT order_id,product_name,qty FROM orders</span><br><span class="line">INTO OUTFILE &#x27;/tmp/orders.csv&#x27;</span><br><span class="line">FIELDS TERMINATED BY &#x27;,&#x27;</span><br><span class="line">ENCLOSED BY &#x27;&quot;&#x27;</span><br><span class="line">LINES TERMINATED BY &#x27;\n&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>In this example, each field will be enclosed in “double quotes,” the fields will be separated by commas, and each row will be output on a new line separated by a newline (\n). Sample output of this command would look like:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;1&quot;,&quot;Tech-Recipes sock puppet&quot;,&quot;14.95&quot; &quot;2&quot;,&quot;Tech-Recipes chef&#x27;s hat&quot;,&quot;18.95&quot;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>Keep in mind that the output file must not already exist and that the user MySQL is running as has write permissions to the directory MySQL is attempting to write the file to.</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+        <tag>备份</tag>
       </tags>
   </entry>
   <entry>
@@ -1735,21 +1735,6 @@ $docker build -t image_name Dockerfile_path</code></pre>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>docker mysql Access denied for user</title>
-    <url>/2017/03/06/docker-mysql-Access-denied-for-user/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD</span><br><span class="line">&quot;MYSQL_ROOT_PASSWORD=test&quot;,</span><br><span class="line">root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -p</span><br><span class="line">Enter password: test</span><br><span class="line">ERROR 1045 (28000): Access denied for user &#x27;root&#x27;@&#x27;localhost&#x27; (using password: YES)</span><br></pre></td></tr></table></figure>
-
-<p>I’ve gratuitously rebuilt, recreated, <code>--no-cache&#39;d</code>, <code>--force-recreate&#39;d</code>.. nothing is working. I’ve also tried putting the environment variable directly in a mysql Dockerfile and as an “environment” argument in my docker-compose.yml.</p>
-<p>The only thing that IS working is passing -e ‘MYSQL_ROOT_PASSWORD=test’ in a docker run statement.</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>互联网产品经理的必读书目有哪些？(知乎)</title>
     <url>/2015/11/02/e4-ba-92-e8-81-94-e7-bd-91-e4-ba-a7-e5-93-81-e7-bb-8f-e7-90-86-e7-9a-84-e5-bf-85-e8-af-bb-e4-b9-a6-e7-9b-ae-e6-9c-89-e5-93-aa-e4-ba-9b-ef-bc-9f-e7-9f-a5-e4-b9-8e/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>kentzhu，一个PM</p>
@@ -1825,6 +1810,25 @@ $docker build -t image_name Dockerfile_path</code></pre>]]></content>
       <tags>
         <tag>产品经理</tag>
         <tag>书籍</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>删除指定时间之后的文章</title>
+    <url>/2015/11/23/e5-88-a0-e9-99-a4-e6-8c-87-e5-ae-9a-e6-97-b6-e9-97-b4-e4-b9-8b-e5-90-8e-e7-9a-84-e6-96-87-e7-ab-a0/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>find . -cmin -50 -type f |xargs rm -rf</p>
+<pre><code># find /tmp -mtime +30 -type f -name *.sh[ab] -exec rm -f &#123;&#125; ;</code></pre><p>/tmp –设置查找的目录；</p>
+<p>-mtime +30 –设置时间为30天前；</p>
+<p>-type f –设置查找的类型为文件；</p>
+<p>-name *.sh[ab] –设置文件名称中包含sha或者shb；</p>
+<p>-exec rm -f –查找完毕后执行删除操作；</p>
+<p><code>提示</code>：将此命令写入crontab后即可自动完成查找并删除的工作 另外的方法大同小异：</p>
+<pre><code># find /tmp -mtime +30 -type f | xargs rm -rf</code></pre><h1 id="另外一个操作方法："><a href="#另外一个操作方法：" class="headerlink" title="另外一个操作方法："></a>另外一个操作方法：</h1><pre><code>find . -name &quot;*-e&quot; -exec rm &apos;&#123;&#125;&apos; +</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>命令行</tag>
+        <tag>批量删除</tag>
       </tags>
   </entry>
   <entry>
@@ -2010,22 +2014,18 @@ registry = https://registry.npm.taobao.org</code></pre><p>搜索镜像: <a href=
       </tags>
   </entry>
   <entry>
-    <title>删除指定时间之后的文章</title>
-    <url>/2015/11/23/e5-88-a0-e9-99-a4-e6-8c-87-e5-ae-9a-e6-97-b6-e9-97-b4-e4-b9-8b-e5-90-8e-e7-9a-84-e6-96-87-e7-ab-a0/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>find . -cmin -50 -type f |xargs rm -rf</p>
-<pre><code># find /tmp -mtime +30 -type f -name *.sh[ab] -exec rm -f &#123;&#125; ;</code></pre><p>/tmp –设置查找的目录；</p>
-<p>-mtime +30 –设置时间为30天前；</p>
-<p>-type f –设置查找的类型为文件；</p>
-<p>-name *.sh[ab] –设置文件名称中包含sha或者shb；</p>
-<p>-exec rm -f –查找完毕后执行删除操作；</p>
-<p><code>提示</code>：将此命令写入crontab后即可自动完成查找并删除的工作 另外的方法大同小异：</p>
-<pre><code># find /tmp -mtime +30 -type f | xargs rm -rf</code></pre><h1 id="另外一个操作方法："><a href="#另外一个操作方法：" class="headerlink" title="另外一个操作方法："></a>另外一个操作方法：</h1><pre><code>find . -name &quot;*-e&quot; -exec rm &apos;&#123;&#125;&apos; +</code></pre>]]></content>
+    <title>docker mysql Access denied for user</title>
+    <url>/2017/03/06/docker-mysql-Access-denied-for-user/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">root@docker:~/drupal# docker inspect drupal_mysql | grep MYSQL_ROOT_PASSWORD</span><br><span class="line">&quot;MYSQL_ROOT_PASSWORD=test&quot;,</span><br><span class="line">root@docker:~/drupal# docker exec -it drupal_mysql mysql -u root -p</span><br><span class="line">Enter password: test</span><br><span class="line">ERROR 1045 (28000): Access denied for user &#x27;root&#x27;@&#x27;localhost&#x27; (using password: YES)</span><br></pre></td></tr></table></figure>
+
+<p>I’ve gratuitously rebuilt, recreated, <code>--no-cache&#39;d</code>, <code>--force-recreate&#39;d</code>.. nothing is working. I’ve also tried putting the environment variable directly in a mysql Dockerfile and as an “environment” argument in my docker-compose.yml.</p>
+<p>The only thing that IS working is passing -e ‘MYSQL_ROOT_PASSWORD=test’ in a docker run statement.</p>
+]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>命令行</tag>
-        <tag>批量删除</tag>
+        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -2281,6 +2281,19 @@ docker rmi $(docker images -q)</code></pre>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>微信公共账号测试号申请</title>
+    <url>/2014/11/18/e5-be-ae-e4-bf-a1-e5-85-ac-e5-85-b1-e8-b4-a6-e5-8f-b7-e6-b5-8b-e8-af-95-e5-8f-b7-e7-94-b3-e8-af-b7/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p><code>http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login</code></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>微信</tag>
+        <tag>公众号</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何调试PHP的Core之获取基本信息</title>
     <url>/2016/05/14/e5-a6-82-e4-bd-95-e8-b0-83-e8-af-95php-e7-9a-84core-e4-b9-8b-e8-8e-b7-e5-8f-96-e5-9f-ba-e6-9c-ac-e4-bf-a1-e6-81-af/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>作者: Laruence(   )<br>本文地址: <a href="http://www.laruence.com/2011/06/23/2057.html">http://www.laruence.com/2011/06/23/2057.html</a><br>转载请注明出处</p>
@@ -2348,19 +2361,6 @@ $2 = &#123;value = &#123;lval = 22445, dval = 1.1089303420906779e-319, str = &#1
       <tags>
         <tag>lnmp</tag>
         <tag>编译</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>微信公共账号测试号申请</title>
-    <url>/2014/11/18/e5-be-ae-e4-bf-a1-e5-85-ac-e5-85-b1-e8-b4-a6-e5-8f-b7-e6-b5-8b-e8-af-95-e5-8f-b7-e7-94-b3-e8-af-b7/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p><code>http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login</code></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>微信</tag>
-        <tag>公众号</tag>
       </tags>
   </entry>
   <entry>
@@ -3183,19 +3183,6 @@ ngx.say(content)
       </tags>
   </entry>
   <entry>
-    <title>flock防止重复rsync</title>
-    <url>/2017/02/24/flock%E9%98%B2%E6%AD%A2%E9%87%8D%E5%A4%8Drsync/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>我使用crontab同步一个文件夹时，发现一个问题，我在crontab中设置的1分钟运行一次.但当那个文件夹的内容改变时。1分钟不一定能同步完，但这时第二个rsync进行又起来了。</p>
-<p>这个就产生一个问题，二个rsync一起处理相同的文件，这样会出问题。如下</p>
-<pre><code>* * * * /usr/bin/rsync -avlR /data/files    172.16.xxx.xxx:/data</code></pre><p>本来想写个脚本来解决，但太麻烦。所以用了个linux下的锁。。呵呵，象下面这个.</p>
-<pre><code>1 * * * * flock -xn /var/run/rsync.lock -c &quot;rsync -avlR /data/files    172.16.xxx.xxx:/data&quot;</code></pre><p>这样,使用flock的<code>-x</code>参数先建一个锁文件，然后<code>-n</code>指定，如果锁存在，就等待。直到建成功锁在会运行-c后面的命令。这样第一个进程没有运行完前，锁文件都会存在。这样就不会二个rsync同时并发处理一个东西了</p>
-<p><code>来源</code>: <a href="http://www.cnblogs.com/cmsd/p/3697049.html">http://www.cnblogs.com/cmsd/p/3697049.html</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-  </entry>
-  <entry>
     <title>ffmpeg 多个音频合并 截取 拆分</title>
     <url>/2018/01/29/ffmpeg-%E5%A4%9A%E4%B8%AA%E9%9F%B3%E9%A2%91%E5%90%88%E5%B9%B6-%E6%88%AA%E5%8F%96-%E6%8B%86%E5%88%86/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="多个mp3文件合并成一个mp3文件"><a href="#多个mp3文件合并成一个mp3文件" class="headerlink" title="多个mp3文件合并成一个mp3文件"></a>多个mp3文件合并成一个mp3文件</h3><p>一种方法是连接到一起</p>
@@ -3245,6 +3232,19 @@ ngx.say(content)
         <tag>ffmpeg</tag>
         <tag>音频</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>flock防止重复rsync</title>
+    <url>/2017/02/24/flock%E9%98%B2%E6%AD%A2%E9%87%8D%E5%A4%8Drsync/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>我使用crontab同步一个文件夹时，发现一个问题，我在crontab中设置的1分钟运行一次.但当那个文件夹的内容改变时。1分钟不一定能同步完，但这时第二个rsync进行又起来了。</p>
+<p>这个就产生一个问题，二个rsync一起处理相同的文件，这样会出问题。如下</p>
+<pre><code>* * * * /usr/bin/rsync -avlR /data/files    172.16.xxx.xxx:/data</code></pre><p>本来想写个脚本来解决，但太麻烦。所以用了个linux下的锁。。呵呵，象下面这个.</p>
+<pre><code>1 * * * * flock -xn /var/run/rsync.lock -c &quot;rsync -avlR /data/files    172.16.xxx.xxx:/data&quot;</code></pre><p>这样,使用flock的<code>-x</code>参数先建一个锁文件，然后<code>-n</code>指定，如果锁存在，就等待。直到建成功锁在会运行-c后面的命令。这样第一个进程没有运行完前，锁文件都会存在。这样就不会二个rsync同时并发处理一个东西了</p>
+<p><code>来源</code>: <a href="http://www.cnblogs.com/cmsd/p/3697049.html">http://www.cnblogs.com/cmsd/p/3697049.html</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
   </entry>
   <entry>
     <title>fsck error on boot: /dev/sda6: UNEXPECTED INCONSISTENCY; RUN fsck MANUALLY</title>
@@ -3611,6 +3611,23 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
       </categories>
   </entry>
   <entry>
+    <title>lnmp在浏览器显示php错误信息</title>
+    <url>/2018/02/14/lnmp%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%BE%E7%A4%BAphp%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><ul>
+<li>1、下载安装lnmp一建安装脚本 <a href="https://lnmp.org/">https://lnmp.org/</a></li>
+<li>2、修改<code>/usr/local/php/etc/php-fpm.conf</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">pid = /usr/local/php/var/run/php-fpm.pid</span><br><span class="line">error_log = /usr/local/php/var/log/php-fpm.log</span><br><span class="line">log_level = notice</span><br><span class="line"></span><br><span class="line">[www]</span><br><span class="line">catch_workers_output = yes</span><br><span class="line">listen = /tmp/php-cgi.sock</span><br><span class="line">listen.backlog = -1</span><br><span class="line">listen.allowed_clients = 127.0.0.1</span><br><span class="line">listen.owner = www</span><br><span class="line">listen.group = www</span><br><span class="line">listen.mode = 0666</span><br><span class="line">user = www</span><br><span class="line">group = www</span><br><span class="line">pm = dynamic</span><br><span class="line">pm.max_children = 80</span><br><span class="line">pm.start_servers = 40</span><br><span class="line">pm.min_spare_servers = 40</span><br><span class="line">pm.max_spare_servers = 80</span><br><span class="line">request_terminate_timeout = 100</span><br><span class="line">request_slowlog_timeout = 0</span><br><span class="line">slowlog = var/log/slow.log</span><br><span class="line">php_flag[display_errors] = On</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>lnmp</tag>
+        <tag>调试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>linux文件名编码转换工具convmv</title>
     <url>/2017/03/07/linux%E6%96%87%E4%BB%B6%E5%90%8D%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2%E5%B7%A5%E5%85%B7convmv/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>今天介绍个文件名转码的工具–convmv，convmv能帮助我们很容易地对一个文件，一个目录下所有文件进行编码转换，比如gbk转为utf8等。</p>
@@ -3636,23 +3653,6 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
       <tags>
         <tag>命令行</tag>
         <tag>转码</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>lnmp在浏览器显示php错误信息</title>
-    <url>/2018/02/14/lnmp%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%BE%E7%A4%BAphp%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><ul>
-<li>1、下载安装lnmp一建安装脚本 <a href="https://lnmp.org/">https://lnmp.org/</a></li>
-<li>2、修改<code>/usr/local/php/etc/php-fpm.conf</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">pid = /usr/local/php/var/run/php-fpm.pid</span><br><span class="line">error_log = /usr/local/php/var/log/php-fpm.log</span><br><span class="line">log_level = notice</span><br><span class="line"></span><br><span class="line">[www]</span><br><span class="line">catch_workers_output = yes</span><br><span class="line">listen = /tmp/php-cgi.sock</span><br><span class="line">listen.backlog = -1</span><br><span class="line">listen.allowed_clients = 127.0.0.1</span><br><span class="line">listen.owner = www</span><br><span class="line">listen.group = www</span><br><span class="line">listen.mode = 0666</span><br><span class="line">user = www</span><br><span class="line">group = www</span><br><span class="line">pm = dynamic</span><br><span class="line">pm.max_children = 80</span><br><span class="line">pm.start_servers = 40</span><br><span class="line">pm.min_spare_servers = 40</span><br><span class="line">pm.max_spare_servers = 80</span><br><span class="line">request_terminate_timeout = 100</span><br><span class="line">request_slowlog_timeout = 0</span><br><span class="line">slowlog = var/log/slow.log</span><br><span class="line">php_flag[display_errors] = On</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>lnmp</tag>
-        <tag>调试</tag>
       </tags>
   </entry>
   <entry>
@@ -4951,6 +4951,29 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
       </tags>
   </entry>
   <entry>
+    <title>php try/catch a warning </title>
+    <url>/2017/01/06/php-try-catch-a-warning/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="方案一，输出到系统错误"><a href="#方案一，输出到系统错误" class="headerlink" title="方案一，输出到系统错误"></a>方案一，输出到系统错误</h2><p>One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set_error_handler(function() &#123; /* ignore errors */ &#125;);</span><br><span class="line">dns_get_record();</span><br><span class="line">restore_error_handler();</span><br></pre></td></tr></table></figure>
+<p>You could build on this idea and write a re-usable error handler that logs the errors for you.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set_error_handler([$logger, &#x27;onSilencedError&#x27;]);</span><br><span class="line">dns_get_record();</span><br><span class="line">restore_error_handler();</span><br><span class="line">Turning errors into exceptions</span><br></pre></td></tr></table></figure>
+<p>You can use <code>set_error_handler()</code> and the <code>ErrorException</code> class to turn all php errors into exceptions.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) &#123;</span><br><span class="line">    // error was suppressed with the @-operator</span><br><span class="line">    if (0 === error_reporting()) &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    throw new ErrorException($errstr, 0, $errno, $errfile, $errline);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">    dns_get_record();</span><br><span class="line">&#125; catch (ErrorException $e) &#123;</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The important thing to note when using your own error handler is that it will bypass the <code>error_reporting</code> setting and pass all errors (notices, warnings, etc.) to your error handler. You can set a second argument on <code>set_error_handler()</code> to define which error types you want to receive, or access the current setting using … = <code>error_reporting()</code> inside the error handler.</p>
+<p>Suppressing the warning</p>
+<p>Another possibility is to suppress the call with the @ operator and check the return value of dns_get_record() afterwards. But I’d advise against this as errors/warnings are triggered to be handled, not to be suppressed.</p>
+<h2 id="方案二：-输出到自定义函数"><a href="#方案二：-输出到自定义函数" class="headerlink" title="方案二： 输出到自定义函数"></a>方案二： 输出到自定义函数</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set_error_handler(function ($errno, $errstr) &#123;</span><br><span class="line">    // do something</span><br><span class="line">    echo &quot;\r\n～～～～～找到错误 :-D～～～～～\r\n&quot;;</span><br><span class="line">    echo &quot;错误信息:($errno)$errstr \r\n&quot;;</span><br><span class="line">    debug_print_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);</span><br><span class="line">    echo &quot;\r\n&quot;;</span><br><span class="line">&#125;, E_WARNING);</span><br><span class="line">$dir_handle = opendir(&quot;$dir/111&quot;);  //要catch的函数</span><br><span class="line">restore_error_handler();</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>调试</tag>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PayPal高级工程总监：读完这100篇论文 就能成大数据高手</title>
     <url>/2015/07/13/paypal-e9-ab-98-e7-ba-a7-e5-b7-a5-e7-a8-8b-e6-80-bb-e7-9b-91-ef-bc-9a-e8-af-bb-e5-ae-8c-e8-bf-99100-e7-af-87-e8-ae-ba-e6-96-87-e5-b0-b1-e8-83-bd-e6-88-90-e5-a4-a7-e6-95-b0-e6-8d-ae-e9-ab-98-e6-89-8b/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>开源（Open Source）用之于大数据技术，其作用有二：一方面，在大数据技术变革之路上，开源在众人之力和众人之智推动下，摧枯拉朽，吐故纳新，扮演着非常重要的推动作用。另一方面，开源也给大数据技术构建了一个异常复杂的生态系统。每一天，都有一大堆“新”框架、“新”类库或“新”工具，犹如雨后春笋般涌出，乱花渐欲“迷”人眼。为了掌控住这些“新玩意”，数据分析的达人们不得不“殚精竭虑”地“学而时习之”。</p>
@@ -5227,47 +5250,6 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
       </tags>
   </entry>
   <entry>
-    <title>php echo或者exit输出中文</title>
-    <url>/2014/12/19/php-echo-e6-88-96-e8-80-85exit-e8-be-93-e5-87-ba-e4-b8-ad-e6-96-87/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>你这是中文乱码，原因是操作环境的编码和浏览器的编码不一致造成的 1. php文件本身的编码与网页的编码应匹配</p>
-<p>a. 如果欲使用gb2312编码，那么php要输出头：header(“Content-Type: text/html; charset=gb2312”)，静态页面添加<meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><br>，所有文件的编码格式为ANSI，可用记事本打开，另存为选择编码为ANSI，覆盖源文件。</p>
-<p>b. 如果欲使用utf-8编码，那么php要输出头 ：header(“Content-Type: text/html; charset=utf-8”)，静态页面添加<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><br>，所有文件的编码格式为utf-8。保存为utf-8可能会有点麻烦，一般utf-8文件开头会有BOM，如果使用 session就会出问题，可用editplus来保存，在editplus中，工具-&gt;参数选择-&gt;文件-&gt;UTF-8签名，选择总是删除，再保存就可以去掉BOM信息了。</p>
-<ol>
-<li>php本身不是Unicode的，所有substr之类的函数得改成mb_substr（需要装mbstring扩展）；或者用iconv转码。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>命令行</tag>
-        <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php try/catch a warning </title>
-    <url>/2017/01/06/php-try-catch-a-warning/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="方案一，输出到系统错误"><a href="#方案一，输出到系统错误" class="headerlink" title="方案一，输出到系统错误"></a>方案一，输出到系统错误</h2><p>One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set_error_handler(function() &#123; /* ignore errors */ &#125;);</span><br><span class="line">dns_get_record();</span><br><span class="line">restore_error_handler();</span><br></pre></td></tr></table></figure>
-<p>You could build on this idea and write a re-usable error handler that logs the errors for you.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set_error_handler([$logger, &#x27;onSilencedError&#x27;]);</span><br><span class="line">dns_get_record();</span><br><span class="line">restore_error_handler();</span><br><span class="line">Turning errors into exceptions</span><br></pre></td></tr></table></figure>
-<p>You can use <code>set_error_handler()</code> and the <code>ErrorException</code> class to turn all php errors into exceptions.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) &#123;</span><br><span class="line">    // error was suppressed with the @-operator</span><br><span class="line">    if (0 === error_reporting()) &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    throw new ErrorException($errstr, 0, $errno, $errfile, $errline);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">    dns_get_record();</span><br><span class="line">&#125; catch (ErrorException $e) &#123;</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>The important thing to note when using your own error handler is that it will bypass the <code>error_reporting</code> setting and pass all errors (notices, warnings, etc.) to your error handler. You can set a second argument on <code>set_error_handler()</code> to define which error types you want to receive, or access the current setting using … = <code>error_reporting()</code> inside the error handler.</p>
-<p>Suppressing the warning</p>
-<p>Another possibility is to suppress the call with the @ operator and check the return value of dns_get_record() afterwards. But I’d advise against this as errors/warnings are triggered to be handled, not to be suppressed.</p>
-<h2 id="方案二：-输出到自定义函数"><a href="#方案二：-输出到自定义函数" class="headerlink" title="方案二： 输出到自定义函数"></a>方案二： 输出到自定义函数</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set_error_handler(function ($errno, $errstr) &#123;</span><br><span class="line">    // do something</span><br><span class="line">    echo &quot;\r\n～～～～～找到错误 :-D～～～～～\r\n&quot;;</span><br><span class="line">    echo &quot;错误信息:($errno)$errstr \r\n&quot;;</span><br><span class="line">    debug_print_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);</span><br><span class="line">    echo &quot;\r\n&quot;;</span><br><span class="line">&#125;, E_WARNING);</span><br><span class="line">$dir_handle = opendir(&quot;$dir/111&quot;);  //要catch的函数</span><br><span class="line">restore_error_handler();</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>调试</tag>
-        <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>rsync 只同步指定类型的文件</title>
     <url>/2017/02/15/rsync-%E5%8F%AA%E5%90%8C%E6%AD%A5%E6%8C%87%E5%AE%9A%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>需求： 同步某个目录下所有的图片（<em>.jpg），该目录下有很多其他的文件，但只想同步</em>.jpg的文件。</p>
@@ -5276,30 +5258,6 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
 <p>实验证明，这样是不对的。</p>
 <p>而正确的答案是<br>rsync -av  –include=”<em>.jpg” –exclude=</em>  /src/ /des/</p>
 ]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>命令行</tag>
-        <tag>rsync</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>rsync进行网站异地镜像</title>
-    <url>/2016/10/27/rsync%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>站点远程同步脚本，实现数据库本地镜像。</p>
-<p><code>如果源文件删除，目标文件夹也会删除。因此该脚本只能够作为镜像，不能作为备份</code></p>
-<h3 id="rsync-sh-执行脚本"><a href="#rsync-sh-执行脚本" class="headerlink" title="rsync.sh 执行脚本"></a>rsync.sh 执行脚本</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">path=$1</span><br><span class="line"></span><br><span class="line">host=rsync@103.235.220.108</span><br><span class="line">port=2222</span><br><span class="line"></span><br><span class="line">dbuser=root</span><br><span class="line">dbpwd=111111</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#远程服务器运行dbdump.sh脚本dump数据库</span><br><span class="line">echo &quot;dump msyql&quot;</span><br><span class="line">ssh $host -p $port &quot;~/dbdump.sh&quot;</span><br><span class="line"></span><br><span class="line">src=$host:/home/wwwroot/html</span><br><span class="line">dst=/home/wwwroot/html</span><br><span class="line">exculude=/home/wwwroot/rsync_exclude.list</span><br><span class="line"></span><br><span class="line">echo &quot;源:&quot;$src/$path</span><br><span class="line">echo &quot;目标:&quot;$dst/$path</span><br><span class="line">rsync -avzO -e &quot;ssh -p $port&quot; --exclude-from=$exculude   --delete  $src/$path  $dst/$path</span><br><span class="line"></span><br><span class="line">echo &quot;&gt;&gt;&gt;更新数据库&quot;</span><br><span class="line">CurrentDate=$(date +%Y%m%d)</span><br><span class="line">mysql -u$dbuser -p$dbpwd test &lt; $dst/db/test.$&#123;CurrentDate&#125;.sql</span><br><span class="line"></span><br><span class="line">echo &quot;同步完成&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="rsync-exclude-list"><a href="#rsync-exclude-list" class="headerlink" title="rsync_exclude.list"></a>rsync_exclude.list</h3><p>忽略的文件,文件夹路径</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.svn/</span><br><span class="line">Upload/</span><br><span class="line">logs/</span><br></pre></td></tr></table></figure>
-
-<h3 id="dbdump-sh"><a href="#dbdump-sh" class="headerlink" title="dbdump.sh"></a>dbdump.sh</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">dbname=root</span><br><span class="line">dbpwd=111111</span><br><span class="line">CurrentDate=$(date +%Y%m%d)</span><br><span class="line">dirPath=/home/wwwroot/html/db</span><br><span class="line">mysqldump -u$dbname -pdbpwd test &gt; $dirPath/test.$&#123;CurrentDate&#125;.sql</span><br></pre></td></tr></table></figure>
-
-<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><p>同步test文件夹</p>
-<p>./rsync.sh test</p>
-<h3 id="显示进度条"><a href="#显示进度条" class="headerlink" title="显示进度条"></a>显示进度条</h3><p>添加参数<code>--progress</code></p>
-<pre><code>rsync -av --progress  root@123.123.123.123:/root/mysql56.tar .</code></pre>]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -5375,7 +5333,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">test.sql</span><br><span class="line">/*</span><br><span class="line">Navicat MySQL Data Transfer</span><br><span class="line"></span><br><span class="line">Source Server         : 192.168.101.130</span><br><span class="line">Source Server Version : 50527</span><br><span class="line">Source Host           : 192.168.101.130:3306</span><br><span class="line">Source Database       : test</span><br><span class="line"></span><br><span class="line">Target Server Type    : MYSQL</span><br><span class="line">Target Server Version : 50527</span><br><span class="line">File Encoding         : 65001</span><br><span class="line"></span><br><span class="line">Date: 2016-08-14 13:46:48</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">SET FOREIGN_KEY_CHECKS=0;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Table structure for `userinfo`</span><br><span class="line">-- ----------------------------</span><br><span class="line">DROP TABLE IF EXISTS `userinfo`;</span><br><span class="line">CREATE TABLE `userinfo` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `userid` int(11) unsigned NOT NULL DEFAULT &#x27;0&#x27;,</span><br><span class="line">  `addtime` datetime NOT NULL,</span><br><span class="line">  `post` varchar(20) NOT NULL DEFAULT &#x27;&#x27;,</span><br><span class="line">  `summary` text NOT NULL,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Records of userinfo</span><br><span class="line">-- ----------------------------</span><br><span class="line">INSERT INTO `userinfo` VALUES (&#x27;17&#x27;, &#x27;1&#x27;, &#x27;2012-06-01 00:24:54&#x27;, &#x27;洪&#x27;, &#x27;奥运&#x27;);</span><br><span class="line">INSERT INTO `userinfo` VALUES (&#x27;18&#x27;, &#x27;2&#x27;, &#x27;2014-08-19 10:24:54&#x27;, &#x27;中国人&#x27;, &#x27;洪荒&#x27;);</span><br><span class="line">INSERT INTO `userinfo` VALUES (&#x27;19&#x27;, &#x27;3&#x27;, &#x27;2015-08-01 12:24:54&#x27;, &#x27;洪荒之&#x27;, &#x27;nimne&#x27;);</span><br><span class="line">INSERT INTO `userinfo` VALUES (&#x27;20&#x27;, &#x27;4&#x27;, &#x27;2013-08-01 00:24:54&#x27;, &#x27;洪荒之力&#x27;, &#x27;23金&#x27;);</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Table structure for `users`</span><br><span class="line">-- ----------------------------</span><br><span class="line">DROP TABLE IF EXISTS `users`;</span><br><span class="line">CREATE TABLE `users` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `username` varchar(20) NOT NULL DEFAULT &#x27;&#x27;,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Records of users</span><br><span class="line">-- ----------------------------</span><br><span class="line">INSERT INTO `users` VALUES (&#x27;1&#x27;, &#x27;zhangsan&#x27;);</span><br><span class="line">INSERT INTO `users` VALUES (&#x27;2&#x27;, &#x27;zhangsi&#x27;);</span><br><span class="line">INSERT INTO `users` VALUES (&#x27;3&#x27;, &#x27;李四&#x27;);</span><br><span class="line">INSERT INTO `users` VALUES (&#x27;4&#x27;, &#x27;王五&#x27;);</span><br></pre></td></tr></table></figure>
 
 <p>导入数据 <code>source test.sql</code></p>
-<img src="https://res.hillock.com.cn/wulai/images/20160814140124005.jpg">
+<img src="https://res.heynet.com.cn/wulai/images/20160814140124005.jpg">
 
 <p>数据源</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select</span><br><span class="line">	a.id,</span><br><span class="line">	a.userid,</span><br><span class="line">    b.username,</span><br><span class="line">    UNIX_TIMESTAMP(a.addtime) AS addtime,</span><br><span class="line">    a.post,</span><br><span class="line">    a.summary</span><br><span class="line"></span><br><span class="line">FROM</span><br><span class="line">	userinfo a</span><br><span class="line"></span><br><span class="line">LEFT JOIN users b ON a.userid = b.id</span><br></pre></td></tr></table></figure>
@@ -5383,7 +5341,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">+----+--------+----------+------------+--------------+---------+</span><br><span class="line">| id | userid | username | addtime    | post         | summary |</span><br><span class="line">+----+--------+----------+------------+--------------+---------+</span><br><span class="line">| 17 |      1 | zhangsan | 1338481494 | 洪           | 奥运    |</span><br><span class="line">| 18 |      2 | zhangsi  | 1408415094 | 中国人       | 洪荒    |</span><br><span class="line">| 19 |      3 | 李四     | 1438403094 | 洪荒之       | nimne   |</span><br><span class="line">| 20 |      4 | 王五     | 1375287894 | 洪荒之力     | 23金    |</span><br><span class="line">+----+--------+----------+------------+--------------+---------+</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-<img src="https://res.hillock.com.cn/wulai/images/20160814140002253.jpg">
+<img src="https://res.heynet.com.cn/wulai/images/20160814140002253.jpg">
 
 <ul>
 <li><p>2,配置sphinx.conf，加上以下内容<br>其中searchd 以下3个配置比较重要。<code>mysql -h0 -P 9306</code>访问。9312可以给php访问。query_log_format 记录日志的格式。</p>
@@ -5413,11 +5371,11 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
 <li>1,命令行的测试</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># mysql -h127.0.0.1  -P9306</span><br><span class="line">MySQL [(none)]&gt; show tables;</span><br><span class="line">+-------+-------+</span><br><span class="line">| Index | Type  |</span><br><span class="line">+-------+-------+</span><br><span class="line">| users | local |</span><br><span class="line">+-------+-------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">MySQL [(none)]&gt;</span><br><span class="line">MySQL [(none)]&gt;</span><br><span class="line">MySQL [(none)]&gt; desc users;</span><br><span class="line">+----------+-----------+</span><br><span class="line">| Field    | Type      |</span><br><span class="line">+----------+-----------+</span><br><span class="line">| id       | bigint    |</span><br><span class="line">| username | field     |</span><br><span class="line">| post     | field     |</span><br><span class="line">| summary  | field     |</span><br><span class="line">| userid   | uint      |</span><br><span class="line">| username | string    |</span><br><span class="line">| addtime  | timestamp |</span><br><span class="line">| post     | string    |</span><br><span class="line">+----------+-----------+</span><br><span class="line">8 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<img src="https://res.hillock.com.cn/wulai/images/20160814142332937.jpg">
+<img src="https://res.heynet.com.cn/wulai/images/20160814142332937.jpg">
 
 
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">MySQL [(none)]&gt; select * FROM users WHERE match(&#x27;洪荒之力&#x27;);</span><br><span class="line">+------+--------+----------+------------+--------------+</span><br><span class="line">| id   | userid | username | addtime    | post         |</span><br><span class="line">+------+--------+----------+------------+--------------+</span><br><span class="line">|   20 |      4 | 王五     | 1375287894 | 洪荒之力     |</span><br><span class="line">+------+--------+----------+------------+--------------+</span><br></pre></td></tr></table></figure>
-<img src="https://res.hillock.com.cn/wulai/images/20160814142346640.jgp">
+<img src="https://res.heynet.com.cn/wulai/images/20160814142346640.jgp">
 
 
 <ul>
@@ -5428,7 +5386,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;输入：洪荒之力&lt;/p&gt;</span><br><span class="line">&lt;p&gt;分词：(洪荒)|(之)|(力)&lt;/p&gt;</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [error] =&gt;</span><br><span class="line">    [warning] =&gt;</span><br><span class="line">    [status] =&gt; 0</span><br><span class="line">    [fields] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [0] =&gt; username</span><br><span class="line">            [1] =&gt; post</span><br><span class="line">            [2] =&gt; summary</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    [attrs] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [userid] =&gt; 1</span><br><span class="line">            [username] =&gt; 7</span><br><span class="line">            [addtime] =&gt; 2</span><br><span class="line">            [post] =&gt; 7</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    [matches] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [0] =&gt; Array</span><br><span class="line">                (</span><br><span class="line">                    [id] =&gt; 20</span><br><span class="line">                    [weight] =&gt; 4500</span><br><span class="line">                    [attrs] =&gt; Array</span><br><span class="line">                        (</span><br><span class="line">                            [userid] =&gt; 4</span><br><span class="line">                            [username] =&gt; 王五</span><br><span class="line">                            [addtime] =&gt; 1375345494</span><br><span class="line">                            [post] =&gt; 洪荒之力</span><br><span class="line">                        )</span><br><span class="line"></span><br><span class="line">                )</span><br><span class="line"></span><br><span class="line">            [1] =&gt; Array</span><br><span class="line">                (</span><br><span class="line">                    [id] =&gt; 19</span><br><span class="line">                    [weight] =&gt; 3451</span><br><span class="line">                    [attrs] =&gt; Array</span><br><span class="line">                        (</span><br><span class="line">                            [userid] =&gt; 3</span><br><span class="line">                            [username] =&gt; 李四</span><br><span class="line">                            [addtime] =&gt; 1438460694</span><br><span class="line">                            [post] =&gt; 洪荒之</span><br><span class="line">                        )</span><br><span class="line"></span><br><span class="line">                )</span><br><span class="line"></span><br><span class="line">            [2] =&gt; Array</span><br><span class="line">                (</span><br><span class="line">                    [id] =&gt; 18</span><br><span class="line">                    [weight] =&gt; 2436</span><br><span class="line">                    [attrs] =&gt; Array</span><br><span class="line">                        (</span><br><span class="line">                            [userid] =&gt; 2</span><br><span class="line">                            [username] =&gt; zhangsi</span><br><span class="line">                            [addtime] =&gt; 1408472694</span><br><span class="line">                            [post] =&gt; 中国人</span><br><span class="line">                        )</span><br><span class="line"></span><br><span class="line">                )</span><br><span class="line"></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    [total] =&gt; 3</span><br><span class="line">    [total_found] =&gt; 3</span><br><span class="line">    [time] =&gt; 0</span><br><span class="line">    [words] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [洪] =&gt; Array</span><br><span class="line">                (</span><br><span class="line">                    [docs] =&gt; 4</span><br><span class="line">                    [hits] =&gt; 4</span><br><span class="line">                )</span><br><span class="line"></span><br><span class="line">            [荒] =&gt; Array</span><br><span class="line">                (</span><br><span class="line">                    [docs] =&gt; 3</span><br><span class="line">                    [hits] =&gt; 3</span><br><span class="line">                )</span><br><span class="line"></span><br><span class="line">            [之] =&gt; Array</span><br><span class="line">                (</span><br><span class="line">                    [docs] =&gt; 2</span><br><span class="line">                    [hits] =&gt; 2</span><br><span class="line">                )</span><br><span class="line"></span><br><span class="line">            [力] =&gt; Array</span><br><span class="line">                (</span><br><span class="line">                    [docs] =&gt; 1</span><br><span class="line">                    [hits] =&gt; 1</span><br><span class="line">                )</span><br><span class="line"></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>查询query.log</p>
-<img src="https://res.hillock.com.cn/wulai/images/20160814143027377.jpg">
+<img src="https://res.heynet.com.cn/wulai/images/20160814143027377.jpg">
 
 
 
@@ -5499,7 +5457,7 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
 <li>2,重启php-fpm<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/init.d/php-fpm restart  </span><br></pre></td></tr></table></figure>
 前二次，我安装sphinx，必须在mysql中安装sphinx存储插件，而这次没有，看下图</li>
 </ul>
-<img src="https://res.hillock.com.cn/wulai/images/sphinx_no_plugin.jpg">
+<img src="https://res.heynet.com.cn/wulai/images/sphinx_no_plugin.jpg">
 
 <h3 id="五，测试sphinx全文检索"><a href="#五，测试sphinx全文检索" class="headerlink" title="五，测试sphinx全文检索"></a>五，测试sphinx全文检索</h3><ul>
 <li>1,命令行的测试</li>
@@ -5548,6 +5506,48 @@ hadoop@192.168.10.107&apos;s password:</code></pre><p>由于还没有免密码�
       </tags>
   </entry>
   <entry>
+    <title>rsync进行网站异地镜像</title>
+    <url>/2016/10/27/rsync%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>站点远程同步脚本，实现数据库本地镜像。</p>
+<p><code>如果源文件删除，目标文件夹也会删除。因此该脚本只能够作为镜像，不能作为备份</code></p>
+<h3 id="rsync-sh-执行脚本"><a href="#rsync-sh-执行脚本" class="headerlink" title="rsync.sh 执行脚本"></a>rsync.sh 执行脚本</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">path=$1</span><br><span class="line"></span><br><span class="line">host=rsync@103.235.220.108</span><br><span class="line">port=2222</span><br><span class="line"></span><br><span class="line">dbuser=root</span><br><span class="line">dbpwd=111111</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#远程服务器运行dbdump.sh脚本dump数据库</span><br><span class="line">echo &quot;dump msyql&quot;</span><br><span class="line">ssh $host -p $port &quot;~/dbdump.sh&quot;</span><br><span class="line"></span><br><span class="line">src=$host:/home/wwwroot/html</span><br><span class="line">dst=/home/wwwroot/html</span><br><span class="line">exculude=/home/wwwroot/rsync_exclude.list</span><br><span class="line"></span><br><span class="line">echo &quot;源:&quot;$src/$path</span><br><span class="line">echo &quot;目标:&quot;$dst/$path</span><br><span class="line">rsync -avzO -e &quot;ssh -p $port&quot; --exclude-from=$exculude   --delete  $src/$path  $dst/$path</span><br><span class="line"></span><br><span class="line">echo &quot;&gt;&gt;&gt;更新数据库&quot;</span><br><span class="line">CurrentDate=$(date +%Y%m%d)</span><br><span class="line">mysql -u$dbuser -p$dbpwd test &lt; $dst/db/test.$&#123;CurrentDate&#125;.sql</span><br><span class="line"></span><br><span class="line">echo &quot;同步完成&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="rsync-exclude-list"><a href="#rsync-exclude-list" class="headerlink" title="rsync_exclude.list"></a>rsync_exclude.list</h3><p>忽略的文件,文件夹路径</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.svn/</span><br><span class="line">Upload/</span><br><span class="line">logs/</span><br></pre></td></tr></table></figure>
+
+<h3 id="dbdump-sh"><a href="#dbdump-sh" class="headerlink" title="dbdump.sh"></a>dbdump.sh</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">dbname=root</span><br><span class="line">dbpwd=111111</span><br><span class="line">CurrentDate=$(date +%Y%m%d)</span><br><span class="line">dirPath=/home/wwwroot/html/db</span><br><span class="line">mysqldump -u$dbname -pdbpwd test &gt; $dirPath/test.$&#123;CurrentDate&#125;.sql</span><br></pre></td></tr></table></figure>
+
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><p>同步test文件夹</p>
+<p>./rsync.sh test</p>
+<h3 id="显示进度条"><a href="#显示进度条" class="headerlink" title="显示进度条"></a>显示进度条</h3><p>添加参数<code>--progress</code></p>
+<pre><code>rsync -av --progress  root@123.123.123.123:/root/mysql56.tar .</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>命令行</tag>
+        <tag>rsync</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php echo或者exit输出中文</title>
+    <url>/2014/12/19/php-echo-e6-88-96-e8-80-85exit-e8-be-93-e5-87-ba-e4-b8-ad-e6-96-87/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>你这是中文乱码，原因是操作环境的编码和浏览器的编码不一致造成的 1. php文件本身的编码与网页的编码应匹配</p>
+<p>a. 如果欲使用gb2312编码，那么php要输出头：header(“Content-Type: text/html; charset=gb2312”)，静态页面添加<meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><br>，所有文件的编码格式为ANSI，可用记事本打开，另存为选择编码为ANSI，覆盖源文件。</p>
+<p>b. 如果欲使用utf-8编码，那么php要输出头 ：header(“Content-Type: text/html; charset=utf-8”)，静态页面添加<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><br>，所有文件的编码格式为utf-8。保存为utf-8可能会有点麻烦，一般utf-8文件开头会有BOM，如果使用 session就会出问题，可用editplus来保存，在editplus中，工具-&gt;参数选择-&gt;文件-&gt;UTF-8签名，选择总是删除，再保存就可以去掉BOM信息了。</p>
+<ol>
+<li>php本身不是Unicode的，所有substr之类的函数得改成mb_substr（需要装mbstring扩展）；或者用iconv转码。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>命令行</tag>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ssh 调试方法</title>
     <url>/2017/07/11/ssh-%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><ol>
@@ -5591,10 +5591,51 @@ hadoop@192.168.10.107&apos;s password:</code></pre><p>由于还没有免密码�
       </tags>
   </entry>
   <entry>
+    <title>svn externals</title>
+    <url>/2016/09/09/svn-externals/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="Externals-Definitions"><a href="#Externals-Definitions" class="headerlink" title="Externals Definitions"></a>Externals Definitions</h1><p>Sometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different locations in a repository, or perhaps from different repositories altogether. You could certainly setup such a scenario by hand—using <code>svn checkout</code> to create the sort of nested working copy structure you are trying to achieve. But if this layout is important for everyone who uses your repository, every other user will need to perform the same checkout operations that you did.</p>
+<p>Fortunately, Subversion provides support for externals definitions. An externals definition is a mapping of a local directory to the URL—and possibly a particular revision—of a versioned resource. In Subversion, you declare externals definitions in groups using the <code>svn:externals</code> property. You can create or modify this property using <code>svn propset</code> or <code>svn propedit</code> (see <a href="http://svnbook.red-bean.com/en/1.0/ch07s02.html#svn-ch-7-sect-2.1">the section called “Why Properties?”</a>). It can be set on any versioned directory, and its value is a multi-line table of subdirectories (relative to the versioned directory on which the property is set) and fully qualified, absolute Subversion repository URLs.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ svn propget svn:externals calc</span><br><span class="line">third-party/sounds             http://sounds.red-bean.com/repos</span><br><span class="line">third-party/skins              http://skins.red-bean.com/repositories/skinproj</span><br><span class="line">third-party/skins/toolkit -r21 http://svn.red-bean.com/repos/skin-maker</span><br></pre></td></tr></table></figure>
+
+<p>he convenience of the svn:externals property is that once it is set on a versioned directory, everyone who checks out a working copy with that directory also gets the benefit of the externals definition. In other words, once one person has made the effort to define those nested working copy checkouts, no one else has to bother—Subversion will, upon checkout of the original working copy, also checkout the external working copies.</p>
+<p>Note the previous externals definition example. When someone checks out a working copy of the calc directory, Subversion also continues to checkout the items found in its externals definition.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ svn checkout http://svn.example.com/repos/calc</span><br><span class="line">A  calc</span><br><span class="line">A  calc/Makefile</span><br><span class="line">A  calc/integer.c</span><br><span class="line">A  calc/button.c</span><br><span class="line">Checked out revision 148.</span><br><span class="line"></span><br><span class="line">Fetching external item into calc/third-party/sounds</span><br><span class="line">A  calc/third-party/sounds/ding.ogg</span><br><span class="line">A  calc/third-party/sounds/dong.ogg</span><br><span class="line">A  calc/third-party/sounds/clang.ogg</span><br><span class="line">…</span><br><span class="line">A  calc/third-party/sounds/bang.ogg</span><br><span class="line">A  calc/third-party/sounds/twang.ogg</span><br><span class="line">Checked out revision 14.</span><br><span class="line"></span><br><span class="line">Fetching external item into calc/third-party/skins</span><br><span class="line">…</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>If you need to change the externals definition, you can do so using the regular property modification subcommands. When you commit a change to the <code>svn:externals</code> property, Subversion will synchronize the checked-out items against the changed externals definition when you next run <code>svn update</code>. The same thing will happen when others update their working copies and receive your changes to the externals definition.</p>
+<p>The <code>svn status</code> command also recognizes externals definitions, displaying a status code of X for the disjoint subdirectories into which externals are checked out, and then recursing into those subdirectories to display the status of the external items themselves.</p>
+<p>The support that exists for externals definitions in Subversion today can be a little misleading, though. First, an externals definition can only point to directories, not files. Second, the externals definition cannot point to relative paths (paths like ../../skins/myskin). Third, the working copies created via the externals definition support are still disconnected from the primary working copy (on whose versioned directories the <code>svn:externals</code> property was actually set). And Subversion still only truly operates on non-disjoint working copies. So, for example, if you want to commit changes that you’ve made in one or more of those external working copies, you must run <code>svn commit</code> explicitly on those working copies—committing on the primary working copy will not recurse into any external ones.</p>
+<p>Also, since the definitions themselves use absolute URLs, moving or copying a directory to which they are attached will not affect what gets checked out as an external (though the relative local target subdirectory will, of course, move with renamed directory). This can be confusing—even frustrating—in certain situations. For example, if you use externals definitions on a directory in your /trunk development line which point to other areas of that same line, and then you use <code>svn copy</code> to branch that line to some new location /branches/my-branch, the externals definitions on items in your new branch will still refer to versioned resources in /trunk. Also, be aware that if you need to re-parent your working copy (using svn switch –relocate), externals definitions will not also be re-parented.</p>
+<h1 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">svn propdel -R svn:externals</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">svn propdel PROPNAME</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>svn</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>svn: file is scheduled for addition, but is missing</title>
     <url>/2016/03/16/svn-file-is-scheduled-for-addition-but-is-missing/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>svn提交错误file is scheduled for addition, but is missing</p>
 <p><code>svn delete</code></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>版本管理</tag>
+        <tag>svn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>svn merge 合并单个文件</title>
+    <url>/2017/02/04/svn-merge-%E5%90%88%E5%B9%B6%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I’m not sure exactly what you’re asking as the title talks about merging single files but the text of the question talks about single revisions. In the case of merging single revisions you need: (to merge the changes committed in revisions 100, 105, 115)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd trunk</span><br><span class="line">svn merge -c 100 -c 105 -c 115 http://..../branches/mybranch .</span><br></pre></td></tr></table></figure>
+<p>If you want to merge only the part of revision 100 that affects file.cpp:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd trunk/path/to/file.cpp</span><br><span class="line">svn merge -c 100 http://../branches/mybranch/path/to/file.cpp file.cpp</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -5630,68 +5671,11 @@ The last case is that the same file has been created but you need a super set of
       </tags>
   </entry>
   <entry>
-    <title>svn merge 合并单个文件</title>
-    <url>/2017/02/04/svn-merge-%E5%90%88%E5%B9%B6%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I’m not sure exactly what you’re asking as the title talks about merging single files but the text of the question talks about single revisions. In the case of merging single revisions you need: (to merge the changes committed in revisions 100, 105, 115)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd trunk</span><br><span class="line">svn merge -c 100 -c 105 -c 115 http://..../branches/mybranch .</span><br></pre></td></tr></table></figure>
-<p>If you want to merge only the part of revision 100 that affects file.cpp:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd trunk/path/to/file.cpp</span><br><span class="line">svn merge -c 100 http://../branches/mybranch/path/to/file.cpp file.cpp</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>版本管理</tag>
-        <tag>svn</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>svn 取消版本控制</title>
     <url>/2017/06/06/svn-%E5%8F%96%E6%B6%88%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>删除这些目录是很简单的，命令如下</p>
 <pre><code>find . -type d -name &quot;.svn&quot;|xargs rm -rf</code></pre><p>或者</p>
 <pre><code>find . -type d -iname &quot;.svn&quot; -exec rm -rf &#123;&#125; \;  </code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>版本管理</tag>
-        <tag>svn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>svn externals</title>
-    <url>/2016/09/09/svn-externals/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="Externals-Definitions"><a href="#Externals-Definitions" class="headerlink" title="Externals Definitions"></a>Externals Definitions</h1><p>Sometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different locations in a repository, or perhaps from different repositories altogether. You could certainly setup such a scenario by hand—using <code>svn checkout</code> to create the sort of nested working copy structure you are trying to achieve. But if this layout is important for everyone who uses your repository, every other user will need to perform the same checkout operations that you did.</p>
-<p>Fortunately, Subversion provides support for externals definitions. An externals definition is a mapping of a local directory to the URL—and possibly a particular revision—of a versioned resource. In Subversion, you declare externals definitions in groups using the <code>svn:externals</code> property. You can create or modify this property using <code>svn propset</code> or <code>svn propedit</code> (see <a href="http://svnbook.red-bean.com/en/1.0/ch07s02.html#svn-ch-7-sect-2.1">the section called “Why Properties?”</a>). It can be set on any versioned directory, and its value is a multi-line table of subdirectories (relative to the versioned directory on which the property is set) and fully qualified, absolute Subversion repository URLs.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ svn propget svn:externals calc</span><br><span class="line">third-party/sounds             http://sounds.red-bean.com/repos</span><br><span class="line">third-party/skins              http://skins.red-bean.com/repositories/skinproj</span><br><span class="line">third-party/skins/toolkit -r21 http://svn.red-bean.com/repos/skin-maker</span><br></pre></td></tr></table></figure>
-
-<p>he convenience of the svn:externals property is that once it is set on a versioned directory, everyone who checks out a working copy with that directory also gets the benefit of the externals definition. In other words, once one person has made the effort to define those nested working copy checkouts, no one else has to bother—Subversion will, upon checkout of the original working copy, also checkout the external working copies.</p>
-<p>Note the previous externals definition example. When someone checks out a working copy of the calc directory, Subversion also continues to checkout the items found in its externals definition.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ svn checkout http://svn.example.com/repos/calc</span><br><span class="line">A  calc</span><br><span class="line">A  calc/Makefile</span><br><span class="line">A  calc/integer.c</span><br><span class="line">A  calc/button.c</span><br><span class="line">Checked out revision 148.</span><br><span class="line"></span><br><span class="line">Fetching external item into calc/third-party/sounds</span><br><span class="line">A  calc/third-party/sounds/ding.ogg</span><br><span class="line">A  calc/third-party/sounds/dong.ogg</span><br><span class="line">A  calc/third-party/sounds/clang.ogg</span><br><span class="line">…</span><br><span class="line">A  calc/third-party/sounds/bang.ogg</span><br><span class="line">A  calc/third-party/sounds/twang.ogg</span><br><span class="line">Checked out revision 14.</span><br><span class="line"></span><br><span class="line">Fetching external item into calc/third-party/skins</span><br><span class="line">…</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>If you need to change the externals definition, you can do so using the regular property modification subcommands. When you commit a change to the <code>svn:externals</code> property, Subversion will synchronize the checked-out items against the changed externals definition when you next run <code>svn update</code>. The same thing will happen when others update their working copies and receive your changes to the externals definition.</p>
-<p>The <code>svn status</code> command also recognizes externals definitions, displaying a status code of X for the disjoint subdirectories into which externals are checked out, and then recursing into those subdirectories to display the status of the external items themselves.</p>
-<p>The support that exists for externals definitions in Subversion today can be a little misleading, though. First, an externals definition can only point to directories, not files. Second, the externals definition cannot point to relative paths (paths like ../../skins/myskin). Third, the working copies created via the externals definition support are still disconnected from the primary working copy (on whose versioned directories the <code>svn:externals</code> property was actually set). And Subversion still only truly operates on non-disjoint working copies. So, for example, if you want to commit changes that you’ve made in one or more of those external working copies, you must run <code>svn commit</code> explicitly on those working copies—committing on the primary working copy will not recurse into any external ones.</p>
-<p>Also, since the definitions themselves use absolute URLs, moving or copying a directory to which they are attached will not affect what gets checked out as an external (though the relative local target subdirectory will, of course, move with renamed directory). This can be confusing—even frustrating—in certain situations. For example, if you use externals definitions on a directory in your /trunk development line which point to other areas of that same line, and then you use <code>svn copy</code> to branch that line to some new location /branches/my-branch, the externals definitions on items in your new branch will still refer to versioned resources in /trunk. Also, be aware that if you need to re-parent your working copy (using svn switch –relocate), externals definitions will not also be re-parented.</p>
-<h1 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">svn propdel -R svn:externals</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">svn propdel PROPNAME</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>svn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>svn中操作带有”@”符号的文件</title>
-    <url>/2016/11/14/svn%E4%B8%AD%E6%93%8D%E4%BD%9C%E5%B8%A6%E6%9C%89%E2%80%9D-%E2%80%9D%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>如果在命终端中用svn命令操作文件名中有“@”符号的文件（ios开发的朋友应该很清楚），会遇到：</p>
-<pre><code>svn: E205000: Syntax error parsing peg revision ‘3x.png’</code></pre><p>或者：</p>
-<pre><code>svn: E200009: ‘welcome1@3x.png&apos;: a peg revision is not allowed here</code></pre><p>类似的错误提示，原因是因为svn命令把文件名中的@识别成有其它含义的特殊字符，导致操作失败。</p>
-<h3 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h3><p>在使用svn命令时在文件名尾部再添加一个<code>@</code>即可解决。<br>比如 要查看<a href="mailto:welcome1@3x.png">welcome1@3x.png</a>文件信息：</p>
-<pre><code>svn info welcome1@3x.png@</code></pre>]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -5735,6 +5719,22 @@ The last case is that the same file has been created but you need a super set of
       <tags>
         <tag>mysql</tag>
         <tag>备份</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>svn中操作带有”@”符号的文件</title>
+    <url>/2016/11/14/svn%E4%B8%AD%E6%93%8D%E4%BD%9C%E5%B8%A6%E6%9C%89%E2%80%9D-%E2%80%9D%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>如果在命终端中用svn命令操作文件名中有“@”符号的文件（ios开发的朋友应该很清楚），会遇到：</p>
+<pre><code>svn: E205000: Syntax error parsing peg revision ‘3x.png’</code></pre><p>或者：</p>
+<pre><code>svn: E200009: ‘welcome1@3x.png&apos;: a peg revision is not allowed here</code></pre><p>类似的错误提示，原因是因为svn命令把文件名中的@识别成有其它含义的特殊字符，导致操作失败。</p>
+<h3 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h3><p>在使用svn命令时在文件名尾部再添加一个<code>@</code>即可解决。<br>比如 要查看<a href="mailto:welcome1@3x.png">welcome1@3x.png</a>文件信息：</p>
+<pre><code>svn info welcome1@3x.png@</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>版本管理</tag>
+        <tag>svn</tag>
       </tags>
   </entry>
   <entry>
@@ -5801,25 +5801,6 @@ RUN gem install sass</code></pre>]]></content>
       <tags>
         <tag>ubuntu</tag>
         <tag>命令行</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Xenu-网站死链接检测权威工具</title>
-    <url>/2014/10/18/xenu-e7-bd-91-e7-ab-99-e6-ad-bb-e9-93-be-e6-8e-a5-e6-a3-80-e6-b5-8b-e6-9d-83-e5-a8-81-e5-b7-a5-e5-85-b7/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Xenu 是一款深受业界好评，并被广泛使用的死链接检测工具。</p>
-<p>时常检测网站并排除死链接，对网站的 SEO 非常重要，因为大量死链接存在会降低用户和搜索引擎对网站的信任。</p>
-<p>我们推荐的死链接检测工具 Xenu 主要具有以下特征：</p>
-<p>需要下载安装，不到1M大小，用户界面非常简洁，操作简单。 检测彻底：能够检测到图片、框架、插件、背景、样式表、脚本和 java 程序中的链接。 报告形式合理多样，死链接一目了然。 提供出现死链接的网页，方便扫除导出链接错误。 能够侦测重定向URL 可以选择是否侦测站外链接。 对于小型简单网站，可以用来制作HTML格式网站地图。</p>
-<p>死链接检测工具 Xenu 下载地址：<a href="http://home.snafu.de/tilman/XENU.ZIP">http://home.snafu.de/tilman/XENU.ZIP</a></p>
-<p>不懂英文者使用指南：</p>
-<p>下载，并安装。 打开后，出现 Tips and Tricks 窗口，点击 Close 按钮。 点击左上第二行第一个按钮。 出现一个对话框，在对话框第一行，写入自己的URL。如：<a href="http://chenyanshi.com">http://chenyanshi.com</a> 按底部的“OK”，就完成了。 报告结果中，出现红色的部分即是死链接。 原创文章，转载请注明： 转载自RICKYCHEN</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>网络</tag>
-        <tag>调式</tag>
       </tags>
   </entry>
   <entry>
@@ -6068,6 +6049,25 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
       </tags>
   </entry>
   <entry>
+    <title>Xenu-网站死链接检测权威工具</title>
+    <url>/2014/10/18/xenu-e7-bd-91-e7-ab-99-e6-ad-bb-e9-93-be-e6-8e-a5-e6-a3-80-e6-b5-8b-e6-9d-83-e5-a8-81-e5-b7-a5-e5-85-b7/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Xenu 是一款深受业界好评，并被广泛使用的死链接检测工具。</p>
+<p>时常检测网站并排除死链接，对网站的 SEO 非常重要，因为大量死链接存在会降低用户和搜索引擎对网站的信任。</p>
+<p>我们推荐的死链接检测工具 Xenu 主要具有以下特征：</p>
+<p>需要下载安装，不到1M大小，用户界面非常简洁，操作简单。 检测彻底：能够检测到图片、框架、插件、背景、样式表、脚本和 java 程序中的链接。 报告形式合理多样，死链接一目了然。 提供出现死链接的网页，方便扫除导出链接错误。 能够侦测重定向URL 可以选择是否侦测站外链接。 对于小型简单网站，可以用来制作HTML格式网站地图。</p>
+<p>死链接检测工具 Xenu 下载地址：<a href="http://home.snafu.de/tilman/XENU.ZIP">http://home.snafu.de/tilman/XENU.ZIP</a></p>
+<p>不懂英文者使用指南：</p>
+<p>下载，并安装。 打开后，出现 Tips and Tricks 窗口，点击 Close 按钮。 点击左上第二行第一个按钮。 出现一个对话框，在对话框第一行，写入自己的URL。如：<a href="http://chenyanshi.com">http://chenyanshi.com</a> 按底部的“OK”，就完成了。 报告结果中，出现红色的部分即是死链接。 原创文章，转载请注明： 转载自RICKYCHEN</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>网络</tag>
+        <tag>调式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>imaxabsConfigure HUAWEI E1750 HSPA USB Stick in Linux → Configure USB modem HUAWEI E3131 in Linux</title>
     <url>/2017/03/25/%E2%86%90-imaxabsConfigure-HUAWEI-E1750-HSPA-USB-Stick-in-Linux-%E2%86%92Configure-USB-modem-HUAWEI-E3131-in-Linux/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>For installing device HUAWEI E3131 in CentOS 6.4 Linux you have to follow instructions below. Can be used to send SMS by AT command and also to establish HiSpeed Mobile Internet connection.</p>
@@ -6098,7 +6098,7 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
   <entry>
     <title>【完整版】如果看了此文你还不懂傅里叶变换，那就过来掐死我吧</title>
     <url>/2016/10/04/%E3%80%90%E5%AE%8C%E6%95%B4%E7%89%88%E3%80%91%E5%A6%82%E6%9E%9C%E7%9C%8B%E4%BA%86%E6%AD%A4%E6%96%87%E4%BD%A0%E8%BF%98%E4%B8%8D%E6%87%82%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%EF%BC%8C%E9%82%A3%E5%B0%B1%E8%BF%87%E6%9D%A5%E6%8E%90%E6%AD%BB%E6%88%91%E5%90%A7/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><img title="傅里叶变换" alt="首图" src="https://res.hillock.com.cn/wulai/images/Fourier/ftfs.jpg">
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><img title="傅里叶变换" alt="首图" src="https://res.heynet.com.cn/wulai/images/Fourier/ftfs.jpg">
 
 <p>作 者：韩 昊<br>知 乎：Heinrich<br>微 博：@花生油工人<br>知乎专栏：与时间无关的故事</p>
 <p>谨以此文献给大连海事大学的吴楠老师，柳晓鸣老师，王新年老师以及张晶泊老师。</p>
@@ -6114,18 +6114,18 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
 <h2 id="一、什么是频域"><a href="#一、什么是频域" class="headerlink" title="一、什么是频域"></a>一、什么是频域</h2><p>　　从我们出生，我们看到的世界都以时间贯穿，股票的走势、人的身高、汽车的轨迹都会随着时间发生改变。这种以时间作为参照来观察动态世界的方法我们称其为时域分析。而我们也想当然的认为，世间万物都在随着时间不停的改变，并且永远不会静止下来。但如果我告诉你，用另一种方法来观察世界的话，你会发现世界是永恒不变的，你会不会觉得我疯了？我没有疯，这个静止的世界就叫做频域。</p>
 <p>　　先举一个公式上并非很恰当，但意义上再贴切不过的例子：</p>
 <p>　　在你的理解中，一段音乐是什么呢？</p>
-<img title="音乐" alt="音乐" src="https://res.hillock.com.cn/wulai/images/Fourier/audio.jpg">
+<img title="音乐" alt="音乐" src="https://res.heynet.com.cn/wulai/images/Fourier/audio.jpg">
 
 <p>　这是我们对音乐最普遍的理解，一个随着时间变化的震动。但我相信对于乐器小能手们来说，音乐更直观的理解是这样的：</p>
-<img title="五线谱" alt="五线谱" src="https://res.hillock.com.cn/wulai/images/Fourier/MusicalNotation.jpg">
+<img title="五线谱" alt="五线谱" src="https://res.heynet.com.cn/wulai/images/Fourier/MusicalNotation.jpg">
 
 <p>好的！下课，同学们再见。</p>
 <p>　　是的，其实这一段写到这里已经可以结束了。上图是音乐在时域的样子，而下图则是音乐在频域的样子。所以频域这一概念对大家都从不陌生，只是从来没意识到而已。<br>　现在我们可以回过头来重新看看一开始那句痴人说梦般的话：世界是永恒的。<br>将以上两图简化：</p>
 <p>　　时域：</p>
-<img title="时域" alt="时域" src="https://res.hillock.com.cn/wulai/images/Fourier/timearea.jpg">
+<img title="时域" alt="时域" src="https://res.heynet.com.cn/wulai/images/Fourier/timearea.jpg">
 
 <p>  频率</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/frequencyarea.jpg">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/frequencyarea.jpg">
 
 <p>在时域，我们观察到钢琴的琴弦一会上一会下的摆动，就如同一支股票的走势；而在频域，只有那一个永恒的音符。</p>
 <p>　　所以</p>
@@ -6134,7 +6134,7 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
 <p>　　而贯穿时域与频域的方法之一，就是传中说的傅里叶分析。傅里叶分析可分为傅里叶级数（Fourier Serie）和傅里叶变换(Fourier Transformation)，我们从简单的开始谈起。</p>
 <h2 id="二、傅里叶级数-Fourier-Series-的频谱"><a href="#二、傅里叶级数-Fourier-Series-的频谱" class="headerlink" title="二、傅里叶级数(Fourier Series)的频谱"></a>二、傅里叶级数(Fourier Series)的频谱</h2><p>还是举个栗子并且有图有真相才好理解。</p>
 <p>　　如果我说我能用前面说的正弦曲线波叠加出一个带 90 度角的矩形波来，你会相信吗？你不会，就像当年的我一样。但是看看下图：</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/sin.jpg">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/sin.jpg">
 
 <p>第一幅图是一个郁闷的正弦波 cos（x）</p>
 <p>　　第二幅图是 2 个卖萌的正弦波的叠加 cos (x) +a.cos (3x)</p>
@@ -6144,7 +6144,7 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
 <p>　　随着叠加的递增，所有正弦波中上升的部分逐渐让原本缓慢增加的曲线不断变陡，而所有正弦波中下降的部分又抵消了上升到最高处时继续上升的部分使其变为水平线。一个矩形就这么叠加而成了。但是要多少个正弦波叠加起来才能形成一个标准 90 度角的矩形波呢？不幸的告诉大家，答案是无穷多个。（上帝：我能让你们猜着我？）</p>
 <p>　　不仅仅是矩形，你能想到的任何波形都是可以如此方法用正弦波叠加起来的。这是没</p>
 <p>　　有接触过傅里叶分析的人在直觉上的第一个难点，但是一旦接受了这样的设定，游戏就开始有意思起来了。<br>　还是上图的正弦波累加成矩形波，我们换一个角度来看看：</p>
-<img title="频域2" alt="频域2" src="https://res.hillock.com.cn/wulai/images/Fourier/sin2.jpg">
+<img title="频域2" alt="频域2" src="https://res.heynet.com.cn/wulai/images/Fourier/sin2.jpg">
 <p>在这几幅图中，最前面黑色的线就是所有正弦波叠加而成的总和，也就是越来越接近矩形波的那个图形。而后面依不同颜色排列而成的正弦波就是组合为矩形波的各个分量。这些正弦波按照频率从低到高从前向后排列开来，而每一个波的振幅都是不同的。一定有细心的读者发现了，每两个正弦波之间都还有一条直线，那并不是分割线，而是振幅为 0 的正弦波！也就是说，为了组成特殊的曲线，有些正弦波成分是不需要的。</p>
 <p>　　这里，不同频率的正弦波我们成为频率分量。</p>
 <p>　　好了，关键的地方来了！！</p>
@@ -6153,28 +6153,28 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
 <p>　　时域的基本单元就是“1 秒”，如果我们将一个角频率为的正弦波 cos（t）看作基础，那么频域的基本单元就是<br>。</p>
 <p>　　有了“1”，还要有“0”才能构成世界，那么频域的“0”是什么呢？cos（0t）就是一个周期无限长的正弦波，也就是一条直线！所以在频域，0 频率也被称为直流分量，在傅里叶级数的叠加中，它仅仅影响全部波形相对于数轴整体向上或是向下而不改变波的形状。</p>
 <p>　　接下来，让我们回到初中，回忆一下已经死去的八戒，啊不，已经死去的老师是怎么定义正弦波的吧。</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/sin3.gif">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/sin3.gif">
 
 <p>正弦波就是一个圆周运动在一条直线上的投影。所以频域的基本单元也可以理解为一个始终在旋转的圆</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/sin4.gif">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/sin4.gif">
 <p>想看动图的同学请戳这里：</p>
 <p>　　File:Fourier series square wave circles animation.gif</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/sin5.gif">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/sin5.gif">
 <p>以及这里：</p>
 <p>　　File:Fourier series sawtooth wave circles animation.gif</p>
 <p>　　点出去的朋友不要被 wiki 拐跑了，wiki 写的哪有这里的文章这么没节操是不是。</p>
 <p>　　介绍完了频域的基本组成单元，我们就可以看一看一个矩形波，在频域里的另一个模样了：</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/fs2.jpg">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/fs2.jpg">
 
 <p>这是什么奇怪的东西？</p>
 <p>　　这就是矩形波在频域的样子，是不是完全认不出来了？教科书一般就给到这里然后留给了读者无穷的遐想，以及无穷的吐槽，其实教科书只要补一张图就足够了：频域图像，也就是俗称的频谱，就是——</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/fs3.jpg">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/fs3.jpg">
 
 <p>　再清楚一点：</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/fs4.jpg">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/fs4.jpg">
 
 <p>可以发现，在频谱中，偶数项的振幅都是0，也就对应了图中的彩色直线。振幅为 0 的正弦波。</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/sf5.gif">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/sf5.gif">
 
 <p>动图请戳：</p>
 <p>　　File:Fourier series and transform.gif</p>
@@ -6195,16 +6195,16 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
 <p>　　————————————————————————————————————</p>
 <p>下面我们继续说相位谱：</p>
 <p>　　通过时域到频域的变换，我们得到了一个从侧面看的频谱，但是这个频谱并没有包含时域中全部的信息。因为频谱只代表每一个对应的正弦波的振幅是多少，而没有提到相位。基础的正弦波A.sin (wt+θ)中，振幅，频率，相位缺一不可，不同相位决定了波的位置，所以对于频域分析，仅仅有频谱（振幅谱）是不够的，我们还需要一个相位谱。那么这个相位谱在哪呢？我们看下图，这次为了避免图片太混论，我们用 7 个波叠加的图。</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/fs7.jpg">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/fs7.jpg">
 
 <p>鉴于正弦波是周期的，我们需要设定一个用来标记正弦波位置的东西。在图中就是那些小红点。小红点是距离频率轴最近的波峰，而这个波峰所处的位置离频率轴有多远呢？为了看的更清楚，我们将红色的点投影到下平面，投影点我们用粉色点来表示。当然，这些粉色的点只标注了波峰距离频率轴的距离，并不是相位。</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/fs8.jpg">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/fs8.jpg">
 
 <p>这里需要纠正一个概念：时间差并不是相位差。如果将全部周期看作 2Pi 或者 360 度的话，相位差则是时间差在一个周期中所占的比例。我们将时间差除周期再乘 2Pi，就得到了相位差。</p>
 <p>　　在完整的立体图中，我们将投影得到的时间差依次除以所在频率的周期，就得到了最下面的相位谱。所以，频谱是从侧面看，相位谱是从下面看。下次偷看女生裙底被发现的话，可以告诉她：“对不起，我只是想看看你的相位谱。”</p>
 <p>　　注意到，相位谱中的相位除了0，就是 Pi。因为 cos（t+Pi）=-cos（t），所以实际上相位为 Pi 的波只是上下翻转了而已。对于周期方波的傅里叶级数，这样的相位谱已经是很简单的了。另外值得注意的是，由于 cos（t+2Pi）=cos（t），所以相位差是周期的，pi 和 3pi，5pi，7pi 都是相同的相位。人为定义相位谱的值域为(-pi，pi]，所以图中的相位差均为 Pi。</p>
 <p>　　最后来一张大集合：</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/fs9.jpg">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/fs9.jpg">
 
 <h2 id="四、傅里叶变换（Fourier-Tranformation）"><a href="#四、傅里叶变换（Fourier-Tranformation）" class="headerlink" title="四、傅里叶变换（Fourier Tranformation）"></a>四、傅里叶变换（Fourier Tranformation）</h2><p>相信通过前面三章，大家对频域以及傅里叶级数都有了一个全新的认识。但是文章在一开始关于钢琴琴谱的例子我曾说过，这个栗子是一个公式错误，但是概念典型的例子。所谓的公式错误在哪里呢？</p>
 <p>　　傅里叶级数的本质是将一个周期的信号分解成无限多分开的（离散的）正弦波，但是宇宙似乎并不是周期的。曾经在学数字信号处理的时候写过一首打油诗：</p>
@@ -6217,41 +6217,41 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
 <p>　　比如傅里叶级数，在时域是一个周期且连续的函数，而在频域是一个非周期离散的函数。这句话比较绕嘴，实在看着费事可以干脆回忆第一章的图片。</p>
 <p>　　而在我们接下去要讲的傅里叶变换，则是将一个时域非周期的连续信号，转换为一个在频域非周期的连续信号。</p>
 <p>　　算了，还是上一张图方便大家理解吧：</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/fs10.jpg">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/fs10.jpg">
 
 <p>或者我们也可以换一个角度理解：傅里叶变换实际上是对一个周期无限大的函数进行傅里叶变换。</p>
 <p>　　所以说，钢琴谱其实并非一个连续的频谱，而是很多在时间上离散的频率，但是这样的一个贴切的比喻真的是很难找出第二个来了。</p>
 <p>　　因此在傅里叶变换在频域上就从离散谱变成了连续谱。那么连续谱是什么样子呢？</p>
 <p>　　<strong>你见过大海么？</strong></p>
 <p>　　为了方便大家对比，我们这次从另一个角度来看频谱，还是傅里叶级数中用到最多的那幅图，我们从频率较高的方向看。</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/fs11.jpg">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/fs11.jpg">
 <p>以上是离散谱，那么连续谱是什么样子呢？</p>
 <p>　　尽情的发挥你的想象，想象这些离散的正弦波离得越来越近，逐渐变得连续……</p>
 <p>　　直到变得像波涛起伏的大海：</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/fs12.jpg">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/fs12.jpg">
 
 <p>很抱歉，为了能让这些波浪更清晰的看到，我没有选用正确的计算参数，而是选择了一些让图片更美观的参数，不然这图看起来就像屎一样了。</p>
 <p>　　不过通过这样两幅图去比较，大家应该可以理解如何从离散谱变成了连续谱的了吧？原来离散谱的叠加，变成了连续谱的累积。所以在计算上也从求和符号变成了积分符号。</p>
 <p>　　不过，这个故事还没有讲完，接下去，我保证让你看到一幅比上图更美丽壮观的图片，但是这里需要介绍到一个数学工具才能然故事继续，这个工具就是——</p>
 <h2 id="五、宇宙耍帅第一公式：欧拉公式"><a href="#五、宇宙耍帅第一公式：欧拉公式" class="headerlink" title="　五、宇宙耍帅第一公式：欧拉公式"></a>　五、宇宙耍帅第一公式：欧拉公式</h2><p>虚数i这个概念大家在高中就接触过，但那时我们只知道它是-1 的平方根，可是它真正的意义是什么呢?</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/f1.jpg">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/f1.jpg">
 
 <p>这里有一条数轴，在数轴上有一个红色的线段，它的长度是1。当它乘以 3 的时候，它的长度发生了变化，变成了蓝色的线段，而当它乘以-1 的时候，就变成了绿色的线段，或者说线段在数轴上围绕原点旋转了 180 度。</p>
 <p>我们知道乘-1 其实就是乘了两次 i 使线段旋转了 180 度，那么乘一次 i 呢——答案很简单——旋转了 90 度。</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/f2.jpg">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/f2.jpg">
 
 <p>同时，我们获得了一个垂直的虚数轴。实数轴与虚数轴共同构成了一个复数的平面，也称复平面。这样我们就了解到，乘虚数i的一个功能——旋转。</p>
 <p>　　现在，就有请宇宙第一耍帅公式欧拉公式隆重登场——</p>
-<img title="公式" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/f3.jpg">
+<img title="公式" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/f3.jpg">
 
 
 <p>这个公式在数学领域的意义要远大于傅里叶分析，但是乘它为宇宙第一耍帅公式是因为它的特殊形式——当x等于 Pi 的时候。</p>
-<img title="公式" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/f4.jpg">
+<img title="公式" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/f4.jpg">
 
 
 <p>经常有理工科的学生为了跟妹子表现自己的学术功底，用这个公式来给妹子解释数学之美：”石榴姐你看，这个公式里既有自然底数e，自然数 1 和0，虚数i还有圆周率 pi，它是这么简洁，这么美丽啊！“但是姑娘们心里往往只有一句话：”臭屌丝……“</p>
 <p>　　这个公式关键的作用，是将正弦波统一成了简单的指数形式。我们来看看图像上的涵义：</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/f5.jpg">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/f5.jpg">
 
 <p>欧拉公式所描绘的，是一个随着时间变化，在复平面上做圆周运动的点，随着时间的改变，在时间轴上就成了一条螺旋线。如果只看它的实数部分，也就是螺旋线在左侧的投影，就是一个最基础的余弦函数。而右侧的投影则是一个正弦函数。</p>
 <p>　　关于复数更深的理解，大家可以参考：</p>
@@ -6259,34 +6259,34 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
 <p>　　这里不需要讲的太复杂，足够让大家理解后面的内容就可以了。</p>
 <h2 id="六、指数形式的傅里叶变换"><a href="#六、指数形式的傅里叶变换" class="headerlink" title="六、指数形式的傅里叶变换"></a>六、指数形式的傅里叶变换</h2><p>有了欧拉公式的帮助，我们便知道：正弦波的叠加，也可以理解为螺旋线的叠加在实数空间的投影。而螺旋线的叠加如果用一个形象的栗子来理解是什么呢？</p>
 <h3 id="光波"><a href="#光波" class="headerlink" title="光波"></a>光波</h3><p>　　高中时我们就学过，自然光是由不同颜色的光叠加而成的，而最著名的实验就是牛顿师傅的三棱镜实验：</p>
-<img title="频域" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/f6.jpg">
+<img title="频域" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/f6.jpg">
 
 <p>所以其实我们在很早就接触到了光的频谱，只是并没有了解频谱更重要的意义。</p>
 <p>　　但不同的是，傅里叶变换出来的频谱不仅仅是可见光这样频率范围有限的叠加，而是频率从 0 到无穷所有频率的组合。</p>
 <p>　　这里，我们可以用两种方法来理解正弦波：</p>
 <p>　　第一种前面已经讲过了，就是螺旋线在实轴的投影。</p>
 <p>　　另一种需要借助欧拉公式的另一种形式去理解：</p>
-<img title="公式" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/f7.jpg">
+<img title="公式" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/f7.jpg">
 
 <p>将以上两式相加再除2，得到：</p>
-<img title="公式" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/f8.jpg">
+<img title="公式" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/f8.jpg">
 <p>这个式子可以怎么理解呢？</p>
 <p>　　我们刚才讲过，e^(it)可以理解为一条逆时针旋转的螺旋线，那么e^(-it)则可以理解为一条顺时针旋转的螺旋线。而 cos (t)则是这两条旋转方向不同的螺旋线叠加的一半，因为这两条螺旋线的虚数部分相互抵消掉了！</p>
 <p>　　举个例子的话，就是极化方向不同的两束光波，磁场抵消，电场加倍。</p>
 <p>　　这里，逆时针旋转的我们称为正频率，而顺时针旋转的我们称为负频率（注意不是复频率）。</p>
 <p>　　好了，刚才我们已经看到了大海——连续的傅里叶变换频谱，现在想一想，连续的螺旋线会是什么样子：</p>
 <p>　　想象一下再往下翻：</p>
-<img title="公式" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/f9.jpg">
+<img title="公式" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/f9.jpg">
 
 <p>是不是很漂亮？</p>
 <p>　　你猜猜，这个图形在时域是什么样子？</p>
-<img title="公式" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/f10.jpg">
+<img title="公式" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/f10.jpg">
 
 <p>哈哈，是不是觉得被狠狠扇了一个耳光。数学就是这么一个把简单的问题搞得很复杂的东西。</p>
 <p>　　顺便说一句，那个像大海螺一样的图，为了方便观看，我仅仅展示了其中正频率的部分，负频率的部分没有显示出来。</p>
 <p>　　如果你认真去看，海螺图上的每一条螺旋线都是可以清楚的看到的，每一条螺旋线都有着不同的振幅（旋转半径），频率（旋转周期）以及相位。而将所有螺旋线连成平面，就是这幅海螺图了。</p>
 <p>　　好了，讲到这里，相信大家对傅里叶变换以及傅里叶级数都有了一个形象的理解了，我们最后用一张图来总结一下：</p>
-<img title="公式" alt="频域" src="https://res.hillock.com.cn/wulai/images/Fourier/f11.jpg">
+<img title="公式" alt="频域" src="https://res.heynet.com.cn/wulai/images/Fourier/f11.jpg">
 
 <p>好了，傅里叶的故事终于讲完了，下面来讲讲我的故事：</p>
 <p>　　这篇文章第一次被卸下来的地方你们绝对猜不到在哪，是在一张高数考试的卷子上。当时为了刷分，我重修了高数（上），但是后来时间紧压根没复习，所以我就抱着裸考的心态去了考场。但是到了考场我突然意识到，无论如何我都不会比上次考的更好了，所以干脆写一些自己对于数学的想法吧。于是用了一个小时左右的时间在试卷上洋洋洒洒写了本文的第一草稿。</p>
@@ -6347,7 +6347,7 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
 <ul>
 <li>内容特征：提取不同内容类型的特征做好推荐。</li>
 <li>用户特征：兴趣标签，职业、年龄、性别等。</li>
-<li>环境特征：在工作场合、通勤、旅游等不同的场景，信息偏好有所偏移。<img title="推荐系统匹配函数" alt="推荐系统匹配函数" src="https://res.hillock.com.cn/wulai/images/今日头条/推荐系统函数匹配.webp">
+<li>环境特征：在工作场合、通勤、旅游等不同的场景，信息偏好有所偏移。<img title="推荐系统匹配函数" alt="推荐系统匹配函数" src="https://res.heynet.com.cn/wulai/images/今日头条/推荐系统函数匹配.webp">
 
 </li>
 </ul>
@@ -6555,7 +6555,7 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
 <li>重大改进需要人工评估二次确认</li>
 <li>头条利用内部和外包团队进行例行的人工抽样评估</li>
 </ul>
-<h2 id="5-内容安全"><a href="#5-内容安全" class="headerlink" title="5 内容安全"></a>5 内容安全</h2><h3 id="5-1-头条内容安全机制"><a href="#5-1-头条内容安全机制" class="headerlink" title="5.1 头条内容安全机制"></a>5.1 头条内容安全机制</h3><img title="内容安全机制" alt="内容安全机制" src="https://res.hillock.com.cn/wulai/images/今日头条/今日头条-内容安全机制.webp">
+<h2 id="5-内容安全"><a href="#5-内容安全" class="headerlink" title="5 内容安全"></a>5 内容安全</h2><h3 id="5-1-头条内容安全机制"><a href="#5-1-头条内容安全机制" class="headerlink" title="5.1 头条内容安全机制"></a>5.1 头条内容安全机制</h3><img title="内容安全机制" alt="内容安全机制" src="https://res.heynet.com.cn/wulai/images/今日头条/今日头条-内容安全机制.webp">
 
 <h3 id="5-2-分享内容识别技术"><a href="#5-2-分享内容识别技术" class="headerlink" title="5.2 分享内容识别技术"></a>5.2 分享内容识别技术</h3><ul>
 <li>鉴黄模型</li>
@@ -7020,6 +7020,95 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
       </tags>
   </entry>
   <entry>
+    <title>如何用十条命令在一分钟内检查Linux服务器性能</title>
+    <url>/2016/09/23/%E5%A6%82%E4%BD%95%E7%94%A8%E5%8D%81%E6%9D%A1%E5%91%BD%E4%BB%A4%E5%9C%A8%E4%B8%80%E5%88%86%E9%92%9F%E5%86%85%E6%A3%80%E6%9F%A5Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>通过执行以下命令，可以在1分钟内对系统资源使用情况有个大致的了解。</p>
+<ul>
+<li>uptime</li>
+<li>dmesg | tail</li>
+<li>vmstat 1</li>
+<li>mpstat -P ALL 1</li>
+<li>pidstat 1</li>
+<li>iostat -xz 1</li>
+<li>free -m</li>
+<li>sar -n DEV 1</li>
+<li>sar -n TCP,ETCP 1</li>
+<li>top</li>
+</ul>
+<p>其中一些命令需要安装sysstat包，有一些由procps包提供。这些命令的输出，有助于快速定位性能瓶颈，检查出所有资源（CPU、内存、磁盘IO等）的利用率（utilization）、饱和度（saturation）和错误（error）度量，也就是所谓的USE方法。</p>
+<p>下面我们来逐一介绍下这些命令，有关这些命令更多的参数和说明，请参照命令的手册。</p>
+<h2 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ uptime</span><br><span class="line"></span><br><span class="line">23:51:26 up 21:31,  1 user,  load average: 30.02, 26.43, 19.02</span><br></pre></td></tr></table></figure>
+<p>这个命令可以快速查看机器的负载情况。在Linux系统中，这些数据表示等待CPU资源的进程和阻塞在不可中断IO进程（进程状态为D）的数量。这些数据可以让我们对系统资源使用有一个宏观的了解。</p>
+<p>命令的输出分别表示1分钟、5分钟、15分钟的平均负载情况。通过这三个数据，可以了解服务器负载是在趋于紧张还是趋于缓解。如果1分钟平均负载很高，而15分钟平均负载很低，说明服务器正在命令高负载情况，需要进一步排查CPU资源都消耗在了哪里。反之，如果15分钟平均负载很高，1分钟平均负载较低，则有可能是CPU资源紧张时刻已经过去。</p>
+<p>上面例子中的输出，可以看见最近1分钟的平均负载非常高，且远高于最近15分钟负载，因此我们需要继续排查当前系统中有什么进程消耗了大量的资源。可以通过下文将会介绍的vmstat、mpstat等命令进一步排查。</p>
+<h2 id="dmesg丨tail"><a href="#dmesg丨tail" class="headerlink" title="dmesg丨tail"></a>dmesg丨tail</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ dmesg | tail</span><br><span class="line"></span><br><span class="line">[1880957.563150] perl invoked oom-killer: gfp_mask=0x280da, order=0, oom_score_adj=0</span><br><span class="line"></span><br><span class="line">[...]</span><br><span class="line"></span><br><span class="line">[1880957.563400] Out of memory: Kill process 18694 (perl) score 246 or sacrifice child</span><br><span class="line"></span><br><span class="line">[1880957.563408] Killed process 18694 (perl) total-vm:1972392kB, anon-rss:1953348kB, file-rss:0kB</span><br><span class="line"></span><br><span class="line">[2320864.954447] TCP: Possible SYN flooding on port 7001. Dropping</span><br><span class="line"></span><br><span class="line">request.  Check SNMP counters.</span><br></pre></td></tr></table></figure>
+<p>该命令会输出系统日志的最后10行。示例中的输出，可以看见一次内核的oom kill和一次TCP丢包。这些日志可以帮助排查性能问题。千万不要忘了这一步。</p>
+<h2 id="vmstat-1"><a href="#vmstat-1" class="headerlink" title="vmstat 1"></a>vmstat 1</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ vmstat 1</span><br><span class="line"></span><br><span class="line">procs ---------memory---------- ---swap-- -----io---- -system-- ------cpu-----</span><br><span class="line"></span><br><span class="line"> r  b swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st</span><br><span class="line"></span><br><span class="line">34  0    0 200889792  73708 591828    0    0     0     5    6   10 96  1  3  0  0</span><br><span class="line"></span><br><span class="line">32  0    0 200889920  73708 591860    0    0     0   592 13284 4282 98  1  1  0  0</span><br><span class="line"></span><br><span class="line">32  0    0 200890112  73708 591860    0    0     0     0 9501 2154 99  1  0  0  0</span><br><span class="line"></span><br><span class="line">32  0    0 200889568  73712 591856    0    0     0    48 11900 2459 99  0  0  0  0</span><br><span class="line"></span><br><span class="line">32  0    0 200890208  73712 591860    0    0     0     0 15898 4840 98  1  1  0  0</span><br><span class="line"></span><br><span class="line">^C</span><br></pre></td></tr></table></figure>
+
+<p>vmstat(8) 命令，每行会输出一些系统核心指标，这些指标可以让我们更详细的了解系统状态。后面跟的参数1，表示每秒输出一次统计信息，表头提示了每一列的含义，这几介绍一些和性能调优相关的列：</p>
+<ul>
+<li><p>r：等待在CPU资源的进程数。这个数据比平均负载更加能够体现CPU负载情况，数据中不包含等待IO的进程。如果这个数值大于机器CPU核数，那么机器的CPU资源已经饱和。</p>
+</li>
+<li><p>free：系统可用内存数（以千字节为单位），如果剩余内存不足，也会导致系统性能问题。下文介绍到的free命令，可以更详细的了解系统内存的使用情况。</p>
+</li>
+<li><p>si，so：交换区写入和读取的数量。如果这个数据不为0，说明系统已经在使用交换区（swap），机器物理内存已经不足。</p>
+</li>
+<li><p>us, sy, id, wa, st：这些都代表了CPU时间的消耗，它们分别表示用户时间（user）、系统（内核）时间（sys）、空闲时间（idle）、IO等待时间（wait）和被偷走的时间（stolen，一般被其他虚拟机消耗）。</p>
+</li>
+</ul>
+<p>上述这些CPU时间，可以让我们很快了解CPU是否出于繁忙状态。一般情况下，如果用户时间和系统时间相加非常大，CPU出于忙于执行指令。如果IO等待时间很长，那么系统的瓶颈可能在磁盘IO。</p>
+<p>示例命令的输出可以看见，大量CPU时间消耗在用户态，也就是用户应用程序消耗了CPU时间。这不一定是性能问题，需要结合r队列，一起分析。</p>
+<h2 id="mpstat-P-ALL-1"><a href="#mpstat-P-ALL-1" class="headerlink" title="mpstat-P ALL 1"></a>mpstat-P ALL 1</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ mpstat -P ALL 1</span><br><span class="line"></span><br><span class="line">Linux 3.13.0-49-generic (titanclusters-xxxxx)  07/14/2015  _x86_64_ (32 CPU)</span><br><span class="line"></span><br><span class="line">07:38:49 PM  CPU   %usr  %nice   %sys %iowait   %irq  %soft  %steal  %guest  %gnice  %idle</span><br><span class="line"></span><br><span class="line">07:38:50 PM  all  98.47   0.00   0.75    0.00   0.00   0.00    0.00    0.00    0.00   0.78</span><br><span class="line"></span><br><span class="line">07:38:50 PM    0  96.04   0.00   2.97    0.00   0.00   0.00    0.00    0.00    0.00   0.99</span><br><span class="line"></span><br><span class="line">07:38:50 PM    1  97.00   0.00   1.00    0.00   0.00   0.00    0.00    0.00    0.00   2.00</span><br><span class="line"></span><br><span class="line">07:38:50 PM    2  98.00   0.00   1.00    0.00   0.00   0.00    0.00    0.00    0.00   1.00</span><br><span class="line"></span><br><span class="line">07:38:50 PM    3  96.97   0.00   0.00    0.00   0.00   0.00    0.00    0.00    0.00   3.03</span><br><span class="line"></span><br><span class="line">[...]</span><br></pre></td></tr></table></figure>
+<p>该命令可以显示每个CPU的占用情况，如果有一个CPU占用率特别高，那么有可能是一个单线程应用程序引起的。</p>
+<h2 id="pidstat-1"><a href="#pidstat-1" class="headerlink" title="pidstat 1"></a>pidstat 1</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ pidstat 1</span><br><span class="line"></span><br><span class="line">Linux 3.13.0-49-generic (titanclusters-xxxxx)  07/14/2015    _x86_64_    (32 CPU)</span><br><span class="line"></span><br><span class="line">07:41:02 PM   UID       PID    %usr %system  %guest    %CPU   CPU  Command</span><br><span class="line"></span><br><span class="line">07:41:03 PM     0         9    0.00    0.94    0.00    0.94     1  rcuos/0</span><br><span class="line"></span><br><span class="line">07:41:03 PM     0      4214    5.66    5.66    0.00   11.32    15  mesos-slave</span><br><span class="line"></span><br><span class="line">07:41:03 PM     0      4354    0.94    0.94    0.00    1.89     8  java</span><br><span class="line"></span><br><span class="line">07:41:03 PM     0      6521 1596.23    1.89    0.00 1598.11    27  java</span><br><span class="line"></span><br><span class="line">07:41:03 PM     0      6564 1571.70    7.55    0.00 1579.25    28  java</span><br><span class="line"></span><br><span class="line">07:41:03 PM 60004     60154    0.94    4.72    0.00    5.66     9  pidstat</span><br><span class="line"></span><br><span class="line">07:41:03 PM   UID       PID    %usr %system  %guest    %CPU   CPU  Command</span><br><span class="line"></span><br><span class="line">07:41:04 PM     0      4214    6.00    2.00    0.00    8.00    15  mesos-slave</span><br><span class="line"></span><br><span class="line">07:41:04 PM     0      6521 1590.00    1.00    0.00 1591.00    27  java07:41:04 PM     0      6564 1573.00   10.00    0.00 1583.00    28  java</span><br><span class="line"></span><br><span class="line">07:41:04 PM   108      6718    1.00    0.00    0.00    1.00     0  snmp-pass</span><br><span class="line"></span><br><span class="line">07:41:04 PM 60004     60154    1.00    4.00    0.00    5.00     9  pidstat</span><br><span class="line"></span><br><span class="line">^C</span><br></pre></td></tr></table></figure>
+<p>pidstat命令输出进程的CPU占用率，该命令会持续输出，并且不会覆盖之前的数据，可以方便观察系统动态。如上的输出，可以看见两个JAVA进程占用了将近1600%的CPU时间，既消耗了大约16个CPU核心的运算资源。</p>
+<h2 id="iostat-xz-1"><a href="#iostat-xz-1" class="headerlink" title="iostat-xz 1"></a>iostat-xz 1</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ iostat -xz 1</span><br><span class="line"></span><br><span class="line">Linux 3.13.0-49-generic (titanclusters-xxxxx)  07/14/2015  _x86_64_ (32 CPU)</span><br><span class="line"></span><br><span class="line">avg-cpu:  %user   %nice %system %iowait  %steal   %idle</span><br><span class="line"></span><br><span class="line">          73.96    0.00    3.73    0.03    0.06   22.21</span><br><span class="line"></span><br><span class="line">Device:   rrqm/s   wrqm/s     r/s     w/s    rkB/s    wkB/s avgrq-sz avgqu-sz   await r_await w_await  svctm  %util</span><br><span class="line"></span><br><span class="line">xvda        0.00     0.23    0.21    0.18     4.52     2.08    34.37     0.00    9.98   13.80    5.42   2.44   0.09</span><br><span class="line"></span><br><span class="line">xvdb        0.01     0.00    1.02    8.94   127.97   598.53   145.79     0.00    0.43    1.78    0.28   0.25   0.25</span><br><span class="line"></span><br><span class="line">xvdc        0.01     0.00    1.02    8.86   127.79   595.94   146.50     0.00    0.45    1.82    0.30   0.27   0.26</span><br><span class="line"></span><br><span class="line">dm-0        0.00     0.00    0.69    2.32    10.47    31.69    28.01     0.01    3.23    0.71    3.98   0.13   0.04</span><br><span class="line"></span><br><span class="line">dm-1        0.00     0.00    0.00    0.94     0.01     3.78     8.00     0.33  345.84    0.04  346.81   0.01   0.00</span><br><span class="line"></span><br><span class="line">dm-2        0.00     0.00    0.09    0.07     1.35     0.36    22.50     0.00    2.55    0.23    5.62   1.78   0.03</span><br><span class="line"></span><br><span class="line">[...]</span><br><span class="line"></span><br><span class="line">^C</span><br></pre></td></tr></table></figure>
+
+<p>iostat命令主要用于查看机器磁盘IO情况。该命令输出的列，主要含义是：</p>
+<ul>
+<li><p>r/s, w/s, rkB/s, wkB/s：分别表示每秒读写次数和每秒读写数据量（千字节）。读写量过大，可能会引起性能问题。</p>
+</li>
+<li><p>await：IO操作的平均等待时间，单位是毫秒。这是应用程序在和磁盘交互时，需要消耗的时间，包括IO等待和实际操作的耗时。如果这个数值过大，可能是硬件设备遇到了瓶颈或者出现故障。</p>
+</li>
+<li><p>avgqu-sz：向设备发出的请求平均数量。如果这个数值大于1，可能是硬件设备已经饱和（部分前端硬件设备支持并行写入）。</p>
+</li>
+<li><p>%util：设备利用率。这个数值表示设备的繁忙程度，经验值是如果超过60，可能会影响IO性能（可以参照IO操作平均等待时间）。如果到达100%，说明硬件设备已经饱和。</p>
+</li>
+</ul>
+<p>如果显示的是逻辑设备的数据，那么设备利用率不代表后端实际的硬件设备已经饱和。值得注意的是，即使IO性能不理想，也不一定意味这应用程序性能会不好，可以利用诸如预读取、写缓存等策略提升应用性能。</p>
+<h2 id="free-m"><a href="#free-m" class="headerlink" title="free -m"></a>free -m</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ free -m</span><br><span class="line"></span><br><span class="line">             total       used       free     shared    buffers     cached</span><br><span class="line"></span><br><span class="line">Mem:        245998      24545     221453         83         59        541</span><br><span class="line"></span><br><span class="line">-/+ buffers/cache:      23944     222053</span><br><span class="line"></span><br><span class="line">Swap:            0          0          0</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>free命令可以查看系统内存的使用情况，-m参数表示按照兆字节展示。最后两列分别表示用于IO缓存的内存数，和用于文件系统页缓存的内存数。需要注意的是，第二行-/+ buffers/cache，看上去缓存占用了大量内存空间。</p>
+<p>这是Linux系统的内存使用策略，尽可能的利用内存，如果应用程序需要内存，这部分内存会立即被回收并分配给应用程序。因此，这部分内存一般也被当成是可用内存。</p>
+<p>如果可用内存非常少，系统可能会动用交换区（如果配置了的话），这样会增加IO开销（可以在iostat命令中提现），降低系统性能。</p>
+<h2 id="sar-n-DEV-1"><a href="#sar-n-DEV-1" class="headerlink" title="sar -n DEV 1"></a>sar -n DEV 1</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ sar -n DEV 1</span><br><span class="line"></span><br><span class="line">Linux 3.13.0-49-generic (titanclusters-xxxxx)  07/14/2015     _x86_64_    (32 CPU)</span><br><span class="line"></span><br><span class="line">12:16:48 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil</span><br><span class="line"></span><br><span class="line">12:16:49 AM      eth0  18763.00   5032.00  20686.42    478.30      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">12:16:49 AM        lo     14.00     14.00      1.36      1.36      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">12:16:49 AM   docker0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">12:16:49 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil</span><br><span class="line"></span><br><span class="line">12:16:50 AM      eth0  19763.00   5101.00  21999.10    482.56      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">12:16:50 AM        lo     20.00     20.00      3.25      3.25      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">12:16:50 AM   docker0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">^C</span><br></pre></td></tr></table></figure>
+<p>sar命令在这里可以查看网络设备的吞吐率。在排查性能问题时，可以通过网络设备的吞吐量，判断网络设备是否已经饱和。如示例输出中，eth0网卡设备，吞吐率大概在22 Mbytes/s，既176 Mbits/sec，没有达到1Gbit/sec的硬件上限。</p>
+<h2 id="sar-n-TCP-ETCP-1"><a href="#sar-n-TCP-ETCP-1" class="headerlink" title="sar -n TCP,ETCP 1"></a>sar -n TCP,ETCP 1</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ sar -n TCP,ETCP 1</span><br><span class="line"></span><br><span class="line">Linux 3.13.0-49-generic (titanclusters-xxxxx)  07/14/2015    _x86_64_    (32 CPU)</span><br><span class="line"></span><br><span class="line">12:17:19 AM  active/s passive/s    iseg/s    oseg/s</span><br><span class="line"></span><br><span class="line">12:17:20 AM      1.00      0.00  10233.00  18846.00</span><br><span class="line"></span><br><span class="line">12:17:19 AM  atmptf/s  estres/s retrans/s isegerr/s   orsts/s</span><br><span class="line"></span><br><span class="line">12:17:20 AM      0.00      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">12:17:20 AM  active/s passive/s    iseg/s    oseg/s</span><br><span class="line"></span><br><span class="line">12:17:21 AM      1.00      0.00   8359.00   6039.00</span><br><span class="line"></span><br><span class="line">12:17:20 AM  atmptf/s  estres/s retrans/s isegerr/s   orsts/s</span><br><span class="line"></span><br><span class="line">12:17:21 AM      0.00      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">^C</span><br></pre></td></tr></table></figure>
+
+<p>sar命令在这里用于查看TCP连接状态，其中包括：</p>
+<ul>
+<li><p>active/s：每秒本地发起的TCP连接数，既通过connect调用创建的TCP连接；</p>
+</li>
+<li><p>passive/s：每秒远程发起的TCP连接数，即通过accept调用创建的TCP连接；</p>
+</li>
+<li><p>retrans/s：每秒TCP重传数量；</p>
+</li>
+</ul>
+<p>TCP连接数可以用来判断性能问题是否由于建立了过多的连接，进一步可以判断是主动发起的连接，还是被动接受的连接。TCP重传可能是因为网络环境恶劣，或者服务器压力过大导致丢包。</p>
+<h2 id="top"><a href="#top" class="headerlink" title="top"></a>top</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ top</span><br><span class="line"></span><br><span class="line">top - 00:15:40 up 21:56,  1 user,  load average: 31.09, 29.87, 29.92</span><br><span class="line"></span><br><span class="line">Tasks: 871 total,   1 running, 868 sleeping,   0 stopped,   2 zombie</span><br><span class="line"></span><br><span class="line">%Cpu(s): 96.8 us,  0.4 sy,  0.0 ni,  2.7 id,  0.1 wa,  0.0 hi,  0.0 si,  0.0 st</span><br><span class="line"></span><br><span class="line">KiB Mem:  25190241+total, 24921688 used, 22698073+free,    60448 buffers</span><br><span class="line"></span><br><span class="line">KiB Swap:        0 total,        0 used,        0 free.   554208 cached Mem</span><br><span class="line"></span><br><span class="line">   PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND</span><br><span class="line"></span><br><span class="line"> 20248 root      20   0  0.227t 0.012t  18748 S  3090  5.2  29812:58 java</span><br><span class="line"></span><br><span class="line">  4213 root      20   0 2722544  64640  44232 S  23.5  0.0 233:35.37 mesos-slave</span><br><span class="line"></span><br><span class="line"> 66128 titancl+  20   0   24344   2332   1172 R   1.0  0.0   0:00.07 top</span><br><span class="line"></span><br><span class="line">  5235 root      20   0 38.227g 547004  49996 S   0.7  0.2   2:02.74 java</span><br><span class="line"></span><br><span class="line">  4299 root      20   0 20.015g 2.682g  16836 S   0.3  1.1  33:14.42 java     1 root      20   0   33620   2920   1496 S   0.0  0.0   0:03.82 init</span><br><span class="line"></span><br><span class="line">     2 root      20   0       0      0      0 S   0.0  0.0   0:00.02 kthreadd</span><br><span class="line"></span><br><span class="line">     3 root      20   0       0      0      0 S   0.0  0.0   0:05.35 ksoftirqd/0</span><br><span class="line"></span><br><span class="line">     5 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kworker/0:0H</span><br><span class="line"></span><br><span class="line">     6 root      20   0       0      0      0 S   0.0  0.0   0:06.94 kworker/u256:0</span><br><span class="line"></span><br><span class="line">     8 root      20   0       0      0      0 S   0.0  0.0   2:38.05 rcu_sched</span><br></pre></td></tr></table></figure>
+<p>top命令包含了前面好几个命令的检查的内容。比如系统负载情况（uptime）、系统内存使用情况（free）、系统CPU使用情况（vmstat）等。因此通过这个命令，可以相对全面的查看系统负载的来源。同时，top命令支持排序，可以按照不同的列排序，方便查找出诸如内存占用最多的进程、CPU占用率最高的进程等。</p>
+<p>但是，top命令相对于前面一些命令，输出是一个瞬间值，如果不持续盯着，可能会错过一些线索。这时可能需要暂停top命令刷新，来记录和比对数据。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>排查Linux服务器性能问题还有很多工具，上面介绍的一些命令，可以帮助我们快速的定位问题。例如前面的示例输出，多个证据证明有JAVA进程占用了大量CPU资源，之后的性能调优就可以针对应用程序进行。</p>
+<p>原文链接：<br><a href="http://techblog.netflix.com/2015/11/linux-performance-analysis-in-60s.html">http://techblog.netflix.com/2015/11/linux-performance-analysis-in-60s.html</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>linux命令</tag>
+        <tag>服务器性能</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何成为一名数据科学家？</title>
     <url>/2016/10/26/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%B8%80%E5%90%8D%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%B6%EF%BC%9F/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="1、作者：谢科"><a href="#1、作者：谢科" class="headerlink" title="1、作者：谢科"></a>1、作者：谢科</h1><p>链接：<a href="https://www.zhihu.com/question/21592677/answer/24663656">https://www.zhihu.com/question/21592677/answer/24663656</a><br>来源：知乎<br>著作权归作者所有，转载请联系作者获得授权。</p>
@@ -7238,122 +7327,6 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
       </tags>
   </entry>
   <entry>
-    <title>如何用十条命令在一分钟内检查Linux服务器性能</title>
-    <url>/2016/09/23/%E5%A6%82%E4%BD%95%E7%94%A8%E5%8D%81%E6%9D%A1%E5%91%BD%E4%BB%A4%E5%9C%A8%E4%B8%80%E5%88%86%E9%92%9F%E5%86%85%E6%A3%80%E6%9F%A5Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>通过执行以下命令，可以在1分钟内对系统资源使用情况有个大致的了解。</p>
-<ul>
-<li>uptime</li>
-<li>dmesg | tail</li>
-<li>vmstat 1</li>
-<li>mpstat -P ALL 1</li>
-<li>pidstat 1</li>
-<li>iostat -xz 1</li>
-<li>free -m</li>
-<li>sar -n DEV 1</li>
-<li>sar -n TCP,ETCP 1</li>
-<li>top</li>
-</ul>
-<p>其中一些命令需要安装sysstat包，有一些由procps包提供。这些命令的输出，有助于快速定位性能瓶颈，检查出所有资源（CPU、内存、磁盘IO等）的利用率（utilization）、饱和度（saturation）和错误（error）度量，也就是所谓的USE方法。</p>
-<p>下面我们来逐一介绍下这些命令，有关这些命令更多的参数和说明，请参照命令的手册。</p>
-<h2 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ uptime</span><br><span class="line"></span><br><span class="line">23:51:26 up 21:31,  1 user,  load average: 30.02, 26.43, 19.02</span><br></pre></td></tr></table></figure>
-<p>这个命令可以快速查看机器的负载情况。在Linux系统中，这些数据表示等待CPU资源的进程和阻塞在不可中断IO进程（进程状态为D）的数量。这些数据可以让我们对系统资源使用有一个宏观的了解。</p>
-<p>命令的输出分别表示1分钟、5分钟、15分钟的平均负载情况。通过这三个数据，可以了解服务器负载是在趋于紧张还是趋于缓解。如果1分钟平均负载很高，而15分钟平均负载很低，说明服务器正在命令高负载情况，需要进一步排查CPU资源都消耗在了哪里。反之，如果15分钟平均负载很高，1分钟平均负载较低，则有可能是CPU资源紧张时刻已经过去。</p>
-<p>上面例子中的输出，可以看见最近1分钟的平均负载非常高，且远高于最近15分钟负载，因此我们需要继续排查当前系统中有什么进程消耗了大量的资源。可以通过下文将会介绍的vmstat、mpstat等命令进一步排查。</p>
-<h2 id="dmesg丨tail"><a href="#dmesg丨tail" class="headerlink" title="dmesg丨tail"></a>dmesg丨tail</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ dmesg | tail</span><br><span class="line"></span><br><span class="line">[1880957.563150] perl invoked oom-killer: gfp_mask=0x280da, order=0, oom_score_adj=0</span><br><span class="line"></span><br><span class="line">[...]</span><br><span class="line"></span><br><span class="line">[1880957.563400] Out of memory: Kill process 18694 (perl) score 246 or sacrifice child</span><br><span class="line"></span><br><span class="line">[1880957.563408] Killed process 18694 (perl) total-vm:1972392kB, anon-rss:1953348kB, file-rss:0kB</span><br><span class="line"></span><br><span class="line">[2320864.954447] TCP: Possible SYN flooding on port 7001. Dropping</span><br><span class="line"></span><br><span class="line">request.  Check SNMP counters.</span><br></pre></td></tr></table></figure>
-<p>该命令会输出系统日志的最后10行。示例中的输出，可以看见一次内核的oom kill和一次TCP丢包。这些日志可以帮助排查性能问题。千万不要忘了这一步。</p>
-<h2 id="vmstat-1"><a href="#vmstat-1" class="headerlink" title="vmstat 1"></a>vmstat 1</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ vmstat 1</span><br><span class="line"></span><br><span class="line">procs ---------memory---------- ---swap-- -----io---- -system-- ------cpu-----</span><br><span class="line"></span><br><span class="line"> r  b swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st</span><br><span class="line"></span><br><span class="line">34  0    0 200889792  73708 591828    0    0     0     5    6   10 96  1  3  0  0</span><br><span class="line"></span><br><span class="line">32  0    0 200889920  73708 591860    0    0     0   592 13284 4282 98  1  1  0  0</span><br><span class="line"></span><br><span class="line">32  0    0 200890112  73708 591860    0    0     0     0 9501 2154 99  1  0  0  0</span><br><span class="line"></span><br><span class="line">32  0    0 200889568  73712 591856    0    0     0    48 11900 2459 99  0  0  0  0</span><br><span class="line"></span><br><span class="line">32  0    0 200890208  73712 591860    0    0     0     0 15898 4840 98  1  1  0  0</span><br><span class="line"></span><br><span class="line">^C</span><br></pre></td></tr></table></figure>
-
-<p>vmstat(8) 命令，每行会输出一些系统核心指标，这些指标可以让我们更详细的了解系统状态。后面跟的参数1，表示每秒输出一次统计信息，表头提示了每一列的含义，这几介绍一些和性能调优相关的列：</p>
-<ul>
-<li><p>r：等待在CPU资源的进程数。这个数据比平均负载更加能够体现CPU负载情况，数据中不包含等待IO的进程。如果这个数值大于机器CPU核数，那么机器的CPU资源已经饱和。</p>
-</li>
-<li><p>free：系统可用内存数（以千字节为单位），如果剩余内存不足，也会导致系统性能问题。下文介绍到的free命令，可以更详细的了解系统内存的使用情况。</p>
-</li>
-<li><p>si，so：交换区写入和读取的数量。如果这个数据不为0，说明系统已经在使用交换区（swap），机器物理内存已经不足。</p>
-</li>
-<li><p>us, sy, id, wa, st：这些都代表了CPU时间的消耗，它们分别表示用户时间（user）、系统（内核）时间（sys）、空闲时间（idle）、IO等待时间（wait）和被偷走的时间（stolen，一般被其他虚拟机消耗）。</p>
-</li>
-</ul>
-<p>上述这些CPU时间，可以让我们很快了解CPU是否出于繁忙状态。一般情况下，如果用户时间和系统时间相加非常大，CPU出于忙于执行指令。如果IO等待时间很长，那么系统的瓶颈可能在磁盘IO。</p>
-<p>示例命令的输出可以看见，大量CPU时间消耗在用户态，也就是用户应用程序消耗了CPU时间。这不一定是性能问题，需要结合r队列，一起分析。</p>
-<h2 id="mpstat-P-ALL-1"><a href="#mpstat-P-ALL-1" class="headerlink" title="mpstat-P ALL 1"></a>mpstat-P ALL 1</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ mpstat -P ALL 1</span><br><span class="line"></span><br><span class="line">Linux 3.13.0-49-generic (titanclusters-xxxxx)  07/14/2015  _x86_64_ (32 CPU)</span><br><span class="line"></span><br><span class="line">07:38:49 PM  CPU   %usr  %nice   %sys %iowait   %irq  %soft  %steal  %guest  %gnice  %idle</span><br><span class="line"></span><br><span class="line">07:38:50 PM  all  98.47   0.00   0.75    0.00   0.00   0.00    0.00    0.00    0.00   0.78</span><br><span class="line"></span><br><span class="line">07:38:50 PM    0  96.04   0.00   2.97    0.00   0.00   0.00    0.00    0.00    0.00   0.99</span><br><span class="line"></span><br><span class="line">07:38:50 PM    1  97.00   0.00   1.00    0.00   0.00   0.00    0.00    0.00    0.00   2.00</span><br><span class="line"></span><br><span class="line">07:38:50 PM    2  98.00   0.00   1.00    0.00   0.00   0.00    0.00    0.00    0.00   1.00</span><br><span class="line"></span><br><span class="line">07:38:50 PM    3  96.97   0.00   0.00    0.00   0.00   0.00    0.00    0.00    0.00   3.03</span><br><span class="line"></span><br><span class="line">[...]</span><br></pre></td></tr></table></figure>
-<p>该命令可以显示每个CPU的占用情况，如果有一个CPU占用率特别高，那么有可能是一个单线程应用程序引起的。</p>
-<h2 id="pidstat-1"><a href="#pidstat-1" class="headerlink" title="pidstat 1"></a>pidstat 1</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ pidstat 1</span><br><span class="line"></span><br><span class="line">Linux 3.13.0-49-generic (titanclusters-xxxxx)  07/14/2015    _x86_64_    (32 CPU)</span><br><span class="line"></span><br><span class="line">07:41:02 PM   UID       PID    %usr %system  %guest    %CPU   CPU  Command</span><br><span class="line"></span><br><span class="line">07:41:03 PM     0         9    0.00    0.94    0.00    0.94     1  rcuos/0</span><br><span class="line"></span><br><span class="line">07:41:03 PM     0      4214    5.66    5.66    0.00   11.32    15  mesos-slave</span><br><span class="line"></span><br><span class="line">07:41:03 PM     0      4354    0.94    0.94    0.00    1.89     8  java</span><br><span class="line"></span><br><span class="line">07:41:03 PM     0      6521 1596.23    1.89    0.00 1598.11    27  java</span><br><span class="line"></span><br><span class="line">07:41:03 PM     0      6564 1571.70    7.55    0.00 1579.25    28  java</span><br><span class="line"></span><br><span class="line">07:41:03 PM 60004     60154    0.94    4.72    0.00    5.66     9  pidstat</span><br><span class="line"></span><br><span class="line">07:41:03 PM   UID       PID    %usr %system  %guest    %CPU   CPU  Command</span><br><span class="line"></span><br><span class="line">07:41:04 PM     0      4214    6.00    2.00    0.00    8.00    15  mesos-slave</span><br><span class="line"></span><br><span class="line">07:41:04 PM     0      6521 1590.00    1.00    0.00 1591.00    27  java07:41:04 PM     0      6564 1573.00   10.00    0.00 1583.00    28  java</span><br><span class="line"></span><br><span class="line">07:41:04 PM   108      6718    1.00    0.00    0.00    1.00     0  snmp-pass</span><br><span class="line"></span><br><span class="line">07:41:04 PM 60004     60154    1.00    4.00    0.00    5.00     9  pidstat</span><br><span class="line"></span><br><span class="line">^C</span><br></pre></td></tr></table></figure>
-<p>pidstat命令输出进程的CPU占用率，该命令会持续输出，并且不会覆盖之前的数据，可以方便观察系统动态。如上的输出，可以看见两个JAVA进程占用了将近1600%的CPU时间，既消耗了大约16个CPU核心的运算资源。</p>
-<h2 id="iostat-xz-1"><a href="#iostat-xz-1" class="headerlink" title="iostat-xz 1"></a>iostat-xz 1</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ iostat -xz 1</span><br><span class="line"></span><br><span class="line">Linux 3.13.0-49-generic (titanclusters-xxxxx)  07/14/2015  _x86_64_ (32 CPU)</span><br><span class="line"></span><br><span class="line">avg-cpu:  %user   %nice %system %iowait  %steal   %idle</span><br><span class="line"></span><br><span class="line">          73.96    0.00    3.73    0.03    0.06   22.21</span><br><span class="line"></span><br><span class="line">Device:   rrqm/s   wrqm/s     r/s     w/s    rkB/s    wkB/s avgrq-sz avgqu-sz   await r_await w_await  svctm  %util</span><br><span class="line"></span><br><span class="line">xvda        0.00     0.23    0.21    0.18     4.52     2.08    34.37     0.00    9.98   13.80    5.42   2.44   0.09</span><br><span class="line"></span><br><span class="line">xvdb        0.01     0.00    1.02    8.94   127.97   598.53   145.79     0.00    0.43    1.78    0.28   0.25   0.25</span><br><span class="line"></span><br><span class="line">xvdc        0.01     0.00    1.02    8.86   127.79   595.94   146.50     0.00    0.45    1.82    0.30   0.27   0.26</span><br><span class="line"></span><br><span class="line">dm-0        0.00     0.00    0.69    2.32    10.47    31.69    28.01     0.01    3.23    0.71    3.98   0.13   0.04</span><br><span class="line"></span><br><span class="line">dm-1        0.00     0.00    0.00    0.94     0.01     3.78     8.00     0.33  345.84    0.04  346.81   0.01   0.00</span><br><span class="line"></span><br><span class="line">dm-2        0.00     0.00    0.09    0.07     1.35     0.36    22.50     0.00    2.55    0.23    5.62   1.78   0.03</span><br><span class="line"></span><br><span class="line">[...]</span><br><span class="line"></span><br><span class="line">^C</span><br></pre></td></tr></table></figure>
-
-<p>iostat命令主要用于查看机器磁盘IO情况。该命令输出的列，主要含义是：</p>
-<ul>
-<li><p>r/s, w/s, rkB/s, wkB/s：分别表示每秒读写次数和每秒读写数据量（千字节）。读写量过大，可能会引起性能问题。</p>
-</li>
-<li><p>await：IO操作的平均等待时间，单位是毫秒。这是应用程序在和磁盘交互时，需要消耗的时间，包括IO等待和实际操作的耗时。如果这个数值过大，可能是硬件设备遇到了瓶颈或者出现故障。</p>
-</li>
-<li><p>avgqu-sz：向设备发出的请求平均数量。如果这个数值大于1，可能是硬件设备已经饱和（部分前端硬件设备支持并行写入）。</p>
-</li>
-<li><p>%util：设备利用率。这个数值表示设备的繁忙程度，经验值是如果超过60，可能会影响IO性能（可以参照IO操作平均等待时间）。如果到达100%，说明硬件设备已经饱和。</p>
-</li>
-</ul>
-<p>如果显示的是逻辑设备的数据，那么设备利用率不代表后端实际的硬件设备已经饱和。值得注意的是，即使IO性能不理想，也不一定意味这应用程序性能会不好，可以利用诸如预读取、写缓存等策略提升应用性能。</p>
-<h2 id="free-m"><a href="#free-m" class="headerlink" title="free -m"></a>free -m</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ free -m</span><br><span class="line"></span><br><span class="line">             total       used       free     shared    buffers     cached</span><br><span class="line"></span><br><span class="line">Mem:        245998      24545     221453         83         59        541</span><br><span class="line"></span><br><span class="line">-/+ buffers/cache:      23944     222053</span><br><span class="line"></span><br><span class="line">Swap:            0          0          0</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>free命令可以查看系统内存的使用情况，-m参数表示按照兆字节展示。最后两列分别表示用于IO缓存的内存数，和用于文件系统页缓存的内存数。需要注意的是，第二行-/+ buffers/cache，看上去缓存占用了大量内存空间。</p>
-<p>这是Linux系统的内存使用策略，尽可能的利用内存，如果应用程序需要内存，这部分内存会立即被回收并分配给应用程序。因此，这部分内存一般也被当成是可用内存。</p>
-<p>如果可用内存非常少，系统可能会动用交换区（如果配置了的话），这样会增加IO开销（可以在iostat命令中提现），降低系统性能。</p>
-<h2 id="sar-n-DEV-1"><a href="#sar-n-DEV-1" class="headerlink" title="sar -n DEV 1"></a>sar -n DEV 1</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ sar -n DEV 1</span><br><span class="line"></span><br><span class="line">Linux 3.13.0-49-generic (titanclusters-xxxxx)  07/14/2015     _x86_64_    (32 CPU)</span><br><span class="line"></span><br><span class="line">12:16:48 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil</span><br><span class="line"></span><br><span class="line">12:16:49 AM      eth0  18763.00   5032.00  20686.42    478.30      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">12:16:49 AM        lo     14.00     14.00      1.36      1.36      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">12:16:49 AM   docker0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">12:16:49 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil</span><br><span class="line"></span><br><span class="line">12:16:50 AM      eth0  19763.00   5101.00  21999.10    482.56      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">12:16:50 AM        lo     20.00     20.00      3.25      3.25      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">12:16:50 AM   docker0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">^C</span><br></pre></td></tr></table></figure>
-<p>sar命令在这里可以查看网络设备的吞吐率。在排查性能问题时，可以通过网络设备的吞吐量，判断网络设备是否已经饱和。如示例输出中，eth0网卡设备，吞吐率大概在22 Mbytes/s，既176 Mbits/sec，没有达到1Gbit/sec的硬件上限。</p>
-<h2 id="sar-n-TCP-ETCP-1"><a href="#sar-n-TCP-ETCP-1" class="headerlink" title="sar -n TCP,ETCP 1"></a>sar -n TCP,ETCP 1</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ sar -n TCP,ETCP 1</span><br><span class="line"></span><br><span class="line">Linux 3.13.0-49-generic (titanclusters-xxxxx)  07/14/2015    _x86_64_    (32 CPU)</span><br><span class="line"></span><br><span class="line">12:17:19 AM  active/s passive/s    iseg/s    oseg/s</span><br><span class="line"></span><br><span class="line">12:17:20 AM      1.00      0.00  10233.00  18846.00</span><br><span class="line"></span><br><span class="line">12:17:19 AM  atmptf/s  estres/s retrans/s isegerr/s   orsts/s</span><br><span class="line"></span><br><span class="line">12:17:20 AM      0.00      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">12:17:20 AM  active/s passive/s    iseg/s    oseg/s</span><br><span class="line"></span><br><span class="line">12:17:21 AM      1.00      0.00   8359.00   6039.00</span><br><span class="line"></span><br><span class="line">12:17:20 AM  atmptf/s  estres/s retrans/s isegerr/s   orsts/s</span><br><span class="line"></span><br><span class="line">12:17:21 AM      0.00      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">^C</span><br></pre></td></tr></table></figure>
-
-<p>sar命令在这里用于查看TCP连接状态，其中包括：</p>
-<ul>
-<li><p>active/s：每秒本地发起的TCP连接数，既通过connect调用创建的TCP连接；</p>
-</li>
-<li><p>passive/s：每秒远程发起的TCP连接数，即通过accept调用创建的TCP连接；</p>
-</li>
-<li><p>retrans/s：每秒TCP重传数量；</p>
-</li>
-</ul>
-<p>TCP连接数可以用来判断性能问题是否由于建立了过多的连接，进一步可以判断是主动发起的连接，还是被动接受的连接。TCP重传可能是因为网络环境恶劣，或者服务器压力过大导致丢包。</p>
-<h2 id="top"><a href="#top" class="headerlink" title="top"></a>top</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ top</span><br><span class="line"></span><br><span class="line">top - 00:15:40 up 21:56,  1 user,  load average: 31.09, 29.87, 29.92</span><br><span class="line"></span><br><span class="line">Tasks: 871 total,   1 running, 868 sleeping,   0 stopped,   2 zombie</span><br><span class="line"></span><br><span class="line">%Cpu(s): 96.8 us,  0.4 sy,  0.0 ni,  2.7 id,  0.1 wa,  0.0 hi,  0.0 si,  0.0 st</span><br><span class="line"></span><br><span class="line">KiB Mem:  25190241+total, 24921688 used, 22698073+free,    60448 buffers</span><br><span class="line"></span><br><span class="line">KiB Swap:        0 total,        0 used,        0 free.   554208 cached Mem</span><br><span class="line"></span><br><span class="line">   PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND</span><br><span class="line"></span><br><span class="line"> 20248 root      20   0  0.227t 0.012t  18748 S  3090  5.2  29812:58 java</span><br><span class="line"></span><br><span class="line">  4213 root      20   0 2722544  64640  44232 S  23.5  0.0 233:35.37 mesos-slave</span><br><span class="line"></span><br><span class="line"> 66128 titancl+  20   0   24344   2332   1172 R   1.0  0.0   0:00.07 top</span><br><span class="line"></span><br><span class="line">  5235 root      20   0 38.227g 547004  49996 S   0.7  0.2   2:02.74 java</span><br><span class="line"></span><br><span class="line">  4299 root      20   0 20.015g 2.682g  16836 S   0.3  1.1  33:14.42 java     1 root      20   0   33620   2920   1496 S   0.0  0.0   0:03.82 init</span><br><span class="line"></span><br><span class="line">     2 root      20   0       0      0      0 S   0.0  0.0   0:00.02 kthreadd</span><br><span class="line"></span><br><span class="line">     3 root      20   0       0      0      0 S   0.0  0.0   0:05.35 ksoftirqd/0</span><br><span class="line"></span><br><span class="line">     5 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kworker/0:0H</span><br><span class="line"></span><br><span class="line">     6 root      20   0       0      0      0 S   0.0  0.0   0:06.94 kworker/u256:0</span><br><span class="line"></span><br><span class="line">     8 root      20   0       0      0      0 S   0.0  0.0   2:38.05 rcu_sched</span><br></pre></td></tr></table></figure>
-<p>top命令包含了前面好几个命令的检查的内容。比如系统负载情况（uptime）、系统内存使用情况（free）、系统CPU使用情况（vmstat）等。因此通过这个命令，可以相对全面的查看系统负载的来源。同时，top命令支持排序，可以按照不同的列排序，方便查找出诸如内存占用最多的进程、CPU占用率最高的进程等。</p>
-<p>但是，top命令相对于前面一些命令，输出是一个瞬间值，如果不持续盯着，可能会错过一些线索。这时可能需要暂停top命令刷新，来记录和比对数据。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>排查Linux服务器性能问题还有很多工具，上面介绍的一些命令，可以帮助我们快速的定位问题。例如前面的示例输出，多个证据证明有JAVA进程占用了大量CPU资源，之后的性能调优就可以针对应用程序进行。</p>
-<p>原文链接：<br><a href="http://techblog.netflix.com/2015/11/linux-performance-analysis-in-60s.html">http://techblog.netflix.com/2015/11/linux-performance-analysis-in-60s.html</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>linux命令</tag>
-        <tag>服务器性能</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>实现网页页面跳转的几种方法(meta标签、js实现、php实现)</title>
-    <url>/2018/01/25/%E5%AE%9E%E7%8E%B0%E7%BD%91%E9%A1%B5%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95-meta%E6%A0%87%E7%AD%BE%E3%80%81js%E5%AE%9E%E7%8E%B0%E3%80%81php%E5%AE%9E%E7%8E%B0/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="1、meta标签实现-只需在head里加上下面这一句就行了，在当前页面停留0-1秒后跳转到目标页面"><a href="#1、meta标签实现-只需在head里加上下面这一句就行了，在当前页面停留0-1秒后跳转到目标页面" class="headerlink" title="1、meta标签实现 只需在head里加上下面这一句就行了，在当前页面停留0.1秒后跳转到目标页面"></a>1、meta标签实现 只需在head里加上下面这一句就行了，在当前页面停留0.1秒后跳转到目标页面</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0.1; url=http://baidu.cn/&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="2、Javascript实现"><a href="#2、Javascript实现" class="headerlink" title="2、Javascript实现"></a>2、Javascript实现</h3><ul>
-<li><p>方法一：这个方法比较常用</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">window.location.href = &quot;http://baidu.cn/&quot;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>方法二：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.location = &quot;http://baidu.cn/&quot;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>方法三：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">top.location = &quot;http://baidu.cn/&quot;;</span><br></pre></td></tr></table></figure></li>
-<li><p>方法四：<br>只对IE系列浏览器有效，实用性不大</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">window.navigate(&quot;http://baidu.cn/&quot;);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="3、php实现"><a href="#3、php实现" class="headerlink" title="3、php实现"></a>3、php实现</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    header(&quot;Location: http://baidu.cn/&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>页面跳转</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何通过自学，成为数据挖掘“高手”？</title>
     <url>/2016/10/26/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E8%87%AA%E5%AD%A6%EF%BC%8C%E6%88%90%E4%B8%BA%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E2%80%9C%E9%AB%98%E6%89%8B%E2%80%9D%EF%BC%9F/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="1、基础篇："><a href="#1、基础篇：" class="headerlink" title="1、基础篇："></a>1、基础篇：</h2><ol>
@@ -7388,6 +7361,33 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
       </categories>
       <tags>
         <tag>数据挖掘</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>实现网页页面跳转的几种方法(meta标签、js实现、php实现)</title>
+    <url>/2018/01/25/%E5%AE%9E%E7%8E%B0%E7%BD%91%E9%A1%B5%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95-meta%E6%A0%87%E7%AD%BE%E3%80%81js%E5%AE%9E%E7%8E%B0%E3%80%81php%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="1、meta标签实现-只需在head里加上下面这一句就行了，在当前页面停留0-1秒后跳转到目标页面"><a href="#1、meta标签实现-只需在head里加上下面这一句就行了，在当前页面停留0-1秒后跳转到目标页面" class="headerlink" title="1、meta标签实现 只需在head里加上下面这一句就行了，在当前页面停留0.1秒后跳转到目标页面"></a>1、meta标签实现 只需在head里加上下面这一句就行了，在当前页面停留0.1秒后跳转到目标页面</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0.1; url=http://baidu.cn/&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2、Javascript实现"><a href="#2、Javascript实现" class="headerlink" title="2、Javascript实现"></a>2、Javascript实现</h3><ul>
+<li><p>方法一：这个方法比较常用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">window.location.href = &quot;http://baidu.cn/&quot;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法二：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.location = &quot;http://baidu.cn/&quot;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法三：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">top.location = &quot;http://baidu.cn/&quot;;</span><br></pre></td></tr></table></figure></li>
+<li><p>方法四：<br>只对IE系列浏览器有效，实用性不大</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">window.navigate(&quot;http://baidu.cn/&quot;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="3、php实现"><a href="#3、php实现" class="headerlink" title="3、php实现"></a>3、php实现</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    header(&quot;Location: http://baidu.cn/&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>页面跳转</tag>
       </tags>
   </entry>
   <entry>
