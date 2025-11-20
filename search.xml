@@ -145,85 +145,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Can&#39;t resume screen, says I am already attached?</title>
-    <url>/2017/03/22/Can-t-resume-screen-says-I-am-already-attached/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>he session is still attached on another terminal. The server hasn’t detected the network outage on that connection: it only detects the outage when it tries to send a packet and gets an error back or no response after a timeout, but this hasn’t happened yet. You’re in a common situation where the client detected the outage because it tried to send some input and failed, but the server is just sitting there waiting for input. Eventually the server will send a keepalive packet and detect that the connection is dead.</p>
-<p>In the meantime, use the <code>-d</code> option to detach the screen session from the terminal where it’s in.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -r -d 30608</span><br><span class="line">screen -rd is pretty much the standard way to attach to an</span><br></pre></td></tr></table></figure>
-<p>existing screen session.</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>screen</tag>
-        <tag>远程桌面</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS / RHEL: Remove Routes 169.254.0.0 / 255.255.0.0 From the System</title>
-    <url>/2017/08/08/CentOS-RHEL-Remove-Routes-169-254-0-0-255-255-0-0-From-the-System/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>zeroconf (Zero configuration networking), is a techniques that automatically creates a usable Internet Protocol (IP) network without manual operator intervention or special configuration servers. 169.254.0.0/255.255.0.0 route is part of zeroconf under RHEL 6 / CentOS 6 or older versions. To see current routing table, enter:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># route -n</span><br></pre></td></tr></table></figure>
-<p>Sample outputs:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Kernel IP routing table</span><br><span class="line">Destination     Gateway         Genmask         Flags Metric Ref    Use Iface</span><br><span class="line">74.8x.4y.zz     0.0.0.0         255.255.255.248 U     0      0        0 eth1</span><br><span class="line">10.10.29.64     0.0.0.0         255.255.255.192 U     0      0        0 eth0</span><br><span class="line">169.254.0.0     0.0.0.0         255.255.0.0     U     1002   0        0 eth0</span><br><span class="line">169.254.0.0     0.0.0.0         255.255.0.0     U     1003   0        0 eth1</span><br><span class="line">10.0.0.0        10.10.29.65     255.0.0.0       UG    0      0        0 eth0</span><br><span class="line">0.0.0.0         74.8x.yy.zz     0.0.0.0         UG    0      0        0 eth1</span><br></pre></td></tr></table></figure>
-
-<p>Every time the server or Linux desktop boots, the zeroconf route 169.254.0.0 is enabled and added to the kernel routing table. To disable zeroconf route under RHEL / CentOS / Fedora Linux, enter:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># vi /etc/sysconfig/network</span><br></pre></td></tr></table></figure>
-<p>Append the following directive:</p>
-<p>NOZEROCONF=yes<br>Save and close the file. Reboot the system / server or restart the networking service:</p>
-<h1 id="etc-init-d-network-restart"><a href="#etc-init-d-network-restart" class="headerlink" title="/etc/init.d/network restart"></a>/etc/init.d/network restart</h1><p>Verify routing table, enter:</p>
-<h1 id="route-n"><a href="#route-n" class="headerlink" title="route -n"></a>route -n</h1><p>OR</p>
-<h1 id="ip-route"><a href="#ip-route" class="headerlink" title="ip route"></a>ip route</h1>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>centos</tag>
-        <tag>网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS7 Command line install VirtuBox</title>
-    <url>/2017/08/03/CentOS7-Command-line-install-VirtuBox/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="1-导出OVA-gt-test-ova"><a href="#1-导出OVA-gt-test-ova" class="headerlink" title="1.导出OVA -&gt; test.ova"></a>1.导出OVA -&gt; test.ova</h2><h2 id="2-copy到服务器-amp-导入"><a href="#2-copy到服务器-amp-导入" class="headerlink" title="2.copy到服务器&amp;导入"></a>2.copy到服务器&amp;导入</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost vm] BoxManage import test.ovf</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="查看虚拟机镜像文件配置信息"><a href="#查看虚拟机镜像文件配置信息" class="headerlink" title="查看虚拟机镜像文件配置信息"></a>查看虚拟机镜像文件配置信息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost vm]# VBoxManage showvminfo HKAirline</span><br><span class="line">Name:            HKAirline</span><br><span class="line">Groups:          /</span><br><span class="line">Guest OS:        Red Hat (64-bit)</span><br><span class="line">UUID:            041f669d-2974-4322-a046-a55903285424</span><br><span class="line">Config file:     /root/VirtualBox VMs/HKAirline/HKAirline.vbox</span><br><span class="line">Snapshot folder: /root/VirtualBox VMs/HKAirline/Snapshots</span><br><span class="line">Log folder:      /root/VirtualBox VMs/HKAirline/Logs</span><br><span class="line">Hardware UUID:   041f669d-2974-4322-a046-a55903285424</span><br><span class="line">Memory size:     2048MB</span><br><span class="line">Page Fusion:     off</span><br><span class="line">VRAM size:       16MB</span><br><span class="line">CPU exec cap:    100%</span><br><span class="line">HPET:            off</span><br><span class="line">Chipset:         piix3</span><br><span class="line">Firmware:        BIOS</span><br><span class="line">Number of CPUs:  1</span><br><span class="line">PAE:             on</span><br><span class="line">Long Mode:       on</span><br><span class="line">Triple Fault Reset: off</span><br><span class="line">APIC:            on</span><br><span class="line">X2APIC:          on</span><br><span class="line">CPUID Portability Level: 0</span><br><span class="line">CPUID overrides: None</span><br><span class="line">Boot menu mode:  message and menu</span><br><span class="line">Boot Device (1): Floppy</span><br><span class="line">Boot Device (2): DVD</span><br><span class="line">Boot Device (3): HardDisk</span><br><span class="line">Boot Device (4): Not Assigned</span><br><span class="line">ACPI:            on</span><br><span class="line">IOAPIC:          on</span><br><span class="line">BIOS APIC mode:  APIC</span><br><span class="line">Time offset:     0ms</span><br><span class="line">RTC:             UTC</span><br><span class="line">Hardw. virt.ext: on</span><br><span class="line">Nested Paging:   on</span><br><span class="line">Large Pages:     on</span><br><span class="line">VT-x VPID:       on</span><br><span class="line">VT-x unr. exec.: on</span><br><span class="line">Paravirt. Provider: Default</span><br><span class="line">Effective Paravirt. Provider: KVM</span><br><span class="line">State:           powered off (since 2017-08-03T11:27:45.000000000)</span><br><span class="line">Monitor count:   1</span><br><span class="line">3D Acceleration: off</span><br><span class="line">2D Video Acceleration: off</span><br><span class="line">Teleporter Enabled: off</span><br><span class="line">Teleporter Port: 0</span><br><span class="line">Teleporter Address:</span><br><span class="line">Teleporter Password:</span><br><span class="line">Tracing Enabled: off</span><br><span class="line">Allow Tracing to Access VM: off</span><br><span class="line">Tracing Configuration:</span><br><span class="line">Autostart Enabled: off</span><br><span class="line">Autostart Delay: 0</span><br><span class="line">Default Frontend:</span><br><span class="line">Storage Controller Name (0):            IDE</span><br><span class="line">Storage Controller Type (0):            PIIX4</span><br><span class="line">Storage Controller Instance Number (0): 0</span><br><span class="line">Storage Controller Max Port Count (0):  2</span><br><span class="line">Storage Controller Port Count (0):      2</span><br><span class="line">Storage Controller Bootable (0):        on</span><br><span class="line">Storage Controller Name (1):            SATA</span><br><span class="line">Storage Controller Type (1):            IntelAhci</span><br><span class="line">Storage Controller Instance Number (1): 0</span><br><span class="line">Storage Controller Max Port Count (1):  30</span><br><span class="line">Storage Controller Port Count (1):      2</span><br><span class="line">Storage Controller Bootable (1):        on</span><br><span class="line">IDE (1, 0): Empty</span><br><span class="line">SATA (0, 0): /root/VirtualBox VMs/HKAirline/HKAirline-disk001.vmdk (UUID: 6afa88f3-3035-4aa5-a940-f6ec43bc56bb)</span><br><span class="line">NIC 1:           MAC: 0800274D5932, Attachment: Bridged Interface &#x27;eth0&#x27;, Cable connected: on, Trace: off (file: none), Type: 82540EM, Reported speed: 0 Mbps, Boot priority: 0, Promisc Policy: deny, Bandwidth group: none</span><br><span class="line">NIC 2:           MAC: 0800279B57E7, Attachment: Bridged Interface &#x27;eth0&#x27;, Cable connected: on, Trace: off (file: none), Type: 82540EM, Reported speed: 0 Mbps, Boot priority: 0, Promisc Policy: deny, Bandwidth group: none</span><br><span class="line">NIC 3:           MAC: 080027716E47, Attachment: Bridged Interface &#x27;eth0&#x27;, Cable connected: on, Trace: off (file: none), Type: 82540EM, Reported speed: 0 Mbps, Boot priority: 0, Promisc Policy: deny, Bandwidth group: none</span><br><span class="line">NIC 4:           MAC: 080027C363BB, Attachment: Bridged Interface &#x27;eth0&#x27;, Cable connected: on, Trace: off (file: none), Type: 82540EM, Reported speed: 0 Mbps, Boot priority: 0, Promisc Policy: deny, Bandwidth group: none</span><br><span class="line">NIC 5:           disabled</span><br><span class="line">NIC 6:           disabled</span><br><span class="line">NIC 7:           disabled</span><br><span class="line">NIC 8:           disabled</span><br><span class="line">Pointing Device: PS/2 Mouse</span><br><span class="line">Keyboard Device: PS/2 Keyboard</span><br><span class="line">UART 1:          disabled</span><br><span class="line">UART 2:          disabled</span><br><span class="line">UART 3:          disabled</span><br><span class="line">UART 4:          disabled</span><br><span class="line">LPT 1:           disabled</span><br><span class="line">LPT 2:           disabled</span><br><span class="line">Audio:           enabled (Driver: ALSA, Controller: AC97, Codec: AD1980)</span><br><span class="line">Clipboard Mode:  disabled</span><br><span class="line">Drag and drop Mode: disabled</span><br><span class="line">VRDE:            enabled (Address 0.0.0.0, Ports 3389, MultiConn: off, ReuseSingleConn: off, Authentication type: external)</span><br><span class="line">Video redirection: disabled</span><br><span class="line">VRDE property: TCP/Ports  = &quot;3389&quot;</span><br><span class="line">VRDE property: TCP/Address = &lt;not set&gt;</span><br><span class="line">VRDE property: VideoChannel/Enabled = &lt;not set&gt;</span><br><span class="line">VRDE property: VideoChannel/Quality = &lt;not set&gt;</span><br><span class="line">VRDE property: VideoChannel/DownscaleProtection = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableDisplay = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableInput = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableAudio = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableUSB = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableClipboard = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableUpstreamAudio = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableRDPDR = &lt;not set&gt;</span><br><span class="line">VRDE property: H3DRedirect/Enabled = &lt;not set&gt;</span><br><span class="line">VRDE property: Security/Method = &lt;not set&gt;</span><br><span class="line">VRDE property: Security/ServerCertificate = &lt;not set&gt;</span><br><span class="line">VRDE property: Security/ServerPrivateKey = &lt;not set&gt;</span><br><span class="line">VRDE property: Security/CACertificate = &lt;not set&gt;</span><br><span class="line">VRDE property: Audio/RateCorrectionMode = &lt;not set&gt;</span><br><span class="line">VRDE property: Audio/LogPath = &lt;not set&gt;</span><br><span class="line">USB:             enabled</span><br><span class="line">EHCI:            disabled</span><br><span class="line">XHCI:            disabled</span><br><span class="line"></span><br><span class="line">USB Device Filters:</span><br><span class="line"></span><br><span class="line">&lt;none&gt;</span><br><span class="line"></span><br><span class="line">Bandwidth groups:  &lt;none&gt;</span><br><span class="line"></span><br><span class="line">Shared folders:  &lt;none&gt;</span><br><span class="line"></span><br><span class="line">Video capturing:    not active</span><br><span class="line">Capture screens:    0</span><br><span class="line">Capture file:       /root/VirtualBox VMs/HKAirline/HKAirline.webm</span><br><span class="line">Capture dimensions: 1024x768</span><br><span class="line">Capture rate:       512 kbps</span><br><span class="line">Capture FPS:        25</span><br><span class="line"></span><br><span class="line">Guest:</span><br><span class="line"></span><br><span class="line">Configured memory balloon size:      0 MB</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="3-检查服务器的网卡名称"><a href="#3-检查服务器的网卡名称" class="headerlink" title="3.检查服务器的网卡名称"></a>3.检查服务器的网卡名称</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost var]# ifconfig</span><br><span class="line">enp3s0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 11.0.0.30  netmask 255.255.255.0  broadcast 11.0.0.255</span><br><span class="line">        inet6 fe80::7627:eaff:fe0b:cbdd  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 74:27:ea:0b:cb:dd  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 1176518  bytes 1473593219 (1.3 GiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 629933  bytes 45138166 (43.0 MiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;</span><br><span class="line">        loop  txqueuelen 0  (Local Loopback)</span><br><span class="line">        RX packets 83  bytes 7928 (7.7 KiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 83  bytes 7928 (7.7 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="5-启动网卡配置"><a href="#5-启动网卡配置" class="headerlink" title="5. 启动网卡配置"></a>5. 启动网卡配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/lib/virtualbox/vboxdrv.sh setup</span><br></pre></td></tr></table></figure>
-<h3 id="5-1-安装内核"><a href="#5-1-安装内核" class="headerlink" title="5.1 安装内核"></a>5.1 安装内核</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# yum install kernel-headers-$(uname -r)</span><br><span class="line">Loaded plugins: fastestmirror</span><br><span class="line">Loading mirror speeds from cached hostfile</span><br><span class="line"> * base: mirror.bit.edu.cn</span><br><span class="line"> * epel: mirrors.tuna.tsinghua.edu.cn</span><br><span class="line"> * extras: mirrors.btte.net</span><br><span class="line"> * updates: mirror.bit.edu.cn</span><br><span class="line">No package kernel-headers-3.10.0-327.el7.x86_64 available.</span><br><span class="line">Error: Nothing to do</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-2-查看内核"><a href="#5-2-查看内核" class="headerlink" title="5.2 查看内核"></a>5.2 查看内核</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# uname -a</span><br><span class="line">Linux localhost.localdomain 3.10.0-327.el7.x86_64 #1 SMP Thu Nov 19 22:10:57 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="5-3-下载匹配内核"><a href="#5-3-下载匹配内核" class="headerlink" title="5.3 下载匹配内核"></a>5.3 下载匹配内核</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# wget ftp://ftp.pbone.net/mirror/ftp.scientificlinux.org/linux/scientific/7.0/x86_64/updates/security/kernel-devel-3.10.0-</span><br><span class="line">327.el7.x86_64.rpm</span><br><span class="line">--2017-08-03 09:00:48--  ftp://ftp.pbone.net/mirror/ftp.scientificlinux.org/linux/scientific/7.0/x86_64/updates/security/kernel-devel-3.10.0-327.el7.x86_64.rpm</span><br><span class="line">           =&gt; ‘kernel-devel-3.10.0-327.el7.x86_64.rpm.1’</span><br><span class="line">Resolving ftp.pbone.net (ftp.pbone.net)... 85.14.85.4</span><br><span class="line">Connecting to ftp.pbone.net (ftp.pbone.net)|85.14.85.4|:21... connected.</span><br><span class="line">Logging in as anonymous ... Logged in!</span><br><span class="line">==&gt; SYST ... done.    ==&gt; PWD ... done.</span><br><span class="line">==&gt; TYPE I ... done.  ==&gt; CWD (1) /mirror/ftp.scientificlinux.org/linux/scientific/7.0/x86_64/updates/security ... done.</span><br><span class="line">==&gt; SIZE kernel-devel-3.10.0-327.el7.x86_64.rpm ... 11470260</span><br><span class="line">==&gt; PASV ... done.    ==&gt; RETR kernel-devel-3.10.0-327.el7.x86_64.rpm ... done.</span><br><span class="line">Length: 11470260 (11M) (unauthoritative)</span><br><span class="line"></span><br><span class="line">100%[====================================================================================================&gt;] 11,470,260   603KB/s   in 28s    </span><br><span class="line"></span><br><span class="line">2017-08-03 09:01:21 (406 KB/s) - ‘kernel-devel-3.10.0-327.el7.x86_64.rpm’ saved [11470260]</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install make gcc libpcap libpcap-devel -y</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>通过如下命令直接安装：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -ivh kernel-devel-3.10.0-327.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
-<p>如果系统已经安装了较高版本的内核头文件，则需要通过如下命令实现降级：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -Uvh --oldpackage kernel-devel-3.10.0-327.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看Bradge接口"><a href="#查看Bradge接口" class="headerlink" title="查看Bradge接口"></a>查看Bradge接口</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost vm]# VBoxManage list bridgedifs</span><br><span class="line">Name:            enp3s0</span><br><span class="line">GUID:            33706e65-3073-4000-8000-7427ea0bcbdd</span><br><span class="line">DHCP:            Disabled</span><br><span class="line">IPAddress:       11.0.0.30</span><br><span class="line">NetworkMask:     255.255.255.0</span><br><span class="line">IPV6Address:     fe80:0000:0000:0000:7627:eaff:fe0b:cbdd</span><br><span class="line">IPV6NetworkMaskPrefixLength: 64</span><br><span class="line">HardwareAddress: 74:27:ea:0b:cb:dd</span><br><span class="line">MediumType:      Ethernet</span><br><span class="line">Status:          Up</span><br><span class="line">VBoxNetworkName: HostInterfaceNetworking-enp3s0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="修改网卡设备的名称"><a href="#修改网卡设备的名称" class="headerlink" title="修改网卡设备的名称"></a>修改网卡设备的名称</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost vm]# VBoxManage modifyvm HKAirline --bridgeadapter4 enp3s0</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="启动虚拟机"><a href="#启动虚拟机" class="headerlink" title="启动虚拟机"></a>启动虚拟机</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">VBoxManage startvm HKAirline --type headless</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>centos</tag>
-        <tag>命令行</tag>
-        <tag>虚拟机</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Cannot start PhantomJS  karma</title>
     <url>/2015/08/14/220/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="1、错误信息"><a href="#1、错误信息" class="headerlink" title="1、错误信息"></a>1、错误信息</h2><pre><code>Running &quot;karma:unit&quot; (karma) task
@@ -395,17 +316,82 @@ public function info() &#123;
       </tags>
   </entry>
   <entry>
-    <title>Centos 7: failed to bring up/down networking: configure interface for a trunk interface</title>
-    <url>/2017/07/31/Centos-7-failed-to-bring-up-down-networking-configure-interface-for-a-trunk-interface/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>it seems that disabling NetworkManager did the trick :)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl stop NetworkManager</span><br><span class="line">systemctl disable NetworkManager</span><br></pre></td></tr></table></figure>
+    <title>Can&#39;t resume screen, says I am already attached?</title>
+    <url>/2017/03/22/Can-t-resume-screen-says-I-am-already-attached/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>he session is still attached on another terminal. The server hasn’t detected the network outage on that connection: it only detects the outage when it tries to send a packet and gets an error back or no response after a timeout, but this hasn’t happened yet. You’re in a common situation where the client detected the outage because it tried to send some input and failed, but the server is just sitting there waiting for input. Eventually the server will send a keepalive packet and detect that the connection is dead.</p>
+<p>In the meantime, use the <code>-d</code> option to detach the screen session from the terminal where it’s in.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">screen -r -d 30608</span><br><span class="line">screen -rd is pretty much the standard way to attach to an</span><br></pre></td></tr></table></figure>
+<p>existing screen session.</p>
 ]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>screen</tag>
+        <tag>远程桌面</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS / RHEL: Remove Routes 169.254.0.0 / 255.255.0.0 From the System</title>
+    <url>/2017/08/08/CentOS-RHEL-Remove-Routes-169-254-0-0-255-255-0-0-From-the-System/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>zeroconf (Zero configuration networking), is a techniques that automatically creates a usable Internet Protocol (IP) network without manual operator intervention or special configuration servers. 169.254.0.0/255.255.0.0 route is part of zeroconf under RHEL 6 / CentOS 6 or older versions. To see current routing table, enter:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># route -n</span><br></pre></td></tr></table></figure>
+<p>Sample outputs:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Kernel IP routing table</span><br><span class="line">Destination     Gateway         Genmask         Flags Metric Ref    Use Iface</span><br><span class="line">74.8x.4y.zz     0.0.0.0         255.255.255.248 U     0      0        0 eth1</span><br><span class="line">10.10.29.64     0.0.0.0         255.255.255.192 U     0      0        0 eth0</span><br><span class="line">169.254.0.0     0.0.0.0         255.255.0.0     U     1002   0        0 eth0</span><br><span class="line">169.254.0.0     0.0.0.0         255.255.0.0     U     1003   0        0 eth1</span><br><span class="line">10.0.0.0        10.10.29.65     255.0.0.0       UG    0      0        0 eth0</span><br><span class="line">0.0.0.0         74.8x.yy.zz     0.0.0.0         UG    0      0        0 eth1</span><br></pre></td></tr></table></figure>
+
+<p>Every time the server or Linux desktop boots, the zeroconf route 169.254.0.0 is enabled and added to the kernel routing table. To disable zeroconf route under RHEL / CentOS / Fedora Linux, enter:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># vi /etc/sysconfig/network</span><br></pre></td></tr></table></figure>
+<p>Append the following directive:</p>
+<p>NOZEROCONF=yes<br>Save and close the file. Reboot the system / server or restart the networking service:</p>
+<h1 id="etc-init-d-network-restart"><a href="#etc-init-d-network-restart" class="headerlink" title="/etc/init.d/network restart"></a>/etc/init.d/network restart</h1><p>Verify routing table, enter:</p>
+<h1 id="route-n"><a href="#route-n" class="headerlink" title="route -n"></a>route -n</h1><p>OR</p>
+<h1 id="ip-route"><a href="#ip-route" class="headerlink" title="ip route"></a>ip route</h1>]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
         <tag>centos</tag>
         <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS7 Command line install VirtuBox</title>
+    <url>/2017/08/03/CentOS7-Command-line-install-VirtuBox/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="1-导出OVA-gt-test-ova"><a href="#1-导出OVA-gt-test-ova" class="headerlink" title="1.导出OVA -&gt; test.ova"></a>1.导出OVA -&gt; test.ova</h2><h2 id="2-copy到服务器-amp-导入"><a href="#2-copy到服务器-amp-导入" class="headerlink" title="2.copy到服务器&amp;导入"></a>2.copy到服务器&amp;导入</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost vm] BoxManage import test.ovf</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="查看虚拟机镜像文件配置信息"><a href="#查看虚拟机镜像文件配置信息" class="headerlink" title="查看虚拟机镜像文件配置信息"></a>查看虚拟机镜像文件配置信息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost vm]# VBoxManage showvminfo HKAirline</span><br><span class="line">Name:            HKAirline</span><br><span class="line">Groups:          /</span><br><span class="line">Guest OS:        Red Hat (64-bit)</span><br><span class="line">UUID:            041f669d-2974-4322-a046-a55903285424</span><br><span class="line">Config file:     /root/VirtualBox VMs/HKAirline/HKAirline.vbox</span><br><span class="line">Snapshot folder: /root/VirtualBox VMs/HKAirline/Snapshots</span><br><span class="line">Log folder:      /root/VirtualBox VMs/HKAirline/Logs</span><br><span class="line">Hardware UUID:   041f669d-2974-4322-a046-a55903285424</span><br><span class="line">Memory size:     2048MB</span><br><span class="line">Page Fusion:     off</span><br><span class="line">VRAM size:       16MB</span><br><span class="line">CPU exec cap:    100%</span><br><span class="line">HPET:            off</span><br><span class="line">Chipset:         piix3</span><br><span class="line">Firmware:        BIOS</span><br><span class="line">Number of CPUs:  1</span><br><span class="line">PAE:             on</span><br><span class="line">Long Mode:       on</span><br><span class="line">Triple Fault Reset: off</span><br><span class="line">APIC:            on</span><br><span class="line">X2APIC:          on</span><br><span class="line">CPUID Portability Level: 0</span><br><span class="line">CPUID overrides: None</span><br><span class="line">Boot menu mode:  message and menu</span><br><span class="line">Boot Device (1): Floppy</span><br><span class="line">Boot Device (2): DVD</span><br><span class="line">Boot Device (3): HardDisk</span><br><span class="line">Boot Device (4): Not Assigned</span><br><span class="line">ACPI:            on</span><br><span class="line">IOAPIC:          on</span><br><span class="line">BIOS APIC mode:  APIC</span><br><span class="line">Time offset:     0ms</span><br><span class="line">RTC:             UTC</span><br><span class="line">Hardw. virt.ext: on</span><br><span class="line">Nested Paging:   on</span><br><span class="line">Large Pages:     on</span><br><span class="line">VT-x VPID:       on</span><br><span class="line">VT-x unr. exec.: on</span><br><span class="line">Paravirt. Provider: Default</span><br><span class="line">Effective Paravirt. Provider: KVM</span><br><span class="line">State:           powered off (since 2017-08-03T11:27:45.000000000)</span><br><span class="line">Monitor count:   1</span><br><span class="line">3D Acceleration: off</span><br><span class="line">2D Video Acceleration: off</span><br><span class="line">Teleporter Enabled: off</span><br><span class="line">Teleporter Port: 0</span><br><span class="line">Teleporter Address:</span><br><span class="line">Teleporter Password:</span><br><span class="line">Tracing Enabled: off</span><br><span class="line">Allow Tracing to Access VM: off</span><br><span class="line">Tracing Configuration:</span><br><span class="line">Autostart Enabled: off</span><br><span class="line">Autostart Delay: 0</span><br><span class="line">Default Frontend:</span><br><span class="line">Storage Controller Name (0):            IDE</span><br><span class="line">Storage Controller Type (0):            PIIX4</span><br><span class="line">Storage Controller Instance Number (0): 0</span><br><span class="line">Storage Controller Max Port Count (0):  2</span><br><span class="line">Storage Controller Port Count (0):      2</span><br><span class="line">Storage Controller Bootable (0):        on</span><br><span class="line">Storage Controller Name (1):            SATA</span><br><span class="line">Storage Controller Type (1):            IntelAhci</span><br><span class="line">Storage Controller Instance Number (1): 0</span><br><span class="line">Storage Controller Max Port Count (1):  30</span><br><span class="line">Storage Controller Port Count (1):      2</span><br><span class="line">Storage Controller Bootable (1):        on</span><br><span class="line">IDE (1, 0): Empty</span><br><span class="line">SATA (0, 0): /root/VirtualBox VMs/HKAirline/HKAirline-disk001.vmdk (UUID: 6afa88f3-3035-4aa5-a940-f6ec43bc56bb)</span><br><span class="line">NIC 1:           MAC: 0800274D5932, Attachment: Bridged Interface &#x27;eth0&#x27;, Cable connected: on, Trace: off (file: none), Type: 82540EM, Reported speed: 0 Mbps, Boot priority: 0, Promisc Policy: deny, Bandwidth group: none</span><br><span class="line">NIC 2:           MAC: 0800279B57E7, Attachment: Bridged Interface &#x27;eth0&#x27;, Cable connected: on, Trace: off (file: none), Type: 82540EM, Reported speed: 0 Mbps, Boot priority: 0, Promisc Policy: deny, Bandwidth group: none</span><br><span class="line">NIC 3:           MAC: 080027716E47, Attachment: Bridged Interface &#x27;eth0&#x27;, Cable connected: on, Trace: off (file: none), Type: 82540EM, Reported speed: 0 Mbps, Boot priority: 0, Promisc Policy: deny, Bandwidth group: none</span><br><span class="line">NIC 4:           MAC: 080027C363BB, Attachment: Bridged Interface &#x27;eth0&#x27;, Cable connected: on, Trace: off (file: none), Type: 82540EM, Reported speed: 0 Mbps, Boot priority: 0, Promisc Policy: deny, Bandwidth group: none</span><br><span class="line">NIC 5:           disabled</span><br><span class="line">NIC 6:           disabled</span><br><span class="line">NIC 7:           disabled</span><br><span class="line">NIC 8:           disabled</span><br><span class="line">Pointing Device: PS/2 Mouse</span><br><span class="line">Keyboard Device: PS/2 Keyboard</span><br><span class="line">UART 1:          disabled</span><br><span class="line">UART 2:          disabled</span><br><span class="line">UART 3:          disabled</span><br><span class="line">UART 4:          disabled</span><br><span class="line">LPT 1:           disabled</span><br><span class="line">LPT 2:           disabled</span><br><span class="line">Audio:           enabled (Driver: ALSA, Controller: AC97, Codec: AD1980)</span><br><span class="line">Clipboard Mode:  disabled</span><br><span class="line">Drag and drop Mode: disabled</span><br><span class="line">VRDE:            enabled (Address 0.0.0.0, Ports 3389, MultiConn: off, ReuseSingleConn: off, Authentication type: external)</span><br><span class="line">Video redirection: disabled</span><br><span class="line">VRDE property: TCP/Ports  = &quot;3389&quot;</span><br><span class="line">VRDE property: TCP/Address = &lt;not set&gt;</span><br><span class="line">VRDE property: VideoChannel/Enabled = &lt;not set&gt;</span><br><span class="line">VRDE property: VideoChannel/Quality = &lt;not set&gt;</span><br><span class="line">VRDE property: VideoChannel/DownscaleProtection = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableDisplay = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableInput = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableAudio = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableUSB = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableClipboard = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableUpstreamAudio = &lt;not set&gt;</span><br><span class="line">VRDE property: Client/DisableRDPDR = &lt;not set&gt;</span><br><span class="line">VRDE property: H3DRedirect/Enabled = &lt;not set&gt;</span><br><span class="line">VRDE property: Security/Method = &lt;not set&gt;</span><br><span class="line">VRDE property: Security/ServerCertificate = &lt;not set&gt;</span><br><span class="line">VRDE property: Security/ServerPrivateKey = &lt;not set&gt;</span><br><span class="line">VRDE property: Security/CACertificate = &lt;not set&gt;</span><br><span class="line">VRDE property: Audio/RateCorrectionMode = &lt;not set&gt;</span><br><span class="line">VRDE property: Audio/LogPath = &lt;not set&gt;</span><br><span class="line">USB:             enabled</span><br><span class="line">EHCI:            disabled</span><br><span class="line">XHCI:            disabled</span><br><span class="line"></span><br><span class="line">USB Device Filters:</span><br><span class="line"></span><br><span class="line">&lt;none&gt;</span><br><span class="line"></span><br><span class="line">Bandwidth groups:  &lt;none&gt;</span><br><span class="line"></span><br><span class="line">Shared folders:  &lt;none&gt;</span><br><span class="line"></span><br><span class="line">Video capturing:    not active</span><br><span class="line">Capture screens:    0</span><br><span class="line">Capture file:       /root/VirtualBox VMs/HKAirline/HKAirline.webm</span><br><span class="line">Capture dimensions: 1024x768</span><br><span class="line">Capture rate:       512 kbps</span><br><span class="line">Capture FPS:        25</span><br><span class="line"></span><br><span class="line">Guest:</span><br><span class="line"></span><br><span class="line">Configured memory balloon size:      0 MB</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-检查服务器的网卡名称"><a href="#3-检查服务器的网卡名称" class="headerlink" title="3.检查服务器的网卡名称"></a>3.检查服务器的网卡名称</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost var]# ifconfig</span><br><span class="line">enp3s0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 11.0.0.30  netmask 255.255.255.0  broadcast 11.0.0.255</span><br><span class="line">        inet6 fe80::7627:eaff:fe0b:cbdd  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 74:27:ea:0b:cb:dd  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 1176518  bytes 1473593219 (1.3 GiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 629933  bytes 45138166 (43.0 MiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;</span><br><span class="line">        loop  txqueuelen 0  (Local Loopback)</span><br><span class="line">        RX packets 83  bytes 7928 (7.7 KiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 83  bytes 7928 (7.7 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="5-启动网卡配置"><a href="#5-启动网卡配置" class="headerlink" title="5. 启动网卡配置"></a>5. 启动网卡配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/lib/virtualbox/vboxdrv.sh setup</span><br></pre></td></tr></table></figure>
+<h3 id="5-1-安装内核"><a href="#5-1-安装内核" class="headerlink" title="5.1 安装内核"></a>5.1 安装内核</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# yum install kernel-headers-$(uname -r)</span><br><span class="line">Loaded plugins: fastestmirror</span><br><span class="line">Loading mirror speeds from cached hostfile</span><br><span class="line"> * base: mirror.bit.edu.cn</span><br><span class="line"> * epel: mirrors.tuna.tsinghua.edu.cn</span><br><span class="line"> * extras: mirrors.btte.net</span><br><span class="line"> * updates: mirror.bit.edu.cn</span><br><span class="line">No package kernel-headers-3.10.0-327.el7.x86_64 available.</span><br><span class="line">Error: Nothing to do</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-查看内核"><a href="#5-2-查看内核" class="headerlink" title="5.2 查看内核"></a>5.2 查看内核</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# uname -a</span><br><span class="line">Linux localhost.localdomain 3.10.0-327.el7.x86_64 #1 SMP Thu Nov 19 22:10:57 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="5-3-下载匹配内核"><a href="#5-3-下载匹配内核" class="headerlink" title="5.3 下载匹配内核"></a>5.3 下载匹配内核</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# wget ftp://ftp.pbone.net/mirror/ftp.scientificlinux.org/linux/scientific/7.0/x86_64/updates/security/kernel-devel-3.10.0-</span><br><span class="line">327.el7.x86_64.rpm</span><br><span class="line">--2017-08-03 09:00:48--  ftp://ftp.pbone.net/mirror/ftp.scientificlinux.org/linux/scientific/7.0/x86_64/updates/security/kernel-devel-3.10.0-327.el7.x86_64.rpm</span><br><span class="line">           =&gt; ‘kernel-devel-3.10.0-327.el7.x86_64.rpm.1’</span><br><span class="line">Resolving ftp.pbone.net (ftp.pbone.net)... 85.14.85.4</span><br><span class="line">Connecting to ftp.pbone.net (ftp.pbone.net)|85.14.85.4|:21... connected.</span><br><span class="line">Logging in as anonymous ... Logged in!</span><br><span class="line">==&gt; SYST ... done.    ==&gt; PWD ... done.</span><br><span class="line">==&gt; TYPE I ... done.  ==&gt; CWD (1) /mirror/ftp.scientificlinux.org/linux/scientific/7.0/x86_64/updates/security ... done.</span><br><span class="line">==&gt; SIZE kernel-devel-3.10.0-327.el7.x86_64.rpm ... 11470260</span><br><span class="line">==&gt; PASV ... done.    ==&gt; RETR kernel-devel-3.10.0-327.el7.x86_64.rpm ... done.</span><br><span class="line">Length: 11470260 (11M) (unauthoritative)</span><br><span class="line"></span><br><span class="line">100%[====================================================================================================&gt;] 11,470,260   603KB/s   in 28s    </span><br><span class="line"></span><br><span class="line">2017-08-03 09:01:21 (406 KB/s) - ‘kernel-devel-3.10.0-327.el7.x86_64.rpm’ saved [11470260]</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install make gcc libpcap libpcap-devel -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>通过如下命令直接安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -ivh kernel-devel-3.10.0-327.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<p>如果系统已经安装了较高版本的内核头文件，则需要通过如下命令实现降级：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -Uvh --oldpackage kernel-devel-3.10.0-327.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看Bradge接口"><a href="#查看Bradge接口" class="headerlink" title="查看Bradge接口"></a>查看Bradge接口</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost vm]# VBoxManage list bridgedifs</span><br><span class="line">Name:            enp3s0</span><br><span class="line">GUID:            33706e65-3073-4000-8000-7427ea0bcbdd</span><br><span class="line">DHCP:            Disabled</span><br><span class="line">IPAddress:       11.0.0.30</span><br><span class="line">NetworkMask:     255.255.255.0</span><br><span class="line">IPV6Address:     fe80:0000:0000:0000:7627:eaff:fe0b:cbdd</span><br><span class="line">IPV6NetworkMaskPrefixLength: 64</span><br><span class="line">HardwareAddress: 74:27:ea:0b:cb:dd</span><br><span class="line">MediumType:      Ethernet</span><br><span class="line">Status:          Up</span><br><span class="line">VBoxNetworkName: HostInterfaceNetworking-enp3s0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="修改网卡设备的名称"><a href="#修改网卡设备的名称" class="headerlink" title="修改网卡设备的名称"></a>修改网卡设备的名称</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost vm]# VBoxManage modifyvm HKAirline --bridgeadapter4 enp3s0</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="启动虚拟机"><a href="#启动虚拟机" class="headerlink" title="启动虚拟机"></a>启动虚拟机</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">VBoxManage startvm HKAirline --type headless</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>centos</tag>
+        <tag>命令行</tag>
+        <tag>虚拟机</tag>
       </tags>
   </entry>
   <entry>
@@ -419,6 +405,20 @@ public function info() &#123;
       <tags>
         <tag>centos</tag>
         <tag>系统配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Centos 7: failed to bring up/down networking: configure interface for a trunk interface</title>
+    <url>/2017/07/31/Centos-7-failed-to-bring-up-down-networking-configure-interface-for-a-trunk-interface/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>it seems that disabling NetworkManager did the trick :)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl stop NetworkManager</span><br><span class="line">systemctl disable NetworkManager</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>centos</tag>
+        <tag>网络</tag>
       </tags>
   </entry>
   <entry>
@@ -445,21 +445,6 @@ public function info() &#123;
       <tags>
         <tag>centos</tag>
         <tag>网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker client is newer than server</title>
-    <url>/2016/09/12/Docker-client-is-newer-than-server/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>###Docker client is newer than server<br>执行<code>docker pull voduytuan/jenkins-php-docker</code>时出错</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Using default tag: latest</span><br><span class="line">Warning: failed to get default registry endpoint from daemon (Error response from daemon: client is newer than server (client API version: 1.24, server API version: 1.23)). Using system default: https://index.docker.io/v1/</span><br><span class="line">Error response from daemon: client is newer than server (client API version: 1.24, server API version: 1.23)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>执行命令<br><code>export DOCKER_API_VERSION=1.23</code> solved my problem. </p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -509,25 +494,18 @@ public function info() &#123;
       </categories>
   </entry>
   <entry>
-    <title>Git忽略已经提交过一次文件</title>
-    <url>/2022/04/13/Git%E5%BF%BD%E7%95%A5%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E8%BF%87%E4%B8%80%E6%AC%A1%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="一、平时忽略未提交的文件"><a href="#一、平时忽略未提交的文件" class="headerlink" title="一、平时忽略未提交的文件"></a>一、平时忽略未提交的文件</h3><p>从未提交过的文件可以用<code>.gitignore</code><br>也就是添加之后从来没有提交（commit）过的文件，可以使用<code>.gitignore</code>忽略该文件<br>该文件只能作用于未跟踪的文件（Untracked Files），也就是那些从来没有被 git 记录过的文件<br>在<code>.gitignore</code>中写忽略文件或文件夹。注意相对路径是项目根数据，文件格式如下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/.gradle/</span><br><span class="line">/.idea/</span><br><span class="line">/local.properties</span><br></pre></td></tr></table></figure>
+    <title>Docker client is newer than server</title>
+    <url>/2016/09/12/Docker-client-is-newer-than-server/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>###Docker client is newer than server<br>执行<code>docker pull voduytuan/jenkins-php-docker</code>时出错</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Using default tag: latest</span><br><span class="line">Warning: failed to get default registry endpoint from daemon (Error response from daemon: client is newer than server (client API version: 1.24, server API version: 1.23)). Using system default: https://index.docker.io/v1/</span><br><span class="line">Error response from daemon: client is newer than server (client API version: 1.24, server API version: 1.23)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="二、已经Push过的文件"><a href="#二、已经Push过的文件" class="headerlink" title="二、已经Push过的文件"></a>二、已经Push过的文件</h3><p>需要删除Git仓库的文件，本址的文件需要保留，并且在以后提交中忽略</p>
-<p>1、从本地Git缓存中删除文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//忽略文件 aaa.txt</span><br><span class="line">git rm --cached aaa.txt</span><br><span class="line">//忽略文件夹 abc</span><br><span class="line">git rm -r --cached abc</span><br></pre></td></tr></table></figure>
-
-<p>2、提交到仓库里面</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;delete somefile&#x27;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<p>3、修改文件.gitignore，把刚才删除的文件或者文件夹加入.gitignore文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/aaa.txt</span><br><span class="line">/abc/</span><br></pre></td></tr></table></figure>]]></content>
+<p>执行命令<br><code>export DOCKER_API_VERSION=1.23</code> solved my problem. </p>
+]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>git</tag>
+        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -585,6 +563,28 @@ public function info() &#123;
       </tags>
   </entry>
   <entry>
+    <title>Git忽略已经提交过一次文件</title>
+    <url>/2022/04/13/Git%E5%BF%BD%E7%95%A5%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E8%BF%87%E4%B8%80%E6%AC%A1%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="一、平时忽略未提交的文件"><a href="#一、平时忽略未提交的文件" class="headerlink" title="一、平时忽略未提交的文件"></a>一、平时忽略未提交的文件</h3><p>从未提交过的文件可以用<code>.gitignore</code><br>也就是添加之后从来没有提交（commit）过的文件，可以使用<code>.gitignore</code>忽略该文件<br>该文件只能作用于未跟踪的文件（Untracked Files），也就是那些从来没有被 git 记录过的文件<br>在<code>.gitignore</code>中写忽略文件或文件夹。注意相对路径是项目根数据，文件格式如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/.gradle/</span><br><span class="line">/.idea/</span><br><span class="line">/local.properties</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、已经Push过的文件"><a href="#二、已经Push过的文件" class="headerlink" title="二、已经Push过的文件"></a>二、已经Push过的文件</h3><p>需要删除Git仓库的文件，本址的文件需要保留，并且在以后提交中忽略</p>
+<p>1、从本地Git缓存中删除文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//忽略文件 aaa.txt</span><br><span class="line">git rm --cached aaa.txt</span><br><span class="line">//忽略文件夹 abc</span><br><span class="line">git rm -r --cached abc</span><br></pre></td></tr></table></figure>
+
+<p>2、提交到仓库里面</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;delete somefile&#x27;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p>3、修改文件.gitignore，把刚才删除的文件或者文件夹加入.gitignore文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/aaa.txt</span><br><span class="line">/abc/</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HOWTO disable tmpfs on /tmp?</title>
     <url>/2017/08/02/HOWTO-disable-tmpfs-on-tmp/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat /etc/tmpfiles.d/tmp.conf</span><br><span class="line">#  This file is part of systemd.</span><br><span class="line">#</span><br><span class="line">#  systemd is free software; you can redistribute it and/or modify it</span><br><span class="line">#  under the terms of the GNU Lesser General Public License as published by</span><br><span class="line">#  the Free Software Foundation; either version 2.1 of the License, or</span><br><span class="line">#  (at your option) any later version.</span><br><span class="line"></span><br><span class="line"># See tmpfiles.d(5) for details</span><br><span class="line"></span><br><span class="line"># Clear tmp directories separately, to make them easier to override</span><br><span class="line">D /tmp 1777 root root 0</span><br><span class="line">D /var/tmp 1777 root root 10d</span><br><span class="line"></span><br><span class="line"># Exclude namespace mountpoints created with PrivateTmp=yes</span><br><span class="line">x /tmp/systemd-private-*</span><br><span class="line">x /var/tmp/systemd-private-*</span><br><span class="line">X /tmp/systemd-private-*/tmp</span><br><span class="line">X /var/tmp/systemd-private-*/tmp</span><br></pre></td></tr></table></figure>
@@ -633,18 +633,6 @@ public function info() &#123;
       </categories>
   </entry>
   <entry>
-    <title>How to resize a VirtualBox vmdk file</title>
-    <url>/2017/08/01/How-to-resize-a-VirtualBox-vmdk-file/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>548<br>down vote<br>yes, Brian, you are right: those are the steps, but if you want to end having back a vmdk hard disk (maybe you are interested in using the disk in vwmare too) you miss one more step. So the complete howto is:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">VBoxManage clonehd &quot;source.vmdk&quot; &quot;cloned.vdi&quot; --format vdi</span><br><span class="line">VBoxManage modifyhd &quot;cloned.vdi&quot; --resize 51200</span><br><span class="line">VBoxManage clonehd &quot;cloned.vdi&quot; &quot;resized.vmdk&quot; --format vmdk</span><br><span class="line">The above will resize the hard disk up to 50GB (50 * 1024MB).</span><br></pre></td></tr></table></figure>
-<p>To complete things you need to resize the drive too! To achieve this, you might want to download gparted iso and boot from that iso to resize your drive (select the iso from within the virtualbox settings).</p>
-<p>P.S. If your new size is too small, you’ll get the same error even with your new vdi file.</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-  </entry>
-  <entry>
     <title>How to setup tagged VLANs on Mac OS X</title>
     <url>/2017/07/04/How-to-setup-tagged-VLANs-on-Mac-OS-X/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><ol>
@@ -665,6 +653,18 @@ public function info() &#123;
 <li>Click Apply</li>
 <li>Close the network preferences window.</li>
 </ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>How to resize a VirtualBox vmdk file</title>
+    <url>/2017/08/01/How-to-resize-a-VirtualBox-vmdk-file/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>548<br>down vote<br>yes, Brian, you are right: those are the steps, but if you want to end having back a vmdk hard disk (maybe you are interested in using the disk in vwmare too) you miss one more step. So the complete howto is:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">VBoxManage clonehd &quot;source.vmdk&quot; &quot;cloned.vdi&quot; --format vdi</span><br><span class="line">VBoxManage modifyhd &quot;cloned.vdi&quot; --resize 51200</span><br><span class="line">VBoxManage clonehd &quot;cloned.vdi&quot; &quot;resized.vmdk&quot; --format vmdk</span><br><span class="line">The above will resize the hard disk up to 50GB (50 * 1024MB).</span><br></pre></td></tr></table></figure>
+<p>To complete things you need to resize the drive too! To achieve this, you might want to download gparted iso and boot from that iso to resize your drive (select the iso from within the virtualbox settings).</p>
+<p>P.S. If your new size is too small, you’ll get the same error even with your new vdi file.</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -925,6 +925,62 @@ public function info() &#123;
       </tags>
   </entry>
   <entry>
+    <title>MySQL 字符串拼接</title>
+    <url>/2017/09/27/MySQL-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>在Mysql 数据库中存在两种字符串连接操作.具体操作如下</p>
+<p>一. 语法:</p>
+<ol>
+<li><p>CONCAT(string1,string2,…)   说明 : string1,string2代表字符串,concat函数在连接字符串的时候，只要其中一个是NULL,那么将返回NULL</p>
+<p>例1:</p>
+</li>
+</ol>
+<p>   例2:</p>
+<ol start="2">
+<li><p>CONCAT_WS(separator,str1,str2,…)</p>
+<p>说明 : string1,string2代表字符串,concat_ws 代表 concat with separator,第一个参数是其它参数的分隔符。分隔符的位置放在要连接的两个字符串之间。分隔符可以是一个字符串，也可以是其它参数。如果分隔符为 NULL，则结果为 NULL。函数会忽略任何分隔符参数后的 NULL 值。</p>
+<p>举例1:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   mysql&gt; select concat_ws(&#x27;#&#x27;,&#x27;dbdh=&#x27;,&#x27;NorthEastTrcoon&#x27;,null) AS dbdh_name_three;</span><br><span class="line">+-----------------------+</span><br><span class="line">| dbdh_name_three       |</span><br><span class="line">+-----------------------+</span><br><span class="line">| dbdh=#NorthEastTrcoon |</span><br><span class="line">+-----------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>例2:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select concat_ws(null,&#x27;dbdh=&#x27;,&#x27;NorthEastTrcoon&#x27;,null) AS dbdh_name_fourth</span><br><span class="line">;</span><br><span class="line">+------------------+</span><br><span class="line">| dbdh_name_fourth |</span><br><span class="line">+------------------+</span><br><span class="line">| NULL             |</span><br><span class="line">+------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>例3:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">     mysql&gt; select concat_ws(&#x27;*&#x27;,&#x27;dbdh=&#x27;,&#x27;NorthEastTrcoon&#x27;,null) AS dbdh_name_fifth;</span><br><span class="line">+-----------------------+</span><br><span class="line">| dbdh_name_fifth       |</span><br><span class="line">+-----------------------+</span><br><span class="line">| dbdh=*NorthEastTrcoon |</span><br><span class="line">+-----------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="3">
+<li>MySQL中group_concat函数<br>完整的语法如下：<br> group_concat([DISTINCT] 要连接的字段 [Order BY ASC/DESC 排序字段] [Separator ‘分隔符’])</li>
+</ol>
+<p>基本查询</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select * from stu1;</span><br><span class="line">+------+------+</span><br><span class="line">| id| name |</span><br><span class="line">+------+------+</span><br><span class="line">|1 | 10|</span><br><span class="line">|1 | 20|</span><br><span class="line">|1 | 20|</span><br><span class="line">|2 | 20|</span><br><span class="line">|3 | 200   |</span><br><span class="line">|3 | 500   |</span><br><span class="line">+------+------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>以id分组，把name字段的值打印在一行，逗号分隔(默认)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(name) from aa group by id;</span><br><span class="line">+------+--------------------+</span><br><span class="line">| id| group_concat(name) |</span><br><span class="line">+------+--------------------+</span><br><span class="line">|1 | 10,20,20|</span><br><span class="line">|2 | 20 |</span><br><span class="line">|3 | 200,500|</span><br><span class="line">+------+--------------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>以id分组，把name字段的值打印在一行，分号分隔</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(name separator &#x27;;&#x27;) from aa group by id;</span><br><span class="line">+------+----------------------------------+</span><br><span class="line">| id| group_concat(name separator &#x27;;&#x27;) |</span><br><span class="line">+------+----------------------------------+</span><br><span class="line">|1 | 10;20;20 |</span><br><span class="line">|2 | 20|</span><br><span class="line">|3 | 200;500   |</span><br><span class="line">+------+----------------------------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>以id分组，把去冗余的name字段的值打印在一行，</p>
+<p>逗号分隔</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(distinct name) from aa group by id;</span><br><span class="line">+------+-----------------------------+</span><br><span class="line">| id| group_concat(distinct name) |</span><br><span class="line">+------+-----------------------------+</span><br><span class="line">|1 | 10,20|</span><br><span class="line">|2 | 20   |</span><br><span class="line">|3 | 200,500 |</span><br><span class="line">+------+-----------------------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>以id分组，把name字段的值打印在一行，逗号分隔，以name排倒序</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(name order by name desc) from aa group by id;</span><br><span class="line">+------+---------------------------------------+</span><br><span class="line">| id| group_concat(name order by name desc) |</span><br><span class="line">+------+---------------------------------------+</span><br><span class="line">|1 | 20,20,10   |</span><br><span class="line">|2 | 20|</span><br><span class="line">|3 | 500,200|</span><br><span class="line">+------+---------------------------------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+<p>还有一个简单的连接方式为: ||</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select *  from student;</span><br><span class="line">+----+------+-------+----------+------------+</span><br><span class="line">| id | age  | score | name     | birth      |</span><br><span class="line">+----+------+-------+----------+------------+</span><br><span class="line">|  1 |   23 |    78 | 李四     | 2017-10-10 |</span><br><span class="line">|  2 |   24 |    78 | zhangsan | 2017-10-10 |</span><br><span class="line">|  3 |   25 |    99 | 王五     | 2016-05-17 |</span><br><span class="line">+----+------+-------+----------+------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select id+999,name,name+99,name+&#x27;999&#x27; from student;</span><br><span class="line">+--------+----------+---------+------------+</span><br><span class="line">| id+999 | name     | name+99 | name+&#x27;999&#x27; |</span><br><span class="line">+--------+----------+---------+------------+</span><br><span class="line">|   1000 | 李四     |      99 |        999 |</span><br><span class="line">|   1001 | zhangsan |      99 |        999 |</span><br><span class="line">|   1002 | 王五     |      99 |        999 |</span><br><span class="line">+--------+----------+---------+------------+</span><br><span class="line">3 rows in set, 6 warnings (0.00 sec)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>命令行</tag>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySQL 导入慢的解决方法</title>
     <url>/2017/02/09/MySQL-%E5%AF%BC%E5%85%A5%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>MySQL导出的SQL语句在导入时有可能会非常非常慢，经历过导入仅45万条记录，竟用了近3个小时。在导出时合理使用几个参数，可以大大加快导 入的速度。</p>
@@ -946,6 +1002,21 @@ public function info() &#123;
         <tag>数据库</tag>
         <tag>mysql</tag>
         <tag>备份</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NFS mount.nfs: access denied by server while mountin</title>
+    <url>/2017/12/28/NFS-mount-nfs-access-denied-by-server-while-mountin/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>setup NFS but when trying to mount getting the following errors</p>
+<pre><code>mount.nfs: access denied by server while mounting &lt;server ip&gt;:/exports</code></pre><p>The</p>
+<pre><code>showmount -e &lt;server ip&gt;</code></pre><p>command returns the following</p>
+<pre><code>/exports &lt;client ip&gt;</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>命令行</tag>
+        <tag>nfs</tag>
       </tags>
   </entry>
   <entry>
@@ -1007,62 +1078,6 @@ public function info() &#123;
       </tags>
   </entry>
   <entry>
-    <title>MySQL 字符串拼接</title>
-    <url>/2017/09/27/MySQL-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>在Mysql 数据库中存在两种字符串连接操作.具体操作如下</p>
-<p>一. 语法:</p>
-<ol>
-<li><p>CONCAT(string1,string2,…)   说明 : string1,string2代表字符串,concat函数在连接字符串的时候，只要其中一个是NULL,那么将返回NULL</p>
-<p>例1:</p>
-</li>
-</ol>
-<p>   例2:</p>
-<ol start="2">
-<li><p>CONCAT_WS(separator,str1,str2,…)</p>
-<p>说明 : string1,string2代表字符串,concat_ws 代表 concat with separator,第一个参数是其它参数的分隔符。分隔符的位置放在要连接的两个字符串之间。分隔符可以是一个字符串，也可以是其它参数。如果分隔符为 NULL，则结果为 NULL。函数会忽略任何分隔符参数后的 NULL 值。</p>
-<p>举例1:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   mysql&gt; select concat_ws(&#x27;#&#x27;,&#x27;dbdh=&#x27;,&#x27;NorthEastTrcoon&#x27;,null) AS dbdh_name_three;</span><br><span class="line">+-----------------------+</span><br><span class="line">| dbdh_name_three       |</span><br><span class="line">+-----------------------+</span><br><span class="line">| dbdh=#NorthEastTrcoon |</span><br><span class="line">+-----------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<p>例2:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select concat_ws(null,&#x27;dbdh=&#x27;,&#x27;NorthEastTrcoon&#x27;,null) AS dbdh_name_fourth</span><br><span class="line">;</span><br><span class="line">+------------------+</span><br><span class="line">| dbdh_name_fourth |</span><br><span class="line">+------------------+</span><br><span class="line">| NULL             |</span><br><span class="line">+------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<p>例3:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">     mysql&gt; select concat_ws(&#x27;*&#x27;,&#x27;dbdh=&#x27;,&#x27;NorthEastTrcoon&#x27;,null) AS dbdh_name_fifth;</span><br><span class="line">+-----------------------+</span><br><span class="line">| dbdh_name_fifth       |</span><br><span class="line">+-----------------------+</span><br><span class="line">| dbdh=*NorthEastTrcoon |</span><br><span class="line">+-----------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="3">
-<li>MySQL中group_concat函数<br>完整的语法如下：<br> group_concat([DISTINCT] 要连接的字段 [Order BY ASC/DESC 排序字段] [Separator ‘分隔符’])</li>
-</ol>
-<p>基本查询</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select * from stu1;</span><br><span class="line">+------+------+</span><br><span class="line">| id| name |</span><br><span class="line">+------+------+</span><br><span class="line">|1 | 10|</span><br><span class="line">|1 | 20|</span><br><span class="line">|1 | 20|</span><br><span class="line">|2 | 20|</span><br><span class="line">|3 | 200   |</span><br><span class="line">|3 | 500   |</span><br><span class="line">+------+------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-<p>以id分组，把name字段的值打印在一行，逗号分隔(默认)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(name) from aa group by id;</span><br><span class="line">+------+--------------------+</span><br><span class="line">| id| group_concat(name) |</span><br><span class="line">+------+--------------------+</span><br><span class="line">|1 | 10,20,20|</span><br><span class="line">|2 | 20 |</span><br><span class="line">|3 | 200,500|</span><br><span class="line">+------+--------------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-<p>以id分组，把name字段的值打印在一行，分号分隔</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(name separator &#x27;;&#x27;) from aa group by id;</span><br><span class="line">+------+----------------------------------+</span><br><span class="line">| id| group_concat(name separator &#x27;;&#x27;) |</span><br><span class="line">+------+----------------------------------+</span><br><span class="line">|1 | 10;20;20 |</span><br><span class="line">|2 | 20|</span><br><span class="line">|3 | 200;500   |</span><br><span class="line">+------+----------------------------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-<p>以id分组，把去冗余的name字段的值打印在一行，</p>
-<p>逗号分隔</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(distinct name) from aa group by id;</span><br><span class="line">+------+-----------------------------+</span><br><span class="line">| id| group_concat(distinct name) |</span><br><span class="line">+------+-----------------------------+</span><br><span class="line">|1 | 10,20|</span><br><span class="line">|2 | 20   |</span><br><span class="line">|3 | 200,500 |</span><br><span class="line">+------+-----------------------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-<p>以id分组，把name字段的值打印在一行，逗号分隔，以name排倒序</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(name order by name desc) from aa group by id;</span><br><span class="line">+------+---------------------------------------+</span><br><span class="line">| id| group_concat(name order by name desc) |</span><br><span class="line">+------+---------------------------------------+</span><br><span class="line">|1 | 20,20,10   |</span><br><span class="line">|2 | 20|</span><br><span class="line">|3 | 500,200|</span><br><span class="line">+------+---------------------------------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-
-<p>还有一个简单的连接方式为: ||</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select *  from student;</span><br><span class="line">+----+------+-------+----------+------------+</span><br><span class="line">| id | age  | score | name     | birth      |</span><br><span class="line">+----+------+-------+----------+------------+</span><br><span class="line">|  1 |   23 |    78 | 李四     | 2017-10-10 |</span><br><span class="line">|  2 |   24 |    78 | zhangsan | 2017-10-10 |</span><br><span class="line">|  3 |   25 |    99 | 王五     | 2016-05-17 |</span><br><span class="line">+----+------+-------+----------+------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select id+999,name,name+99,name+&#x27;999&#x27; from student;</span><br><span class="line">+--------+----------+---------+------------+</span><br><span class="line">| id+999 | name     | name+99 | name+&#x27;999&#x27; |</span><br><span class="line">+--------+----------+---------+------------+</span><br><span class="line">|   1000 | 李四     |      99 |        999 |</span><br><span class="line">|   1001 | zhangsan |      99 |        999 |</span><br><span class="line">|   1002 | 王五     |      99 |        999 |</span><br><span class="line">+--------+----------+---------+------------+</span><br><span class="line">3 rows in set, 6 warnings (0.00 sec)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>命令行</tag>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>One final update.</title>
     <url>/2017/07/27/One-final-update/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
@@ -1095,21 +1110,6 @@ public function info() &#123;
       </tags>
   </entry>
   <entry>
-    <title>NFS mount.nfs: access denied by server while mountin</title>
-    <url>/2017/12/28/NFS-mount-nfs-access-denied-by-server-while-mountin/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>setup NFS but when trying to mount getting the following errors</p>
-<pre><code>mount.nfs: access denied by server while mounting &lt;server ip&gt;:/exports</code></pre><p>The</p>
-<pre><code>showmount -e &lt;server ip&gt;</code></pre><p>command returns the following</p>
-<pre><code>/exports &lt;client ip&gt;</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>命令行</tag>
-        <tag>nfs</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Rename ethernet interfaces on Centos7</title>
     <url>/2017/07/31/Rename-ethernet-interfaces-on-Centos7/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="0-Prepare"><a href="#0-Prepare" class="headerlink" title="0 Prepare"></a>0 Prepare</h3><pre><code>yum install pciutils -y</code></pre><h3 id="1-get-PCI-info"><a href="#1-get-PCI-info" class="headerlink" title="1 get PCI info:"></a>1 get PCI info:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost ~] lspci | grep Ethernet   </span><br><span class="line">05:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </span><br><span class="line">06:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </span><br><span class="line">07:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection                                     </span><br><span class="line">08:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -1126,6 +1126,24 @@ public function info() &#123;
         <tag>网络</tag>
         <tag>命令行</tag>
         <tag>centos 7</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SSH session slow to start? It&#39;s the DNS stupid~~</title>
+    <url>/2017/07/11/SSH-session-slow-to-start-It-s-the-DNS-stupid/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Ever tried logging into a machine with ssh and found you have to wait much longer than reasonable for the session to start? This happened to me a few times and was especially annoying with machines on my local network (or a VM attached to a virtual network) that should be letting me in immediately.</p>
+<p>I eventually got mad enough to strace the SSH daemon and debug what was going on and it turns out it’s a DNS thing. Basically the session is slow to start because the SSH server is trying to lookup the hostname of the SSH client and for whatever reason it’s timing out (e.g., it can’t reach a nameserver, because you happen to be offline)</p>
+<p>There are a couple of very simple ways to fix that:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add &quot;UseDNS no&quot; to /etc/ssh/sshd_config</span><br><span class="line">add the client&#x27;s net address to the server&#x27;s /etc/hosts</span><br></pre></td></tr></table></figure>
+
+<p>*** 改项可能会导致远程连接失败</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>命令行</tag>
+        <tag>ssh</tag>
       </tags>
   </entry>
   <entry>
@@ -1180,24 +1198,6 @@ public function info() &#123;
       </tags>
   </entry>
   <entry>
-    <title>SSH session slow to start? It&#39;s the DNS stupid~~</title>
-    <url>/2017/07/11/SSH-session-slow-to-start-It-s-the-DNS-stupid/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Ever tried logging into a machine with ssh and found you have to wait much longer than reasonable for the session to start? This happened to me a few times and was especially annoying with machines on my local network (or a VM attached to a virtual network) that should be letting me in immediately.</p>
-<p>I eventually got mad enough to strace the SSH daemon and debug what was going on and it turns out it’s a DNS thing. Basically the session is slow to start because the SSH server is trying to lookup the hostname of the SSH client and for whatever reason it’s timing out (e.g., it can’t reach a nameserver, because you happen to be offline)</p>
-<p>There are a couple of very simple ways to fix that:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add &quot;UseDNS no&quot; to /etc/ssh/sshd_config</span><br><span class="line">add the client&#x27;s net address to the server&#x27;s /etc/hosts</span><br></pre></td></tr></table></figure>
-
-<p>*** 改项可能会导致远程连接失败</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>命令行</tag>
-        <tag>ssh</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Save MySQL query results into a text or CSV file</title>
     <url>/2017/03/10/Save-MySQL-query-results-into-a-text-or-CSV-file/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>MySQL provides an easy mechanism for writing the results of a select statement into a text file on the server. Using extended options of the INTO OUTFILE nomenclature, it is possible to create a comma separated value (CSV) which can be imported into a spreadsheet application such as OpenOffice or Excel or any other applciation which accepts data in CSV format.</p>
@@ -1223,21 +1223,45 @@ public function info() &#123;
       </tags>
   </entry>
   <entry>
-    <title>WSL(Windows Subsystem for Linux)的安装与使用</title>
-    <url>/2018/02/28/WSL-Windows-Subsystem-for-Linux-%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="1-按照官网安装手册安装WSL-UBUNTU"><a href="#1-按照官网安装手册安装WSL-UBUNTU" class="headerlink" title="1 按照官网安装手册安装WSL UBUNTU"></a>1 按照官网安装手册安装WSL UBUNTU</h2><p>在windows10 上安装linux系统。具体参考官方文档。<br><a href="https://docs.microsoft.com/en-us/windows/wsl">https://docs.microsoft.com/en-us/windows/wsl</a></p>
-<h2 id="2-中文支持"><a href="#2-中文支持" class="headerlink" title="2 中文支持"></a>2 中文支持</h2><p>启动WSL安装中文包</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install language-pack-zh-hans</span><br><span class="line">update-locale LANG=zh_CN.UTF-8</span><br></pre></td></tr></table></figure>
-<p>重启</p>
-<h2 id="3-window10-命令行乱码"><a href="#3-window10-命令行乱码" class="headerlink" title="3 window10 命令行乱码"></a>3 window10 命令行乱码</h2><p>按下WIN+R快捷键，在运行的窗口中输入:control,打开控制面板；</p>
-<p>选择区域–&gt;管理–&gt;非Unicode程序的语言–&gt;更改系统区域设置：中文（简体,中国）</p>
-<p>重启电脑，dos中文操作显示，中文输入可以正常使用。</p>
+    <title>Shell 前后台进程切换</title>
+    <url>/2017/03/23/Shell-%E5%89%8D%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B%E5%88%87%E6%8D%A2/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Shell 前后台进程切换</p>
+<p>当你用 shell 启动一个程序时，往往他是在前台工作的。比如执行命令</p>
+<pre><code>redis-server</code></pre><p>启动 redis 后，shell 就不能再输入了。因为此时 redis 在前台。</p>
+<p>Shell 支持作用控制，有以下命令：</p>
+<ul>
+<li>command &amp; 让进程在后台运行</li>
+<li>jobs –l 查看后台运行的进程</li>
+<li>fg %n 让后台运行的进程 n 到前台来</li>
+<li>bg %n 让进程 n 到后台去;</li>
+</ul>
+<p><code>PS：n 为 jobs 查看到的进程编号。</code></p>
+<h3 id="1、执行命令-amp-切换至后台"><a href="#1、执行命令-amp-切换至后台" class="headerlink" title="1、执行命令 &amp; 切换至后台"></a>1、执行命令 &amp; 切换至后台</h3><p>在 Mac 终端运行命令的时候，在命令末尾加上 &amp; 符号，就可以让程序在后台运行</p>
+<h3 id="2、切换正在运行的程序到后台"><a href="#2、切换正在运行的程序到后台" class="headerlink" title="2、切换正在运行的程序到后台"></a>2、切换正在运行的程序到后台</h3><p>如果程序正在前台运行，可以使用 Ctrl+z 选项把程序暂停，然后用 bg %[number] 命令把这个程序放到后台运行，这个步骤分为3步，如下：</p>
+<h4 id="2-1-暂停程序运行Ctrl-z"><a href="#2-1-暂停程序运行Ctrl-z" class="headerlink" title="2.1 暂停程序运行Ctrl+z"></a>2.1 暂停程序运行Ctrl+z</h4><p>Ctrl+z 跟系统任务有关的，Ctrl+z 可以将一个正在前台执行的命令放到后台，并且暂停。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">➜ /Users/apple git:(master) ✗&gt; redis-server</span><br><span class="line"></span><br><span class="line">^Z</span><br><span class="line">[1]  + 18669 suspended  redis-server</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-查看暂停的程序"><a href="#2-2-查看暂停的程序" class="headerlink" title="2.2 查看暂停的程序"></a>2.2 查看暂停的程序</h4><p>察看 jobs 使用 jobs 或 ps 命令可以察看正在执行的 jobs</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">➜ /Users/apple git:(master) ✗&gt; jobs -l</span><br><span class="line">[1]  + running    redis-server</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>jobs 命令执行的结果，+ 表示是一个当前的作业，减号表示是当前作业之后的一个作业。</p>
+</li>
+<li><p>jobs -l 选项可显示所有任务的 PID，jobs 的状态可以是 running， stopped， Terminated</p>
+</li>
+</ul>
+<h4 id="2-3-切换程序至后台"><a href="#2-3-切换程序至后台" class="headerlink" title="2.3 切换程序至后台"></a>2.3 切换程序至后台</h4><p>bg 将一个在后台暂停的命令，变成继续执行如果后台中有多个命令，可以用 bg %jobnumber 将选中的命令调出.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">➜ /Users/apple git:(source) ✗&gt; bg</span><br><span class="line">[1]  + 18823 continued  redis-server</span><br><span class="line">➜ /Users/apple git:(source) ✗&gt; jobs -l</span><br><span class="line">[1]  + 18823 running    redis-server</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-4-切换程序至前台"><a href="#2-4-切换程序至前台" class="headerlink" title="2.4 切换程序至前台"></a>2.4 切换程序至前台</h4><p>也可以用 <code>fg %[number]</code> 指令把一个程序掉到前台运行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">➜ /Users/apple git:(source) ✗&gt; fg %1</span><br><span class="line">[1]  + 18823 running    redis-server</span><br></pre></td></tr></table></figure>
+<h4 id="2-5-终止后台程序"><a href="#2-5-终止后台程序" class="headerlink" title="2.5 终止后台程序"></a>2.5 终止后台程序</h4><p>也可以直接终止后台运行的程序，使用 kill 命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">➜ /Users/apple git:(source) ✗&gt; kill %1</span><br></pre></td></tr></table></figure>
+<p>但是如果任务被终止了 kill，shell 从当前的 shell 环境已知的列表中删除任务的进程标识;也就是说，jobs 命令显示的是当前 shell 环境中所起的后台正在运行或者被挂起的任务信息。</p>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>wsl</tag>
+        <tag>命令上</tag>
       </tags>
   </entry>
   <entry>
@@ -1277,6 +1301,24 @@ public function info() &#123;
       <tags>
         <tag>转码</tag>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WSL(Windows Subsystem for Linux)的安装与使用</title>
+    <url>/2018/02/28/WSL-Windows-Subsystem-for-Linux-%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="1-按照官网安装手册安装WSL-UBUNTU"><a href="#1-按照官网安装手册安装WSL-UBUNTU" class="headerlink" title="1 按照官网安装手册安装WSL UBUNTU"></a>1 按照官网安装手册安装WSL UBUNTU</h2><p>在windows10 上安装linux系统。具体参考官方文档。<br><a href="https://docs.microsoft.com/en-us/windows/wsl">https://docs.microsoft.com/en-us/windows/wsl</a></p>
+<h2 id="2-中文支持"><a href="#2-中文支持" class="headerlink" title="2 中文支持"></a>2 中文支持</h2><p>启动WSL安装中文包</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install language-pack-zh-hans</span><br><span class="line">update-locale LANG=zh_CN.UTF-8</span><br></pre></td></tr></table></figure>
+<p>重启</p>
+<h2 id="3-window10-命令行乱码"><a href="#3-window10-命令行乱码" class="headerlink" title="3 window10 命令行乱码"></a>3 window10 命令行乱码</h2><p>按下WIN+R快捷键，在运行的窗口中输入:control,打开控制面板；</p>
+<p>选择区域–&gt;管理–&gt;非Unicode程序的语言–&gt;更改系统区域设置：中文（简体,中国）</p>
+<p>重启电脑，dos中文操作显示，中文输入可以正常使用。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>wsl</tag>
       </tags>
   </entry>
   <entry>
@@ -1342,21 +1384,6 @@ public function info() &#123;
       </tags>
   </entry>
   <entry>
-    <title>An error occurred trying to connect: Get https://192.168.xx.xx:2376/v1.18/containers/json: remote error: bad certificate</title>
-    <url>/2015/08/06/an-error-occurred-trying-to-connect-get-https192-168-xx-xx2376v1-18containersjson-remote-error-bad-certificate/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>An error occurred trying to connect: Get <a href="https://192.168.xx.xx:2376/v1.18/containers/json">https://192.168.xx.xx:2376/v1.18/containers/json</a>: remote error: bad certificate</p>
-<pre><code>boot2docker poweroff 
-boot2docker destroy
-boot2docker init 
-boot2docker start</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>awk列出文件夹所有文件导入到md文件</title>
     <url>/2016/12/12/awk%E5%88%97%E5%87%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E5%88%B0md%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>通过命令列出文件夹并输出到指定文件</p>
@@ -1387,6 +1414,38 @@ boot2docker start</code></pre>]]></content>
       <tags>
         <tag>命令行</tag>
         <tag>awk</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>/bin/wipefs挖矿程序排查</title>
+    <url>/2018/01/03/bin-wipefs%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%8E%92%E6%9F%A5/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="基本情况"><a href="#基本情况" class="headerlink" title="基本情况"></a>基本情况</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@test ~]# cat /etc/redhat-release</span><br><span class="line">CentOS release 6.5 (Final)</span><br><span class="line">[root@test ~]# uname -a</span><br><span class="line">Linux test 2.6.32-431.el6.x86_64 #1 SMP Fri Nov 22 03:15:09 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux</span><br><span class="line">[root@test ~]# file /bin/wipefs</span><br><span class="line">/bin/wipefs: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, stripped</span><br><span class="line">[root@test ~]# ll /bin/wipefs</span><br><span class="line">-rwxr-xr-x 1 root root 2384177 Jul 18 2013 /bin/wipefs</span><br><span class="line">[root@monitor ~]# lsattr /bin/wipefs</span><br><span class="line">----i--------e- /bin/wipefs</span><br><span class="line">[root@monitor ~]# lsattr /bin/ddus-uidgen</span><br><span class="line">----i--------e- /bin/ddus-uidgen</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="改动了dns配置"><a href="#改动了dns配置" class="headerlink" title="改动了dns配置"></a>改动了dns配置</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@test rc3.d]# stat /etc/resolv.conf</span><br><span class="line">File: `/etc/resolv.conf&#x27;</span><br><span class="line">Size: 106 Blocks: 8 IO Block: 4096 regular file</span><br><span class="line">Device: 802h/2050d Inode: 1182160 Links: 1</span><br><span class="line">Access: (0644/-rw-r--r--) Uid: ( 0/ root) Gid: ( 0/ root)</span><br><span class="line">Access: 2017-11-22 06:00:02.797144215 +0800</span><br><span class="line">Modify: 2017-11-22 06:00:02.795144215 +0800</span><br><span class="line">Change: 2017-11-22 06:00:02.795144215 +0800</span><br><span class="line">[root@test rc3.d]# cat /etc/resolv.conf</span><br><span class="line">nameserver 208.67.222.222	#加拿大DNS</span><br><span class="line">nameserver 114.114.114.114</span><br><span class="line">nameserver 208.67.222.222</span><br><span class="line">nameserver 114.114.114.114</span><br></pre></td></tr></table></figure>
+<h3 id="增加了开机启动"><a href="#增加了开机启动" class="headerlink" title="增加了开机启动"></a>增加了开机启动</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@test cron]# ll /etc/init.d/wipefs</span><br><span class="line">lrwxrwxrwx 1 root root 11 Nov 22 06:00 /etc/init.d/wipefs -&gt; /bin/wipefs</span><br><span class="line">[root@test rc3.d]# pwd</span><br><span class="line">/etc/rc.d/rc3.d</span><br><span class="line">[root@test rc3.d]# ll -h |grep wipefs</span><br><span class="line">lrwxrwxrwx 1 root root 18 Nov 22 06:00 S01wipefs -&gt; /etc/init.d/wipefs</span><br><span class="line">[root@test rc3.d]# cd /etc/rc3.d/</span><br><span class="line">[root@test rc3.d]# ll -h |grep wipefs</span><br><span class="line">lrwxrwxrwx 1 root root 18 Nov 22 06:00 S01wipefs -&gt; /etc/init.d/wipefs</span><br><span class="line">[root@test init.d]# pwd</span><br><span class="line">/etc/init.d</span><br><span class="line">[root@test init.d]# ll acpidtd</span><br><span class="line">-rwxr-xr-x 1 root root 1223753 Nov 20 16:03 acpidtd</span><br><span class="line">[root@test rc3.d]# ll -h |grep acpidtd</span><br><span class="line">lrwxrwxrwx 1 root root 19 Nov 20 16:03 S01acpidtd -&gt; /etc/init.d/acpidtd</span><br><span class="line">[root@test rc3.d]# pwd</span><br><span class="line">/etc/rc3.d</span><br><span class="line">[root@test rc3.d]# cd /etc/rc.d/rc3.d/</span><br><span class="line">[root@test rc3.d]# ll -h |grep acpidtd</span><br><span class="line">lrwxrwxrwx 1 root root 19 Nov 20 16:03 S01acpidtd -&gt; /etc/init.d/acpidtd</span><br><span class="line">[root@test rc3.d]# ll /bin/ddus-uidgen</span><br><span class="line">-rwxr-xr-x 1 root root 1223753 Nov 20 16:03 /bin/ddus-uidgen</span><br><span class="line">[root@test rc3.d]# ll /etc/resolv.conf</span><br><span class="line">-rw-r--r-- 1 root root 106 Nov 22 06:00 /etc/resolv.conf</span><br></pre></td></tr></table></figure>
+<h3 id="清理"><a href="#清理" class="headerlink" title="清理"></a>清理</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pkill wipefs</span><br><span class="line">echo &quot;nameserver 114.114.114.114&quot; &gt; /etc/resolv.conf</span><br><span class="line">chattr -i /bin/wipefs</span><br><span class="line">chattr -i /bin/ddus-uidgen</span><br><span class="line">chattr -i /etc/init.d/acpidtd</span><br><span class="line">rm -rf /bin/wipefs</span><br><span class="line">rm -rf /etc/init.d/wipefs</span><br><span class="line">rm -rf /bin/ddus-uidgen</span><br><span class="line">rm -rf /etc/init.d/acpidtd</span><br><span class="line">rm -rf /etc/rc0.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc1.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc2.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc3.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc4.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc5.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc6.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc0.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc1.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc2.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc3.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc4.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc5.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc6.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc0.d/acpidtd</span><br><span class="line">rm -rf /etc/rc1.d/acpidtd</span><br><span class="line">rm -rf /etc/rc2.d/acpidtd</span><br><span class="line">rm -rf /etc/rc3.d/acpidtd</span><br><span class="line">rm -rf /etc/rc4.d/acpidtd</span><br><span class="line">rm -rf /etc/rc5.d/acpidtd</span><br><span class="line">rm -rf /etc/rc6.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc0.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc1.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc2.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc3.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc4.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc5.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc6.d/acpidtd</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>木马</tag>
+        <tag>挖矿</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>An error occurred trying to connect: Get https://192.168.xx.xx:2376/v1.18/containers/json: remote error: bad certificate</title>
+    <url>/2015/08/06/an-error-occurred-trying-to-connect-get-https192-168-xx-xx2376v1-18containersjson-remote-error-bad-certificate/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>An error occurred trying to connect: Get <a href="https://192.168.xx.xx:2376/v1.18/containers/json">https://192.168.xx.xx:2376/v1.18/containers/json</a>: remote error: bad certificate</p>
+<pre><code>boot2docker poweroff 
+boot2docker destroy
+boot2docker init 
+boot2docker start</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -1432,65 +1491,6 @@ mv CentOS-Base.repo CentOS-Base.repo.bak</code></pre></li>
       <tags>
         <tag>centos</tag>
         <tag>源</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Shell 前后台进程切换</title>
-    <url>/2017/03/23/Shell-%E5%89%8D%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B%E5%88%87%E6%8D%A2/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Shell 前后台进程切换</p>
-<p>当你用 shell 启动一个程序时，往往他是在前台工作的。比如执行命令</p>
-<pre><code>redis-server</code></pre><p>启动 redis 后，shell 就不能再输入了。因为此时 redis 在前台。</p>
-<p>Shell 支持作用控制，有以下命令：</p>
-<ul>
-<li>command &amp; 让进程在后台运行</li>
-<li>jobs –l 查看后台运行的进程</li>
-<li>fg %n 让后台运行的进程 n 到前台来</li>
-<li>bg %n 让进程 n 到后台去;</li>
-</ul>
-<p><code>PS：n 为 jobs 查看到的进程编号。</code></p>
-<h3 id="1、执行命令-amp-切换至后台"><a href="#1、执行命令-amp-切换至后台" class="headerlink" title="1、执行命令 &amp; 切换至后台"></a>1、执行命令 &amp; 切换至后台</h3><p>在 Mac 终端运行命令的时候，在命令末尾加上 &amp; 符号，就可以让程序在后台运行</p>
-<h3 id="2、切换正在运行的程序到后台"><a href="#2、切换正在运行的程序到后台" class="headerlink" title="2、切换正在运行的程序到后台"></a>2、切换正在运行的程序到后台</h3><p>如果程序正在前台运行，可以使用 Ctrl+z 选项把程序暂停，然后用 bg %[number] 命令把这个程序放到后台运行，这个步骤分为3步，如下：</p>
-<h4 id="2-1-暂停程序运行Ctrl-z"><a href="#2-1-暂停程序运行Ctrl-z" class="headerlink" title="2.1 暂停程序运行Ctrl+z"></a>2.1 暂停程序运行Ctrl+z</h4><p>Ctrl+z 跟系统任务有关的，Ctrl+z 可以将一个正在前台执行的命令放到后台，并且暂停。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">➜ /Users/apple git:(master) ✗&gt; redis-server</span><br><span class="line"></span><br><span class="line">^Z</span><br><span class="line">[1]  + 18669 suspended  redis-server</span><br></pre></td></tr></table></figure>
-<h4 id="2-2-查看暂停的程序"><a href="#2-2-查看暂停的程序" class="headerlink" title="2.2 查看暂停的程序"></a>2.2 查看暂停的程序</h4><p>察看 jobs 使用 jobs 或 ps 命令可以察看正在执行的 jobs</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">➜ /Users/apple git:(master) ✗&gt; jobs -l</span><br><span class="line">[1]  + running    redis-server</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>jobs 命令执行的结果，+ 表示是一个当前的作业，减号表示是当前作业之后的一个作业。</p>
-</li>
-<li><p>jobs -l 选项可显示所有任务的 PID，jobs 的状态可以是 running， stopped， Terminated</p>
-</li>
-</ul>
-<h4 id="2-3-切换程序至后台"><a href="#2-3-切换程序至后台" class="headerlink" title="2.3 切换程序至后台"></a>2.3 切换程序至后台</h4><p>bg 将一个在后台暂停的命令，变成继续执行如果后台中有多个命令，可以用 bg %jobnumber 将选中的命令调出.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">➜ /Users/apple git:(source) ✗&gt; bg</span><br><span class="line">[1]  + 18823 continued  redis-server</span><br><span class="line">➜ /Users/apple git:(source) ✗&gt; jobs -l</span><br><span class="line">[1]  + 18823 running    redis-server</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-4-切换程序至前台"><a href="#2-4-切换程序至前台" class="headerlink" title="2.4 切换程序至前台"></a>2.4 切换程序至前台</h4><p>也可以用 <code>fg %[number]</code> 指令把一个程序掉到前台运行</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">➜ /Users/apple git:(source) ✗&gt; fg %1</span><br><span class="line">[1]  + 18823 running    redis-server</span><br></pre></td></tr></table></figure>
-<h4 id="2-5-终止后台程序"><a href="#2-5-终止后台程序" class="headerlink" title="2.5 终止后台程序"></a>2.5 终止后台程序</h4><p>也可以直接终止后台运行的程序，使用 kill 命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">➜ /Users/apple git:(source) ✗&gt; kill %1</span><br></pre></td></tr></table></figure>
-<p>但是如果任务被终止了 kill，shell 从当前的 shell 环境已知的列表中删除任务的进程标识;也就是说，jobs 命令显示的是当前 shell 环境中所起的后台正在运行或者被挂起的任务信息。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>命令上</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>/bin/wipefs挖矿程序排查</title>
-    <url>/2018/01/03/bin-wipefs%E6%8C%96%E7%9F%BF%E7%A8%8B%E5%BA%8F%E6%8E%92%E6%9F%A5/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="基本情况"><a href="#基本情况" class="headerlink" title="基本情况"></a>基本情况</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@test ~]# cat /etc/redhat-release</span><br><span class="line">CentOS release 6.5 (Final)</span><br><span class="line">[root@test ~]# uname -a</span><br><span class="line">Linux test 2.6.32-431.el6.x86_64 #1 SMP Fri Nov 22 03:15:09 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux</span><br><span class="line">[root@test ~]# file /bin/wipefs</span><br><span class="line">/bin/wipefs: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, stripped</span><br><span class="line">[root@test ~]# ll /bin/wipefs</span><br><span class="line">-rwxr-xr-x 1 root root 2384177 Jul 18 2013 /bin/wipefs</span><br><span class="line">[root@monitor ~]# lsattr /bin/wipefs</span><br><span class="line">----i--------e- /bin/wipefs</span><br><span class="line">[root@monitor ~]# lsattr /bin/ddus-uidgen</span><br><span class="line">----i--------e- /bin/ddus-uidgen</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="改动了dns配置"><a href="#改动了dns配置" class="headerlink" title="改动了dns配置"></a>改动了dns配置</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@test rc3.d]# stat /etc/resolv.conf</span><br><span class="line">File: `/etc/resolv.conf&#x27;</span><br><span class="line">Size: 106 Blocks: 8 IO Block: 4096 regular file</span><br><span class="line">Device: 802h/2050d Inode: 1182160 Links: 1</span><br><span class="line">Access: (0644/-rw-r--r--) Uid: ( 0/ root) Gid: ( 0/ root)</span><br><span class="line">Access: 2017-11-22 06:00:02.797144215 +0800</span><br><span class="line">Modify: 2017-11-22 06:00:02.795144215 +0800</span><br><span class="line">Change: 2017-11-22 06:00:02.795144215 +0800</span><br><span class="line">[root@test rc3.d]# cat /etc/resolv.conf</span><br><span class="line">nameserver 208.67.222.222	#加拿大DNS</span><br><span class="line">nameserver 114.114.114.114</span><br><span class="line">nameserver 208.67.222.222</span><br><span class="line">nameserver 114.114.114.114</span><br></pre></td></tr></table></figure>
-<h3 id="增加了开机启动"><a href="#增加了开机启动" class="headerlink" title="增加了开机启动"></a>增加了开机启动</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@test cron]# ll /etc/init.d/wipefs</span><br><span class="line">lrwxrwxrwx 1 root root 11 Nov 22 06:00 /etc/init.d/wipefs -&gt; /bin/wipefs</span><br><span class="line">[root@test rc3.d]# pwd</span><br><span class="line">/etc/rc.d/rc3.d</span><br><span class="line">[root@test rc3.d]# ll -h |grep wipefs</span><br><span class="line">lrwxrwxrwx 1 root root 18 Nov 22 06:00 S01wipefs -&gt; /etc/init.d/wipefs</span><br><span class="line">[root@test rc3.d]# cd /etc/rc3.d/</span><br><span class="line">[root@test rc3.d]# ll -h |grep wipefs</span><br><span class="line">lrwxrwxrwx 1 root root 18 Nov 22 06:00 S01wipefs -&gt; /etc/init.d/wipefs</span><br><span class="line">[root@test init.d]# pwd</span><br><span class="line">/etc/init.d</span><br><span class="line">[root@test init.d]# ll acpidtd</span><br><span class="line">-rwxr-xr-x 1 root root 1223753 Nov 20 16:03 acpidtd</span><br><span class="line">[root@test rc3.d]# ll -h |grep acpidtd</span><br><span class="line">lrwxrwxrwx 1 root root 19 Nov 20 16:03 S01acpidtd -&gt; /etc/init.d/acpidtd</span><br><span class="line">[root@test rc3.d]# pwd</span><br><span class="line">/etc/rc3.d</span><br><span class="line">[root@test rc3.d]# cd /etc/rc.d/rc3.d/</span><br><span class="line">[root@test rc3.d]# ll -h |grep acpidtd</span><br><span class="line">lrwxrwxrwx 1 root root 19 Nov 20 16:03 S01acpidtd -&gt; /etc/init.d/acpidtd</span><br><span class="line">[root@test rc3.d]# ll /bin/ddus-uidgen</span><br><span class="line">-rwxr-xr-x 1 root root 1223753 Nov 20 16:03 /bin/ddus-uidgen</span><br><span class="line">[root@test rc3.d]# ll /etc/resolv.conf</span><br><span class="line">-rw-r--r-- 1 root root 106 Nov 22 06:00 /etc/resolv.conf</span><br></pre></td></tr></table></figure>
-<h3 id="清理"><a href="#清理" class="headerlink" title="清理"></a>清理</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pkill wipefs</span><br><span class="line">echo &quot;nameserver 114.114.114.114&quot; &gt; /etc/resolv.conf</span><br><span class="line">chattr -i /bin/wipefs</span><br><span class="line">chattr -i /bin/ddus-uidgen</span><br><span class="line">chattr -i /etc/init.d/acpidtd</span><br><span class="line">rm -rf /bin/wipefs</span><br><span class="line">rm -rf /etc/init.d/wipefs</span><br><span class="line">rm -rf /bin/ddus-uidgen</span><br><span class="line">rm -rf /etc/init.d/acpidtd</span><br><span class="line">rm -rf /etc/rc0.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc1.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc2.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc3.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc4.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc5.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc6.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc0.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc1.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc2.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc3.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc4.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc5.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc.d/rc6.d/S01wipefs</span><br><span class="line">rm -rf /etc/rc0.d/acpidtd</span><br><span class="line">rm -rf /etc/rc1.d/acpidtd</span><br><span class="line">rm -rf /etc/rc2.d/acpidtd</span><br><span class="line">rm -rf /etc/rc3.d/acpidtd</span><br><span class="line">rm -rf /etc/rc4.d/acpidtd</span><br><span class="line">rm -rf /etc/rc5.d/acpidtd</span><br><span class="line">rm -rf /etc/rc6.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc0.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc1.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc2.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc3.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc4.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc5.d/acpidtd</span><br><span class="line">rm -rf /etc/rc.d/rc6.d/acpidtd</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>木马</tag>
-        <tag>挖矿</tag>
       </tags>
   </entry>
   <entry>
@@ -1828,6 +1828,35 @@ $docker build -t image_name Dockerfile_path</code></pre>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>使用npm安装一些包失败了的看过来（npm国内镜像介绍）</title>
+    <url>/2015/07/16/e4-bd-bf-e7-94-a8npm-e5-ae-89-e8-a3-85-e4-b8-80-e4-ba-9b-e5-8c-85-e5-a4-b1-e8-b4-a5-e4-ba-86-e7-9a-84-e7-9c-8b-e8-bf-87-e6-9d-a5-ef-bc-88npm-e5-9b-bd-e5-86-85-e9-95-9c-e5-83-8f-e4-bb-8b-e7-bb-8d/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>这个也是网上搜的，亲自试过，非常好用！</p>
+<p>镜像使用方法（三种办法任意一种都能解决问题，建议使用第三种，将配置写死，下次用的时候配置还在）:</p>
+<p>1.通过config命令</p>
+<pre><code>npm config set registry https://registry.npm.taobao.org 
+npm info underscore （如果上面配置正确这个命令会有字符串response）
+
+
+2.命令行指定
+
+npm --registry https://registry.npm.taobao.org info underscore 
+
+
+3.编辑 ~/.npmrc 加入下面内容
+
+registry = https://registry.npm.taobao.org</code></pre><p>搜索镜像: <a href="https://npm.taobao.org">https://npm.taobao.org</a></p>
+<p>建立或使用镜像,参考: <a href="https://github.com/cnpm/cnpmjs.org">https://github.com/cnpm/cnpmjs.org</a></p>
+<h2 id="国内镜像"><a href="#国内镜像" class="headerlink" title="国内镜像"></a>国内镜像</h2><p><code>http://cnpmjs.org/</code></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>npm</tag>
+        <tag>安装包</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>产品经理入门书籍－    苏杰（淘宝）</title>
     <url>/2015/10/17/e4-ba-a7-e5-93-81-e7-bb-8f-e7-90-86-e5-85-a5-e9-97-a8-e4-b9-a6-e7-b1-8d/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="1、人人都是产品经理"><a href="#1、人人都是产品经理" class="headerlink" title="1、人人都是产品经理"></a>1、人人都是产品经理</h3><ul>
@@ -1978,35 +2007,6 @@ $docker build -t image_name Dockerfile_path</code></pre>]]></content>
       <tags>
         <tag>产品经理</tag>
         <tag>数据</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用npm安装一些包失败了的看过来（npm国内镜像介绍）</title>
-    <url>/2015/07/16/e4-bd-bf-e7-94-a8npm-e5-ae-89-e8-a3-85-e4-b8-80-e4-ba-9b-e5-8c-85-e5-a4-b1-e8-b4-a5-e4-ba-86-e7-9a-84-e7-9c-8b-e8-bf-87-e6-9d-a5-ef-bc-88npm-e5-9b-bd-e5-86-85-e9-95-9c-e5-83-8f-e4-bb-8b-e7-bb-8d/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>这个也是网上搜的，亲自试过，非常好用！</p>
-<p>镜像使用方法（三种办法任意一种都能解决问题，建议使用第三种，将配置写死，下次用的时候配置还在）:</p>
-<p>1.通过config命令</p>
-<pre><code>npm config set registry https://registry.npm.taobao.org 
-npm info underscore （如果上面配置正确这个命令会有字符串response）
-
-
-2.命令行指定
-
-npm --registry https://registry.npm.taobao.org info underscore 
-
-
-3.编辑 ~/.npmrc 加入下面内容
-
-registry = https://registry.npm.taobao.org</code></pre><p>搜索镜像: <a href="https://npm.taobao.org">https://npm.taobao.org</a></p>
-<p>建立或使用镜像,参考: <a href="https://github.com/cnpm/cnpmjs.org">https://github.com/cnpm/cnpmjs.org</a></p>
-<h2 id="国内镜像"><a href="#国内镜像" class="headerlink" title="国内镜像"></a>国内镜像</h2><p><code>http://cnpmjs.org/</code></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>npm</tag>
-        <tag>安装包</tag>
       </tags>
   </entry>
   <entry>
@@ -2606,40 +2606,6 @@ if(r==null)alert(&apos;Date format error!&apos;);
       </tags>
   </entry>
   <entry>
-    <title>解决LNMP下提示fileinfo插件没安装（PHP安装fileinfo扩展教程）</title>
-    <url>/2014/11/15/e8-a7-a3-e5-86-b3lnmp-e4-b8-8b-e6-8f-90-e7-a4-bafileinfo-e6-8f-92-e4-bb-b6-e6-b2-a1-e5-ae-89-e8-a3-85-ef-bc-88php-e5-ae-89-e8-a3-85fileinfo-e6-89-a9-e5-b1-95-e6-95-99-e7-a8-8b-ef-bc-89/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>编译并安装fileinfo插件</p>
-<pre><code>cd /root/lnmp1.0-full/php-5.3.17/ext/fileinfo
-/usr/local/php/bin/phpize
-./configure --with-php-config=/usr/local/php/bin/php-config
-make &amp;amp;&amp;amp; make install
-
-
-在PHP配置中添加fileinfo插件
-用vim编辑php.ini
-
-vim /usr/local/php/etc/php.ini
-
-
-找到 &quot;;extension=php_bz2.dll&quot; 这一行
-在其上面添加一行：
-
-extension = fileinfo.so
-
-
-然后重启lnmp
-
-/root/lnmp restart</code></pre><p>结束！</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>lnmp</tag>
-        <tag>编译</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>破解步频和步幅统一的难题！（转）</title>
     <url>/2015/09/29/e7-a0-b4-e8-a7-a3-e6-ad-a5-e9-a2-91-e5-92-8c-e6-ad-a5-e5-b9-85-e7-bb-9f-e4-b8-80-e7-9a-84-e9-9a-be-e9-a2-98-ef-bc-81-ef-bc-88-e8-bd-ac-ef-bc-89/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p><code>速度 = 步频 × 步幅</code>，一条极为简单而又冰冷的公式。</p>
@@ -2700,6 +2666,55 @@ extension = fileinfo.so
       </tags>
   </entry>
   <entry>
+    <title>解决LNMP下提示fileinfo插件没安装（PHP安装fileinfo扩展教程）</title>
+    <url>/2014/11/15/e8-a7-a3-e5-86-b3lnmp-e4-b8-8b-e6-8f-90-e7-a4-bafileinfo-e6-8f-92-e4-bb-b6-e6-b2-a1-e5-ae-89-e8-a3-85-ef-bc-88php-e5-ae-89-e8-a3-85fileinfo-e6-89-a9-e5-b1-95-e6-95-99-e7-a8-8b-ef-bc-89/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>编译并安装fileinfo插件</p>
+<pre><code>cd /root/lnmp1.0-full/php-5.3.17/ext/fileinfo
+/usr/local/php/bin/phpize
+./configure --with-php-config=/usr/local/php/bin/php-config
+make &amp;amp;&amp;amp; make install
+
+
+在PHP配置中添加fileinfo插件
+用vim编辑php.ini
+
+vim /usr/local/php/etc/php.ini
+
+
+找到 &quot;;extension=php_bz2.dll&quot; 这一行
+在其上面添加一行：
+
+extension = fileinfo.so
+
+
+然后重启lnmp
+
+/root/lnmp restart</code></pre><p>结束！</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>lnmp</tag>
+        <tag>编译</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>跑步前后拉伸，记住几张图片</title>
+    <url>/2015/09/12/e8-b7-91-e6-ad-a5-e5-89-8d-e5-90-8e-e6-8b-89-e4-bc-b8-ef-bc-8c-e8-ae-b0-e4-bd-8f-e5-87-a0-e5-bc-a0-e5-9b-be-e7-89-87/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p><img src="http://res.heynet.com.cn/web/6EPRT1IJ0HRV0092.jpg" alt="enter image description here"></p>
+<p><img src="http://res.heynet.com.cn/web/6EPRT2PA0HRV0092.jpg" alt="enter image description here"></p>
+<p><img src="http://res.heynet.com.cn/web/6EPRT2650HRV0092.jpg" alt="enter image description here"></p>
+]]></content>
+      <categories>
+        <category>运动</category>
+      </categories>
+      <tags>
+        <tag>跑步</tag>
+        <tag>拉伸</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>让wordpress主题绕开对google的依赖</title>
     <url>/2014/08/21/e8-ae-a9wordpress-e4-b8-bb-e9-a2-98-e7-bb-95-e5-bc-80-e5-af-b9google-e7-9a-84-e4-be-9d-e8-b5-96/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>终于有个借着写技术博客顺便吐槽GFW的机会了。每当网速很快，却偏偏不能谷歌搜索，好不容易搜到个跟问题十分匹配的网站，结果点进去菊花转了几百圈页面还是加载不出来，这显然是件让人很蛋疼的事情。虽然我学会了安装和配置翻墙神器goagent，但我仍然为很多很多很多不会翻墙和不愿意或者没钱买vpn的人叫一下委屈，其实会弄goagent这种的除了少数的一些个搞技术的一般人也弄不来。还有，即使是弄goagent，一，它也是很费时的，配置麻烦，偶尔还要更新程序，二，最近装新系统，准备下载goagent和浏览器代理插件的时候发现，goagent的程序托管在google仓库，proxyswitch要去google应用商店下，但问题是尼玛要访问google的东西你得先翻墙啊<del>为了能翻墙得先翻墙才行，悖论啊</del> 呃。。好了，吐槽结束。该说正事儿了。对了，不知道GFW的去谷歌吧，哦不对，还是去百度吧，谷歌怕你上不去呢。 事情是这样的，基于wordpress的网站里面的主题会用到google的资源，比如我的<a href="http://sudodev.cn/">blog站</a>用的twentytwelve主题就引用了谷歌的字体，里面就有个这样的链接:<a href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&subset=latin,latin-ext">http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&amp;subset=latin,latin-ext</a> 由于身在天朝的原因，你在访问我的blog的时候就会由于浏览器请求不到这个资源而一直在转菊花（loading加载），运气好只能显示部分图片信息，字看不见，而且是永远看不见那种，除非你像我一样翻墙了。好，既然是这样，那我们把它要请求的东西都下载到服务器上，把链接换成内部链接就好了。here we go:</p>
@@ -2744,21 +2759,6 @@ extension = fileinfo.so
       <tags>
         <tag>wordpress</tag>
         <tag>Google依赖</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>跑步前后拉伸，记住几张图片</title>
-    <url>/2015/09/12/e8-b7-91-e6-ad-a5-e5-89-8d-e5-90-8e-e6-8b-89-e4-bc-b8-ef-bc-8c-e8-ae-b0-e4-bd-8f-e5-87-a0-e5-bc-a0-e5-9b-be-e7-89-87/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p><img src="http://res.heynet.com.cn/web/6EPRT1IJ0HRV0092.jpg" alt="enter image description here"></p>
-<p><img src="http://res.heynet.com.cn/web/6EPRT2PA0HRV0092.jpg" alt="enter image description here"></p>
-<p><img src="http://res.heynet.com.cn/web/6EPRT2650HRV0092.jpg" alt="enter image description here"></p>
-]]></content>
-      <categories>
-        <category>运动</category>
-      </categories>
-      <tags>
-        <tag>跑步</tag>
-        <tag>拉伸</tag>
       </tags>
   </entry>
   <entry>
@@ -3262,6 +3262,73 @@ ngx.say(content)
       </categories>
   </entry>
   <entry>
+    <title>git 如何强制覆盖本地文件</title>
+    <url>/2022/04/14/git-%E5%A6%82%E4%BD%95%E5%BC%BA%E5%88%B6%E8%A6%86%E7%9B%96%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>在开发中使用Git的过程中，有时候会有一种需求，要从服务器拉取最新的状态，而本地进行了无关紧要的修改，这时候如果使用git pull命令，会提示本地有未缓存的修改。这时候就需要强制覆盖本地的改变。</p>
+<h3 id="一、最佳解决方案"><a href="#一、最佳解决方案" class="headerlink" title="一、最佳解决方案"></a>一、最佳解决方案</h3><p>重要提示：如果您有任何本地更改，将会丢失。无论是否有<code>--hard</code>选项，任何未被推送的本地提交都将丢失。<br>如果您有任何未被Git跟踪的文件(例如上传的用户内容)，这些文件将不会受到影响。<br>下面是正确的方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch --all</span><br></pre></td></tr></table></figure>
+<p>然后，你有两个选择：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git reset --hard origin/master</span><br></pre></td></tr></table></figure>
+<p>或者如果你在其他分支上：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git reset --hard origin/&lt;branch_name&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：</p>
+</blockquote>
+<ul>
+<li><p>git fetch从远程下载最新的，而不尝试合并或rebase任何东西。</p>
+</li>
+<li><p>然后git reset将主分支重置为您刚刚获取的内容。 –hard选项更改工作树中的所有文件以匹配origin/master中的文件</p>
+</li>
+</ul>
+<p>在重置之前可以通过从master创建一个分支来维护当前的本地提交：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git branch new-branch-to-save-current-commits</span><br><span class="line">git fetch --all</span><br><span class="line">git reset --hard origin/master</span><br></pre></td></tr></table></figure>
+<p>在此之后，所有旧的提交都将保存在new-branch-to-save-current-commits中。然而，没有提交的更改(即使staged)将会丢失。确保存储和提交任何你需要的东西。</p>
+<h3 id="二、次佳解决方案"><a href="#二、次佳解决方案" class="headerlink" title="二、次佳解决方案"></a>二、次佳解决方案</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git reset --hard HEAD</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<h3 id="三、第三种解决方法"><a href="#三、第三种解决方法" class="headerlink" title="三、第三种解决方法"></a>三、第三种解决方法</h3><blockquote>
+<p>警告：git clean删除所有未跟踪的文件/目录，不能撤消。</p>
+</blockquote>
+<blockquote>
+<p>有的时候只有clean -f无效。如果你没有跟踪DIRECTORIES，-d选项也需要：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git reset --hard HEAD</span><br><span class="line">git clean -f -d</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<h3 id="四、第四种方法"><a href="#四、第四种方法" class="headerlink" title="四、第四种方法"></a>四、第四种方法</h3><p>可行的方式是通过使用fetch和merge定义的策略。这应该能使你的本地修改保留下来，只要它们不是你试图强制覆盖的文件之一。</p>
+<p>首先做一个你的改变</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add *</span><br><span class="line">git commit -a -m &quot;local file server commit message&quot;</span><br></pre></td></tr></table></figure>
+<p>然后获取更改并覆盖，如果有冲突</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch origin master</span><br><span class="line">git merge -s recursive -X theirs origin/master</span><br></pre></td></tr></table></figure>
+<p><code>-X</code>是选项名称，”theirs”是该选项的值。如果存在冲突，则选择使用”their”更改，而不是”your”更改。</p>
+<h3 id="五、第五种方法"><a href="#五、第五种方法" class="headerlink" title="五、第五种方法"></a>五、第五种方法</h3><p>这是另外的思路，不建议上文的做法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch --all</span><br><span class="line">git reset --hard origin/master</span><br></pre></td></tr></table></figure>
+<p>而是建议这样做：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch origin master</span><br><span class="line">git reset --hard origin/master</span><br></pre></td></tr></table></figure>
+<p>如果你打算重新设置原点/主分支，没有必要获取所有的遥控器和分支</p>
+<h3 id="六、第六种方法"><a href="#六、第六种方法" class="headerlink" title="六、第六种方法"></a>六、第六种方法</h3><p>看起来最好的办法是先做：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clean</span><br></pre></td></tr></table></figure>
+<p>删除所有未跟踪的文件，然后继续使用通常的git ```<br>pull …</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">### 七、第七种方法</span><br><span class="line">所有这些解决方案的问题是，它们都是太复杂，或者更大的问题是，他们从Web服务器中删除所有未跟踪的文件，这是我们不想要的，因为总是有需要的配置文件服务器，而不是在Git仓库。</span><br><span class="line"></span><br><span class="line">这是我们正在使用的最干净的解决方案：</span><br></pre></td></tr></table></figure>
+<h1 id="Fetch-the-newest-code"><a href="#Fetch-the-newest-code" class="headerlink" title="Fetch the newest code"></a>Fetch the newest code</h1><p>git fetch</p>
+<h1 id="Delete-all-files-which-are-being-added-so-there"><a href="#Delete-all-files-which-are-being-added-so-there" class="headerlink" title="Delete all files which are being added, so there"></a>Delete all files which are being added, so there</h1><h1 id="are-no-conflicts-with-untracked-files"><a href="#are-no-conflicts-with-untracked-files" class="headerlink" title="are no conflicts with untracked files"></a>are no conflicts with untracked files</h1><p>for file in <code>git diff HEAD..origin/master --name-status | awk &#39;/^A/ &#123;print $2&#125;&#39;</code><br>do<br>    rm -f – “$file”<br>done</p>
+<h1 id="Checkout-all-files-which-were-locally-modified"><a href="#Checkout-all-files-which-were-locally-modified" class="headerlink" title="Checkout all files which were locally modified"></a>Checkout all files which were locally modified</h1><p>for file in <code>git diff --name-status | awk &#39;/^[CDMRTUX]/ &#123;print $2&#125;&#39;</code><br>do<br>    git checkout – “$file”<br>done</p>
+<h1 id="Finally-pull-all-the-changes"><a href="#Finally-pull-all-the-changes" class="headerlink" title="Finally pull all the changes"></a>Finally pull all the changes</h1><h1 id="you-could-merge-as-well-e-g-‘merge-origin-master’"><a href="#you-could-merge-as-well-e-g-‘merge-origin-master’" class="headerlink" title="(you could merge as well e.g. ‘merge origin/master’)"></a>(you could merge as well e.g. ‘merge origin/master’)</h1><p>git pull</p>
+<p>```</p>
+<ul>
+<li><p>第一个命令获取最新的数据。</p>
+</li>
+<li><p>第二个命令检查是否有任何正在添加到存储库的文件，并从本地存储库中删除那些会导致冲突的未跟踪文件。</p>
+</li>
+<li><p>第三个命令checks-out所有在本地修改的文件。</p>
+</li>
+</ul>
+<p>最后，我们将更新到最新版本，但是这次没有任何冲突，因为repo中的未跟踪文件不再存在，所有本地修改的文件已经与存储库中的相同。</p>
+<blockquote>
+<p>作者：duyi324<br>链接：<a href="https://www.jianshu.com/p/1ac2e1f99166">https://www.jianshu.com/p/1ac2e1f99166</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Git常用命令备忘</title>
     <url>/2016/05/19/git-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4-e5-a4-87-e5-bf-98/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="Git配置"><a href="#Git配置" class="headerlink" title="Git配置"></a>Git配置</h2><pre><code>git config --global user.name &quot;robbin&quot;   
@@ -3363,73 +3430,6 @@ git push -u origin develop  # 首次将本地develop分支提交到远程develop
 git remote set-head origin master   # 设置远程仓库的HEAD指向master分支</code></pre><p>也可以命令设置跟踪远程库和本地库</p>
 <pre><code>git branch --set-upstream master origin/master
 git branch --set-upstream develop origin/develop</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>git 如何强制覆盖本地文件</title>
-    <url>/2022/04/14/git-%E5%A6%82%E4%BD%95%E5%BC%BA%E5%88%B6%E8%A6%86%E7%9B%96%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>在开发中使用Git的过程中，有时候会有一种需求，要从服务器拉取最新的状态，而本地进行了无关紧要的修改，这时候如果使用git pull命令，会提示本地有未缓存的修改。这时候就需要强制覆盖本地的改变。</p>
-<h3 id="一、最佳解决方案"><a href="#一、最佳解决方案" class="headerlink" title="一、最佳解决方案"></a>一、最佳解决方案</h3><p>重要提示：如果您有任何本地更改，将会丢失。无论是否有<code>--hard</code>选项，任何未被推送的本地提交都将丢失。<br>如果您有任何未被Git跟踪的文件(例如上传的用户内容)，这些文件将不会受到影响。<br>下面是正确的方法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch --all</span><br></pre></td></tr></table></figure>
-<p>然后，你有两个选择：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git reset --hard origin/master</span><br></pre></td></tr></table></figure>
-<p>或者如果你在其他分支上：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git reset --hard origin/&lt;branch_name&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>说明：</p>
-</blockquote>
-<ul>
-<li><p>git fetch从远程下载最新的，而不尝试合并或rebase任何东西。</p>
-</li>
-<li><p>然后git reset将主分支重置为您刚刚获取的内容。 –hard选项更改工作树中的所有文件以匹配origin/master中的文件</p>
-</li>
-</ul>
-<p>在重置之前可以通过从master创建一个分支来维护当前的本地提交：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git branch new-branch-to-save-current-commits</span><br><span class="line">git fetch --all</span><br><span class="line">git reset --hard origin/master</span><br></pre></td></tr></table></figure>
-<p>在此之后，所有旧的提交都将保存在new-branch-to-save-current-commits中。然而，没有提交的更改(即使staged)将会丢失。确保存储和提交任何你需要的东西。</p>
-<h3 id="二、次佳解决方案"><a href="#二、次佳解决方案" class="headerlink" title="二、次佳解决方案"></a>二、次佳解决方案</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git reset --hard HEAD</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
-<h3 id="三、第三种解决方法"><a href="#三、第三种解决方法" class="headerlink" title="三、第三种解决方法"></a>三、第三种解决方法</h3><blockquote>
-<p>警告：git clean删除所有未跟踪的文件/目录，不能撤消。</p>
-</blockquote>
-<blockquote>
-<p>有的时候只有clean -f无效。如果你没有跟踪DIRECTORIES，-d选项也需要：</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git reset --hard HEAD</span><br><span class="line">git clean -f -d</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
-<h3 id="四、第四种方法"><a href="#四、第四种方法" class="headerlink" title="四、第四种方法"></a>四、第四种方法</h3><p>可行的方式是通过使用fetch和merge定义的策略。这应该能使你的本地修改保留下来，只要它们不是你试图强制覆盖的文件之一。</p>
-<p>首先做一个你的改变</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add *</span><br><span class="line">git commit -a -m &quot;local file server commit message&quot;</span><br></pre></td></tr></table></figure>
-<p>然后获取更改并覆盖，如果有冲突</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch origin master</span><br><span class="line">git merge -s recursive -X theirs origin/master</span><br></pre></td></tr></table></figure>
-<p><code>-X</code>是选项名称，”theirs”是该选项的值。如果存在冲突，则选择使用”their”更改，而不是”your”更改。</p>
-<h3 id="五、第五种方法"><a href="#五、第五种方法" class="headerlink" title="五、第五种方法"></a>五、第五种方法</h3><p>这是另外的思路，不建议上文的做法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch --all</span><br><span class="line">git reset --hard origin/master</span><br></pre></td></tr></table></figure>
-<p>而是建议这样做：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch origin master</span><br><span class="line">git reset --hard origin/master</span><br></pre></td></tr></table></figure>
-<p>如果你打算重新设置原点/主分支，没有必要获取所有的遥控器和分支</p>
-<h3 id="六、第六种方法"><a href="#六、第六种方法" class="headerlink" title="六、第六种方法"></a>六、第六种方法</h3><p>看起来最好的办法是先做：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clean</span><br></pre></td></tr></table></figure>
-<p>删除所有未跟踪的文件，然后继续使用通常的git ```<br>pull …</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">### 七、第七种方法</span><br><span class="line">所有这些解决方案的问题是，它们都是太复杂，或者更大的问题是，他们从Web服务器中删除所有未跟踪的文件，这是我们不想要的，因为总是有需要的配置文件服务器，而不是在Git仓库。</span><br><span class="line"></span><br><span class="line">这是我们正在使用的最干净的解决方案：</span><br></pre></td></tr></table></figure>
-<h1 id="Fetch-the-newest-code"><a href="#Fetch-the-newest-code" class="headerlink" title="Fetch the newest code"></a>Fetch the newest code</h1><p>git fetch</p>
-<h1 id="Delete-all-files-which-are-being-added-so-there"><a href="#Delete-all-files-which-are-being-added-so-there" class="headerlink" title="Delete all files which are being added, so there"></a>Delete all files which are being added, so there</h1><h1 id="are-no-conflicts-with-untracked-files"><a href="#are-no-conflicts-with-untracked-files" class="headerlink" title="are no conflicts with untracked files"></a>are no conflicts with untracked files</h1><p>for file in <code>git diff HEAD..origin/master --name-status | awk &#39;/^A/ &#123;print $2&#125;&#39;</code><br>do<br>    rm -f – “$file”<br>done</p>
-<h1 id="Checkout-all-files-which-were-locally-modified"><a href="#Checkout-all-files-which-were-locally-modified" class="headerlink" title="Checkout all files which were locally modified"></a>Checkout all files which were locally modified</h1><p>for file in <code>git diff --name-status | awk &#39;/^[CDMRTUX]/ &#123;print $2&#125;&#39;</code><br>do<br>    git checkout – “$file”<br>done</p>
-<h1 id="Finally-pull-all-the-changes"><a href="#Finally-pull-all-the-changes" class="headerlink" title="Finally pull all the changes"></a>Finally pull all the changes</h1><h1 id="you-could-merge-as-well-e-g-‘merge-origin-master’"><a href="#you-could-merge-as-well-e-g-‘merge-origin-master’" class="headerlink" title="(you could merge as well e.g. ‘merge origin/master’)"></a>(you could merge as well e.g. ‘merge origin/master’)</h1><p>git pull</p>
-<p>```</p>
-<ul>
-<li><p>第一个命令获取最新的数据。</p>
-</li>
-<li><p>第二个命令检查是否有任何正在添加到存储库的文件，并从本地存储库中删除那些会导致冲突的未跟踪文件。</p>
-</li>
-<li><p>第三个命令checks-out所有在本地修改的文件。</p>
-</li>
-</ul>
-<p>最后，我们将更新到最新版本，但是这次没有任何冲突，因为repo中的未跟踪文件不再存在，所有本地修改的文件已经与存储库中的相同。</p>
-<blockquote>
-<p>作者：duyi324<br>链接：<a href="https://www.jianshu.com/p/1ac2e1f99166">https://www.jianshu.com/p/1ac2e1f99166</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-</blockquote>
-]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -3670,6 +3670,19 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
       </tags>
   </entry>
   <entry>
+    <title>mac关闭ipv6选项</title>
+    <url>/2017/07/18/mac%E5%85%B3%E9%97%ADipv6%E9%80%89%E9%A1%B9/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ networksetup -listallnetworkservices  </span><br><span class="line">An asterisk (*) denotes that a network service is disabled.  </span><br><span class="line">SAMSUNG Modem  </span><br><span class="line">Bluetooth DUN  </span><br><span class="line">Thunderbolt Ethernet  </span><br><span class="line">Wi-Fi  </span><br><span class="line">Bluetooth PAN  </span><br><span class="line">Thunderbolt Bridge  </span><br><span class="line">$ networksetup -setv6off Wi-Fi  </span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>mac</tag>
+        <tag>命令行</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Markdown: Basics （快速入门）</title>
     <url>/2014/11/29/markdown-basics-ef-bc-88-e5-bf-ab-e9-80-9f-e5-85-a5-e9-97-a8-ef-bc-89/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>&lt;&lt; <a href="http://wowubuntu.com">访问 Wow!Ubuntu</a></p>
@@ -3812,19 +3825,6 @@ you&apos;ve got to put paragraph tags in your blockquotes:&lt;/p&gt;
       </tags>
   </entry>
   <entry>
-    <title>mac关闭ipv6选项</title>
-    <url>/2017/07/18/mac%E5%85%B3%E9%97%ADipv6%E9%80%89%E9%A1%B9/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ networksetup -listallnetworkservices  </span><br><span class="line">An asterisk (*) denotes that a network service is disabled.  </span><br><span class="line">SAMSUNG Modem  </span><br><span class="line">Bluetooth DUN  </span><br><span class="line">Thunderbolt Ethernet  </span><br><span class="line">Wi-Fi  </span><br><span class="line">Bluetooth PAN  </span><br><span class="line">Thunderbolt Bridge  </span><br><span class="line">$ networksetup -setv6off Wi-Fi  </span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>mac</tag>
-        <tag>命令行</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MongoDB安装</title>
     <url>/2014/09/01/mongodb-e5-ae-89-e8-a3-85/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="MongoDB安装"><a href="#MongoDB安装" class="headerlink" title="MongoDB安装"></a>MongoDB安装</h3><pre><code>wget -c http://fastdl.mongodb.org/linux/mongodb-linux-i686-2.4.1.tgz ;
@@ -3850,6 +3850,18 @@ make &amp;amp;&amp;amp; make install</code></pre><p>完成后，编辑你 php.in
       <tags>
         <tag>数据库</tag>
         <tag>mongodb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql修改字符集</title>
+    <url>/2014/09/11/mysql-e4-bf-ae-e6-94-b9-e5-ad-97-e7-ac-a6-e9-9b-86/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><pre><code>ALTER TABLE `games` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;</code></pre>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>命令行</tag>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -4635,18 +4647,6 @@ _   底线
       </tags>
   </entry>
   <entry>
-    <title>mysql修改字符集</title>
-    <url>/2014/09/11/mysql-e4-bf-ae-e6-94-b9-e5-ad-97-e7-ac-a6-e9-9b-86/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><pre><code>ALTER TABLE `games` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;</code></pre>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>命令行</tag>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MYSQL服务无法启动：InnoDB: .&#92;ibdata1 can&amp;#039;t be opened in read-write mode</title>
     <url>/2015/04/22/mysql-e6-9c-8d-e5-8a-a1-e6-97-a0-e6-b3-95-e5-90-af-e5-8a-a8-ef-bc-9ainnodb-ibdata1-cant-be-opened-in-read-write-mode/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>今天在那做实验倒腾mysql数据库，后来发现服务无法启动，查看日志报错如下：</p>
@@ -4823,6 +4823,19 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
       </tags>
   </entry>
   <entry>
+    <title>nginx 全局变量对照</title>
+    <url>/2014/12/05/nginx-e5-85-a8-e5-b1-80-e5-8f-98-e9-87-8f-e5-af-b9-e7-85-a7/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>remote_addr     客户端ip,如：192.168.4.2<br>binary_remote_addr  客户端ip（二进制)<br>remote_port     客户端port，如：50472<br>remote_user     已经经过Auth Basic Module验证的用户名<br>host            请求主机头字段，否则为服务器名称，如:dwz.stamhe.com<br>request         用户请求信息，如：GET /?_a=index&amp;_m=show&amp;count=10 HTTP/1.1<br>request_filename    当前请求的文件的路径名，由root或alias和URI request组合而成，如：/webserver/htdocs/dwz/index.php<br>status          请求的响应状态码,如:200<br>body_bytes_sent 响应时送出的body字节数数量。即使连接中断，这个数据也是精确的,如：40<br>content_length  请求头中的Content-length字段<br>content_type    请求头中的Content-Type字段<br>http_referer    引用地址<br>http_user_agent 客户端agent信息,如：Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11<br>args            如：_a=index&amp;_m=show&amp;count=10<br>document_uri    与$uri相同,如：/index.php<br>document_root   针对当前请求的根路径设置值,如：/webserver/htdocs/dwz<br>hostname        如：centos53.localdomain<br>http_cookie     客户端cookie信息<br>cookie_COOKIE   cookie COOKIE变量的值<br>is_args         如果有$args参数，这个变量等于”?”，否则等于””，空值，如?<br>limit_rate      这个变量可以限制连接速率，0表示不限速<br>query_string    与$args相同,如：_a=index&amp;_m=show&amp;count=10<br>realpath_root   如：/webserver/htdocs/dwz<br>request_body     记录POST过来的数据信息<br>request_body_file   客户端请求主体信息的临时文件名<br>request_method  客户端请求的动作，通常为GET或POST,如：GET<br>request_uri     包含请求参数的原始URI，不包含主机名，如：”/foo/bar.php?arg=baz”。不能修改。如：/index.php?_a=index&amp;_m=show&amp;count=10<br>scheme          HTTP方法（如http，https）,如：http<br>uri             如：/index.php<br>request_completion  如果请求结束，设置为OK. 当请求未结束或如果该请求不是请求链串的最后一个时，为空(Empty)，如：OK<br>server_protocol 请求使用的协议，通常是HTTP/1.0或HTTP/1.1，如：HTTP/1.1<br>server_addr     服务器地址，在完成一次系统调用后可以确定这个值，如：192.168.4.129<br>server_name     服务器名称，如：dwz.stamhe.com<br>server_port     请求到达服务器的端口号,如：80</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>lnmp</tag>
+        <tag>ngnix</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nginx/php-fpm 访问php文件直接下载而不运行</title>
     <url>/2016/09/10/nginx-php-fpm-%E8%AE%BF%E9%97%AEphp%E6%96%87%E4%BB%B6%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E8%80%8C%E4%B8%8D%E8%BF%90%E8%A1%8C/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>一般都是由于nginx的配置文件引起的。注意一下部分<code>fastcgi_param</code>,默认为<code>/script$fastcgi_script_name</code>,修改为<code>$document_root$fastcgi_script_name</code>可以解决</p>
@@ -4835,19 +4848,6 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
         <tag>lnmp</tag>
         <tag>nginx</tag>
         <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nginx 全局变量对照</title>
-    <url>/2014/12/05/nginx-e5-85-a8-e5-b1-80-e5-8f-98-e9-87-8f-e5-af-b9-e7-85-a7/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>remote_addr     客户端ip,如：192.168.4.2<br>binary_remote_addr  客户端ip（二进制)<br>remote_port     客户端port，如：50472<br>remote_user     已经经过Auth Basic Module验证的用户名<br>host            请求主机头字段，否则为服务器名称，如:dwz.stamhe.com<br>request         用户请求信息，如：GET /?_a=index&amp;_m=show&amp;count=10 HTTP/1.1<br>request_filename    当前请求的文件的路径名，由root或alias和URI request组合而成，如：/webserver/htdocs/dwz/index.php<br>status          请求的响应状态码,如:200<br>body_bytes_sent 响应时送出的body字节数数量。即使连接中断，这个数据也是精确的,如：40<br>content_length  请求头中的Content-length字段<br>content_type    请求头中的Content-Type字段<br>http_referer    引用地址<br>http_user_agent 客户端agent信息,如：Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11<br>args            如：_a=index&amp;_m=show&amp;count=10<br>document_uri    与$uri相同,如：/index.php<br>document_root   针对当前请求的根路径设置值,如：/webserver/htdocs/dwz<br>hostname        如：centos53.localdomain<br>http_cookie     客户端cookie信息<br>cookie_COOKIE   cookie COOKIE变量的值<br>is_args         如果有$args参数，这个变量等于”?”，否则等于””，空值，如?<br>limit_rate      这个变量可以限制连接速率，0表示不限速<br>query_string    与$args相同,如：_a=index&amp;_m=show&amp;count=10<br>realpath_root   如：/webserver/htdocs/dwz<br>request_body     记录POST过来的数据信息<br>request_body_file   客户端请求主体信息的临时文件名<br>request_method  客户端请求的动作，通常为GET或POST,如：GET<br>request_uri     包含请求参数的原始URI，不包含主机名，如：”/foo/bar.php?arg=baz”。不能修改。如：/index.php?_a=index&amp;_m=show&amp;count=10<br>scheme          HTTP方法（如http，https）,如：http<br>uri             如：/index.php<br>request_completion  如果请求结束，设置为OK. 当请求未结束或如果该请求不是请求链串的最后一个时，为空(Empty)，如：OK<br>server_protocol 请求使用的协议，通常是HTTP/1.0或HTTP/1.1，如：HTTP/1.1<br>server_addr     服务器地址，在完成一次系统调用后可以确定这个值，如：192.168.4.129<br>server_name     服务器名称，如：dwz.stamhe.com<br>server_port     请求到达服务器的端口号,如：80</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>lnmp</tag>
-        <tag>ngnix</tag>
       </tags>
   </entry>
   <entry>
@@ -4948,6 +4948,47 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
       <tags>
         <tag>php</tag>
         <tag>image</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php try/catch a warning </title>
+    <url>/2017/01/06/php-try-catch-a-warning/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="方案一，输出到系统错误"><a href="#方案一，输出到系统错误" class="headerlink" title="方案一，输出到系统错误"></a>方案一，输出到系统错误</h2><p>One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set_error_handler(function() &#123; /* ignore errors */ &#125;);</span><br><span class="line">dns_get_record();</span><br><span class="line">restore_error_handler();</span><br></pre></td></tr></table></figure>
+<p>You could build on this idea and write a re-usable error handler that logs the errors for you.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set_error_handler([$logger, &#x27;onSilencedError&#x27;]);</span><br><span class="line">dns_get_record();</span><br><span class="line">restore_error_handler();</span><br><span class="line">Turning errors into exceptions</span><br></pre></td></tr></table></figure>
+<p>You can use <code>set_error_handler()</code> and the <code>ErrorException</code> class to turn all php errors into exceptions.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) &#123;</span><br><span class="line">    // error was suppressed with the @-operator</span><br><span class="line">    if (0 === error_reporting()) &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    throw new ErrorException($errstr, 0, $errno, $errfile, $errline);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">    dns_get_record();</span><br><span class="line">&#125; catch (ErrorException $e) &#123;</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The important thing to note when using your own error handler is that it will bypass the <code>error_reporting</code> setting and pass all errors (notices, warnings, etc.) to your error handler. You can set a second argument on <code>set_error_handler()</code> to define which error types you want to receive, or access the current setting using … = <code>error_reporting()</code> inside the error handler.</p>
+<p>Suppressing the warning</p>
+<p>Another possibility is to suppress the call with the @ operator and check the return value of dns_get_record() afterwards. But I’d advise against this as errors/warnings are triggered to be handled, not to be suppressed.</p>
+<h2 id="方案二：-输出到自定义函数"><a href="#方案二：-输出到自定义函数" class="headerlink" title="方案二： 输出到自定义函数"></a>方案二： 输出到自定义函数</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set_error_handler(function ($errno, $errstr) &#123;</span><br><span class="line">    // do something</span><br><span class="line">    echo &quot;\r\n～～～～～找到错误 :-D～～～～～\r\n&quot;;</span><br><span class="line">    echo &quot;错误信息:($errno)$errstr \r\n&quot;;</span><br><span class="line">    debug_print_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);</span><br><span class="line">    echo &quot;\r\n&quot;;</span><br><span class="line">&#125;, E_WARNING);</span><br><span class="line">$dir_handle = opendir(&quot;$dir/111&quot;);  //要catch的函数</span><br><span class="line">restore_error_handler();</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>调试</tag>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php echo或者exit输出中文</title>
+    <url>/2014/12/19/php-echo-e6-88-96-e8-80-85exit-e8-be-93-e5-87-ba-e4-b8-ad-e6-96-87/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>你这是中文乱码，原因是操作环境的编码和浏览器的编码不一致造成的 1. php文件本身的编码与网页的编码应匹配</p>
+<p>a. 如果欲使用gb2312编码，那么php要输出头：header(“Content-Type: text/html; charset=gb2312”)，静态页面添加<meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><br>，所有文件的编码格式为ANSI，可用记事本打开，另存为选择编码为ANSI，覆盖源文件。</p>
+<p>b. 如果欲使用utf-8编码，那么php要输出头 ：header(“Content-Type: text/html; charset=utf-8”)，静态页面添加<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><br>，所有文件的编码格式为utf-8。保存为utf-8可能会有点麻烦，一般utf-8文件开头会有BOM，如果使用 session就会出问题，可用editplus来保存，在editplus中，工具-&gt;参数选择-&gt;文件-&gt;UTF-8签名，选择总是删除，再保存就可以去掉BOM信息了。</p>
+<ol>
+<li>php本身不是Unicode的，所有substr之类的函数得改成mb_substr（需要装mbstring扩展）；或者用iconv转码。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>命令行</tag>
+        <tag>php</tag>
       </tags>
   </entry>
   <entry>
@@ -5224,47 +5265,6 @@ FROM information_schema.COLUMNS WHERE TABLE_NAME=&apos;pw_admin_role&apos;</code
       <tags>
         <tag>书籍</tag>
         <tag>数据</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php echo或者exit输出中文</title>
-    <url>/2014/12/19/php-echo-e6-88-96-e8-80-85exit-e8-be-93-e5-87-ba-e4-b8-ad-e6-96-87/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>你这是中文乱码，原因是操作环境的编码和浏览器的编码不一致造成的 1. php文件本身的编码与网页的编码应匹配</p>
-<p>a. 如果欲使用gb2312编码，那么php要输出头：header(“Content-Type: text/html; charset=gb2312”)，静态页面添加<meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><br>，所有文件的编码格式为ANSI，可用记事本打开，另存为选择编码为ANSI，覆盖源文件。</p>
-<p>b. 如果欲使用utf-8编码，那么php要输出头 ：header(“Content-Type: text/html; charset=utf-8”)，静态页面添加<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><br>，所有文件的编码格式为utf-8。保存为utf-8可能会有点麻烦，一般utf-8文件开头会有BOM，如果使用 session就会出问题，可用editplus来保存，在editplus中，工具-&gt;参数选择-&gt;文件-&gt;UTF-8签名，选择总是删除，再保存就可以去掉BOM信息了。</p>
-<ol>
-<li>php本身不是Unicode的，所有substr之类的函数得改成mb_substr（需要装mbstring扩展）；或者用iconv转码。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>命令行</tag>
-        <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php try/catch a warning </title>
-    <url>/2017/01/06/php-try-catch-a-warning/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="方案一，输出到系统错误"><a href="#方案一，输出到系统错误" class="headerlink" title="方案一，输出到系统错误"></a>方案一，输出到系统错误</h2><p>One possibility is to set your own error handler before the call and restore the previous error handler later with restore_error_handler().</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set_error_handler(function() &#123; /* ignore errors */ &#125;);</span><br><span class="line">dns_get_record();</span><br><span class="line">restore_error_handler();</span><br></pre></td></tr></table></figure>
-<p>You could build on this idea and write a re-usable error handler that logs the errors for you.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set_error_handler([$logger, &#x27;onSilencedError&#x27;]);</span><br><span class="line">dns_get_record();</span><br><span class="line">restore_error_handler();</span><br><span class="line">Turning errors into exceptions</span><br></pre></td></tr></table></figure>
-<p>You can use <code>set_error_handler()</code> and the <code>ErrorException</code> class to turn all php errors into exceptions.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) &#123;</span><br><span class="line">    // error was suppressed with the @-operator</span><br><span class="line">    if (0 === error_reporting()) &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    throw new ErrorException($errstr, 0, $errno, $errfile, $errline);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">    dns_get_record();</span><br><span class="line">&#125; catch (ErrorException $e) &#123;</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>The important thing to note when using your own error handler is that it will bypass the <code>error_reporting</code> setting and pass all errors (notices, warnings, etc.) to your error handler. You can set a second argument on <code>set_error_handler()</code> to define which error types you want to receive, or access the current setting using … = <code>error_reporting()</code> inside the error handler.</p>
-<p>Suppressing the warning</p>
-<p>Another possibility is to suppress the call with the @ operator and check the return value of dns_get_record() afterwards. But I’d advise against this as errors/warnings are triggered to be handled, not to be suppressed.</p>
-<h2 id="方案二：-输出到自定义函数"><a href="#方案二：-输出到自定义函数" class="headerlink" title="方案二： 输出到自定义函数"></a>方案二： 输出到自定义函数</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set_error_handler(function ($errno, $errstr) &#123;</span><br><span class="line">    // do something</span><br><span class="line">    echo &quot;\r\n～～～～～找到错误 :-D～～～～～\r\n&quot;;</span><br><span class="line">    echo &quot;错误信息:($errno)$errstr \r\n&quot;;</span><br><span class="line">    debug_print_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);</span><br><span class="line">    echo &quot;\r\n&quot;;</span><br><span class="line">&#125;, E_WARNING);</span><br><span class="line">$dir_handle = opendir(&quot;$dir/111&quot;);  //要catch的函数</span><br><span class="line">restore_error_handler();</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>调试</tag>
-        <tag>php</tag>
       </tags>
   </entry>
   <entry>
@@ -5569,6 +5569,31 @@ hadoop@192.168.10.107&apos;s password:</code></pre><p>由于还没有免密码�
       </tags>
   </entry>
   <entry>
+    <title>svn externals</title>
+    <url>/2016/09/09/svn-externals/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="Externals-Definitions"><a href="#Externals-Definitions" class="headerlink" title="Externals Definitions"></a>Externals Definitions</h1><p>Sometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different locations in a repository, or perhaps from different repositories altogether. You could certainly setup such a scenario by hand—using <code>svn checkout</code> to create the sort of nested working copy structure you are trying to achieve. But if this layout is important for everyone who uses your repository, every other user will need to perform the same checkout operations that you did.</p>
+<p>Fortunately, Subversion provides support for externals definitions. An externals definition is a mapping of a local directory to the URL—and possibly a particular revision—of a versioned resource. In Subversion, you declare externals definitions in groups using the <code>svn:externals</code> property. You can create or modify this property using <code>svn propset</code> or <code>svn propedit</code> (see <a href="http://svnbook.red-bean.com/en/1.0/ch07s02.html#svn-ch-7-sect-2.1">the section called “Why Properties?”</a>). It can be set on any versioned directory, and its value is a multi-line table of subdirectories (relative to the versioned directory on which the property is set) and fully qualified, absolute Subversion repository URLs.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ svn propget svn:externals calc</span><br><span class="line">third-party/sounds             http://sounds.red-bean.com/repos</span><br><span class="line">third-party/skins              http://skins.red-bean.com/repositories/skinproj</span><br><span class="line">third-party/skins/toolkit -r21 http://svn.red-bean.com/repos/skin-maker</span><br></pre></td></tr></table></figure>
+
+<p>he convenience of the svn:externals property is that once it is set on a versioned directory, everyone who checks out a working copy with that directory also gets the benefit of the externals definition. In other words, once one person has made the effort to define those nested working copy checkouts, no one else has to bother—Subversion will, upon checkout of the original working copy, also checkout the external working copies.</p>
+<p>Note the previous externals definition example. When someone checks out a working copy of the calc directory, Subversion also continues to checkout the items found in its externals definition.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ svn checkout http://svn.example.com/repos/calc</span><br><span class="line">A  calc</span><br><span class="line">A  calc/Makefile</span><br><span class="line">A  calc/integer.c</span><br><span class="line">A  calc/button.c</span><br><span class="line">Checked out revision 148.</span><br><span class="line"></span><br><span class="line">Fetching external item into calc/third-party/sounds</span><br><span class="line">A  calc/third-party/sounds/ding.ogg</span><br><span class="line">A  calc/third-party/sounds/dong.ogg</span><br><span class="line">A  calc/third-party/sounds/clang.ogg</span><br><span class="line">…</span><br><span class="line">A  calc/third-party/sounds/bang.ogg</span><br><span class="line">A  calc/third-party/sounds/twang.ogg</span><br><span class="line">Checked out revision 14.</span><br><span class="line"></span><br><span class="line">Fetching external item into calc/third-party/skins</span><br><span class="line">…</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>If you need to change the externals definition, you can do so using the regular property modification subcommands. When you commit a change to the <code>svn:externals</code> property, Subversion will synchronize the checked-out items against the changed externals definition when you next run <code>svn update</code>. The same thing will happen when others update their working copies and receive your changes to the externals definition.</p>
+<p>The <code>svn status</code> command also recognizes externals definitions, displaying a status code of X for the disjoint subdirectories into which externals are checked out, and then recursing into those subdirectories to display the status of the external items themselves.</p>
+<p>The support that exists for externals definitions in Subversion today can be a little misleading, though. First, an externals definition can only point to directories, not files. Second, the externals definition cannot point to relative paths (paths like ../../skins/myskin). Third, the working copies created via the externals definition support are still disconnected from the primary working copy (on whose versioned directories the <code>svn:externals</code> property was actually set). And Subversion still only truly operates on non-disjoint working copies. So, for example, if you want to commit changes that you’ve made in one or more of those external working copies, you must run <code>svn commit</code> explicitly on those working copies—committing on the primary working copy will not recurse into any external ones.</p>
+<p>Also, since the definitions themselves use absolute URLs, moving or copying a directory to which they are attached will not affect what gets checked out as an external (though the relative local target subdirectory will, of course, move with renamed directory). This can be confusing—even frustrating—in certain situations. For example, if you use externals definitions on a directory in your /trunk development line which point to other areas of that same line, and then you use <code>svn copy</code> to branch that line to some new location /branches/my-branch, the externals definitions on items in your new branch will still refer to versioned resources in /trunk. Also, be aware that if you need to re-parent your working copy (using svn switch –relocate), externals definitions will not also be re-parented.</p>
+<h1 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">svn propdel -R svn:externals</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">svn propdel PROPNAME</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>svn</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SVN版本管理</title>
     <url>/2015/05/29/svn-e7-89-88-e6-9c-ac-e7-ae-a1-e7-90-86/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="一、版本库结构"><a href="#一、版本库结构" class="headerlink" title="一、版本库结构"></a>一、版本库结构</h2><h3 id="1-1-项目在版本仓库中的目录"><a href="#1-1-项目在版本仓库中的目录" class="headerlink" title="1.1 项目在版本仓库中的目录"></a>1.1 项目在版本仓库中的目录</h3><p>trunk、branches、tags，这是一个项目在版本仓库中典型的目录布局。</p>
@@ -5595,22 +5620,6 @@ hadoop@192.168.10.107&apos;s password:</code></pre><p>由于还没有免密码�
     <url>/2016/03/16/svn-file-is-scheduled-for-addition-but-is-missing/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>svn提交错误file is scheduled for addition, but is missing</p>
 <p><code>svn delete</code></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>版本管理</tag>
-        <tag>svn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>svn merge 合并单个文件</title>
-    <url>/2017/02/04/svn-merge-%E5%90%88%E5%B9%B6%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I’m not sure exactly what you’re asking as the title talks about merging single files but the text of the question talks about single revisions. In the case of merging single revisions you need: (to merge the changes committed in revisions 100, 105, 115)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd trunk</span><br><span class="line">svn merge -c 100 -c 105 -c 115 http://..../branches/mybranch .</span><br></pre></td></tr></table></figure>
-<p>If you want to merge only the part of revision 100 that affects file.cpp:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd trunk/path/to/file.cpp</span><br><span class="line">svn merge -c 100 http://../branches/mybranch/path/to/file.cpp file.cpp</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -5660,68 +5669,6 @@ The last case is that the same file has been created but you need a super set of
       </tags>
   </entry>
   <entry>
-    <title>svn externals</title>
-    <url>/2016/09/09/svn-externals/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="Externals-Definitions"><a href="#Externals-Definitions" class="headerlink" title="Externals Definitions"></a>Externals Definitions</h1><p>Sometimes it is useful to construct a working copy that is made out of a number of different checkouts. For example, you may want different subdirectories to come from different locations in a repository, or perhaps from different repositories altogether. You could certainly setup such a scenario by hand—using <code>svn checkout</code> to create the sort of nested working copy structure you are trying to achieve. But if this layout is important for everyone who uses your repository, every other user will need to perform the same checkout operations that you did.</p>
-<p>Fortunately, Subversion provides support for externals definitions. An externals definition is a mapping of a local directory to the URL—and possibly a particular revision—of a versioned resource. In Subversion, you declare externals definitions in groups using the <code>svn:externals</code> property. You can create or modify this property using <code>svn propset</code> or <code>svn propedit</code> (see <a href="http://svnbook.red-bean.com/en/1.0/ch07s02.html#svn-ch-7-sect-2.1">the section called “Why Properties?”</a>). It can be set on any versioned directory, and its value is a multi-line table of subdirectories (relative to the versioned directory on which the property is set) and fully qualified, absolute Subversion repository URLs.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ svn propget svn:externals calc</span><br><span class="line">third-party/sounds             http://sounds.red-bean.com/repos</span><br><span class="line">third-party/skins              http://skins.red-bean.com/repositories/skinproj</span><br><span class="line">third-party/skins/toolkit -r21 http://svn.red-bean.com/repos/skin-maker</span><br></pre></td></tr></table></figure>
-
-<p>he convenience of the svn:externals property is that once it is set on a versioned directory, everyone who checks out a working copy with that directory also gets the benefit of the externals definition. In other words, once one person has made the effort to define those nested working copy checkouts, no one else has to bother—Subversion will, upon checkout of the original working copy, also checkout the external working copies.</p>
-<p>Note the previous externals definition example. When someone checks out a working copy of the calc directory, Subversion also continues to checkout the items found in its externals definition.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ svn checkout http://svn.example.com/repos/calc</span><br><span class="line">A  calc</span><br><span class="line">A  calc/Makefile</span><br><span class="line">A  calc/integer.c</span><br><span class="line">A  calc/button.c</span><br><span class="line">Checked out revision 148.</span><br><span class="line"></span><br><span class="line">Fetching external item into calc/third-party/sounds</span><br><span class="line">A  calc/third-party/sounds/ding.ogg</span><br><span class="line">A  calc/third-party/sounds/dong.ogg</span><br><span class="line">A  calc/third-party/sounds/clang.ogg</span><br><span class="line">…</span><br><span class="line">A  calc/third-party/sounds/bang.ogg</span><br><span class="line">A  calc/third-party/sounds/twang.ogg</span><br><span class="line">Checked out revision 14.</span><br><span class="line"></span><br><span class="line">Fetching external item into calc/third-party/skins</span><br><span class="line">…</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>If you need to change the externals definition, you can do so using the regular property modification subcommands. When you commit a change to the <code>svn:externals</code> property, Subversion will synchronize the checked-out items against the changed externals definition when you next run <code>svn update</code>. The same thing will happen when others update their working copies and receive your changes to the externals definition.</p>
-<p>The <code>svn status</code> command also recognizes externals definitions, displaying a status code of X for the disjoint subdirectories into which externals are checked out, and then recursing into those subdirectories to display the status of the external items themselves.</p>
-<p>The support that exists for externals definitions in Subversion today can be a little misleading, though. First, an externals definition can only point to directories, not files. Second, the externals definition cannot point to relative paths (paths like ../../skins/myskin). Third, the working copies created via the externals definition support are still disconnected from the primary working copy (on whose versioned directories the <code>svn:externals</code> property was actually set). And Subversion still only truly operates on non-disjoint working copies. So, for example, if you want to commit changes that you’ve made in one or more of those external working copies, you must run <code>svn commit</code> explicitly on those working copies—committing on the primary working copy will not recurse into any external ones.</p>
-<p>Also, since the definitions themselves use absolute URLs, moving or copying a directory to which they are attached will not affect what gets checked out as an external (though the relative local target subdirectory will, of course, move with renamed directory). This can be confusing—even frustrating—in certain situations. For example, if you use externals definitions on a directory in your /trunk development line which point to other areas of that same line, and then you use <code>svn copy</code> to branch that line to some new location /branches/my-branch, the externals definitions on items in your new branch will still refer to versioned resources in /trunk. Also, be aware that if you need to re-parent your working copy (using svn switch –relocate), externals definitions will not also be re-parented.</p>
-<h1 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">svn propdel -R svn:externals</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">svn propdel PROPNAME</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>svn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>this is incompatible with sql_mode=only_full_group_by</title>
-    <url>/2016/09/24/this-is-incompatible-with-sql-mode-only-full-group-by/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I was working on a legacy project recently and needed to import some data from MySQL 5.5. All the queries in the code worked perfectly in MySQL 5.5, so I assumed an upgrade to 5.7 would be seamless. Not so.</p>
-<p>First I got errors due to DateTime columns being populated with zeros during import, then when running this query:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select *</span><br><span class="line">  from ebay_order_items</span><br><span class="line">  where</span><br><span class="line">    z_shipmentno is null</span><br><span class="line">    and ExternalTransactionID is not null</span><br><span class="line">    and orderstatus = &#x27;Completed&#x27;</span><br><span class="line">    and timestamp &gt; &#x27;2015-02-25&#x27;</span><br><span class="line">  group by ExternalTransactionID</span><br><span class="line">  order by timestamp desc</span><br></pre></td></tr></table></figure>
-
-<p>I got this:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Expression #1 of SELECT list is not in GROUP BY</span><br><span class="line">clause and contains nonaggregated column</span><br><span class="line">&#x27;1066export.ebay_order_items.TransactionID&#x27; which</span><br><span class="line">is not functionally dependent on columns in GROUP BY</span><br><span class="line">clause; this is incompatible with sql_mode=only_full_group_by</span><br></pre></td></tr></table></figure>
-
-<p>It turned out that the only_full_group_by mode was made default in version 5.7.5., which breaks many of such naïve queries. In fact, see here for more info.</p>
-<p>I could rewrite all queries to be 5.7 compatible (hat tip to George Fekete for the solution) and do something as atrocious as this:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select extf.* from (</span><br><span class="line">	select ExternalTransactionID</span><br><span class="line">	from ebay_order_items</span><br><span class="line">	where ExternalTransactionID is not null</span><br><span class="line">	group by ExternalTransactionID</span><br><span class="line">) extf JOIN ebay_order_items eoi</span><br><span class="line">ON (eoi.ExternalTransactionID = extf.ExternalTransactionID)</span><br><span class="line">where eoi.z_shipmentno is null</span><br><span class="line">and eoi.orderstatus = &#x27;Completed&#x27;</span><br><span class="line">and eoi.timestamp &gt; &#x27;2015-02-25&#x27;</span><br><span class="line">order by eoi.timestamp desc</span><br></pre></td></tr></table></figure>
-<p>… but this would make the already complex refactoring much more difficult. It would be much better to temporarily disable these checks and force MySQL to act like it did in 5.6.</p>
-<h2 id="Permanently-changing-SQL-mode"><a href="#Permanently-changing-SQL-mode" class="headerlink" title="Permanently changing SQL mode"></a>Permanently changing SQL mode</h2><p>First, we find out which configuration file our MySQL installation prefers. For that, we need the binary’s location:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ which mysqld</span><br><span class="line">/usr/sbin/mysqld</span><br></pre></td></tr></table></figure>
-<p>Then, we use this path to execute the lookup:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ /usr/sbin/mysqld --verbose --help | grep -A 1 &quot;Default options&quot;</span><br><span class="line"></span><br><span class="line">Default options are read from the following files in the given order:</span><br><span class="line">/etc/my.cnf /etc/mysql/my.cnf ~/.my.cnf</span><br></pre></td></tr></table></figure>
-<p>We can see that the first favored configuration file is one in the root of the etc folder. That file, however, did not exist on my system so I opted for the second one.</p>
-<p>First, we find out the current sql mode:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql -u homestead -psecret -e &quot;select @@sql_mode&quot;</span><br><span class="line"></span><br><span class="line">+-------------------------------------------------------------------------------------------------------------------------------------------+</span><br><span class="line">| @@sql_mode                                                                                                                                |</span><br><span class="line">+-------------------------------------------------------------------------------------------------------------------------------------------+</span><br><span class="line">| ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION |</span><br><span class="line">+-------------------------------------------------------------------------------------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
-<p>Then, we copy the current string this query produced and remove everything we don’t like. In my case, I needed to get rid of NO_ZERO_IN_DATE, NO_ZERO_DATE and of course ONLY_FULL_GROUP_BY. The newly formed string then looks like this:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>We open the configuration file we decided on before (/etc/mysql/my.cnf) and add the following line into the [mysqld] section:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"># ... other stuff will probably be here</span><br><span class="line">sql_mode = &quot;STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>Save, exit, and restart MySQL:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo service mysql restart</span><br></pre></td></tr></table></figure>
-<p>Voilà, the SQL mode is permanently changed and I can continue developing the legacy project until I need some additional strictness.</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
-        <tag>备份</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>svn中操作带有”@”符号的文件</title>
     <url>/2016/11/14/svn%E4%B8%AD%E6%93%8D%E4%BD%9C%E5%B8%A6%E6%9C%89%E2%80%9D-%E2%80%9D%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>如果在命终端中用svn命令操作文件名中有“@”符号的文件（ios开发的朋友应该很清楚），会遇到：</p>
@@ -5738,18 +5685,19 @@ The last case is that the same file has been created but you need a super set of
       </tags>
   </entry>
   <entry>
-    <title>traceroute 输出说明</title>
-    <url>/2016/05/19/traceroute-e8-be-93-e5-87-ba-e8-af-b4-e6-98-8e/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>In Cisco routers, the codes for a traceroute command reply are:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">! -- success</span><br><span class="line">* -- time out</span><br><span class="line">N -- network unreachable</span><br><span class="line">H -- host unreachable</span><br><span class="line">P -- protocol unreachable</span><br><span class="line">A -- admin denied</span><br><span class="line">Q -- source quench received (congestion)</span><br><span class="line">? -- unknown (any other ICMP message)</span><br></pre></td></tr></table></figure>
+    <title>svn merge 合并单个文件</title>
+    <url>/2017/02/04/svn-merge-%E5%90%88%E5%B9%B6%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I’m not sure exactly what you’re asking as the title talks about merging single files but the text of the question talks about single revisions. In the case of merging single revisions you need: (to merge the changes committed in revisions 100, 105, 115)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd trunk</span><br><span class="line">svn merge -c 100 -c 105 -c 115 http://..../branches/mybranch .</span><br></pre></td></tr></table></figure>
+<p>If you want to merge only the part of revision 100 that affects file.cpp:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd trunk/path/to/file.cpp</span><br><span class="line">svn merge -c 100 http://../branches/mybranch/path/to/file.cpp file.cpp</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>网络</tag>
-        <tag>命令行</tag>
-        <tag>cisco</tag>
+        <tag>版本管理</tag>
+        <tag>svn</tag>
       </tags>
   </entry>
   <entry>
@@ -5799,8 +5747,8 @@ RUN gem install sass</code></pre>]]></content>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>命令行</tag>
         <tag>ubuntu</tag>
+        <tag>命令行</tag>
       </tags>
   </entry>
   <entry>
@@ -6096,6 +6044,21 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
       </tags>
   </entry>
   <entry>
+    <title>traceroute 输出说明</title>
+    <url>/2016/05/19/traceroute-e8-be-93-e5-87-ba-e8-af-b4-e6-98-8e/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>In Cisco routers, the codes for a traceroute command reply are:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">! -- success</span><br><span class="line">* -- time out</span><br><span class="line">N -- network unreachable</span><br><span class="line">H -- host unreachable</span><br><span class="line">P -- protocol unreachable</span><br><span class="line">A -- admin denied</span><br><span class="line">Q -- source quench received (congestion)</span><br><span class="line">? -- unknown (any other ICMP message)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>网络</tag>
+        <tag>命令行</tag>
+        <tag>cisco</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【完整版】如果看了此文你还不懂傅里叶变换，那就过来掐死我吧</title>
     <url>/2016/10/04/%E3%80%90%E5%AE%8C%E6%95%B4%E7%89%88%E3%80%91%E5%A6%82%E6%9E%9C%E7%9C%8B%E4%BA%86%E6%AD%A4%E6%96%87%E4%BD%A0%E8%BF%98%E4%B8%8D%E6%87%82%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%EF%BC%8C%E9%82%A3%E5%B0%B1%E8%BF%87%E6%9D%A5%E6%8E%90%E6%AD%BB%E6%88%91%E5%90%A7/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><img title="傅里叶变换" alt="首图" src="https://res.heynet.com.cn/wulai/images/Fourier/ftfs.jpg">
@@ -6314,6 +6277,43 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
       <tags>
         <tag>傅里叶变换</tag>
         <tag>Fourier Transform</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>this is incompatible with sql_mode=only_full_group_by</title>
+    <url>/2016/09/24/this-is-incompatible-with-sql-mode-only-full-group-by/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>I was working on a legacy project recently and needed to import some data from MySQL 5.5. All the queries in the code worked perfectly in MySQL 5.5, so I assumed an upgrade to 5.7 would be seamless. Not so.</p>
+<p>First I got errors due to DateTime columns being populated with zeros during import, then when running this query:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select *</span><br><span class="line">  from ebay_order_items</span><br><span class="line">  where</span><br><span class="line">    z_shipmentno is null</span><br><span class="line">    and ExternalTransactionID is not null</span><br><span class="line">    and orderstatus = &#x27;Completed&#x27;</span><br><span class="line">    and timestamp &gt; &#x27;2015-02-25&#x27;</span><br><span class="line">  group by ExternalTransactionID</span><br><span class="line">  order by timestamp desc</span><br></pre></td></tr></table></figure>
+
+<p>I got this:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Expression #1 of SELECT list is not in GROUP BY</span><br><span class="line">clause and contains nonaggregated column</span><br><span class="line">&#x27;1066export.ebay_order_items.TransactionID&#x27; which</span><br><span class="line">is not functionally dependent on columns in GROUP BY</span><br><span class="line">clause; this is incompatible with sql_mode=only_full_group_by</span><br></pre></td></tr></table></figure>
+
+<p>It turned out that the only_full_group_by mode was made default in version 5.7.5., which breaks many of such naïve queries. In fact, see here for more info.</p>
+<p>I could rewrite all queries to be 5.7 compatible (hat tip to George Fekete for the solution) and do something as atrocious as this:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select extf.* from (</span><br><span class="line">	select ExternalTransactionID</span><br><span class="line">	from ebay_order_items</span><br><span class="line">	where ExternalTransactionID is not null</span><br><span class="line">	group by ExternalTransactionID</span><br><span class="line">) extf JOIN ebay_order_items eoi</span><br><span class="line">ON (eoi.ExternalTransactionID = extf.ExternalTransactionID)</span><br><span class="line">where eoi.z_shipmentno is null</span><br><span class="line">and eoi.orderstatus = &#x27;Completed&#x27;</span><br><span class="line">and eoi.timestamp &gt; &#x27;2015-02-25&#x27;</span><br><span class="line">order by eoi.timestamp desc</span><br></pre></td></tr></table></figure>
+<p>… but this would make the already complex refactoring much more difficult. It would be much better to temporarily disable these checks and force MySQL to act like it did in 5.6.</p>
+<h2 id="Permanently-changing-SQL-mode"><a href="#Permanently-changing-SQL-mode" class="headerlink" title="Permanently changing SQL mode"></a>Permanently changing SQL mode</h2><p>First, we find out which configuration file our MySQL installation prefers. For that, we need the binary’s location:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ which mysqld</span><br><span class="line">/usr/sbin/mysqld</span><br></pre></td></tr></table></figure>
+<p>Then, we use this path to execute the lookup:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ /usr/sbin/mysqld --verbose --help | grep -A 1 &quot;Default options&quot;</span><br><span class="line"></span><br><span class="line">Default options are read from the following files in the given order:</span><br><span class="line">/etc/my.cnf /etc/mysql/my.cnf ~/.my.cnf</span><br></pre></td></tr></table></figure>
+<p>We can see that the first favored configuration file is one in the root of the etc folder. That file, however, did not exist on my system so I opted for the second one.</p>
+<p>First, we find out the current sql mode:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql -u homestead -psecret -e &quot;select @@sql_mode&quot;</span><br><span class="line"></span><br><span class="line">+-------------------------------------------------------------------------------------------------------------------------------------------+</span><br><span class="line">| @@sql_mode                                                                                                                                |</span><br><span class="line">+-------------------------------------------------------------------------------------------------------------------------------------------+</span><br><span class="line">| ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION |</span><br><span class="line">+-------------------------------------------------------------------------------------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+<p>Then, we copy the current string this query produced and remove everything we don’t like. In my case, I needed to get rid of NO_ZERO_IN_DATE, NO_ZERO_DATE and of course ONLY_FULL_GROUP_BY. The newly formed string then looks like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>We open the configuration file we decided on before (/etc/mysql/my.cnf) and add the following line into the [mysqld] section:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"># ... other stuff will probably be here</span><br><span class="line">sql_mode = &quot;STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Save, exit, and restart MySQL:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo service mysql restart</span><br></pre></td></tr></table></figure>
+<p>Voilà, the SQL mode is permanently changed and I can continue developing the legacy project until I need some additional strictness.</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+        <tag>备份</tag>
       </tags>
   </entry>
   <entry>
@@ -6906,16 +6906,6 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
       </tags>
   </entry>
   <entry>
-    <title>图片居中</title>
-    <url>/2019/04/08/%E5%9B%BE%E7%89%87%E5%B1%85%E4%B8%AD/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div class=&quot;pic&quot;&gt;&lt;img src=&quot;ttt.jpg&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">.pic &#123;</span><br><span class="line"></span><br><span class="line">  width:182px;</span><br><span class="line">  height:277px;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  align-items: center;</span><br><span class="line"></span><br><span class="line">  img &#123;</span><br><span class="line">    //width: 100%;</span><br><span class="line">    //height: 4.61333rem;</span><br><span class="line"></span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">    object-fit:cover;</span><br><span class="line">    /*object-fit:none;*/ //none则不改变图片原始尺寸</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>图片</tag>
-        <tag>居中</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>四十二首古典吉他经典之作</title>
     <url>/2018/12/11/%E5%9B%9B%E5%8D%81%E4%BA%8C%E9%A6%96%E5%8F%A4%E5%85%B8%E5%90%89%E4%BB%96%E7%BB%8F%E5%85%B8%E4%B9%8B%E4%BD%9C/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h5 id="1、《阿尔汉布拉宫的回忆》——塔雷加"><a href="#1、《阿尔汉布拉宫的回忆》——塔雷加" class="headerlink" title="1、《阿尔汉布拉宫的回忆》——塔雷加"></a>1、《阿尔汉布拉宫的回忆》——塔雷加</h5><pre><code>  这是被尊称为“近代吉他音乐之父”的西班牙著名吉他作曲家兼演奏家塔雷加的一首最有名的代表作品。
@@ -6957,6 +6947,16 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
       </categories>
       <tags>
         <tag>吉他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图片居中</title>
+    <url>/2019/04/08/%E5%9B%BE%E7%89%87%E5%B1%85%E4%B8%AD/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div class=&quot;pic&quot;&gt;&lt;img src=&quot;ttt.jpg&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">.pic &#123;</span><br><span class="line"></span><br><span class="line">  width:182px;</span><br><span class="line">  height:277px;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  align-items: center;</span><br><span class="line"></span><br><span class="line">  img &#123;</span><br><span class="line">    //width: 100%;</span><br><span class="line">    //height: 4.61333rem;</span><br><span class="line"></span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">    object-fit:cover;</span><br><span class="line">    /*object-fit:none;*/ //none则不改变图片原始尺寸</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>图片</tag>
+        <tag>居中</tag>
       </tags>
   </entry>
   <entry>
@@ -7455,6 +7455,24 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
       <tags>
         <tag>可乐</tag>
         <tag>诗</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>批量删除指定类型文件</title>
+    <url>/2018/05/08/%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E7%B1%BB%E5%9E%8B%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>删除当前目录下面所有备份文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm *.bak</span><br></pre></td></tr></table></figure>
+<p>如果想删除多级目录下面的所有备份文件，可以用：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">find ./ -name *.bak -exec rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">find ./ -name *.bak | xargs rm -rf</span><br></pre></td></tr></table></figure>
+<p>两者的区别是，第一个是一次性把结果传过去，如果量太大，会导致错误，而后者可以避免这个错误。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>批量删除</tag>
       </tags>
   </entry>
   <entry>
@@ -8626,24 +8644,6 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
       </tags>
   </entry>
   <entry>
-    <title>批量删除指定类型文件</title>
-    <url>/2018/05/08/%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E7%B1%BB%E5%9E%8B%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>删除当前目录下面所有备份文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm *.bak</span><br></pre></td></tr></table></figure>
-<p>如果想删除多级目录下面的所有备份文件，可以用：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">find ./ -name *.bak -exec rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
-<p>或者：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">find ./ -name *.bak | xargs rm -rf</span><br></pre></td></tr></table></figure>
-<p>两者的区别是，第一个是一次性把结果传过去，如果量太大，会导致错误，而后者可以避免这个错误。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>批量删除</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>批量改名</title>
     <url>/2016/12/12/%E6%89%B9%E9%87%8F%E6%94%B9%E5%90%8D/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>将扩展名为<code>.json</code>的文件名添加前缀<code>ad_</code></p>
@@ -8710,6 +8710,24 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
       <tags>
         <tag>mysql</tag>
         <tag>数据恢复</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>运算符，；的优先级</title>
+    <url>/2016/09/18/%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8C%EF%BC%9B%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>今天看一段anguarjs的代码发现，有一段for语句后面没有｛｝，后面跟着3个表达式，中间用<code>,</code>分割.但是觉得很奇怪，写段代码测试一下，发觉用<code>,</code>分割语句会连续执行。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">b=1;</span><br><span class="line">for(i=0;i&lt;5;i++)a=1,b++;</span><br><span class="line">console.log(b);</span><br></pre></td></tr></table></figure>
+<p>返回值<code>6</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">b=1;</span><br><span class="line">for(i=0;i&lt;5;i++)a=1;b++;</span><br><span class="line">console.log(b);</span><br></pre></td></tr></table></figure>
+<p>返回值<code>2</code></p>
+<p>后来查找了一下<code>,</code>从左到右依次运算。属于表达式</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>编程语言</tag>
+        <tag>运算符</tag>
       </tags>
   </entry>
   <entry>
@@ -8789,24 +8807,6 @@ PING 163.xdwscache.glb0.lxdns.com (101.23.128.17) 56(84) bytes of data.
       </categories>
       <tags>
         <tag>金刚经</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>运算符，；的优先级</title>
-    <url>/2016/09/18/%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8C%EF%BC%9B%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>今天看一段anguarjs的代码发现，有一段for语句后面没有｛｝，后面跟着3个表达式，中间用<code>,</code>分割.但是觉得很奇怪，写段代码测试一下，发觉用<code>,</code>分割语句会连续执行。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">b=1;</span><br><span class="line">for(i=0;i&lt;5;i++)a=1,b++;</span><br><span class="line">console.log(b);</span><br></pre></td></tr></table></figure>
-<p>返回值<code>6</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">b=1;</span><br><span class="line">for(i=0;i&lt;5;i++)a=1;b++;</span><br><span class="line">console.log(b);</span><br></pre></td></tr></table></figure>
-<p>返回值<code>2</code></p>
-<p>后来查找了一下<code>,</code>从左到右依次运算。属于表达式</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>编程语言</tag>
-        <tag>运算符</tag>
       </tags>
   </entry>
 </search>
