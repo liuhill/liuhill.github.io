@@ -198,7 +198,7 @@
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2016/04/12/ef-bc-bb-e8-bd-ac-ef-bc-bd-e5-ba-94-e7-94-a8-e6-95-b0-e6-8d-ae-e9-9d-99-e6-80-81-e5-8c-96-e6-9e-b6-e6-9e-84-e9-ab-98-e6-80-a7-e8-83-bd-e5-8d-95-e9-a1-b5web-e5-ba-94-e7-94-a8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="image" content="http://res.heynet.com.cn/cola.jpg">
       <meta itemprop="name" content="Hillock">
       <meta itemprop="description" content="努力奔跑，向着诗和远方">
     </span>
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-05-30 22:25:48" itemprop="dateModified" datetime="2024-05-30T22:25:48+08:00">2024-05-30</time>
+                <time title="修改时间：2025-11-20 12:54:34" itemprop="dateModified" datetime="2025-11-20T12:54:34+08:00">2025-11-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -260,9 +260,9 @@
  </li>
 
 <p><strong>整体架构</strong></p>
-<p>静态化页面的方案如下图所示：<br><img src="http://res.hillock.com.cn/web/640" alt="［转］应用数据静态化架构高性能单页Web应用" title="［转］应用数据静态化架构高性能单页Web应用"></p>
+<p>静态化页面的方案如下图所示：<br><img src="http://res.heynet.com.cn/web/640" alt="［转］应用数据静态化架构高性能单页Web应用" title="［转］应用数据静态化架构高性能单页Web应用"></p>
 <p>直接将生成的静态页推送到相关服务器即可。使用这种方式要考虑文件操作的原子化问题（即从老版本切换到新版本如何做到文件操作原子化）。</p>
-<p>而动态化方案的整体架构如下图所示，分为三大系统：CMS系统、控制系统和前端展示系统。<br><img src="http://res.hillock.com.cn/web/6402" alt="［转］应用数据静态化架构高性能单页Web应用" title="［转］应用数据静态化架构高性能单页Web应用"></p>
+<p>而动态化方案的整体架构如下图所示，分为三大系统：CMS系统、控制系统和前端展示系统。<br><img src="http://res.heynet.com.cn/web/6402" alt="［转］应用数据静态化架构高性能单页Web应用" title="［转］应用数据静态化架构高性能单页Web应用"></p>
 <p>###CMS系统<br>1、在CMS系统可以配置页面的模板和数据；<br>1.1、模板动态在CMS系统中维护，即模板不是一个静态文件，而是存储在CMS中的一条数据，最终发布到“发布数据存储Redis”中，前端展示系统从Redis中获取该模板进行渲染，从而前端展示系统更换了模板也不需要重启，纯动态维护模板数据；<br>2、原始数据存储到“元数据存储Mysql”中即可，比如频道页一般需要：前端访问的URL、分类、轮播图、商品楼层数据等；这些数据按照相应的维度存储在CMS系统中；<br>3、提供发布到“发布数据存储Redis”的控制，将CMS系统中的原始数据和模板数据组装成聚合数据（JSON存储）同步到“发布数据存储Redis”，以便前端展示系统获取进行展示；此处提供三个发布按钮：正式版本、灰度版本和预发布版本。</p>
 <p>目前存在如下几个问题：<br>1、用户如访问<a target="_blank" rel="noopener" href="http://channel.jd.com/fashion.html怎么定位到对应的聚合数据呢？">http://channel.jd.com/fashion.html怎么定位到对应的聚合数据呢？</a> 我们可以在CMS元数据中定义URL作为KEY，如果没有URL，则使用ID作为KEY，或者自动生成一个URL。<br>2、多版本如何存储呢？ 使用Redis的Hash结构存储即可，KEY为URL（比如<a target="_blank" rel="noopener" href="http://channel.jd.com/fashion.html），字段按照维度存储：正式版本使用当前时间戳存储（这样前端系统可以根据时间戳排序然后获取最新的版本）、预发布版本使用“predeploy”作为字段，灰度版本使用“abVersion”作为字段即可，这样就区分开了多版本。">http://channel.jd.com/fashion.html），字段按照维度存储：正式版本使用当前时间戳存储（这样前端系统可以根据时间戳排序然后获取最新的版本）、预发布版本使用“predeploy”作为字段，灰度版本使用“abVersion”作为字段即可，这样就区分开了多版本。</a><br>3、灰度版本如何控制呢？这个通过控制系统的开关来控制如何灰度；<br>4、如何访问预发布版本呢？比如在URL参数总带上predeploy=true，另外可以限定只有内网可以访问或者访问时带上访问密码，比如pwd=absdfedwqdqw。<br>5、模板变更的历史数据校验问题？比如模板变更了，但是使用历史数据渲染该模板会出现问题，即模板要兼容历史数据的；此处的方案不存在这个问题，因为每次存储时是当时的模板快照，即数据快照和模板快照推送到“发布数据存储Redis”中。</p>
 <p><strong>前端展示系统</strong><br>1、获取当前URL，使用URL作为KEY首先从本机“发布数据存储Redis”获取数据；<br>2、如果没有数据或者异常则从主“发布数据存储Redis”获取；<br>3、如果主“发布数据存储Redis”也发生了异常，那么会直接调用CMS系统暴露的API直接从元数据存储Mysql中获取数据进行处理。</p>
@@ -317,7 +317,7 @@ ngx.say(content)
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2016/04/01/centos-e4-b8-8b-e5-b0-86mysql-5-1-e5-8d-87-e7-ba-a7-e5-88-b0mysql-5-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="image" content="http://res.heynet.com.cn/cola.jpg">
       <meta itemprop="name" content="Hillock">
       <meta itemprop="description" content="努力奔跑，向着诗和远方">
     </span>
@@ -440,7 +440,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2016/03/16/svn-file-is-scheduled-for-addition-but-is-missing/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="image" content="http://res.heynet.com.cn/cola.jpg">
       <meta itemprop="name" content="Hillock">
       <meta itemprop="description" content="努力奔跑，向着诗和远方">
     </span>
@@ -515,7 +515,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2016/03/01/e6-9f-a5-e6-89-be-e7-9b-ae-e5-bd-95-e4-b8-8b-e7-9a-84-e6-89-80-e6-9c-89-e6-96-87-e4-bb-b6-e4-b8-ad-e6-98-af-e5-90-a6-e5-90-ab-e6-9c-89-e6-9f-90-e4-b8-aa-e5-ad-97-e7-ac-a6-e4-b8-b2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="image" content="http://res.heynet.com.cn/cola.jpg">
       <meta itemprop="name" content="Hillock">
       <meta itemprop="description" content="努力奔跑，向着诗和远方">
     </span>
@@ -600,7 +600,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2016/01/21/e5-a6-82-e4-bd-95-e6-89-b9-e9-87-8f-e6-88-96-e8-80-85-e5-85-a8-e9-83-a8-e5-88-a0-e9-99-a4linux-e7-9a-84-e7-b3-bb-e7-bb-9f-e9-82-ae-e4-bb-b6-ef-bc-9f/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="image" content="http://res.heynet.com.cn/cola.jpg">
       <meta itemprop="name" content="Hillock">
       <meta itemprop="description" content="努力奔跑，向着诗和远方">
     </span>
@@ -680,7 +680,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2016/01/21/linux-e5-88-aa-e9-99-a4-delete-all-root-mail/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="image" content="http://res.heynet.com.cn/cola.jpg">
       <meta itemprop="name" content="Hillock">
       <meta itemprop="description" content="努力奔跑，向着诗和远方">
     </span>
@@ -759,7 +759,7 @@ OK</code><br>至此mysql已经更新好了。登陆mysql，检查数据是否和
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2016/01/17/ssh-e5-85-8d-e5-af-86-e7-a0-81-e7-99-bb-e5-bd-95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="image" content="http://res.heynet.com.cn/cola.jpg">
       <meta itemprop="name" content="Hillock">
       <meta itemprop="description" content="努力奔跑，向着诗和远方">
     </span>
@@ -845,7 +845,7 @@ hadoop@192.168.10.107&apos;s password:</code></pre><p>由于还没有免密码�
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2016/01/05/json-e8-a7-a3-e6-9e-90-e9-94-99-e8-af-af/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="image" content="http://res.heynet.com.cn/cola.jpg">
       <meta itemprop="name" content="Hillock">
       <meta itemprop="description" content="努力奔跑，向着诗和远方">
     </span>
@@ -941,7 +941,7 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2016/01/03/e5-95-86-e4-b8-9a-e6-a8-a1-e5-bc-8f/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="image" content="http://res.heynet.com.cn/cola.jpg">
       <meta itemprop="name" content="Hillock">
       <meta itemprop="description" content="努力奔跑，向着诗和远方">
     </span>
@@ -1015,7 +1015,7 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2015/12/08/e7-89-88-e6-9c-ac-e7-ae-a1-e7-90-86-ef-bc-8c-e5-a4-96-e9-83-a8-e5-ae-9a-e4-b9-89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="image" content="http://res.heynet.com.cn/cola.jpg">
       <meta itemprop="name" content="Hillock">
       <meta itemprop="description" content="努力奔跑，向着诗和远方">
     </span>
@@ -1147,7 +1147,7 @@ $json = str_replace(&apos;&amp;amp;quot;&apos;, &apos;&quot;&apos;, $passengers)
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Hillock"
-      src="https://res.hillock.com.cn/cola.jpg">
+      src="http://res.heynet.com.cn/cola.jpg">
   <p class="site-author-name" itemprop="name">Hillock</p>
   <div class="site-description" itemprop="description">努力奔跑，向着诗和远方</div>
 </div>
