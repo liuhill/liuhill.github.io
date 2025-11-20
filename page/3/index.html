@@ -195,6 +195,95 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2018/08/06/mysqldbcompare-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E6%AF%94%E8%BE%83%E5%B7%A5%E5%85%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/08/06/mysqldbcompare-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E6%AF%94%E8%BE%83%E5%B7%A5%E5%85%B7/" class="post-title-link" itemprop="url">mysqldbcompare MySQL数据库比较工具</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-08-06 15:40:16" itemprop="dateCreated datePublished" datetime="2018-08-06T15:40:16+08:00">2018-08-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-05-30 22:25:48" itemprop="dateModified" datetime="2024-05-30T22:25:48+08:00">2024-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script src="/assets/js/APlayer.min.js"> </script><p>mysqldbcompare用于比较两个服务器或同个服务器上的数据库，有文件和数据，并生成差异性SQL语句。</p>
+<p>要比较数据表，请用另外一个工具：mysqldiff（点击查看教程）。</p>
+<p>以下是mysqldbcompare的用法。</p>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1 安装"></a>1 安装</h2><p>mysqldbcompare是MySQL Utilities中的一个脚本，默认的MySQL不包含工具集，所以需要独立安装。</p>
+<p>MySQL Utilities下载地址：<a target="_blank" rel="noopener" href="http://downloads.mysql.com/archives/utilities/。">http://downloads.mysql.com/archives/utilities/。</a><br>Windows系统中需提前安装“Visual C++ Redistributable Packages for Visual Studio 2013”，下载地址：<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-gb/download/details.aspx?id=40784。">https://www.microsoft.com/en-gb/download/details.aspx?id=40784。</a><br>Linux系统在下载页面选择对应发行版。</p>
+<h2 id="2-语法"><a href="#2-语法" class="headerlink" title="2 语法"></a>2 语法</h2><p>mysqldbcompare的语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldbcompare --server1=user:pass@host:port:socket --server2=user:pass@host:port:socket db1:db2</span><br></pre></td></tr></table></figure>
+<p>以上参数中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">--server1：MySQL服务器1配置。</span><br><span class="line">--server2：MySQL服务器2配置。如果是同一服务器，--server2可以省略。</span><br><span class="line">db1:db2：要比较的两个数据库。如果比较不同服务器上的同名数据库，可以省略:db2。</span><br><span class="line">--all：比较所有两服务器上所有的同名数据库。--exclude排除无需比较的数据库。</span><br><span class="line">--run-all-tests：运行完整比较，遇到第一次差异时不停止。</span><br><span class="line">--changes-for=：修改对象。例如--changes-for=server2，那么对比以sever1为主，生成的差异的修改也是针对server2的对象的修改。</span><br><span class="line">-d DIFFTYPE,--difftype=DIFFTYPE：差异的信息显示的方式，有[unified|context|differ|sql]，默认是unified。如果使用sql，那么就直接生成差异的SQL，这样非常方便。</span><br><span class="line">--show-reverse：在生成的差异修改里面，同时会包含server2和server1的修改。</span><br><span class="line">--skip-table-options：保持表的选项不变，即对比的差异里面不包括表名、AUTO_INCREMENT、ENGINE、CHARSET等差异。</span><br><span class="line">--skip-diff：跳过对象定义比较检查。所谓对象定义，就是CREATE语句()里面的部分，--skip-table-options是()外面的部分。</span><br><span class="line">--skip-object-compare：默认情况下，先检查两个数据库中相互缺失的对象，再对都存在对象间的差异。这个参数的作用就是，跳过第一步，不检查相互缺失的对象。</span><br><span class="line">--skip-checksum-table：数据一致性验证时跳过CHECKSUM TABLE。</span><br><span class="line">--skip-data-check：跳过数据一致性验证。</span><br><span class="line">--skip-row-count：跳过字段数量检查。</span><br></pre></td></tr></table></figure>
+<h2 id="3-示例"><a href="#3-示例" class="headerlink" title="3 示例"></a>3 示例</h2><p>比较两个数据库，并生成差异SQL：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldbcompare --server1=root:root@localhost --server2=root:root@localhost db1:db2 --changes-for=server1 -a --difftype=sql</span><br><span class="line"></span><br><span class="line"># WARNING: Objects in server1.db1 but not in server1.db2:</span><br><span class="line"># TABLE: table2</span><br><span class="line">#</span><br><span class="line"># WARNING: Objects in server1.db2 but not in server1.tb1:</span><br><span class="line"># TABLE: table3</span><br><span class="line">#</span><br><span class="line">#                                                   Defn    Row     Data</span><br><span class="line"># Type      Object Name                             Diff    Count   Check</span><br><span class="line">#-------------------------------------------------------------------------</span><br><span class="line"># TABLE     t1                                      pass    pass    -</span><br><span class="line">#           - Compare table checksum                                FAIL</span><br><span class="line">#           - Find row differences                                  FAIL</span><br><span class="line">#</span><br><span class="line"># Transformation for --changes-for=server1:</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"># Data differences found among rows:</span><br><span class="line">UPDATE db1.t1 SET b = &#x27;Test 123&#x27; WHERE a = &#x27;1&#x27;;</span><br><span class="line">UPDATE db1.t1 SET b = &#x27;Test 789&#x27; WHERE a = &#x27;3&#x27;;</span><br><span class="line">DELETE FROM db1.t1 WHERE a = &#x27;4&#x27;;</span><br><span class="line">INSERT INTO db1.t1 (a, b) VALUES(&#x27;5&#x27;, &#x27;New row - db2&#x27;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Database consistency check failed.</span><br><span class="line">#</span><br><span class="line"># ...done</span><br></pre></td></tr></table></figure>
+<p>WARNING之后提示两个数据库表之间的差异，也就是一个数据库中有，另一个数据库没有的数据表。</p>
+<p>之后就是差异的SQL语句了，把有#号注释的行删掉，就能直接在数据库中执行了。</p>
+<p><code>说明</code>：执行MySQL语句时可能会遇到这样错误：`Error 1054 - Unknown column ‘name’ in ‘aspect’``</p>
+<p>这是因为mysqldbcompare生成的ALTER语句中，用逗号,拼装了多条ADD、CHANGE等语句，如果这些语句还包含AFTER关键字，就会提示这个错误并中断执行MySQL语句。解决的办法就是：去除AFTER及其后面的条件。</p>
+<p>这可能是MySQL的一个Bug，详情参考：<a target="_blank" rel="noopener" href="http://bugs.mysql.com/bug.php?id=34972">http://bugs.mysql.com/bug.php?id=34972</a> 和 <a target="_blank" rel="noopener" href="http://bugs.mysql.com/bug.php?id=60650。">http://bugs.mysql.com/bug.php?id=60650。</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2018/06/07/Yii2-advanced-add-module/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1028,177 +1117,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2018/01/29/sphinx-scws-%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2(PHP7%E3%80%81MariaDB)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
-      <meta itemprop="name" content="Hillock">
-      <meta itemprop="description" content="努力奔跑，向着诗和远方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无来">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/01/29/sphinx-scws-%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2(PHP7%E3%80%81MariaDB)/" class="post-title-link" itemprop="url">sphinx-scws-全文检索(PHP7、MariaDB)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-01-29 09:45:21" itemprop="dateCreated datePublished" datetime="2018-01-29T09:45:21+08:00">2018-01-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-05-30 22:25:48" itemprop="dateModified" datetime="2024-05-30T22:25:48+08:00">2024-05-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <script src="/assets/js/APlayer.min.js"> </script><p>环境：centos 7 x86_64，php 7.1.7， MariaDB 10.1.23</p>
-<h3 id="一，下载sphinx-scws相关包"><a href="#一，下载sphinx-scws相关包" class="headerlink" title="一，下载sphinx,scws相关包"></a>一，下载sphinx,scws相关包</h3><p>sphinx下载地址：<a target="_blank" rel="noopener" href="http://sphinxsearch.com/downloads/release/">http://sphinxsearch.com/downloads/release/</a></p>
-<p>sphinx php扩展下载地址：<a target="_blank" rel="noopener" href="http://pecl.php.net/package/sphinx">http://pecl.php.net/package/sphinx</a></p>
-<p>scws下载地址：<a target="_blank" rel="noopener" href="http://www.xunsearch.com/scws/download.php">http://www.xunsearch.com/scws/download.php</a></p>
-<p>scws词库下载地址：<a target="_blank" rel="noopener" href="http://www.xunsearch.com/scws/down/scws-dict-chs-utf8.tar.bz2">http://www.xunsearch.com/scws/down/scws-dict-chs-utf8.tar.bz2</a></p>
-<h3 id="二，安装sphinx-scws-以及php扩展"><a href="#二，安装sphinx-scws-以及php扩展" class="headerlink" title="二，安装sphinx,scws,以及php扩展"></a>二，安装sphinx,scws,以及php扩展</h3><ul>
-<li>1,安装sphinx<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># curl http://sphinxsearch.com/files/sphinx-2.3.1-beta.tar.gz</span><br><span class="line"># tar zxvf sphinx-2.3.1-beta.tar.gz  </span><br><span class="line"># cd sphinx-2.3.1-beta  </span><br><span class="line"># ./configure --prefix=/usr/local/sphinx --with-mysql=/usr/local/mariadb LIBS=-liconv</span><br><span class="line"># make &amp;&amp; make install  </span><br></pre></td></tr></table></figure></li>
-<li>2,安装sphinx客户端<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># cd api/libsphinxclient   //sphinx-2.3.1-beta目录下  </span><br><span class="line"># ./configure --prefix=/usr/local/sphinx/libsphinxclient  </span><br><span class="line"># make &amp;&amp; make install  </span><br></pre></td></tr></table></figure></li>
-<li>3,安装sphinx php扩展</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># git clone https://github.com/php/pecl-search_engine-sphinx.git  </span><br><span class="line"># cd pecl-search_engine-sphinx</span><br><span class="line"># git checkout php7  </span><br><span class="line"># phpize  </span><br><span class="line"># ./configure  --with-sphinx=/usr/local/sphinx/libsphinxclient --with-php-config=/usr/local/php/bin/php-config  </span><br><span class="line"># make &amp;&amp; make install  </span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>4,安装scws</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># cd /usr/local/src  </span><br><span class="line"># wget http://www.xunsearch.com/scws/down/scws-1.2.3.tar.bz2</span><br><span class="line"># tar xvjf scws-1.2.3.tar.bz2  </span><br><span class="line"># mkdir /usr/local/scws     </span><br><span class="line"># cd scws-1.2.3     </span><br><span class="line"># ./configure --prefix=/usr/local/scws/     </span><br><span class="line"># make &amp;&amp; make install   </span><br></pre></td></tr></table></figure>
-<ul>
-<li>5,安装scws php扩展</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># cd /usr/local/src/sphinx/scws-1.2.3/phpext    </span><br><span class="line"># phpize     </span><br><span class="line"># ./configure --with-php-config=/usr/local/php/bin/php-config   </span><br><span class="line"># make &amp;&amp; make install   </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>6 安装scws词库</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># wget http://www.xunsearch.com/scws/down/scws-dict-chs-utf8.tar.bz2</span><br><span class="line"># tar xvjf scws-dict-chs-utf8.tar.bz2 -C /usr/local/scws/etc/  </span><br><span class="line"></span><br><span class="line"># www为php-fpm运行用户  </span><br><span class="line"># chown www:www /usr/local/scws/etc/dict.utf8.xdb  </span><br></pre></td></tr></table></figure>
-
-<p>在这里一定要加权限，也就是说让php-fpm或者php-cgi的运行用户，拥有dict.utf8.xdb的所有权限。如果不这么做的话，php 扩展调用词库会报如下错误：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Warning: SimpleCWS::add_dict(): Failed to add the dict file</span><br></pre></td></tr></table></figure>
-<p>怎么查看php-fpm,php-cgi的运行用户呢？</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># ps aux |grep php-fpm  </span><br><span class="line">[www@localhost src]$ ps aux |grep php-fpm</span><br><span class="line">www       51250  0.0  0.0 103340   912 pts/0    S+   11:35   0:00 grep php-fpm</span><br><span class="line">root     102701  0.0  0.0 256360  7064 ?        Ss   Jan23   0:07 php-fpm: master process (/usr/local/php/etc/php-fpm.conf)                                                                    </span><br><span class="line">www      102702  0.0  0.0 259536 12332 ?        S    Jan23   0:00 php-fpm: pool     //使用php的用户 www                                                                                                            </span><br><span class="line">www      102703  0.0  0.0 259316 11792 ?        S    Jan23   0:00 php-fpm: pool www                                                                                                            </span><br><span class="line">www      102704  0.0  0.0 261576 14060 ?        S    Jan23   0:00 php-fpm: pool www                                                                                                            </span><br><span class="line">www      102705  0.0  0.0 259304 11852 ?        S    Jan23   0:00 php-fpm: pool www                                                                                                            </span><br><span class="line">www      102706  0.0  0.0 259128 12016 ?        S    Jan23   0:00 php-fpm: pool www                                                                                                            </span><br><span class="line">www      102707  0.0  0.0 259400 12100 ?        S    Jan23   0:00 php-fpm: pool www                                                                                                            </span><br><span class="line">www      102708  0.0  0.0 259296 12092 ?        S    Jan23   0:00 php-fpm: pool www                                                                                                            </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="三，配置sphinx-scws-php等"><a href="#三，配置sphinx-scws-php等" class="headerlink" title="三，配置sphinx,scws,php等"></a>三，配置sphinx,scws,php等</h3><ul>
-<li>1,创建测试表和数据 test.sql</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">test.sql</span><br><span class="line">/*</span><br><span class="line">Navicat MySQL Data Transfer</span><br><span class="line"></span><br><span class="line">Source Server         : 192.168.101.130</span><br><span class="line">Source Server Version : 50527</span><br><span class="line">Source Host           : 192.168.101.130:3306</span><br><span class="line">Source Database       : test</span><br><span class="line"></span><br><span class="line">Target Server Type    : MYSQL</span><br><span class="line">Target Server Version : 50527</span><br><span class="line">File Encoding         : 65001</span><br><span class="line"></span><br><span class="line">Date: 2016-08-14 13:46:48</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">SET FOREIGN_KEY_CHECKS=0;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Table structure for `userinfo`</span><br><span class="line">-- ----------------------------</span><br><span class="line">DROP TABLE IF EXISTS `userinfo`;</span><br><span class="line">CREATE TABLE `userinfo` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `userid` int(11) unsigned NOT NULL DEFAULT &#x27;0&#x27;,</span><br><span class="line">  `addtime` datetime NOT NULL,</span><br><span class="line">  `post` varchar(20) NOT NULL DEFAULT &#x27;&#x27;,</span><br><span class="line">  `summary` text NOT NULL,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Records of userinfo</span><br><span class="line">-- ----------------------------</span><br><span class="line">INSERT INTO `userinfo` VALUES (&#x27;17&#x27;, &#x27;1&#x27;, &#x27;2012-06-01 00:24:54&#x27;, &#x27;洪&#x27;, &#x27;奥运&#x27;);</span><br><span class="line">INSERT INTO `userinfo` VALUES (&#x27;18&#x27;, &#x27;2&#x27;, &#x27;2014-08-19 10:24:54&#x27;, &#x27;中国人&#x27;, &#x27;洪荒&#x27;);</span><br><span class="line">INSERT INTO `userinfo` VALUES (&#x27;19&#x27;, &#x27;3&#x27;, &#x27;2015-08-01 12:24:54&#x27;, &#x27;洪荒之&#x27;, &#x27;nimne&#x27;);</span><br><span class="line">INSERT INTO `userinfo` VALUES (&#x27;20&#x27;, &#x27;4&#x27;, &#x27;2013-08-01 00:24:54&#x27;, &#x27;洪荒之力&#x27;, &#x27;23金&#x27;);</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Table structure for `users`</span><br><span class="line">-- ----------------------------</span><br><span class="line">DROP TABLE IF EXISTS `users`;</span><br><span class="line">CREATE TABLE `users` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `username` varchar(20) NOT NULL DEFAULT &#x27;&#x27;,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Records of users</span><br><span class="line">-- ----------------------------</span><br><span class="line">INSERT INTO `users` VALUES (&#x27;1&#x27;, &#x27;zhangsan&#x27;);</span><br><span class="line">INSERT INTO `users` VALUES (&#x27;2&#x27;, &#x27;zhangsi&#x27;);</span><br><span class="line">INSERT INTO `users` VALUES (&#x27;3&#x27;, &#x27;李四&#x27;);</span><br><span class="line">INSERT INTO `users` VALUES (&#x27;4&#x27;, &#x27;王五&#x27;);</span><br></pre></td></tr></table></figure>
-
-<p>导入数据 <code>source test.sql</code></p>
-<img src="https://res.hillock.com.cn/wulai/images/20160814140124005.jpg">
-
-<p>数据源</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">select</span><br><span class="line">	a.id,</span><br><span class="line">	a.userid,</span><br><span class="line">    b.username,</span><br><span class="line">    UNIX_TIMESTAMP(a.addtime) AS addtime,</span><br><span class="line">    a.post,</span><br><span class="line">    a.summary</span><br><span class="line"></span><br><span class="line">FROM</span><br><span class="line">	userinfo a</span><br><span class="line"></span><br><span class="line">LEFT JOIN users b ON a.userid = b.id</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+----+--------+----------+------------+--------------+---------+</span><br><span class="line">| id | userid | username | addtime    | post         | summary |</span><br><span class="line">+----+--------+----------+------------+--------------+---------+</span><br><span class="line">| 17 |      1 | zhangsan | 1338481494 | 洪           | 奥运    |</span><br><span class="line">| 18 |      2 | zhangsi  | 1408415094 | 中国人       | 洪荒    |</span><br><span class="line">| 19 |      3 | 李四     | 1438403094 | 洪荒之       | nimne   |</span><br><span class="line">| 20 |      4 | 王五     | 1375287894 | 洪荒之力     | 23金    |</span><br><span class="line">+----+--------+----------+------------+--------------+---------+</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<img src="https://res.hillock.com.cn/wulai/images/20160814140002253.jpg">
-
-<ul>
-<li><p>2,配置sphinx.conf，加上以下内容<br>其中searchd 以下3个配置比较重要。<code>mysql -h0 -P 9306</code>访问。9312可以给php访问。query_log_format 记录日志的格式。</p>
-</li>
-<li><p>1 # php<br><code>listen          = 9312</code></p>
-</li>
-<li><p>2 # mysql<br><code>listen          = 9306:mysql41</code></p>
-</li>
-<li><p>3 # log_format</p>
-<p><code>query_log_format = sphinxql</code></p>
-</li>
-<li><p>sphinx.conf</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"># vim /usr/local/sphinx/etc/sphinx-test.conf</span><br><span class="line"></span><br><span class="line">source users</span><br><span class="line">&#123;</span><br><span class="line">	type			= mysql</span><br><span class="line">	sql_host		= 127.0.0.1</span><br><span class="line">	sql_user		= root</span><br><span class="line">	sql_pass		= 123456</span><br><span class="line">	sql_db			= test</span><br><span class="line">	sql_port		= 3306	# optional, default is 3306</span><br><span class="line">	sql_query_pre = SET NAMES utf8</span><br><span class="line">        sql_query_pre = SET SESSION query_cache_type=OFF  </span><br><span class="line">        sql_query = 	SELECT a.id, a.userid,b.username, UNIX_TIMESTAMP(a.addtime) AS addtime, a.post, a.summary 	FROM userinfo a left join users b on a.userid = b.id  </span><br><span class="line">	sql_attr_uint = userid  </span><br><span class="line">	sql_field_string = username  </span><br><span class="line">	sql_field_string = post  </span><br><span class="line">	sql_attr_timestamp = addtime</span><br><span class="line">	sql_ranged_throttle = 0  </span><br><span class="line">	#sql_attr_uint		= group_id</span><br><span class="line">	#sql_attr_timestamp	= date_added</span><br><span class="line">	#sql_ranged_throttle	= 0</span><br><span class="line">&#125;</span><br><span class="line">source src1throttled : users</span><br><span class="line">&#123;</span><br><span class="line">	sql_ranged_throttle	= 100</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">index users</span><br><span class="line">&#123;  </span><br><span class="line">	source = users</span><br><span class="line">	path = /usr/local/sphinx/var/data/users</span><br><span class="line">	docinfo = extern  </span><br><span class="line">	mlock = 0  </span><br><span class="line">	morphology = none  </span><br><span class="line">	min_word_len = 1  </span><br><span class="line">	html_strip = 1  </span><br><span class="line">  charset_table = U+FF10..U+FF19-&gt;0..9, 0..9, U+FF41..U+FF5A-&gt;a..z, U+FF21..U+FF3A-&gt;a..z,A..Z-&gt;a..z, a..z, U+0149, U+017F, U+0138, U+00DF, U+00FF, U+00C0..U+00D6-&gt;U+00E0..U+00F6,U+00E0..U+00F6, U+00D8..U+00DE-&gt;U+00F8..U+00FE, U+00F8..U+00FE, U+0100-&gt;U+0101, U+0101,U+0102-&gt;U+0103, U+0103, U+0104-&gt;U+0105, U+0105, U+0106-&gt;U+0107, U+0107, U+0108-&gt;U+0109,U+0109, U+010A-&gt;U+010B, U+010B, U+010C-&gt;U+010D, U+010D, U+010E-&gt;U+010F, U+010F,U+0110-&gt;U+0111, U+0111, U+0112-&gt;U+0113, U+0113, U+0114-&gt;U+0115, U+0115, U+0116-&gt;U+0117,U+0117, U+0118-&gt;U+0119, U+0119, U+011A-&gt;U+011B, U+011B, U+011C-&gt;U+011D, U+011D,U+011E-&gt;U+011F, U+011F, U+0130-&gt;U+0131, U+0131, U+0132-&gt;U+0133, U+0133, U+0134-&gt;U+0135,U+0135, U+0136-&gt;U+0137, U+0137, U+0139-&gt;U+013A, U+013A, U+013B-&gt;U+013C, U+013C,U+013D-&gt;U+013E, U+013E, U+013F-&gt;U+0140, U+0140, U+0141-&gt;U+0142, U+0142, U+0143-&gt;U+0144,U+0144, U+0145-&gt;U+0146, U+0146, U+0147-&gt;U+0148, U+0148, U+014A-&gt;U+014B, U+014B,U+014C-&gt;U+014D, U+014D, U+014E-&gt;U+014F, U+014F, U+0150-&gt;U+0151, U+0151, U+0152-&gt;U+0153,U+0153, U+0154-&gt;U+0155, U+0155, U+0156-&gt;U+0157, U+0157, U+0158-&gt;U+0159, U+0159,U+015A-&gt;U+015B, U+015B, U+015C-&gt;U+015D, U+015D, U+015E-&gt;U+015F, U+015F, U+0160-&gt;U+0161,U+0161, U+0162-&gt;U+0163, U+0163, U+0164-&gt;U+0165, U+0165, U+0166-&gt;U+0167, U+0167,U+0168-&gt;U+0169, U+0169, U+016A-&gt;U+016B, U+016B, U+016C-&gt;U+016D, U+016D, U+016E-&gt;U+016F,U+016F, U+0170-&gt;U+0171, U+0171, U+0172-&gt;U+0173, U+0173, U+0174-&gt;U+0175, U+0175,U+0176-&gt;U+0177, U+0177, U+0178-&gt;U+00FF, U+00FF, U+0179-&gt;U+017A, U+017A, U+017B-&gt;U+017C,U+017C, U+017D-&gt;U+017E, U+017E, U+0410..U+042F-&gt;U+0430..U+044F, U+0430..U+044F,U+05D0..U+05EA, U+0531..U+0556-&gt;U+0561..U+0586, U+0561..U+0587, U+0621..U+063A, U+01B9,U+01BF, U+0640..U+064A, U+0660..U+0669, U+066E, U+066F, U+0671..U+06D3, U+06F0..U+06FF,U+0904..U+0939, U+0958..U+095F, U+0960..U+0963, U+0966..U+096F, U+097B..U+097F,U+0985..U+09B9, U+09CE, U+09DC..U+09E3, U+09E6..U+09EF, U+0A05..U+0A39, U+0A59..U+0A5E,U+0A66..U+0A6F, U+0A85..U+0AB9, U+0AE0..U+0AE3, U+0AE6..U+0AEF, U+0B05..U+0B39,U+0B5C..U+0B61, U+0B66..U+0B6F, U+0B71, U+0B85..U+0BB9, U+0BE6..U+0BF2, U+0C05..U+0C39,U+0C66..U+0C6F, U+0C85..U+0CB9, U+0CDE..U+0CE3, U+0CE6..U+0CEF, U+0D05..U+0D39, U+0D60,U+0D61, U+0D66..U+0D6F, U+0D85..U+0DC6, U+1900..U+1938, U+1946..U+194F, U+A800..U+A805,U+A807..U+A822, U+0386-&gt;U+03B1, U+03AC-&gt;U+03B1, U+0388-&gt;U+03B5, U+03AD-&gt;U+03B5,U+0389-&gt;U+03B7, U+03AE-&gt;U+03B7, U+038A-&gt;U+03B9, U+0390-&gt;U+03B9, U+03AA-&gt;U+03B9,U+03AF-&gt;U+03B9, U+03CA-&gt;U+03B9, U+038C-&gt;U+03BF, U+03CC-&gt;U+03BF, U+038E-&gt;U+03C5,U+03AB-&gt;U+03C5, U+03B0-&gt;U+03C5, U+03CB-&gt;U+03C5, U+03CD-&gt;U+03C5, U+038F-&gt;U+03C9,U+03CE-&gt;U+03C9, U+03C2-&gt;U+03C3, U+0391..U+03A1-&gt;U+03B1..U+03C1,U+03A3..U+03A9-&gt;U+03C3..U+03C9, U+03B1..U+03C1, U+03C3..U+03C9, U+0E01..U+0E2E,U+0E30..U+0E3A, U+0E40..U+0E45, U+0E47, U+0E50..U+0E59</span><br><span class="line">	ngram_len = 1  </span><br><span class="line">	ngram_chars = U+4E00..U+9FBF, U+3400..U+4DBF, U+20000..U+2A6DF, U+F900..U+FAFF,U+2F800..U+2FA1F, U+2E80..U+2EFF, U+2F00..U+2FDF, U+3100..U+312F, U+31A0..U+31BF,U+3040..U+309F, U+30A0..U+30FF,U+31F0..U+31FF, U+AC00..U+D7AF, U+1100..U+11FF,U+3130..U+318F, U+A000..U+A48F, U+A490..U+A4CF  </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">common</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line">indexer</span><br><span class="line">&#123;</span><br><span class="line">	mem_limit		= 128M</span><br><span class="line">&#125;</span><br><span class="line">searchd</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">	#php</span><br><span class="line">	listen          = 9312</span><br><span class="line"></span><br><span class="line">	#mysql</span><br><span class="line">    listen          = 9306:mysql41</span><br><span class="line"></span><br><span class="line">	log			= /usr/local/sphinx/var/log/searchd.log</span><br><span class="line">	query_log		= /usr/local/sphinx/var/log/query.log</span><br><span class="line">	query_log_format = sphinxql</span><br><span class="line">	read_timeout		= 5</span><br><span class="line">	client_timeout		= 300</span><br><span class="line">	max_children		= 30</span><br><span class="line">	persistent_connections_limit	= 30</span><br><span class="line">	pid_file		= /usr/local/sphinx/var/log/searchd.pid</span><br><span class="line">	seamless_rotate		= 1</span><br><span class="line">	preopen_indexes		= 1</span><br><span class="line">	unlink_old		= 1</span><br><span class="line">	mva_updates_pool	= 1M</span><br><span class="line">	max_packet_size		= 8M</span><br><span class="line">	max_filters		= 256</span><br><span class="line">	max_filter_values	= 4096</span><br><span class="line">	max_batch_queries	= 32</span><br><span class="line">	workers			= threads # for RT to work</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>4,配置php.ini</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># vim /etc/php.ini  </span><br><span class="line">[sphinx]  </span><br><span class="line">extension = sphinx.so  </span><br><span class="line"></span><br><span class="line">[scws]  </span><br><span class="line">extension = scws.so  </span><br><span class="line">scws.default.charset = utf-8  </span><br><span class="line">scws.default.fpath = /usr/local/scws/etc  </span><br></pre></td></tr></table></figure>
-
-<h3 id="四，启动sphinx-php-fpm"><a href="#四，启动sphinx-php-fpm" class="headerlink" title="四，启动sphinx,php-fpm"></a>四，启动sphinx,php-fpm</h3><ul>
-<li>1,启动sphinx<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># /usr/local/sphinx/bin/indexer --config /usr/local/sphinx/etc/sphinx-test.conf --all  </span><br><span class="line"># /usr/local/sphinx/bin/searchd --config /usr/local/sphinx/etc/sphinx-test.conf  </span><br></pre></td></tr></table></figure></li>
-<li>2,重启php-fpm<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># /etc/init.d/php-fpm restart  </span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="五，测试sphinx全文检索"><a href="#五，测试sphinx全文检索" class="headerlink" title="五，测试sphinx全文检索"></a>五，测试sphinx全文检索</h3><ul>
-<li>1,命令行的测试</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># mysql -h127.0.0.1  -P9306</span><br><span class="line">MySQL [(none)]&gt; show tables;</span><br><span class="line">+-------+-------+</span><br><span class="line">| Index | Type  |</span><br><span class="line">+-------+-------+</span><br><span class="line">| users | local |</span><br><span class="line">+-------+-------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">MySQL [(none)]&gt;</span><br><span class="line">MySQL [(none)]&gt;</span><br><span class="line">MySQL [(none)]&gt; desc users;</span><br><span class="line">+----------+-----------+</span><br><span class="line">| Field    | Type      |</span><br><span class="line">+----------+-----------+</span><br><span class="line">| id       | bigint    |</span><br><span class="line">| username | field     |</span><br><span class="line">| post     | field     |</span><br><span class="line">| summary  | field     |</span><br><span class="line">| userid   | uint      |</span><br><span class="line">| username | string    |</span><br><span class="line">| addtime  | timestamp |</span><br><span class="line">| post     | string    |</span><br><span class="line">+----------+-----------+</span><br><span class="line">8 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<img src="https://res.hillock.com.cn/wulai/images/20160814142332937.jpg">
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">MySQL [(none)]&gt; select * FROM users WHERE match(&#x27;洪荒之力&#x27;);</span><br><span class="line">+------+--------+----------+------------+--------------+</span><br><span class="line">| id   | userid | username | addtime    | post         |</span><br><span class="line">+------+--------+----------+------------+--------------+</span><br><span class="line">|   20 |      4 | 王五     | 1375287894 | 洪荒之力     |</span><br><span class="line">+------+--------+----------+------------+--------------+</span><br></pre></td></tr></table></figure>
-<img src="https://res.hillock.com.cn/wulai/images/20160814142346640.jgp">
-
-
-<ul>
-<li>2,利用php 扩展</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"> header(&quot;Content-type: text/html; charset=utf-8&quot;);</span><br><span class="line"> $b_time = microtime(true);</span><br><span class="line"> $key = &quot;洪荒之力&quot;;</span><br><span class="line"> $index = &quot;users&quot;;</span><br><span class="line"> //========================================分词</span><br><span class="line"></span><br><span class="line"> $so = scws_new();</span><br><span class="line"> $so-&gt;set_charset(&#x27;utf-8&#x27;);</span><br><span class="line"> //默认词库</span><br><span class="line"> $so-&gt;add_dict(ini_get(&#x27;scws.default.fpath&#x27;) . &#x27;/dict.utf8.xdb&#x27;);</span><br><span class="line"> //自定义词库</span><br><span class="line">// $so-&gt;add_dict(&#x27;./dd.txt&#x27;,SCWS_XDICT_TXT);</span><br><span class="line"> //默认规则</span><br><span class="line"> $so-&gt;set_rule(ini_get(&#x27;scws.default.fpath&#x27;) . &#x27;/rules.utf8.ini&#x27;);</span><br><span class="line"></span><br><span class="line"> //设定分词返回结果时是否去除一些特殊的标点符号</span><br><span class="line"> $so-&gt;set_ignore(true);</span><br><span class="line"></span><br><span class="line"> //设定分词返回结果时是否复式分割，如“中国人”返回“中国＋人＋中国人”三个词。</span><br><span class="line"> // 按位异或的 1 | 2 | 4 | 8 分别表示: 短词 | 二元 | 主要单字 | 所有单字</span><br><span class="line"> //1,2,4,8 分别对应常量 SCWS_MULTI_SHORT SCWS_MULTI_DUALITY SCWS_MULTI_ZMAIN SCWS_MULTI_ZALL</span><br><span class="line"> $so-&gt;set_multi(false);</span><br><span class="line"></span><br><span class="line"> //设定是否将闲散文字自动以二字分词法聚合</span><br><span class="line"> $so-&gt;set_duality(false);</span><br><span class="line"></span><br><span class="line"> //设定搜索词</span><br><span class="line"> $so-&gt;send_text($key);</span><br><span class="line"> $words_array = $so-&gt;get_result();</span><br><span class="line"> $words = &quot;&quot;;</span><br><span class="line"> foreach($words_array as $v)</span><br><span class="line"> &#123;</span><br><span class="line"> $words = $words.&#x27;|(&#x27;.$v[&#x27;word&#x27;].&#x27;)&#x27;;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> //加入全词</span><br><span class="line"> #$words = &#x27;(&#x27;.$key.&#x27;)&#x27;.$words;</span><br><span class="line"> $words = trim($words,&#x27;|&#x27;);</span><br><span class="line"> $so-&gt;close();</span><br><span class="line"> echo &#x27;&lt;p&gt;输入：&#x27;.$key.&#x27;&lt;/p&gt;&#x27;.&quot;\r\n&quot;;</span><br><span class="line"> echo &#x27;&lt;p&gt;分词：&#x27;.$words.&#x27;&lt;/p&gt;&#x27;.&quot;\r\n&quot;;</span><br><span class="line">//========================================搜索</span><br><span class="line"> $sc = new SphinxClient();</span><br><span class="line"> $sc-&gt;SetServer(&#x27;127.0.0.1&#x27;,9312);</span><br><span class="line"> #$sc-&gt;SetMatchMode(SPH_MATCH_ALL);</span><br><span class="line"> $sc-&gt;SetMatchMode(SPH_MATCH_EXTENDED);</span><br><span class="line"> $sc-&gt;SetArrayResult(TRUE);</span><br><span class="line"> $res = $sc-&gt;Query($words,$index);</span><br><span class="line"> print_r($res);</span><br><span class="line"> $e_time = microtime(true);</span><br><span class="line"> $time = $e_time - $b_time;</span><br><span class="line"> exit;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>结果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;输入：洪荒之力&lt;/p&gt;</span><br><span class="line">&lt;p&gt;分词：(洪荒)|(之)|(力)&lt;/p&gt;</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [error] =&gt;</span><br><span class="line">    [warning] =&gt;</span><br><span class="line">    [status] =&gt; 0</span><br><span class="line">    [fields] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [0] =&gt; username</span><br><span class="line">            [1] =&gt; post</span><br><span class="line">            [2] =&gt; summary</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    [attrs] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [userid] =&gt; 1</span><br><span class="line">            [username] =&gt; 7</span><br><span class="line">            [addtime] =&gt; 2</span><br><span class="line">            [post] =&gt; 7</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    [matches] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [0] =&gt; Array</span><br><span class="line">                (</span><br><span class="line">                    [id] =&gt; 20</span><br><span class="line">                    [weight] =&gt; 4500</span><br><span class="line">                    [attrs] =&gt; Array</span><br><span class="line">                        (</span><br><span class="line">                            [userid] =&gt; 4</span><br><span class="line">                            [username] =&gt; 王五</span><br><span class="line">                            [addtime] =&gt; 1375345494</span><br><span class="line">                            [post] =&gt; 洪荒之力</span><br><span class="line">                        )</span><br><span class="line"></span><br><span class="line">                )</span><br><span class="line"></span><br><span class="line">            [1] =&gt; Array</span><br><span class="line">                (</span><br><span class="line">                    [id] =&gt; 19</span><br><span class="line">                    [weight] =&gt; 3451</span><br><span class="line">                    [attrs] =&gt; Array</span><br><span class="line">                        (</span><br><span class="line">                            [userid] =&gt; 3</span><br><span class="line">                            [username] =&gt; 李四</span><br><span class="line">                            [addtime] =&gt; 1438460694</span><br><span class="line">                            [post] =&gt; 洪荒之</span><br><span class="line">                        )</span><br><span class="line"></span><br><span class="line">                )</span><br><span class="line"></span><br><span class="line">            [2] =&gt; Array</span><br><span class="line">                (</span><br><span class="line">                    [id] =&gt; 18</span><br><span class="line">                    [weight] =&gt; 2436</span><br><span class="line">                    [attrs] =&gt; Array</span><br><span class="line">                        (</span><br><span class="line">                            [userid] =&gt; 2</span><br><span class="line">                            [username] =&gt; zhangsi</span><br><span class="line">                            [addtime] =&gt; 1408472694</span><br><span class="line">                            [post] =&gt; 中国人</span><br><span class="line">                        )</span><br><span class="line"></span><br><span class="line">                )</span><br><span class="line"></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    [total] =&gt; 3</span><br><span class="line">    [total_found] =&gt; 3</span><br><span class="line">    [time] =&gt; 0</span><br><span class="line">    [words] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [洪] =&gt; Array</span><br><span class="line">                (</span><br><span class="line">                    [docs] =&gt; 4</span><br><span class="line">                    [hits] =&gt; 4</span><br><span class="line">                )</span><br><span class="line"></span><br><span class="line">            [荒] =&gt; Array</span><br><span class="line">                (</span><br><span class="line">                    [docs] =&gt; 3</span><br><span class="line">                    [hits] =&gt; 3</span><br><span class="line">                )</span><br><span class="line"></span><br><span class="line">            [之] =&gt; Array</span><br><span class="line">                (</span><br><span class="line">                    [docs] =&gt; 2</span><br><span class="line">                    [hits] =&gt; 2</span><br><span class="line">                )</span><br><span class="line"></span><br><span class="line">            [力] =&gt; Array</span><br><span class="line">                (</span><br><span class="line">                    [docs] =&gt; 1</span><br><span class="line">                    [hits] =&gt; 1</span><br><span class="line">                )</span><br><span class="line"></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>查询query.log</p>
-<img src="https://res.hillock.com.cn/wulai/images/20160814143027377.jpg">
-
-
-
-<blockquote>
-<p>参考：<br><a target="_blank" rel="noopener" href="http://blog.csdn.net/clevercode/article/details/52204124">http://blog.csdn.net/clevercode/article/details/52204124</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/chenpingzhao/p/4712345.html">http://www.cnblogs.com/chenpingzhao/p/4712345.html</a><br><a target="_blank" rel="noopener" href="http://www.ibm.com/developerworks/cn/opensource/os-sphinx/">http://www.ibm.com/developerworks/cn/opensource/os-sphinx/</a><br><a target="_blank" rel="noopener" href="http://ourmysql.com/archives/965">http://ourmysql.com/archives/965</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/yjf512/p/3581869.html">http://www.cnblogs.com/yjf512/p/3581869.html</a><br><a target="_blank" rel="noopener" href="http://blog.51yip.com/mysql/1658.html">http://blog.51yip.com/mysql/1658.html</a></p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1270,7 +1188,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">170</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1283,7 +1201,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">145</span>
+        <span class="site-state-item-count">149</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1324,7 +1242,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -195,6 +195,373 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2025/11/20/%E5%88%B6%E9%80%A0%E4%B8%9AAI%E8%AE%AD%E7%BB%83%E5%B8%88%E5%85%A5%E9%97%A8%E5%AE%9E%E6%88%98%E4%BB%BB%E5%8A%A1%E6%B8%85%E5%8D%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
+      <meta itemprop="name" content="Hillock">
+      <meta itemprop="description" content="努力奔跑，向着诗和远方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无来">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/11/20/%E5%88%B6%E9%80%A0%E4%B8%9AAI%E8%AE%AD%E7%BB%83%E5%B8%88%E5%85%A5%E9%97%A8%E5%AE%9E%E6%88%98%E4%BB%BB%E5%8A%A1%E6%B8%85%E5%8D%95/" class="post-title-link" itemprop="url">制造业AI训练师入门实战任务清单</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-11-20 11:05:03 / 修改时间：11:06:19" itemprop="dateCreated datePublished" datetime="2025-11-20T11:05:03+08:00">2025-11-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script src="/assets/js/APlayer.min.js"> </script><h1 id="制造业AI训练师入门实战任务清单（可直接落地）"><a href="#制造业AI训练师入门实战任务清单（可直接落地）" class="headerlink" title="制造业AI训练师入门实战任务清单（可直接落地）"></a>制造业AI训练师入门实战任务清单（可直接落地）</h1><h3 id="一、基础任务：制造业数据处理能力（第-1-3-周，夯实核心底座）"><a href="#一、基础任务：制造业数据处理能力（第-1-3-周，夯实核心底座）" class="headerlink" title="一、基础任务：制造业数据处理能力（第 1-3 周，夯实核心底座）"></a>一、基础任务：制造业数据处理能力（第 1-3 周，夯实核心底座）</h3><h4 id="任务-1：设备故障文本标注实战（适配预测性维护场景）"><a href="#任务-1：设备故障文本标注实战（适配预测性维护场景）" class="headerlink" title="任务 1：设备故障文本标注实战（适配预测性维护场景）"></a>任务 1：设备故障文本标注实战（适配预测性维护场景）</h4><ul>
+<li><p><strong>目标</strong>：掌握制造业专业数据的 “意图分类 + 实体提取” 标注技能，符合工业语料专业性要求</p>
+</li>
+<li><p><strong>具体素材</strong>：100 条制造业设备故障咨询文本（示例如下）</p>
+</li>
+</ul>
+<ol>
+<li><p>“数控机床 X 轴异响，负载电流偏高，连续运行 30 分钟后报警”</p>
+</li>
+<li><p>“注塑机温控系统失灵，料筒温度波动 ±5℃，无法稳定生产 PP 材质产品”</p>
+</li>
+<li><p>“机械臂抓取精度偏差 2mm，检查过夹具无松动，是否需要校准参数？”</p>
+</li>
+<li><p>“传送带电机启动失败，控制面板显示 Error 203，排查过电源正常”</p>
+</li>
+</ol>
+<ul>
+<li><strong>操作步骤</strong>：</li>
+</ul>
+<ol>
+<li>安装 LabelStudio，创建 “文本分类 + 实体标注” 项目，设置标签体系：</li>
+</ol>
+<ul>
+<li><p>意图标签：机械故障、电气故障、操作问题、参数校准、材质适配</p>
+</li>
+<li><p>实体标签：设备类型（如数控机床、注塑机）、故障部位（如 X 轴、温控系统）、故障现象（如异响、温度波动）、关键参数（如 ±5℃、2mm）、错误代码（如 Error 203）</p>
+</li>
+</ul>
+<ol>
+<li><p>逐句标注 100 条文本，遵循 “工业语料可解释性原则”，确保实体描述清晰（如注明 “PP 材质” 为产品原料，避免歧义）</p>
+</li>
+<li><p>用 Excel 统计各意图标签分布（需均衡，单一标签占比不超过 40%），筛选重复 / 标注模糊数据（如未明确设备类型的文本）重新修正</p>
+</li>
+</ol>
+<ul>
+<li><strong>量化评估标准</strong>：</li>
+</ul>
+<ul>
+<li><p>标注准确率≥95%（无标签错标、实体遗漏）</p>
+</li>
+<li><p>实体完整性≥90%（关键设备 / 故障信息无缺失）</p>
+</li>
+<li><p>数据均衡性：各意图标签占比差异≤30%（参考工业语料均衡性指标）</p>
+</li>
+</ul>
+<h4 id="任务-2：制造业混合数据清洗实战（适配多源数据训练场景）"><a href="#任务-2：制造业混合数据清洗实战（适配多源数据训练场景）" class="headerlink" title="任务 2：制造业混合数据清洗实战（适配多源数据训练场景）"></a>任务 2：制造业混合数据清洗实战（适配多源数据训练场景）</h4><ul>
+<li><p><strong>目标</strong>：学会处理制造业 “文本 + 传感器数据” 混合数据集，剔除无效信息并保障安全合规</p>
+</li>
+<li><p><strong>具体素材</strong>：包含 80 条有效数据 + 30 条无效数据的混合集（含 2 类数据）</p>
+</li>
+</ul>
+<ol>
+<li><p>文本类：设备故障描述、操作咨询（含 5 条涉及 “危化品工艺参数” 的敏感数据）</p>
+</li>
+<li><p>传感器数据：温度（℃）、振动频率（Hz）、运行时长（h）时序数据（含 10 条异常值，如温度 =-10℃、振动频率为 0）</p>
+</li>
+</ol>
+<ul>
+<li><strong>操作步骤</strong>：</li>
+</ul>
+<ol>
+<li>用 Excel 打开数据，建立制造业数据清洗规则：</li>
+</ol>
+<ul>
+<li><p>无效数据判定：传感器异常值（超出设备正常运行范围）、无意义文本（如乱码 “qwe123”）、重复刷屏内容</p>
+</li>
+<li><p>敏感数据判定：涉及设备核心参数、危化品工艺的文本（参考工业数据安全合规要求）</p>
+</li>
+</ul>
+<ol>
+<li>分步处理：</li>
+</ol>
+<ul>
+<li><p>文本数据：删除无效文本，对敏感数据进行脱敏（如将 “XX 型号反应釜压力阈值 1.2MPa” 改为 “某型号反应釜压力阈值≥1.0MPa”）</p>
+</li>
+<li><p>传感器数据：用 “滑动均值法” 替换异常值，补充缺失数据（如用前后 3 条数据均值填充）</p>
+</li>
+</ul>
+<ol>
+<li>输出清洗报告，注明删除 / 修正原因（如 “温度 - 10℃超出设备正常工作范围（0-80℃），判定为无效数据”）</li>
+</ol>
+<ul>
+<li><strong>量化评估标准</strong>：</li>
+</ul>
+<ul>
+<li><p>有效数据保留率 100%，无效数据剔除率 100%</p>
+</li>
+<li><p>敏感数据脱敏率 100%（无核心参数泄露）</p>
+</li>
+<li><p>传感器数据修正后准确率≥98%（与设备正常运行范围匹配）</p>
+</li>
+</ul>
+<h3 id="二、核心任务：制造业-Prompt-设计与错误修正（第-4-8-周，突破关键技能）"><a href="#二、核心任务：制造业-Prompt-设计与错误修正（第-4-8-周，突破关键技能）" class="headerlink" title="二、核心任务：制造业 Prompt 设计与错误修正（第 4-8 周，突破关键技能）"></a>二、核心任务：制造业 Prompt 设计与错误修正（第 4-8 周，突破关键技能）</h3><h4 id="任务-3：专业场景-Prompt-设计（适配设备操作-工艺解读场景）"><a href="#任务-3：专业场景-Prompt-设计（适配设备操作-工艺解读场景）" class="headerlink" title="任务 3：专业场景 Prompt 设计（适配设备操作 / 工艺解读场景）"></a>任务 3：专业场景 Prompt 设计（适配设备操作 / 工艺解读场景）</h4><ul>
+<li><p><strong>目标</strong>：掌握 “行业专业术语 + 约束条件” 的 Prompt 编写逻辑，让 AI 输出符合制造业规范的结果</p>
+</li>
+<li><p><strong>需求</strong>：让 AI 生成 “注塑机开机前安全检查指南”（适配车间操作工使用场景）</p>
+</li>
+<li><p><strong>操作步骤</strong>：</p>
+</li>
+</ul>
+<ol>
+<li>编写 3 个不同版本的 Prompt，融入制造业场景约束：</li>
+</ol>
+<ul>
+<li><p>版本 1（基础版）：“写注塑机开机前安全检查指南”</p>
+</li>
+<li><p>版本 2（加专业约束）：“写注塑机开机前安全检查指南，包含电源、温控系统、模具、安全门 4 个核心模块，使用工业操作规范术语”</p>
+</li>
+<li><p>版本 3（加场景适配）：“为车间操作工写注塑机开机前安全检查指南，分步骤说明，每条步骤不超过 20 字，突出‘断电检查’‘模具锁紧’关键要求，符合 GB/T 36344-2018 工业安全标准”</p>
+</li>
+</ul>
+<ol>
+<li><p>用同一 AI 工具（如通义千问）生成回复，对比 3 个版本的差异（重点看专业度、可操作性、合规性）</p>
+</li>
+<li><p>选出最优版本，总结 “专业术语 + 场景约束 + 合规要求” 对制造业 Prompt 的重要性</p>
+</li>
+</ol>
+<ul>
+<li><strong>量化评估标准</strong>：</li>
+</ul>
+<ul>
+<li>最优 Prompt 生成的回复需满足：核心模块全覆盖（4 个模块无遗漏）、操作步骤≥8 条、专业术语准确率 100%（无外行表述）、符合工业安全标准</li>
+</ul>
+<h4 id="任务-4：制造业-AI-错误回复修正（适配工业客服场景）"><a href="#任务-4：制造业-AI-错误回复修正（适配工业客服场景）" class="headerlink" title="任务 4：制造业 AI 错误回复修正（适配工业客服场景）"></a>任务 4：制造业 AI 错误回复修正（适配工业客服场景）</h4><ul>
+<li><p><strong>目标</strong>：学会定位制造业 AI 常见错误（如故障误判、参数错误），通过 Prompt 优化修正</p>
+</li>
+<li><p><strong>具体素材</strong>：AI 错误回复案例（需求与错误点明确）</p>
+</li>
+</ul>
+<ul>
+<li><p>用户需求：“我司的立式加工中心（型号 VMC850）出现主轴转速不稳，负载电流波动，该怎么排查？”</p>
+</li>
+<li><p>AI 错误回复：“建议检查电源电压是否稳定，清理设备表面灰尘，若仍未解决可联系售后。主轴转速不稳一般是电机老化导致，建议更换电机。”</p>
+</li>
+<li><p>错误点：①未结合设备型号（VMC850 主轴结构特性）；②排查步骤缺失专业流程（如未提及 “主轴轴承检查”“变频器参数校准”）；③误判故障原因（负载电流波动更可能是变频器问题，非电机老化）</p>
+</li>
+</ul>
+<ul>
+<li><strong>操作步骤</strong>：</li>
+</ul>
+<ol>
+<li><p>按制造业错误类型分类：“设备型号适配偏差 + 专业流程缺失 + 故障原因误判”</p>
+</li>
+<li><p>优化 Prompt，补充核心约束：“针对立式加工中心（型号 VMC850）的主轴转速不稳、负载电流波动问题，按‘断电检查→机械部件→电气系统→参数校准’的工业排查流程，列出 5 个关键步骤，每个步骤说明具体检查部位和判断标准，基于该型号设备的结构特性给出建议，避免笼统表述”</p>
+</li>
+<li><p>验证优化效果：若 AI 回复仍未提及 “变频器参数”“主轴轴承间隙” 等专业点，补充约束 “需包含变频器、主轴轴承的检查内容”</p>
+</li>
+</ol>
+<ul>
+<li><strong>量化评估标准</strong>：</li>
+</ul>
+<ul>
+<li>优化后 AI 回复：设备型号适配准确率 100%、排查流程符合工业规范、故障原因分析贴合实际（无明显误判）、关键检查点≥5 个</li>
+</ul>
+<h3 id="三、实战任务：制造业业务场景全流程训练（第-9-12-周，落地实战能力）"><a href="#三、实战任务：制造业业务场景全流程训练（第-9-12-周，落地实战能力）" class="headerlink" title="三、实战任务：制造业业务场景全流程训练（第 9-12 周，落地实战能力）"></a>三、实战任务：制造业业务场景全流程训练（第 9-12 周，落地实战能力）</h3><h4 id="任务-5：AI-回复错误分类（适配制造业多场景）"><a href="#任务-5：AI-回复错误分类（适配制造业多场景）" class="headerlink" title="任务 5：AI 回复错误分类（适配制造业多场景）"></a>任务 5：AI 回复错误分类（适配制造业多场景）</h4><ul>
+<li><p><strong>目标</strong>：掌握制造业 AI 常见错误类型，能精准定位并给出修正方向</p>
+</li>
+<li><p><strong>具体素材</strong>：20 条制造业 AI 回复（含 5 类典型错误，每条标注用户需求）</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>用户需求（示例）</th>
+<th>AI 错误回复（示例）</th>
+<th>错误类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“反应釜温度异常升高，如何紧急处理？”</td>
+<td>“请提供设备编号，建议降低进料速度。”</td>
+<td>情感缺失 + 应急流程缺失</td>
+</tr>
+<tr>
+<td>“查询 XX 型号机器人的负载额定值”</td>
+<td>“该机器人负载额定值为 50kg，适用于所有工业场景。”</td>
+<td>参数错误 + 场景适配偏差</td>
+</tr>
+<tr>
+<td>“生产计划延迟，如何调整调度方案？”</td>
+<td>“建议延长生产时间，增加工人排班。”</td>
+<td>未结合智能调度逻辑（无资源优化）</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>操作步骤</strong>：</li>
+</ul>
+<ol>
+<li>逐句分析 20 条回复，按以下制造业专属错误类型标注：</li>
+</ol>
+<ul>
+<li><p>信息错误（参数 / 工艺 / 故障原因错误）</p>
+</li>
+<li><p>意图未识别（未理解用户核心需求，如应急处理需求）</p>
+</li>
+<li><p>专业流程缺失（未遵循工业操作 / 排查流程）</p>
+</li>
+<li><p>场景适配偏差（未结合设备型号 / 生产场景）</p>
+</li>
+<li><p>安全合规风险（泄露敏感参数 / 违规操作建议）</p>
+</li>
+</ul>
+<ol>
+<li><p>为每类错误写 1 条制造业专属修正思路（如 “信息错误→补充该设备型号的官方参数手册到训练数据，强化参数准确性校验”）</p>
+</li>
+<li><p>统计各类错误占比，输出《制造业 AI 错误分类报告》</p>
+</li>
+</ol>
+<ul>
+<li><strong>量化评估标准</strong>：</li>
+</ul>
+<ul>
+<li><p>错误类型判定准确率 100%（与行业标准一致）</p>
+</li>
+<li><p>修正思路可操作性≥90%（能直接落地到训练数据优化）</p>
+</li>
+</ul>
+<h4 id="任务-6：小型业务场景训练（适配预测性维护-生产调度场景，二选一）"><a href="#任务-6：小型业务场景训练（适配预测性维护-生产调度场景，二选一）" class="headerlink" title="任务 6：小型业务场景训练（适配预测性维护 / 生产调度场景，二选一）"></a>任务 6：小型业务场景训练（适配预测性维护 / 生产调度场景，二选一）</h4><h5 id="选项-A：预测性维护咨询场景"><a href="#选项-A：预测性维护咨询场景" class="headerlink" title="选项 A：预测性维护咨询场景"></a>选项 A：预测性维护咨询场景</h5><ul>
+<li><p><strong>业务需求</strong>：让 AI 适配 “电机预测性维护咨询” 场景，能解答工人关于 “故障预警解读、处理步骤、维护周期” 的咨询</p>
+</li>
+<li><p><strong>操作步骤</strong>：</p>
+</li>
+</ul>
+<ol>
+<li>整理 10 条核心业务规则（制造业真实场景）：</li>
+</ol>
+<ul>
+<li><p>规则 1：电机振动频率＞6.5Hz 且持续 5 分钟→一级预警（需 24 小时内检修）</p>
+</li>
+<li><p>规则 2：轴承温度＞75℃→二级预警（需停机检查润滑情况）</p>
+</li>
+<li><p>规则 3：维护周期：连续运行≤3000h→常规维护；3000-5000h→深度维护</p>
+</li>
+</ul>
+<ol>
+<li>设计 8 个典型用户咨询（覆盖不同预警类型）：</li>
+</ol>
+<ul>
+<li>示例：“电机振动频率 7.2Hz，持续 6 分钟，属于什么预警？该怎么处理？”</li>
+</ul>
+<ol>
+<li><p>编写 Prompt 模板，引导 AI 按 “预警等级→处理步骤→维护建议” 的结构回复，要求语言贴合工人理解水平（避免复杂术语）</p>
+</li>
+<li><p>测试 AI 回复，评估 “信息准确率”“步骤完整性”，对不符合要求的回复优化 Prompt（如补充 “处理步骤需分点，每步不超过 15 字”）</p>
+</li>
+</ol>
+<ul>
+<li><strong>量化评估标准</strong>：</li>
+</ul>
+<ul>
+<li><p>信息准确率 100%（预警等级、维护周期无错误）</p>
+</li>
+<li><p>处理步骤完整性≥90%（核心操作无遗漏）</p>
+</li>
+<li><p>语言贴合度：工人能快速理解（无专业术语堆砌）</p>
+</li>
+</ul>
+<h5 id="选项-B：生产调度咨询场景"><a href="#选项-B：生产调度咨询场景" class="headerlink" title="选项 B：生产调度咨询场景"></a>选项 B：生产调度咨询场景</h5><ul>
+<li><p><strong>业务需求</strong>：让 AI 适配 “车间生产调度咨询” 场景，能解答计划员关于 “排程调整、资源分配、交付周期” 的咨询</p>
+</li>
+<li><p><strong>操作步骤</strong>：</p>
+</li>
+</ul>
+<ol>
+<li>整理 8 条核心业务规则（参考联想 Smart APS 解决方案逻辑）：</li>
+</ol>
+<ul>
+<li><p>规则 1：紧急订单（交付周期≤3 天）优先占用 A 生产线（产能最高）</p>
+</li>
+<li><p>规则 2：原料库存＜20%→排程时需预留 48 小时采购时间</p>
+</li>
+<li><p>规则 3：设备维护时间为每周三 14:00-18:00→该时段不安排高负载生产</p>
+</li>
+</ul>
+<ol>
+<li>设计 6 个典型用户咨询：</li>
+</ol>
+<ul>
+<li>示例：“有一个紧急订单（交付周期 2 天），原料库存 15%，该怎么安排排程？”</li>
+</ul>
+<ol>
+<li><p>编写 Prompt，引导 AI 按 “排程优先级→资源分配方案→交付周期预估” 回复，要求符合制造业生产逻辑</p>
+</li>
+<li><p>测试并优化 Prompt，确保 AI 回复无排程冲突（如不与设备维护时间冲突）</p>
+</li>
+</ol>
+<ul>
+<li><strong>量化评估标准</strong>：</li>
+</ul>
+<ul>
+<li><p>排程逻辑准确率 100%（无违反业务规则）</p>
+</li>
+<li><p>资源分配合理性≥95%（符合产能匹配要求）</p>
+</li>
+<li><p>交付周期预估偏差≤10%（与实际产能匹配）</p>
+</li>
+</ul>
+<blockquote>
+<p>（注：文档部分内容可能由 AI 生成）</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2023/03/30/%E5%B8%B8%E7%94%A8%E8%B6%B3%E7%90%83%E8%AF%8D%E6%B1%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2149,90 +2516,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.wulai.me/2022/04/13/Git%E5%BF%BD%E7%95%A5%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E8%BF%87%E4%B8%80%E6%AC%A1%E6%96%87%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://res.hillock.com.cn/cola.jpg">
-      <meta itemprop="name" content="Hillock">
-      <meta itemprop="description" content="努力奔跑，向着诗和远方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无来">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/13/Git%E5%BF%BD%E7%95%A5%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E8%BF%87%E4%B8%80%E6%AC%A1%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">Git忽略已经提交过一次文件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-13 17:57:46" itemprop="dateCreated datePublished" datetime="2022-04-13T17:57:46+08:00">2022-04-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-05-30 22:25:48" itemprop="dateModified" datetime="2024-05-30T22:25:48+08:00">2024-05-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <script src="/assets/js/APlayer.min.js"> </script><h3 id="一、平时忽略未提交的文件"><a href="#一、平时忽略未提交的文件" class="headerlink" title="一、平时忽略未提交的文件"></a>一、平时忽略未提交的文件</h3><p>从未提交过的文件可以用<code>.gitignore</code><br>也就是添加之后从来没有提交（commit）过的文件，可以使用<code>.gitignore</code>忽略该文件<br>该文件只能作用于未跟踪的文件（Untracked Files），也就是那些从来没有被 git 记录过的文件<br>在<code>.gitignore</code>中写忽略文件或文件夹。注意相对路径是项目根数据，文件格式如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/.gradle/</span><br><span class="line">/.idea/</span><br><span class="line">/local.properties</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、已经Push过的文件"><a href="#二、已经Push过的文件" class="headerlink" title="二、已经Push过的文件"></a>二、已经Push过的文件</h3><p>需要删除Git仓库的文件，本址的文件需要保留，并且在以后提交中忽略</p>
-<p>1、从本地Git缓存中删除文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//忽略文件 aaa.txt</span><br><span class="line">git rm --cached aaa.txt</span><br><span class="line">//忽略文件夹 abc</span><br><span class="line">git rm -r --cached abc</span><br></pre></td></tr></table></figure>
-
-<p>2、提交到仓库里面</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#x27;delete somefile&#x27;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<p>3、修改文件.gitignore，把刚才删除的文件或者文件夹加入.gitignore文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/aaa.txt</span><br><span class="line">/abc/</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2304,7 +2587,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">170</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2317,7 +2600,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">145</span>
+        <span class="site-state-item-count">149</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2358,7 +2641,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
